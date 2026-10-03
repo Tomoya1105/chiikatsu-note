@@ -529,7 +529,7 @@ function normItem(raw){
   let img = (x.mediumImageUrls||[])[0];
   if (img && typeof img==="object") img = img.imageUrl;
   if (img) img = img.replace(/\?_ex=\d+x\d+/, "?_ex=300x300");
-  return { name:x.itemName||"", price:+x.itemPrice||0, url:x.affiliateUrl||x.itemUrl||"", img:img||"",
+  return { name:x.itemName||"", price:+x.itemPrice||0, url:(x.affiliateUrl && x.affiliateUrl.includes("hb.afl.rakuten.co.jp")) ? x.affiliateUrl : x.itemUrl ? `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(x.itemUrl)}` : "", img:img||"",
     shop:x.shopName||"", rc:+x.reviewCount||0, ra:+x.reviewAverage||0 };
 }
 /* 楽天APIは1秒1回まで。順番待ちで呼び、結果は6時間この端末に覚えておく */
