@@ -79,6 +79,31 @@ export async function preStart(env, fetcher = fetch, now = Date.now()) {
   return { ok: true, pre: out };
 }
 
+// ちいかわインフォの代わり読み：自動更新の作業環境からは読めない（403）ことがあるので、
+// 見張り役が30分ごとに読んで、文字だけを KV に置いておく（/api/info で自動更新が読む）
+const INFO = { top: "https://chiikawa-info.jp/", pus: "https://chiikawa-info.jp/pus.html" };
+const toText = html => String(html)
+  .replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, " ")
+  .replace(/<a\s[^>]*href="([^"]+)"[^>]*>/gi, " [$1] ")
+  .replace(/<br\s*\/?>|<\/(p|div|li|tr|h\d|dt|dd)>/gi, "\n")
+  .replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+  .replace(/[ \t]+/g, " ").replace(/\n\s*\n+/g, "\n").trim();
+export async function relayInfo(env, fetcher = fetch, now = Date.now()) {
+  const out = {};
+  for (const [k, url] of Object.entries(INFO)) {
+    try {
+      const r = await fetcher(url, { headers: { "user-agent": "Mozilla/5.0 (compatible; chiikatsu-note-watch/1.0; +https://chiikatsu-note.pages.dev/)", "accept-language": "ja" } });
+      if (!r.ok) { out[k] = r.status; continue; }
+      const text = toText(await r.text()).slice(0, 120000);
+      const prev = await env.REPORTS.get(`w:info:${k}`);
+      const body = JSON.stringify({ at: now, url, text });
+      if (!prev || JSON.parse(prev).text !== text) await env.REPORTS.put(`w:info:${k}`, body);
+      out[k] = "ok";
+    } catch (e) { out[k] = "error"; }
+  }
+  return out;
+}
+
 export async function tick(env, t = Date.now()) {
   const out = {};
   if (new Date(t).getUTCMinutes() % 5 === 0) {
@@ -86,6 +111,7 @@ export async function tick(env, t = Date.now()) {
     catch (e) { out.watch = { ok: false, error: String(e) }; try { await env.REPORTS.put("w:err", "error: " + String(e).slice(0, 200), { expirationTtl: 86400 }); } catch (e2) {} }
   }
   if (new Date(t).getUTCMinutes() % 5 === 0) { try { out.pre = await preStart(env, fetch, t); } catch (e) { out.pre = { ok: false, error: String(e) }; } }
+  if (new Date(t).getUTCMinutes() % 30 === 2) { try { out.info = await relayInfo(env, fetch, t); } catch (e) { out.info = { error: String(e) }; } }
   if (!env.VAPID_PRIVATE) return out;
   let jobs = await loadJobs(env); if (!jobs.length) return out;
   let budget = PER_RUN; out.sent = 0;
