@@ -131,6 +131,13 @@ reports-done.json に key がない報告ごとに、対象の情報（id が it
 - ニュースで新しい商品やイベントがわかったら、条件を満たせば items.json にも追加し、itemId でつなぐ。
 - news.json は新しい順に並べる。公開日が90日より前のものは削除してよい。
 
+## 通知を送る（「ほしい」に入れた人へのお知らせ）
+push のあと、回によって次の URL を WebFetch で1回だけ開く（鍵は報告用URLと同じ）。結果の sent（送った数）を最後の報告に書く。
+- 朝の回（6:49）：https://chiikatsu-note.pages.dev/api/push-send?key=（鍵）&mode=day （今日発売・今日まで）
+- 夕方の回（18:49）：https://chiikatsu-note.pages.dev/api/push-send?key=（鍵）&mode=eve （明日発売・明日で終了）
+- 昼の回（13:49）は送らない。
+- 「VAPID_PRIVATE が未設定」と返ってきたら、運営者に Cloudflare の設定が必要だと報告する。
+
 ## 楽天のセール日程（data/campaigns.json）
 朝の回（6:49）だけ、楽天市場の公式ページ（https://event.rakuten.co.jp/campaign/point-up/marathon/ や楽天スーパーSALEの公式ページ）で、今後のお買い物マラソン・楽天スーパーSALEの日程が発表されていないか確かめる。
 - 公式に発表された日程だけを追加する（予想は入れない）。

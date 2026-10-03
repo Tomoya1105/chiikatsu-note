@@ -84,7 +84,7 @@ const FOOT = `<footer class="about">
     <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
   </footer>`;
 // 推しカラーを詳細ページにも反映する小さな処理
-const OSHI_BOOT = `<script>try{var ic=JSON.parse(localStorage.getItem("chiikatsu-install")||"{}")||{};if(ic.topOff)document.documentElement.classList.add("ins-off");if(ic.installed||(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone)document.documentElement.classList.add("is-app")}catch(e){}</script><script>try{var k=localStorage.getItem("chiikatsu-oshi");if(k)document.documentElement.dataset.oshi=k;else document.documentElement.dataset.oshi="chiikawa"}catch(e){document.documentElement.dataset.oshi="chiikawa"}</script>`;
+const OSHI_BOOT = `<script>(function(){var d=new Date(Date.now()+9*3600e3),m=d.getUTCMonth()+1,t=d.getUTCDate(),s=m===10?"halloween":(m===12&&t<=25)?"xmas":((m===12&&t>=26)||(m===1&&t<=7))?"newyear":"";if(s)document.documentElement.dataset.season=s})()</script><script>try{var ic=JSON.parse(localStorage.getItem("chiikatsu-install")||"{}")||{};if(ic.topOff)document.documentElement.classList.add("ins-off");if(ic.installed||(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone)document.documentElement.classList.add("is-app")}catch(e){}</script><script>try{var k=localStorage.getItem("chiikatsu-oshi");if(k)document.documentElement.dataset.oshi=k;else document.documentElement.dataset.oshi="chiikawa"}catch(e){document.documentElement.dataset.oshi="chiikawa"}</script>`;
 
 function page({ title, desc, url, body, head = "", scripts = "", ogType = "website", ogImage = "/og/home.png" }) {
   return `<!doctype html>
@@ -116,7 +116,8 @@ function page({ title, desc, url, body, head = "", scripts = "", ogType = "websi
 <script src="/install.js?v=${BUILD}" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&display=swap"></noscript>
 <link rel="stylesheet" href="/style.css?v=${TODAY}">
 ${OSHI_BOOT}
 ${head}
@@ -143,6 +144,7 @@ write("install.js", installJs);
 write("sw.js", swJs.replace("__VER__", BUILD));
 fs.mkdirSync(path.join(OUT, "icons"), { recursive: true });
 for (const f of fs.readdirSync("src/icons")) fs.copyFileSync(path.join("src/icons", f), path.join(OUT, "icons", f));
+write("push-items.json", JSON.stringify(items.map(it => ({ id: it.id, t: it.t, s: it.s, sp: it.sp || "day", e: it.e || null, cat: it.cat, place: it.place || "" }))));
 write("manifest.webmanifest", JSON.stringify({
   id: "/",
   name: "ちい活ノート｜ちいかわのスケジュール帳",
@@ -254,7 +256,7 @@ write("about/index.html", page({
 }));
 write("privacy/index.html", page({
   title: "プライバシーポリシー｜ちい活ノート", desc: "ちい活ノートのプライバシーポリシー。", url: "/privacy/",
-  body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。</p>
+  body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。</p>
 <h2>まちがい報告</h2><p>「情報のまちがいを報告する」から送られた内容（選んだ項目と入力した文章）は、掲載情報を直すためだけに使います。個人を特定できる情報は書き込まないでください。</p>
 <h2>アフィリエイトについて</h2><p>当サイトは楽天グループ株式会社の「楽天アフィリエイト」に参加しています。リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
 <h2>アクセス解析・広告配信について</h2><p>今後、アクセス解析ツールや第三者配信の広告（Google AdSense など）を導入する場合は、Cookieを使って閲覧情報を集めることがあります。導入する際はこのページでお知らせします。</p>

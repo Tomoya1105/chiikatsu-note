@@ -146,7 +146,7 @@ function gcal(it){
 /* ===== マイリスト（この端末に保存） ===== */
 let mine = {};
 try { mine = JSON.parse(localStorage.getItem("chiikatsu-mine")||"{}")||{}; } catch(e){ mine = {}; }
-function saveMine(){ try{ localStorage.setItem("chiikatsu-mine",JSON.stringify(mine)); }catch(e){} }
+function saveMine(){ try{ localStorage.setItem("chiikatsu-mine",JSON.stringify(mine)); }catch(e){} if (window.pushSync) window.pushSync(); }
 
 /* ===== カード ===== */
 function card(it, opt){
@@ -176,12 +176,14 @@ function card(it, opt){
         ${it.price?`<dt>価格</dt><dd class="num">${esc(it.price)}${regionOf(it)==="jp"?"（税込）":""}</dd>`:""}
         ${it.note?`<dt>メモ</dt><dd>${esc(it.note)}</dd>`:""}
       </dl>
-      <div class="acts">
+      <div class="acts main">
+        ${st.k!=="ended"?`<button class="btn want" data-mark="want" aria-pressed="${m==="want"}">${m==="want"?"♥ ほしい":"♡ ほしい"}</button>`:""}
         ${it.q?`<span class="rk" data-rk="${esc(it.id)}"></span>`:""}
-        ${src?`<a class="btn" href="${esc(src)}" target="_blank" rel="noopener">公式情報</a>`:""}
-        ${g&&st.k!=="ended"?`<a class="btn" href="${g}" target="_blank" rel="noopener">予定に追加</a>`:""}
-        <button class="btn want" data-mark="want" aria-pressed="${m==="want"}">${m==="want"?"♥ ほしい":"♡ ほしい"}</button>
-        <button class="btn got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
+      </div>
+      <div class="acts sub">
+        ${src?`<a class="lnk" href="${esc(src)}" target="_blank" rel="noopener">公式情報</a>`:""}
+        ${g&&st.k!=="ended"?`<a class="lnk" href="${g}" target="_blank" rel="noopener">カレンダーに追加</a>`:""}
+        <button class="lnk got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
       </div>
       ${(()=>{ const tr = it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
       <button class="repbtn" type="button" data-report>情報のまちがいを報告する</button>
@@ -796,6 +798,60 @@ document.addEventListener("click", e=>{
 });
 renderNewsBadge(); renderNewsPeek();
 if (v0==="news") setView("news");
+
+/* ===== 発売前日・当日の通知 ===== */
+const VAPID = "BLcj6kLGL1ub20otavL50U2UJRfekzyX3zdS54fh10bhFW9yyn4vyeFoVulCPi6AljaZForJRTkXBjvpcNDZZ_o";
+const PUSH_OK = "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+const IS_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+const IS_APP = (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone===true;
+let pushSub = null;
+const u8 = s=>{ s=s.replace(/-/g,"+").replace(/_/g,"/"); const b=atob(s+"===".slice((s.length+3)%4)); return Uint8Array.from(b,c=>c.charCodeAt(0)); };
+const wantIds = ()=>Object.keys(mine).filter(id=>mine[id]==="want");
+async function pushPost(body){ const r = await fetch("/api/push-sub",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)}); if(!r.ok) throw new Error(r.status); return r.json(); }
+let syncT = null;
+window.pushSync = ()=>{ if (!pushSub) return; clearTimeout(syncT); syncT = setTimeout(()=>pushPost({sub:pushSub.toJSON(), want:wantIds()}).catch(()=>{}), 1200); };
+function drawPush(){
+  const el = document.getElementById("pushCard"); if (!el) return;
+  let h = "";
+  if (!PUSH_OK){
+    if (IS_IOS && !IS_APP) h = `<b>🔔 発売の前日と当日にお知らせ</b><p>iPhone・iPadは、ホーム画面に追加したちい活ノートから通知を受け取れます。</p><button class="btn" type="button" data-install>ホーム画面に追加する方法</button>`;
+    else { el.hidden = true; return; }
+  } else if (Notification.permission==="denied"){
+    h = `<b>🔔 通知がブロックされています</b><p>端末やブラウザの設定で、このサイトの通知を「許可」にすると受け取れます。</p>`;
+  } else if (pushSub){
+    h = `<b>🔔 通知はオンです</b><p>「ほしい」に入れた予定の<strong>前日の夜</strong>と<strong>当日の朝</strong>にお知らせします（終わる日の前日も）。</p><div class="acts"><button class="btn" type="button" data-ptest>テスト通知を送る</button><button class="btn" type="button" data-poff>通知をやめる</button></div>`;
+  } else {
+    h = `<b>🔔 発売の前日と当日にお知らせ</b><p>「ほしい」に入れた予定を、買い逃さないように通知でお知らせします。登録はいりません。</p><button class="btn ok" type="button" data-pon>通知を受け取る</button>`;
+  }
+  el.innerHTML = h; el.hidden = false;
+  document.documentElement.classList.add("has-push");   // 通知の案内を出すときは、ホーム画面に追加の大きな案内は重ねない
+}
+async function pushInit(){
+  if (PUSH_OK){ try{ const reg = await navigator.serviceWorker.getRegistration(); if (reg) pushSub = await reg.pushManager.getSubscription(); }catch(e){} }
+  drawPush();
+  if (pushSub) window.pushSync();
+}
+document.addEventListener("click", async e=>{
+  if (e.target.closest("[data-pon]")){
+    try{
+      const perm = await Notification.requestPermission();
+      if (perm!=="granted"){ drawPush(); return; }
+      const reg = await navigator.serviceWorker.register("/sw.js").then(()=>navigator.serviceWorker.ready);
+      pushSub = await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:u8(VAPID)});
+      await pushPost({sub:pushSub.toJSON(), want:wantIds()});
+      toast("通知をオンにしました"); if (window.ct) window.ct("push:on");
+    }catch(err){ toast("通知をオンにできませんでした。時間をおいてお試しください"); }
+    drawPush();
+  }
+  if (e.target.closest("[data-poff]") && pushSub){
+    try{ await pushPost({sub:pushSub.toJSON(), off:true}); await pushSub.unsubscribe(); }catch(err){}
+    pushSub = null; toast("通知をやめました"); drawPush();
+  }
+  if (e.target.closest("[data-ptest]") && pushSub){
+    try{ await pushPost({sub:pushSub.toJSON(), want:wantIds()}); const r = await fetch("/api/push-test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({endpoint:pushSub.endpoint})}); const j = await r.json().catch(()=>({})); toast(j.ok ? "テスト通知を送りました" : "テスト通知を送れませんでした"); }catch(err){ toast("テスト通知を送れませんでした"); }
+  }
+});
+pushInit();
 
 /* ホーム画面のアイコン長押しメニューなどから来たとき（?v=ending など）に、その画面を開く */
 try{
