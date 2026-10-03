@@ -488,3 +488,16 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .offlist a:hover{border-color:var(--acc)}
 .offlist b{font-size:14px}
 .offlist span{font-size:12px;color:var(--ink-2)}
+
+/* 予約・受注 */
+.rsvbox{border:1.5px solid var(--acc);background:var(--acc-soft);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.rsvbox.before{border-color:var(--butter);background:var(--butter-soft)}
+.rsvh{font-weight:900;font-family:var(--display);font-size:14.5px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.rsvh small{font-family:var(--body);font-weight:700;font-size:12.5px;color:var(--ink-2)}
+.rsvbtns{display:flex;flex-wrap:wrap;gap:6px}
+.btn.rsvbtn{background:var(--acc);border-color:var(--acc);color:var(--on-acc);padding:9px 14px;font-size:13.5px}
+.rsvbox.before .btn.rsvbtn{background:var(--surface);color:var(--ink);border-color:var(--butter)}
+.rsvstrip{display:flex;align-items:center;gap:6px;width:100%;border:1.5px solid var(--acc);background:var(--surface);color:var(--ink);border-radius:14px;padding:10px 14px;margin:0 0 10px;font:500 13.5px var(--body);cursor:pointer;text-align:left}
+.rsvstrip span{margin-left:auto;color:var(--acc);font-weight:700}
+.pchk{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.6;color:var(--ink-2)}
+.pchk input{margin-top:4px;accent-color:var(--acc)}

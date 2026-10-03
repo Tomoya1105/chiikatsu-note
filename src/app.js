@@ -55,7 +55,28 @@ function prep(id, d){
   return it;
 }
 
+// 公式通販などの予約・受注（rs=受付開始, re=締切, rsv=予約ページ）
+const isRsv = it => !!(it.rsv && (Array.isArray(it.rsv) ? it.rsv.length : it.rsv));
+const rsvList = it => Array.isArray(it.rsv) ? it.rsv.filter(x=>x && /^https:\/\//.test(x.u)) : (/^https:\/\//.test(it.rsv||"") ? [{n:"", u:it.rsv}] : []);
+const PT = s => s ? new Date(s.length>10 ? s+":00+09:00" : s+"T00:00:00+09:00") : null;
+function rsvState(it){
+  if (!isRsv(it)) return null;
+  const now = new Date(), a = PT(it.rs), b = PT(it.re);
+  if (b && now > b) return "closed";
+  if (a && now < a) return "before";
+  return "open";
+}
 function status(it){
+  const rv = rsvState(it);
+  if (rv==="before"){
+    const n = diffDays(it.sd,TODAY);
+    return {k:n<=7?"soon":"upcoming", label:n===0?`今日${it.rs.slice(11,16)}から予約`:n===1?`明日${it.rs.slice(11,16)}から予約`:n<=7?`あと${n}日で予約開始`:"予約開始予定", rank:1};
+  }
+  if (rv==="open"){
+    const n = it.ed ? diffDays(it.ed,TODAY) : 99;
+    return {k:n<=7?"ending":"on", label:n===0?`予約は今日${(it.re||"").slice(11,16)}まで`:n===1?"予約は明日まで":`予約受付中`, rank:n<=7?0:2};
+  }
+  if (rv==="closed") return {k:"ended",label:"予約終了",rank:4};
   const v = isEvent(it)? "開催":"発売";
   if (it.sd > TODAY){
     const n = diffDays(it.sd,TODAY);
@@ -149,6 +170,7 @@ try { mine = JSON.parse(localStorage.getItem("chiikatsu-mine")||"{}")||{}; } cat
 function saveMine(){ try{ localStorage.setItem("chiikatsu-mine",JSON.stringify(mine)); }catch(e){} if (window.pushSync) window.pushSync(); }
 
 /* ===== カード ===== */
+function fmtDT(s){ const d = PT(s); if (!d) return ""; const j = new Date(d.getTime()+9*3600e3); return `${j.getUTCMonth()+1}/${j.getUTCDate()}(${DOW[j.getUTCDay()]}) ${s.length>10?s.slice(11,16):""}`.trim(); }
 function card(it, opt){
   const st = status(it);
   const k = keyOf(it);
@@ -158,9 +180,9 @@ function card(it, opt){
   const stamp = (k.kind==="start" && it.sp!=="day")
     ? `<span class="m num">${d.getMonth()+1}月</span><span class="fz">${fuzzyLbl[it.sp]}</span><span class="kd start">${KD.start}予定</span>`
     : `<span class="m num">${d.getMonth()+1}月</span><span class="d num">${d.getDate()}</span><span class="w">${DOW[d.getDay()]}曜</span><span class="kd ${k.kind}">${KD[k.kind]}</span>`;
-  const v = isEvent(it)?"開始":"発売";
+  const v = isRsv(it) ? "予約受付" : isEvent(it)?"開始":"発売";
   let period = `<span>${v} <b class="num">${fmtStart(it)}</b>${it.time?` <span class="num">${esc(it.time)}</span>`:""}</span>`;
-  if (it.ed) period += `<span>終了 <b class="num">${fmtEnd(it)}</b></span>`;
+  if (it.ed) period += `<span>${isRsv(it)?"締切":"終了"} <b class="num">${fmtEnd(it)}</b>${isRsv(it)&&it.re&&it.re.length>10?` <span class="num">${it.re.slice(11,16)}</span>`:""}</span>`;
   if (it.eNote) period += `<span>${esc(it.eNote)}</span>`;
   else if (!it.ed && !isEvent(it)) period += `<span>なくなり次第終了</span>`;
   const g = gcal(it), src = safeUrl(it.src);
@@ -176,6 +198,9 @@ function card(it, opt){
         ${it.price?`<dt>価格</dt><dd class="num">${esc(it.price)}${regionOf(it)==="jp"?"（税込）":""}</dd>`:""}
         ${it.note?`<dt>メモ</dt><dd>${esc(it.note)}</dd>`:""}
       </dl>
+      ${(()=>{ const rv = rsvState(it), L = rsvList(it); if (!L.length || rv==="closed") return "";
+        const head = rv==="open" ? `予約受付中${it.re?`<small>締切 ${esc(fmtDT(it.re))}</small>`:""}` : `予約開始 ${esc(fmtDT(it.rs))}`;
+        return `<div class="rsvbox ${rv}"><div class="rsvh">${head}</div><div class="rsvbtns">${L.map(x=>`<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>${rv==="open"?"予約はこちら":"予約ページ"}${x.n?`（${esc(x.n)}）`:""}</a>`).join("")}</div></div>`; })()}
       <div class="acts main">
         ${st.k!=="ended"?`<button class="btn want" data-mark="want" aria-pressed="${m==="want"}">${m==="want"?"♥ ほしい":"♡ ほしい"}</button>`:""}
         ${it.q?`<span class="rk" data-rk="${esc(it.id)}"></span>`:""}
@@ -191,7 +216,8 @@ function card(it, opt){
     ${it.q?`<div class="pimg" data-pimg="${esc(it.id)}"></div>`:""}
   </article>`;
 }
-const AD = `<aside class="ad" aria-label="広告"><b>広告</b>ここに広告が入ります（Google AdSense など）</aside>`;
+// 広告枠：AdSense が決まるまでは何も出さない（決まったらここに広告のタグを入れる）
+const AD = "";
 function placeholder(){
   if (loadFailed) return `<div class="empty">データを読み込めませんでした。ページを開き直してください。</div>`;
   return `<div class="empty">読み込み中です…</div>`;
@@ -199,7 +225,7 @@ function placeholder(){
 
 /* ===== 一覧 ===== */
 const state = { st:"next", cat:"all", q:"", focus:null, fromSum:false };
-const ST = [["next","これからの予定"],["ending","まもなく終了"],["sellout","なくなり次第終了"],["onsale","販売中"],["ended","終了"]];
+const ST = [["next","これからの予定"],["ending","まもなく終了"],["sellout","なくなり次第終了"],["rsv","予約・受注"],["onsale","販売中"],["ended","終了"]];
 // 「なくなり次第終了」：在庫がなくなると買えなくなるもの（くじも含む）。終わったものは除く
 const SELLOUT_RE = /なくなり次第|数量限定|在庫限り|在庫がなくなり|売り切れ次第|品切れ次第|完売次第/;
 function isSellout(it){ return status(it).k!=="ended" && !isEvent(it) && (SELLOUT_RE.test((it.eNote||"")+" "+(it.note||"")) || it.cat==="kuji"); }
@@ -245,6 +271,12 @@ function goAll(){
   const t = document.getElementById("view-list"); if (t) t.scrollIntoView({behavior:"smooth", block:"start"});
 }
 document.addEventListener("click", e=>{ if (e.target.closest("[data-backall]")) goAll(); });
+document.addEventListener("click", e=>{
+  if (!e.target.closest("[data-gorsv]")) return;
+  state.st="rsv"; state.focus=null; state.fromSum=true; state.cat="all";
+  chips(document.getElementById("stChips"),ST,"st"); renderList();
+  document.getElementById("view-list").scrollIntoView({behavior:"smooth", block:"start"});
+});
 // 検索の表記ゆれをそろえる（全角/半角・カタカナ/ひらがな・大文字/小文字・空白、よくある言いかえ）
 const SYN = [[/ぽっぷあっぷすとあ|ぽっぷあっぷ|popupstore|popup/g,"popup"],[/こらぼかふぇ|collaborationcafe|collabocafe/g,"こらぼかふぇ"],[/ぬいぐるみ|ぬい/g,"ぬい"],[/ますこっと/g,"ますこっと"],[/ちいかわべーかりー/g,"ちいかわべーかりー"]];
 function sn(t){
@@ -264,13 +296,18 @@ function renderListInner(){
   if (!loaded){ el.innerHTML = placeholder(); document.getElementById("count").textContent=""; fb.hidden=true; return; }
   const q = sn(state.q.trim());
   let arr = VIS().filter(it=>{
-    if (state.st==="ending" ? status(it).k!=="ending" : state.st==="sellout" ? !isSellout(it) : bucket(it)!==state.st) return false;
+    if (state.st==="ending" ? status(it).k!=="ending" : state.st==="sellout" ? !isSellout(it) : state.st==="rsv" ? !(isRsv(it) && rsvState(it)!=="closed") : bucket(it)!==state.st) return false;
     if (state.focus && status(it).k!==state.focus) return false;
     if (state.cat!=="all" && it.cat!==state.cat) return false;
     if (q && !sn(it.t+(it.place||"")+(it.note||"")+(CAT[it.cat]||"")+(it.eNote||"")+(REG[it.region]||"")).includes(q)) return false;
     return true;
   });
-  if (state.st==="sellout"){
+  if (state.st==="rsv"){
+    // 受付中（締切が近い順）→ これから受付開始（近い順）
+    const open = arr.filter(it=>rsvState(it)==="open").sort((a,b)=>(PT(a.re)||8e15)-(PT(b.re)||8e15));
+    const before = arr.filter(it=>rsvState(it)==="before").sort((a,b)=>PT(a.rs)-PT(b.rs));
+    arr = open.concat(before);
+  } else if (state.st==="sellout"){
     // いま買えるもの（新しく出た順）→ これから出るもの（近い順）
     const now = arr.filter(it=>it.sd<=TODAY).sort((a,b)=>b.sd-a.sd);
     const later = arr.filter(it=>it.sd>TODAY).sort((a,b)=>a.sd-b.sd);
@@ -279,18 +316,21 @@ function renderListInner(){
   // 絞り込み中の表示
   fb.hidden = !(state.focus || state.fromSum);
   if (!fb.hidden) document.getElementById("focusTxt").textContent = state.focus==="soon" ? "7日以内に発売・開始するものだけ表示中" : "7日以内に終わるものだけ表示中";
-  const desc = {sellout:"在庫がなくなると終わるグッズ・くじです。いま買えるもの、これから出るものの順。", ending:"1週間以内に終わるものです。終わる日が近い順。", next:"今日から近い順。始まるものは発売日・開始日、開催中のものは終わる日で並べています。", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
+  const desc = {rsv:"公式通販などの予約・受注です。受付中のもの（締切が近い順）、これから受付が始まるものの順。", sellout:"在庫がなくなると終わるグッズ・くじです。いま買えるもの、これから出るものの順。", ending:"1週間以内に終わるものです。終わる日が近い順。", next:"今日から近い順。始まるものは発売日・開始日、開催中のものは終わる日で並べています。", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
   document.getElementById("count").textContent = `${arr.length}件　${desc}`;
   if (!arr.length){
     const msg = R.region==="os"&&!VIS().length ? "この国・地域の情報はまだありません。"
       : (q||state.cat!=="all"||state.focus) ? "条件に合う情報が見つかりませんでした。キーワードや種類の絞り込みを変えてみてください。"
-      : state.st==="next" ? "これからの予定はまだありません。" : state.st==="ending" ? "1週間以内に終わるものはありません。" : state.st==="sellout" ? "いま「なくなり次第終了」のものはありません。" : "まだありません。";
+      : state.st==="next" ? "これからの予定はまだありません。" : state.st==="ending" ? "1週間以内に終わるものはありません。" : state.st==="sellout" ? "いま「なくなり次第終了」のものはありません。" : state.st==="rsv" ? "いま受付中・受付予定の予約はありません。" : "まだありません。";
     el.innerHTML = `<div class="empty">${msg}</div>` + backAll();
     return;
   }
   let h = "", cur = "";
   arr.forEach((it,i)=>{
-    if (state.st==="sellout"){
+    if (state.st==="rsv"){
+      const w = rsvState(it)==="open" ? "いま予約できる" : "これから予約開始";
+      if (w!==cur){ cur = w; h += `<h3 class="wk">${w}</h3>`; }
+    } else if (state.st==="sellout"){
       const w = it.sd<=TODAY ? "いま買える" : "これから発売";
       if (w!==cur){ cur = w; h += `<h3 class="wk">${w}</h3>`; }
     } else if (state.st==="next"||state.st==="ending"){
@@ -301,7 +341,10 @@ function renderListInner(){
     if (i===4 || i===14) h += AD;
     if (i===8 && R.region==="jp") h += `<div class="popstrip" data-pop></div>`;
   });
-  el.innerHTML = h + backAll();
+  const ro = state.st!=="rsv" ? VIS().filter(x=>rsvState(x)==="open").length : 0;
+  const rb = VIS().filter(x=>rsvState(x)==="before").length;
+  const strip = (ro||rb) && state.st==="next" && !state.focus ? `<button type="button" class="rsvstrip" data-gorsv>🛒 ${ro?`いま予約受付中 <b>${ro}件</b>`:""}${ro&&rb?"・":""}${rb?`予約開始予定 <b>${rb}件</b>`:""}<span>見る →</span></button>` : "";
+  el.innerHTML = strip + h + backAll();
   setTimeout(()=>{ fillPop(); fillCamp(); }, 0);   // 下で定義する部品が読み込まれてから
 }
 function renderMine(){
@@ -808,8 +851,9 @@ let pushSub = null;
 const u8 = s=>{ s=s.replace(/-/g,"+").replace(/_/g,"/"); const b=atob(s+"===".slice((s.length+3)%4)); return Uint8Array.from(b,c=>c.charCodeAt(0)); };
 const wantIds = ()=>Object.keys(mine).filter(id=>mine[id]==="want");
 async function pushPost(body){ const r = await fetch("/api/push-sub",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)}); if(!r.ok) throw new Error(r.status); return r.json(); }
+let pushRsv = true; try{ pushRsv = localStorage.getItem("chiikatsu-push-rsv")!=="0"; }catch(e){}
 let syncT = null;
-window.pushSync = ()=>{ if (!pushSub) return; clearTimeout(syncT); syncT = setTimeout(()=>pushPost({sub:pushSub.toJSON(), want:wantIds()}).catch(()=>{}), 1200); };
+window.pushSync = ()=>{ if (!pushSub) return; clearTimeout(syncT); syncT = setTimeout(()=>pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv}).catch(()=>{}), 1200); };
 function drawPush(){
   const el = document.getElementById("pushCard"); if (!el) return;
   let h = "";
@@ -819,9 +863,9 @@ function drawPush(){
   } else if (Notification.permission==="denied"){
     h = `<b>🔔 通知がブロックされています</b><p>端末やブラウザの設定で、このサイトの通知を「許可」にすると受け取れます。</p>`;
   } else if (pushSub){
-    h = `<b>🔔 通知はオンです</b><p>「ほしい」に入れた予定の<strong>前日の夜</strong>と<strong>当日の朝</strong>にお知らせします（終わる日の前日も）。</p><div class="acts"><button class="btn" type="button" data-ptest>テスト通知を送る</button><button class="btn" type="button" data-poff>通知をやめる</button></div>`;
+    h = `<b>🔔 通知はオンです</b><p>「ほしい」に入れた予定の<strong>前日の夜</strong>と<strong>当日の朝</strong>にお知らせします（終わる日の前日も）。</p><label class="pchk"><input type="checkbox" data-prsv ${pushRsv?"checked":""}> 公式通販の<strong>予約開始</strong>もお知らせ（「ほしい」に入れていなくても）</label><div class="acts"><button class="btn" type="button" data-ptest>テスト通知を送る</button><button class="btn" type="button" data-poff>通知をやめる</button></div>`;
   } else {
-    h = `<b>🔔 発売の前日と当日にお知らせ</b><p>「ほしい」に入れた予定を、買い逃さないように通知でお知らせします。登録はいりません。</p><button class="btn ok" type="button" data-pon>通知を受け取る</button>`;
+    h = `<b>🔔 発売の前日と当日にお知らせ</b><p>「ほしい」に入れた予定と、公式通販の<strong>予約開始</strong>を、買い逃さないように通知でお知らせします。登録はいりません。</p><button class="btn ok" type="button" data-pon>通知を受け取る</button>`;
   }
   el.innerHTML = h; el.hidden = false;
   document.documentElement.classList.add("has-push");   // 通知の案内を出すときは、ホーム画面に追加の大きな案内は重ねない
@@ -831,6 +875,11 @@ async function pushInit(){
   drawPush();
   if (pushSub) window.pushSync();
 }
+document.addEventListener("change", e=>{
+  const c = e.target.closest("[data-prsv]"); if (!c) return;
+  pushRsv = c.checked; try{ localStorage.setItem("chiikatsu-push-rsv", pushRsv?"1":"0"); }catch(err){}
+  window.pushSync(); toast(pushRsv ? "予約開始のお知らせをオンにしました" : "予約開始のお知らせをオフにしました");
+});
 document.addEventListener("click", async e=>{
   if (e.target.closest("[data-pon]")){
     try{
@@ -838,7 +887,7 @@ document.addEventListener("click", async e=>{
       if (perm!=="granted"){ drawPush(); return; }
       const reg = await navigator.serviceWorker.register("/sw.js").then(()=>navigator.serviceWorker.ready);
       pushSub = await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:u8(VAPID)});
-      await pushPost({sub:pushSub.toJSON(), want:wantIds()});
+      await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv});
       toast("通知をオンにしました"); if (window.ct) window.ct("push:on");
     }catch(err){ toast("通知をオンにできませんでした。時間をおいてお試しください"); }
     drawPush();
@@ -848,7 +897,7 @@ document.addEventListener("click", async e=>{
     pushSub = null; toast("通知をやめました"); drawPush();
   }
   if (e.target.closest("[data-ptest]") && pushSub){
-    try{ await pushPost({sub:pushSub.toJSON(), want:wantIds()}); const r = await fetch("/api/push-test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({endpoint:pushSub.endpoint})}); const j = await r.json().catch(()=>({})); toast(j.ok ? "テスト通知を送りました" : "テスト通知を送れませんでした"); }catch(err){ toast("テスト通知を送れませんでした"); }
+    try{ await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv}); const r = await fetch("/api/push-test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({endpoint:pushSub.endpoint})}); const j = await r.json().catch(()=>({})); toast(j.ok ? "テスト通知を送りました" : "テスト通知を送れませんでした"); }catch(err){ toast("テスト通知を送れませんでした"); }
   }
 });
 pushInit();

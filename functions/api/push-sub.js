@@ -10,7 +10,7 @@ export async function onRequestPost({ request, env }) {
   const id = await subId(sub.endpoint);
   if (b.off) { await env.REPORTS.delete(`p:${id}`); return Response.json({ ok: true, off: true }); }
   const want = Array.isArray(b.want) ? b.want.filter(x => typeof x === "string").slice(0, 300).map(x => x.slice(0, 100)) : [];
-  const rec = { sub: { endpoint: sub.endpoint, keys: { p256dh: String(sub.keys.p256dh).slice(0, 200), auth: String(sub.keys.auth).slice(0, 100) } }, want, at: new Date().toISOString() };
+  const rec = { rsv: b.rsv !== false, sub: { endpoint: sub.endpoint, keys: { p256dh: String(sub.keys.p256dh).slice(0, 200), auth: String(sub.keys.auth).slice(0, 100) } }, want, at: new Date().toISOString() };
   await env.REPORTS.put(`p:${id}`, JSON.stringify(rec), { expirationTtl: 60 * 60 * 24 * 180 });
   return Response.json({ ok: true, id });
 }

@@ -169,7 +169,7 @@ write("install.js", installJs);
 write("sw.js", swJs.replace("__VER__", BUILD));
 fs.mkdirSync(path.join(OUT, "icons"), { recursive: true });
 for (const f of fs.readdirSync("src/icons")) fs.copyFileSync(path.join("src/icons", f), path.join(OUT, "icons", f));
-write("push-items.json", JSON.stringify(items.map(it => ({ id: it.id, t: it.t, s: it.s, sp: it.sp || "day", e: it.e || null, cat: it.cat, place: it.place || "" }))));
+write("push-items.json", JSON.stringify(items.map(it => ({ id: it.id, t: it.t, s: it.s, sp: it.sp || "day", e: it.e || null, cat: it.cat, place: it.place || "", rs: it.rs || null, re: it.re || null, rsv: !!it.rsv }))));
 write("manifest.webmanifest", JSON.stringify({
   id: "/",
   name: "ちい活ノート｜ちいかわのスケジュール帳",
@@ -245,12 +245,14 @@ for (const it of items) {
     <div class="meta"><span class="pill rg">${esc(reg)}</span><span class="cat">${esc(CAT[it.cat] || "")}</span></div>
     <h1>${esc(it.t)}</h1>
     <dl class="info">
-      <dt>${ev ? "開始" : "発売"}</dt><dd>${esc(start)}${it.time ? " " + esc(it.time) : ""}</dd>
-      ${end ? `<dt>終了</dt><dd>${esc(end)}</dd>` : `<dt>終了</dt><dd>${esc(it.eNote || (ev ? "未定" : "なくなり次第終了"))}</dd>`}
+      <dt>${it.rsv ? "予約受付" : ev ? "開始" : "発売"}</dt><dd>${esc(start)}${it.time ? " " + esc(it.time) : ""}</dd>
+      ${end ? `<dt>${it.rsv ? "締切" : "終了"}</dt><dd>${esc(end)}${it.rsv && it.re && it.re.length > 10 ? " " + esc(it.re.slice(11, 16)) : ""}</dd>` : `<dt>終了</dt><dd>${esc(it.eNote || (ev ? "未定" : "なくなり次第終了"))}</dd>`}
       ${it.place ? `<dt>場所</dt><dd>${esc(it.place)}</dd>` : ""}
       ${it.price ? `<dt>価格</dt><dd>${esc(it.price)}${(it.region || "jp") === "jp" ? "（税込）" : ""}</dd>` : ""}
       ${it.note ? `<dt>メモ</dt><dd>${esc(it.note)}</dd>` : ""}
     </dl>
+    ${(() => { const L = Array.isArray(it.rsv) ? it.rsv : it.rsv ? [{ n: "", u: it.rsv }] : []; const ok = L.filter(x => /^https:\/\//.test(x.u || "")); if (!ok.length || (it.re && new Date(it.re + ":00+09:00") < new Date())) return "";
+      return `<div class="rsvbox open"><div class="rsvh">予約・受注${it.re ? `<small>締切 ${esc(fmt(it.re.slice(0, 10)))} ${esc(it.re.slice(11, 16))}</small>` : ""}</div><div class="rsvbtns">${ok.map(x => `<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>予約はこちら${x.n ? "（" + esc(x.n) + "）" : ""}</a>`).join("")}</div></div>`; })()}
     <div class="acts">
       ${it.q ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored">楽天市場で探す <span class="tag">PR</span></a>` : ""}
       ${/^https:\/\//.test(it.src || "") ? `<a class="btn" href="${esc(it.src)}" target="_blank" rel="noopener">公式情報</a>` : ""}
