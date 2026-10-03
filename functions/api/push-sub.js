@@ -10,7 +10,9 @@ export async function onRequestPost({ request, env }) {
   const id = await subId(sub.endpoint);
   if (b.off) { await env.REPORTS.delete(`p:${id}`); return Response.json({ ok: true, off: true }); }
   const want = Array.isArray(b.want) ? b.want.filter(x => typeof x === "string").slice(0, 300).map(x => x.slice(0, 100)) : [];
-  const rec = { rsv: b.rsv !== false, sub: { endpoint: sub.endpoint, keys: { p256dh: String(sub.keys.p256dh).slice(0, 200), auth: String(sub.keys.auth).slice(0, 100) } }, want, at: new Date().toISOString() };
+  const CH = ["ちいかわ", "ハチワレ", "うさぎ", "モモンガ", "くりまんじゅう", "ラッコ", "シーサー", "古本屋"];
+  const chars = Array.isArray(b.chars) ? b.chars.filter(c => CH.includes(c)) : [];
+  const rec = { rsv: b.rsv !== false, chars, sub: { endpoint: sub.endpoint, keys: { p256dh: String(sub.keys.p256dh).slice(0, 200), auth: String(sub.keys.auth).slice(0, 100) } }, want, at: new Date().toISOString() };
   await env.REPORTS.put(`p:${id}`, JSON.stringify(rec), { expirationTtl: 60 * 60 * 24 * 180 });
   return Response.json({ ok: true, id });
 }

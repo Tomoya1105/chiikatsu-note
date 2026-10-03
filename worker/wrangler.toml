@@ -1,0 +1,12 @@
+# ちい活ノートの見張り役（Cloudflare Worker）
+# Cloudflare の「Workers & Pages」→「作成」→ GitHub のこのリポジトリを選び、ルートディレクトリを worker にして作る。
+name = "chiikatsu-watch"
+main = "index.js"
+compatibility_date = "2026-09-01"
+
+[triggers]
+crons = ["* * * * *"]
+
+[[kv_namespaces]]
+binding = "REPORTS"
+id = "KV_ID_HERE"

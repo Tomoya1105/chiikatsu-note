@@ -168,7 +168,8 @@ push のあと、回によって次の URL を WebFetch で1回だけ開く（�
 - 朝の回（6:49）：https://chiikatsu-note.pages.dev/api/push-send?key=（鍵）&mode=day （今日発売・今日まで）
 - 夕方の回（18:49）：https://chiikatsu-note.pages.dev/api/push-send?key=（鍵）&mode=eve （明日発売・明日で終了）
 - 昼の回（13:49）は送らない。
-- どの回でも、今回新しく追加した予約の情報が「すでに受付中」（rs が今より前で、re が今より後）なら、その id ごとに https://chiikatsu-note.pages.dev/api/push-send?key=（鍵）&mode=rsv&id=（id） を1回開く（同じ id には2回目以降は送られない）。
+- ちいかわマーケットの予約開始・再入荷は、見張り役（worker/）が5分ごとに確かめて、すぐに通知している。なので、ちいかわマーケットの予約には mode=rsv を使わない。
+- ちいかわマーケット以外で、今回新しく追加した予約の情報が「すでに受付中」（rs が今より前で、re が今より後）なら、その id ごとに https://chiikatsu-note.pages.dev/api/push-send?key=（鍵）&mode=rsv&id=（id） を1回開く（同じ id には2回目以降は送られない）。
 - 「VAPID_PRIVATE が未設定」と返ってきたら、運営者に Cloudflare の設定が必要だと報告する。
 
 ## 楽天のセール日程（data/campaigns.json）

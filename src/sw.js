@@ -41,6 +41,7 @@ self.addEventListener("push", e => {
 self.addEventListener("notificationclick", e => {
   e.notification.close();
   const url = new URL((e.notification.data && e.notification.data.url) || "/", self.location.origin).href;
+  if (new URL(url).origin !== self.location.origin) { e.waitUntil(self.clients.openWindow(url)); return; }   // 公式通販などはそのまま開く
   e.waitUntil(self.clients.matchAll({ type: "window", includeUncontrolled: true }).then(list => {
     for (const c of list) if ("focus" in c) { c.navigate(url); return c.focus(); }
     return self.clients.openWindow(url);

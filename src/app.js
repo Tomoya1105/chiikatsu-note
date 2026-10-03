@@ -859,8 +859,10 @@ const u8 = s=>{ s=s.replace(/-/g,"+").replace(/_/g,"/"); const b=atob(s+"===".sl
 const wantIds = ()=>Object.keys(mine).filter(id=>mine[id]==="want");
 async function pushPost(body){ const r = await fetch("/api/push-sub",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)}); if(!r.ok) throw new Error(r.status); return r.json(); }
 let pushRsv = true; try{ pushRsv = localStorage.getItem("chiikatsu-push-rsv")!=="0"; }catch(e){}
+const PCH = ["ちいかわ","ハチワレ","うさぎ","モモンガ","くりまんじゅう","ラッコ","シーサー","古本屋"];
+let pushChars = []; try{ pushChars = JSON.parse(localStorage.getItem("chiikatsu-push-chars")||"[]").filter(c=>PCH.includes(c)); }catch(e){}
 let syncT = null;
-window.pushSync = ()=>{ if (!pushSub) return; clearTimeout(syncT); syncT = setTimeout(()=>pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv}).catch(()=>{}), 1200); };
+window.pushSync = ()=>{ if (!pushSub) return; clearTimeout(syncT); syncT = setTimeout(()=>pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, chars:pushChars}).catch(()=>{}), 1200); };
 function drawPush(){
   const el = document.getElementById("pushCard"); if (!el) return;
   let h = "";
@@ -870,9 +872,9 @@ function drawPush(){
   } else if (Notification.permission==="denied"){
     h = `<b>🔔 通知がブロックされています</b><p>端末やブラウザの設定で、このサイトの通知を「許可」にすると受け取れます。</p>`;
   } else if (pushSub){
-    h = `<b>🔔 通知はオンです</b><p>「ほしい」に入れた予定の<strong>前日の夜</strong>と<strong>当日の朝</strong>にお知らせします（終わる日の前日も）。</p><label class="pchk"><input type="checkbox" data-prsv ${pushRsv?"checked":""}> 公式通販の<strong>予約開始</strong>もお知らせ（「ほしい」に入れていなくても）</label><div class="acts"><button class="btn" type="button" data-ptest>テスト通知を送る</button><button class="btn" type="button" data-poff>通知をやめる</button></div>`;
+    h = `<b>🔔 通知はオンです</b><p>「ほしい」に入れた予定の<strong>前日の夜</strong>と<strong>当日の朝</strong>にお知らせします（終わる日の前日も）。</p><label class="pchk"><input type="checkbox" data-prsv ${pushRsv?"checked":""}> ちいかわマーケットの<strong>予約開始・再入荷</strong>をすぐにお知らせ（5分ごとに確認）</label>${pushRsv?`<div class="pch"><span>推しで絞る（選ばなければ全部）</span><div>${PCH.map(c=>`<button type="button" class="chip" data-pch="${c}" aria-pressed="${pushChars.includes(c)}">${c}</button>`).join("")}</div></div>`:""}<div class="acts"><button class="btn" type="button" data-ptest>テスト通知を送る</button><button class="btn" type="button" data-poff>通知をやめる</button></div>`;
   } else {
-    h = `<b>🔔 発売の前日と当日にお知らせ</b><p>「ほしい」に入れた予定と、公式通販の<strong>予約開始</strong>を、買い逃さないように通知でお知らせします。登録はいりません。</p><button class="btn ok" type="button" data-pon>通知を受け取る</button>`;
+    h = `<b>🔔 発売の前日と当日にお知らせ</b><p>「ほしい」に入れた予定と、ちいかわマーケットの<strong>予約開始・再入荷</strong>を、買い逃さないように通知でお知らせします。登録はいりません。</p><button class="btn ok" type="button" data-pon>通知を受け取る</button>`;
   }
   el.innerHTML = h; el.hidden = false;
   document.documentElement.classList.add("has-push");   // 通知の案内を出すときは、ホーム画面に追加の大きな案内は重ねない
@@ -885,7 +887,14 @@ async function pushInit(){
 document.addEventListener("change", e=>{
   const c = e.target.closest("[data-prsv]"); if (!c) return;
   pushRsv = c.checked; try{ localStorage.setItem("chiikatsu-push-rsv", pushRsv?"1":"0"); }catch(err){}
-  window.pushSync(); toast(pushRsv ? "予約開始のお知らせをオンにしました" : "予約開始のお知らせをオフにしました");
+  window.pushSync(); drawPush(); toast(pushRsv ? "予約開始・再入荷のお知らせをオンにしました" : "予約開始・再入荷のお知らせをオフにしました");
+});
+document.addEventListener("click", e=>{
+  const b = e.target.closest("[data-pch]"); if (!b) return;
+  const c = b.dataset.pch;
+  pushChars = pushChars.includes(c) ? pushChars.filter(x=>x!==c) : pushChars.concat(c);
+  try{ localStorage.setItem("chiikatsu-push-chars", JSON.stringify(pushChars)); }catch(err){}
+  b.setAttribute("aria-pressed", pushChars.includes(c)); window.pushSync();
 });
 document.addEventListener("click", async e=>{
   if (e.target.closest("[data-pon]")){
@@ -894,7 +903,7 @@ document.addEventListener("click", async e=>{
       if (perm!=="granted"){ drawPush(); return; }
       const reg = await navigator.serviceWorker.register("/sw.js").then(()=>navigator.serviceWorker.ready);
       pushSub = await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:u8(VAPID)});
-      await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv});
+      await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, chars:pushChars});
       toast("通知をオンにしました"); if (window.ct) window.ct("push:on");
     }catch(err){ toast("通知をオンにできませんでした。時間をおいてお試しください"); }
     drawPush();
@@ -904,7 +913,7 @@ document.addEventListener("click", async e=>{
     pushSub = null; toast("通知をやめました"); drawPush();
   }
   if (e.target.closest("[data-ptest]") && pushSub){
-    try{ await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv}); const r = await fetch("/api/push-test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({endpoint:pushSub.endpoint})}); const j = await r.json().catch(()=>({})); toast(j.ok ? "テスト通知を送りました" : "テスト通知を送れませんでした"); }catch(err){ toast("テスト通知を送れませんでした"); }
+    try{ await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, chars:pushChars}); const r = await fetch("/api/push-test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({endpoint:pushSub.endpoint})}); const j = await r.json().catch(()=>({})); toast(j.ok ? "テスト通知を送りました" : "テスト通知を送れませんでした"); }catch(err){ toast("テスト通知を送れませんでした"); }
   }
 });
 pushInit();

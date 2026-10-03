@@ -510,3 +510,7 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .rsvbox.closed{border-color:var(--line);background:var(--grey-soft)}
 .pchk{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.6;color:var(--ink-2)}
 .pchk input{margin-top:4px;accent-color:var(--acc)}
+.pch{display:flex;flex-direction:column;gap:6px;margin:2px 0 4px 26px}
+.pch span{font-size:12px;color:var(--ink-2)}
+.pch div{display:flex;flex-wrap:wrap;gap:6px}
+.pch .chip{font-size:12px;padding:4px 10px}
