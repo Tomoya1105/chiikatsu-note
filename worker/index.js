@@ -12,8 +12,15 @@ const clean = t => String(t || "").replace(/【[^】]*】/g, " ").replace(/\s+/g
 
 export async function watchMarket(env, fetcher = fetch, now = Date.now()) {
   const r = await fetcher(`${MARKET}/products.json?limit=150`, { headers: { "user-agent": "chiikatsu-note-watch/1.0 (+https://chiikatsu-note.pages.dev/)" } });
-  if (!r.ok) return { ok: false, status: r.status };
-  const prods = ((await r.json()) || {}).products || [];
+  if (!r.ok) {
+    // 読めなかった理由を残す（同じ理由なら書き直さない＝保存回数の節約）
+    const why = `HTTP ${r.status}`;
+    if ((await env.REPORTS.get("w:err")) !== why) await env.REPORTS.put("w:err", why, { expirationTtl: 86400 });
+    return { ok: false, status: r.status };
+  }
+  let prods;
+  try { prods = ((await r.json()) || {}).products || []; }
+  catch (e) { if ((await env.REPORTS.get("w:err")) !== "not-json") await env.REPORTS.put("w:err", "not-json", { expirationTtl: 86400 }); return { ok: false, status: "not-json" }; }
   const snap = JSON.parse((await env.REPORTS.get("w:market")) || "null");
   const next = snap ? { ...snap } : {};
   const events = []; let changed = !snap;
@@ -53,7 +60,10 @@ export async function watchMarket(env, fetcher = fetch, now = Date.now()) {
 
 export async function tick(env, t = Date.now()) {
   const out = {};
-  if (new Date(t).getUTCMinutes() % 5 === 0) { try { out.watch = await watchMarket(env, fetch, t); } catch (e) { out.watch = { ok: false, error: String(e) }; } }
+  if (new Date(t).getUTCMinutes() % 5 === 0) {
+    try { out.watch = await watchMarket(env, fetch, t); }
+    catch (e) { out.watch = { ok: false, error: String(e) }; try { await env.REPORTS.put("w:err", "error: " + String(e).slice(0, 200), { expirationTtl: 86400 }); } catch (e2) {} }
+  }
   if (!env.VAPID_PRIVATE) return out;
   let jobs = await loadJobs(env); if (!jobs.length) return out;
   let budget = PER_RUN; out.sent = 0;
