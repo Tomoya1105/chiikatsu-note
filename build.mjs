@@ -73,12 +73,37 @@ const BRAND = `<header class="top">
       <div><p style="font-family:var(--display);font-weight:900;font-size:22px;margin:0;line-height:1.1">ちい活ノート</p><p>ちいかわグッズとイベントのスケジュール帳（非公式）</p></div>
     </a>
   </header>`;
+// ---- 公式リンク集（作り手へのリスペクト）
+const OFFICIAL = [
+  ["作品・作者", [
+    ["ナガノさん（作者）", "https://x.com/ngntrtr", "作者ナガノさんの公式X"],
+    ["ちいかわ（原作）", "https://x.com/ngnchiikawa", "原作マンガが更新される公式X"],
+    ["コミックス『ちいかわ なんか小さくてかわいいやつ』", "https://morning.kodansha.co.jp/c/chiikawa.html", "講談社 モーニング公式サイト"],
+    ["アニメ『ちいかわ』", "https://www.anime-chiikawa.jp/", "アニメ公式サイト"],
+    ["『映画ちいかわ 人魚の島のひみつ』", "https://chiikawa.toho-movie.jp/", "映画公式サイト"],
+  ]],
+  ["グッズ・お店", [
+    ["ちいかわインフォ", "https://chiikawa-info.jp/", "グッズ・POP UP STOREの公式情報"],
+    ["ちいかわマーケット", "https://chiikawamarket.jp/", "公式オンラインショップ"],
+    ["ちいかわらんど", "https://chiikawa-info.jp/ck_land.html", "公式の常設店"],
+    ["ちいかわベーカリー", "https://chiikawabakery.jp/", "ベーカリーの公式サイト"],
+    ["ちいかわパーク", "https://x.com/chiikawa_parkjp", "池袋のちいかわパーク公式X"],
+    ["ちいかわグッズ公式", "https://x.com/chiikawa_kouhou", "新しいグッズのお知らせ（公式X）"],
+  ]],
+  ["ゲーム", [
+    ["ちいかわぽけっと", "https://x.com/chiikawa_pt_jp", "スマホアプリの公式X"],
+  ]],
+];
+const officialHtml = OFFICIAL.map(([g, list]) => `<h2>${esc(g)}</h2><ul class="offlist">${list.map(([n, u, d]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener"><b>${esc(n)}</b><span>${esc(d)}</span></a></li>`).join("")}</ul>`).join("");
+const RESPECT = `<div class="respect"><p>ちい活ノートは、ナガノさんの『ちいかわ』が大好きなファンが作っている非公式のスケジュール帳です。最新の情報は公式の発表がいちばん正確です。公式グッズを買うことが、作品と作り手さんの応援につながります。</p><a href="/official/">公式サイト・公式アカウントのリンク集 →</a></div>`;
+
 const ICO = `<img src="/icons/icon-192.png" alt="" width="48" height="48" class="appicon">`;
 const INSTALL_CARD = `<div class="ins-card" data-ins-card>${ICO}<div class="ins-txt"><b>ホーム画面に追加して、アプリのように使う</b><span>アイコンをタップするだけで、すぐにスケジュールを確認できます。無料・登録なし。</span></div><button type="button" class="ins-cta" data-install>追加のしかたを見る</button></div>`;
 const INSTALL_TOP = `<div class="ins-card ins-top" data-ins-card>${ICO}<div class="ins-txt"><b>ホーム画面に追加しておくと便利です</b><span>アプリのようにワンタップで開けます</span></div><button type="button" class="ins-cta" data-install>追加する</button><button type="button" class="ins-x" data-ins-hide aria-label="この案内を閉じる">×</button></div>`;
 const INSTALL_MINE = `<div class="ins-card ins-mine" data-ins-card>${ICO}<div class="ins-txt"><b>マイリストをすぐ見られるように</b><span>ホーム画面に追加すると、アイコンからワンタップで開けます</span></div><button type="button" class="ins-cta" data-install>追加する</button></div>`;
 const FOOT = `<footer class="about">
     ${INSTALL_CARD}
+    ${RESPECT}
     <div class="sitelinks"><a href="/">トップ</a><a href="/about/">運営者について</a><a href="/privacy/">プライバシーポリシー</a></div>
     <p class="credit"><a href="https://webservice.rakuten.co.jp/" target="_blank" rel="noopener">Supported by Rakuten Developers</a></p>
     <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
@@ -172,7 +197,7 @@ write("manifest.webmanifest", JSON.stringify({
 // ---- トップページ
 const sorted = items.slice().sort((a, b) => a.s.localeCompare(b.s));
 const allLinks = `<details><summary class="credit" style="cursor:pointer">掲載中のすべての情報（${sorted.length}件）</summary><ul class="alllinks">${sorted.map(it => `<li><a href="/items/${encodeURIComponent(it.id)}/">${esc(it.t)}</a></li>`).join("")}</ul></details>`;
-homeBody = homeBody.replace("{{INSTALL_CARD}}", INSTALL_CARD).replace("{{INSTALL_TOP}}", INSTALL_TOP).replace("{{INSTALL_MINE}}", INSTALL_MINE).replace("{{ALL_LINKS}}", allLinks).replace("<h1>ちい活ノート</h1>", "<h1>ちい活ノート</h1>");
+homeBody = homeBody.replace("{{RESPECT}}", RESPECT).replace("{{INSTALL_CARD}}", INSTALL_CARD).replace("{{INSTALL_TOP}}", INSTALL_TOP).replace("{{INSTALL_MINE}}", INSTALL_MINE).replace("{{ALL_LINKS}}", allLinks).replace("<h1>ちい活ノート</h1>", "<h1>ちい活ノート</h1>");
 const homeLd = { "@context": "https://schema.org", "@type": "WebSite", name: "ちい活ノート", url: SITE + "/", inLanguage: "ja" };
 write("index.html", page({
   title: "ちい活ノート｜ちいかわグッズの発売日・イベント日程カレンダー",
@@ -254,6 +279,12 @@ write("about/index.html", page({
 <h2>広告について</h2><p>当サイトは楽天アフィリエイトを利用しています。「PR」と表示したリンクから商品の購入や宿泊の予約があると、運営者に紹介料が支払われます。紹介料によって掲載内容や順番を変えることはありません。</p>
 <h2>権利について</h2><p>「ちいかわ」に関する著作権・商標権はナガノ氏および権利者に帰属します。当サイトは権利者とは関係がなく、キャラクターの画像やイラストは掲載していません。商品画像は楽天ウェブサービスを通じて表示しています。</p>`),
 }));
+write("official/index.html", page({
+  title: "ちいかわ公式サイト・公式アカウントのリンク集｜ちい活ノート",
+  desc: "ちいかわの公式サイト・公式アカウントのまとめ。作者ナガノさん、アニメ・映画の公式サイト、ちいかわインフォ、ちいかわマーケット、ちいかわベーカリー、ちいかわぽけっとなど。",
+  url: "/official/",
+  body: doc("公式サイト・公式アカウント", `<p>『ちいかわ』に関する公式のサイトとアカウントをまとめました。発売日や会期の最新情報、購入の方法は、こちらの公式の発表をご確認ください。</p>${officialHtml}<p class="credit">リンク先はすべて公式のページです（ちい活ノートとは関係ありません）。リンクの誤りに気づいたら、トップページ下の「サイトへのご意見」から教えてください。</p>`),
+}));
 write("privacy/index.html", page({
   title: "プライバシーポリシー｜ちい活ノート", desc: "ちい活ノートのプライバシーポリシー。", url: "/privacy/",
   body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。</p>
@@ -267,7 +298,7 @@ write("offline/index.html", page({ title: "電波がつながっていません�
 write("404.html", page({ title: "ページが見つかりません｜ちい活ノート", desc: "", url: "/404", body: doc("ページが見つかりません", `<p>お探しのページは移動したか、掲載を終えた可能性があります。</p><p><a class="btn" href="/">トップへ戻る</a></p>`) }));
 
 // ---- 検索エンジン向け
-const urls = ["/", "/about/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
+const urls = ["/", "/official/", "/about/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
 
