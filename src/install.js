@@ -30,9 +30,36 @@
     e.preventDefault(); deferred = e;
   });
   window.addEventListener("appinstalled", function(){
+    if (window.ct) window.ct("install");
     st.installed = true; save(st); closeBar(); closeSheet();
     say("ホーム画面に追加しました。次からはアイコンから開けます");
   });
+
+  /* ---- かんたんな計測：1回の訪問ぶんをまとめて、ページを離れるときに1回だけ送る ---- */
+  var EV = {}, sent = false;
+  function ct(k){ EV[k] = (EV[k] || 0) + 1; }
+  window.ct = ct;
+  var path = location.pathname;
+  ct(path === "/" || path === "/index.html" ? "pv:home" : path.indexOf("/items/") === 0 ? "pv:item" : "pv:other");
+  function flush(){
+    if (sent || !Object.keys(EV).length) return;
+    sent = true;
+    try { navigator.sendBeacon("/api/hit", JSON.stringify({ ev: EV })); } catch (e) {}
+  }
+  document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") flush(); });
+  window.addEventListener("pagehide", flush);
+  document.addEventListener("click", function(e){
+    var a = e.target.closest("a[href]"); if (!a) return;
+    var h = a.href;
+    if (/hb\.afl\.rakuten/.test(h)) {
+      if (a.classList.contains("trip")) ct("c:travel");
+      else if (a.classList.contains("prod")) ct("c:shop");
+      else if (a.closest("[data-rk]") || a.closest("[data-pimg]")) ct(a.dataset.pre ? "c:rkpre" : "c:rk");
+      else ct("c:rksearch");
+    } else if (a.closest(".ncard")) ct("c:news");
+    else if (/calendar\.google/.test(h)) ct("c:gcal");
+    else if (a.classList.contains("off") || /公式/.test(a.textContent)) ct("c:official");
+  }, true);
 
   /* ---- 小さな部品 ---- */
   var SHARE = '<svg class="ii" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10H6.5A1.5 1.5 0 0 0 5 11.5v8A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5H16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';

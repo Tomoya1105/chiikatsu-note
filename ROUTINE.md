@@ -12,7 +12,7 @@
 人の確認は入らないので、日付と場所は必ず情報源で確かめてから書いてください。
 
 ## 準備
-1. `git pull --rebase origin main` で最新にする。
+1. `git pull --rebase origin main` で最新にする。`npm ci` で部品を入れる（失敗しても続けてよい。共有画像が作られないだけです）。
 2. 次のファイルを読む。
    - data/items.json（予定の配列）
    - data/news.json（ニュースの配列）
@@ -130,6 +130,27 @@ reports-done.json に key がない報告ごとに、対象の情報（id が it
 ### そのほか
 - ニュースで新しい商品やイベントがわかったら、条件を満たせば items.json にも追加し、itemId でつなぐ。
 - news.json は新しい順に並べる。公開日が90日より前のものは削除してよい。
+
+## 楽天のセール日程（data/campaigns.json）
+朝の回（6:49）だけ、楽天市場の公式ページ（https://event.rakuten.co.jp/campaign/point-up/marathon/ や楽天スーパーSALEの公式ページ）で、今後のお買い物マラソン・楽天スーパーSALEの日程が発表されていないか確かめる。
+- 公式に発表された日程だけを追加する（予想は入れない）。
+- 形：`{"id":"marathon-YYYYMM-n など","name":"楽天お買い物マラソン|楽天スーパーSALE","start":"YYYY-MM-DDTHH:MM","end":"YYYY-MM-DDTHH:MM","url":"公式ページのURL","note":"ひとこと（例：ショップを買いまわるほどポイントアップ）"}`
+- 時刻は日本時間。終わったものは消してよい。
+
+## Xの投稿文（朝の回だけ）
+朝の回（6:49）だけ、最後の報告の末尾に「今日のXの投稿文」を1つ書く。
+- 今日発売・今日から始まるもの、今日・明日で終わるものから2〜4件を選ぶ。
+- 140字以内で、絵文字は2つまで、ハッシュタグは「#ちいかわ」だけにする。
+- 最後に https://chiikatsu-note.pages.dev/ を付ける。
+- 該当するものがなければ「今日の投稿文はありません」と書く。
+
+## アクセスの報告（月曜の朝の回だけ）
+月曜の朝の回だけ、https://chiikatsu-note.pages.dev/api/stats?key=（報告用URLと同じ鍵）&days=7 を WebFetch で読む。最後の報告に、過去7日の次の数字と、気づいたことを1〜2行で書く。
+- 訪問数（visits）
+- ページの表示（pv:）
+- 楽天のクリック（c:rk, c:rkpre, c:shop, c:rksearch）
+- 楽天トラベルのクリック（c:travel）
+- よく見られたタブ（tab:）
 
 ## 仕上げ
 1. 作業後のチェック

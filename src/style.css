@@ -410,3 +410,44 @@ button{font:inherit;color:inherit}
 /* タブ5つ：スマホで1行に収める */
 @media (max-width:430px){.tabs button{font-size:12px;padding:9px 1px;letter-spacing:-.04em}.tabs .cnt{font-size:10px;line-height:15px;min-width:14px;padding:0 3px;margin-left:1px}}
 @media (max-width:360px){.tabs button{font-size:11px}}
+
+/* 上部をすっきり（スマホ） */
+@media (max-width:520px){
+  .top{padding-block:14px 2px}
+  .pr{font-size:10.5px;margin:2px 0 10px;line-height:1.5}
+  .region{margin-bottom:10px}
+  .sum{gap:8px;margin-bottom:10px}
+  .sum button{padding:8px 10px;border-radius:14px}
+  .sum .k{font-size:11px;white-space:nowrap}
+  .sum .v{font-size:22px}
+  .newspeek{padding:10px 12px;margin:4px 0 10px}
+  .newspeek li button{padding:6px 0}
+}
+/* 予約ボタン */
+.btn.buy.pre{background:var(--butter);border-color:var(--butter);color:#fff}
+/* 共有ボタン（詳細ページ） */
+.share{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px;align-items:center}
+.share .k{font-size:12.5px;color:var(--ink-2);font-weight:700}
+.share a,.share button{font-size:13px}
+
+/* 楽天の人気グッズ（一覧の途中） */
+.popstrip{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:12px 0 10px 14px;margin:4px 0}
+.popstrip:empty{display:none}
+.pophead{display:flex;align-items:center;justify-content:space-between;padding-right:14px}
+.pophead h3{margin:0;font-family:var(--display);font-size:15px}
+.poprow{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:8px 14px 4px 0;scroll-snap-type:x mandatory}
+.poprow::-webkit-scrollbar{display:none}
+.popc{flex:none;width:118px;display:flex;flex-direction:column;gap:3px;text-decoration:none;color:var(--ink);scroll-snap-align:start}
+.popc img{width:118px;height:118px;object-fit:contain;background:#fff;border-radius:12px;border:1px solid var(--line)}
+.popc .pn{font-size:11.5px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.popc .pp{font-family:var(--display);font-weight:900;font-size:14px;color:var(--pink)}
+/* セールの帯 */
+.campbar{display:flex;align-items:center;gap:4px 10px;flex-wrap:wrap;background:linear-gradient(90deg,#BF0000,#E0453C);color:#fff;border-radius:14px;padding:10px 14px;margin:0 0 10px;text-decoration:none;font-size:12.5px}
+.campbar b{font-size:14px}
+.campbar .tag{margin-left:auto;color:#fff;opacity:.8}
+.campbar.small{background:var(--surface);color:var(--ink);border:1.5px solid #BF0000}
+.campbar.small .tag{color:var(--ink-3)}
+.campbar .w{font-weight:700;white-space:nowrap}
+.campbar .nt{flex-basis:100%;order:3;font-size:11.5px;opacity:.9}
+.campbar .tag{order:2}
+@media (max-width:520px){.campbar{padding:8px 12px;flex-wrap:nowrap;gap:8px}.campbar b{font-size:13px;white-space:nowrap}.campbar .w{font-size:11.5px}.campbar .nt{display:none}.campbar .tag{flex:none}}

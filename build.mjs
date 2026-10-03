@@ -2,6 +2,7 @@
 // Cloudflare Pages のビルドコマンド `node build.mjs` で実行され、dist/ に公開用ファイルを書き出す。
 import fs from "node:fs";
 import path from "node:path";
+import { makeOg, ogAvailable } from "./src/og.mjs";
 
 const SITE = "https://chiikatsu-note.pages.dev";
 const AFF = "582a6f7f.e1ade2b2.582a6f84.d5f85faa";
@@ -14,6 +15,8 @@ const app = fs.readFileSync("src/app.js", "utf8");
 let homeBody = fs.readFileSync("src/home-body.html", "utf8");
 let news = [];
 try { news = JSON.parse(fs.readFileSync("data/news.json", "utf8")).filter(n => !n.hidden).sort((a, b) => (b.date || "").localeCompare(a.date || "")).slice(0, 80); } catch (e) {}
+let camps = [];
+try { camps = JSON.parse(fs.readFileSync("data/campaigns.json", "utf8")).filter(c => c.end >= TODAY); } catch (e) {}
 const installJs = fs.readFileSync("src/install.js", "utf8");
 const swJs = fs.readFileSync("src/sw.js", "utf8");
 const BUILD = Date.now().toString(36);
@@ -83,7 +86,7 @@ const FOOT = `<footer class="about">
 // 推しカラーを詳細ページにも反映する小さな処理
 const OSHI_BOOT = `<script>try{var ic=JSON.parse(localStorage.getItem("chiikatsu-install")||"{}")||{};if(ic.topOff)document.documentElement.classList.add("ins-off");if(ic.installed||(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone)document.documentElement.classList.add("is-app")}catch(e){}</script><script>try{var k=localStorage.getItem("chiikatsu-oshi");if(k)document.documentElement.dataset.oshi=k;else document.documentElement.dataset.oshi="chiikawa"}catch(e){document.documentElement.dataset.oshi="chiikawa"}</script>`;
 
-function page({ title, desc, url, body, head = "", scripts = "", ogType = "website" }) {
+function page({ title, desc, url, body, head = "", scripts = "", ogType = "website", ogImage = "/og/home.png" }) {
   return `<!doctype html>
 <html lang="ja" data-oshi="chiikawa">
 <head>
@@ -98,7 +101,10 @@ function page({ title, desc, url, body, head = "", scripts = "", ogType = "websi
 <meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="ちい活ノート">
 <meta property="og:locale" content="ja_JP">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="${SITE}${ogImage}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FBF6F8">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="/icons/icon-32.png" sizes="32x32" type="image/png">
@@ -172,9 +178,21 @@ write("index.html", page({
   url: "/",
   head: `<script type="application/ld+json">${JSON.stringify(homeLd)}</script>`,
   body: homeBody,
-  scripts: `<script>window.__ITEMS=${JSON.stringify(items).replace(/</g, "\\u003c")};window.__NEWS=${JSON.stringify(news).replace(/</g, "\\u003c")};</script>\n<script src="/app.js?v=${TODAY}"></script>`,
+  scripts: `<script>window.__ITEMS=${JSON.stringify(items).replace(/</g, "\\u003c")};window.__NEWS=${JSON.stringify(news).replace(/</g, "\\u003c")};window.__CAMP=${JSON.stringify(camps).replace(/</g, "\\u003c")};</script>\n<script src="/app.js?v=${TODAY}"></script>`,
 }));
 
+// ---- 共有用の画像（OGP）
+const ogOk = ogAvailable();
+const md = s => { const [y, m, d] = s.split("-").map(Number); return `${m}/${d}(${DOW[new Date(y, m - 1, d).getDay()]})`; };
+const mdSp = (s, sp) => sp && sp !== "day" ? fmt(s, sp).replace(/^\d+年/, "") : md(s);
+function writeOg(name, opt) {
+  if (!ogOk) return false;
+  try { const png = makeOg(opt); if (!png) return false; fs.mkdirSync(path.join(OUT, "og"), { recursive: true }); fs.writeFileSync(path.join(OUT, "og", name + ".png"), png); return true; }
+  catch (e) { console.warn("OGP画像を作れませんでした:", name, e.message); return false; }
+}
+writeOg("home", { label: "非公式スケジュール帳", title: "ちいかわグッズの発売日とイベント日程が、ひと目でわかる", when: "まもなく終了・今週発売もすぐチェック", sub: "日本と海外（台湾・韓国・香港・中国）のちいかわ情報" });
+
+const ogWhenText = it => it.e ? `${mdSp(it.s, it.sp)}〜${md(it.e)}` : `${mdSp(it.s, it.sp)}${isEvent(it) ? "から" : "発売"}`;
 // ---- 項目ごとのページ（検索から来た人の入口）
 for (const it of items) {
   const reg = REG[it.region] || "日本";
@@ -190,6 +208,8 @@ for (const it of items) {
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", eventStatus: "https://schema.org/EventScheduled",
     location: { "@type": "Place", name: it.place || reg, address: it.place || reg }, description: desc, url: SITE + url,
   } : null;
+  const ogWhen = it.e ? `${mdSp(it.s, it.sp)} 〜 ${md(it.e)}` : `${mdSp(it.s, it.sp)} ${ev ? "から" : "発売"}`;
+  const hasOg = writeOg(it.id, { label: (CAT[it.cat] || "") + (reg !== "日本" ? "・" + reg : ""), title: it.t, when: ogWhen, sub: it.place || it.price || "", accent: ev ? "#3E9C83" : "#E27496" });
   const related = sorted.filter(x => x.id !== it.id && (x.region || "jp") === (it.region || "jp") && x.cat === it.cat).slice(-6);
   const body = `<div class="wrap">
   ${BRAND}
@@ -209,13 +229,18 @@ for (const it of items) {
       ${/^https:\/\//.test(it.src || "") ? `<a class="btn" href="${esc(it.src)}" target="_blank" rel="noopener">公式情報</a>` : ""}
     </div>
     ${(() => { const tr = it.area ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
+    <div class="share"><span class="k">友だちに教える</span>
+      <a class="btn" href="https://line.me/R/share?text=${encodeURIComponent(it.t + "\n" + SITE + url)}" target="_blank" rel="noopener">LINEで送る</a>
+      <a class="btn" href="https://x.com/intent/post?text=${encodeURIComponent(it.t + "（" + ogWhenText(it) + "）")}&url=${encodeURIComponent(SITE + url)}&hashtags=${encodeURIComponent("ちいかわ")}" target="_blank" rel="noopener">Xでポスト</a>
+      <button class="btn" type="button" onclick="(navigator.share?navigator.share({title:document.title,url:location.href}):navigator.clipboard.writeText(location.href).then(()=>alert('URLをコピーしました'))).catch(()=>{})">URLをコピー・共有</button>
+    </div>
     <p class="credit">掲載情報の更新日：${esc(it.updatedAt || it.addedAt || "")}。発売日や会期は変わることがあります。お出かけ・購入の前に公式情報をご確認ください。</p>
   </main>
   <p style="margin:18px 0"><a class="btn" href="/">ちいかわのスケジュールを一覧で見る</a></p>
   ${related.length ? `<h2 class="wk">ほかの${esc(CAT[it.cat] || "")}</h2><ul class="alllinks" style="margin-top:8px">${related.map(x => `<li><a href="/items/${encodeURIComponent(x.id)}/">${esc(x.t)}</a></li>`).join("")}</ul>` : ""}
   ${FOOT}
 </div>`;
-  write(`items/${it.id}/index.html`, page({ title, desc, url, body, ogType: "article", head: ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : "" }));
+  write(`items/${it.id}/index.html`, page({ title, desc, url, body, ogType: "article", ogImage: hasOg ? `/og/${encodeURIComponent(it.id)}.png` : "/og/home.png", head: ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : "" }));
 }
 
 // ---- 運営者について・プライバシーポリシー
@@ -229,7 +254,7 @@ write("about/index.html", page({
 }));
 write("privacy/index.html", page({
   title: "プライバシーポリシー｜ちい活ノート", desc: "ちい活ノートのプライバシーポリシー。", url: "/privacy/",
-  body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p>
+  body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。</p>
 <h2>まちがい報告</h2><p>「情報のまちがいを報告する」から送られた内容（選んだ項目と入力した文章）は、掲載情報を直すためだけに使います。個人を特定できる情報は書き込まないでください。</p>
 <h2>アフィリエイトについて</h2><p>当サイトは楽天グループ株式会社の「楽天アフィリエイト」に参加しています。リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
 <h2>アクセス解析・広告配信について</h2><p>今後、アクセス解析ツールや第三者配信の広告（Google AdSense など）を導入する場合は、Cookieを使って閲覧情報を集めることがあります。導入する際はこのページでお知らせします。</p>

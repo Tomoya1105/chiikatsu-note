@@ -65,7 +65,10 @@ function status(it){
   if (it.ed && it.ed < TODAY) return {k:"ended",label:"終了",rank:4};
   if (it.ed){
     const n = diffDays(it.ed,TODAY);
-    if (n<=7) return {k:"ending",label:n===0?"今日まで":n===1?"明日まで":`あと${n}日で終了`,rank:0};
+    if (n<=7){
+      if (/締切|締め切り|受注|抽選|応募/.test(it.eNote||"")) return {k:"ending",label:n===0?"今日が締切":n===1?"明日が締切":`締切まであと${n}日`,rank:0};
+      return {k:"ending",label:n===0?"今日まで":n===1?"明日まで":`あと${n}日で終了`,rank:0};
+    }
   }
   return {k:"on",label:isEvent(it)?"開催中":"販売中",rank:2};
 }
@@ -200,7 +203,7 @@ const SELLOUT_RE = /なくなり次第|数量限定|在庫限り|在庫がなく
 function isSellout(it){ return status(it).k!=="ended" && !isEvent(it) && (SELLOUT_RE.test((it.eNote||"")+" "+(it.note||"")) || it.cat==="kuji"); }
 function chips(el,list,key){
   el.innerHTML = list.map(([k,l])=>`<button class="chip" data-k="${k}" aria-pressed="${state[key]===k}">${l}</button>`).join("");
-  el.onclick = e=>{ const b=e.target.closest(".chip"); if(!b) return; state[key]=b.dataset.k; if(key==="st"){ state.focus=null; state.fromSum=false; } chips(el,list,key); renderList(); };
+  el.onclick = e=>{ const b=e.target.closest(".chip"); if(!b) return; state[key]=b.dataset.k; if(key==="st"){ state.focus=null; state.fromSum=false; if (window.ct) window.ct("st:"+state.st); } chips(el,list,key); renderList(); };
 }
 function bucket(it){ const k=status(it).k; return k==="ended"?"ended":(k==="on"&&!it.ed)?"onsale":"next"; }
 function sortItems(arr){
@@ -240,6 +243,13 @@ function goAll(){
   const t = document.getElementById("view-list"); if (t) t.scrollIntoView({behavior:"smooth", block:"start"});
 }
 document.addEventListener("click", e=>{ if (e.target.closest("[data-backall]")) goAll(); });
+// 検索の表記ゆれをそろえる（全角/半角・カタカナ/ひらがな・大文字/小文字・空白、よくある言いかえ）
+const SYN = [[/ぽっぷあっぷすとあ|ぽっぷあっぷ|popupstore|popup/g,"popup"],[/こらぼかふぇ|collaborationcafe|collabocafe/g,"こらぼかふぇ"],[/ぬいぐるみ|ぬい/g,"ぬい"],[/ますこっと/g,"ますこっと"],[/ちいかわべーかりー/g,"ちいかわべーかりー"]];
+function sn(t){
+  let x = String(t||"").normalize("NFKC").toLowerCase().replace(/[\u30a1-\u30f6]/g, c=>String.fromCharCode(c.charCodeAt(0)-0x60)).replace(/[\s・･\-ー＿_、。,.!！?？「」『』（）()]/g, m=> m==="ー" ? "ー" : "");
+  SYN.forEach(([re,to])=>{ x = x.replace(re,to); });
+  return x;
+}
 function renderList(){
   try{ renderListInner(); }catch(err){
     console.error(err);
@@ -250,12 +260,12 @@ function renderListInner(){
   const el = document.getElementById("list");
   const fb = document.getElementById("focusBar");
   if (!loaded){ el.innerHTML = placeholder(); document.getElementById("count").textContent=""; fb.hidden=true; return; }
-  const q = state.q.trim().toLowerCase();
+  const q = sn(state.q.trim());
   let arr = VIS().filter(it=>{
     if (state.st==="ending" ? status(it).k!=="ending" : state.st==="sellout" ? !isSellout(it) : bucket(it)!==state.st) return false;
     if (state.focus && status(it).k!==state.focus) return false;
     if (state.cat!=="all" && it.cat!==state.cat) return false;
-    if (q && !(it.t+(it.place||"")+(it.note||"")+(CAT[it.cat]||"")).toLowerCase().includes(q)) return false;
+    if (q && !sn(it.t+(it.place||"")+(it.note||"")+(CAT[it.cat]||"")+(it.eNote||"")+(REG[it.region]||"")).includes(q)) return false;
     return true;
   });
   if (state.st==="sellout"){
@@ -287,8 +297,10 @@ function renderListInner(){
     }
     h += card(it);
     if (i===4 || i===14) h += AD;
+    if (i===8 && R.region==="jp") h += `<div class="popstrip" data-pop></div>`;
   });
   el.innerHTML = h + backAll();
+  setTimeout(()=>{ fillPop(); fillCamp(); }, 0);   // 下で定義する部品が読み込まれてから
 }
 function renderMine(){
   const el = document.getElementById("mineList");
@@ -450,6 +462,7 @@ function setView(v){
   if (v==="mine") renderMine();
   if (v==="shop") renderShop();
   if (v==="news") renderNews();
+  if (window.ct) window.ct("tab:"+v);
   try{ localStorage.setItem("chiikatsu-view",v); }catch(e){}
 }
 function currentView(){ return VIEWS.find(k=>!document.getElementById("view-"+k).hidden); }
@@ -468,7 +481,7 @@ document.querySelector(".sum").onclick = e=>{
 document.addEventListener("click", e=>{
   const b = e.target.closest("[data-mark]"); if(!b) return;
   const id = b.closest(".card").dataset.id, k=b.dataset.mark;
-  if (mine[id]===k) delete mine[id]; else mine[id]=k;
+  if (mine[id]===k) delete mine[id]; else { mine[id]=k; if (window.ct) window.ct("mark:"+k); }
   saveMine(); renderAll();
 });
 document.getElementById("q").addEventListener("input", e=>{ state.q=e.target.value; renderList(); });
@@ -586,7 +599,9 @@ function paintRakuten(id, hit){
   });
   document.querySelectorAll(`[data-rk="${CSS.escape(id)}"]`).forEach(el=>{
     if (!hit) return;
-    el.innerHTML = `<a class="btn buy" href="${esc(hit.url)}" target="_blank" rel="noopener sponsored">楽天で見る ${yen(hit.price)} <span class="tag">PR</span></a>`;
+    const it = ITEMS.find(x=>x.id===id);
+    const pre = it && it.sd > TODAY;
+    el.innerHTML = `<a class="btn buy${pre?" pre":""}" href="${esc(hit.url)}" target="_blank" rel="noopener sponsored"${pre?' data-pre="1"':""}>${pre?"楽天で予約する":"楽天で見る"} ${yen(hit.price)} <span class="tag">PR</span></a>`;
   });
 }
 const rkObs = "IntersectionObserver" in window ? new IntersectionObserver(ents=>{
@@ -655,13 +670,64 @@ document.getElementById("shopSearch").onsubmit = e=>{
   e.preventDefault();
   const v = document.getElementById("shopQ").value.trim().slice(0,40);
   if (v===SH.kw) return;
-  SH.kw = v; if (v) SH.cat = "all"; shopChips(); loadShop(true);
+  SH.kw = v; if (v) SH.cat = "all"; if (v && window.ct) window.ct("shopq"); shopChips(); loadShop(true);
   document.getElementById("shopQ").blur();
 };
 document.getElementById("shopQ").addEventListener("search", e=>{ if (!e.target.value && SH.kw){ SH.kw=""; loadShop(true); } });
 document.getElementById("shopSort").onchange = e=>{ SH.sort=e.target.value; loadShop(true); };
 document.getElementById("shopMore").onclick = ()=>{ SH.page++; loadShop(false); };
 if (v0==="shop") setView("shop");
+
+/* ===== 楽天で人気のちいかわグッズ（一覧の途中） ===== */
+let POP = null, popBusy = false;
+function fillPop(){
+  const els = document.querySelectorAll("[data-pop]"); if (!els.length) return;
+  if (!POP){
+    if (!popBusy){ popBusy = true;
+      rkSearch({keyword:"ちいかわ", hits:"30", sort:"-reviewCount", maxPrice:"30000"}).then(v=>{
+        POP = v.items.filter(x=>okItem(x) && x.img).slice(0,10); fillPop();
+      }).catch(()=>{ POP = []; });
+    }
+    return;
+  }
+  if (!POP.length){ els.forEach(e=>e.remove()); return; }
+  const html = `<div class="pophead"><h3>楽天で人気のちいかわグッズ</h3><button type="button" class="peekmore" data-gopop>もっと見る →</button></div>
+    <div class="poprow">${POP.map(x=>`<a class="popc" href="${esc(x.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(x.img)}" alt="" loading="lazy"><span class="pn">${esc(x.name)}</span><span class="pp num">${yen(x.price)}</span></a>`).join("")}</div>
+    <p class="tag" style="margin:4px 0 0">PR・楽天市場（レビューの多い順）</p>`;
+  els.forEach(e=>{ if (!e.dataset.done){ e.innerHTML = html; e.dataset.done = "1"; } });
+}
+document.addEventListener("click", e=>{
+  if (!e.target.closest("[data-gopop]")) return;
+  SH.sort = "-reviewCount"; const sel = document.getElementById("shopSort"); if (sel) sel.value = "-reviewCount";
+  shopStarted = true; shopChips(); setView("shop"); loadShop(true);
+  document.getElementById("view-shop").scrollIntoView({behavior:"smooth", block:"start"});
+});
+
+/* ===== 楽天のセール期間の帯 ===== */
+const CAMP = window.__CAMP || [];
+function campNow(){
+  const now = new Date(), t = s=>new Date(s+":00+09:00");
+  const on = CAMP.find(c=>t(c.start)<=now && now<=t(c.end));
+  if (on) return {c:on, mode:"on"};
+  const soon = CAMP.find(c=>t(c.start)>now && t(c.start)-now < 36*3600e3);
+  if (soon) return {c:soon, mode:"soon"};
+  // 5と0のつく日（日本時間）
+  const jd = new Date(Date.now()+9*3600e3).getUTCDate();
+  if (jd%5===0) return {c:{id:"d50", name:"5と0のつく日", url:"https://event.rakuten.co.jp/campaign/card/pointday/", note:"楽天カードの利用でポイントアップ"}, mode:"day"};
+  return null;
+}
+function fillCamp(){
+  const x = campNow();
+  document.querySelectorAll("[data-camp]").forEach(el=>{
+    if (!x){ el.hidden = true; return; }
+    const md = s=>{ const d=new Date(s+":00+09:00"); return `${d.getMonth()+1}/${d.getDate()} ${s.slice(11,16)}`; };
+    const head = x.mode==="on" ? `${x.c.name} 開催中` : x.mode==="soon" ? `${x.c.name} まもなく開始` : `今日は楽天「${x.c.name}」`;
+    const when = x.mode==="on" ? `${md(x.c.end)}まで` : x.mode==="soon" ? `${md(x.c.start)}から` : "";
+    const u = `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(x.c.url)}`;
+    el.hidden = false;
+    el.innerHTML = `<a class="campbar${x.mode==="day"?" small":""}" href="${esc(u)}" target="_blank" rel="noopener sponsored"><b>${esc(head)}</b>${when?`<span class="w">${esc(when)}</span>`:""}<span class="nt">${esc(x.c.note||"")}</span><span class="tag">PR</span></a>`;
+  });
+}
 
 /* ===== ニュース ===== */
 const NTAG = {goods:"グッズ", event:"イベント", anime:"映画・アニメ", book:"本", overseas:"海外", topic:"話題"};
@@ -709,7 +775,7 @@ function renderNews(){
     ? arr.map((n,i)=>newsCard(n)+(i===3||i===13?AD:"")).join("")
     : `<div class="empty">まだニュースはありません。</div>`;
   // 開いたら既読に（NEW の表示は今回だけ残す）
-  NEWS.forEach(n=>newsSeen.add(n.id)); saveSeen(); renderNewsBadge(); renderNewsPeek();
+  NEWS.forEach(n=>newsSeen.add(n.id)); saveSeen(); renderNewsBadge(); renderNewsPeek(); fillCamp();
 }
 document.getElementById("newsTags").onclick = e=>{ const b=e.target.closest("[data-nt]"); if(!b) return; NS.tag=b.dataset.nt; renderNews(); };
 document.addEventListener("click", e=>{

@@ -2,5 +2,10 @@
   "name": "chiikatsu-note",
   "private": true,
   "type": "module",
-  "scripts": { "build": "node build.mjs" }
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2"
+  }
 }
