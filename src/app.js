@@ -527,8 +527,10 @@ document.querySelector(".tabs").onclick = e=>{ const b=e.target.closest("[data-v
 document.querySelector(".sum").onclick = e=>{
   const b=e.target.closest("[data-jump]"); if(!b) return;
   const j=b.dataset.jump;
-  if (j==="mine") return setView("mine");
+  if (j==="mine"){ setView("mine"); requestAnimationFrame(()=>document.getElementById("view-mine").scrollIntoView({behavior:"smooth", block:"start"})); return; }
   state.st = j==="ending" ? "ending" : "next"; state.focus = j==="ending" ? null : j; state.fromSum = true; state.cat="all"; chips(document.getElementById("stChips"),ST,"st"); chips(document.getElementById("catChips"),[["all","すべての種類"],...Object.entries(CAT)],"cat"); setView("list"); renderList();
+  // 押した内容が見えるように、一覧のところまで動かす
+  requestAnimationFrame(()=>{ const t = document.getElementById("focusBar"); (t && !t.hidden ? t : document.getElementById("list")).scrollIntoView({behavior:"smooth", block:"start"}); });
 };
 document.addEventListener("click", e=>{
   const b = e.target.closest("[data-mark]"); if(!b) return;
