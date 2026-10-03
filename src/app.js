@@ -477,7 +477,7 @@ function normItem(raw){
 }
 /* 楽天APIは1秒1回まで。順番待ちで呼び、結果は6時間この端末に覚えておく */
 const RK_TTL = 6*3600*1000;
-const RK_VER = "2";
+const RK_VER = "3";
 let rkChain = Promise.resolve(), rkLast = 0;
 function rkSearch(params){
   const qs = new URLSearchParams(Object.assign({applicationId:RAK.app, accessKey:RAK.key, affiliateId:AFF.rakutenId,
@@ -504,6 +504,9 @@ async function findOnRakuten(it){
   const tokens = norm(it.q).split(" ").filter(t=>t && !/^(ちいかわ|アニメ|映画)$/.test(t));
   const ref = firstPrice(it.price);
   let hit = null;
+  /* 「水」のような1文字や「マスコット」のような種類名だけでは同じ商品か判断できないので、探さない */
+  const distinct = tokens.filter(t=>t.length>=2 && !KINDS.some(k=>norm(k)===t));
+  if (!distinct.length){ rkFound[it.id] = null; return null; }
   try{
     const v = await rkSearch({keyword: it.q, hits:"10"});
     const mine = norm(it.t+" "+it.q);
