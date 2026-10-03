@@ -329,7 +329,8 @@ function renderListInner(){
     el.innerHTML = `<div class="empty">${msg}</div>` + backAll();
     return;
   }
-  let h = "", cur = "";
+  let h = "", cur = "", groups = 0, campDone = false;
+  const campHere = ()=>{ if (!campDone && R.region==="jp"){ campDone = true; h += `<div data-camp hidden></div>`; } };
   arr.forEach((it,i)=>{
     if (state.st==="rsv"){
       const w = rsvState(it)==="open" ? "いま予約できる" : "これから予約開始";
@@ -339,12 +340,15 @@ function renderListInner(){
       if (w!==cur){ cur = w; h += `<h3 class="wk">${w}</h3>`; }
     } else if (state.st==="next"||state.st==="ending"){
       const w = weekLabel(keyOf(it).d);
-      if (w!==cur){ cur = w; h += `<h3 class="wk${w==="今日"?" is-today":""}">${w}</h3>`; }
+      if (w!==cur){ cur = w; groups++; if (groups===2) campHere();   // 楽天セールの帯は最初の週のまとまりのあと
+        h += `<h3 class="wk${w==="今日"?" is-today":""}">${w}</h3>`; }
     }
     h += card(it);
     if (i===4 || i===14) h += AD;
-    if (i===8 && R.region==="jp") h += `<div class="popstrip" data-pop></div>`;
+    if (i===5 && R.region==="jp") h += `<div class="popstrip" data-pop></div>`;   // 楽天の人気グッズは6件目のあと
+    if (i===2 && groups<2 && arr.length<=6) campHere();
   });
+  if (!campDone && arr.length) campHere();
   const ro = state.st!=="rsv" ? VIS().filter(x=>rsvState(x)==="open").length : 0;
   const rb = VIS().filter(x=>rsvState(x)==="before").length;
   const near = VIS().filter(x=>rsvState(x)==="open" && x.re).sort((a,b)=>PT(a.re)-PT(b.re))[0];
@@ -613,7 +617,8 @@ function rkSearch(params){
   const job = rkChain.then(async ()=>{
     const wait = rkLast + 1100 - Date.now(); if (wait>0) await new Promise(r=>setTimeout(r,wait));
     rkLast = Date.now();
-    const r = await fetch(RAK.ep+"?"+qs.toString());
+    let r = await fetch(RAK.ep+"?"+qs.toString());
+    if (r.status===429 || r.status>=500){ await new Promise(x=>setTimeout(x,2200)); rkLast = Date.now(); r = await fetch(RAK.ep+"?"+qs.toString()); }   // 混んでいたら少し待ってもう一度
     if (!r.ok) throw new Error("rakuten "+r.status);
     const j = await r.json();
     const v = {items:(j.Items||[]).map(normItem), count:j.count||0, pageCount:j.pageCount||1};
@@ -731,17 +736,20 @@ document.getElementById("shopQ").addEventListener("search", e=>{ if (!e.target.v
 document.getElementById("shopSort").onchange = e=>{ SH.sort=e.target.value; loadShop(true); };
 document.getElementById("shopMore").onclick = ()=>{ SH.page++; loadShop(false); };
 if (v0==="shop") setView("shop");
+try{ if (R.region==="jp" && !POP && !popBusy) loadPop(); }catch(e){}
 
 /* ===== 楽天で人気のちいかわグッズ（一覧の途中） ===== */
-let POP = null, popBusy = false;
+var POP = null, popBusy = false, popTry = 0;
+function loadPop(){
+  popBusy = true; popTry++;
+  rkSearch({keyword:"ちいかわ", hits:"30", sort:"-reviewCount", maxPrice:"30000"}).then(v=>{
+    POP = v.items.filter(x=>okItem(x) && x.img).slice(0,10); popBusy = false; fillPop();
+  }).catch(()=>{ popBusy = false; if (popTry < 3) setTimeout(()=>{ if (!POP) loadPop(); }, 4000 * popTry); else { POP = []; fillPop(); } });
+}
 function fillPop(){
   const els = document.querySelectorAll("[data-pop]"); if (!els.length) return;
   if (!POP){
-    if (!popBusy){ popBusy = true;
-      rkSearch({keyword:"ちいかわ", hits:"30", sort:"-reviewCount", maxPrice:"30000"}).then(v=>{
-        POP = v.items.filter(x=>okItem(x) && x.img).slice(0,10); fillPop();
-      }).catch(()=>{ POP = []; });
-    }
+    if (!popBusy) loadPop();
     return;
   }
   if (!POP.length){ els.forEach(e=>e.remove()); return; }
