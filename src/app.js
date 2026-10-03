@@ -873,14 +873,14 @@ function drawPush(){
   const el = document.getElementById("pushCard"); if (!el) return;
   let h = "";
   if (!PUSH_OK){
-    if (IS_IOS && !IS_APP) h = `<b>🔔 発売の前日と当日にお知らせ</b><p>iPhone・iPadは、ホーム画面に追加したちい活ノートから通知を受け取れます。</p><button class="btn" type="button" data-install>ホーム画面に追加する方法</button>`;
+    if (IS_IOS && !IS_APP) h = `<b>🔔 予約開始・再入荷・発売日を通知でお知らせ</b><p>iPhone・iPadは、ホーム画面に追加したちい活ノートから通知を受け取れます。</p><button class="btn" type="button" data-install>ホーム画面に追加する方法</button>`;
     else { el.hidden = true; return; }
   } else if (Notification.permission==="denied"){
     h = `<b>🔔 通知がブロックされています</b><p>端末やブラウザの設定で、このサイトの通知を「許可」にすると受け取れます。</p>`;
   } else if (pushSub){
     h = `<b>🔔 通知はオンです</b><details class="pwd"><summary>どんなときに届く？</summary>${PUSH_WHAT}</details><label class="pchk"><input type="checkbox" data-prsv ${pushRsv?"checked":""}> <span>ちいかわマーケットの<strong>予約開始・再入荷</strong>も受け取る<small>オフにすると「ほしい」に入れた予定だけになります</small></span></label>${pushRsv?`<div class="pch"><span>推しで絞る：選んだキャラが出てくる商品だけお知らせ（何も選ばなければ全部）</span><div>${PCH.map(c=>`<button type="button" class="chip" data-pch="${c}" aria-pressed="${pushChars.includes(c)}">${c}</button>`).join("")}</div></div>`:""}<div class="acts"><button class="btn" type="button" data-ptest>テスト通知を送る</button><button class="btn" type="button" data-poff>通知をやめる</button></div>`;
   } else {
-    h = `<b>🔔 発売の前日と当日にお知らせ</b><p>争奪戦に負けないための、ちい活ノートの通知です。登録はいりません。</p>${PUSH_WHAT}<button class="btn ok" type="button" data-pon>通知を受け取る</button>`;
+    h = `<b>🔔 予約開始・再入荷・発売日を通知でお知らせ</b><p>争奪戦に負けないための、ちい活ノートの通知です。登録はいりません。</p>${PUSH_WHAT}<button class="btn ok" type="button" data-pon>通知を受け取る</button>`;
   }
   el.innerHTML = h; el.hidden = false;
   document.documentElement.classList.add("has-push");   // 通知の案内を出すときは、ホーム画面に追加の大きな案内は重ねない
