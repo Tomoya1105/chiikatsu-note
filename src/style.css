@@ -520,3 +520,30 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .pwd summary{cursor:pointer;font-size:12.5px;color:var(--ink-2);font-weight:700;margin:2px 0}
 .pchk span{display:flex;flex-direction:column}
 .pchk small{font-size:11.5px;color:var(--ink-3)}
+
+/* ---- 上部のならび・余白（初めての人が上から迷わず読めるように） ---- */
+.newsline{display:flex;align-items:center;gap:10px;width:100%;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:10px 12px;margin:0 0 12px;font:500 13px var(--body);color:var(--ink);cursor:pointer;text-align:left}
+.newsline .nl-k{flex:none;font-weight:700;color:var(--ink-2);display:flex;align-items:center;gap:4px}
+.newsline .nl-k i{font-style:normal;font-size:10.5px;font-weight:900;background:var(--acc);color:var(--on-acc);border-radius:999px;padding:0 6px;line-height:16px}
+.newsline .nl-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.newsline .nl-go{flex:none;color:var(--acc);font-weight:700}
+#rsvSlot .rsvstrip{margin:4px 0 10px}
+.list > [data-camp]{margin:0}
+.list > [data-camp] .campbar{margin:0}
+@media (max-width:520px){
+  .top{padding-block:16px 4px}
+  .brand p{font-size:11.5px;line-height:1.45}
+  .pr{font-size:10.5px;margin:4px 0 14px}
+  .region{margin-bottom:14px}
+  .sum{margin-bottom:14px}
+  .tabs{padding-block:8px 10px}
+  .filters{gap:10px;margin:2px 0 14px}
+  .row{font-size:12px}
+}
+@media (max-width:520px){
+  .top .brand{min-width:0;flex:1}
+  .top .brand > div{min-width:0}
+  .topr{flex:none}
+  .oshibtn{white-space:nowrap}
+}
+.tag2 span{display:inline-block}

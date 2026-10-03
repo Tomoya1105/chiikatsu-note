@@ -320,7 +320,7 @@ function renderListInner(){
   // 絞り込み中の表示
   fb.hidden = !(state.focus || state.fromSum);
   if (!fb.hidden) document.getElementById("focusTxt").textContent = state.focus==="soon" ? "7日以内に発売・開始するものだけ表示中" : "7日以内に終わるものだけ表示中";
-  const desc = {rsv:"公式通販などの予約・受注です。受付中のもの（締切が近い順）、これから受付が始まるものの順。", sellout:"在庫がなくなると終わるグッズ・くじです。いま買えるもの、これから出るものの順。", ending:"1週間以内に終わるものです。終わる日が近い順。", next:"今日から近い順。始まるものは発売日・開始日、開催中のものは終わる日で並べています。", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
+  const desc = {rsv:"公式通販などの予約・受注です。受付中のもの（締切が近い順）、これから受付が始まるものの順。", sellout:"在庫がなくなると終わるグッズ・くじです。いま買えるもの、これから出るものの順。", ending:"1週間以内に終わるものです。終わる日が近い順。", next:"日付が近い順（開催中のものは終わる日の順）", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
   document.getElementById("count").textContent = `${arr.length}件　${desc}`;
   if (!arr.length){
     const msg = R.region==="os"&&!VIS().length ? "この国・地域の情報はまだありません。"
@@ -343,6 +343,7 @@ function renderListInner(){
     }
     h += card(it);
     if (i===4 || i===14) h += AD;
+    if (i===2 && R.region==="jp") h += `<div data-camp hidden></div>`;   // 楽天のセールの帯は一覧の3件目のあと
     if (i===8 && R.region==="jp") h += `<div class="popstrip" data-pop></div>`;
   });
   const ro = state.st!=="rsv" ? VIS().filter(x=>rsvState(x)==="open").length : 0;
@@ -351,7 +352,8 @@ function renderListInner(){
   const nextS = VIS().filter(x=>rsvState(x)==="before").sort((a,b)=>PT(a.rs)-PT(b.rs))[0];
   const sub = near ? `${esc(fmtDT(near.re))}締切：${esc(near.t.replace(/（予約）$/,""))}` : nextS ? `${esc(fmtDT(nextS.rs))}開始：${esc(nextS.t.replace(/（予約）$/,""))}` : "";
   const strip = (ro||rb) && state.st==="next" && !state.focus ? `<button type="button" class="rsvstrip" data-gorsv><span class="rs-ic" aria-hidden="true">🛒</span><span class="rs-tx"><b>${ro?`いま予約受付中 ${ro}件`:""}${ro&&rb?"・":""}${rb?`予約開始予定 ${rb}件`:""}</b>${sub?`<small>${sub}</small>`:""}</span><span class="rs-go">見る →</span></button>` : "";
-  el.innerHTML = strip + h + backAll();
+  const slot = document.getElementById("rsvSlot"); if (slot) slot.innerHTML = strip;
+  el.innerHTML = h + backAll();
   setTimeout(()=>{ fillPop(); fillCamp(); }, 0);   // 下で定義する部品が読み込まれてから
 }
 function renderMine(){
@@ -815,9 +817,9 @@ function renderNewsBadge(){
 function renderNewsPeek(){
   const el = document.getElementById("newsPeek"); if (!el) return;
   if (!NEWS.length){ el.hidden = true; return; }
+  const n = NEWS[0], unread = NEWS.filter(x=>!newsSeen.has(x.id)).length;
   el.hidden = false;
-  el.innerHTML = `<div class="peekhead"><h2>ちいかわニュース</h2><button type="button" class="peekmore" data-gonews>もっと見る →</button></div>
-    <ul>${NEWS.slice(0,3).map(n=>`<li><button type="button" data-gonews="${esc(n.id)}"><time class="num">${esc(nDate(n.date))}</time><span>${esc(n.title)}</span>${newsSeen.has(n.id)?"":`<i class="ndot" aria-label="未読"></i>`}</button></li>`).join("")}</ul>`;
+  el.innerHTML = `<button type="button" class="newsline" data-gonews><span class="nl-k">📰 ニュース${unread?`<i>${unread>9?"9+":unread}</i>`:""}</span><span class="nl-t">${esc(n.title)}</span><span class="nl-go">→</span></button>`;
 }
 function renderNews(){
   const tags = [["all","すべて"], ...Object.entries(NTAG).filter(([k])=>NEWS.some(n=>n.tag===k))];

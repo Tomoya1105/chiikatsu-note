@@ -12,7 +12,7 @@
       </svg>
       <div>
         <h1>ちい活ノート</h1>
-        <p>ちいかわグッズとイベントのスケジュール帳（非公式）</p>
+        <p class="tag2"><span>ちいかわグッズと</span><span>イベントの予定帳</span><span>（非公式）</span></p>
       </div>
     </div>
     <div class="topr"><div class="today num" id="today"></div>
@@ -23,7 +23,7 @@
     <p>ページの色が変わります。選んだ色はこの端末に保存されます。</p>
     <div class="swatches" id="swatches"></div>
   </section>
-  <p class="pr">※「PR」表示のリンクは楽天アフィリエイトです（購入されると運営者に紹介料が入ります）</p>
+  <p class="pr">※「PR」のリンクは広告（楽天アフィリエイト）です</p>
 
   <div class="region">
     <div class="seg" id="regionSw" role="group" aria-label="日本と海外の切り替え">
@@ -49,8 +49,8 @@
   </nav>
 
   <section id="view-list">
-    <div data-camp hidden></div>
-    <div class="newspeek" id="newsPeek" hidden></div>
+    <div id="rsvSlot"></div>
+    <div id="newsPeek" hidden></div>
     <div class="filters">
       <label class="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.7" fill="none"/><path d="M11 11l3.2 3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><input id="q" type="search" placeholder="商品名・お店・キャラ名でさがす" aria-label="キーワード検索"></label>
       <div class="chips" id="stChips" aria-label="状態で絞り込み"></div>
