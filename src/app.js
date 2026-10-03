@@ -452,7 +452,10 @@ renderRegion(); renderAll();
 
 /* ===== 楽天の商品情報（画像・価格・楽天で見る・おすすめ） ===== */
 const CHARS = /ちいかわ|chiikawa|ハチワレ|ナガノ/i;
-const NG = ["中古","USED","ユーズド","美品","未使用品","開封済","プレミア","入手困難","完売品","転売","並行輸入","非公式","互換","ノーブランド","ハンドメイド","レンタル"];
+const NG = ["中古","USED","ユーズド","美品","未使用品","開封済","プレミア","入手困難","完売品","転売","並行輸入","非公式","互換","ノーブランド","ハンドメイド","レンタル","まとめ買い","ケース販売","業務用","大量"];
+const BULK = /×\s?\d{2,}\s?(個|本|袋|枚)|\d{2,}\s?(個|袋)セット/;
+/* 商品の種類を表す言葉。楽天の商品名にあって、掲載中の情報の名前にない種類なら別の商品とみなす */
+const KINDS = ["かるた","ぬいぐるみ","キーホルダー","キーリング","Tシャツ","トレーナー","パーカー","ステッカー","缶バッジ","ポーチ","巾着","タオル","ハンカチ","ソックス","靴下","グミ","ガム","チョコ","クッキー","フィギュア","アクリルスタンド","アクスタ","下敷き","クリアファイル","ノート","付箋","ボールペン","マグ","コップ","お弁当箱","ランチボックス","パジャマ","スリッパ","ブランケット","クッション","バッグ","トート","リュック","財布","スマホケース","カレンダー","手帳","絵本","コミック","カード","シール","マスコット","入浴剤","ガチャ","くじ"];
 const norm = s => String(s||"").normalize("NFKC").toLowerCase().replace(/\s+/g," ");
 const yen = n => "¥"+Number(n).toLocaleString("ja-JP");
 const firstPrice = p => { const m = String(p||"").replace(/,/g,"").match(/(\d{2,6})\s*円/); return m ? +m[1] : 0; };
@@ -460,6 +463,7 @@ function okItem(x, refPrice){
   const n = x.name;
   if (!CHARS.test(n)) return false;
   if (NG.some(w=>n.includes(w))) return false;
+  if (BULK.test(n)) return false;
   if (refPrice && x.price > refPrice*1.6) return false;
   return true;
 }
@@ -473,11 +477,12 @@ function normItem(raw){
 }
 /* 楽天APIは1秒1回まで。順番待ちで呼び、結果は6時間この端末に覚えておく */
 const RK_TTL = 6*3600*1000;
+const RK_VER = "2";
 let rkChain = Promise.resolve(), rkLast = 0;
 function rkSearch(params){
   const qs = new URLSearchParams(Object.assign({applicationId:RAK.app, accessKey:RAK.key, affiliateId:AFF.rakutenId,
     format:"json", formatVersion:"2", availability:"1", imageFlag:"1", NGKeyword:"中古 USED 美品"}, params));
-  const ck = "rk:"+qs.toString().replace(/accessKey=[^&]+&?/,"");
+  const ck = "rk"+RK_VER+":"+qs.toString().replace(/accessKey=[^&]+&?/,"");
   try{ const c = JSON.parse(localStorage.getItem(ck)||"null"); if (c && Date.now()-c.t < RK_TTL) return Promise.resolve(c.v); }catch(e){}
   const job = rkChain.then(async ()=>{
     const wait = rkLast + 1100 - Date.now(); if (wait>0) await new Promise(r=>setTimeout(r,wait));
@@ -501,7 +506,12 @@ async function findOnRakuten(it){
   let hit = null;
   try{
     const v = await rkSearch({keyword: it.q, hits:"10"});
-    hit = v.items.find(x=>okItem(x, ref) && tokens.every(t=>norm(x.name).includes(t))) || null;
+    const mine = norm(it.t+" "+it.q);
+    hit = v.items.find(x=>{
+      const nm = norm(x.name);
+      if (!okItem(x, ref) || !tokens.every(t=>nm.includes(t))) return false;
+      return !KINDS.some(k=>nm.includes(norm(k)) && !mine.includes(norm(k)));
+    }) || null;
   }catch(e){ hit = null; }
   rkFound[it.id] = hit;
   return hit;
@@ -555,7 +565,7 @@ async function loadShop(reset){
   if (reset){ SH.page=1; SH.items=[]; }
   SH.busy = true; SH.err = false; drawShop();
   const word = (SHOPCAT.find(c=>c[0]===SH.cat)||[])[2]||"";
-  const p = {keyword: ("ちいかわ "+word).trim(), hits:"30", page:String(SH.page)};
+  const p = {keyword: ("ちいかわ "+word).trim(), hits:"30", page:String(SH.page), maxPrice:"30000"};
   if (SH.sort!=="standard") p.sort = SH.sort;
   try{
     const v = await rkSearch(p);
