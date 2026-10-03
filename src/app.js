@@ -112,9 +112,25 @@ function sjisEncode(str){
   }
   return out;
 }
-function travel(area){
-  const u = "https://kw.travel.rakuten.co.jp/keyword/Search.do?f_query="+sjisEncode(area);
-  return AFF.rakutenId ? `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(u)}` : u;
+// 海外は楽天トラベルの「海外ホテル」一覧へ（キーワード検索は国内のホテルしか出ないため）
+const OS_HOTEL = [
+  [/台北/, "03kaigaiTaiwanTaipei", "台北"], [/台中/, "03kaigaiTaiwanTaizhong", "台中"], [/高雄/, "03kaigaiTaiwanKaohsiung", "高雄"], [/台南/, "03kaigaiTaiwantainam", "台南"],
+  [/ソウル/, "03kaigaiKoreaseoul", "ソウル"], [/釜山|プサン/, "03kaigaiKoreabusan", "釜山"],
+  [/香港/, "02kaigaiHongkong", "香港"], [/マカオ/, "03kaigaiMakaumakau", "マカオ"],
+  [/上海/, "03kaigaiChinashanghai", "上海"], [/北京/, "03kaigaiChinabeijing", "北京"], [/深セン|深圳|広東|広州|珠海/, "03kaigaiChinaguangdong", "広東省（深セン・広州）"],
+];
+const OS_COUNTRY = { tw: ["02kaigaiTaiwan", "台湾"], kr: ["02kaigaiKorea", "韓国"], hk: ["02kaigaiHongkong", "香港"], cn: ["02kaigaiChina", "中国"] };
+function hotelLink(it){
+  const r = it.region || "jp";
+  if (r === "jp") return { url: "https://kw.travel.rakuten.co.jp/keyword/Search.do?f_query=" + sjisEncode(it.area), label: it.area + "周辺のホテルを探す" };
+  const hay = (it.area || "") + " " + (it.place || "");
+  const hit = OS_HOTEL.find(x => x[0].test(hay)) || (OS_COUNTRY[r] && [null, ...OS_COUNTRY[r]]);
+  if (!hit) return null;
+  return { url: "https://travel.rakuten.co.jp/group/tiku/" + hit[1] + ".html", label: hit[2] + "のホテルを探す" };
+}
+function travel(it){
+  const h = hotelLink(it); if (!h) return null;
+  return { label: h.label, url: AFF.rakutenId ? `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(h.url)}` : h.url };
 }
 function gcal(it){
   if (it.sp!=="day") return null;
@@ -164,7 +180,7 @@ function card(it, opt){
         <button class="btn want" data-mark="want" aria-pressed="${m==="want"}">${m==="want"?"♥ ほしい":"♡ ほしい"}</button>
         <button class="btn got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
       </div>
-      ${it.area && st.k!=="ended" ? `<a class="trip" href="${travel(it.area)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(it.area)}周辺のホテルを探す（楽天トラベル）</span><span class="tag">PR</span></a>` : ""}
+      ${(()=>{ const tr = it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
       <button class="repbtn" type="button" data-report>情報のまちがいを報告する</button>
     </div>
     ${it.q?`<div class="pimg" data-pimg="${esc(it.id)}"></div>`:""}

@@ -44,7 +44,23 @@ try {
 const sjisEncode = str => [...str].map(ch => /[A-Za-z0-9\-_.]/.test(ch) ? ch : ch === " " ? "+" : sjis.get(ch) || (ch.charCodeAt(0) < 128 ? "%" + ch.charCodeAt(0).toString(16).toUpperCase().padStart(2, "0") : "")).join("");
 const aff = u => `https://hb.afl.rakuten.co.jp/hgc/${AFF}/?pc=${encodeURIComponent(u)}`;
 const rakutenSearch = q => aff("https://search.rakuten.co.jp/search/mall/" + encodeURIComponent(q) + "/");
-const travel = a => aff("https://kw.travel.rakuten.co.jp/keyword/Search.do?f_query=" + sjisEncode(a));
+// 海外は楽天トラベルの「海外ホテル」一覧へ（キーワード検索は国内のホテルしか出ないため）
+const OS_HOTEL = [
+  [/台北/, "03kaigaiTaiwanTaipei", "台北"], [/台中/, "03kaigaiTaiwanTaizhong", "台中"], [/高雄/, "03kaigaiTaiwanKaohsiung", "高雄"], [/台南/, "03kaigaiTaiwantainam", "台南"],
+  [/ソウル/, "03kaigaiKoreaseoul", "ソウル"], [/釜山|プサン/, "03kaigaiKoreabusan", "釜山"],
+  [/香港/, "02kaigaiHongkong", "香港"], [/マカオ/, "03kaigaiMakaumakau", "マカオ"],
+  [/上海/, "03kaigaiChinashanghai", "上海"], [/北京/, "03kaigaiChinabeijing", "北京"], [/深セン|深圳|広東|広州|珠海/, "03kaigaiChinaguangdong", "広東省（深セン・広州）"],
+];
+const OS_COUNTRY = { tw: ["02kaigaiTaiwan", "台湾"], kr: ["02kaigaiKorea", "韓国"], hk: ["02kaigaiHongkong", "香港"], cn: ["02kaigaiChina", "中国"] };
+function hotelLink(it){
+  const r = it.region || "jp";
+  if (r === "jp") return { url: "https://kw.travel.rakuten.co.jp/keyword/Search.do?f_query=" + sjisEncode(it.area), label: it.area + "周辺のホテルを探す" };
+  const hay = (it.area || "") + " " + (it.place || "");
+  const hit = OS_HOTEL.find(x => x[0].test(hay)) || (OS_COUNTRY[r] && [null, ...OS_COUNTRY[r]]);
+  if (!hit) return null;
+  return { url: "https://travel.rakuten.co.jp/group/tiku/" + hit[1] + ".html", label: hit[2] + "のホテルを探す" };
+}
+const travel = it => { const h = hotelLink(it); return h && { url: aff(h.url), label: h.label }; };
 
 const BRAND = `<header class="top">
     <a class="brand" href="/" style="text-decoration:none;color:inherit">
@@ -190,7 +206,7 @@ for (const it of items) {
       ${it.q ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored">楽天市場で探す <span class="tag">PR</span></a>` : ""}
       ${/^https:\/\//.test(it.src || "") ? `<a class="btn" href="${esc(it.src)}" target="_blank" rel="noopener">公式情報</a>` : ""}
     </div>
-    ${it.area ? `<a class="trip" href="${esc(travel(it.area))}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(it.area)}周辺のホテルを探す（楽天トラベル）</span><span class="tag">PR</span></a>` : ""}
+    ${(() => { const tr = it.area ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
     <p class="credit">掲載情報の更新日：${esc(it.updatedAt || it.addedAt || "")}。発売日や会期は変わることがあります。お出かけ・購入の前に公式情報をご確認ください。</p>
   </main>
   <p style="margin:18px 0"><a class="btn" href="/">ちいかわのスケジュールを一覧で見る</a></p>
