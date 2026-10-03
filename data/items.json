@@ -1143,7 +1143,7 @@
   "sp": "day",
   "e": "2026-10-08",
   "time": "10:00〜",
-  "eNote": "受注締切 10/8(木) 12:00・数量限定",
+  "eNote": "受注締切 10/8(木) 12:00・数量限定（ちいかわ・ハチワレは完売）",
   "place": "ちいかわマーケット（公式通販）",
   "area": "",
   "price": "ちいかわ／うさぎ 各1,650円、ハチワレ（ふたり乗り自転車付き）1,980円",
@@ -1155,15 +1155,18 @@
   "rsv": [
    {
     "n": "ちいかわ",
-    "u": "https://chiikawamarket.jp/products/4571609412267"
+    "u": "https://chiikawamarket.jp/products/4571609412267",
+    "so": true
    },
    {
     "n": "ハチワレ",
-    "u": "https://chiikawamarket.jp/products/4571609412274"
+    "u": "https://chiikawamarket.jp/products/4571609412274",
+    "so": true
    },
    {
     "n": "うさぎ",
-    "u": "https://chiikawamarket.jp/products/4571609418351"
+    "u": "https://chiikawamarket.jp/products/4571609418351",
+    "so": false
    }
   ],
   "autoAdded": false,
@@ -1191,7 +1194,8 @@
   "rsv": [
    {
     "n": "コンプリートセット",
-    "u": "https://chiikawamarket.jp/products/4571609344000"
+    "u": "https://chiikawamarket.jp/products/4571609344000",
+    "so": false
    }
   ],
   "autoAdded": false,

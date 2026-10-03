@@ -61,6 +61,8 @@ const rsvList = it => Array.isArray(it.rsv) ? it.rsv.filter(x=>x && /^https:\/\/
 const PT = s => s ? new Date(s.length>10 ? s+":00+09:00" : s+"T00:00:00+09:00") : null;
 function rsvState(it){
   if (!isRsv(it)) return null;
+  const L = rsvList(it);
+  if (L.length && L.every(x=>x.so)) return "soldout";
   const now = new Date(), a = PT(it.rs), b = PT(it.re);
   if (b && now > b) return "closed";
   if (a && now < a) return "before";
@@ -77,6 +79,7 @@ function status(it){
     return {k:n<=7?"ending":"on", label:n===0?`予約は今日${(it.re||"").slice(11,16)}まで`:n===1?"予約は明日まで":`予約受付中`, rank:n<=7?0:2};
   }
   if (rv==="closed") return {k:"ended",label:"予約終了",rank:4};
+  if (rv==="soldout") return {k:"ended",label:"完売（予約終了）",rank:4};
   const v = isEvent(it)? "開催":"発売";
   if (it.sd > TODAY){
     const n = diffDays(it.sd,TODAY);
@@ -199,8 +202,9 @@ function card(it, opt){
         ${it.note?`<dt>メモ</dt><dd>${esc(it.note)}</dd>`:""}
       </dl>
       ${(()=>{ const rv = rsvState(it), L = rsvList(it); if (!L.length || rv==="closed") return "";
+        if (rv==="soldout") return `<div class="rsvbox closed"><div class="rsvh">すべて完売しました</div></div>`;
         const head = rv==="open" ? `予約受付中${it.re?`<small>締切 ${esc(fmtDT(it.re))}</small>`:""}` : `予約開始 ${esc(fmtDT(it.rs))}`;
-        return `<div class="rsvbox ${rv}"><div class="rsvh">${head}</div><div class="rsvbtns">${L.map(x=>`<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>${rv==="open"?"予約はこちら":"予約ページ"}${x.n?`（${esc(x.n)}）`:""}</a>`).join("")}</div></div>`; })()}
+        return `<div class="rsvbox ${rv}"><div class="rsvh">${head}</div><div class="rsvbtns">${L.slice().sort((p,q)=>(p.so?1:0)-(q.so?1:0)).map(x=>x.so ? `<span class="btn rsvbtn so">${x.n?esc(x.n)+" ":""}完売</span>` : `<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>${rv==="open"?"予約はこちら":"予約ページ"}${x.n?`（${esc(x.n)}）`:""}</a>`).join("")}</div></div>`; })()}
       <div class="acts main">
         ${st.k!=="ended"?`<button class="btn want" data-mark="want" aria-pressed="${m==="want"}">${m==="want"?"♥ ほしい":"♡ ほしい"}</button>`:""}
         ${it.q?`<span class="rk" data-rk="${esc(it.id)}"></span>`:""}
@@ -296,7 +300,7 @@ function renderListInner(){
   if (!loaded){ el.innerHTML = placeholder(); document.getElementById("count").textContent=""; fb.hidden=true; return; }
   const q = sn(state.q.trim());
   let arr = VIS().filter(it=>{
-    if (state.st==="ending" ? status(it).k!=="ending" : state.st==="sellout" ? !isSellout(it) : state.st==="rsv" ? !(isRsv(it) && rsvState(it)!=="closed") : bucket(it)!==state.st) return false;
+    if (state.st==="ending" ? status(it).k!=="ending" : state.st==="sellout" ? !isSellout(it) : state.st==="rsv" ? !(isRsv(it) && (rsvState(it)==="open" || rsvState(it)==="before")) : bucket(it)!==state.st) return false;
     if (state.focus && status(it).k!==state.focus) return false;
     if (state.cat!=="all" && it.cat!==state.cat) return false;
     if (q && !sn(it.t+(it.place||"")+(it.note||"")+(CAT[it.cat]||"")+(it.eNote||"")+(REG[it.region]||"")).includes(q)) return false;
@@ -343,7 +347,10 @@ function renderListInner(){
   });
   const ro = state.st!=="rsv" ? VIS().filter(x=>rsvState(x)==="open").length : 0;
   const rb = VIS().filter(x=>rsvState(x)==="before").length;
-  const strip = (ro||rb) && state.st==="next" && !state.focus ? `<button type="button" class="rsvstrip" data-gorsv>🛒 ${ro?`いま予約受付中 <b>${ro}件</b>`:""}${ro&&rb?"・":""}${rb?`予約開始予定 <b>${rb}件</b>`:""}<span>見る →</span></button>` : "";
+  const near = VIS().filter(x=>rsvState(x)==="open" && x.re).sort((a,b)=>PT(a.re)-PT(b.re))[0];
+  const nextS = VIS().filter(x=>rsvState(x)==="before").sort((a,b)=>PT(a.rs)-PT(b.rs))[0];
+  const sub = near ? `${esc(fmtDT(near.re))}締切：${esc(near.t.replace(/（予約）$/,""))}` : nextS ? `${esc(fmtDT(nextS.rs))}開始：${esc(nextS.t.replace(/（予約）$/,""))}` : "";
+  const strip = (ro||rb) && state.st==="next" && !state.focus ? `<button type="button" class="rsvstrip" data-gorsv><span class="rs-ic" aria-hidden="true">🛒</span><span class="rs-tx"><b>${ro?`いま予約受付中 ${ro}件`:""}${ro&&rb?"・":""}${rb?`予約開始予定 ${rb}件`:""}</b>${sub?`<small>${sub}</small>`:""}</span><span class="rs-go">見る →</span></button>` : "";
   el.innerHTML = strip + h + backAll();
   setTimeout(()=>{ fillPop(); fillCamp(); }, 0);   // 下で定義する部品が読み込まれてから
 }

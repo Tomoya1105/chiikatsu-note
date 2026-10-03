@@ -169,7 +169,7 @@ write("install.js", installJs);
 write("sw.js", swJs.replace("__VER__", BUILD));
 fs.mkdirSync(path.join(OUT, "icons"), { recursive: true });
 for (const f of fs.readdirSync("src/icons")) fs.copyFileSync(path.join("src/icons", f), path.join(OUT, "icons", f));
-write("push-items.json", JSON.stringify(items.map(it => ({ id: it.id, t: it.t, s: it.s, sp: it.sp || "day", e: it.e || null, cat: it.cat, place: it.place || "", rs: it.rs || null, re: it.re || null, rsv: !!it.rsv }))));
+write("push-items.json", JSON.stringify(items.map(it => ({ id: it.id, t: it.t, s: it.s, sp: it.sp || "day", e: it.e || null, cat: it.cat, place: it.place || "", rs: it.rs || null, re: it.re || null, rsv: Array.isArray(it.rsv) ? it.rsv.some(x => !x.so) : !!it.rsv }))));
 write("manifest.webmanifest", JSON.stringify({
   id: "/",
   name: "ちい活ノート｜ちいかわのスケジュール帳",
@@ -252,7 +252,8 @@ for (const it of items) {
       ${it.note ? `<dt>メモ</dt><dd>${esc(it.note)}</dd>` : ""}
     </dl>
     ${(() => { const L = Array.isArray(it.rsv) ? it.rsv : it.rsv ? [{ n: "", u: it.rsv }] : []; const ok = L.filter(x => /^https:\/\//.test(x.u || "")); if (!ok.length || (it.re && new Date(it.re + ":00+09:00") < new Date())) return "";
-      return `<div class="rsvbox open"><div class="rsvh">予約・受注${it.re ? `<small>締切 ${esc(fmt(it.re.slice(0, 10)))} ${esc(it.re.slice(11, 16))}</small>` : ""}</div><div class="rsvbtns">${ok.map(x => `<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>予約はこちら${x.n ? "（" + esc(x.n) + "）" : ""}</a>`).join("")}</div></div>`; })()}
+      if (ok.every(x => x.so)) return `<div class="rsvbox closed"><div class="rsvh">予約はすべて完売しました</div></div>`;
+      return `<div class="rsvbox open"><div class="rsvh">予約・受注${it.re ? `<small>締切 ${esc(fmt(it.re.slice(0, 10)))} ${esc(it.re.slice(11, 16))}</small>` : ""}</div><div class="rsvbtns">${ok.slice().sort((p, q) => (p.so ? 1 : 0) - (q.so ? 1 : 0)).map(x => x.so ? `<span class="btn rsvbtn so">${x.n ? esc(x.n) + " " : ""}完売</span>` : `<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>予約はこちら${x.n ? "（" + esc(x.n) + "）" : ""}</a>`).join("")}</div></div>`; })()}
     <div class="acts">
       ${it.q ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored">楽天市場で探す <span class="tag">PR</span></a>` : ""}
       ${/^https:\/\//.test(it.src || "") ? `<a class="btn" href="${esc(it.src)}" target="_blank" rel="noopener">公式情報</a>` : ""}
