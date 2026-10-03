@@ -58,12 +58,34 @@ export async function watchMarket(env, fetcher = fetch, now = Date.now()) {
   return { ok: true, products: prods.length, events, first: !snap };
 }
 
+// サイトに載っている予約（自動更新が予告から登録したもの）の、受付開始30分前にお知らせする
+export async function preStart(env, fetcher = fetch, now = Date.now()) {
+  const r = await fetcher("https://chiikatsu-note.pages.dev/push-items.json", { cf: { cacheTtl: 120 } });
+  if (!r.ok) return { ok: false };
+  const items = await r.json();
+  const out = [];
+  for (const it of items) {
+    if (!it.rsv || !it.rs || it.rs.length <= 10) continue;
+    const start = new Date(it.rs + ":00+09:00").getTime();
+    const left = start - now;
+    if (left <= 20 * 60e3 || left > 35 * 60e3) continue;   // 20〜35分前のときだけ
+    const mk = `w:pre:${it.id}`;
+    if (await env.REPORTS.get(mk)) continue;
+    await env.REPORTS.put(mk, "1", { expirationTtl: 3 * 86400 });
+    const hhmm = it.rs.slice(11, 16);
+    await addJob(env, { type: "broadcast", at: now, payload: { title: `⏰ ${hhmm}から予約開始：${it.t.replace(/（予約）$/, "")}`, body: "まもなく受付が始まります。タップしてくわしく見る", url: `/items/${encodeURIComponent(it.id)}/`, tag: `pre-${it.id}` } });
+    out.push(it.id);
+  }
+  return { ok: true, pre: out };
+}
+
 export async function tick(env, t = Date.now()) {
   const out = {};
   if (new Date(t).getUTCMinutes() % 5 === 0) {
     try { out.watch = await watchMarket(env, fetch, t); }
     catch (e) { out.watch = { ok: false, error: String(e) }; try { await env.REPORTS.put("w:err", "error: " + String(e).slice(0, 200), { expirationTtl: 86400 }); } catch (e2) {} }
   }
+  if (new Date(t).getUTCMinutes() % 5 === 0) { try { out.pre = await preStart(env, fetch, t); } catch (e) { out.pre = { ok: false, error: String(e) }; } }
   if (!env.VAPID_PRIVATE) return out;
   let jobs = await loadJobs(env); if (!jobs.length) return out;
   let budget = PER_RUN; out.sent = 0;

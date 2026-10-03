@@ -863,6 +863,12 @@ const PCH = ["ちいかわ","ハチワレ","うさぎ","モモンガ","くりま
 let pushChars = []; try{ pushChars = JSON.parse(localStorage.getItem("chiikatsu-push-chars")||"[]").filter(c=>PCH.includes(c)); }catch(e){}
 let syncT = null;
 window.pushSync = ()=>{ if (!pushSub) return; clearTimeout(syncT); syncT = setTimeout(()=>pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, chars:pushChars}).catch(()=>{}), 1200); };
+const PUSH_WHAT = `<ul class="pwhat">
+    <li><b>🛒 予約開始</b>ちいかわマーケットの予約は、始まる前の日の夜・当日の朝・30分前にお知らせ。予告なしで始まった予約も、5分以内にお知らせします</li>
+    <li><b>🔄 再入荷</b>完売した商品がまた買えるようになったら、5分以内にお知らせ</li>
+    <li><b>♡ ほしい</b>「ほしい」に入れた予定は、発売・開始の前日の夜と当日の朝に。終わる日の前日にも</li>
+    <li><b>👆 通知を押すと</b>公式通販の商品ページがそのまま開くので、すぐに予約・購入できます</li>
+  </ul>`;
 function drawPush(){
   const el = document.getElementById("pushCard"); if (!el) return;
   let h = "";
@@ -872,9 +878,9 @@ function drawPush(){
   } else if (Notification.permission==="denied"){
     h = `<b>🔔 通知がブロックされています</b><p>端末やブラウザの設定で、このサイトの通知を「許可」にすると受け取れます。</p>`;
   } else if (pushSub){
-    h = `<b>🔔 通知はオンです</b><p>「ほしい」に入れた予定の<strong>前日の夜</strong>と<strong>当日の朝</strong>にお知らせします（終わる日の前日も）。</p><label class="pchk"><input type="checkbox" data-prsv ${pushRsv?"checked":""}> ちいかわマーケットの<strong>予約開始・再入荷</strong>をすぐにお知らせ（5分ごとに確認）</label>${pushRsv?`<div class="pch"><span>推しで絞る（選ばなければ全部）</span><div>${PCH.map(c=>`<button type="button" class="chip" data-pch="${c}" aria-pressed="${pushChars.includes(c)}">${c}</button>`).join("")}</div></div>`:""}<div class="acts"><button class="btn" type="button" data-ptest>テスト通知を送る</button><button class="btn" type="button" data-poff>通知をやめる</button></div>`;
+    h = `<b>🔔 通知はオンです</b><details class="pwd"><summary>どんなときに届く？</summary>${PUSH_WHAT}</details><label class="pchk"><input type="checkbox" data-prsv ${pushRsv?"checked":""}> <span>ちいかわマーケットの<strong>予約開始・再入荷</strong>も受け取る<small>オフにすると「ほしい」に入れた予定だけになります</small></span></label>${pushRsv?`<div class="pch"><span>推しで絞る：選んだキャラが出てくる商品だけお知らせ（何も選ばなければ全部）</span><div>${PCH.map(c=>`<button type="button" class="chip" data-pch="${c}" aria-pressed="${pushChars.includes(c)}">${c}</button>`).join("")}</div></div>`:""}<div class="acts"><button class="btn" type="button" data-ptest>テスト通知を送る</button><button class="btn" type="button" data-poff>通知をやめる</button></div>`;
   } else {
-    h = `<b>🔔 発売の前日と当日にお知らせ</b><p>「ほしい」に入れた予定と、ちいかわマーケットの<strong>予約開始・再入荷</strong>を、買い逃さないように通知でお知らせします。登録はいりません。</p><button class="btn ok" type="button" data-pon>通知を受け取る</button>`;
+    h = `<b>🔔 発売の前日と当日にお知らせ</b><p>争奪戦に負けないための、ちい活ノートの通知です。登録はいりません。</p>${PUSH_WHAT}<button class="btn ok" type="button" data-pon>通知を受け取る</button>`;
   }
   el.innerHTML = h; el.hidden = false;
   document.documentElement.classList.add("has-push");   // 通知の案内を出すときは、ホーム画面に追加の大きな案内は重ねない
