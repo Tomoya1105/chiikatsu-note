@@ -613,7 +613,8 @@ function rkSearch(params){
   const job = rkChain.then(async ()=>{
     const wait = rkLast + 1100 - Date.now(); if (wait>0) await new Promise(r=>setTimeout(r,wait));
     rkLast = Date.now();
-    const r = await fetch(RAK.ep+"?"+qs.toString());
+    let r = await fetch(RAK.ep+"?"+qs.toString());
+    if (r.status===429 || r.status>=500){ await new Promise(x=>setTimeout(x,2200)); rkLast = Date.now(); r = await fetch(RAK.ep+"?"+qs.toString()); }   // 混んでいたら少し待ってもう一度
     if (!r.ok) throw new Error("rakuten "+r.status);
     const j = await r.json();
     const v = {items:(j.Items||[]).map(normItem), count:j.count||0, pageCount:j.pageCount||1};
@@ -731,17 +732,20 @@ document.getElementById("shopQ").addEventListener("search", e=>{ if (!e.target.v
 document.getElementById("shopSort").onchange = e=>{ SH.sort=e.target.value; loadShop(true); };
 document.getElementById("shopMore").onclick = ()=>{ SH.page++; loadShop(false); };
 if (v0==="shop") setView("shop");
+try{ if (R.region==="jp" && !POP && !popBusy) loadPop(); }catch(e){}
 
 /* ===== 楽天で人気のちいかわグッズ（一覧の途中） ===== */
-let POP = null, popBusy = false;
+var POP = null, popBusy = false, popTry = 0;
+function loadPop(){
+  popBusy = true; popTry++;
+  rkSearch({keyword:"ちいかわ", hits:"30", sort:"-reviewCount", maxPrice:"30000"}).then(v=>{
+    POP = v.items.filter(x=>okItem(x) && x.img).slice(0,10); popBusy = false; fillPop();
+  }).catch(()=>{ popBusy = false; if (popTry < 3) setTimeout(()=>{ if (!POP) loadPop(); }, 4000 * popTry); else { POP = []; fillPop(); } });
+}
 function fillPop(){
   const els = document.querySelectorAll("[data-pop]"); if (!els.length) return;
   if (!POP){
-    if (!popBusy){ popBusy = true;
-      rkSearch({keyword:"ちいかわ", hits:"30", sort:"-reviewCount", maxPrice:"30000"}).then(v=>{
-        POP = v.items.filter(x=>okItem(x) && x.img).slice(0,10); fillPop();
-      }).catch(()=>{ POP = []; });
-    }
+    if (!popBusy) loadPop();
     return;
   }
   if (!POP.length){ els.forEach(e=>e.remove()); return; }
