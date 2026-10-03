@@ -525,3 +525,8 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .tag2 span{display:inline-block}
 @media (max-width:520px){.top .brand{min-width:0;flex:1}.top .brand > div{min-width:0}.topr{flex:none}.oshibtn{white-space:nowrap}.brand p{font-size:11.5px;line-height:1.45}}
 #focusBar,#list,#view-mine,#view-list,#view-news,#view-shop{scroll-margin-top:64px}
+
+/* 【試し見】ニュースを日本／海外の切り替えの上に */
+.newspeek.top-news{margin:2px 0 0;box-shadow:none;border:1px solid var(--line);background:var(--surface)}
+.newspeek.top-news[hidden] + .sep{display:none}
+.sep{border:0;border-top:1px dashed var(--line);margin:14px 4px 14px}
