@@ -525,3 +525,4 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .tag2 span{display:inline-block}
 @media (max-width:520px){.top .brand{min-width:0;flex:1}.top .brand > div{min-width:0}.topr{flex:none}.oshibtn{white-space:nowrap}.brand p{font-size:11.5px;line-height:1.45}}
 #focusBar,#list,#view-mine,#view-list,#view-news,#view-shop{scroll-margin-top:64px}
+.list > [data-camp] .campbar{margin:0}
