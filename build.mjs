@@ -52,13 +52,18 @@ const BRAND = `<header class="top">
       <div><p style="font-family:var(--display);font-weight:900;font-size:22px;margin:0;line-height:1.1">ちい活ノート</p><p>ちいかわグッズとイベントのスケジュール帳（非公式）</p></div>
     </a>
   </header>`;
+const ICO = `<img src="/icons/icon-192.png" alt="" width="48" height="48" class="appicon">`;
+const INSTALL_CARD = `<div class="ins-card" data-ins-card>${ICO}<div class="ins-txt"><b>ホーム画面に追加して、アプリのように使う</b><span>アイコンをタップするだけで、すぐにスケジュールを確認できます。無料・登録なし。</span></div><button type="button" class="ins-cta" data-install>追加のしかたを見る</button></div>`;
+const INSTALL_TOP = `<div class="ins-card ins-top" data-ins-card>${ICO}<div class="ins-txt"><b>ホーム画面に追加しておくと便利です</b><span>アプリのようにワンタップで開けます</span></div><button type="button" class="ins-cta" data-install>追加する</button><button type="button" class="ins-x" data-ins-hide aria-label="この案内を閉じる">×</button></div>`;
+const INSTALL_MINE = `<div class="ins-card ins-mine" data-ins-card>${ICO}<div class="ins-txt"><b>マイリストをすぐ見られるように</b><span>ホーム画面に追加すると、アイコンからワンタップで開けます</span></div><button type="button" class="ins-cta" data-install>追加する</button></div>`;
 const FOOT = `<footer class="about">
-    <div class="sitelinks"><a href="/" >トップ</a><a href="#" data-install>ホーム画面に追加する</a><a href="/about/">運営者について</a><a href="/privacy/">プライバシーポリシー</a></div>
+    ${INSTALL_CARD}
+    <div class="sitelinks"><a href="/">トップ</a><a href="/about/">運営者について</a><a href="/privacy/">プライバシーポリシー</a></div>
     <p class="credit"><a href="https://webservice.rakuten.co.jp/" target="_blank" rel="noopener">Supported by Rakuten Developers</a></p>
     <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
   </footer>`;
 // 推しカラーを詳細ページにも反映する小さな処理
-const OSHI_BOOT = `<script>try{var k=localStorage.getItem("chiikatsu-oshi");if(k)document.documentElement.dataset.oshi=k;else document.documentElement.dataset.oshi="chiikawa"}catch(e){document.documentElement.dataset.oshi="chiikawa"}</script>`;
+const OSHI_BOOT = `<script>try{var ic=JSON.parse(localStorage.getItem("chiikatsu-install")||"{}")||{};if(ic.topOff)document.documentElement.classList.add("ins-off");if(ic.installed||(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone)document.documentElement.classList.add("is-app")}catch(e){}</script><script>try{var k=localStorage.getItem("chiikatsu-oshi");if(k)document.documentElement.dataset.oshi=k;else document.documentElement.dataset.oshi="chiikawa"}catch(e){document.documentElement.dataset.oshi="chiikawa"}</script>`;
 
 function page({ title, desc, url, body, head = "", scripts = "", ogType = "website" }) {
   return `<!doctype html>
@@ -141,7 +146,7 @@ write("manifest.webmanifest", JSON.stringify({
 // ---- トップページ
 const sorted = items.slice().sort((a, b) => a.s.localeCompare(b.s));
 const allLinks = `<details><summary class="credit" style="cursor:pointer">掲載中のすべての情報（${sorted.length}件）</summary><ul class="alllinks">${sorted.map(it => `<li><a href="/items/${encodeURIComponent(it.id)}/">${esc(it.t)}</a></li>`).join("")}</ul></details>`;
-homeBody = homeBody.replace("{{ALL_LINKS}}", allLinks).replace("<h1>ちい活ノート</h1>", "<h1>ちい活ノート</h1>");
+homeBody = homeBody.replace("{{INSTALL_CARD}}", INSTALL_CARD).replace("{{INSTALL_TOP}}", INSTALL_TOP).replace("{{INSTALL_MINE}}", INSTALL_MINE).replace("{{ALL_LINKS}}", allLinks).replace("<h1>ちい活ノート</h1>", "<h1>ちい活ノート</h1>");
 const homeLd = { "@context": "https://schema.org", "@type": "WebSite", name: "ちい活ノート", url: SITE + "/", inLanguage: "ja" };
 write("index.html", page({
   title: "ちい活ノート｜ちいかわグッズの発売日・イベント日程カレンダー",

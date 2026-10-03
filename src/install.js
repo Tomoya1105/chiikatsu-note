@@ -129,9 +129,10 @@
   // 出すタイミング：2回目以降の訪問ですこし経ってから／初回は「ほしい」などを押したとき
   st.visits = (st.visits || 0) + 1; save(st);
   var isHome = location.pathname === "/" || location.pathname === "/index.html";
-  if (isHome && st.visits >= 2) setTimeout(showBar, 6000);
+  if (isHome && st.visits >= 2 && document.documentElement.classList.contains("ins-off")) setTimeout(showBar, 6000);
   document.addEventListener("click", function(e){
     if (e.target.closest("[data-mark]")) setTimeout(showBar, 900);
+    if (e.target.closest("[data-ins-hide]")){ st.topOff = true; save(st); document.documentElement.classList.add("ins-off"); return; }
     var b = e.target.closest("[data-install]");
     if (b){ e.preventDefault(); openSheet(); }
   });

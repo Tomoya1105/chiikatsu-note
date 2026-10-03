@@ -38,6 +38,7 @@
     <button class="s2" data-jump="ending"><span class="k">7日以内に終了</span><span class="v num" id="nEnding">0<small>件</small></span></button>
     <button class="s3" data-jump="mine"><span class="k">ほしいもの</span><span class="v num" id="nWant">0<small>件</small></span></button>
   </section>
+  {{INSTALL_TOP}}
 
   <nav class="tabs" role="tablist" aria-label="表示切り替え">
     <button role="tab" id="tab-list" aria-selected="true" data-view="list">一覧</button>
@@ -67,6 +68,7 @@
   </section>
 
   <section id="view-mine" hidden>
+    {{INSTALL_MINE}}
     <div class="list" id="mineList"></div>
   </section>
 
@@ -90,10 +92,11 @@
   <div class="toast" id="toast" role="status" hidden></div>
 
   <footer class="about">
+    {{INSTALL_CARD}}
     <h2>このサイトについて</h2>
     <p>ちいかわ公式の発表や各社のプレスリリースをもとに、発売日と販売・開催期間を整理したファン向けの非公式スケジュール帳です。発売日は地域や店舗で前後することがあり、「なくなり次第終了」の商品もあります。購入前に必ず公式情報をご確認ください。まちがいを見つけたら、各情報の「情報のまちがいを報告する」から教えてください。</p>
     <p>マイリストと推しカラーは、この端末のブラウザにだけ保存されます。<span id="lastUpd"></span></p>
-    <div class="sitelinks"><a href="#" data-install>ホーム画面に追加する</a><a href="/about/">運営者について</a><a href="/privacy/">プライバシーポリシー</a></div>
+    <div class="sitelinks"><a href="/about/">運営者について</a><a href="/privacy/">プライバシーポリシー</a></div>
     {{ALL_LINKS}}
     <p class="credit"><a href="https://webservice.rakuten.co.jp/" target="_blank" rel="noopener">Supported by Rakuten Developers</a>　商品情報は楽天ウェブサービスから取得しています。</p>
     <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
