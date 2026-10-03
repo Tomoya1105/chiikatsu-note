@@ -497,8 +497,10 @@ function setRegion(patch){
   try{ localStorage.setItem("chiikatsu-region", JSON.stringify(R)); }catch(e){}
   renderRegion(); renderAll();
 }
-document.getElementById("regionSw").onclick = e=>{ const b=e.target.closest("[data-r]"); if(b) setRegion({region:b.dataset.r, country:"all"}); };
-document.getElementById("countryChips").onclick = e=>{ const b=e.target.closest("[data-c]"); if(b && !b.disabled) setRegion({country:b.dataset.c}); };
+// 日本／海外を切り替えた人は、その地域の予定を見たいので、カレンダー以外の画面なら「一覧」に戻す
+function regionToList(){ const v = currentView(); if (v!=="list" && v!=="cal") setView("list"); }
+document.getElementById("regionSw").onclick = e=>{ const b=e.target.closest("[data-r]"); if(b){ setRegion({region:b.dataset.r, country:"all"}); regionToList(); } };
+document.getElementById("countryChips").onclick = e=>{ const b=e.target.closest("[data-c]"); if(b && !b.disabled){ setRegion({country:b.dataset.c}); regionToList(); } };
 renderRegion();
 
 /* ===== データ読み込み（ビルド時にページへ埋め込み） ===== */
