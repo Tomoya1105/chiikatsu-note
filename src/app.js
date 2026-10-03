@@ -594,3 +594,11 @@ document.getElementById("shopCats").onclick = e=>{ const b=e.target.closest("[da
 document.getElementById("shopSort").onchange = e=>{ SH.sort=e.target.value; loadShop(true); };
 document.getElementById("shopMore").onclick = ()=>{ SH.page++; loadShop(false); };
 if (v0==="shop") setView("shop");
+
+/* ホーム画面のアイコン長押しメニューなどから来たとき（?v=ending など）に、その画面を開く */
+try{
+  const qv = new URLSearchParams(location.search).get("v");
+  if (qv==="ending"){ const b=document.querySelector('.sum [data-jump="ending"]'); if (b) b.click(); }
+  else if (["cal","mine","shop","list"].includes(qv)) setView(qv);
+  if (location.search) history.replaceState(null, "", "/" + location.hash);
+}catch(e){}

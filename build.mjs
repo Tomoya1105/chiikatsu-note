@@ -12,6 +12,9 @@ const items = JSON.parse(fs.readFileSync("data/items.json", "utf8")).filter(x =>
 const css = fs.readFileSync("src/style.css", "utf8");
 const app = fs.readFileSync("src/app.js", "utf8");
 let homeBody = fs.readFileSync("src/home-body.html", "utf8");
+const installJs = fs.readFileSync("src/install.js", "utf8");
+const swJs = fs.readFileSync("src/sw.js", "utf8");
+const BUILD = Date.now().toString(36);
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const CAT = { goods: "グッズ", food: "お菓子・食品", kuji: "くじ", event: "イベント", cafe: "カフェ・お店", book: "本・カレンダー" };
@@ -50,7 +53,7 @@ const BRAND = `<header class="top">
     </a>
   </header>`;
 const FOOT = `<footer class="about">
-    <div class="sitelinks"><a href="/">トップ</a><a href="/about/">運営者について</a><a href="/privacy/">プライバシーポリシー</a></div>
+    <div class="sitelinks"><a href="/" >トップ</a><a href="#" data-install>ホーム画面に追加する</a><a href="/about/">運営者について</a><a href="/privacy/">プライバシーポリシー</a></div>
     <p class="credit"><a href="https://webservice.rakuten.co.jp/" target="_blank" rel="noopener">Supported by Rakuten Developers</a></p>
     <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
   </footer>`;
@@ -74,6 +77,14 @@ function page({ title, desc, url, body, head = "", scripts = "", ogType = "websi
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#FBF6F8">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ちい活ノート">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script src="/install.js?v=${BUILD}" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
@@ -99,6 +110,33 @@ fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 write("style.css", css);
 write("app.js", app);
+write("install.js", installJs);
+write("sw.js", swJs.replace("__VER__", BUILD));
+fs.mkdirSync(path.join(OUT, "icons"), { recursive: true });
+for (const f of fs.readdirSync("src/icons")) fs.copyFileSync(path.join("src/icons", f), path.join(OUT, "icons", f));
+write("manifest.webmanifest", JSON.stringify({
+  id: "/",
+  name: "ちい活ノート｜ちいかわのスケジュール帳",
+  short_name: "ちい活ノート",
+  description: "ちいかわグッズの発売日とイベントの日程をまとめた非公式スケジュール帳",
+  lang: "ja",
+  start_url: "/?from=homescreen",
+  scope: "/",
+  display: "standalone",
+  orientation: "portrait",
+  background_color: "#FBF6F8",
+  theme_color: "#FBF6F8",
+  icons: [
+    { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+    { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+    { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+  ],
+  shortcuts: [
+    { name: "まもなく終了", url: "/?v=ending", icons: [{ src: "/icons/icon-192.png", sizes: "192x192" }] },
+    { name: "カレンダー", url: "/?v=cal", icons: [{ src: "/icons/icon-192.png", sizes: "192x192" }] },
+    { name: "マイリスト", url: "/?v=mine", icons: [{ src: "/icons/icon-192.png", sizes: "192x192" }] },
+  ],
+}, null, 2));
 
 // ---- トップページ
 const sorted = items.slice().sort((a, b) => a.s.localeCompare(b.s));
@@ -175,6 +213,7 @@ write("privacy/index.html", page({
 <h2>免責事項</h2><p>掲載情報は正確になるよう努めていますが、発売日や会期は変更されることがあります。掲載内容によって生じた損害について、運営者は責任を負いません。最新の情報は必ず公式の発表をご確認ください。</p>
 <p class="credit">制定日：2026年10月3日</p>`),
 }));
+write("offline/index.html", page({ title: "電波がつながっていません｜ちい活ノート", desc: "", url: "/offline/", body: doc("電波がつながっていません", `<p>インターネットにつながると、最新のスケジュールが表示されます。電波のよいところで開き直してください。</p><p><a class="btn" href="/">もう一度開く</a></p>`) }).replace("<head>", '<head>\n<meta name="robots" content="noindex">'));
 write("404.html", page({ title: "ページが見つかりません｜ちい活ノート", desc: "", url: "/404", body: doc("ページが見つかりません", `<p>お探しのページは移動したか、掲載を終えた可能性があります。</p><p><a class="btn" href="/">トップへ戻る</a></p>`) }));
 
 // ---- 検索エンジン向け
