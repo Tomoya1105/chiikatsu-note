@@ -87,11 +87,11 @@ const OFFICIAL = [
     ["ちいかわマーケット", "https://chiikawamarket.jp/", "公式オンラインショップ"],
     ["ちいかわらんど", "https://chiikawa-info.jp/ck_land.html", "公式の常設店"],
     ["ちいかわベーカリー", "https://chiikawabakery.jp/", "ベーカリーの公式サイト"],
-    ["ちいかわパーク", "https://x.com/chiikawa_parkjp", "池袋のちいかわパーク公式X"],
+    ["ちいかわパーク", "https://chiikawapark-tokyo.jp/", "池袋の体験型施設の公式サイト"],
     ["ちいかわグッズ公式", "https://x.com/chiikawa_kouhou", "新しいグッズのお知らせ（公式X）"],
   ]],
   ["ゲーム", [
-    ["ちいかわぽけっと", "https://x.com/chiikawa_pt_jp", "スマホアプリの公式X"],
+    ["ちいかわぽけっと", "https://jp.chiikawa-pocket.com/ja/", "スマホアプリの公式サイト"],
   ]],
 ];
 const officialHtml = OFFICIAL.map(([g, list]) => `<h2>${esc(g)}</h2><ul class="offlist">${list.map(([n, u, d]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener"><b>${esc(n)}</b><span>${esc(d)}</span></a></li>`).join("")}</ul>`).join("");
