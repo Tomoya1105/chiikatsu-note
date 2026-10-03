@@ -289,8 +289,8 @@ button{font:inherit;color:inherit}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .prod{display:flex;flex-direction:column;background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;text-decoration:none;color:var(--ink)}
 .prod:hover{box-shadow:0 0 0 2px var(--acc),var(--shadow)}
-.prod .ph{aspect-ratio:1;background:#fff;display:grid;place-items:center}
-.prod .ph img{width:100%;height:100%;object-fit:contain}
+.prod .ph{position:relative;flex:none;width:100%;padding-top:100%;height:0;background:#fff;overflow:hidden}
+.prod .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
 .prod .pb{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
 .prod .pn{font-size:13px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .prod .pp{font-family:var(--display);font-weight:900;font-size:17px;color:var(--pink);margin-top:auto}
@@ -367,3 +367,46 @@ button{font:inherit;color:inherit}
   .ins-card:not(.ins-top) .ins-cta{width:100%;padding:12px}
   .ins-top .ins-txt span{display:none}
 }
+
+/* 一覧に戻る */
+.backall{display:block;width:100%;margin:16px 0 4px;padding:13px;font-weight:700;background:var(--acc-soft);color:var(--ink);border:1.5px solid var(--acc);border-radius:14px}
+/* おすすめのキーワード検索 */
+#shopSearch{margin:10px 0 8px}
+#shopSearch input{flex:1;min-width:0}
+#shopSearch .sbtn{flex:none;border:0;background:var(--acc);color:var(--on-acc);border-radius:999px;padding:6px 14px;font:700 13px var(--body);cursor:pointer}
+/* サイトへのご意見 */
+.fbbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.fbbox summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:13.5px}
+.sitefb{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.sitefb textarea{min-height:90px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:14px;background:var(--bg);color:var(--ink);resize:vertical}
+.sitefb .btn{align-self:flex-start}
+.sitefb .btn.ok{background:var(--acc);color:var(--on-acc)}
+
+/* ---- ニュース ---- */
+.nlist{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+.ncard{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.nmeta{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-3)}
+.ntag{font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--acc-soft);color:var(--ink)}
+.ntag.t-event{background:var(--mint-soft)}.ntag.t-overseas{background:var(--sky-soft)}.ntag.t-anime,.ntag.t-book{background:var(--butter-soft)}.ntag.t-topic{background:var(--grey-soft)}
+.nnew{font-size:10.5px;font-weight:900;color:var(--on-acc);background:var(--acc);border-radius:6px;padding:1px 6px;letter-spacing:.04em}
+.ncard h3{margin:0;font-family:var(--display);font-size:16px;line-height:1.45}
+.ncard h3 a{color:var(--ink);text-decoration:none}
+.ncard p{margin:0;font-size:13.5px;line-height:1.7;color:var(--ink-2)}
+.nitem{display:flex;align-items:center;gap:6px;flex-wrap:wrap;background:var(--surface-2);border-radius:12px;padding:8px 10px;margin-top:2px}
+.nwhen{font-size:13px;font-weight:700;margin-right:auto}
+.nitem .btn{padding:6px 12px;font-size:12.5px}
+.nmark.on{background:var(--acc);color:var(--on-acc);border-color:var(--acc)}
+.nsrc{font-size:12.5px;color:var(--ink-2);align-self:flex-start}
+.newspeek{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:12px 14px;margin:6px 0 12px}
+.peekhead{display:flex;align-items:center;justify-content:space-between}
+.peekhead h2{margin:0;font-family:var(--display);font-size:15px}
+.peekmore{border:0;background:none;color:var(--acc);font:700 13px var(--body);cursor:pointer;padding:4px 0}
+.newspeek ul{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column}
+.newspeek li+li{border-top:1px dashed var(--line)}
+.newspeek li button{display:flex;align-items:baseline;gap:10px;width:100%;text-align:left;border:0;background:none;padding:8px 0;font:inherit;color:var(--ink);cursor:pointer}
+.newspeek time{flex:none;font-size:12px;color:var(--ink-3);min-width:4.2em}
+.newspeek li span{font-size:13.5px;line-height:1.5;flex:1}
+.ndot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--acc);align-self:center}
+/* タブ5つ：スマホで1行に収める */
+@media (max-width:430px){.tabs button{font-size:12px;padding:9px 1px;letter-spacing:-.04em}.tabs .cnt{font-size:10px;line-height:15px;min-width:14px;padding:0 3px;margin-left:1px}}
+@media (max-width:360px){.tabs button{font-size:11px}}

@@ -12,6 +12,8 @@ const items = JSON.parse(fs.readFileSync("data/items.json", "utf8")).filter(x =>
 const css = fs.readFileSync("src/style.css", "utf8");
 const app = fs.readFileSync("src/app.js", "utf8");
 let homeBody = fs.readFileSync("src/home-body.html", "utf8");
+let news = [];
+try { news = JSON.parse(fs.readFileSync("data/news.json", "utf8")).filter(n => !n.hidden).sort((a, b) => (b.date || "").localeCompare(a.date || "")).slice(0, 80); } catch (e) {}
 const installJs = fs.readFileSync("src/install.js", "utf8");
 const swJs = fs.readFileSync("src/sw.js", "utf8");
 const BUILD = Date.now().toString(36);
@@ -170,7 +172,7 @@ write("index.html", page({
   url: "/",
   head: `<script type="application/ld+json">${JSON.stringify(homeLd)}</script>`,
   body: homeBody,
-  scripts: `<script>window.__ITEMS=${JSON.stringify(items).replace(/</g, "\\u003c")};</script>\n<script src="/app.js?v=${TODAY}"></script>`,
+  scripts: `<script>window.__ITEMS=${JSON.stringify(items).replace(/</g, "\\u003c")};window.__NEWS=${JSON.stringify(news).replace(/</g, "\\u003c")};</script>\n<script src="/app.js?v=${TODAY}"></script>`,
 }));
 
 // ---- 項目ごとのページ（検索から来た人の入口）

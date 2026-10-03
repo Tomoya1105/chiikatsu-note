@@ -1,15 +1,16 @@
-// 読者からの「情報のまちがい報告」を受け取って保存する（Cloudflare Pages Functions）
+// 読者からの「情報のまちがい報告」と「サイトへのご意見」（itemId "site"）を受け取って保存する（Cloudflare Pages Functions）
 // 保存先：KV（名前 REPORTS）。Cloudflare の設定で KV をこのサイトに結び付ける必要があります。
 export async function onRequestPost({ request, env }) {
   if (!env.REPORTS) return new Response("not configured", { status: 503 });
   let b;
   try { b = await request.json(); } catch (e) { return new Response("bad request", { status: 400 }); }
-  const kinds = ["date", "place", "price", "cancel", "other"];
+  const kinds = ["date", "place", "price", "cancel", "other", "site"];
   const rep = {
     itemId: String(b.itemId || "").slice(0, 100),
     title: String(b.title || "").slice(0, 200),
     kind: kinds.includes(b.kind) ? b.kind : "other",
-    text: String(b.text || "").slice(0, 400),
+    text: String(b.text || "").slice(0, 600),
+    page: String(b.page || "").slice(0, 200),
     createdAt: new Date().toISOString(),
     status: "open",
   };
