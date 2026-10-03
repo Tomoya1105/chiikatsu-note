@@ -1,0 +1,101 @@
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="3" y="7" width="34" height="30" rx="11" fill="var(--acc-soft)"/>
+        <rect x="3" y="7" width="34" height="11" rx="5.5" fill="var(--acc)"/>
+        <rect x="11" y="3" width="4" height="9" rx="2" fill="var(--ink)"/>
+        <rect x="25" y="3" width="4" height="9" rx="2" fill="var(--ink)"/>
+        <circle cx="14" cy="26" r="2.2" fill="var(--ink)"/>
+        <circle cx="26" cy="26" r="2.2" fill="var(--ink)"/>
+        <path d="M18 30.5q2 1.8 4 0" stroke="var(--ink)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1>ちい活ノート</h1>
+        <p>ちいかわグッズとイベントのスケジュール帳（非公式）</p>
+      </div>
+    </div>
+    <div class="topr"><div class="today num" id="today"></div>
+      <button class="oshibtn" id="oshiBtn" aria-expanded="false" aria-controls="oshiPanel"><span class="dot" aria-hidden="true"></span>推しカラー</button></div>
+  </header>
+  <section class="oshipanel" id="oshiPanel" hidden>
+    <h2>推しカラーをえらぶ</h2>
+    <p>ページの色が変わります。選んだ色はこの端末に保存されます。</p>
+    <div class="swatches" id="swatches"></div>
+  </section>
+  <p class="pr">※当サイトは楽天アフィリエイトを利用しています。「PR」表示のリンクから購入・予約されると、運営者に紹介料が入ります。</p>
+
+  <div class="region">
+    <div class="seg" id="regionSw" role="group" aria-label="日本と海外の切り替え">
+      <button data-r="jp" aria-pressed="true">日本のちいかわ</button>
+      <button data-r="os" aria-pressed="false">海外のちいかわ</button>
+    </div>
+    <div class="chips" id="countryChips" aria-label="国・地域で絞り込み" hidden></div>
+    <p class="osnote" id="osNote" hidden>海外の情報は現地の公式発表をもとにまとめています。入場予約や営業時間は変わりやすいので、お出かけ前に現地の公式SNSも確認してください。</p>
+  </div>
+  <section class="sum" aria-label="今週のまとめ">
+    <button class="s1" data-jump="soon"><span class="k">7日以内に発売・開始</span><span class="v num" id="nSoon">0<small>件</small></span></button>
+    <button class="s2" data-jump="ending"><span class="k">7日以内に終了</span><span class="v num" id="nEnding">0<small>件</small></span></button>
+    <button class="s3" data-jump="mine"><span class="k">ほしいもの</span><span class="v num" id="nWant">0<small>件</small></span></button>
+  </section>
+
+  <nav class="tabs" role="tablist" aria-label="表示切り替え">
+    <button role="tab" id="tab-list" aria-selected="true" data-view="list">一覧</button>
+    <button role="tab" id="tab-cal" aria-selected="false" data-view="cal">カレンダー</button>
+    <button role="tab" id="tab-mine" aria-selected="false" data-view="mine">マイリスト<span class="cnt num" id="tabCnt" hidden>0</span></button>
+    <button role="tab" id="tab-shop" aria-selected="false" data-view="shop">おすすめ</button>
+  </nav>
+
+  <section id="view-list">
+    <div class="filters">
+      <label class="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.7" fill="none"/><path d="M11 11l3.2 3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><input id="q" type="search" placeholder="商品名・お店・キャラ名でさがす" aria-label="キーワード検索"></label>
+      <div class="chips" id="stChips" aria-label="状態で絞り込み"></div>
+      <div class="chips" id="catChips" aria-label="種類で絞り込み"></div>
+      <div class="row"><span id="count" class="num"></span>
+</div>
+      <div class="focusbar" id="focusBar" hidden><span id="focusTxt"></span><button class="btn" id="focusClear">すべて表示する</button></div>
+    </div>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section id="view-cal" hidden>
+    <div class="calhead"><button id="prev" aria-label="前の月">‹</button><h2 id="calTitle" class="num"></h2><button id="next" aria-label="次の月">›</button></div>
+    <div class="cal" id="cal"></div>
+    <div class="legend"><span><i class="mk s"></i>発売・開始日</span><span><i class="mk e"></i>販売・開催の最終日</span></div>
+    <h3 class="dayhead num" id="dayTitle"></h3>
+    <div class="list" id="dayList"></div>
+  </section>
+
+  <section id="view-mine" hidden>
+    <div class="list" id="mineList"></div>
+  </section>
+
+  <section id="view-shop" hidden>
+    <div class="shophead">
+      <p class="shopnote">楽天市場で買える、ちいかわの公式グッズを集めました。中古品や、定価より高い転売品は表示しないようにしています。</p>
+      <div class="chips" id="shopCats" aria-label="種類で絞り込み"></div>
+      <div class="row"><span id="shopCount" class="num"></span>
+        <label>並べ替え <select id="shopSort">
+          <option value="standard">標準</option>
+          <option value="+itemPrice">安い順</option>
+          <option value="-itemPrice">高い順</option>
+          <option value="-updateTimestamp">新着順</option>
+          <option value="-reviewCount">レビュー件数順</option>
+          <option value="-reviewAverage">レビュー評価順</option>
+        </select></label></div>
+    </div>
+    <div class="pgrid" id="shopGrid"></div>
+    <button class="btn more" id="shopMore" hidden>もっと見る</button>
+  </section>
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <footer class="about">
+    <h2>このサイトについて</h2>
+    <p>ちいかわ公式の発表や各社のプレスリリースをもとに、発売日と販売・開催期間を整理したファン向けの非公式スケジュール帳です。発売日は地域や店舗で前後することがあり、「なくなり次第終了」の商品もあります。購入前に必ず公式情報をご確認ください。まちがいを見つけたら、各情報の「情報のまちがいを報告する」から教えてください。</p>
+    <p>マイリストと推しカラーは、この端末のブラウザにだけ保存されます。<span id="lastUpd"></span></p>
+    <div class="sitelinks"><a href="/about/">運営者について</a><a href="/privacy/">プライバシーポリシー</a></div>
+    {{ALL_LINKS}}
+    <p class="credit"><a href="https://webservice.rakuten.co.jp/" target="_blank" rel="noopener">Supported by Rakuten Developers</a>　商品情報は楽天ウェブサービスから取得しています。</p>
+    <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
+  </footer>
+</div>

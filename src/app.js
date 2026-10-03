@@ -1,0 +1,583 @@
+/* ===== 設定 ===== */
+const AFF = { rakutenId: "582a6f7f.e1ade2b2.582a6f84.d5f85faa" };
+/* 楽天ウェブサービス（Webアプリケーション。許可サイト chiikatsu-note.pages.dev からのみ使えるキー） */
+const RAK = { app: "d328e43a-4e55-4bd7-8ce4-f265afcf674d", key: "pk_xcGUmu6xmFCHvq4iCebKJjAiwMb2IAKrSJhQgGb49vo",
+  ep: "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701" };
+
+const OSHI = {"chiikawa": ["ちいかわ", "#E27496", "#FBE3EB"], "hachiware": ["ハチワレ", "#4A74B5", "#E0E9F6"], "usagi": ["うさぎ", "#C4961A", "#FAF0CE"], "momonga": ["モモンガ", "#8A68C8", "#ECE5F8"], "kuri": ["くりまんじゅう", "#9C6A3F", "#F2E5D8"], "furuhon": ["古本屋", "#D0533C", "#FADDD6"], "rakko": ["ラッコ", "#7A6A5E", "#ECE6E1"], "shisa": ["シーサー", "#D8731C", "#FCE6D2"]};
+function applyOshi(k){
+  if (!OSHI[k]) k = "chiikawa";
+  document.documentElement.dataset.oshi = k;
+  document.querySelectorAll("#swatches .sw").forEach(b=>b.setAttribute("aria-pressed", b.dataset.k===k));
+  try{ localStorage.setItem("chiikatsu-oshi", k); }catch(e){}
+}
+document.getElementById("swatches").innerHTML = Object.entries(OSHI).map(([k,[n,a,s]])=>
+  `<button class="sw" data-k="${k}" aria-pressed="false"><i style="background:conic-gradient(${a} 0 50%,${s} 0 100%)"></i>${n}</button>`).join("");
+document.getElementById("swatches").onclick = e=>{ const b=e.target.closest(".sw"); if(!b) return; applyOshi(b.dataset.k); };
+document.getElementById("oshiBtn").onclick = ()=>{
+  const p = document.getElementById("oshiPanel"); p.hidden = !p.hidden;
+  document.getElementById("oshiBtn").setAttribute("aria-expanded", !p.hidden);
+};
+{ let k0 = "chiikawa"; try{ k0 = localStorage.getItem("chiikatsu-oshi") || "chiikawa"; }catch(e){} applyOshi(k0); }
+
+const CAT = {goods:"グッズ",food:"お菓子・食品",kuji:"くじ",event:"イベント",cafe:"カフェ・お店",book:"本・カレンダー"};
+const SP = {day:"日付まで決定",early:"上旬",mid:"中旬",late:"下旬",month:"月のみ"};
+const DOW = ["日","月","火","水","木","金","土"];
+const DAYMS = 86400000;
+const TODAY = (()=>{const d=new Date();d.setHours(0,0,0,0);return d})();
+const P = s => {const [y,m,d]=String(s).split("-").map(Number);return new Date(y,(m||1)-1,d||1)};
+const diffDays = (a,b) => Math.round((a-b)/DAYMS);
+const isEvent = it => it.cat==="event"||it.cat==="cafe";
+const ymd = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const safeUrl = u => /^https:\/\//.test(u||"") ? u : "";
+
+/* ===== データ（共有の保存庫から読み込み） ===== */
+let ITEMS = [];
+/* ===== 日本／海外 ===== */
+const REG = {jp:"日本",tw:"台湾",kr:"韓国",hk:"香港",cn:"中国"};
+const R = {region:"jp", country:"all"};
+try{ const r0 = JSON.parse(localStorage.getItem("chiikatsu-region")||"null"); if (r0 && r0.region) Object.assign(R, r0); }catch(e){}
+const regionOf = it => REG[it.region] ? it.region : "jp";
+function inRegion(it){
+  const r = regionOf(it);
+  if (R.region==="jp") return r==="jp";
+  if (r==="jp") return false;
+  return R.country==="all" || r===R.country;
+}
+const VIS = () => ITEMS.filter(inRegion);
+let loaded = false, loadFailed = false;
+function prep(id, d){
+  const it = Object.assign({}, d, {id});
+  it.sp = it.sp || "day";
+  it.sd = P(it.s);
+  it.ed = it.e ? P(it.e) : null;
+  return it;
+}
+
+function status(it){
+  const v = isEvent(it)? "開催":"発売";
+  if (it.sd > TODAY){
+    const n = diffDays(it.sd,TODAY);
+    if (it.sp==="day" && n<=7) return {k:"soon",label:n===1?`明日${v}`:`あと${n}日で${v}`,rank:1};
+    return {k:"upcoming",label:`${v}予定`,rank:3};
+  }
+  if (it.ed && it.ed < TODAY) return {k:"ended",label:"終了",rank:4};
+  if (it.ed){
+    const n = diffDays(it.ed,TODAY);
+    if (n<=7) return {k:"ending",label:n===0?"今日まで":n===1?"明日まで":`あと${n}日で終了`,rank:0};
+  }
+  return {k:"on",label:isEvent(it)?"開催中":"販売中",rank:2};
+}
+/* その情報で「次に気にする日」 */
+function keyOf(it){
+  const k = status(it).k;
+  if (k==="upcoming"||k==="soon") return {d:it.sd, kind:"start"};
+  if ((k==="on"||k==="ending") && it.ed) return {d:it.ed, kind:"end"};
+  if (k==="on") return {d:it.sd, kind:"since"};
+  return {d:it.ed||it.sd, kind:"ended"};
+}
+function fmtStart(it){
+  const d=it.sd, m=d.getMonth()+1;
+  if (it.sp!=="day") return `${m}月${it.sp==="month"?"予定":SP[it.sp]}`;
+  return `${m}/${d.getDate()}(${DOW[d.getDay()]})`;
+}
+function fmtEnd(it){ const d=it.ed; return `${d.getMonth()+1}/${d.getDate()}(${DOW[d.getDay()]})`; }
+
+/* ===== リンク ===== */
+function rakuten(q){
+  const u = "https://search.rakuten.co.jp/search/mall/"+encodeURIComponent(q)+"/";
+  return AFF.rakutenId ? `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(u)}` : u;
+}
+/* 楽天トラベルのキーワード検索はShift_JISで受け取るため、地名をShift_JISに変換する */
+let SJIS = null;
+function sjisEncode(str){
+  if (!SJIS){
+    SJIS = new Map();
+    try{
+      const dec = new TextDecoder("shift_jis");
+      for (let a=0x81; a<=0xFC; a++){ if (a>0x9F && a<0xE0) continue;
+        for (let b=0x40; b<=0xFC; b++){ if (b===0x7F) continue;
+          const ch = dec.decode(new Uint8Array([a,b]));
+          if (ch.length===1 && ch.charCodeAt(0)!==0xFFFD && !SJIS.has(ch)) SJIS.set(ch, "%"+a.toString(16).toUpperCase()+"%"+b.toString(16).toUpperCase());
+        } }
+    }catch(e){}
+  }
+  let out = "";
+  for (const ch of str){
+    if (/[A-Za-z0-9\-_.]/.test(ch)) out += ch;
+    else if (ch===" ") out += "+";
+    else if (SJIS.has(ch)) out += SJIS.get(ch);
+    else if (ch.charCodeAt(0)<128) out += "%"+ch.charCodeAt(0).toString(16).toUpperCase().padStart(2,"0");
+  }
+  return out;
+}
+function travel(area){
+  const u = "https://kw.travel.rakuten.co.jp/keyword/Search.do?f_query="+sjisEncode(area);
+  return AFF.rakutenId ? `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(u)}` : u;
+}
+function gcal(it){
+  if (it.sp!=="day") return null;
+  const f = d=>ymd(d).replace(/-/g,"");
+  const end = new Date((it.ed||it.sd).getTime()+DAYMS);
+  const p = new URLSearchParams({action:"TEMPLATE",text:"ちいかわ："+it.t,dates:`${f(it.sd)}/${f(end)}`,details:`${it.place||""}\n${it.src||""}`});
+  return "https://calendar.google.com/calendar/render?"+p.toString();
+}
+
+/* ===== マイリスト（この端末に保存） ===== */
+let mine = {};
+try { mine = JSON.parse(localStorage.getItem("chiikatsu-mine")||"{}")||{}; } catch(e){ mine = {}; }
+function saveMine(){ try{ localStorage.setItem("chiikatsu-mine",JSON.stringify(mine)); }catch(e){} }
+
+/* ===== カード ===== */
+function card(it, opt){
+  const st = status(it);
+  const k = keyOf(it);
+  const d = k.d;
+  const KD = {start: isEvent(it)?"開始":"発売", end:"まで", since:"から", ended:"終了"};
+  const fuzzyLbl = {early:"上旬",mid:"中旬",late:"下旬",month:"ごろ"};
+  const stamp = (k.kind==="start" && it.sp!=="day")
+    ? `<span class="m num">${d.getMonth()+1}月</span><span class="fz">${fuzzyLbl[it.sp]}</span><span class="kd start">${KD.start}予定</span>`
+    : `<span class="m num">${d.getMonth()+1}月</span><span class="d num">${d.getDate()}</span><span class="w">${DOW[d.getDay()]}曜</span><span class="kd ${k.kind}">${KD[k.kind]}</span>`;
+  const v = isEvent(it)?"開始":"発売";
+  let period = `<span>${v} <b class="num">${fmtStart(it)}</b>${it.time?` <span class="num">${esc(it.time)}</span>`:""}</span>`;
+  if (it.ed) period += `<span>終了 <b class="num">${fmtEnd(it)}</b></span>`;
+  if (it.eNote) period += `<span>${esc(it.eNote)}</span>`;
+  else if (!it.ed && !isEvent(it)) period += `<span>なくなり次第終了</span>`;
+  const g = gcal(it), src = safeUrl(it.src);
+  const m = mine[it.id]||"";
+  return `<article class="card ${st.k==="ended"?"ended":""} ${m==="want"?"wanted":""}" data-id="${esc(it.id)}">
+    <div class="stamp" aria-hidden="true">${stamp}</div>
+    <div class="body">
+      <div class="meta"><span class="pill st-${st.k}">${st.label}</span>${regionOf(it)!=="jp"?`<span class="pill rg">${REG[regionOf(it)]}</span>`:""}<span class="cat">${CAT[it.cat]||""}</span></div>
+      <h3><a href="/items/${encodeURIComponent(it.id)}/">${esc(it.t)}</a></h3>
+      <div class="period">${period}</div>
+      <dl class="info">
+        ${it.place?`<dt>場所</dt><dd>${esc(it.place)}</dd>`:""}
+        ${it.price?`<dt>価格</dt><dd class="num">${esc(it.price)}${regionOf(it)==="jp"?"（税込）":""}</dd>`:""}
+        ${it.note?`<dt>メモ</dt><dd>${esc(it.note)}</dd>`:""}
+      </dl>
+      <div class="acts">
+        ${it.q?`<span class="rk" data-rk="${esc(it.id)}"></span>`:""}
+        ${src?`<a class="btn" href="${esc(src)}" target="_blank" rel="noopener">公式情報</a>`:""}
+        ${g&&st.k!=="ended"?`<a class="btn" href="${g}" target="_blank" rel="noopener">予定に追加</a>`:""}
+        <button class="btn want" data-mark="want" aria-pressed="${m==="want"}">${m==="want"?"♥ ほしい":"♡ ほしい"}</button>
+        <button class="btn got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
+      </div>
+      ${it.area && st.k!=="ended" ? `<a class="trip" href="${travel(it.area)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(it.area)}周辺のホテルを探す（楽天トラベル）</span><span class="tag">PR</span></a>` : ""}
+      <button class="repbtn" type="button" data-report>情報のまちがいを報告する</button>
+    </div>
+    ${it.q?`<div class="pimg" data-pimg="${esc(it.id)}"></div>`:""}
+  </article>`;
+}
+const AD = `<aside class="ad" aria-label="広告"><b>広告</b>ここに広告が入ります（Google AdSense など）</aside>`;
+function placeholder(){
+  if (loadFailed) return `<div class="empty">データを読み込めませんでした。ページを開き直してください。</div>`;
+  return `<div class="empty">読み込み中です…</div>`;
+}
+
+/* ===== 一覧 ===== */
+const state = { st:"next", cat:"all", q:"", focus:null };
+const ST = [["next","これからの予定"],["ending","まもなく終了"],["onsale","販売中"],["ended","終了"]];
+function chips(el,list,key){
+  el.innerHTML = list.map(([k,l])=>`<button class="chip" data-k="${k}" aria-pressed="${state[key]===k}">${l}</button>`).join("");
+  el.onclick = e=>{ const b=e.target.closest(".chip"); if(!b) return; state[key]=b.dataset.k; if(key==="st") state.focus=null; chips(el,list,key); renderList(); };
+}
+function bucket(it){ const k=status(it).k; return k==="ended"?"ended":(k==="on"&&!it.ed)?"onsale":"next"; }
+function sortItems(arr){
+  const order = {next:0, onsale:1, ended:2};
+  return arr.slice().sort((a,b)=>{
+    const ba=bucket(a), bb=bucket(b);
+    if (ba!==bb) return order[ba]-order[bb];
+    const ka=keyOf(a), kb=keyOf(b);
+    if (ba==="next"){
+      if (+ka.d!==+kb.d) return ka.d-kb.d;
+      return (ka.kind==="end"?0:1)-(kb.kind==="end"?0:1);  // 同じ日なら「まで」を先に
+    }
+    return kb.d-ka.d;  // 販売中・終了は新しい順
+  });
+}
+function withAds(html){ return html.map((h,i)=> (i===4||i===14)? h+AD : h).join(""); }
+function weekLabel(d){
+  const n = diffDays(d, TODAY);
+  if (n<=0) return "今日";
+  if (n===1) return "明日";
+  const dow = (TODAY.getDay()+6)%7;           // 月曜=0
+  const left = 6-dow;                          // 今週の日曜までの日数
+  if (n<=left) return "今週";
+  if (n<=left+7) return "来週";
+  if (d.getFullYear()===TODAY.getFullYear() && d.getMonth()===TODAY.getMonth()) return "今月";
+  return `${d.getFullYear()!==TODAY.getFullYear()?d.getFullYear()+"年":""}${d.getMonth()+1}月`;
+}
+function renderList(){
+  try{ renderListInner(); }catch(err){
+    console.error(err);
+    document.getElementById("list").innerHTML = `<div class="empty">一覧を表示できませんでした。ページを開き直してください。</div>`;
+  }
+}
+function renderListInner(){
+  const el = document.getElementById("list");
+  const fb = document.getElementById("focusBar");
+  if (!loaded){ el.innerHTML = placeholder(); document.getElementById("count").textContent=""; fb.hidden=true; return; }
+  const q = state.q.trim().toLowerCase();
+  let arr = VIS().filter(it=>{
+    if (state.st==="ending" ? status(it).k!=="ending" : bucket(it)!==state.st) return false;
+    if (state.focus && status(it).k!==state.focus) return false;
+    if (state.cat!=="all" && it.cat!==state.cat) return false;
+    if (q && !(it.t+(it.place||"")+(it.note||"")+(CAT[it.cat]||"")).toLowerCase().includes(q)) return false;
+    return true;
+  });
+  arr = sortItems(arr);
+  // 絞り込み中の表示
+  fb.hidden = !state.focus;
+  if (state.focus) document.getElementById("focusTxt").textContent = state.focus==="soon" ? "7日以内に発売・開始するものだけ表示中" : "7日以内に終わるものだけ表示中";
+  const desc = {ending:"1週間以内に終わるものです。終わる日が近い順。", next:"今日から近い順。始まるものは発売日・開始日、開催中のものは終わる日で並べています。", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
+  document.getElementById("count").textContent = `${arr.length}件　${desc}`;
+  if (!arr.length){
+    const msg = R.region==="os"&&!VIS().length ? "この国・地域の情報はまだありません。"
+      : (q||state.cat!=="all"||state.focus) ? "条件に合う情報が見つかりませんでした。キーワードや種類の絞り込みを変えてみてください。"
+      : state.st==="next" ? "これからの予定はまだありません。" : state.st==="ending" ? "1週間以内に終わるものはありません。" : "まだありません。";
+    el.innerHTML = `<div class="empty">${msg}</div>`;
+    return;
+  }
+  let h = "", cur = "";
+  arr.forEach((it,i)=>{
+    if (state.st==="next"||state.st==="ending"){
+      const w = weekLabel(keyOf(it).d);
+      if (w!==cur){ cur = w; h += `<h3 class="wk${w==="今日"?" is-today":""}">${w}</h3>`; }
+    }
+    h += card(it);
+    if (i===4 || i===14) h += AD;
+  });
+  el.innerHTML = h;
+}
+function renderMine(){
+  const el = document.getElementById("mineList");
+  if (!loaded){ el.innerHTML = placeholder(); return; }
+  const want = sortItems(ITEMS.filter(it=>mine[it.id]==="want"));
+  const got = sortItems(ITEMS.filter(it=>mine[it.id]==="got"));
+  let h = "";
+  if (!want.length && !got.length) h = `<div class="empty">「♡ ほしい」を押した商品やイベントがここに集まります。<br>発売日や終了日が近い順に並ぶので、買い逃し防止に使えます。</div>`;
+  if (want.length) h += `<h3 class="dayhead">ほしいもの（${want.length}）</h3>`+want.map(card).join("");
+  if (got.length) h += `<h3 class="dayhead">ゲット済み（${got.length}）</h3>`+got.map(card).join("");
+  el.innerHTML = h;
+}
+function renderSummary(){
+  const c = k=>VIS().filter(it=>status(it).k===k).length;
+  document.getElementById("nSoon").innerHTML = c("soon")+"<small>件</small>";
+  document.getElementById("nEnding").innerHTML = c("ending")+"<small>件</small>";
+  const ids = new Set(ITEMS.map(i=>i.id));
+  const w = Object.entries(mine).filter(([id,v])=>v==="want" && (!loaded || ids.has(id))).length;
+  document.getElementById("nWant").innerHTML = w+"<small>件</small>";
+  const tc = document.getElementById("tabCnt"); tc.textContent = w; tc.hidden = !w;
+  const last = ITEMS.map(i=>i.updatedAt||"").sort().pop();
+  document.getElementById("lastUpd").textContent = last ? `掲載情報の最終更新日：${last.replace(/^(\d+)-0?(\d+)-0?(\d+).*/,"$1年$2月$3日")}。` : "";
+}
+
+/* ===== カレンダー ===== */
+let calM = new Date(TODAY.getFullYear(), TODAY.getMonth(), 1);
+let selDay = new Date(TODAY);
+function renderCal(){
+  const y=calM.getFullYear(), m=calM.getMonth();
+  document.getElementById("calTitle").textContent = `${y}年${m+1}月`;
+  const first = new Date(y,m,1).getDay(), days = new Date(y,m+1,0).getDate();
+  let h = DOW.map(d=>`<div class="dow">${d}</div>`).join("");
+  for (let i=0;i<first;i++) h += `<div class="day out" aria-hidden="true"></div>`;
+  for (let d=1; d<=days; d++){
+    const dt = new Date(y,m,d);
+    const s = VIS().filter(it=>it.sp==="day" && +it.sd===+dt).length;
+    const e = VIS().filter(it=>it.ed && +it.ed===+dt).length;
+    const marks = "<i class='mk s'></i>".repeat(Math.min(s,4)) + "<i class='mk e'></i>".repeat(Math.min(e,4));
+    const cls = ["day", +dt===+TODAY?"today":"", +dt===+selDay?"sel":""].join(" ");
+    h += `<button class="${cls}" data-d="${d}" aria-label="${m+1}月${d}日 開始${s}件 終了${e}件"><span class="n num">${d}</span><span class="marks">${marks}</span></button>`;
+  }
+  document.getElementById("cal").innerHTML = h;
+  renderDay();
+}
+function renderDay(){
+  const from = selDay;
+  const y = calM.getFullYear(), m = calM.getMonth();
+  const monthEnd = new Date(y, m+1, 0);
+  const isFirst = from.getDate()===1;
+  document.getElementById("dayTitle").textContent = isFirst
+    ? `${m+1}月のスケジュール`
+    : `${m+1}月${from.getDate()}日(${DOW[from.getDay()]})からのスケジュール`;
+  if (!loaded){ document.getElementById("dayList").innerHTML = placeholder(); return; }
+  const inRange = d => d && d>=from && d<=monthEnd;
+  // 日付ごとの予定（はじまる・おわる）
+  const ev = [];
+  VIS().forEach(it=>{
+    if (it.sp==="day" && inRange(it.sd)) ev.push({d:it.sd, kind:"start", it});
+    if (it.ed && inRange(it.ed) && !(it.sp==="day" && +it.ed===+it.sd)) ev.push({d:it.ed, kind:"end", it});
+  });
+  ev.sort((a,b)=>a.d-b.d || (a.kind==="start"?-1:1));
+  let h = "", cur = null;
+  ev.forEach(x=>{
+    if (!cur || +cur!==+x.d){
+      cur = x.d;
+      h += `<h4 class="agdate num${+x.d===+TODAY?" is-today":""}">${x.d.getMonth()+1}/${x.d.getDate()}(${DOW[x.d.getDay()]})${+x.d===+TODAY?" 今日":""}</h4>`;
+    }
+    const v = isEvent(x.it) ? "開始" : "発売";
+    h += `<div class="agtag ${x.kind}">${x.kind==="start"?`この日に${v}`:"この日が最終日"}</div>` + card(x.it);
+  });
+  // 日付がはっきりしないもの（上旬・中旬・下旬・月のみ）
+  const fuzzy = sortItems(VIS().filter(it=>it.sp!=="day" && it.sd.getFullYear()===y && it.sd.getMonth()===m));
+  if (fuzzy.length) h += `<h4 class="agdate">日付がまだ決まっていないもの</h4>` + fuzzy.map(card).join("");
+  // 期間中ずっと開催・販売しているもの
+  const ongoing = sortItems(VIS().filter(it=>it.ed && it.sd<from && it.ed>monthEnd));
+  if (ongoing.length) h += `<h4 class="agdate">${m+1}月中ずっと開催・販売しているもの</h4>` + ongoing.map(card).join("");
+  document.getElementById("dayList").innerHTML = h || `<div class="empty">${isFirst?`${m+1}月`:"この日以降"}に始まる・終わる情報はまだありません。</div>`;
+}
+function goMonth(delta){
+  calM = new Date(calM.getFullYear(), calM.getMonth()+delta, 1);
+  const thisMonth = calM.getFullYear()===TODAY.getFullYear() && calM.getMonth()===TODAY.getMonth();
+  selDay = thisMonth ? new Date(TODAY) : new Date(calM);
+  renderCal();
+}
+document.getElementById("cal").onclick = e=>{
+  const b=e.target.closest(".day[data-d]"); if(!b) return;
+  selDay = new Date(calM.getFullYear(), calM.getMonth(), +b.dataset.d); renderCal();
+};
+document.getElementById("prev").onclick = ()=>goMonth(-1);
+document.getElementById("next").onclick = ()=>goMonth(1);
+
+/* ===== まちがい報告 ===== */
+const RKIND = {date:"日付がちがう",place:"場所がちがう",price:"価格がちがう",cancel:"中止・延期になった",other:"その他"};
+function toast(msg){
+  const t=document.getElementById("toast"); t.textContent=msg; t.hidden=false;
+  clearTimeout(toast._t); toast._t=setTimeout(()=>{t.hidden=true},2800);
+}
+/* 読者からの報告フォーム */
+document.addEventListener("click", async e=>{
+  const open = e.target.closest("[data-report]");
+  if (open){
+    const c = open.closest(".card");
+    let f = c.querySelector(".rep");
+    if (f){ f.remove(); return; }
+    const id = c.dataset.id;
+    c.querySelector(".body").insertAdjacentHTML("beforeend", `<form class="rep">
+      <p class="rep-h">どこがまちがっていましたか？</p>
+      <div class="rep-k">${Object.entries(RKIND).map(([k,l],i)=>`<label><input type="radio" name="rk-${esc(id)}" value="${k}" ${i===0?"checked":""}> ${l}</label>`).join("")}</div>
+      <textarea id="rt-${esc(id)}" maxlength="400" placeholder="正しい情報や、わかった場所（公式のお知らせのURLなど）があれば書いてください"></textarea>
+      <div class="acts"><button class="btn ok" type="submit">報告する</button><button class="btn no" type="button" data-cancel>やめる</button></div>
+    </form>`);
+    return;
+  }
+  if (e.target.closest("[data-cancel]")) e.target.closest(".rep").remove();
+});
+document.addEventListener("submit", async e=>{
+  const f = e.target.closest(".rep"); if(!f) return;
+  e.preventDefault();
+  const c = f.closest(".card"), id = c.dataset.id;
+  const it = ITEMS.find(i=>i.id===id);
+  f.querySelectorAll("button").forEach(x=>x.disabled=true);
+  try{
+    const r = await fetch("/api/report", {method:"POST", headers:{"content-type":"application/json"},
+      body: JSON.stringify({itemId:id, title: it?it.t:"", kind:(f.querySelector("input[type=radio]:checked")||{}).value||"other", text:f.querySelector("textarea").value.trim().slice(0,400)})});
+    if (!r.ok) throw new Error(r.status);
+    f.remove();
+    toast("報告ありがとうございます。確認して直します");
+  }catch(err){
+    f.querySelectorAll("button").forEach(x=>x.disabled=false);
+    toast("送れませんでした。時間をおいてもう一度お試しください");
+  }
+});
+
+/* ===== タブ ===== */
+const VIEWS = ["list","cal","mine","shop"];
+function setView(v){
+  VIEWS.forEach(k=>{
+    document.getElementById("view-"+k).hidden = k!==v;
+    document.querySelector(`[data-view="${k}"]`).setAttribute("aria-selected", k===v);
+  });
+  if (v==="cal") renderCal();
+  if (v==="mine") renderMine();
+  if (v==="shop") renderShop();
+  try{ localStorage.setItem("chiikatsu-view",v); }catch(e){}
+}
+function currentView(){ return VIEWS.find(k=>!document.getElementById("view-"+k).hidden); }
+function renderAll(){
+  renderSummary();
+  const v = currentView();
+  if (v==="list") renderList(); else if (v==="cal") renderCal(); else if (v==="mine") renderMine();
+}
+document.querySelector(".tabs").onclick = e=>{ const b=e.target.closest("[data-view]"); if(b) setView(b.dataset.view); };
+document.querySelector(".sum").onclick = e=>{
+  const b=e.target.closest("[data-jump]"); if(!b) return;
+  const j=b.dataset.jump;
+  if (j==="mine") return setView("mine");
+  state.st = j==="ending" ? "ending" : "next"; state.focus = j==="ending" ? null : j; state.cat="all"; chips(document.getElementById("stChips"),ST,"st"); chips(document.getElementById("catChips"),[["all","すべての種類"],...Object.entries(CAT)],"cat"); setView("list"); renderList();
+};
+document.addEventListener("click", e=>{
+  const b = e.target.closest("[data-mark]"); if(!b) return;
+  const id = b.closest(".card").dataset.id, k=b.dataset.mark;
+  if (mine[id]===k) delete mine[id]; else mine[id]=k;
+  saveMine(); renderAll();
+});
+document.getElementById("q").addEventListener("input", e=>{ state.q=e.target.value; renderList(); });
+document.getElementById("focusClear").onclick = ()=>{ state.focus=null; renderList(); };
+document.getElementById("today").textContent = `今日 ${TODAY.getMonth()+1}/${TODAY.getDate()}(${DOW[TODAY.getDay()]})`;
+
+chips(document.getElementById("stChips"),ST,"st");
+chips(document.getElementById("catChips"),[["all","すべての種類"],...Object.entries(CAT)],"cat");
+let v0="list"; try{ v0 = localStorage.getItem("chiikatsu-view")||"list"; }catch(e){}
+setView(["list","cal","mine"].includes(v0)?v0:"list");
+renderSummary();
+
+
+/* 日本／海外の切り替え */
+function renderRegion(){
+  document.querySelectorAll("#regionSw button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.r===R.region));
+  const cc = document.getElementById("countryChips");
+  cc.hidden = R.region!=="os";
+  const present = new Set(ITEMS.map(regionOf));
+  cc.innerHTML = [["all","すべての国・地域"],...Object.entries(REG).filter(([k])=>k!=="jp")]
+    .map(([k,l])=>`<button class="chip" data-c="${k}" aria-pressed="${R.country===k}" ${k!=="all"&&loaded&&!present.has(k)?"disabled":""}>${l}</button>`).join("");
+  document.getElementById("osNote").hidden = R.region!=="os";
+}
+function setRegion(patch){
+  Object.assign(R, patch);
+  try{ localStorage.setItem("chiikatsu-region", JSON.stringify(R)); }catch(e){}
+  renderRegion(); renderAll();
+}
+document.getElementById("regionSw").onclick = e=>{ const b=e.target.closest("[data-r]"); if(b) setRegion({region:b.dataset.r, country:"all"}); };
+document.getElementById("countryChips").onclick = e=>{ const b=e.target.closest("[data-c]"); if(b && !b.disabled) setRegion({country:b.dataset.c}); };
+renderRegion();
+
+/* ===== データ読み込み（ビルド時にページへ埋め込み） ===== */
+ITEMS = (window.__ITEMS||[]).filter(x=>!x.hidden).map(x=>prep(x.id, x));
+loaded = true;
+document.body.classList.add("can-report");
+renderRegion(); renderAll();
+
+/* ===== 楽天の商品情報（画像・価格・楽天で見る・おすすめ） ===== */
+const CHARS = /ちいかわ|chiikawa|ハチワレ|ナガノ/i;
+const NG = ["中古","USED","ユーズド","美品","未使用品","開封済","プレミア","入手困難","完売品","転売","並行輸入","非公式","互換","ノーブランド","ハンドメイド","レンタル"];
+const norm = s => String(s||"").normalize("NFKC").toLowerCase().replace(/\s+/g," ");
+const yen = n => "¥"+Number(n).toLocaleString("ja-JP");
+const firstPrice = p => { const m = String(p||"").replace(/,/g,"").match(/(\d{2,6})\s*円/); return m ? +m[1] : 0; };
+function okItem(x, refPrice){
+  const n = x.name;
+  if (!CHARS.test(n)) return false;
+  if (NG.some(w=>n.includes(w))) return false;
+  if (refPrice && x.price > refPrice*1.6) return false;
+  return true;
+}
+function normItem(raw){
+  const x = raw.Item || raw;
+  let img = (x.mediumImageUrls||[])[0];
+  if (img && typeof img==="object") img = img.imageUrl;
+  if (img) img = img.replace(/\?_ex=\d+x\d+/, "?_ex=300x300");
+  return { name:x.itemName||"", price:+x.itemPrice||0, url:x.affiliateUrl||x.itemUrl||"", img:img||"",
+    shop:x.shopName||"", rc:+x.reviewCount||0, ra:+x.reviewAverage||0 };
+}
+/* 楽天APIは1秒1回まで。順番待ちで呼び、結果は6時間この端末に覚えておく */
+const RK_TTL = 6*3600*1000;
+let rkChain = Promise.resolve(), rkLast = 0;
+function rkSearch(params){
+  const qs = new URLSearchParams(Object.assign({applicationId:RAK.app, accessKey:RAK.key, affiliateId:AFF.rakutenId,
+    format:"json", formatVersion:"2", availability:"1", imageFlag:"1", NGKeyword:"中古 USED 美品"}, params));
+  const ck = "rk:"+qs.toString().replace(/accessKey=[^&]+&?/,"");
+  try{ const c = JSON.parse(localStorage.getItem(ck)||"null"); if (c && Date.now()-c.t < RK_TTL) return Promise.resolve(c.v); }catch(e){}
+  const job = rkChain.then(async ()=>{
+    const wait = rkLast + 1100 - Date.now(); if (wait>0) await new Promise(r=>setTimeout(r,wait));
+    rkLast = Date.now();
+    const r = await fetch(RAK.ep+"?"+qs.toString());
+    if (!r.ok) throw new Error("rakuten "+r.status);
+    const j = await r.json();
+    const v = {items:(j.Items||[]).map(normItem), count:j.count||0, pageCount:j.pageCount||1};
+    try{ localStorage.setItem(ck, JSON.stringify({t:Date.now(), v})); }catch(e){}
+    return v;
+  });
+  rkChain = job.catch(()=>{});
+  return job;
+}
+/* 掲載中の商品と同じものが楽天に出ているか探す */
+const rkFound = {};
+async function findOnRakuten(it){
+  if (it.id in rkFound) return rkFound[it.id];
+  const tokens = norm(it.q).split(" ").filter(t=>t && !/^(ちいかわ|アニメ|映画)$/.test(t));
+  const ref = firstPrice(it.price);
+  let hit = null;
+  try{
+    const v = await rkSearch({keyword: it.q, hits:"10"});
+    hit = v.items.find(x=>okItem(x, ref) && tokens.every(t=>norm(x.name).includes(t))) || null;
+  }catch(e){ hit = null; }
+  rkFound[it.id] = hit;
+  return hit;
+}
+function paintRakuten(id, hit){
+  document.querySelectorAll(`[data-pimg="${CSS.escape(id)}"]`).forEach(el=>{
+    if (!hit || !hit.img) return;
+    el.innerHTML = `<a href="${esc(hit.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(hit.img)}" alt="${esc(hit.name)}" loading="lazy"></a><small>楽天市場</small>`;
+    el.classList.add("on");
+  });
+  document.querySelectorAll(`[data-rk="${CSS.escape(id)}"]`).forEach(el=>{
+    if (!hit) return;
+    el.innerHTML = `<a class="btn buy" href="${esc(hit.url)}" target="_blank" rel="noopener sponsored">楽天で見る ${yen(hit.price)} <span class="tag">PR</span></a>`;
+  });
+}
+const rkObs = "IntersectionObserver" in window ? new IntersectionObserver(ents=>{
+  ents.forEach(en=>{
+    if (!en.isIntersecting) return;
+    rkObs.unobserve(en.target);
+    const id = en.target.dataset.id, it = ITEMS.find(i=>i.id===id);
+    if (it) findOnRakuten(it).then(h=>paintRakuten(id,h));
+  });
+}, {rootMargin:"300px"}) : null;
+function hookRakuten(){
+  document.querySelectorAll("[data-pimg]:not(.hooked)").forEach(el=>{
+    el.classList.add("hooked");
+    const id = el.dataset.pimg;
+    if (id in rkFound){ paintRakuten(id, rkFound[id]); return; }
+    const card = el.closest(".card");   // 画像の枠は見つかるまで非表示なので、カード全体を見張る
+    if (rkObs && card) rkObs.observe(card);
+  });
+}
+new MutationObserver(()=>hookRakuten()).observe(document.body, {childList:true, subtree:true});
+hookRakuten();
+
+/* おすすめタブ */
+const SHOPCAT = [["all","すべて",""],["nui","ぬいぐるみ・マスコット","ぬいぐるみ"],["bun","文房具","文房具"],["zakka","雑貨・キッチン","雑貨"],["bag","バッグ・ポーチ","バッグ"],["wear","アパレル","Tシャツ"],["food","お菓子","お菓子"],["book","本・コミック","本"]];
+const SH = {cat:"all", sort:"standard", page:1, items:[], pageCount:1, busy:false, err:false};
+function shopChips(){
+  document.getElementById("shopCats").innerHTML = SHOPCAT.map(([k,l])=>`<button class="chip" data-sc="${k}" aria-pressed="${SH.cat===k}">${l}</button>`).join("");
+}
+function prodCard(x){
+  const stars = x.rc ? `<span class="pr2">★${x.ra.toFixed(1)}（${x.rc}件）</span>` : "";
+  return `<a class="prod" href="${esc(x.url)}" target="_blank" rel="noopener sponsored">
+    <div class="ph"><img src="${esc(x.img)}" alt="" loading="lazy"></div>
+    <div class="pb"><span class="pn">${esc(x.name)}</span>${stars}<span class="pp num">${yen(x.price)}</span><span class="ps">${esc(x.shop)}</span><span class="tag">PR・楽天市場</span></div>
+  </a>`;
+}
+async function loadShop(reset){
+  if (SH.busy) return;
+  if (reset){ SH.page=1; SH.items=[]; }
+  SH.busy = true; SH.err = false; drawShop();
+  const word = (SHOPCAT.find(c=>c[0]===SH.cat)||[])[2]||"";
+  const p = {keyword: ("ちいかわ "+word).trim(), hits:"30", page:String(SH.page)};
+  if (SH.sort!=="standard") p.sort = SH.sort;
+  try{
+    const v = await rkSearch(p);
+    const seen = new Set(SH.items.map(x=>x.url));
+    v.items.filter(x=>okItem(x) && x.img && !seen.has(x.url)).forEach(x=>SH.items.push(x));
+    SH.pageCount = Math.min(v.pageCount||1, 10);
+  }catch(e){ SH.err = true; }
+  SH.busy = false; drawShop();
+}
+function drawShop(){
+  const g = document.getElementById("shopGrid");
+  if (SH.err && !SH.items.length){ g.innerHTML = `<div class="empty" style="grid-column:1/-1">楽天の商品情報を読み込めませんでした。時間をおいて開き直してください。</div>`; }
+  else if (!SH.items.length){ g.innerHTML = `<div class="empty" style="grid-column:1/-1">${SH.busy?"読み込み中です…":"商品が見つかりませんでした。"}</div>`; }
+  else g.innerHTML = SH.items.map(prodCard).join("");
+  document.getElementById("shopCount").textContent = SH.items.length ? `${SH.items.length}件` : "";
+  const m = document.getElementById("shopMore");
+  m.hidden = !(SH.items.length && SH.page < SH.pageCount);
+  m.disabled = SH.busy; m.textContent = SH.busy ? "読み込み中…" : "もっと見る";
+}
+let shopStarted = false;
+function renderShop(){ if (!shopStarted){ shopStarted = true; shopChips(); loadShop(true); } }
+document.getElementById("shopCats").onclick = e=>{ const b=e.target.closest("[data-sc]"); if(!b) return; SH.cat=b.dataset.sc; shopChips(); loadShop(true); };
+document.getElementById("shopSort").onchange = e=>{ SH.sort=e.target.value; loadShop(true); };
+document.getElementById("shopMore").onclick = ()=>{ SH.page++; loadShop(false); };
+if (v0==="shop") setView("shop");
