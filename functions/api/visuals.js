@@ -2,7 +2,7 @@
 // 画像は保存しない。ここに記録するのは「どの情報に、どこの画像を、どんな根拠で、どこへのリンクで出したか」だけ。
 //   POST /api/visuals            … 端末が楽天で同じ商品を見つけて画像を出したときの記録（1日1回まで）
 //   GET  /api/visuals            … 表示率の集計と、情報ごとの記録（取得元・利用根拠・リンク先）
-//   GET  /api/visuals?audit=1    … サーバーから楽天APIとXの埋め込み可否を確かめ直して集計（1時間に1回まで）
+//   GET  /api/visuals?audit=1    … サーバーから楽天APIとXの埋め込み可否を確かめ直す。1回に10件ずつ（続きは次の呼び出しで）
 import { RKM } from "../../src/rkmatch.mjs";
 
 const AFF = "582a6f7f.e1ade2b2.582a6f84.d5f85faa";
@@ -34,7 +34,7 @@ export async function onRequestPost({ request, env }) {
 }
 
 async function audit(items, env) {
-  const out = { rakutenErrors: 0, xChecked: 0 };
+  const out = { rakutenErrors: 0, rakutenChecked: 0, xChecked: 0 };
   let last = 0;
   for (const it of items) {
     if (it.rakuten) {
@@ -43,13 +43,14 @@ async function audit(items, env) {
       const qs = new URLSearchParams({ applicationId: RAK.app, accessKey: RAK.key, affiliateId: AFF, format: "json", formatVersion: "2", availability: "1", imageFlag: "1", NGKeyword: "中古 USED 美品", keyword: it.rakuten.query, hits: "10" });
       try {
         const r = await fetch(`${RAK.ep}?${qs}`, { headers: { Referer: "https://chiikatsunote.com/", Origin: "https://chiikatsunote.com" } });
-        if (!r.ok) { out.rakutenErrors++; out.lastRakutenStatus = r.status; continue; }
+        out.rakutenChecked++;
+        if (!r.ok) { out.rakutenErrors++; out.lastRakutenStatus = r.status; out.lastRakutenBody = (await r.text()).slice(0, 200); continue; }
         const list = ((await r.json()).Items || []).map(i => { const x = i.Item || i; let img = (x.mediumImageUrls || [])[0]; if (img && typeof img === "object") img = img.imageUrl;
           return { name: x.itemName || "", price: +x.itemPrice || 0, img: img ? img.replace(/\?_ex=\d+x\d+/, "") + "?_ex=400x400" : "", link: (x.affiliateUrl || "").includes("hb.afl.rakuten.co.jp") ? x.affiliateUrl : `https://hb.afl.rakuten.co.jp/hgc/${AFF}/?pc=${encodeURIComponent(x.itemUrl || "")}` }; });
         const h = RKM.pick({ t: it.t, q: it.q, price: it.price, cat: it.cat }, list);
         if (h && IMG_OK.test(h.img)) await env.REPORTS.put(`v:rk:${it.id}`, JSON.stringify({ kind: "rakuten", src: RK_SRC, basis: RK_BASIS, name: h.name.slice(0, 200), price: h.price, link: h.link, img: h.img, by: "点検", at: new Date().toISOString() }), { expirationTtl: 60 * 60 * 24 * 14 });
         else await env.REPORTS.delete(`v:rk:${it.id}`);
-      } catch (e) { out.rakutenErrors++; }
+      } catch (e) { out.rakutenErrors++; out.lastRakutenError = String(e).slice(0, 200); }
     }
     if (it.x) {
       // 削除・非公開のポストは X の oEmbed が 404 などを返す
@@ -69,9 +70,20 @@ export async function onRequestGet({ request, env }) {
   const u = new URL(request.url);
   let auditInfo = null;
   if (u.searchParams.get("audit") === "1") {
-    const lastAt = await env.REPORTS.get("v:auditAt");
-    if (lastAt && Date.now() - Date.parse(lastAt) < 3600e3) auditInfo = { skipped: `前回の点検から1時間たっていません（${lastAt}）` };
-    else { await env.REPORTS.put("v:auditAt", new Date().toISOString()); auditInfo = await audit(items, env); }
+    // 時間切れにならないよう、点検が必要な情報を10件ずつ順番に確かめる（cursor を KV に覚える）
+    const targets = items.filter(it => it.rakuten || it.x);
+    const lock = await env.REPORTS.get("v:auditLock");
+    if (lock && Date.now() - +lock < 20e3) auditInfo = { skipped: "ほかの点検が動いています。20秒後にもう一度" };
+    else {
+      await env.REPORTS.put("v:auditLock", String(Date.now()), { expirationTtl: 60 });
+      let cur = +(await env.REPORTS.get("v:auditCursor")) || 0; if (cur >= targets.length) cur = 0;
+      const batch = targets.slice(cur, cur + 10);
+      auditInfo = await audit(batch, env);
+      const next = cur + batch.length;
+      await env.REPORTS.put("v:auditCursor", String(next >= targets.length ? 0 : next));
+      auditInfo.range = `${cur + 1}〜${next} / ${targets.length}件`; auditInfo.done = next >= targets.length;
+      await env.REPORTS.delete("v:auditLock");
+    }
   }
   const rows = [];
   for (const it of items) {
