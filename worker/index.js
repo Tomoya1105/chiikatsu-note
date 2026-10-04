@@ -89,7 +89,7 @@ export async function preStart(env, fetcher = fetch, now = Date.now()) {
       const mk = `w:dl:${it.id}:${d.until}`;
       if (await env.REPORTS.get(mk)) continue;
       await env.REPORTS.put(mk, "1", { expirationTtl: 3 * 86400 });
-      await addJob(env, { type: "broadcast", at: now, payload: { title: `⏰ ${d.k}の締切まであと3時間：${it.t.replace(/（予約）$/, "")}`, body: `${d.until.slice(5, 10).replace("-", "/")} ${d.until.slice(11, 16)}まで${d.n ? "・" + d.n : ""}`, url: `/items/${encodeURIComponent(it.id)}/`, tag: `dl-${it.id}` } });
+      await addJob(env, { type: "broadcast", at: now, payload: { title: `⏰ ${d.k}の締切まであと3時間：${it.t.replace(/（予約）$/, "")}`, body: `${Number(d.until.slice(5, 7))}/${Number(d.until.slice(8, 10))} ${d.until.slice(11, 16)}まで${d.n ? "・" + d.n : ""}`, url: `/items/${encodeURIComponent(it.id)}/`, tag: `dl-${it.id}` } });
       out.push("dl:" + it.id);
     }
   }
