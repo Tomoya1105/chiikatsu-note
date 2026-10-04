@@ -556,3 +556,10 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .drepmsg{font-size:12.5px;color:var(--ink-2)}
 .has-intro .ins-top{display:none}   /* 初めての案内を出している間は、ホーム画面に追加の案内は出さない */
 .detail .trip-t{white-space:normal}
+
+/* 楽天の商品の枠は、ニュースや予定のカードと見分けがつくように、うっすら色をつける */
+.popstrip{background:linear-gradient(180deg,var(--acc-soft),var(--surface) 70%);border:1px solid var(--line);box-shadow:none}
+.pophead h3{display:flex;flex-direction:column;gap:3px}
+.prtag{align-self:flex-start;font-family:var(--body);font-size:10.5px;font-weight:700;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:1px 8px;letter-spacing:.02em}
+.popc img{background:#fff}
+.popstrip > p.tag{font-size:11px;color:var(--ink-3)}

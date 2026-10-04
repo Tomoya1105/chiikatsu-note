@@ -596,9 +596,12 @@ const KINDS = ["かるた","ぬいぐるみ","キーホルダー","キーリン�
 const norm = s => String(s||"").normalize("NFKC").toLowerCase().replace(/\s+/g," ");
 const yen = n => "¥"+Number(n).toLocaleString("ja-JP");
 const firstPrice = p => { const m = String(p||"").replace(/,/g,"").match(/(\d{2,6})\s*円/); return m ? +m[1] : 0; };
+// ほかのキャラクターもたくさん選べる商品（水筒・飾り付けなど）は、ちいかわファン向けではないので出さない
+const OTHER_IP = /ディズニー|ミッキー|ミニー|プリンセス|アナと雪|アナ雪|トイ・?ストーリー|サンリオ|キティ|マイメロ|クロミ|シナモ|ポムポム|すみっコ|リラックマ|ポケモン|ピカチュウ|カービィ|マリオ|アンパンマン|ドラえもん|しんちゃん|クレヨンしんちゃん|鬼滅|呪術|スヌーピー|ムーミン|ミッフィー|トミカ|プラレール|戦隊|仮面ライダー|プリキュア|スパイダーマン|マーベル|ちいかわ以外/g;
 function okItem(x, refPrice){
   const n = x.name;
   if (!CHARS.test(n)) return false;
+  if (new Set(n.match(OTHER_IP)||[]).size >= 2) return false;
   if (NG.some(w=>n.includes(w))) return false;
   if (BULK.test(n)) return false;
   if (refPrice && x.price > refPrice*1.6) return false;
@@ -765,9 +768,9 @@ function fillPop(){
     return;
   }
   if (!POP.length){ els.forEach(e=>e.remove()); return; }
-  const html = `<div class="pophead"><h3>楽天で人気のちいかわグッズ</h3><button type="button" class="peekmore" data-gopop>もっと見る →</button></div>
+  const html = `<div class="pophead"><h3><span class="prtag">PR・楽天市場</span>楽天で人気のちいかわグッズ</h3><button type="button" class="peekmore" data-gopop>もっと見る →</button></div>
     <div class="poprow">${POP.map(x=>`<a class="popc" href="${esc(x.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(x.img)}" alt="" loading="lazy"><span class="pn">${esc(x.name)}</span><span class="pp num">${yen(x.price)}</span></a>`).join("")}</div>
-    <p class="tag" style="margin:4px 0 0">PR・楽天市場（レビューの多い順）</p>`;
+    <p class="tag" style="margin:4px 0 0">レビューの多い順</p>`;
   els.forEach(e=>{ if (!e.dataset.done){ e.innerHTML = html; e.dataset.done = "1"; } });
 }
 document.addEventListener("click", e=>{
@@ -794,9 +797,9 @@ function fillSeason(){
     return;
   }
   if (!SEASON.length){ els.forEach(e=>e.remove()); return; }
-  const html = `<div class="pophead"><h3>${esc(title)}</h3></div>
+  const html = `<div class="pophead"><h3><span class="prtag">PR・楽天市場</span>${esc(title)}</h3></div>
     <div class="poprow">${SEASON.map(x=>`<a class="popc" href="${esc(x.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(x.img)}" alt="" loading="lazy"><span class="pn">${esc(x.name)}</span><span class="pp num">${yen(x.price)}</span></a>`).join("")}</div>
-    <p class="tag" style="margin:4px 0 0">PR・楽天市場</p>`;
+`;
   els.forEach(e=>{ if (!e.dataset.done){ e.innerHTML = html; e.dataset.done = "1"; } });
 }
 
