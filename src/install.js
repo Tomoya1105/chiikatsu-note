@@ -58,7 +58,8 @@
       else if (a.classList.contains("prod")) ct("c:shop");
       else if (a.closest("[data-rk]") || a.closest("[data-pimg]")) ct(a.dataset.pre ? "c:rkpre" : "c:rk");
       else ct("c:rksearch");
-    } else if (a.hasAttribute("data-rsv")) ct("c:rsv");
+    } else if (/af\.moshimo\.com/.test(h)) ct(/p_id=1225/.test(h) ? "c:yahoo" : "c:amazon");
+    else if (a.hasAttribute("data-rsv")) ct("c:rsv");
     else if (a.closest(".ncard")) ct("c:news");
     else if (/calendar\.google/.test(h)) ct("c:gcal");
     else if (a.classList.contains("off") || /公式/.test(a.textContent)) ct("c:official");

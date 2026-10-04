@@ -124,6 +124,10 @@ function rbList(it){
   const L = Array.isArray(it.rb) ? it.rb : [];
   return L.filter(x => x && /^https:\/\/books\.rakuten\.co\.jp\/rb\/\d+\/?$/.test(x.u||""));
 }
+/* もしもアフィリエイト（Yahoo!ショッピング）。検索結果へのリンクを作る */
+const MOSHIMO = { yahoo: { a_id: "5833703", p_id: "1225", pc_id: "1925", pl_id: "18502" } };
+function moshimo(kind, url){ const m = MOSHIMO[kind]; return m ? `https://af.moshimo.com/af/c/click?a_id=${m.a_id}&p_id=${m.p_id}&pc_id=${m.pc_id}&pl_id=${m.pl_id}&url=${encodeURIComponent(url)}` : ""; }
+function yahooSearch(q){ if (!/ちいかわ|chiikawa/i.test(q)) q = "ちいかわ "+q; return moshimo("yahoo", "https://shopping.yahoo.co.jp/search?p="+encodeURIComponent(q)); }
 function affLink(u){ return `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(u)}`; }
 function rbBtns(it){
   const pre = it.sd > TODAY;
@@ -232,6 +236,7 @@ function card(it, opt){
       <div class="acts sub">
         ${src?`<a class="lnk" href="${esc(src)}" target="_blank" rel="noopener">公式情報</a>`:""}
         ${g&&st.k!=="ended"?`<a class="lnk" href="${g}" target="_blank" rel="noopener">カレンダーに追加</a>`:""}
+        ${it.q&&st.k!=="ended"?`<a class="lnk yh" href="${esc(yahooSearch(it.q))}" target="_blank" rel="noopener sponsored" data-yh>Yahoo!で探す<span class="tag">PR</span></a>`:""}
         <button class="lnk got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
       </div>
       ${(()=>{ const tr = it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}</span><span class="tag">楽天トラベル・PR</span></a>` : ""; })()}

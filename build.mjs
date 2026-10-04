@@ -50,6 +50,8 @@ try {
   }
 } catch (e) {}
 const sjisEncode = str => [...str].map(ch => /[A-Za-z0-9\-_.]/.test(ch) ? ch : ch === " " ? "+" : sjis.get(ch) || (ch.charCodeAt(0) < 128 ? "%" + ch.charCodeAt(0).toString(16).toUpperCase().padStart(2, "0") : "")).join("");
+const MOSHIMO_YAHOO = "a_id=5833703&p_id=1225&pc_id=1925&pl_id=18502";   // もしもアフィリエイト（Yahoo!ショッピング）
+const yahooSearch = q => `https://af.moshimo.com/af/c/click?${MOSHIMO_YAHOO}&url=${encodeURIComponent("https://shopping.yahoo.co.jp/search?p=" + encodeURIComponent(/ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q))}`;
 const aff = u => `https://hb.afl.rakuten.co.jp/hgc/${AFF}/?pc=${encodeURIComponent(u)}`;
 const rakutenSearch = q => aff("https://search.rakuten.co.jp/search/mall/" + encodeURIComponent(/ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q) + "/");
 // 海外は楽天トラベルの「海外ホテル」一覧へ（キーワード検索は国内のホテルしか出ないため）
@@ -263,6 +265,7 @@ for (const it of items) {
       ${(() => { const L = (Array.isArray(it.rb) ? it.rb : []).filter(x => x && /^https:\/\/books\.rakuten\.co\.jp\/rb\/\d+\/?$/.test(x.u || "")); const pre = it.s > TODAY;
         return L.map(x => `<a class="btn buy" href="${esc(aff(x.u))}" target="_blank" rel="noopener sponsored" data-rb>${pre ? "楽天ブックスで予約する" : "楽天ブックスで見る"}${x.n ? "（" + esc(x.n) + "）" : ""} <span class="tag">PR</span></a>`).join(""); })()}
       ${it.q && !(Array.isArray(it.rb) && it.rb.length) ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored" data-rkd="${esc(JSON.stringify({ q: it.q, t: it.t, p: it.price || "", pre: it.s > TODAY }))}">楽天市場で探す <span class="tag">PR</span></a>` : ""}
+      ${it.q ? `<a class="btn" href="${esc(yahooSearch(it.q))}" target="_blank" rel="noopener sponsored" data-yh>Yahoo!ショッピングで探す <span class="tag">PR</span></a>` : ""}
       ${/^https:\/\//.test(it.src || "") ? `<a class="btn" href="${esc(it.src)}" target="_blank" rel="noopener">公式情報</a>` : ""}
     </div>
     ${(() => { const tr = it.area ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
@@ -295,7 +298,7 @@ write("about/index.html", page({
   title: "運営者について｜ちい活ノート", desc: "ちい活ノートの運営方針と情報の集め方について。", url: "/about/",
   body: doc("運営者について", `<p>ちい活ノートは、ちいかわが大好きな個人が運営している非公式のスケジュール帳です。グッズの発売日やイベントの会期を、買い逃し・行き逃しがないようにひとつの場所で見られることを目指しています。</p>
 <h2>情報の集め方</h2><p>ちいかわ公式サイト・公式SNS、各社のプレスリリース、会場の公式発表をもとに、毎日AIを使って情報を集めて掲載しています。まちがいを見つけた方は、各情報の「情報のまちがいを報告する」から教えてください。確認して直します。</p>
-<h2>広告について</h2><p>当サイトは楽天アフィリエイトを利用しています。「PR」と表示したリンクから商品の購入や宿泊の予約があると、運営者に紹介料が支払われます。紹介料によって掲載内容や順番を変えることはありません。</p>
+<h2>広告について</h2><p>当サイトは楽天アフィリエイトと、もしもアフィリエイト（Yahoo!ショッピングなど）を利用しています。「PR」と表示したリンクから商品の購入や宿泊の予約があると、運営者に紹介料が支払われます。紹介料によって掲載内容や順番を変えることはありません。</p>
 <h2>権利について</h2><p>「ちいかわ」に関する著作権・商標権はナガノ氏および権利者に帰属します。当サイトは権利者とは関係がなく、キャラクターの画像やイラストを当サイトに保存・掲載することはしていません。商品画像は楽天ウェブサービスを通じて、公式の画像は「公式の画像を見る」を押したときにX（旧Twitter）の埋め込み機能で公式アカウントの投稿をそのまま表示しています。</p>`),
 }));
 write("official/index.html", page({
@@ -325,7 +328,7 @@ write("privacy/index.html", page({
   title: "プライバシーポリシー｜ちい活ノート", desc: "ちい活ノートのプライバシーポリシー。", url: "/privacy/",
   body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。また、Cloudflare社の「Cloudflare Web Analytics」で、訪問数や表示の速さを集計しています。こちらもCookieを使わず、個人を特定する情報は集めません。</p>
 <h2>Xの投稿の表示について</h2><p>「公式の画像を見る」を押したときだけ、X（旧Twitter）の埋め込み機能で公式アカウントの投稿を表示します。そのとき、閲覧情報がX社に送られることがあります（X社のプライバシーポリシーが適用されます）。押さなければXには何も送られません。トラッキングを控える設定（DNT）で読み込んでいます。</p><h2>お問い合わせについて</h2><p>お問い合わせフォームから送られた内容（種類・お名前・メールアドレス・本文）は、お返事とサイトの改善のためだけに使い、第三者に渡すことはありません。180日たつと自動で消えます。送りすぎを防ぐため、IPアドレスから作った一時的な値を1日だけ使いますが、IPアドレスそのものは保存しません。</p><h2>まちがい報告</h2><p>「情報のまちがいを報告する」から送られた内容（選んだ項目と入力した文章）は、掲載情報を直すためだけに使います。個人を特定できる情報は書き込まないでください。</p>
-<h2>アフィリエイトについて</h2><p>当サイトは楽天グループ株式会社の「楽天アフィリエイト」に参加しています。リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
+<h2>アフィリエイトについて</h2><p>当サイトは楽天グループ株式会社の「楽天アフィリエイト」と、株式会社もしもの「もしもアフィリエイト」（Yahoo!ショッピングなど）に参加しています。リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
 <h2>アクセス解析・広告配信について</h2><p>今後、アクセス解析ツールや第三者配信の広告（Google AdSense など）を導入する場合は、Cookieを使って閲覧情報を集めることがあります。導入する際はこのページでお知らせします。</p>
 <h2>免責事項</h2><p>掲載情報は正確になるよう努めていますが、発売日や会期は変更されることがあります。掲載内容によって生じた損害について、運営者は責任を負いません。最新の情報は必ず公式の発表をご確認ください。</p>
 <p class="credit">制定日：2026年10月3日</p>`),

@@ -20,9 +20,12 @@ for (const d of pagesToCheck) {
   const h = read(`dist/${d}/index.html`);
   for (const m of h.matchAll(/href="(https:\/\/[^"]*rakuten[^"]*)"/g)) {
     if (m[1].startsWith("https://webservice.rakuten.co.jp")) continue; // 楽天APIのクレジット表記（必須・対象外）
-    if (!m[1].startsWith(`https://hb.afl.rakuten.co.jp/hgc/${AFF}/`)) errs.push(`${d}: アフィリエイトIDのない楽天リンク ${m[1].slice(0, 80)}`);
+    if (!m[1].startsWith(`https://hb.afl.rakuten.co.jp/hgc/${AFF}/`) && !m[1].startsWith("https://af.moshimo.com/")) errs.push(`${d}: アフィリエイトIDのない楽天リンク ${m[1].slice(0, 80)}`);
   }
 }
+// もしもアフィリエイトのリンクは、必ず自分のID（a_id）になっていること
+for (const d of pagesToCheck) for (const m of read(`dist/${d}/index.html`).matchAll(/href="(https:\/\/af\.moshimo\.com[^"]*)"/g)) if (!/a_id=5833703&/.test(m[1].replace(/&amp;/g, "&"))) errs.push(`${d}: もしものIDがちがうリンク ${m[1].slice(0, 80)}`);
+if (!app.includes('a_id: "5833703"')) errs.push("app.js から もしも（Yahoo!）のIDが消えています");
 try { JSON.parse(read("dist/manifest.webmanifest")); } catch (e) { errs.push("manifest.webmanifest が壊れています"); }
 const items = JSON.parse(read("data/items.json"));
 const seen = new Set();
