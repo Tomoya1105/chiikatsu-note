@@ -93,6 +93,19 @@ export async function preStart(env, fetcher = fetch, now = Date.now()) {
       out.push("dl:" + it.id);
     }
   }
+  // 楽天のセール（お買い物マラソンなど）が始まったら、♡で保存した商品がある人に知らせる
+  try {
+    const cr = await fetcher("https://chiikatsunote.com/camps.json", { cf: { cacheTtl: 300 } });
+    if (cr.ok) for (const c of await cr.json()) {
+      const st = new Date(c.start + ":00+09:00").getTime();
+      if (now < st || now - st > 15 * 60e3) continue;   // 始まってから15分以内のときだけ
+      const mk = `w:camp:${c.id}`;
+      if (await env.REPORTS.get(mk)) continue;
+      await env.REPORTS.put(mk, "1", { expirationTtl: 7 * 86400 });
+      await addJob(env, { type: "camp", at: now, payload: { name: c.name, body: "マイリストの「気になる商品」をまとめて買うと、ポイントがアップします", url: "/?v=mine", tag: `camp-${c.id}` } });
+      out.push("camp:" + c.id);
+    }
+  } catch (e) {}
   return { ok: true, pre: out };
 }
 

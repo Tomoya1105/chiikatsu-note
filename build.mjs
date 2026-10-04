@@ -175,6 +175,7 @@ write("install.js", installJs);
 write("sw.js", swJs.replace("__VER__", BUILD));
 fs.mkdirSync(path.join(OUT, "icons"), { recursive: true });
 for (const f of fs.readdirSync("src/icons")) fs.copyFileSync(path.join("src/icons", f), path.join(OUT, "icons", f));
+write("camps.json", JSON.stringify(camps.map(c => ({ id: c.id, name: c.name, start: c.start, end: c.end }))));
 write("push-items.json", JSON.stringify(items.map(it => ({ id: it.id, t: it.t, s: it.s, sp: it.sp || "day", e: it.e || null, cat: it.cat, place: it.place || "", rs: it.rs || null, re: it.re || null, rsv: Array.isArray(it.rsv) ? it.rsv.some(x => !x.so) : !!it.rsv, dl: (Array.isArray(it.dl) ? it.dl : []).filter(x => x && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(x.until || "")).map(x => ({ k: x.k || "応募", until: x.until, n: x.n || "" })) }))));
 write("manifest.webmanifest", JSON.stringify({
   id: "/",

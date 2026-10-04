@@ -62,6 +62,9 @@ function prep(id, d){
   return it;
 }
 
+// 気になる商品（楽天の♡）。いろいろな所で数えるので先に読み込む
+var FAV_KEY = "chiikatsu-fav";
+var FAV = []; try{ FAV = (JSON.parse(localStorage.getItem(FAV_KEY)||"[]")||[]).filter(x=>x && x.c); }catch(e){}
 // 公式通販などの予約・受注（rs=受付開始, re=締切, rsv=予約ページ）
 const isRsv = it => !!(it.rsv && (Array.isArray(it.rsv) ? it.rsv.length : it.rsv));
 const rsvList = it => Array.isArray(it.rsv) ? it.rsv.filter(x=>x && /^https:\/\//.test(x.u)) : (/^https:\/\//.test(it.rsv||"") ? [{n:"", u:it.rsv}] : []);
@@ -422,6 +425,8 @@ function renderMine(){
   if (!want.length && !got.length && !FAV.length) h = `<div class="empty">「♡ ほしい」を押した商品やイベントがここに集まります。<br>発売日や終了日が近い順に並ぶので、買い逃し防止に使えます。</div>`;
   if (want.length) h += `<h3 class="dayhead">ほしいもの（${want.length}）</h3>`+want.map(card).join("");
   if (got.length) h += `<h3 class="dayhead">ゲット済み（${got.length}）</h3>`+got.map(card).join("");
+  const cn = campNow();
+  if (FAV.length && cn && cn.mode!=="day") h += `<a class="favcamp" href="${esc(cn.c.url? (cn.c.url.includes("hb.afl")?cn.c.url:affLink(cn.c.url)) : "#")}" target="_blank" rel="noopener sponsored">🛍 <b>${esc(cn.c.name)}${cn.mode==="on"?"開催中":"がもうすぐ"}</b><span>${cn.mode==="on"?"気になる商品をまとめて買うと、ポイントがアップします":"始まってからまとめて買うとお得です"}</span><span class="tag">PR</span></a>`;
   if (FAV.length) h += `<h3 class="dayhead">気になる商品（${FAV.length}）</h3><p class="favnote">「おすすめ」で♡を押した楽天の商品です。値段は開いたときに楽天から読み直しています。</p><div class="pgrid" id="favGrid">${favCards()}</div>`;
   else h += `<p class="favnote">「おすすめ」タブの商品の♡を押すと、ここに「気になる商品」として保存されます。</p>`;
   el.innerHTML = h;
@@ -432,7 +437,7 @@ function renderSummary(){
   document.getElementById("nSoon").innerHTML = c("soon")+"<small>件</small>";
   document.getElementById("nEnding").innerHTML = c("ending")+"<small>件</small>";
   const ids = new Set(ITEMS.map(i=>i.id));
-  const w = Object.entries(mine).filter(([id,v])=>v==="want" && (!loaded || ids.has(id))).length;
+  const w = Object.entries(mine).filter(([id,v])=>v==="want" && (!loaded || ids.has(id))).length + FAV.length;   // 「ほしい」の予定＋♡を押した商品
   document.getElementById("nWant").innerHTML = w+"<small>件</small>";
   const tc = document.getElementById("tabCnt"); tc.textContent = w; tc.hidden = !w;
   const last = ITEMS.map(i=>i.updatedAt||"").sort().pop();
@@ -752,8 +757,6 @@ function shopChips(){
   document.getElementById("shopCats").innerHTML = SHOPCAT.map(([k,l])=>`<button class="chip" data-sc="${k}" aria-pressed="${SH.cat===k}">${l}</button>`).join("");
 }
 /* 気になる商品（楽天）：♡を押した商品をこの端末に保存して、マイリストに並べる */
-const FAV_KEY = "chiikatsu-fav";
-let FAV = []; try{ FAV = (JSON.parse(localStorage.getItem(FAV_KEY)||"[]")||[]).filter(x=>x && x.c); }catch(e){}
 const favHas = c => FAV.some(x=>x.c===c);
 function favSave(){ try{ localStorage.setItem(FAV_KEY, JSON.stringify(FAV.slice(0,60))); }catch(e){} }
 let PROD_BY_CODE = {};
@@ -763,7 +766,7 @@ function prodCard(x, opt){
   const on = x.code && favHas(x.code);
   return `<div class="prodw${opt&&opt.gone?" gone":""}"><a class="prod" href="${esc(x.url)}" target="_blank" rel="noopener sponsored">
     <div class="ph"><img src="${esc(x.img)}" alt="" loading="lazy"></div>
-    <div class="pb"><span class="pn">${esc(x.name)}</span>${stars}<span class="pp num">${opt&&opt.gone?"売り切れか、販売が終わったかもしれません":yen(x.price)}</span><span class="ps">${esc(x.shop)}</span><span class="tag">PR・楽天市場</span></div>
+    <div class="pb"><span class="pn">${esc(x.name)}</span>${stars}<span class="pp num">${opt&&opt.gone?"売り切れか、販売が終わったかもしれません":yen(x.price)}</span>${opt&&opt.was&&x.price<opt.was?`<span class="pdrop">値下がり ${yen(opt.was)} → ${yen(x.price)}</span>`:""}<span class="ps">${esc(x.shop)}</span><span class="tag">PR・楽天市場</span></div>
   </a>${x.code?`<button type="button" class="fav" data-fav="${esc(x.code)}" aria-pressed="${on}" aria-label="${on?"気になる商品から外す":"気になる商品に保存"}">${on?"♥":"♡"}</button>`:""}</div>`;
 }
 document.addEventListener("click", e=>{
@@ -776,7 +779,7 @@ document.addEventListener("click", e=>{
     FAV.unshift({c, n:x.name, p:x.price, i:x.img, u:x.url, s:x.shop, at:Date.now()});
     toast("マイリストの「気になる商品」に保存しました"); if (window.ct) window.ct("fav");
   }
-  favSave();
+  favSave(); renderSummary(); if (window.pushSync) window.pushSync();
   document.querySelectorAll(`[data-fav="${CSS.escape(c)}"]`).forEach(el=>{ const on = favHas(c); el.textContent = on?"♥":"♡"; el.setAttribute("aria-pressed", on); });
   if (document.getElementById("view-mine") && !document.getElementById("view-mine").hidden) renderMine();
 });
@@ -790,7 +793,7 @@ async function refreshFav(){
   }
 }
 function favCards(){
-  return FAV.map(f=>{ const fr = FAV_FRESH[f.c]; const x = fr ? fr : {name:f.n, price:f.p, img:f.i, url:f.u, shop:f.s, code:f.c, rc:0}; return prodCard(x, {gone: fr===null}); }).join("");
+  return FAV.map(f=>{ const fr = FAV_FRESH[f.c]; const x = fr ? fr : {name:f.n, price:f.p, img:f.i, url:f.u, shop:f.s, code:f.c, rc:0}; return prodCard(x, {gone: fr===null, was: fr ? f.p : 0}); }).join("");
 }
 async function loadShop(reset){
   if (SH.busy) return;
@@ -890,7 +893,7 @@ function fillSeason(){
 }
 
 /* ===== 楽天のセール期間の帯 ===== */
-const CAMP = window.__CAMP || [];
+var CAMP = window.__CAMP || [];
 function campNow(){
   const now = new Date(), t = s=>new Date(s+":00+09:00");
   const on = CAMP.find(c=>t(c.start)<=now && now<=t(c.end));
@@ -1012,7 +1015,7 @@ let pushNews = true; try{ pushNews = localStorage.getItem("chiikatsu-push-news")
 const PCH = ["ちいかわ","ハチワレ","うさぎ","モモンガ","くりまんじゅう","ラッコ","シーサー","古本屋"];
 let pushChars = []; try{ pushChars = JSON.parse(localStorage.getItem("chiikatsu-push-chars")||"[]").filter(c=>PCH.includes(c)); }catch(e){}
 let syncT = null;
-window.pushSync = ()=>{ if (!pushSub) return; clearTimeout(syncT); syncT = setTimeout(()=>pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars}).catch(()=>{}), 1200); };
+window.pushSync = ()=>{ if (!pushSub) return; clearTimeout(syncT); syncT = setTimeout(()=>pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars, favN:FAV.length}).catch(()=>{}), 1200); };
 const PUSH_WHAT = `<ul class="pwhat">
     <li><b>🛒 予約開始</b>ちいかわマーケットの予約は、始まる前の日の夜・当日の朝・30分前にお知らせ。予告なしで始まった予約も、5分以内にお知らせします</li>
     <li><b>🔄 再入荷</b>完売した商品がまた買えるようになったら、5分以内にお知らせ</li>
@@ -1065,7 +1068,7 @@ document.addEventListener("click", async e=>{
       if (perm!=="granted"){ drawPush(); return; }
       const reg = await navigator.serviceWorker.register("/sw.js").then(()=>navigator.serviceWorker.ready);
       pushSub = await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:u8(VAPID)});
-      await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars});
+      await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars, favN:FAV.length});
       toast("通知をオンにしました"); if (window.ct) window.ct("push:on");
     }catch(err){ toast("通知をオンにできませんでした。時間をおいてお試しください"); }
     drawPush();
@@ -1075,7 +1078,7 @@ document.addEventListener("click", async e=>{
     pushSub = null; toast("通知をやめました"); drawPush();
   }
   if (e.target.closest("[data-ptest]") && pushSub){
-    try{ await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars}); const r = await fetch("/api/push-test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({endpoint:pushSub.endpoint})}); const j = await r.json().catch(()=>({})); toast(j.ok ? "テスト通知を送りました" : "テスト通知を送れませんでした"); }catch(err){ toast("テスト通知を送れませんでした"); }
+    try{ await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars, favN:FAV.length}); const r = await fetch("/api/push-test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({endpoint:pushSub.endpoint})}); const j = await r.json().catch(()=>({})); toast(j.ok ? "テスト通知を送りました" : "テスト通知を送れませんでした"); }catch(err){ toast("テスト通知を送れませんでした"); }
   }
 });
 pushInit();

@@ -21,6 +21,10 @@ const md = s => { const [, m, d] = s.slice(0, 10).split("-").map(Number); return
 
 // 1人ぶんの中身を作る（送らないときは null）
 export function payloadFor(job, rec) {
+  if (job.type === "camp") {   // 楽天のセールが始まったら、♡で保存した商品がある人にだけ知らせる
+    if (!(rec.favN > 0)) return null;
+    return { ...job.payload, title: `🛍 ${job.payload.name}スタート！気になる商品が${rec.favN}件あります` };
+  }
   if (job.type === "news") {   // ニュース速報（公式の発表）：オフにした人には送らない
     if (rec.news === false) return null;
     if (!charOk(rec, job.payload.title + " " + (job.payload.body || ""))) return null;
