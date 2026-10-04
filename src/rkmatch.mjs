@@ -14,7 +14,9 @@ export var RKM = (function(){
     var tokens = norm(it.q).split(" ").filter(function(t){ return t && !/^(ちいかわ|アニメ|映画)$/.test(t); });
     var distinct = tokens.filter(function(t){ return t.length >= 2 && !KINDS.some(function(k){ return norm(k) === t; }); });
     if (!distinct.length) return null;
-    return { query: /ちいかわ|chiikawa/i.test(it.q) ? it.q : "ちいかわ " + it.q, tokens: tokens, ref: refPrice(it.price), mine: norm((it.t || "") + " " + it.q) };
+    // 楽天の検索は1文字だけの言葉（「9」など）があるとエラーになるので、検索語からは外す（同じ商品かの判定には使う）
+    var q = String(it.q).split(/\s+/).filter(function(w){ return w.length >= 2; }).join(" ");
+    return { query: /ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q, tokens: tokens, ref: refPrice(it.price), mine: norm((it.t || "") + " " + it.q) };
   }
   // results：{name, price} の配列。同じ商品と言えるものだけを返す（なければ null）
   function pick(it, results){
