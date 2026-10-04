@@ -41,16 +41,35 @@
   window.ct = ct;
   var path = location.pathname;
   ct(path === "/" || path === "/index.html" ? "pv:home" : path.indexOf("/items/") === 0 ? "pv:item" : "pv:other");
+  // 送ったら中身を空にして、アプリを開いたまま続けて使った分も次に隠したときに送る（「訪問」として数えるのは最初の1回だけ）
   function flush(){
-    if (sent || !Object.keys(EV).length) return;
-    sent = true;
-    try { navigator.sendBeacon("/api/hit", JSON.stringify({ ev: EV })); } catch (e) {}
+    if (!Object.keys(EV).length) return;
+    try { if (navigator.sendBeacon("/api/hit", JSON.stringify({ ev: EV, v: sent ? 0 : 1 }))) { EV = {}; sent = true; } } catch (e) {}
   }
+  /* 1日1回だけ、この端末の様子を数える（個人を特定するものは送らない）：
+     使った端末 / 2日目以降の端末（再訪） / 「ほしい」か♡が1つ以上ある端末と件数 / 通知を許可している端末 */
+  try {
+    var today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+    var U = JSON.parse(localStorage.getItem("chiikatsu-u") || "{}") || {};
+    if (U.last !== today) {
+      ct("u:dev");
+      if (U.first && U.first < today) ct("u:ret");
+      var mineObj = JSON.parse(localStorage.getItem("chiikatsu-mine") || "{}") || {}, favArr = JSON.parse(localStorage.getItem("chiikatsu-fav") || "[]") || [];
+      var nSaved = Object.keys(mineObj).filter(function(k){ return mineObj[k] === "want"; }).length + favArr.length;
+      if (nSaved) { ct("u:fav"); EV["u:saved"] = Math.min(50, nSaved); }
+      if (window.Notification && Notification.permission === "granted") ct("u:push");
+      U.first = U.first || today; U.last = today;
+      localStorage.setItem("chiikatsu-u", JSON.stringify(U));
+    }
+  } catch (e) {}
   document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") flush(); });
   window.addEventListener("pagehide", flush);
   document.addEventListener("click", function(e){
+    var sb = e.target.closest("[data-share]"); if (sb) ct("share:" + sb.getAttribute("data-share"));
     var a = e.target.closest("a[href]"); if (!a) return;
     var h = a.href;
+    if (/^https:\/\/line\.me\/R\/share/.test(h)) ct("share:line");
+    else if (/^https:\/\/(x|twitter)\.com\/intent\//.test(h) && !sb) ct("share:x");
     if (/hb\.afl\.rakuten/.test(h)) {
       if (a.hasAttribute("data-rb")) ct("c:books");
       else if (a.hasAttribute("data-rkd")) ct(a.dataset.hit ? (a.dataset.pre ? "c:rkpre" : "c:rk") : "c:rksearch");

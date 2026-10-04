@@ -136,6 +136,7 @@ function page({ title, desc, url, body, head = "", scripts = "", ogType = "websi
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="max-image-preview:large">
 <meta name="theme-color" content="#FBF6F8">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="/icons/icon-32.png" sizes="32x32" type="image/png">
@@ -274,7 +275,7 @@ for (const it of items) {
     <div class="share"><span class="k">友だちに教える</span>
       <a class="btn" href="https://line.me/R/share?text=${encodeURIComponent(it.t + "\n" + SITE + url)}" target="_blank" rel="noopener">LINEで送る</a>
       <a class="btn" href="https://x.com/intent/post?text=${encodeURIComponent(it.t + "（" + ogWhenText(it) + "）")}&url=${encodeURIComponent(SITE + url)}&hashtags=${encodeURIComponent("ちいかわ")}" target="_blank" rel="noopener">Xでポスト</a>
-      <button class="btn" type="button" onclick="(navigator.share?navigator.share({title:document.title,url:location.href}):navigator.clipboard.writeText(location.href).then(()=>alert('URLをコピーしました'))).catch(()=>{})">URLをコピー・共有</button>
+      <button class="btn" type="button" data-share="copy" onclick="(navigator.share?navigator.share({title:document.title,url:location.href}):navigator.clipboard.writeText(location.href).then(()=>alert('URLをコピーしました'))).catch(()=>{})">URLをコピー・共有</button>
     </div>
     <details class="drep"><summary>情報のまちがいを報告する</summary>
       <form class="drepf" data-id="${esc(it.id)}" data-t="${esc(it.t)}">
@@ -340,7 +341,7 @@ write("404.html", page({ title: "ページが見つかりません｜ちい活�
 
 // ---- 検索エンジン向け
 // ---- 検索から来る人のためのまとめページ（月別・地域別）
-const seo = buildSeo({ items, page, write, esc, fmt, md, CAT, REG, BRAND, FOOT, SITE, TODAY, isEvent, aff, sjisEncode, rakutenSearch });
+const seo = buildSeo({ items, page, write, esc, fmt, md, CAT, REG, BRAND, FOOT, SITE, TODAY, isEvent, aff, sjisEncode, rakutenSearch, writeOg });
 const urls = ["/", ...seo.urls, "/official/", "/about/", "/contact/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /owner/\nSitemap: ${SITE}/sitemap.xml\n`);

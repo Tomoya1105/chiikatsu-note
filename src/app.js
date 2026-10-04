@@ -515,9 +515,26 @@ document.getElementById("next").onclick = ()=>goMonth(1);
 
 /* ===== まちがい報告 ===== */
 const RKIND = {date:"日付がちがう",place:"場所がちがう",price:"価格がちがう",cancel:"中止・延期になった",other:"その他"};
-function toast(msg){
+/* 「ほしい」を押したあとに、ときどき「友だちにも教える」を出す（毎回だとしつこいので、1回目と、その後は4回に1回。1回の利用中は1度まで） */
+let nudgedThisVisit = false;
+function shareNudge(id){
+  const it = ITEMS.find(x=>x.id===id); if (!it || nudgedThisVisit) return;
+  let n = 0; try{ n = (+localStorage.getItem("chiikatsu-wantn")||0) + 1; localStorage.setItem("chiikatsu-wantn", String(n)); }catch(e){}
+  if (!(n===1 || n%4===0)) return;
+  nudgedThisVisit = true;
+  if (window.ct) window.ct("nudge:show");
+  const url = location.origin + "/items/" + encodeURIComponent(id) + "/";
+  setTimeout(()=>toast("追加しました♡", { label:"友だちにも教える", fn:()=>{
+    if (window.ct) window.ct("share:nudge");
+    const text = `${it.t}、いっしょに行かない？`.replace(/行かない？$/, isEvent(it) ? "行かない？" : "チェックしない？");
+    if (navigator.share) navigator.share({ title: it.t, text, url }).catch(()=>{});
+    else if (navigator.clipboard) navigator.clipboard.writeText(text + "\n" + url).then(()=>toast("URLをコピーしました。LINEなどに貼って送れます")).catch(()=>{});
+  }}), 50);
+}
+function toast(msg, act){
   const t=document.getElementById("toast"); t.textContent=msg; t.hidden=false;
-  clearTimeout(toast._t); toast._t=setTimeout(()=>{t.hidden=true},2800);
+  if (act){ const b=document.createElement("button"); b.type="button"; b.className="toastbtn"; b.textContent=act.label; b.onclick=()=>{ t.hidden=true; act.fn(); }; t.append(" ", b); }
+  clearTimeout(toast._t); toast._t=setTimeout(()=>{t.hidden=true}, act?6000:2800);
 }
 /* 読者からの報告フォーム */
 document.addEventListener("click", async e=>{
@@ -610,6 +627,7 @@ document.addEventListener("click", e=>{
   const id = b.closest(".card").dataset.id, k=b.dataset.mark;
   if (mine[id]===k) delete mine[id]; else { mine[id]=k; if (window.ct) window.ct("mark:"+k); }
   saveMine(); renderAll();
+  if (mine[id]==="want") shareNudge(id);
 });
 document.getElementById("q").addEventListener("input", e=>{ state.q=e.target.value; renderList(); });
 document.getElementById("focusClear").onclick = goAll;

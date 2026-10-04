@@ -33,5 +33,26 @@ export async function onRequestPost({ request, env }) {
     if (rec && env.VAPID_PRIVATE) { try { sent = (await sendPush(rec.sub, { title: "投稿案の通知を登録しました", body: "これから朝・昼・夜に、Xの投稿案ができたらお知らせします。", url: `/api/xdraft?tok=${tok}`, tag: "x-claim" }, { privateD: env.VAPID_PRIVATE, subject: "https://chiikatsunote.com" })) < 300; } catch (e) {} }
     return Response.json({ ok: true, sent });
   }
+  if (b.op === "stats") {
+    // 直近の日ごとの数字から、7日・28日の合計と割合を出す
+    const days = [];
+    for (let i = 0; i < 28; i++) {
+      const day = new Date(Date.now() + 9 * 3600e3 - i * 864e5).toISOString().slice(0, 10);
+      const v = await env.REPORTS.get(`s:${day}`);
+      days.push({ day, ...(v ? JSON.parse(v) : {}) });
+    }
+    const AFF = ["c:rk", "c:rkpre", "c:rksearch", "c:books", "c:shop", "c:travel", "c:yahoo", "c:amazon"];
+    const sum = (arr, k) => arr.reduce((a, d) => a + (d[k] || 0), 0);
+    const pack = arr => {
+      const dev = sum(arr, "u:dev"), visits = sum(arr, "visits"), fav = sum(arr, "u:fav");
+      return {
+        visits, dev, ret: sum(arr, "u:ret"), fav, saved: sum(arr, "u:saved"), push: sum(arr, "u:push"),
+        aff: AFF.reduce((a, k) => a + sum(arr, k), 0), rk: sum(arr, "c:rk") + sum(arr, "c:rkpre") + sum(arr, "c:rksearch") + sum(arr, "c:books") + sum(arr, "c:shop") + sum(arr, "c:travel"), yahoo: sum(arr, "c:yahoo"), amazon: sum(arr, "c:amazon"),
+        want: sum(arr, "mark:want"), favp: sum(arr, "fav"), pushOn: sum(arr, "push:on"), install: sum(arr, "install"),
+        share: ["share:line", "share:x", "share:copy", "share:nudge"].reduce((a, k) => a + sum(arr, k), 0), nudgeShow: sum(arr, "nudge:show"), nudge: sum(arr, "share:nudge"),
+      };
+    };
+    return Response.json({ ok: true, d7: pack(days.slice(0, 7)), d28: pack(days), since: days.filter(d => d["u:dev"]).map(d => d.day).pop() || null, daily: days.slice(0, 14).map(d => ({ day: d.day, visits: d.visits || 0, dev: d["u:dev"] || 0 })) });
+  }
   return Response.json({ ok: false, reason: "op が必要" });
 }

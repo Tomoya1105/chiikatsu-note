@@ -1,6 +1,6 @@
 // かんたんなアクセス・クリック計測。1回の訪問ぶんの回数をまとめて受け取り、日ごとの合計に足す。
 // 個人を特定する情報（IPアドレスなど）は保存しない。保存先は報告と同じ KV（REPORTS）。
-const OK = /^(pv:(home|item|other)|tab:(list|cal|mine|shop|news)|st:[a-z]+|c:(rk|rkpre|rksearch|shop|travel|official|news|gcal|rsv|books|yahoo|amazon|fresh)|mark:(want|got)|shopq|install|push:on|x:embed|fav)$/;
+const OK = /^(pv:(home|item|other)|tab:(list|cal|mine|shop|news)|st:[a-z]+|c:(rk|rkpre|rksearch|shop|travel|official|news|gcal|rsv|books|yahoo|amazon|fresh)|mark:(want|got)|shopq|install|push:on|x:embed|fav|nudge:show|share:(nudge|line|x|copy)|u:(dev|ret|fav|push|saved))$/;
 export async function onRequestPost({ request, env }) {
   if (!env.REPORTS) return new Response(null, { status: 204 });
   let b;
@@ -13,7 +13,7 @@ export async function onRequestPost({ request, env }) {
   const key = `s:${day}`;
   const cur = JSON.parse((await env.REPORTS.get(key)) || "{}");
   for (const [k, v] of Object.entries(add)) cur[k] = (cur[k] || 0) + v;
-  cur.visits = (cur.visits || 0) + 1;
+  if (b.v !== 0) cur.visits = (cur.visits || 0) + 1;   // 同じ訪問の続きの送信は数えない
   await env.REPORTS.put(key, JSON.stringify(cur), { expirationTtl: 60 * 60 * 24 * 400 });
   return new Response(null, { status: 204 });
 }

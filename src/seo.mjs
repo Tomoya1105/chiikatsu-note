@@ -36,7 +36,9 @@ export function areasOf(it) {
 export const monthOf = it => it.s.slice(0, 7);
 
 export function buildSeo(ctx) {
-  const { items, page, write, esc, fmt, md, CAT, REG, BRAND, FOOT, SITE, TODAY, isEvent, aff, sjisEncode, rakutenSearch } = ctx;
+  const { items, page, write, esc, fmt, md, CAT, REG, BRAND, FOOT, SITE, TODAY, isEvent, aff, sjisEncode, rakutenSearch, writeOg } = ctx;
+  // まとめページ用の共有画像（キャラクターは使わず、文字だけ）。作れなかったときはトップの画像
+  const og = (name, opt) => (writeOg && writeOg(name, opt)) ? `/og/${name}.png` : "/og/home.png";
   const urls = [];
   const live = items.filter(x => !x.hidden).sort((a, b) => a.s.localeCompare(b.s) || a.t.localeCompare(b.t));
   const endOf = it => it.e || (isEvent(it) ? it.s : null);
@@ -94,6 +96,7 @@ ${os.length ? `<h2>海外のちいかわ情報（${os.length}件）</h2>${list(o
       title: `${label}のちいかわ新商品・発売日・イベントまとめ｜ちい活ノート`,
       desc: `${label}に発売のちいかわグッズ・お菓子・くじ・本と、POP UP STORE・コラボイベントの日程を日付順にまとめました。${goodsN ? `新商品${goodsN}件` : ""}${evN ? `・イベント${evN}件` : ""}。毎日更新。`.slice(0, 140),
       url, body, head: crumbs(trail) + itemList(starts),
+      ogImage: og(`month-${m}`, { label: "月別まとめ", title: `${label} ちいかわ発売・イベントカレンダー`, when: [goodsN ? `新商品${goodsN}件` : "", evN ? `イベント${evN}件` : ""].filter(Boolean).join("・") || "発売日とイベント日程", sub: "グッズ・お菓子・くじ・本・POP UP STOREの日程を日付順に", accent: "#E27496" }),
     }));
     urls.push(url);
   }
@@ -133,6 +136,7 @@ ${ended.length ? `<h2>最近終わったもの</h2>${list(ended)}` : ""}
       title: `${nm}のちいかわPOP UP・イベント・コラボカフェ情報（開催中・これから）｜ちい活ノート`,
       desc: `${full}で開催中・開催予定のちいかわPOP UP STORE、コラボカフェ、イベントの会期と場所をまとめました。${now.length + soon.length ? `現在${now.length + soon.length}件。` : ""}毎日更新。`.slice(0, 140),
       url, body, head: crumbs(trail) + itemList([...now, ...soon]),
+      ogImage: og(`area-${slug}`, { label: isJp ? "地域別" : "海外", title: `${nm}のちいかわPOP UP・イベント情報`, when: now.length + soon.length ? [now.length ? `開催中${now.length}件` : "", soon.length ? `これから${soon.length}件` : ""].filter(Boolean).join("・") : "開催情報まとめ", sub: "POP UP STORE・コラボカフェ・イベントの会期と場所", accent: "#3E9C83" }),
     }));
     urls.push(url);
     areaPages.push({ slug, nm, isJp, group: isJp ? PREFS.find(p => p[0] === slug)[2] : "海外", n: now.length + soon.length });
