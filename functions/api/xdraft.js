@@ -5,6 +5,8 @@
 // ?key=REPORT_KEY&op=claim … 直前（10分以内）に「テスト通知を送る」を押した端末を、運営者の端末として登録
 // ?key=REPORT_KEY&op=page  … 下書きページへ移動
 // ?tok=TOKEN                … 下書きページ（通知から開く。鍵の代わりに見るだけの合言葉を使う）
+// POST ?tok=TOKEN&op=tip     … 運営者が見つけた情報（XのURLや文章）を送る。自動更新が次の回で載せる
+// ?key=REPORT_KEY&op=tips  … 送られた情報の一覧（自動更新が読む）／ &op=tipdone&id=… 対応済みにする
 import { sendPush } from "../../src/webpush.js";
 
 const SUBJECT = "https://chiikatsu-note.pages.dev";
@@ -81,7 +83,30 @@ export async function onRequestGet({ request, env }) {
     return Response.json({ ok: true, slot, posts: posts.length, ...r });
   }
 
-  return Response.json({ ok: false, reason: "op が必要（add / claim / page）" });
+  if (op === "tips") return Response.json(JSON.parse((await env.REPORTS.get("x:tips")) || "[]"), { headers: { "cache-control": "no-store" } });
+  if (op === "tipdone") {
+    const tips = JSON.parse((await env.REPORTS.get("x:tips")) || "[]");
+    const rest = tips.filter(x => x.id !== q("id"));
+    await env.REPORTS.put("x:tips", JSON.stringify(rest));
+    return Response.json({ ok: true, removed: tips.length - rest.length, left: rest.length });
+  }
+
+  return Response.json({ ok: false, reason: "op が必要（add / claim / page / tips / tipdone）" });
+}
+
+// 運営者が見つけた情報を送る（下書きページのフォームから）
+export async function onRequestPost({ request, env }) {
+  if (!env.REPORTS) return new Response("not configured", { status: 503 });
+  const u = new URL(request.url);
+  const tok = await env.REPORTS.get("x:tok");
+  if (!tok || u.searchParams.get("tok") !== tok || u.searchParams.get("op") !== "tip") return new Response("forbidden", { status: 403 });
+  let b; try { b = await request.json(); } catch (e) { return new Response("bad request", { status: 400 }); }
+  const text = String(b && b.text || "").trim().slice(0, 2000);
+  if (!text) return Response.json({ ok: false });
+  const tips = JSON.parse((await env.REPORTS.get("x:tips")) || "[]");
+  tips.push({ id: Date.now().toString(36), at: jstNow(), text });
+  await env.REPORTS.put("x:tips", JSON.stringify(tips.slice(-50)));
+  return Response.json({ ok: true, count: tips.length });
 }
 
 const CSS = `:root{--bg:#FBF6F8;--surface:#fff;--ink:#3A3346;--ink-2:#6D6479;--acc:#E27496;--on:#fff;--soft:#FBE3EB;--line:#EEDDE5;--warn:#C9821D}
@@ -117,8 +142,12 @@ function page(drafts) {
 <div class="row"><a class="btn go" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(p.t)}" target="_blank" rel="noopener">Xで投稿する</a><button class="btn cp" type="button" data-copy="${esc(p.t)}">コピー</button><span class="cnt${w > 280 ? " over" : ""}">${Math.ceil(w / 2)}/140字${w > 280 ? "（長すぎます）" : ""}</span></div></div>`;
   }).join("")).join("");
   return `<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Xの投稿案</title><style>${CSS}</style></head><body><div class="w">
-<h1>Xの投稿案</h1><p class="lead">「Xで投稿する」を押すと、この文章が入った状態でXが開きます。そのまま送らず、あなたの気持ちをひとこと足してから投稿してください。新しい順です。</p>
+<h1>Xの投稿案</h1>
+<div class="card"><b>見つけた情報を送る</b><p class="lead" style="margin:4px 0 8px">Xなどで見つけた新商品・イベントを、URLと一緒に貼り付けてください（本文もコピーして貼るとより確実です）。次の自動更新で確かめて載せます。</p>
+<form id="tip"><textarea name="text" rows="4" maxlength="2000" required placeholder="例）https://x.com/chiikawa_kouhou/status/… 2027年イヤーズアイテム 10/16発売" style="width:100%;font:inherit;font-size:14px;padding:9px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)"></textarea>
+<div class="row"><button class="btn go" type="submit">送る</button><span class="cnt" id="tipmsg"></span></div></form></div><p class="lead">「Xで投稿する」を押すと、この文章が入った状態でXが開きます。そのまま送らず、あなたの気持ちをひとこと足してから投稿してください。新しい順です。</p>
 ${groups || '<div class="card">まだ投稿案はありません。次の自動更新をお待ちください。</div>'}
 <p class="tip">ナガノさんの最新話は、読んだ気持ちをそのまま引用リポストで。自動更新は漫画を読めないので、感想は書きません。</p>
-</div><script>document.addEventListener("click",function(e){var b=e.target.closest("[data-copy]");if(!b)return;navigator.clipboard.writeText(b.getAttribute("data-copy")).then(function(){b.textContent="コピーしました";setTimeout(function(){b.textContent="コピー"},1600)})});</script></body></html>`;
+</div><script>document.getElementById("tip").addEventListener("submit",function(e){e.preventDefault();var f=e.target,m=document.getElementById("tipmsg");m.textContent="送信中…";fetch(location.pathname+location.search+"&op=tip",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({text:f.text.value})}).then(function(r){return r.json()}).then(function(j){if(j.ok){f.reset();m.textContent="送りました。次の自動更新で確かめます"}else m.textContent="送れませんでした"}).catch(function(){m.textContent="送れませんでした"})});
+document.addEventListener("click",function(e){var b=e.target.closest("[data-copy]");if(!b)return;navigator.clipboard.writeText(b.getAttribute("data-copy")).then(function(){b.textContent="コピーしました";setTimeout(function(){b.textContent="コピー"},1600)})});</script></body></html>`;
 }
