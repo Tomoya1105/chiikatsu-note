@@ -79,7 +79,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260710-21",
@@ -99,7 +99,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260724-24",
@@ -118,7 +118,10 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-04",
+  "srcs": [
+   "https://prtimes.jp/main/html/rd/p/000001491.000020053.html"
+  ]
  },
  {
   "id": "20260724-25",
@@ -157,7 +160,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260731-33",
@@ -195,7 +198,10 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-04",
+  "srcs": [
+   "https://www.sunflower.co.jp/information/event/20260806.html"
+  ]
  },
  {
   "id": "20260813-pus-naha",
@@ -275,7 +281,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260908-pus-centrair",
@@ -357,7 +363,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260918-07",
@@ -434,7 +440,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260919-34",
@@ -1730,5 +1736,49 @@
   "updatedAt": "2026-10-04",
   "srcType": "official",
   "verifiedAt": "2026-10-04"
+ },
+ {
+  "id": "20261005-puku-churu",
+  "region": "jp",
+  "t": "ガチャ ちいかわ PUKU CHURU seal①",
+  "cat": "goods",
+  "s": "2026-10-05",
+  "sp": "early",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のカプセルトイ売場",
+  "area": "",
+  "price": "1回400円／全5種",
+  "q": "ちいかわ PUKU CHURU seal",
+  "src": "https://www.parade-inc.net/products/c260907",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-04",
+  "note": "ぷくっと立体＋ちゅるっとツヤのラメ入りシール。ハート形のクリアカプセル入り。",
+  "autoAdded": true,
+  "addedAt": "2026-10-04",
+  "updatedAt": "2026-10-04"
+ },
+ {
+  "id": "20261001-classico-scrub",
+  "region": "jp",
+  "t": "クラシコ×ちいかわ スクラブ",
+  "cat": "goods",
+  "s": "2026-10-01",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "クラシコ公式オンラインストア・直営店、楽天・Amazonの公式ページ",
+  "area": "",
+  "price": "トップス・パンツ 各13,090円",
+  "q": "ちいかわ クラシコ スクラブ",
+  "src": "https://prtimes.jp/main/html/rd/p/000000214.000018274.html",
+  "srcType": "press",
+  "verifiedAt": "2026-10-04",
+  "note": "医療用ウェアのスクラブ。ネイビーなど落ち着いた4色、XXS〜XLのユニセックス。",
+  "autoAdded": true,
+  "addedAt": "2026-10-04",
+  "updatedAt": "2026-10-04"
  }
 ]
