@@ -1,10 +1,10 @@
 // Xの投稿案。自動更新が1日3回（朝・昼・夜）下書きを置き、運営者のスマホに通知する。
 // 運営者は通知から下書きページを開き、「Xで投稿する」を押して、自分の言葉を足してから投稿する（自動では投稿しない）。
 //
-// ?key=REPORT_KEY&op=add&slot=朝|昼|夜&t1=本文&n1=メモ（&t2,n2,&t3,n3）… 下書きを置いて通知（自動更新が使う）
+// ?key=REPORT_KEY&op=add&slot=朝|昼|夜&p1=本文&m1=メモ（&p2,m2,&p3,m3）… 下書きを置いて通知（自動更新が使う）
 // ?key=REPORT_KEY&op=claim … 直前（10分以内）に「テスト通知を送る」を押した端末を、運営者の端末として登録
 // ?key=REPORT_KEY&op=page  … 下書きページへ移動
-// ?t=TOKEN                 … 下書きページ（通知から開く。鍵の代わりに見るだけの合言葉を使う）
+// ?tok=TOKEN                … 下書きページ（通知から開く。鍵の代わりに見るだけの合言葉を使う）
 import { sendPush } from "../../src/webpush.js";
 
 const SUBJECT = "https://chiikatsu-note.pages.dev";
@@ -38,18 +38,17 @@ export async function onRequestGet({ request, env }) {
   if (!env.REPORTS) return new Response("not configured", { status: 503 });
   const u = new URL(request.url), q = k => u.searchParams.get(k) || "";
   const op = q("op");
-  if (q("dbg")) return new Response(JSON.stringify({ op, t: q("t"), url: request.url, tok: !!(await env.REPORTS.get("x:tok")) }), { headers: { "cache-control": "no-store" } });
 
   // 見るだけのページ（合言葉つき）
-  if (!op && q("t")) {
+  if (!op && q("tok")) {
     const tok = await env.REPORTS.get("x:tok");
-    if (!tok || q("t") !== tok) return html(msg("ページが見つかりません", "通知から開き直してください。"));
+    if (!tok || q("tok") !== tok) return html(msg("ページが見つかりません", "通知から開き直してください。"));
     return html(page(JSON.parse((await env.REPORTS.get("x:drafts")) || "[]")));
   }
 
   if (!env.REPORT_KEY || q("key") !== env.REPORT_KEY) return new Response("forbidden", { status: 403 });
 
-  if (op === "page") return Response.redirect(new URL(`/api/xdraft?t=${await token(env)}`, u.origin).href, 302);
+  if (op === "page") return Response.redirect(new URL(`/api/xdraft?tok=${await token(env)}`, u.origin).href, 302);
 
   if (op === "claim") {
     const id = await env.REPORTS.get("x:lasttest");
@@ -59,25 +58,25 @@ export async function onRequestGet({ request, env }) {
     await env.REPORTS.put("x:owners", JSON.stringify(owners.slice(0, 5)));
     await env.REPORTS.delete("x:lasttest");
     const t = await token(env);
-    const r = env.VAPID_PRIVATE ? await notifyOwners(env, { title: "Xの投稿案の通知を登録しました", body: "これから朝・昼・夜に、投稿案ができたらここに届きます。", url: `/api/xdraft?t=${t}`, tag: "x-claim" }) : { sent: 0 };
-    return html(msg("登録しました", `この端末に、Xの投稿案のお知らせが届くようになりました（確認の通知を${r.sent ? "送りました" : "送れませんでした。通知がオンになっているか確かめてください"}）。`, `/api/xdraft?t=${t}`));
+    const r = env.VAPID_PRIVATE ? await notifyOwners(env, { title: "Xの投稿案の通知を登録しました", body: "これから朝・昼・夜に、投稿案ができたらここに届きます。", url: `/api/xdraft?tok=${t}`, tag: "x-claim" }) : { sent: 0 };
+    return html(msg("登録しました", `この端末に、Xの投稿案のお知らせが届くようになりました（確認の通知を${r.sent ? "送りました" : "送れませんでした。通知がオンになっているか確かめてください"}）。`, `/api/xdraft?tok=${t}`));
   }
 
   if (op === "add") {
     const slot = SLOTS.includes(q("slot")) ? q("slot") : "朝";
     const posts = [];
     for (let i = 1; i <= 3; i++) {
-      const t = q(`t${i}`).trim().slice(0, 600);
-      if (t) posts.push({ t, n: q(`n${i}`).trim().slice(0, 400) });
+      const t = q(`p${i}`).trim().slice(0, 600);
+      if (t) posts.push({ t, n: q(`m${i}`).trim().slice(0, 400) });
     }
-    if (!posts.length) return Response.json({ ok: false, reason: "t1 が必要" });
+    if (!posts.length) return Response.json({ ok: false, reason: "p1 が必要" });
     const drafts = JSON.parse((await env.REPORTS.get("x:drafts")) || "[]");
     drafts.unshift({ slot, at: jstNow(), posts });
     await env.REPORTS.put("x:drafts", JSON.stringify(drafts.slice(0, 15)));
     const tk = await token(env);
     const first = posts[0].t.replace(/\s+/g, " ");
     const r = env.VAPID_PRIVATE
-      ? await notifyOwners(env, { title: `Xの投稿案（${slot}）ができました`, body: first.length > 60 ? first.slice(0, 60) + "…" : first, url: `/api/xdraft?t=${tk}`, tag: `x-${slot}` })
+      ? await notifyOwners(env, { title: `Xの投稿案（${slot}）ができました`, body: first.length > 60 ? first.slice(0, 60) + "…" : first, url: `/api/xdraft?tok=${tk}`, tag: `x-${slot}` })
       : { owners: 0, sent: 0 };
     return Response.json({ ok: true, slot, posts: posts.length, ...r });
   }
