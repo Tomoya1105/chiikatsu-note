@@ -18,7 +18,8 @@
   "time": "12:00〜20:00",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-03",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2004749845605875758"
  },
  {
   "id": "20260227-seoul-yongsan",
@@ -39,7 +40,8 @@
   "time": "10:30〜22:00",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-03",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2018861973136703968"
  },
  {
   "id": "20260418-hk-moko",
@@ -60,7 +62,8 @@
   "time": "10:00〜21:00（2Fは10:30〜21:30）",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-03",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2045321417575776461"
  },
  {
   "id": "20260708-22",
@@ -79,7 +82,8 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-04",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2064548449224413331"
  },
  {
   "id": "20260710-21",
@@ -99,7 +103,8 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-04",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2056622381393965225"
  },
  {
   "id": "20260724-24",
@@ -223,7 +228,8 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-03",
+  "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322"
  },
  {
   "id": "20260821-32",
@@ -325,7 +331,8 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-03",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2094258886781927591"
  },
  {
   "id": "20260912-shanghai-goods",
@@ -679,7 +686,8 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-09-27",
+  "xpost": "https://x.com/chiikawabakery/status/2100797269436203365"
  },
  {
   "id": "20261001-pus-sendai",
@@ -1110,7 +1118,8 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-09-27",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2084157319114621084"
  },
  {
   "id": "20261026-18",
@@ -1615,14 +1624,15 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "news",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-04",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2104405989185491226"
  },
  {
   "id": "20260925-cn-guangzhou-shop",
   "region": "cn",
   "t": "CHIIKAWA SHOP 広州（公式ショップ）",
   "cat": "cafe",
-  "s": "2026-09-25",
+  "s": "2026-09-24",
   "sp": "late",
   "e": null,
   "time": "",
@@ -1637,7 +1647,11 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "news",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-04",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2104405989185491226",
+  "srcs": [
+   "https://x.com/chiikawa_kouhou/status/2104405989185491226"
+  ]
  },
  {
   "id": "20261016-years-2027",

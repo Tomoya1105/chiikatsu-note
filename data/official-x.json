@@ -1,40 +1,55 @@
 {
- "_説明": "公式Xの埋め込み・引用に使ってよいアカウント（小文字）。ファン・まとめ・転載アカウントは入れない。追加するときは、公式サイトからのリンクや認証マークなど、公式だと確かめた根拠を note に書く。",
+ "_説明": "公式Xの埋め込み・引用に使ってよいアカウント（小文字）。accounts に入れてよいのは、公式サイト・主催者・会場・プレスリリースなどの一次情報から、そのアカウントへのリンク（つながり）を確かめたものだけ。アカウント名や表示名が「公式」っぽいだけでは入れない（似た名前の別アカウントがある）。evidence に確かめたページのURLを書く。確かめきれていないものは candidates に置き、埋め込みには使わない。",
  "accounts": {
   "chiikawa_kouhou": {
    "name": "ちいかわグッズ公式",
    "kind": "ちいかわ公式",
-   "note": "ちいかわ公式サイトからリンク"
+   "evidence": "https://chiikawa-info.jp/ （ちいかわインフォのトップから x.com/chiikawa_kouhou にリンク）",
+   "checkedAt": "2026-10-04"
   },
   "chiikawa_market": {
    "name": "ちいかわマーケット公式",
    "kind": "ちいかわ公式",
-   "note": "ちいかわマーケットの公式アカウント"
+   "evidence": "https://chiikawa-info.jp/ （ちいかわインフォのトップから x.com/chiikawa_market にリンク）",
+   "checkedAt": "2026-10-04"
   },
-  "chiikawa_land": {
-   "name": "ちいかわらんど公式",
-   "kind": "ちいかわ公式",
-   "note": "ちいかわらんどの公式アカウント"
+  "chiikawa_popup": {
+   "name": "ちいかわPOP UP STORE公式",
+   "kind": "ちいかわ公式（POP UP STORE）",
+   "evidence": "https://chiikawa-info.jp/p26/pus_aoka/index.html （ちいかわインフォのPOP UP STORE会場ページから「ちいかわPOP UP STORE」として x.com/chiikawa_popup にリンク）",
+   "checkedAt": "2026-10-04"
   },
-  "chiikawa_info": {
-   "name": "ちいかわインフォ",
-   "kind": "ちいかわ公式",
-   "note": "ちいかわ公式情報サイト chiikawa-info.jp の公式アカウント"
+  "juice_inc_event": {
+   "name": "ちいかわPOP UP STORE（運営）",
+   "kind": "主催・運営",
+   "evidence": "https://chiikawa-info.jp/p26/pus_sopr/index.html （ちいかわインフォの静岡PARCO会場ページから「ちいかわPOP UP STORE」として x.com/Juice_inc_event にリンク）",
+   "checkedAt": "2026-10-04"
+  },
+  "chiikawabakery": {
+   "name": "ちいかわベーカリー公式",
+   "kind": "店舗公式",
+   "evidence": "https://prtimes.jp/main/html/rd/p/000000232.000086964.html （運営の株式会社エルティーアールのプレスリリースに公式Xとして x.com/chiikawabakery）",
+   "checkedAt": "2026-10-04"
   },
   "anime_chiikawa": {
    "name": "アニメちいかわ公式",
-   "kind": "ちいかわ公式",
-   "note": "アニメ公式"
-  },
-  "chiikawa_bakery": {
-   "name": "ちいかわベーカリー公式",
-   "kind": "ちいかわ公式",
-   "note": "ちいかわベーカリーの公式アカウント"
+   "kind": "アニメ公式",
+   "evidence": "https://anime-chiikawa.jp/ （アニメ公式サイトに「アニメ公式X」として twitter.com/anime_chiikawa）",
+   "checkedAt": "2026-10-04"
+  }
+ },
+ "candidates": {
+  "chiikawa_land": {
+   "name": "ちいかわらんど【公式】",
+   "why": "表示名は公式だが、ちいかわらんど・キデイランドの公式サイトからのリンクをまだ確かめていない"
   },
   "ngntrtr": {
-   "name": "ナガノさん",
-   "kind": "作者",
-   "note": "作者ナガノさんのアカウント"
+   "name": "ナガノ",
+   "why": "作者のアカウントとして広く知られているが、一次情報からのリンクをまだ確かめていない"
+  },
+  "chiikawainfojp": {
+   "name": "ちいかわインフォ",
+   "why": "ちいかわインフォのXと思われるが、chiikawa-info.jp からのリンクをまだ確かめていない（以前の一覧の chiikawa_info は誤りだった）"
   }
  }
 }
