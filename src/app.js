@@ -14,10 +14,17 @@ function applyOshi(k){
 document.getElementById("swatches").innerHTML = Object.entries(OSHI).map(([k,[n,a,s]])=>
   `<button class="sw" data-k="${k}" aria-pressed="false"><i style="background:conic-gradient(${a} 0 50%,${s} 0 100%)"></i>${n}</button>`).join("");
 document.getElementById("swatches").onclick = e=>{ const b=e.target.closest(".sw"); if(!b) return; applyOshi(b.dataset.k); };
-document.getElementById("oshiBtn").onclick = ()=>{
-  const p = document.getElementById("oshiPanel"); p.hidden = !p.hidden;
-  document.getElementById("oshiBtn").setAttribute("aria-expanded", !p.hidden);
-};
+function oshiOpen(open){
+  const p = document.getElementById("oshiPanel"); p.hidden = !open;
+  document.getElementById("oshiBtn").setAttribute("aria-expanded", open);
+}
+document.getElementById("oshiBtn").onclick = e=>{ e.stopPropagation(); oshiOpen(document.getElementById("oshiPanel").hidden); };
+document.addEventListener("click", e=>{
+  const p = document.getElementById("oshiPanel"); if (p.hidden) return;
+  if (e.target.closest("[data-oshiclose]")){ oshiOpen(false); const k = document.documentElement.dataset.oshi; if (OSHI[k] && typeof toast==="function") toast(`推しカラーを「${OSHI[k][0]}」にしました`); return; }
+  if (!e.target.closest("#oshiPanel") && !e.target.closest("#oshiBtn")) oshiOpen(false);   // パネルの外を押したら閉じる
+});
+document.addEventListener("keydown", e=>{ if (e.key==="Escape") oshiOpen(false); });
 { let k0 = "chiikawa"; try{ k0 = localStorage.getItem("chiikatsu-oshi") || "chiikawa"; }catch(e){} applyOshi(k0); }
 
 const CAT = {goods:"グッズ",food:"お菓子・食品",kuji:"くじ",event:"イベント",cafe:"カフェ・お店",book:"本・カレンダー"};
@@ -186,7 +193,8 @@ function card(it, opt){
   const v = isRsv(it) ? "予約受付" : isEvent(it)?"開始":"発売";
   let period = `<span>${v} <b class="num">${fmtStart(it)}</b>${it.time?` <span class="num">${esc(it.time)}</span>`:""}</span>`;
   if (it.ed) period += `<span>${isRsv(it)?"締切":"終了"} <b class="num">${fmtEnd(it)}</b>${isRsv(it)&&it.re&&it.re.length>10?` <span class="num">${it.re.slice(11,16)}</span>`:""}</span>`;
-  if (it.eNote) period += `<span>${esc(it.eNote)}</span>`;
+  const en = isRsv(it) ? (it.eNote||"").replace(/^受注締切[^・（]*[・]?/, "") : it.eNote;
+  if (en) period += `<span>${esc(en)}</span>`;
   else if (!it.ed && !isEvent(it)) period += `<span>なくなり次第終了</span>`;
   const g = gcal(it), src = safeUrl(it.src);
   const m = mine[it.id]||"";
@@ -214,7 +222,7 @@ function card(it, opt){
         ${g&&st.k!=="ended"?`<a class="lnk" href="${g}" target="_blank" rel="noopener">カレンダーに追加</a>`:""}
         <button class="lnk got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
       </div>
-      ${(()=>{ const tr = it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
+      ${(()=>{ const tr = it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}</span><span class="tag">楽天トラベル・PR</span></a>` : ""; })()}
       <button class="repbtn" type="button" data-report>情報のまちがいを報告する</button>
     </div>
     ${it.q?`<div class="pimg" data-pimg="${esc(it.id)}"></div>`:""}
@@ -320,7 +328,7 @@ function renderListInner(){
   // 絞り込み中の表示
   fb.hidden = !(state.focus || state.fromSum);
   if (!fb.hidden) document.getElementById("focusTxt").textContent = state.focus==="soon" ? "7日以内に発売・開始するものだけ表示中" : "7日以内に終わるものだけ表示中";
-  const desc = {rsv:"公式通販などの予約・受注です。受付中のもの（締切が近い順）、これから受付が始まるものの順。", sellout:"在庫がなくなると終わるグッズ・くじです。いま買えるもの、これから出るものの順。", ending:"1週間以内に終わるものです。終わる日が近い順。", next:"今日から近い順。始まるものは発売日・開始日、開催中のものは終わる日で並べています。", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
+  const desc = {rsv:"公式通販などの予約・受注です。受付中のもの（締切が近い順）、これから受付が始まるものの順。", sellout:"在庫がなくなると終わるグッズ・くじです。いま買えるもの、これから出るものの順。", ending:"1週間以内に終わるものです。終わる日が近い順。", next:"日付が近い順（開催中のものは終わる日の順）", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
   document.getElementById("count").textContent = `${arr.length}件　${desc}`;
   if (!arr.length){
     const msg = R.region==="os"&&!VIS().length ? "この国・地域の情報はまだありません。"

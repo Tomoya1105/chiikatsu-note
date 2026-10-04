@@ -526,3 +526,15 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 @media (max-width:520px){.top .brand{min-width:0;flex:1}.top .brand > div{min-width:0}.topr{flex:none}.oshibtn{white-space:nowrap}.brand p{font-size:11.5px;line-height:1.45}}
 #focusBar,#list,#view-mine,#view-list,#view-news,#view-shop{scroll-margin-top:64px}
 .list > [data-camp] .campbar{margin:0}
+
+/* 推しカラーのパネル：閉じ方をはっきり */
+.oshihead{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.oshix{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font:700 12.5px var(--body);color:var(--ink-2);cursor:pointer}
+.oshiok{display:block;width:100%;margin-top:12px;padding:11px;font-size:14px;background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+/* 遠征のホテルは1行のひかえめなリンクに（カードを短く） */
+.trip{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;background:none;border:1px dashed var(--line);border-radius:999px;padding:5px 12px;margin-top:4px;font-size:12px;font-weight:700;color:var(--ink-2);align-self:flex-start;max-width:100%}
+.trip-k{display:none}
+.trip-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.trip-t::before{content:"🏨 "}
+.trip .tag{margin-left:2px;flex:none}
+.detail .trip{border-style:solid;background:var(--surface-2);font-size:13px;padding:8px 14px}
