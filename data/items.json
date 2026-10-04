@@ -516,7 +516,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-05"
  },
  {
   "id": "20260925-03",
@@ -536,7 +536,10 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-05",
+  "srcs": [
+   "https://www.cinemacafe.net/article/2026/09/24/112822.html"
+  ]
  },
  {
   "id": "20260925-05",
@@ -693,7 +696,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27",
+  "verifiedAt": "2026-10-05",
   "xpost": "https://x.com/chiikawabakery/status/2100797269436203365",
   "xpostNote": "投稿日2026-09-18。本文に「デパートリウボウ 6階」「10/1(木)～10/12(月)」"
  },
@@ -988,18 +991,18 @@
   "cat": "book",
   "e": null,
   "eNote": "",
-  "note": "",
-  "place": "書店、通販",
+  "note": "本体1,800円（税別）。",
+  "place": "書店、通販（PARCO出版）",
   "price": "",
   "q": "ちいかわカレンダー2027",
   "s": "2026-10-13",
   "sp": "day",
-  "src": "https://x.com/chiikawa_kouhou",
+  "src": "https://publishing.parco.jp/books/detail/?id=536",
   "t": "ちいかわカレンダー2027",
   "time": "",
-  "updatedAt": "2026-09-27",
-  "srcType": "official",
-  "verifiedAt": "2026-09-27",
+  "updatedAt": "2026-10-05",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-05",
   "rb": [
    {
     "n": "",
@@ -1128,9 +1131,12 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27",
+  "verifiedAt": "2026-10-05",
   "xpost": "https://x.com/chiikawa_kouhou/status/2084157319114621084",
-  "xpostNote": "投稿日2026-08-03。本文に「ちいかわ×ANA」「特別デザイン機『ちいかわジェット』」"
+  "xpostNote": "投稿日2026-08-03。本文に「ちいかわ×ANA」「特別デザイン機『ちいかわジェット』」",
+  "srcs": [
+   "https://travel.watch.impress.co.jp/docs/news/2130078.html"
+  ]
  },
  {
   "id": "20261026-18",
@@ -1149,7 +1155,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-05"
  },
  {
   "id": "20261031-19",
@@ -1163,12 +1169,15 @@
   "q": "ちいかわフォンすまーと",
   "s": "2026-10-31",
   "sp": "day",
-  "src": "https://toy.bandai.co.jp/",
+  "src": "https://toy.bandai.co.jp/ja/item/01_21065/",
   "t": "ちいかわフォンすまーと",
   "time": "",
-  "updatedAt": "2026-09-27",
+  "updatedAt": "2026-10-05",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-05",
+  "srcs": [
+   "https://toy.bandai.co.jp/ja/item/01_21066/"
+  ]
  },
  {
   "id": "20261101-37",
@@ -1719,7 +1728,7 @@
   "sp": "day",
   "e": "2026-10-14",
   "time": "10:00〜22:00",
-  "eNote": "",
+  "eNote": "期間限定（10/14まで）・早期完売の可能性あり",
   "place": "東京ソラマチ イーストヤード1F（東京都墨田区）",
   "area": "押上",
   "price": "エコバッグ 1,200円、クッキーサンド12個入 1,850円など",
@@ -1728,7 +1737,7 @@
   "note": "初登場のエコバッグあり。人気商品は早めに売り切れる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-05",
   "srcType": "press",
   "verifiedAt": "2026-10-04",
   "qNone": "期間限定ショップの案内"
@@ -1844,5 +1853,57 @@
   "autoAdded": true,
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04"
+ },
+ {
+  "id": "20250927-shanghai-flagship",
+  "region": "cn",
+  "t": "CHIIKAWA SHOP 上海旗艦店（中国初の公式旗艦店）",
+  "cat": "cafe",
+  "s": "2025-09-27",
+  "sp": "day",
+  "e": null,
+  "time": "10:00〜22:00",
+  "eNote": "常設店",
+  "place": "上海・南京東路139号 外灘中央広場",
+  "area": "上海",
+  "price": "",
+  "q": "",
+  "src": "https://x.com/chiikawa_kouhou/status/1967861011546804495",
+  "srcType": "official",
+  "srcs": [
+   "https://news.qq.com/rain/a/20250925A03YZ400"
+  ],
+  "verifiedAt": "2026-10-05",
+  "xpost": "https://x.com/chiikawa_kouhou/status/1967861011546804495",
+  "xpostNote": "投稿日2025-09-16。本文に「ちいかわ上海旗艦店」「9月27日(土)にグランドオープン」",
+  "note": "2フロアの路面店。上海限定グッズあり。南京東路駅から徒歩約5分。原文：chiikawa上海旗舰店",
+  "autoAdded": true,
+  "addedAt": "2026-10-05",
+  "updatedAt": "2026-10-05"
+ },
+ {
+  "id": "20261026-cake-can",
+  "region": "jp",
+  "t": "アニメちいかわ おもちゃケーキ缶",
+  "cat": "food",
+  "s": "2026-10-26",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "お菓子売場など（発売日は地域・店舗で異なる場合あり）",
+  "area": "",
+  "price": "1,100円",
+  "q": "ちいかわ おもちゃケーキ缶",
+  "src": "https://heart-ltd.jp/product/111145/",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/04/188724.html"
+  ],
+  "verifiedAt": "2026-10-05",
+  "note": "クリスマスケーキ風の缶にクッキー入り。",
+  "autoAdded": true,
+  "addedAt": "2026-10-05",
+  "updatedAt": "2026-10-05"
  }
 ]

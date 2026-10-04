@@ -1,5 +1,16 @@
 [
  {
+  "id": "20261004-heart-xmas",
+  "date": "2026-10-04",
+  "tag": "goods",
+  "title": "ハートからちいかわのクリスマスお菓子2種",
+  "sum": "お菓子入りの靴下とクッキー入りのケーキ型の缶が10/26に発売予定。靴下は1,430円、缶は1,100円です。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/04/188724.html",
+  "itemId": "20261026-cake-can",
+  "addedAt": "2026-10-05"
+ },
+ {
   "id": "20261004-shimamura-haramaki",
   "date": "2026-10-04",
   "tag": "goods",
@@ -9,6 +20,17 @@
   "src": "https://www.inside-games.jp/article/2026/10/04/188726.html",
   "itemId": "",
   "addedAt": "2026-10-04"
+ },
+ {
+  "id": "20261003-thetv-popularity",
+  "date": "2026-10-03",
+  "tag": "topic",
+  "title": "かわいいだけじゃない、ちいかわが愛される理由",
+  "sum": "草むしりで稼ぐ労働や厳しい出来事も描かれる世界観に注目し、人気の理由を考える記事。映画の興行収入が110億円を超えたことにも触れています。",
+  "source": "ザテレビジョン",
+  "src": "https://thetv.jp/news/detail/1445471/",
+  "itemId": "",
+  "addedAt": "2026-10-05"
  },
  {
   "id": "20261003-kr-movie-no1",
