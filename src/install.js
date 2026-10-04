@@ -259,3 +259,34 @@
 
   window.chiikatsuInstall = { open: openSheet };
 })();
+
+/* 「Xでポスト」：スマホではXアプリを直接開いて、投稿文を入れた状態にする。
+   ホーム画面のアプリから普通のリンクで開くと、ログインしていない別のブラウザ画面になってしまうため。
+   Xアプリが入っていないときは、少し待ってからこれまでどおりWeb版を開く。 */
+(function(){
+  var ua = navigator.userAgent || "";
+  var mobile = /iPhone|iPad|iPod|Android/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (!mobile) return;
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest('a[href^="https://x.com/intent/"],a[href^="https://twitter.com/intent/"]');
+    if (!a) return;
+    var u; try { u = new URL(a.href); } catch (err) { return; }
+    var p = u.searchParams, msg = p.get("text") || "";
+    if (p.get("url")) msg += (msg ? "\n" : "") + p.get("url");
+    if (p.get("hashtags")) msg += " " + p.get("hashtags").split(",").map(function(h){ return "#" + h.trim(); }).join(" ");
+    e.preventDefault();
+    var left = false;
+    var onHide = function(){ if (document.visibilityState === "hidden") left = true; };
+    var onBlur = function(){ left = true; };   // 「Xで開きますか？」の確認が出たときも、画面からフォーカスが外れる
+    document.addEventListener("visibilitychange", onHide);
+    window.addEventListener("pagehide", onHide);
+    window.addEventListener("blur", onBlur);
+    location.href = "twitter://post?message=" + encodeURIComponent(msg);
+    setTimeout(function(){
+      document.removeEventListener("visibilitychange", onHide);
+      window.removeEventListener("pagehide", onHide);
+      window.removeEventListener("blur", onBlur);
+      if (!left && document.visibilityState === "visible") location.href = a.href;   // アプリが開かなかった（入っていない）
+    }, 1800);
+  }, true);
+})();
