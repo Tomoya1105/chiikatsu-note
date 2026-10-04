@@ -6,6 +6,7 @@ export async function onRequestPost({ request, env }) {
   const id = await subId(String(b && b.endpoint || ""));
   const rec = JSON.parse((await env.REPORTS.get(`p:${id}`)) || "null");
   if (!rec) return new Response("not found", { status: 404 });
+  await env.REPORTS.put("x:lasttest", id, { expirationTtl: 600 });   // 運営者の端末の登録（/api/x?op=claim）に使う
   const st = await sendPush(rec.sub, { title: "ちい活ノート", body: "通知のテストです。「ほしい」に入れた予定の前日と当日にお知らせします。", url: "/?v=mine" }, { privateD: env.VAPID_PRIVATE, subject: "https://chiikatsu-note.pages.dev" });
   return Response.json({ ok: st < 300, status: st });
 }
