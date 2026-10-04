@@ -1,1 +1,1 @@
-export function onRequestGet(){ return new Response("pong", { headers: { "cache-control": "no-store" } }); }
+export function onRequestGet({ request }){ const r = new URL(request.url).searchParams.get("r"); const h = { "cache-control": "no-store", "content-type": r === "h" ? "text/html; charset=utf-8" : "text/plain" }; if (r === "1") h["x-robots-tag"] = "noindex"; return new Response(r === "h" ? "<!doctype html><meta name=robots content=noindex><p>pong</p>" : "pong", { headers: h }); }
