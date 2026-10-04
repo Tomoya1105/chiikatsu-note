@@ -125,7 +125,7 @@ export async function relayInfo(env, fetcher = fetch, now = Date.now()) {
 // ---- ニュースの見張り（10分ごと）----
 // ・PR TIMES（企業の公式発表）に「ちいかわ」の新しいリリースが出たら → サイトの「速報」に公式の見出しのまま出し、希望者に通知
 // ・ちいかわマーケットに予約以外の新商品がまとめて出たら → 「速報」に出す
-// ・Googleニュース・Bingニュース・ちいかわインフォの新しい案内 → 運営者に知らせ、自動更新が次の回で最優先に確かめる（サイトにはまだ出さない）
+// ・ニュースサイトのRSS・Bingニュース・ちいかわインフォの新しい案内 → 運営者に知らせ、自動更新が次の回で最優先に確かめる（サイトにはまだ出さない）
 const CHII = /ちいかわ|チイカワ|chiikawa|ハチワレ|ナガノ/i;
 const FEEDS = [
   { key: "prtimes", name: "PR TIMES", url: "https://prtimes.jp/index.rdf", official: true },
@@ -133,9 +133,7 @@ const FEEDS = [
   { key: "inside", name: "インサイド", url: "https://www.inside-games.jp/rss/index.rdf", official: false },
   { key: "animeanime", name: "アニメ！アニメ！", url: "https://animeanime.jp/rss/index.rdf", official: false },
   { key: "netlab", name: "ねとらぼ", url: "https://rss.itmedia.co.jp/rss/2.0/netlab.xml", official: false },
-  { key: "natalie", name: "コミックナタリー", url: "https://natalie.mu/comic/feed/news", official: false },
   { key: "bing", name: "Bingニュース", url: "https://www.bing.com/news/search?format=rss&setlang=ja&cc=JP&q=" + encodeURIComponent("ちいかわ"), official: false },
-  { key: "gnews", name: "Googleニュース", url: "https://news.google.com/rss/search?q=" + encodeURIComponent("ちいかわ") + "&hl=ja&gl=JP&ceid=JP:ja", official: false },
 ];
 const unx = s => String(s || "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/<[^>]+>/g, "").trim();
 const tag = (block, name) => { const m = new RegExp(`<${name}(?:\\s[^>]*)?>([\\s\\S]*?)</${name}>`, "i").exec(block); return m ? unx(m[1]) : ""; };
