@@ -2,7 +2,7 @@
 // 画像は保存しない。ここに記録するのは「どの情報に、どこの画像を、どんな根拠で、どこへのリンクで出したか」だけ。
 //   POST /api/visuals            … 端末が楽天で同じ商品を見つけて画像を出したときの記録（1日1回まで）
 //   GET  /api/visuals            … 表示率の集計と、情報ごとの記録（取得元・利用根拠・リンク先）
-//   GET  /api/visuals?audit=1    … サーバーから楽天APIとXの埋め込み可否を確かめ直す。1回に10件ずつ（続きは次の呼び出しで）
+//   GET  /api/visuals?audit=1    … サーバーから楽天APIとXの埋め込み可否を確かめ直す。1回に5件ずつ（続きは次の呼び出しで）
 import { RKM } from "../../src/rkmatch.mjs";
 
 const AFF = "582a6f7f.e1ade2b2.582a6f84.d5f85faa";
@@ -70,14 +70,14 @@ export async function onRequestGet({ request, env }) {
   const u = new URL(request.url);
   let auditInfo = null;
   if (u.searchParams.get("audit") === "1") {
-    // 時間切れにならないよう、点検が必要な情報を10件ずつ順番に確かめる（cursor を KV に覚える）
+    // 時間切れにならないよう、点検が必要な情報を5件ずつ順番に確かめる（cursor を KV に覚える）
     const targets = items.filter(it => it.rakuten || it.x);
     const lock = await env.REPORTS.get("v:auditLock");
     if (lock && Date.now() - +lock < 20e3) auditInfo = { skipped: "ほかの点検が動いています。20秒後にもう一度" };
     else {
       await env.REPORTS.put("v:auditLock", String(Date.now()), { expirationTtl: 60 });
       let cur = +(await env.REPORTS.get("v:auditCursor")) || 0; if (cur >= targets.length) cur = 0;
-      const batch = targets.slice(cur, cur + 10);
+      const batch = targets.slice(cur, cur + 5);
       auditInfo = await audit(batch, env);
       const next = cur + batch.length;
       await env.REPORTS.put("v:auditCursor", String(next >= targets.length ? 0 : next));
