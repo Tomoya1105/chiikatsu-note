@@ -38,11 +38,13 @@ async function audit(items, env) {
   let last = 0;
   for (const it of items) {
     if (it.rakuten) {
-      const wait = last + 1100 - Date.now(); if (wait > 0) await new Promise(r => setTimeout(r, wait));
+      const wait = last + 1300 - Date.now(); if (wait > 0) await new Promise(r => setTimeout(r, wait));
       last = Date.now();
       const qs = new URLSearchParams({ applicationId: RAK.app, accessKey: RAK.key, affiliateId: AFF, format: "json", formatVersion: "2", availability: "1", imageFlag: "1", NGKeyword: "中古 USED 美品", keyword: it.rakuten.query, hits: "10" });
       try {
-        const r = await fetch(`${RAK.ep}?${qs}`, { headers: { Referer: "https://chiikatsunote.com/", Origin: "https://chiikatsunote.com" } });
+        const get = () => fetch(`${RAK.ep}?${qs}`, { headers: { Referer: "https://chiikatsunote.com/", Origin: "https://chiikatsunote.com" } });
+        let r = await get();
+        if (r.status === 429) { await new Promise(x => setTimeout(x, 1600)); last = Date.now(); r = await get(); }   // 混んでいたら少し待ってもう一度
         out.rakutenChecked++;
         if (!r.ok) { out.rakutenErrors++; out.lastRakutenStatus = r.status; out.lastRakutenBody = (await r.text()).slice(0, 200); continue; }
         const list = ((await r.json()).Items || []).map(i => { const x = i.Item || i; let img = (x.mediumImageUrls || [])[0]; if (img && typeof img === "object") img = img.imageUrl;
@@ -77,7 +79,7 @@ export async function onRequestGet({ request, env }) {
     else {
       await env.REPORTS.put("v:auditLock", String(Date.now()), { expirationTtl: 60 });
       let cur = +(await env.REPORTS.get("v:auditCursor")) || 0; if (cur >= targets.length) cur = 0;
-      const batch = targets.slice(cur, cur + 5);
+      const batch = targets.slice(cur, cur + 4);
       auditInfo = await audit(batch, env);
       const next = cur + batch.length;
       await env.REPORTS.put("v:auditCursor", String(next >= targets.length ? 0 : next));
