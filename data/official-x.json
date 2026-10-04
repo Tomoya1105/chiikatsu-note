@@ -51,5 +51,22 @@
    "name": "ちいかわインフォ",
    "why": "ちいかわインフォのXと思われるが、chiikawa-info.jp からのリンクをまだ確かめていない（以前の一覧の chiikawa_info は誤りだった）"
   }
+ },
+ "excluded": {
+  "chiikawa_info": {
+   "name": "ちいかわ☆お役立ちインフォ",
+   "why": "ファンのアカウント。以前の一覧で公式扱いになっていた誤りを修正",
+   "at": "2026-10-04"
+  },
+  "chiikawa_bakery": {
+   "name": "—",
+   "why": "ベーカリー公式の誤記。正しくは chiikawabakery（運営会社のプレスリリースで確認）",
+   "at": "2026-10-04"
+  },
+  "chiikawa_pop_up": {
+   "name": "먼작귀상점",
+   "why": "chiikawa_popup と似た名前の、韓国の別のお店",
+   "at": "2026-10-04"
+  }
  }
 }

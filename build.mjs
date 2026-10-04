@@ -178,8 +178,8 @@ write("style.css", css);
 write("visuals.json", JSON.stringify({ builtAt: new Date().toISOString(), items: items.filter(it => !it.hidden).map(it => {
   const x = xpostOf(it), plan = RKM.plan(it);
   return { id: it.id, t: it.t, cat: it.cat, q: it.q || "", price: it.price || "", event: isEvent(it),
-    rakuten: plan ? { query: plan.query } : null, qNone: it.qNone || "",
-    x: x ? { url: `https://x.com/i/status/${x.id}`, account: x.name } : null };
+    rakuten: plan ? { query: plan.query } : null, qNone: it.qNone || "", src: it.src || "",
+    x: x ? { url: `https://x.com/i/status/${x.id}`, account: x.name, note: it.xpostNote || "（情報源のURLとして登録された公式ポスト）" } : null };
 }) }));
 write("app.js", RKM_SRC + "\n" + XPOST_SRC + "\n" + app);
 write("install.js", RKM_SRC + "\n" + installJs);

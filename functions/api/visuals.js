@@ -96,7 +96,7 @@ export async function onRequestGet({ request, env }) {
     const visual = rk ? "rakuten" : xOk ? "x" : "none";
     rows.push({ id: it.id, t: it.t, event: it.event, visual,
       image: rk ? { src: rk.src, basis: rk.basis, link: rk.link, img: rk.img, name: rk.name, at: rk.at, by: rk.by } : null,
-      x: it.x ? { src: `${it.x.account}のXの投稿`, basis: X_BASIS, link: it.x.url, checked: xv ? (xv.ok ? "表示できる" : `表示できない（${xv.status}）`) : "未確認" } : null,
+      x: it.x ? { src: `${it.x.account}のXの投稿`, basis: X_BASIS, link: it.x.url, note: it.x.note || "", checked: xv ? (xv.ok ? "表示できる" : `表示できない（${xv.status}）`) : "未確認" } : null,
       none: visual === "none" ? (it.qNone || (it.event ? "公式Xの投稿がまだ登録されていない" : it.rakuten ? "楽天で同じ商品が見つかっていない" : "検索語がない")) : undefined });
   }
   const goods = rows.filter(r => !r.event), events = rows.filter(r => r.event);
@@ -109,5 +109,14 @@ export async function onRequestGet({ request, env }) {
   summary.eventXRate = pct(summary.eventsWithX, summary.events);
   summary.allVisualRate = pct(summary.allVisual, summary.all);
   summary.noVisual = summary.all - summary.allVisual;
+  if (u.searchParams.get("format") === "csv") {
+    // スプレッドシートで開ける形（chiikatsu-visuals.xlsx の「情報ごとの状況」と同じ列）
+    const q = s => `"${String(s ?? "").replace(/"/g, '""')}"`;
+    const head = ["ID", "名前", "区分", "ビジュアル", "取得元", "利用根拠", "リンク先", "楽天で一致した商品名", "確認内容", "表示の確認", "画像なしの理由", "記録日時"];
+    const lines = rows.map(r => [r.id, r.t, r.event ? "イベント" : "グッズ", r.visual === "rakuten" ? "楽天の商品画像" : r.visual === "x" ? "公式Xの投稿" : "なし",
+      r.image ? r.image.src : r.x ? r.x.src : "", r.image ? r.image.basis : r.x ? r.x.basis : "", r.image ? r.image.link : r.x ? r.x.link : "",
+      r.image ? r.image.name : "", r.x ? r.x.note : "", r.x ? r.x.checked : "", r.none || "", r.image ? r.image.at : ""].map(q).join(","));
+    return new Response("\uFEFF" + [head.map(q).join(","), ...lines].join("\r\n"), { headers: { "content-type": "text/csv; charset=utf-8", "content-disposition": "attachment; filename=chiikatsu-visuals.csv", "cache-control": "no-store", "x-robots-tag": "noindex" } });
+  }
   return json({ ok: true, at: new Date().toISOString(), audit: auditInfo, summary, items: rows });
 }
