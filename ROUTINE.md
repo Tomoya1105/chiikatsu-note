@@ -121,12 +121,13 @@ reports-done.json に key がない報告ごとに、対象の情報（id が it
 
 検索例：「ちいかわ 新商品 発売日」「ちいかわ POP UP STORE 開催」「ちいかわ コラボ 期間」「ちいかわ 受注 締切」
 
-### 海外（朝の回は必ず4つの国・地域すべてを調べる）
+### 海外（朝の回は必ず台湾・韓国・香港・中国の4つを調べる。タイ・シンガポール・マレーシア・アメリカは朝の回にざっと探す）
 - 台湾・韓国・香港・中国の、公式のポップアップ、展示、常設店、その国・地域限定のグッズ（日本からの旅行者が行ける・買えるもの）を調べる。映画の現地公開、映画館の限定グッズ（ポップコーン容器・入場者特典）、コンビニ（セブン-イレブン・ファミリーマート・CU・GS25など）とのコラボも入れる。
 - 国ごとの探し方（現地の言葉で検索する）：
   - 韓国：「치이카와 팝업」「치이카와 콜라보」「먼작귀 굿즈」「치이카와샵」。手がかり：popga.co.kr、popply.co.kr、popspot.co.kr、ニュース（topstarnews など）、ちいかわマーケット韓国公式X（@chiikawa_m_kr）
   - 台湾：「吉伊卡哇 快閃店」「吉伊卡哇 聯名」「吉伊卡哇 7-11」。手がかり：華山1914、新光三越、SouNova、GNN
   - 香港：「Chiikawa Hong Kong pop-up」「吉伊卡哇 香港」。手がかり：Time Out Hong Kong、AIRSIDE、K11、MOKO、hk01
+  - タイ（th）・シンガポール（sg）・マレーシア（my）・アメリカ（us）：「Chiikawa pop up Bangkok／Singapore／Kuala Lumpur／Los Angeles／New York」「Chiikawa MINISO pop-up」など。公式（ちいかわ公式・MINISO公式・施設の公式）で確かめられたものだけ。place は「都市名・施設名」、area は都市名（バンコク、シンガポール、クアラルンプール、ロサンゼルス、ニューヨーク など）
   - 中国：「吉伊卡哇 快闪店」「CHIIKAWA SHOP 上海／北京／深圳／広州」。手がかり：本地宝、大型商業施設の公式アカウント
 - 開店日などの細かい日付が確かめられないときは、sp を "early"（上旬）、"mid"（中旬）、"late"（下旬）にして入れてよい（推測で日付を作らない）。
 - 非公式の転売、偽物、ファンの自主イベントは入れない。
@@ -149,7 +150,7 @@ reports-done.json に key がない報告ごとに、対象の情報（id が it
 ## 新規の書き方（items.json の配列に追加）
 ```
 {"id":"開始日YYYYMMDD-英小文字と数字とハイフンの短い名前（既存と重ならない）",
- "region":"jp|tw|kr|hk|cn",
+ "region":"jp|tw|kr|hk|cn|th|sg|my|us",
  "t":"日本語の名前（POP UP STOREは「ちいかわPOP UP STORE＠会場名」）",
  "cat":"goods|food|kuji|event|cafe|book（常設店はcafe）",
  "s":"YYYY-MM-DD", "sp":"day|early(05日)|mid(15日)|late(25日)|month(01日)",

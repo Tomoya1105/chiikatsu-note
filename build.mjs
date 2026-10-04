@@ -23,7 +23,7 @@ const BUILD = Date.now().toString(36);
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const CAT = { goods: "グッズ", food: "お菓子・食品", kuji: "くじ", event: "イベント", cafe: "カフェ・お店", book: "本・カレンダー" };
-const REG = { jp: "日本", tw: "台湾", kr: "韓国", hk: "香港", cn: "中国" };
+const REG = { jp: "日本", tw: "台湾", kr: "韓国", hk: "香港", cn: "中国", th: "タイ", sg: "シンガポール", my: "マレーシア", us: "アメリカ" };
 const DOW = ["日", "月", "火", "水", "木", "金", "土"];
 const isEvent = it => it.cat === "event" || it.cat === "cafe";
 const fmt = (s, sp = "day") => {
@@ -55,8 +55,9 @@ const OS_HOTEL = [
   [/ソウル/, "03kaigaiKoreaseoul", "ソウル"], [/釜山|プサン/, "03kaigaiKoreabusan", "釜山"],
   [/香港/, "02kaigaiHongkong", "香港"], [/マカオ/, "03kaigaiMakaumakau", "マカオ"],
   [/上海/, "03kaigaiChinashanghai", "上海"], [/北京/, "03kaigaiChinabeijing", "北京"], [/深セン|深圳|広東|広州|珠海/, "03kaigaiChinaguangdong", "広東省（深セン・広州）"],
+  [/バンコク/, "03kaigaiThailandBangkok", "バンコク"], [/クアラルンプール/, "03kaigaiMalaysiaKUL", "クアラルンプール"], [/ロサンゼルス/, "03kaigaiU.S.A.LAX", "ロサンゼルス"], [/ニューヨーク/, "03kaigaiU.S.A.NYC", "ニューヨーク"],
 ];
-const OS_COUNTRY = { tw: ["02kaigaiTaiwan", "台湾"], kr: ["02kaigaiKorea", "韓国"], hk: ["02kaigaiHongkong", "香港"], cn: ["02kaigaiChina", "中国"] };
+const OS_COUNTRY = { tw: ["02kaigaiTaiwan", "台湾"], kr: ["02kaigaiKorea", "韓国"], hk: ["02kaigaiHongkong", "香港"], cn: ["02kaigaiChina", "中国"], th: ["02kaigaiThailand", "タイ"], sg: ["02kaigaiSingapore", "シンガポール"], my: ["03kaigaiMalaysiaKUL", "クアラルンプール"], us: ["02kaigaiU.S.A.", "アメリカ"] };
 function hotelLink(it){
   const r = it.region || "jp";
   if (r === "jp") return { url: "https://kw.travel.rakuten.co.jp/keyword/Search.do?f_query=" + sjisEncode(it.area), label: it.area + "周辺のホテルを探す" };

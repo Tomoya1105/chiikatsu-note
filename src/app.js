@@ -42,7 +42,7 @@ const safeUrl = u => /^https:\/\//.test(u||"") ? u : "";
 /* ===== データ（共有の保存庫から読み込み） ===== */
 let ITEMS = [];
 /* ===== 日本／海外 ===== */
-const REG = {jp:"日本",tw:"台湾",kr:"韓国",hk:"香港",cn:"中国"};
+const REG = {jp:"日本",tw:"台湾",kr:"韓国",hk:"香港",cn:"中国",th:"タイ",sg:"シンガポール",my:"マレーシア",us:"アメリカ"};
 const R = {region:"jp", country:"all"};
 try{ const r0 = JSON.parse(localStorage.getItem("chiikatsu-region")||"null"); if (r0 && r0.region) Object.assign(R, r0); }catch(e){}
 const regionOf = it => REG[it.region] ? it.region : "jp";
@@ -152,8 +152,9 @@ const OS_HOTEL = [
   [/ソウル/, "03kaigaiKoreaseoul", "ソウル"], [/釜山|プサン/, "03kaigaiKoreabusan", "釜山"],
   [/香港/, "02kaigaiHongkong", "香港"], [/マカオ/, "03kaigaiMakaumakau", "マカオ"],
   [/上海/, "03kaigaiChinashanghai", "上海"], [/北京/, "03kaigaiChinabeijing", "北京"], [/深セン|深圳|広東|広州|珠海/, "03kaigaiChinaguangdong", "広東省（深セン・広州）"],
+  [/バンコク/, "03kaigaiThailandBangkok", "バンコク"], [/クアラルンプール/, "03kaigaiMalaysiaKUL", "クアラルンプール"], [/ロサンゼルス/, "03kaigaiU.S.A.LAX", "ロサンゼルス"], [/ニューヨーク/, "03kaigaiU.S.A.NYC", "ニューヨーク"],
 ];
-const OS_COUNTRY = { tw: ["02kaigaiTaiwan", "台湾"], kr: ["02kaigaiKorea", "韓国"], hk: ["02kaigaiHongkong", "香港"], cn: ["02kaigaiChina", "中国"] };
+const OS_COUNTRY = { tw: ["02kaigaiTaiwan", "台湾"], kr: ["02kaigaiKorea", "韓国"], hk: ["02kaigaiHongkong", "香港"], cn: ["02kaigaiChina", "中国"], th: ["02kaigaiThailand", "タイ"], sg: ["02kaigaiSingapore", "シンガポール"], my: ["03kaigaiMalaysiaKUL", "クアラルンプール"], us: ["02kaigaiU.S.A.", "アメリカ"] };
 function hotelLink(it){
   const r = it.region || "jp";
   if (r === "jp") return { url: "https://kw.travel.rakuten.co.jp/keyword/Search.do?f_query=" + sjisEncode(it.area), label: it.area + "周辺のホテルを探す" };
@@ -566,8 +567,9 @@ function renderRegion(){
   const cc = document.getElementById("countryChips");
   cc.hidden = R.region!=="os";
   const present = new Set(ITEMS.map(regionOf));
-  cc.innerHTML = [["all","すべての国・地域"],...Object.entries(REG).filter(([k])=>k!=="jp")]
-    .map(([k,l])=>`<button class="chip" data-c="${k}" aria-pressed="${R.country===k}" ${k!=="all"&&loaded&&!present.has(k)?"disabled":""}>${l}</button>`).join("");
+  // 情報が1件もない国・地域は出さない（見つかったら自動で出てくる）
+  cc.innerHTML = [["all","すべての国・地域"],...Object.entries(REG).filter(([k])=>k!=="jp" && (!loaded || present.has(k)))]
+    .map(([k,l])=>`<button class="chip" data-c="${k}" aria-pressed="${R.country===k}">${l}</button>`).join("");
   document.getElementById("osNote").hidden = R.region!=="os";
 }
 function setRegion(patch){
