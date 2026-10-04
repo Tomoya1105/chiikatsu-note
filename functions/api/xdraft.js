@@ -45,7 +45,11 @@ export async function onRequestGet({ request, env }) {
   if (!op && q("tok")) {
     const tok = await env.REPORTS.get("x:tok");
     if (!tok || q("tok") !== tok) return html(msg("ページが見つかりません", "通知から開き直してください。"));
-    return html(page(JSON.parse((await env.REPORTS.get("x:drafts")) || "[]")));
+    const cs = [];
+    const lst = await env.REPORTS.list({ prefix: "c:", limit: 100 });
+    for (const k of lst.keys) { const v = JSON.parse((await env.REPORTS.get(k.name)) || "null"); if (v) cs.push({ id: k.name, ...v }); }
+    cs.reverse();
+    return html(page(JSON.parse((await env.REPORTS.get("x:drafts")) || "[]"), cs));
   }
 
   if (!env.REPORT_KEY || q("key") !== env.REPORT_KEY) return new Response("forbidden", { status: 403 });
@@ -99,7 +103,13 @@ export async function onRequestPost({ request, env }) {
   if (!env.REPORTS) return new Response("not configured", { status: 503 });
   const u = new URL(request.url);
   const tok = await env.REPORTS.get("x:tok");
-  if (!tok || u.searchParams.get("tok") !== tok || u.searchParams.get("op") !== "tip") return new Response("forbidden", { status: 403 });
+  if (!tok || u.searchParams.get("tok") !== tok) return new Response("forbidden", { status: 403 });
+  if (u.searchParams.get("op") === "cdel") {
+    const id = u.searchParams.get("id") || "";
+    if (/^c:\d+:[0-9a-f-]{6}$/.test(id)) await env.REPORTS.delete(id);
+    return Response.json({ ok: true });
+  }
+  if (u.searchParams.get("op") !== "tip") return new Response("forbidden", { status: 403 });
   let b; try { b = await request.json(); } catch (e) { return new Response("bad request", { status: 400 }); }
   const text = String(b && b.text || "").trim().slice(0, 2000);
   if (!text) return Response.json({ ok: false });
@@ -135,19 +145,21 @@ function weight(s) {
   return n;
 }
 
-function page(drafts) {
+function page(drafts, contacts = []) {
   const groups = drafts.map(d => `<div class="grp">${esc(d.at)}　${esc(d.slot)}の投稿案</div>` + d.posts.map(p => {
     const w = weight(p.t);
     return `<div class="card"><div class="txt">${esc(p.t)}</div>${p.n ? `<div class="note">${esc(p.n)}</div>` : ""}
 <div class="row"><a class="btn go" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(p.t)}" target="_blank" rel="noopener">Xで投稿する</a><button class="btn cp" type="button" data-copy="${esc(p.t)}">コピー</button><span class="cnt${w > 280 ? " over" : ""}">${Math.ceil(w / 2)}/140字${w > 280 ? "（長すぎます）" : ""}</span></div></div>`;
   }).join("")).join("");
   return `<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Xの投稿案</title><style>${CSS}</style></head><body><div class="w">
-<h1>Xの投稿案</h1>
+<h1>運営者ページ</h1>
+<div class="card" id="contact"><b>お問い合わせ（${contacts.length}件）</b>${contacts.length ? contacts.map(c => `<div class="note" style="margin-top:10px" data-c="${esc(c.id)}"><div><b>${esc(c.kind)}</b>　${esc(c.at)}</div><div>${esc(c.name || "（名前なし）")}${c.email ? `　<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : "　（返信先なし）"}</div><div style="margin-top:6px;color:var(--ink);white-space:pre-wrap">${esc(c.text)}</div><div class="row"><button class="btn cp" type="button" data-cdel="${esc(c.id)}">対応済みにして消す</button></div></div>`).join("") : '<p class="lead" style="margin:4px 0 0">まだありません。</p>'}</div>
+<h2 style="font-size:17px;margin:20px 0 6px">Xの投稿案</h2>
 <div class="card"><b>見つけた情報を送る</b><p class="lead" style="margin:4px 0 8px">Xなどで見つけた新商品・イベントを、URLと一緒に貼り付けてください（本文もコピーして貼るとより確実です）。次の自動更新で確かめて載せます。</p>
 <form id="tip"><textarea name="text" rows="4" maxlength="2000" required placeholder="例）https://x.com/chiikawa_kouhou/status/… 2027年イヤーズアイテム 10/16発売" style="width:100%;font:inherit;font-size:14px;padding:9px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)"></textarea>
 <div class="row"><button class="btn go" type="submit">送る</button><span class="cnt" id="tipmsg"></span></div></form></div><p class="lead">「Xで投稿する」を押すと、この文章が入った状態でXが開きます。そのまま送らず、あなたの気持ちをひとこと足してから投稿してください。新しい順です。</p>
 ${groups || '<div class="card">まだ投稿案はありません。次の自動更新をお待ちください。</div>'}
 <p class="tip">ナガノさんの最新話は、読んだ気持ちをそのまま引用リポストで。自動更新は漫画を読めないので、感想は書きません。</p>
 </div><script>document.getElementById("tip").addEventListener("submit",function(e){e.preventDefault();var f=e.target,m=document.getElementById("tipmsg");m.textContent="送信中…";fetch(location.pathname+location.search+"&op=tip",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({text:f.text.value})}).then(function(r){return r.json()}).then(function(j){if(j.ok){f.reset();m.textContent="送りました。次の自動更新で確かめます"}else m.textContent="送れませんでした"}).catch(function(){m.textContent="送れませんでした"})});
-document.addEventListener("click",function(e){var b=e.target.closest("[data-copy]");if(!b)return;navigator.clipboard.writeText(b.getAttribute("data-copy")).then(function(){b.textContent="コピーしました";setTimeout(function(){b.textContent="コピー"},1600)})});</script></body></html>`;
+document.addEventListener("click",function(e){var d=e.target.closest("[data-cdel]");if(d){fetch(location.pathname+location.search+"&op=cdel&id="+encodeURIComponent(d.getAttribute("data-cdel")),{method:"POST"}).then(function(){var n=d.closest("[data-c]");if(n)n.remove()});return}var b=e.target.closest("[data-copy]");if(!b)return;navigator.clipboard.writeText(b.getAttribute("data-copy")).then(function(){b.textContent="コピーしました";setTimeout(function(){b.textContent="コピー"},1600)})});</script></body></html>`;
 }

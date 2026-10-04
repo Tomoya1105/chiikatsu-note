@@ -107,7 +107,7 @@ const INSTALL_MINE = `<div class="ins-card ins-mine" data-ins-card>${ICO}<div cl
 const FOOT = `<footer class="about">
     ${INSTALL_CARD}
     ${RESPECT}
-    <div class="sitelinks"><a href="/">トップ</a><a href="/about/">運営者について</a><a href="/privacy/">プライバシーポリシー</a></div>
+    <div class="sitelinks"><a href="/">トップ</a><a href="/about/">運営者について</a><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div>
     <p class="credit"><a href="https://webservice.rakuten.co.jp/" target="_blank" rel="noopener">Supported by Rakuten Developers</a></p>
     <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
   </footer>`;
@@ -259,7 +259,9 @@ for (const it of items) {
       if (ok.every(x => x.so)) return `<div class="rsvbox closed"><div class="rsvh">予約はすべて完売しました</div></div>`;
       return `<div class="rsvbox open"><div class="rsvh">予約・受注${it.re ? `<small>締切 ${esc(fmt(it.re.slice(0, 10)))} ${esc(it.re.slice(11, 16))}</small>` : ""}</div><div class="rsvbtns">${ok.slice().sort((p, q) => (p.so ? 1 : 0) - (q.so ? 1 : 0)).map(x => x.so ? `<span class="btn rsvbtn so">${x.n ? esc(x.n) + " " : ""}完売</span>` : `<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>予約はこちら${x.n ? "（" + esc(x.n) + "）" : ""}</a>`).join("")}</div></div>`; })()}
     <div class="acts">
-      ${it.q ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored" data-rkd="${esc(JSON.stringify({ q: it.q, t: it.t, p: it.price || "", pre: it.s > TODAY }))}">楽天市場で探す <span class="tag">PR</span></a>` : ""}
+      ${(() => { const L = (Array.isArray(it.rb) ? it.rb : []).filter(x => x && /^https:\/\/books\.rakuten\.co\.jp\/rb\/\d+\/?$/.test(x.u || "")); const pre = it.s > TODAY;
+        return L.map(x => `<a class="btn buy" href="${esc(aff(x.u))}" target="_blank" rel="noopener sponsored" data-rb>${pre ? "楽天ブックスで予約する" : "楽天ブックスで見る"}${x.n ? "（" + esc(x.n) + "）" : ""} <span class="tag">PR</span></a>`).join(""); })()}
+      ${it.q && !(Array.isArray(it.rb) && it.rb.length) ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored" data-rkd="${esc(JSON.stringify({ q: it.q, t: it.t, p: it.price || "", pre: it.s > TODAY }))}">楽天市場で探す <span class="tag">PR</span></a>` : ""}
       ${/^https:\/\//.test(it.src || "") ? `<a class="btn" href="${esc(it.src)}" target="_blank" rel="noopener">公式情報</a>` : ""}
     </div>
     ${(() => { const tr = it.area ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
@@ -301,10 +303,26 @@ write("official/index.html", page({
   body: doc("公式サイト・公式アカウント", `<p>『ちいかわ』に関する公式のサイトとアカウントをまとめました。発売日や会期の最新情報、購入の方法は、こちらの公式の発表をご確認ください。</p>${officialHtml}<p class="credit">リンク先はすべて公式のページです（ちい活ノートとは関係ありません）。リンクの誤りに気づいたら、トップページ下の「サイトへのご意見」から教えてください。</p>`),
 }));
 write("owner/index.html", fs.readFileSync("src/owner.html", "utf8"));   // 運営者メニュー（検索に出さない・サイトマップに入れない）
+write("contact/index.html", page({
+  title: "お問い合わせ｜ちい活ノート", desc: "ちい活ノートへのお問い合わせ・ご意見・情報提供はこちらから。", url: "/contact/",
+  body: doc("お問い合わせ", `<p>ちい活ノートへのご意見・不具合のお知らせ・情報の提供・企業やメディアの方からのご連絡は、こちらのフォームからお送りください。運営者が確認します。</p>
+<p class="credit">掲載情報のまちがいは、各情報のページにある「情報のまちがいを報告する」からも送れます（そちらのほうが早く直せます）。ちいかわの商品やイベントについてのお問い合わせは、それぞれの公式窓口へお願いします。</p>
+<form class="cform" id="cform">
+<label>お問い合わせの種類<select name="kind"><option value="site">サイトへのご意見・不具合</option><option value="info">情報の提供・掲載のお願い</option><option value="biz">企業・メディアの方</option><option value="other">その他</option></select></label>
+<label>お名前（ニックネームでも大丈夫です・なくても可）<input name="name" maxlength="50" autocomplete="nickname"></label>
+<label>返信先のメールアドレス（返信が必要な方だけ）<input name="email" type="email" maxlength="120" autocomplete="email" inputmode="email"></label>
+<label>お問い合わせ内容（必須）<textarea name="text" rows="7" maxlength="2000" required></textarea></label>
+<input name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+<button class="btn cbtn" type="submit">送信する</button>
+<p class="cmsg" id="cmsg" role="status"></p>
+</form>
+<p class="credit">送っていただいた内容は、お返事と、サイトをよくするためだけに使い、180日たつと自動で消えます。くわしくは<a href="/privacy/">プライバシーポリシー</a>をご覧ください。</p>
+<script>document.getElementById("cform").addEventListener("submit",async function(e){e.preventDefault();var f=this,m=document.getElementById("cmsg"),b=f.querySelector("button");b.disabled=true;m.textContent="送信中…";try{var r=await fetch("/api/contact",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({kind:f.kind.value,name:f.name.value,email:f.email.value,text:f.text.value,hp:f.hp.value})});var j=await r.json();if(!j.ok)throw new Error(j.reason||"");f.reset();m.textContent="送信しました。お問い合わせありがとうございます。";}catch(err){m.textContent=(err&&err.message)||"送れませんでした。時間をおいてもう一度お試しください";}b.disabled=false;});</script>`),
+}));
 write("privacy/index.html", page({
   title: "プライバシーポリシー｜ちい活ノート", desc: "ちい活ノートのプライバシーポリシー。", url: "/privacy/",
   body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。</p>
-<h2>Xの投稿の表示について</h2><p>「公式の画像を見る」を押したときだけ、X（旧Twitter）の埋め込み機能で公式アカウントの投稿を表示します。そのとき、閲覧情報がX社に送られることがあります（X社のプライバシーポリシーが適用されます）。押さなければXには何も送られません。トラッキングを控える設定（DNT）で読み込んでいます。</p><h2>まちがい報告</h2><p>「情報のまちがいを報告する」から送られた内容（選んだ項目と入力した文章）は、掲載情報を直すためだけに使います。個人を特定できる情報は書き込まないでください。</p>
+<h2>Xの投稿の表示について</h2><p>「公式の画像を見る」を押したときだけ、X（旧Twitter）の埋め込み機能で公式アカウントの投稿を表示します。そのとき、閲覧情報がX社に送られることがあります（X社のプライバシーポリシーが適用されます）。押さなければXには何も送られません。トラッキングを控える設定（DNT）で読み込んでいます。</p><h2>お問い合わせについて</h2><p>お問い合わせフォームから送られた内容（種類・お名前・メールアドレス・本文）は、お返事とサイトの改善のためだけに使い、第三者に渡すことはありません。180日たつと自動で消えます。送りすぎを防ぐため、IPアドレスから作った一時的な値を1日だけ使いますが、IPアドレスそのものは保存しません。</p><h2>まちがい報告</h2><p>「情報のまちがいを報告する」から送られた内容（選んだ項目と入力した文章）は、掲載情報を直すためだけに使います。個人を特定できる情報は書き込まないでください。</p>
 <h2>アフィリエイトについて</h2><p>当サイトは楽天グループ株式会社の「楽天アフィリエイト」に参加しています。リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
 <h2>アクセス解析・広告配信について</h2><p>今後、アクセス解析ツールや第三者配信の広告（Google AdSense など）を導入する場合は、Cookieを使って閲覧情報を集めることがあります。導入する際はこのページでお知らせします。</p>
 <h2>免責事項</h2><p>掲載情報は正確になるよう努めていますが、発売日や会期は変更されることがあります。掲載内容によって生じた損害について、運営者は責任を負いません。最新の情報は必ず公式の発表をご確認ください。</p>
@@ -314,7 +332,7 @@ write("offline/index.html", page({ title: "電波がつながっていません�
 write("404.html", page({ title: "ページが見つかりません｜ちい活ノート", desc: "", url: "/404", body: doc("ページが見つかりません", `<p>お探しのページは移動したか、掲載を終えた可能性があります。</p><p><a class="btn" href="/">トップへ戻る</a></p>`) }));
 
 // ---- 検索エンジン向け
-const urls = ["/", "/official/", "/about/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
+const urls = ["/", "/official/", "/about/", "/contact/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /owner/\nSitemap: ${SITE}/sitemap.xml\n`);
 

@@ -31,6 +31,7 @@ for (const it of items) {
   if (it.s && !/^\d{4}-\d{2}-\d{2}$/.test(it.s)) errs.push(`${it.id}: s の形がちがいます`);
   if (it.e && !/^\d{4}-\d{2}-\d{2}$/.test(it.e)) errs.push(`${it.id}: e の形がちがいます`);
   if (it.q && !/ちいかわ|chiikawa/i.test(it.q)) errs.push(`${it.id}: q（楽天の検索語）に「ちいかわ」を入れてください（ないと関係ない商品が出ます）`);
+  if (it.rb && (!Array.isArray(it.rb) || it.rb.some(x => !x || !/^https:\/\/books\.rakuten\.co\.jp\/rb\/\d+\/?$/.test(x.u || "")))) errs.push(`${it.id}: rb は [{"n":"版の名前 or 空","u":"https://books.rakuten.co.jp/rb/数字/"}] の形にしてください`);
   // 根拠（情報源）の記録
   if (!it.src) errs.push(`${it.id}: src（根拠のURL）がありません`);
   else if (srcTypeOf(it.src) === "aggregator") errs.push(`${it.id}: src がまとめサイト・個人ブログです（${it.src.slice(0, 60)}）。公式・メーカー・プレスリリース・報道のURLにしてください`);

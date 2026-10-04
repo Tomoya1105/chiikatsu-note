@@ -119,6 +119,16 @@ function fmtStart(it){
 function fmtEnd(it){ const d=it.ed; return `${d.getMonth()+1}/${d.getDate()}(${DOW[d.getDay()]})`; }
 
 /* ===== リンク ===== */
+/* 楽天ブックス（本・コミック・カレンダー）の商品ページ。必ずアフィリエイトのリンクにする */
+function rbList(it){
+  const L = Array.isArray(it.rb) ? it.rb : [];
+  return L.filter(x => x && /^https:\/\/books\.rakuten\.co\.jp\/rb\/\d+\/?$/.test(x.u||""));
+}
+function affLink(u){ return `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(u)}`; }
+function rbBtns(it){
+  const pre = it.sd > TODAY;
+  return rbList(it).map(x => `<a class="btn buy${pre?" pre":""}" href="${esc(affLink(x.u))}" target="_blank" rel="noopener sponsored" data-rb>${pre?"楽天ブックスで予約":"楽天ブックスで見る"}${x.n?`（${esc(x.n)}）`:""} <span class="tag">PR</span></a>`).join("");
+}
 function rakuten(q){
   if (!/ちいかわ|chiikawa/i.test(q)) q = "ちいかわ "+q;   // 「ちいかわ」が入っていないと、ほかの商品（本物のまんじゅうなど）が出てしまう
   const u = "https://search.rakuten.co.jp/search/mall/"+encodeURIComponent(q)+"/";
@@ -217,7 +227,7 @@ function card(it, opt){
         return `<div class="rsvbox ${rv}"><div class="rsvh">${head}</div><div class="rsvbtns">${L.slice().sort((p,q)=>(p.so?1:0)-(q.so?1:0)).map(x=>x.so ? `<span class="btn rsvbtn so">${x.n?esc(x.n)+" ":""}完売</span>` : `<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>${rv==="open"?"予約はこちら":"予約ページ"}${x.n?`（${esc(x.n)}）`:""}</a>`).join("")}</div></div>`; })()}
       <div class="acts main">
         ${st.k!=="ended"?`<button class="btn want" data-mark="want" aria-pressed="${m==="want"}">${m==="want"?"♥ ほしい":"♡ ほしい"}</button>`:""}
-        ${it.q?`<span class="rk" data-rk="${esc(it.id)}"></span>`:""}
+        ${rbList(it).length ? rbBtns(it) : it.q?`<span class="rk" data-rk="${esc(it.id)}"></span>`:""}
       </div>
       <div class="acts sub">
         ${src?`<a class="lnk" href="${esc(src)}" target="_blank" rel="noopener">公式情報</a>`:""}

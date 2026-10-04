@@ -583,3 +583,11 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .xwait a{color:var(--acc);margin-left:4px}
 
 .rkmore{font-size:12.5px;color:var(--ink-2);align-self:center;margin-left:2px}
+
+/* お問い合わせ */
+.cform{display:grid;gap:12px;margin:14px 0}
+.cform label{display:grid;gap:4px;font-size:13.5px;font-weight:700;color:var(--ink)}
+.cform input,.cform select,.cform textarea{font:inherit;font-size:16px;font-weight:400;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.cform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cform .cbtn{text-align:center;justify-content:center;background:var(--acc);color:var(--on-acc);border:none;font-weight:700;padding:12px;border-radius:12px;font-size:15px}
+.cmsg{margin:0;font-size:13.5px;min-height:1em}

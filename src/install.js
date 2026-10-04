@@ -52,7 +52,8 @@
     var a = e.target.closest("a[href]"); if (!a) return;
     var h = a.href;
     if (/hb\.afl\.rakuten/.test(h)) {
-      if (a.hasAttribute("data-rkd")) ct(a.dataset.hit ? (a.dataset.pre ? "c:rkpre" : "c:rk") : "c:rksearch");
+      if (a.hasAttribute("data-rb")) ct("c:books");
+      else if (a.hasAttribute("data-rkd")) ct(a.dataset.hit ? (a.dataset.pre ? "c:rkpre" : "c:rk") : "c:rksearch");
       else if (a.classList.contains("trip")) ct("c:travel");
       else if (a.classList.contains("prod")) ct("c:shop");
       else if (a.closest("[data-rk]") || a.closest("[data-pimg]")) ct(a.dataset.pre ? "c:rkpre" : "c:rk");

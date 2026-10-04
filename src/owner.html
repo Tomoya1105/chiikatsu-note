@@ -46,7 +46,7 @@ ol{margin:0 0 4px;padding-left:20px;font-size:13.5px}
     '<h1>運営者メニュー</h1><p class="lead">ちい活ノートの運営者だけが使うページです。このページをホーム画面に追加しておくと便利です。</p>' +
     '<div class="card"><h2>見つけた情報を送る</h2><p>Xなどで見つけた新商品・イベント・話題のグッズの投稿URLを貼ってください。本文もコピーして貼ると、より確実です。次の自動更新で確かめてサイトに載せます。</p>' +
     '<form id="tip"><textarea name="text" rows="5" maxlength="2000" required placeholder="ここに貼り付け"></textarea><button class="btn go" type="submit">送る</button><div class="msg" id="tipmsg"></div></form></div>' +
-    '<div class="card"><h2>Xの投稿案を見る</h2><p>自動更新が作った投稿案です。「Xで投稿する」で文章が入った状態のXが開きます。</p><button class="btn sub" type="button" id="drafts">投稿案のページを開く</button><div class="msg" id="dmsg"></div></div>' +
+    '<div class="card"><h2>投稿案・お問い合わせを見る</h2><p>自動更新が作ったXの投稿案と、お問い合わせフォームに届いた内容を見られます。</p><button class="btn sub" type="button" id="drafts">運営者ページを開く</button><div class="msg" id="dmsg"></div></div>' +
     '<div class="card"><h2>投稿案の通知を、このスマホで受け取る</h2><ol><li>ホーム画面の「ちい活ノート」アプリを開き、マイリストの通知の<b>「テスト通知を送る」</b>を押す</li><li>10分以内にこのページに戻って、下のボタンを押す</li></ol><button class="btn sub" type="button" id="claim">通知を登録する</button><div class="msg" id="cmsg"></div></div>';
   document.getElementById("tip").addEventListener("submit", function(e){
     e.preventDefault(); var f = e.target, ms = document.getElementById("tipmsg");

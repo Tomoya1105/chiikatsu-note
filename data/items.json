@@ -774,7 +774,13 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "press",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-09-27",
+  "rb": [
+   {
+    "n": "",
+    "u": "https://books.rakuten.co.jp/rb/18751377/"
+   }
+  ]
  },
  {
   "id": "20261002-pus-aomori",
@@ -969,7 +975,13 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-09-27",
+  "rb": [
+   {
+    "n": "",
+    "u": "https://books.rakuten.co.jp/rb/18761371/"
+   }
+  ]
  },
  {
   "id": "20261015-bakery2nd",
@@ -1190,7 +1202,17 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-09-27",
+  "rb": [
+   {
+    "n": "通常版",
+    "u": "https://books.rakuten.co.jp/rb/18798062/"
+   },
+   {
+    "n": "特装版",
+    "u": "https://books.rakuten.co.jp/rb/18798063/"
+   }
+  ]
  },
  {
   "id": "20261204-38",
