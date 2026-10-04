@@ -11,7 +11,7 @@ const COOL = 6 * 3600e3; // 同じ商品の通知は6時間あける
 const clean = t => String(t || "").replace(/【[^】]*】/g, " ").replace(/\s+/g, " ").trim().slice(0, 60);
 
 export async function watchMarket(env, fetcher = fetch, now = Date.now()) {
-  const r = await fetcher(`${MARKET}/products.json?limit=150`, { headers: { "user-agent": "chiikatsu-note-watch/1.0 (+https://chiikatsu-note.pages.dev/)" } });
+  const r = await fetcher(`${MARKET}/products.json?limit=150`, { headers: { "user-agent": "chiikatsu-note-watch/1.0 (+https://chiikatsunote.com/)" } });
   if (!r.ok) {
     // 読めなかった理由を残す（同じ理由なら書き直さない＝保存回数の節約）
     const why = `HTTP ${r.status}`;
@@ -60,7 +60,7 @@ export async function watchMarket(env, fetcher = fetch, now = Date.now()) {
 
 // サイトに載っている予約（自動更新が予告から登録したもの）の、受付開始30分前にお知らせする
 export async function preStart(env, fetcher = fetch, now = Date.now()) {
-  const r = await fetcher("https://chiikatsu-note.pages.dev/push-items.json", { cf: { cacheTtl: 120 } });
+  const r = await fetcher("https://chiikatsunote.com/push-items.json", { cf: { cacheTtl: 120 } });
   if (!r.ok) return { ok: false };
   const items = await r.json();
   const out = [];
@@ -92,7 +92,7 @@ export async function relayInfo(env, fetcher = fetch, now = Date.now()) {
   const out = {};
   for (const [k, url] of Object.entries(INFO)) {
     try {
-      const r = await fetcher(url, { headers: { "user-agent": "Mozilla/5.0 (compatible; chiikatsu-note-watch/1.0; +https://chiikatsu-note.pages.dev/)", "accept-language": "ja" } });
+      const r = await fetcher(url, { headers: { "user-agent": "Mozilla/5.0 (compatible; chiikatsu-note-watch/1.0; +https://chiikatsunote.com/)", "accept-language": "ja" } });
       if (!r.ok) { out[k] = r.status; continue; }
       const text = toText(await r.text()).slice(0, 120000);
       const prev = await env.REPORTS.get(`w:info:${k}`);

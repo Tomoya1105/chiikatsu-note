@@ -1,6 +1,6 @@
 /* ===== 設定 ===== */
 const AFF = { rakutenId: "582a6f7f.e1ade2b2.582a6f84.d5f85faa" };
-/* 楽天ウェブサービス（Webアプリケーション。許可サイト chiikatsu-note.pages.dev からのみ使えるキー） */
+/* 楽天ウェブサービス（Webアプリケーション。許可サイト chiikatsunote.com と chiikatsu-note.pages.dev からのみ使えるキー） */
 const RAK = { app: "d328e43a-4e55-4bd7-8ce4-f265afcf674d", key: "pk_xcGUmu6xmFCHvq4iCebKJjAiwMb2IAKrSJhQgGb49vo",
   ep: "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701" };
 

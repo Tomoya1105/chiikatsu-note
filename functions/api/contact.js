@@ -31,7 +31,7 @@ export async function onRequestPost({ request, env }) {
     const url = `/api/xdraft?tok=${await token(env)}#contact`;
     for (const o of owners) {
       const rec = JSON.parse((await env.REPORTS.get(`p:${o}`)) || "null");
-      if (rec) { try { await sendPush(rec.sub, { title: "お問い合わせが届きました", body: `${KINDS[kind]}：${text.slice(0, 50)}`, url, tag: "contact" }, { privateD: env.VAPID_PRIVATE, subject: "https://chiikatsu-note.pages.dev" }); } catch (e) {} }
+      if (rec) { try { await sendPush(rec.sub, { title: "お問い合わせが届きました", body: `${KINDS[kind]}：${text.slice(0, 50)}`, url, tag: "contact" }, { privateD: env.VAPID_PRIVATE, subject: "https://chiikatsunote.com" }); } catch (e) {} }
     }
   }
   return Response.json({ ok: true });

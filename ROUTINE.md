@@ -26,7 +26,7 @@
 
 「回」に当てはまらない行は「—（この回は対象外）」と書く。今が何時の回かは、日本時間の現在時刻で判断する（6時台＝朝、13時台＝昼、18時台＝夕方）。
 
-あなたは「ちい活ノート」（https://chiikatsu-note.pages.dev/ 、ちいかわグッズ・イベントの非公式スケジュール帳。読者は日本人のちいかわファン）の更新係です。
+あなたは「ちい活ノート」（https://chiikatsunote.com/ 、ちいかわグッズ・イベントの非公式スケジュール帳。読者は日本人のちいかわファン）の更新係です。
 毎回、次のことをして main ブランチに push します（push すると Cloudflare Pages が自動で公開します）。
 1. 読者からの報告とご意見に対応する
 2. 新しい情報や変更を調べて data/items.json を更新する
@@ -114,7 +114,7 @@ reports-done.json に key がない報告ごとに、対象の情報（id が it
 - ちいかわインフォ https://chiikawa-info.jp/ と POP UP STORE 一覧 https://chiikawa-info.jp/pus.html を、毎回（3回とも）必ず WebFetch で読む（curl などシェルからは断られることがあるので使わない）。
   - pus.html に載っている、まだ終わっていない会場をすべて items.json と1件ずつ突き合わせる。ないものは必ず追加する（取りこぼし防止）。
   - トップページの新着（常設店のオープン、コラボ、限定グッズ）も同じように確かめる。
-  - WebFetch で 403 などで読めないときは、見張り役が30分ごとに読んでおいた写しを使う：https://chiikatsu-note.pages.dev/api/info?key=（鍵）&p=pus （POP UP一覧）と &p=top （トップの新着）。中身は同じ内容の文字なので、これで全件を突き合わせる。
+  - WebFetch で 403 などで読めないときは、見張り役が30分ごとに読んでおいた写しを使う：https://chiikatsunote.com/api/info?key=（鍵）&p=pus （POP UP一覧）と &p=top （トップの新着）。中身は同じ内容の文字なので、これで全件を突き合わせる。
   - 写しも読めなかったときだけ、その回の報告の最初に「ちいかわインフォが読めませんでした」と書く。
 - ちいかわグッズ公式X（@chiikawa_kouhou）・ちいかわマーケット公式X（@chiikawa_market）・ちいかわらんど公式X（@chiikawa_land）。X は直接読めないので、下の「取りこぼし確認」の方法で読む。
 - PR TIMES の「ちいかわ」関連
@@ -126,9 +126,9 @@ reports-done.json に key がない報告ごとに、対象の情報（id が it
 ### 取りこぼし確認（毎回・公式Xの代わり）
 新商品やイベントは、まず公式Xだけで発表されることが多い。X は WebFetch で読めないので、毎回次の5つを**全部**行い、見つかったものを items.json と1件ずつ突き合わせる。ないものは公式で確かめて追加する。
 
-1. **運営者から届いた情報（最優先）：** https://chiikatsu-note.pages.dev/api/xdraft?key=（鍵）&op=tips を WebFetch で読む。運営者がXなどで見つけて送った情報（URLや本文）が入っている。
+1. **運営者から届いた情報（最優先）：** https://chiikatsunote.com/api/xdraft?key=（鍵）&op=tips を WebFetch で読む。運営者がXなどで見つけて送った情報（URLや本文）が入っている。
    - 運営者が貼った公式Xの本文は、公式の発表として扱ってよい。足りない日付・価格・場所は、検索や公式ページで補う。X の URL しかないときは、その URL の数字（ポストのID）や内容で WebSearch して本文を探す。
-   - 載せたら（または、すでに載っていた・ちいかわと関係がないと判断したら）https://chiikatsu-note.pages.dev/api/xdraft?key=（鍵）&op=tipdone&id=（その id） を開いて対応済みにする。確かめきれなかったものは残して、報告に理由を書く。
+   - 載せたら（または、すでに載っていた・ちいかわと関係がないと判断したら）https://chiikatsunote.com/api/xdraft?key=（鍵）&op=tipdone&id=（その id） を開いて対応済みにする。確かめきれなかったものは残して、報告に理由を書く。
 2. **公式Xの検索：** WebSearch で次を調べる（allowed_domains に x.com を入れると公式ポストが出やすい）。検索結果の題名や抜粋に、公式アカウントの投稿本文がそのまま出る。公式アカウント（@chiikawa_kouhou、@chiikawa_market、@chiikawa_land、@chiikawa_info など）の本文は公式SNSとして扱ってよい。
    - **去年の投稿もよく混ざる。** ポストの URL の数字（ID）から投稿日時を計算して、今年の新しいものだけを使う：`node -e 'console.log(new Date(Number(BigInt("（ID）")>>22n)+1288834974657).toISOString())'`（例 2105855302738587873 → 2026-10-02T03:00Z＝日本時間 10/2 12:00）。
    - 「ちいかわグッズ公式 新商品」「chiikawa_kouhou 発売」「ちいかわマーケット公式 予約開始」「ちいかわらんど 新商品のお知らせ」「ちいかわ 新商品 発売 （今月）月」
@@ -250,11 +250,11 @@ reports-done.json に key がない報告ごとに、対象の情報（id が it
 
 ## 通知を送る（「ほしい」に入れた人へのお知らせ）
 push のあと、回によって次の URL を WebFetch で1回だけ開く（鍵は報告用URLと同じ）。結果の sent（送った数）を最後の報告に書く。
-- 朝の回（6:49）：https://chiikatsu-note.pages.dev/api/push-send?key=（鍵）&mode=day （今日発売・今日まで）
-- 夕方の回（18:49）：https://chiikatsu-note.pages.dev/api/push-send?key=（鍵）&mode=eve （明日発売・明日で終了）
+- 朝の回（6:49）：https://chiikatsunote.com/api/push-send?key=（鍵）&mode=day （今日発売・今日まで）
+- 夕方の回（18:49）：https://chiikatsunote.com/api/push-send?key=（鍵）&mode=eve （明日発売・明日で終了）
 - 昼の回（13:49）は送らない。
 - ちいかわマーケットの予約開始・再入荷は、見張り役（worker/）が5分ごとに確かめて、すぐに通知している。なので、ちいかわマーケットの予約には mode=rsv を使わない。
-- ちいかわマーケット以外で、今回新しく追加した予約の情報が「すでに受付中」（rs が今より前で、re が今より後）なら、その id ごとに https://chiikatsu-note.pages.dev/api/push-send?key=（鍵）&mode=rsv&id=（id） を1回開く（同じ id には2回目以降は送られない）。
+- ちいかわマーケット以外で、今回新しく追加した予約の情報が「すでに受付中」（rs が今より前で、re が今より後）なら、その id ごとに https://chiikatsunote.com/api/push-send?key=（鍵）&mode=rsv&id=（id） を1回開く（同じ id には2回目以降は送られない）。
 - 「VAPID_PRIVATE が未設定」と返ってきたら、運営者に Cloudflare の設定が必要だと報告する。
 
 ## 楽天のセール日程（data/campaigns.json）
@@ -268,7 +268,7 @@ push のあと、回によって次の URL を WebFetch で1回だけ開く（�
 毎回、その回の投稿案を1〜2個つくり、下の URL に置く。置くと運営者のスマホに通知が届き、運営者が自分の言葉を足して投稿する（自動では投稿されない）。
 
 ### 回ごとの中身
-- 朝（6:49）：今日の速報。今日発売・今日から・今日/明日まで・今日予約開始のものから2〜3件。**サイトの URL（https://chiikatsu-note.pages.dev/）を付けるのは朝だけ**（1日1回まで）。
+- 朝（6:49）：今日の速報。今日発売・今日から・今日/明日まで・今日予約開始のものから2〜3件。**サイトの URL（https://chiikatsunote.com/）を付けるのは朝だけ**（1日1回まで）。
 - 昼（13:49）：この回やこの日に見つけた新情報（新グッズ・コラボ・イベント・予約開始の予告）への反応。URL は付けない。情報源の URL はメモ（m1）に書き、「公式のポストがあれば引用リポストで」と添える。新情報がなければ、近く始まるものへの「楽しみ」投稿にする。
 - 夜（18:49）：明日の予定のひとこと、ちい友への問いかけ（「みんなの推しは？」「どれ狙ってます？」など）、またはサイトを良くした話（今日実際に直したこと・追加した海外情報など、本当にやったことだけ）。URL は付けない。
 
@@ -289,7 +289,7 @@ push のあと、回によって次の URL を WebFetch で1回だけ開く（�
 今日からマーケットでハロウィンのやつ予約はじまります…！
 うさぎのおばけ姿、ずるくないですか🎃
 締切は10/12まで。忘れないようにメモ✍️
-https://chiikatsu-note.pages.dev/
+https://chiikatsunote.com/
 ```
 例（夜）：
 ```
@@ -299,13 +299,13 @@ https://chiikatsu-note.pages.dev/
 
 ### 置き方
 投稿案ごとに、本文を p1・p2、運営者へのメモ（引用したい公式ポストの探し方、情報源 URL、確かめてほしい点など）を m1・m2 にして、次の URL を WebFetch で1回開く。値は必ず URL エンコードする（改行は %0A）。
-`https://chiikatsu-note.pages.dev/api/xdraft?key=（鍵）&op=add&slot=朝|昼|夜&p1=（本文）&m1=（メモ）&p2=…&m2=…`
+`https://chiikatsunote.com/api/xdraft?key=（鍵）&op=add&slot=朝|昼|夜&p1=（本文）&m1=（メモ）&p2=…&m2=…`
 - slot は今の回（6時台＝朝、13時台＝昼、18時台＝夕方なので「夜」）。
 - 返ってきた sent（運営者に届いた通知の数）を最後の報告に書く。owners が 0 なら「運営者の端末が未登録」と書く。
 - 最後の報告にも、置いた投稿案の本文をそのまま書く。
 
 ## アクセスの報告（月曜の朝の回だけ）
-月曜の朝の回だけ、https://chiikatsu-note.pages.dev/api/stats?key=（報告用URLと同じ鍵）&days=7 を WebFetch で読む。最後の報告に、過去7日の次の数字と、気づいたことを1〜2行で書く。
+月曜の朝の回だけ、https://chiikatsunote.com/api/stats?key=（報告用URLと同じ鍵）&days=7 を WebFetch で読む。最後の報告に、過去7日の次の数字と、気づいたことを1〜2行で書く。
 - 訪問数（visits）
 - ページの表示（pv:）
 - 楽天のクリック（c:rk, c:rkpre, c:shop, c:rksearch）

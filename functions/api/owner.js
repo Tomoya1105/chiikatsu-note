@@ -30,7 +30,7 @@ export async function onRequestPost({ request, env }) {
     await env.REPORTS.delete("x:lasttest");
     let sent = false;
     const rec = JSON.parse((await env.REPORTS.get(`p:${id}`)) || "null");
-    if (rec && env.VAPID_PRIVATE) { try { sent = (await sendPush(rec.sub, { title: "投稿案の通知を登録しました", body: "これから朝・昼・夜に、Xの投稿案ができたらお知らせします。", url: `/api/xdraft?tok=${tok}`, tag: "x-claim" }, { privateD: env.VAPID_PRIVATE, subject: "https://chiikatsu-note.pages.dev" })) < 300; } catch (e) {} }
+    if (rec && env.VAPID_PRIVATE) { try { sent = (await sendPush(rec.sub, { title: "投稿案の通知を登録しました", body: "これから朝・昼・夜に、Xの投稿案ができたらお知らせします。", url: `/api/xdraft?tok=${tok}`, tag: "x-claim" }, { privateD: env.VAPID_PRIVATE, subject: "https://chiikatsunote.com" })) < 300; } catch (e) {} }
     return Response.json({ ok: true, sent });
   }
   return Response.json({ ok: false, reason: "op が必要" });

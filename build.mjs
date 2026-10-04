@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { makeOg, ogAvailable } from "./src/og.mjs";
 
-const SITE = "https://chiikatsu-note.pages.dev";
+const SITE = "https://chiikatsunote.com";
 const AFF = "582a6f7f.e1ade2b2.582a6f84.d5f85faa";
 const OUT = "dist";
 const TODAY = new Date().toISOString().slice(0, 10);

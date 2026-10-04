@@ -9,7 +9,7 @@
 // ?key=REPORT_KEY&op=tips  … 送られた情報の一覧（自動更新が読む）／ &op=tipdone&id=… 対応済みにする
 import { sendPush } from "../../src/webpush.js";
 
-const SUBJECT = "https://chiikatsu-note.pages.dev";
+const SUBJECT = "https://chiikatsunote.com";
 const SLOTS = ["朝", "昼", "夜"];
 const jstNow = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 16).replace("T", " ");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));

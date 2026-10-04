@@ -3,7 +3,7 @@
 // Pages Functions（/api/push-send）と Worker の両方から使う。
 import { sendPush } from "./webpush.js";
 
-const SUBJECT = "https://chiikatsu-note.pages.dev";
+const SUBJECT = "https://chiikatsunote.com";
 export const CHARS = ["ちいかわ", "ハチワレ", "うさぎ", "モモンガ", "くりまんじゅう", "ラッコ", "シーサー", "古本屋"];
 export const PER_RUN = 40; // 1回で送る最大数（無料プランの外部への接続の上限 50 より少なく）
 
