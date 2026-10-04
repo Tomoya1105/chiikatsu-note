@@ -63,6 +63,7 @@ function prep(id, d){
 }
 
 // 気になる商品（楽天の♡）。いろいろな所で数えるので先に読み込む
+var CAMP = window.__CAMP || [];   // 楽天のセール日程（マイリストでも使うので先に読み込む）
 var FAV_KEY = "chiikatsu-fav";
 var FAV = []; try{ FAV = (JSON.parse(localStorage.getItem(FAV_KEY)||"[]")||[]).filter(x=>x && x.c); }catch(e){}
 // 公式通販などの予約・受注（rs=受付開始, re=締切, rsv=予約ページ）
@@ -427,10 +428,11 @@ function renderMine(){
   if (got.length) h += `<h3 class="dayhead">ゲット済み（${got.length}）</h3>`+got.map(card).join("");
   const cn = campNow();
   if (FAV.length && cn && cn.mode!=="day") h += `<a class="favcamp" href="${esc(cn.c.url? (cn.c.url.includes("hb.afl")?cn.c.url:affLink(cn.c.url)) : "#")}" target="_blank" rel="noopener sponsored">🛍 <b>${esc(cn.c.name)}${cn.mode==="on"?"開催中":"がもうすぐ"}</b><span>${cn.mode==="on"?"気になる商品をまとめて買うと、ポイントがアップします":"始まってからまとめて買うとお得です"}</span><span class="tag">PR</span></a>`;
-  if (FAV.length) h += `<h3 class="dayhead">気になる商品（${FAV.length}）</h3><p class="favnote">「おすすめ」で♡を押した楽天の商品です。値段は開いたときに楽天から読み直しています。</p><div class="pgrid" id="favGrid">${favCards()}</div>`;
+  if (FAV.length) h += `<h3 class="dayhead">気になる商品（${FAV.length}）</h3><p class="favnote">「おすすめ」で♡を押した楽天の商品です。値段は開いたときに楽天から読み直しています。</p><div class="pgrid" id="favGrid"></div>`;
   else h += `<p class="favnote">「おすすめ」タブの商品の♡を押すと、ここに「気になる商品」として保存されます。</p>`;
   el.innerHTML = h;
-  if (FAV.length) setTimeout(refreshFav, 0);
+  // 商品カードの部品はこのファイルの後ろの方で定義しているので、読み込みが終わってから描く
+  if (FAV.length) setTimeout(()=>{ safe(()=>{ const g=document.getElementById("favGrid"); if (g) g.innerHTML = favCards(); refreshFav(); }, "fav"); }, 0);
 }
 function renderSummary(){
   const c = k=>VIS().filter(it=>status(it).k===k).length;
@@ -578,18 +580,20 @@ function setView(v){
     document.querySelector(`[data-view="${k}"]`).setAttribute("aria-selected", k===v);
   });
   if (v==="list" && loaded) renderList();   // 前回マイリストやカレンダーで閉じたときも、一覧に戻ったら必ず描く
-  if (v==="cal"){ renderCal(); setTimeout(fillSeason, 0); }
-  if (v==="mine") renderMine();
-  if (v==="shop") renderShop();
-  if (v==="news") renderNews();
+  if (v==="cal"){ safe(renderCal, "cal"); setTimeout(()=>safe(fillSeason), 0); }
+  if (v==="mine") safe(renderMine, "mine");
+  if (v==="shop") safe(renderShop, "shop");
+  if (v==="news") safe(renderNews, "news");
   if (window.ct) window.ct("tab:"+v);
   try{ localStorage.setItem("chiikatsu-view",v); }catch(e){}
 }
 function currentView(){ return VIEWS.find(k=>!document.getElementById("view-"+k).hidden); }
+// どれか1つの表示で問題が起きても、ほかの表示やページ全体は止めない
+function safe(fn, name){ try{ fn(); }catch(err){ console.error(name||"", err); } }
 function renderAll(){
-  renderSummary();
+  safe(renderSummary, "summary");
   const v = currentView();
-  if (v==="list") renderList(); else if (v==="cal") renderCal(); else if (v==="mine") renderMine();
+  if (v==="list") renderList(); else if (v==="cal") safe(renderCal, "cal"); else if (v==="mine") safe(renderMine, "mine");
 }
 document.querySelector(".tabs").onclick = e=>{ const b=e.target.closest("[data-view]"); if(b) setView(b.dataset.view); };
 document.querySelector(".sum").onclick = e=>{
@@ -894,7 +898,7 @@ function fillSeason(){
 }
 
 /* ===== 楽天のセール期間の帯 ===== */
-var CAMP = window.__CAMP || [];
+CAMP = window.__CAMP || [];
 function campNow(){
   const now = new Date(), t = s=>new Date(s+":00+09:00");
   const on = CAMP.find(c=>t(c.start)<=now && now<=t(c.end));
