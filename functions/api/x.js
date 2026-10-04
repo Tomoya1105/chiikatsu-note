@@ -42,7 +42,7 @@ export async function onRequestGet({ request, env }) {
   // 見るだけのページ（合言葉つき）
   if (!op && q("t")) {
     const tok = await env.REPORTS.get("x:tok");
-    if (!tok || q("t") !== tok) return html("<p>ページが見つかりません。</p>", 404);
+    if (!tok || q("t") !== tok) return html(msg("ページが見つかりません", "通知から開き直してください。"));
     return html(page(JSON.parse((await env.REPORTS.get("x:drafts")) || "[]")));
   }
 
