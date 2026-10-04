@@ -38,6 +38,7 @@ export async function onRequestGet({ request, env }) {
   if (!env.REPORTS) return new Response("not configured", { status: 503 });
   const u = new URL(request.url), q = k => u.searchParams.get(k) || "";
   const op = q("op");
+  if (q("dbg")) return new Response(JSON.stringify({ op, t: q("t"), url: request.url, tok: !!(await env.REPORTS.get("x:tok")) }), { headers: { "cache-control": "no-store" } });
 
   // 見るだけのページ（合言葉つき）
   if (!op && q("t")) {
