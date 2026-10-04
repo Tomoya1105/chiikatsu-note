@@ -6,6 +6,7 @@ export var RKM = (function(){
   var OTHER_IP = /ディズニー|ミッキー|ミニー|プリンセス|アナと雪|アナ雪|トイ・?ストーリー|サンリオ|キティ|マイメロ|クロミ|シナモ|ポムポム|すみっコ|リラックマ|ポケモン|ピカチュウ|カービィ|マリオ|アンパンマン|ドラえもん|しんちゃん|クレヨンしんちゃん|鬼滅|呪術|スヌーピー|ムーミン|ミッフィー|トミカ|プラレール|戦隊|仮面ライダー|プリキュア|スパイダーマン|マーベル|ちいかわ以外/g;
   var BULK = /×\s?\d{2,}\s?(個|本|袋|枚)|\d{2,}\s?(個|袋)セット/;
   var CH = /ちいかわ|chiikawa|ハチワレ|ナガノ/i;
+  var SETW = ["box", "ボックス", "カートン", "セット", "まとめ", "コンプリート", "全種", "アソート"];
   function norm(s){ return String(s || "").normalize("NFKC").toLowerCase().replace(/\s+/g, " "); }
   function refPrice(p){ var m = String(p || "").replace(/,/g, "").match(/(\d{2,6})\s*円/); return m ? +m[1] : 0; }
   // 探してよいか（検索語に、種類名ではない2文字以上の言葉があるか）。だめなら null
@@ -28,6 +29,8 @@ export var RKM = (function(){
       if (p.ref && (price > p.ref * 1.6 || price < p.ref * 0.6)) continue;   // 値段が離れすぎていたら別の商品（セット売り・部品など）
       if (!p.tokens.every(function(t){ return nm.indexOf(t) >= 0; })) continue;
       if (KINDS.some(function(k){ return nm.indexOf(norm(k)) >= 0 && p.mine.indexOf(norm(k)) < 0; })) continue;
+      // 箱売り・セット・まとめ売りは、掲載中の情報がそう書いていない限り別の商品とみなす
+      if (SETW.some(function(w){ return nm.indexOf(w) >= 0 && p.mine.indexOf(w) < 0; })) continue;
       return x;
     }
     return null;

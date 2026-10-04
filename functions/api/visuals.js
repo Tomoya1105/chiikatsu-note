@@ -73,16 +73,17 @@ export async function onRequestGet({ request, env }) {
   let auditInfo = null;
   if (u.searchParams.get("audit") === "1") {
     // 時間切れにならないよう、点検が必要な情報を5件ずつ順番に確かめる（cursor を KV に覚える）
-    const targets = items.filter(it => it.rakuten || it.x);
+    const ids = (u.searchParams.get("ids") || "").split(",").filter(Boolean);
+    const targets = items.filter(it => (it.rakuten || it.x) && (!ids.length || ids.includes(it.id)));
     const lock = await env.REPORTS.get("v:auditLock");
     if (lock && Date.now() - +lock < 20e3) auditInfo = { skipped: "ほかの点検が動いています。20秒後にもう一度" };
     else {
       await env.REPORTS.put("v:auditLock", String(Date.now()), { expirationTtl: 60 });
-      let cur = +(await env.REPORTS.get("v:auditCursor")) || 0; if (cur >= targets.length) cur = 0;
+      let cur = ids.length ? 0 : +(await env.REPORTS.get("v:auditCursor")) || 0; if (cur >= targets.length) cur = 0;
       const batch = targets.slice(cur, cur + 4);
       auditInfo = await audit(batch, env);
       const next = cur + batch.length;
-      await env.REPORTS.put("v:auditCursor", String(next >= targets.length ? 0 : next));
+      if (!ids.length) await env.REPORTS.put("v:auditCursor", String(next >= targets.length ? 0 : next));
       auditInfo.range = `${cur + 1}〜${next} / ${targets.length}件`; auditInfo.done = next >= targets.length;
       await env.REPORTS.delete("v:auditLock");
     }
