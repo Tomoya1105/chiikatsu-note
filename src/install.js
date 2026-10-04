@@ -71,7 +71,8 @@
     if (/^https:\/\/line\.me\/R\/share/.test(h)) ct("share:line");
     else if (/^https:\/\/(x|twitter)\.com\/intent\//.test(h) && !sb) ct("share:x");
     if (/hb\.afl\.rakuten/.test(h)) {
-      if (a.hasAttribute("data-rb")) ct("c:books");
+      if (a.hasAttribute("data-rkhero")) ct(a.dataset.pre ? "c:rkpre" : "c:rk");
+      else if (a.hasAttribute("data-rb")) ct("c:books");
       else if (a.hasAttribute("data-rkd")) ct(a.dataset.hit ? (a.dataset.pre ? "c:rkpre" : "c:rk") : "c:rksearch");
       else if (a.classList.contains("trip")) ct("c:travel");
       else if (a.classList.contains("prod")) ct("c:shop");
@@ -107,52 +108,55 @@
   function xFail(f, id){
     f.innerHTML = '<p class="xwait">画像を読み込めませんでした。通信の状態や、広告・トラッキングをブロックする設定を確かめてください。<a href="https://x.com/i/status/' + id + '" target="_blank" rel="noopener">Xで見る</a></p>';
   }
+  // auto：詳細ページで自動表示するとき。読み込めない（削除・非公開・通信不可）ときは、枠ごと消して「画像なし」に戻す
+  function openX(b, auto){
+    var box = b.closest(".xbox"), f = box.querySelector(".xframe"), id = b.getAttribute("data-xembed");
+    if (!/^\d+$/.test(id)) return;
+    box.classList.add("open"); if (auto) box.classList.add("auto");
+    b.setAttribute("aria-expanded", "true"); b.querySelector(".xl").textContent = "画像をとじる";
+    f.innerHTML = '<p class="xwait">公式の投稿を読み込み中…</p><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none" data-lang="ja" data-theme="' + (isDark() ? "dark" : "light") + '"><a href="https://twitter.com/i/status/' + id + '"></a></blockquote>';
+    ct("x:embed");
+    var done = false;
+    function fail(){ if (auto) { box.hidden = true; f.innerHTML = ""; } else xFail(f, id); }
+    setTimeout(function(){ if (!done && box.classList.contains("open") && !f.querySelector("iframe")) { done = true; fail(); } }, 12000);
+    loadX().then(function(t){ return t.widgets.load(f); }).then(function(){
+      if (done) return; done = true;
+      var w = f.querySelector(".xwait"); if (w) w.remove();
+      if (!f.querySelector("iframe")) fail(); else box.classList.add("ready");
+    }).catch(function(){ if (!done) { done = true; fail(); } });
+  }
   document.addEventListener("click", function(e){
     var b = e.target.closest("[data-xembed]"); if (!b) return;
     e.preventDefault();
-    var box = b.closest(".xbox"), f = box.querySelector(".xframe"), id = b.getAttribute("data-xembed");
-    if (!/^\d+$/.test(id)) return;
+    var box = b.closest(".xbox"), f = box.querySelector(".xframe");
     if (box.classList.contains("open")){
-      box.classList.remove("open"); f.innerHTML = ""; b.setAttribute("aria-expanded", "false");
+      box.classList.remove("open", "auto", "ready"); f.innerHTML = ""; b.setAttribute("aria-expanded", "false");
       b.querySelector(".xl").textContent = "公式の画像を見る"; return;
     }
-    box.classList.add("open"); b.setAttribute("aria-expanded", "true"); b.querySelector(".xl").textContent = "画像をとじる";
-    f.innerHTML = '<p class="xwait">読み込み中…</p><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none" data-lang="ja" data-theme="' + (isDark() ? "dark" : "light") + '"><a href="https://twitter.com/i/status/' + id + '"></a></blockquote>';
-    ct("x:embed");
-    var done = false;
-    setTimeout(function(){ if (!done && box.classList.contains("open") && !f.querySelector("iframe")) xFail(f, id); }, 12000);
-    loadX().then(function(t){ return t.widgets.load(f); }).then(function(){
-      done = true; var w = f.querySelector(".xwait"); if (w) w.remove();
-      if (!f.querySelector("iframe")) xFail(f, id);
-    }).catch(function(){ done = true; xFail(f, id); });
+    openX(b, false);
   });
+  // 詳細ページでは、公式の投稿が画面に近づいたら自動で表示する（最初の表示は軽いまま。Xの読み込みは近づいてから）
+  if (/^\/items\//.test(location.pathname) && "IntersectionObserver" in window) {
+    var xo = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){ if (!en.isIntersecting) return; xo.unobserve(en.target); var b = en.target.querySelector("[data-xembed]"); if (b && !en.target.classList.contains("open")) openX(b, true); });
+    }, { rootMargin: "250px 0px" });
+    document.querySelectorAll(".detail .xbox").forEach(function(x){ x.classList.add("auto"); xo.observe(x); });
+  }
 
 
-  /* ---- 詳細ページ：楽天で「同じ商品」が見つかったら、検索ではなくその商品ページへ直接つなぐ ---- */
+  /* ---- 詳細ページ：楽天で「同じ商品」が見つかったら、ページ上部に商品画像を出し、ボタンをその商品ページへ直接つなぐ ----
+     画像は楽天ウェブサービス（商品検索API）が返す楽天のサーバー上の画像をそのまま表示する（保存・コピーはしない）。
+     同じ商品かどうかは RKM.pick で厳しく判定し、怪しければ画像は出さない。 */
   (function(){
     var b = document.querySelector("[data-rkd]"); if (!b) return;
     var d; try { d = JSON.parse(b.getAttribute("data-rkd")); } catch (e) { return; }
+    var it = { t: d.t, q: d.q, price: d.p, cat: d.cat || "goods" };
+    var p = RKM.plan(it); if (!p) return;   // 商品を特定できる言葉がない → 画像なし（枠も作っていない）
     var RAK = { app: "d328e43a-4e55-4bd7-8ce4-f265afcf674d", key: "pk_xcGUmu6xmFCHvq4iCebKJjAiwMb2IAKrSJhQgGb49vo",
   ep: "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701" }, AFF = { rakutenId: "582a6f7f.e1ade2b2.582a6f84.d5f85faa" };
-    var KINDS = ["かるた","ぬいぐるみ","キーホルダー","キーリング","Tシャツ","トレーナー","パーカー","ステッカー","缶バッジ","ポーチ","巾着","タオル","ハンカチ","ソックス","靴下","グミ","ガム","チョコ","クッキー","フィギュア","アクリルスタンド","アクスタ","下敷き","クリアファイル","ノート","付箋","ボールペン","マグ","コップ","お弁当箱","ランチボックス","パジャマ","スリッパ","ブランケット","クッション","バッグ","トート","リュック","財布","スマホケース","カレンダー","手帳","絵本","コミック","カード","シール","マスコット","入浴剤","ガチャ","くじ"], NG = ["中古","USED","ユーズド","美品","未使用品","開封済","プレミア","入手困難","完売品","転売","並行輸入","非公式","互換","ノーブランド","ハンドメイド","レンタル","まとめ買い","ケース販売","業務用","大量"], OTHER_IP = /ディズニー|ミッキー|ミニー|プリンセス|アナと雪|アナ雪|トイ・?ストーリー|サンリオ|キティ|マイメロ|クロミ|シナモ|ポムポム|すみっコ|リラックマ|ポケモン|ピカチュウ|カービィ|マリオ|アンパンマン|ドラえもん|しんちゃん|クレヨンしんちゃん|鬼滅|呪術|スヌーピー|ムーミン|ミッフィー|トミカ|プラレール|戦隊|仮面ライダー|プリキュア|スパイダーマン|マーベル|ちいかわ以外/g;
-    var BULK = /×\s?\d{2,}\s?(個|本|袋|枚)|\d{2,}\s?(個|袋)セット/, CH = /ちいかわ|chiikawa|ハチワレ|ナガノ/i;
-    var N = function(s){ return String(s || "").normalize("NFKC").toLowerCase().replace(/\s+/g, " "); };
-    var q = /ちいかわ|chiikawa/i.test(d.q) ? d.q : "ちいかわ " + d.q;
-    var tokens = N(d.q).split(" ").filter(function(t){ return t && !/^(ちいかわ|アニメ|映画)$/.test(t); });
-    var distinct = tokens.filter(function(t){ return t.length >= 2 && !KINDS.some(function(k){ return N(k) === t; }); });
-    if (!distinct.length) return;   // 種類名だけでは同じ商品か判断できない
-    var m = String(d.p).replace(/,/g, "").match(/(\d{2,6})\s*円/), ref = m ? +m[1] : 0;
-    var mine = N(d.t + " " + d.q);
-    function ok(x){
-      var n = x.itemName || "", nm = N(n);
-      if (!CH.test(n) || BULK.test(n) || NG.some(function(w){ return n.indexOf(w) >= 0; })) return false;
-      var ip = n.match(OTHER_IP) || []; if (new Set(ip).size >= 2) return false;
-      if (ref && +x.itemPrice > ref * 1.6) return false;
-      if (!tokens.every(function(t){ return nm.indexOf(t) >= 0; })) return false;
-      return !KINDS.some(function(k){ return nm.indexOf(N(k)) >= 0 && mine.indexOf(N(k)) < 0; });
-    }
+    function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
     function paint(h){
-      if (!h) return;
+      if (!h) return fillHero(null, b.href);
       var search = b.href;
       b.href = h.url; b.setAttribute("data-hit", "1"); if (d.pre) b.setAttribute("data-pre", "1");
       b.innerHTML = (d.pre ? "楽天で予約する " : "楽天で見る ") + "¥" + Number(h.price).toLocaleString("ja-JP") + ' <span class="tag">PR</span>';
@@ -160,17 +164,37 @@
       more.className = "rkmore"; more.href = search; more.target = "_blank"; more.rel = "noopener sponsored";
       more.textContent = "ほかの商品も楽天で探す";
       b.parentNode.appendChild(more);
+      fillHero(h, search);
     }
-    var ck = "rkd1:" + q;
+    // ページ上部の枠（高さは最初から確保してあるので、中身が変わっても下の文章は動かない）
+    function fillHero(h, search){
+      var hero = document.querySelector("[data-dhero]"); if (!hero) return;
+      if (h && /^https:\/\/(thumbnail\.image|shop\.r10s|tshop\.r10s|image)\.rakuten\.co\.jp\//.test(h.img || "")) {
+        hero.className = "dhero on";
+        hero.innerHTML = '<a class="dh-img" href="' + esc(h.url) + '" target="_blank" rel="noopener sponsored" data-rkhero' + (d.pre ? ' data-pre="1"' : '') + '><img src="' + esc(h.img) + '" alt="' + esc(h.name) + '" width="160" height="160" decoding="async"></a>' +
+          '<div class="dh-txt"><p class="dh-k">楽天市場の商品 <span class="tag">PR</span></p><p class="dh-n">' + esc(h.name) + '</p><a class="dh-b" href="' + esc(h.url) + '" target="_blank" rel="noopener sponsored" data-rkhero' + (d.pre ? ' data-pre="1"' : '') + '>' + (d.pre ? "楽天で予約する" : "楽天で見る") + ' ¥' + Number(h.price).toLocaleString("ja-JP") + '</a></div>';
+      } else {
+        // 同じ商品と言い切れないときは画像を出さない（まちがった商品の画像を見せないため）
+        hero.className = "dhero none";
+        hero.innerHTML = '<div class="dh-txt"><p class="dh-k">楽天市場では、まだ同じ商品が見つかっていません</p><a class="dh-b sub" href="' + esc(search || b.href) + '" target="_blank" rel="noopener sponsored">関連する商品を楽天で探す</a> <span class="tag">PR</span></div>';
+      }
+    }
+    var ck = "rkd2:" + p.query;
     try { var c = JSON.parse(localStorage.getItem(ck) || "null"); if (c && Date.now() - c.t < 6 * 3600e3) return paint(c.v); } catch (e) {}
     var qs = new URLSearchParams({ applicationId: RAK.app, accessKey: RAK.key, affiliateId: AFF.rakutenId, format: "json", formatVersion: "2",
-      availability: "1", imageFlag: "1", NGKeyword: "中古 USED 美品", keyword: q, hits: "10" });
+      availability: "1", imageFlag: "1", NGKeyword: "中古 USED 美品", keyword: p.query, hits: "10" });
     fetch(RAK.ep + "?" + qs.toString()).then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
-      var x = j && (j.Items || []).map(function(i){ return i.Item || i; }).filter(ok)[0];
-      var v = x ? { price: +x.itemPrice, url: (x.affiliateUrl && x.affiliateUrl.indexOf("hb.afl.rakuten.co.jp") >= 0) ? x.affiliateUrl : "https://hb.afl.rakuten.co.jp/hgc/" + AFF.rakutenId + "/?pc=" + encodeURIComponent(x.itemUrl) } : null;
+      var list = (j && j.Items || []).map(function(i){
+        var x = i.Item || i, img = (x.mediumImageUrls || [])[0];
+        if (img && typeof img === "object") img = img.imageUrl;
+        if (img) img = img.replace(/\?_ex=\d+x\d+/, "") + "?_ex=400x400";
+        return { name: x.itemName || "", price: +x.itemPrice || 0, img: img || "",
+          url: (x.affiliateUrl && x.affiliateUrl.indexOf("hb.afl.rakuten.co.jp") >= 0) ? x.affiliateUrl : "https://hb.afl.rakuten.co.jp/hgc/" + AFF.rakutenId + "/?pc=" + encodeURIComponent(x.itemUrl) };
+      });
+      var v = RKM.pick(it, list);
       try { localStorage.setItem(ck, JSON.stringify({ t: Date.now(), v: v })); } catch (e) {}
       paint(v);
-    }).catch(function(){});
+    }).catch(function(){ fillHero(null, b.href); });
   })();
 
   /* ---- 小さな部品 ---- */

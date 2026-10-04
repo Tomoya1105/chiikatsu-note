@@ -3,6 +3,8 @@
 import fs from "node:fs";
 import { execSync } from "node:child_process";
 import { srcTypeOf, SRC_TYPES } from "./sources.mjs";
+import { RKM } from "../src/rkmatch.mjs";
+const OFFICIAL_X = JSON.parse(fs.readFileSync("data/official-x.json", "utf8")).accounts;
 const AFF = "582a6f7f.e1ade2b2.582a6f84.d5f85faa";
 const RAK_APP = "d328e43a-4e55-4bd7-8ce4-f265afcf674d";
 const errs = [];
@@ -43,6 +45,10 @@ for (const it of items) {
   if (!SRC_TYPES.includes(it.srcType)) errs.push(`${it.id}: srcType は ${SRC_TYPES.join("|")} のどれか（いま "${it.srcType ?? ""}"）`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(it.verifiedAt || "")) errs.push(`${it.id}: verifiedAt（最後に情報源で確かめた日 YYYY-MM-DD）がありません`);
   if (it.xpost && !/^https:\/\/(x|twitter)\.com\/[A-Za-z0-9_]{1,15}\/status\/\d{5,25}/.test(it.xpost)) errs.push(`${it.id}: xpost は https://x.com/（アカウント）/status/（数字） の形にしてください`);
+  // 公式Xの埋め込み：一覧（data/official-x.json）にある公式アカウントのポストだけ
+  { const m = /^https:\/\/(?:x|twitter)\.com\/([A-Za-z0-9_]{1,15})\/status\//.exec(it.xpost || ""); if (m && !OFFICIAL_X[m[1].toLowerCase()]) errs.push(`${it.id}: xpost の @${m[1]} は公式アカウントの一覧（data/official-x.json）にありません。公式と確かめてから一覧に足すか、xpost を外してください`); }
+  // グッズは画像を出すための検索語（q）が原則必須。商品を1つに決められないものは qNone に理由を書く（画像なしでよい）
+  if (!it.hidden && it.cat !== "event" && it.cat !== "cafe" && !RKM.plan(it) && !String(it.qNone || "").trim()) errs.push(`${it.id}: グッズの検索語 q がない（または「ちいかわ ぬいぐるみ」のような種類名だけ）です。商品名の固有の言葉を入れるか、楽天で同じ商品を特定できない理由を qNone に書いてください`);
   if (it.srcs && (!Array.isArray(it.srcs) || it.srcs.some(u => !/^https:\/\//.test(u)))) errs.push(`${it.id}: srcs は https のURLの配列にしてください`);
 }
 

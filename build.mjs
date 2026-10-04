@@ -13,13 +13,16 @@ const TODAY = new Date().toISOString().slice(0, 10);
 const items = JSON.parse(fs.readFileSync("data/items.json", "utf8")).filter(x => !x.hidden);
 const css = fs.readFileSync("src/style.css", "utf8");
 const app = fs.readFileSync("src/app.js", "utf8");
+import { RKM } from "./src/rkmatch.mjs";
+const RKM_SRC = fs.readFileSync("src/rkmatch.mjs", "utf8").replace(/^export /m, "");   // ブラウザ用（export を外して埋め込む）
 let homeBody = fs.readFileSync("src/home-body.html", "utf8");
 let news = [];
 try { news = JSON.parse(fs.readFileSync("data/news.json", "utf8")).filter(n => !n.hidden).sort((a, b) => (b.date || "").localeCompare(a.date || "")).slice(0, 80); } catch (e) {}
 let camps = [];
 try { camps = JSON.parse(fs.readFileSync("data/campaigns.json", "utf8")).filter(c => c.end >= TODAY); } catch (e) {}
 const installJs = fs.readFileSync("src/install.js", "utf8");
-const XPOST_SRC = fs.readFileSync("src/xpost.js", "utf8");
+const OFFICIAL_X = JSON.parse(fs.readFileSync("data/official-x.json", "utf8")).accounts;
+const XPOST_SRC = fs.readFileSync("src/xpost.js", "utf8").replace("/*OFFICIAL_X*/{}", JSON.stringify(Object.fromEntries(Object.entries(OFFICIAL_X).map(([k, v]) => [k.toLowerCase(), v.name]))));
 const { xpostOf, xbox } = new Function(XPOST_SRC + "; return { xpostOf, xbox };")();
 const swJs = fs.readFileSync("src/sw.js", "utf8");
 const BUILD = Date.now().toString(36);
@@ -171,8 +174,15 @@ function write(file, content) {
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 write("style.css", css);
-write("app.js", XPOST_SRC + "\n" + app);
-write("install.js", installJs);
+// 画像の出し方の台帳（どの情報に、どこの画像を、どんな根拠で出すか）。サーバーの点検（/api/visuals）が使う
+write("visuals.json", JSON.stringify({ builtAt: new Date().toISOString(), items: items.filter(it => !it.hidden).map(it => {
+  const x = xpostOf(it), plan = RKM.plan(it);
+  return { id: it.id, t: it.t, cat: it.cat, q: it.q || "", price: it.price || "", event: isEvent(it),
+    rakuten: plan ? { query: plan.query } : null, qNone: it.qNone || "",
+    x: x ? { url: `https://x.com/i/status/${x.id}`, account: x.name } : null };
+}) }));
+write("app.js", RKM_SRC + "\n" + XPOST_SRC + "\n" + app);
+write("install.js", RKM_SRC + "\n" + installJs);
 write("sw.js", swJs.replace("__VER__", BUILD));
 fs.mkdirSync(path.join(OUT, "icons"), { recursive: true });
 for (const f of fs.readdirSync("src/icons")) fs.copyFileSync(path.join("src/icons", f), path.join(OUT, "icons", f));
@@ -252,6 +262,7 @@ for (const it of items) {
   <main class="detail">
     <div class="meta"><span class="pill rg">${esc(reg)}</span><span class="cat">${esc(CAT[it.cat] || "")}</span></div>
     <h1>${esc(it.t)}</h1>
+    ${RKM.plan(it) ? `<div class="dhero" data-dhero><div class="dh-img" aria-hidden="true"></div><div class="dh-txt"><p class="dh-k">楽天市場で同じ商品を探しています…</p></div></div>` : ""}
     <dl class="info">
       <dt>${it.rsv ? "予約受付" : ev ? "開始" : "発売"}</dt><dd>${esc(start)}${it.time ? " " + esc(it.time) : ""}</dd>
       ${end ? `<dt>${it.rsv ? "締切" : "終了"}</dt><dd>${esc(end)}${it.rsv && it.re && it.re.length > 10 ? " " + esc(it.re.slice(11, 16)) : ""}</dd>` : `<dt>終了</dt><dd>${esc(it.eNote || (ev ? "未定" : "なくなり次第終了"))}</dd>`}
@@ -267,7 +278,7 @@ for (const it of items) {
     <div class="acts">
       ${(() => { const L = (Array.isArray(it.rb) ? it.rb : []).filter(x => x && /^https:\/\/books\.rakuten\.co\.jp\/rb\/\d+\/?$/.test(x.u || "")); const pre = it.s > TODAY;
         return L.map(x => `<a class="btn buy" href="${esc(aff(x.u))}" target="_blank" rel="noopener sponsored" data-rb>${pre ? "楽天ブックスで予約する" : "楽天ブックスで見る"}${x.n ? "（" + esc(x.n) + "）" : ""} <span class="tag">PR</span></a>`).join(""); })()}
-      ${it.q && !(Array.isArray(it.rb) && it.rb.length) ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored" data-rkd="${esc(JSON.stringify({ q: it.q, t: it.t, p: it.price || "", pre: it.s > TODAY }))}">楽天市場で探す <span class="tag">PR</span></a>` : ""}
+      ${it.q && !(Array.isArray(it.rb) && it.rb.length) ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored" data-rkd="${esc(JSON.stringify({ q: it.q, t: it.t, p: it.price || "", pre: it.s > TODAY, cat: it.cat }))}">楽天市場で探す <span class="tag">PR</span></a>` : ""}
       ${it.q ? `<a class="btn" href="${esc(yahooSearch(it.q))}" target="_blank" rel="noopener sponsored" data-yh>Yahoo!ショッピングで探す <span class="tag">PR</span></a>` : ""}
       ${/^https:\/\//.test(it.src || "") ? `<a class="btn" href="${esc(it.src)}" target="_blank" rel="noopener">公式情報</a>` : ""}
     </div>

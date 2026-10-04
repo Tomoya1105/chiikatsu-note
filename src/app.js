@@ -724,23 +724,26 @@ function rkSearch(params){
 const rkFound = {};
 async function findOnRakuten(it){
   if (it.id in rkFound) return rkFound[it.id];
-  const tokens = norm(it.q).split(" ").filter(t=>t && !/^(ちいかわ|アニメ|映画)$/.test(t));
-  const ref = firstPrice(it.price);
+  /* 同じ商品かどうかの判定は RKM（rkmatch.mjs）にまとめてある。少しでも怪しければ画像なし */
+  const p = RKM.plan(it);
   let hit = null;
-  /* 「水」のような1文字や「マスコット」のような種類名だけでは同じ商品か判断できないので、探さない */
-  const distinct = tokens.filter(t=>t.length>=2 && !KINDS.some(k=>norm(k)===t));
-  if (!distinct.length){ rkFound[it.id] = null; return null; }
+  if (!p){ rkFound[it.id] = null; return null; }
   try{
-    const v = await rkSearch({keyword: it.q, hits:"10"});
-    const mine = norm(it.t+" "+it.q);
-    hit = v.items.find(x=>{
-      const nm = norm(x.name);
-      if (!okItem(x, ref) || !tokens.every(t=>nm.includes(t))) return false;
-      return !KINDS.some(k=>nm.includes(norm(k)) && !mine.includes(norm(k)));
-    }) || null;
+    const v = await rkSearch({keyword: p.query, hits:"10"});
+    hit = RKM.pick(it, v.items) || null;
+    if (hit) visLog(it.id, hit);
   }catch(e){ hit = null; }
   rkFound[it.id] = hit;
   return hit;
+}
+/* 画像の「取得元・利用根拠・リンク先」を記録する（同じ情報は1日1回まで） */
+function visLog(id, hit){
+  try{
+    const k = "chiikatsu-vis", day = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+    const m = JSON.parse(localStorage.getItem(k)||"{}")||{};
+    if (m[id]===day) return; m[id]=day; localStorage.setItem(k, JSON.stringify(m));
+    navigator.sendBeacon("/api/visuals", JSON.stringify({ id, name: hit.name, price: hit.price, link: hit.url, img: hit.img || "" }));
+  }catch(e){}
 }
 function paintRakuten(id, hit){
   document.querySelectorAll(`[data-pimg="${CSS.escape(id)}"]`).forEach(el=>{
