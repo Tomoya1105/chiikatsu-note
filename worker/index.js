@@ -81,6 +81,18 @@ export async function preStart(env, fetcher = fetch, now = Date.now()) {
     await addJob(env, { type: "broadcast", at: now, payload: { title: `⏰ ${hhmm}から予約開始：${it.t.replace(/（予約）$/, "")}`, body: "まもなく受付が始まります。タップしてくわしく見る", url: `/items/${encodeURIComponent(it.id)}/`, tag: `pre-${it.id}` } });
     out.push(it.id);
   }
+  // 抽選・受注などの締切（dl）の3時間前にお知らせする（予約のお知らせをオンにしている人へ）
+  for (const it of items) {
+    for (const d of Array.isArray(it.dl) ? it.dl : []) {
+      const end = new Date(d.until + ":00+09:00").getTime(), left = end - now;
+      if (left <= 150 * 60e3 || left > 185 * 60e3) continue;   // 2時間30分〜3時間5分前のときだけ
+      const mk = `w:dl:${it.id}:${d.until}`;
+      if (await env.REPORTS.get(mk)) continue;
+      await env.REPORTS.put(mk, "1", { expirationTtl: 3 * 86400 });
+      await addJob(env, { type: "broadcast", at: now, payload: { title: `⏰ ${d.k}の締切まであと3時間：${it.t.replace(/（予約）$/, "")}`, body: `${d.until.slice(5, 10).replace("-", "/")} ${d.until.slice(11, 16)}まで${d.n ? "・" + d.n : ""}`, url: `/items/${encodeURIComponent(it.id)}/`, tag: `dl-${it.id}` } });
+      out.push("dl:" + it.id);
+    }
+  }
   return { ok: true, pre: out };
 }
 

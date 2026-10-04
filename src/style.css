@@ -627,3 +627,23 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .fresh .fm{font-size:11.5px;color:var(--ink-2);display:flex;gap:6px;align-items:center}
 .fresh .ft{font-weight:700;font-size:14px;line-height:1.5}
 .freshn{font-size:11px;color:var(--ink-2);margin:0}
+
+/* 抽選・受注などの締切 */
+.dlbs{display:grid;gap:4px;margin:6px 0 2px}
+.dlb{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;font-size:12.5px;background:var(--surface-2);border-radius:10px;padding:6px 10px}
+.dlb .dlk{font-weight:700}
+.dlb small{flex:1 1 100%;color:var(--ink-2);font-size:11.5px}
+.dlb a{font-size:12px;font-weight:700;color:var(--acc);text-decoration:none}
+.dlb.hot{background:#FDE2E2;color:#9B1C1C}
+.dlb.hot .dlk{color:#9B1C1C}
+.dlstrip{background:var(--surface);border:2px solid #E25555;border-radius:16px;padding:10px 12px;margin:0 0 12px;display:grid;gap:6px}
+.dlsh{display:flex;align-items:baseline;gap:8px}
+.dlsh b{font-family:var(--display);font-size:15.5px;color:#C53030}
+.dlsh span{font-size:11.5px;color:var(--ink-2)}
+.dlrow{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"k l" "t t";gap:2px 8px;text-decoration:none;color:var(--ink);background:var(--surface-2);border-radius:10px;padding:7px 10px}
+.dlrow .dlk{grid-area:k;font-size:11px;font-weight:700;background:var(--surface);border-radius:99px;padding:1px 8px;align-self:center}
+.dlrow .dll{grid-area:l;font-size:12.5px;font-weight:700;justify-self:end}
+.dlrow .dlt{grid-area:t;font-weight:700;font-size:13.5px;line-height:1.45}
+.dlrow.hot .dll{color:#C53030}
+.dlmore{font:inherit;font-size:12.5px;font-weight:700;color:var(--acc);background:none;border:none;text-align:right;cursor:pointer;padding:2px 0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dlb.hot{background:#4A2323;color:#FFC9C9}:root:not([data-theme="light"]) .dlb.hot .dlk,:root:not([data-theme="light"]) .dlsh b,:root:not([data-theme="light"]) .dlrow.hot .dll{color:#FF9B9B}}

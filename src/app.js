@@ -75,7 +75,25 @@ function rsvState(it){
   if (a && now < a) return "before";
   return "open";
 }
+/* 抽選・受注・整理券などの締切（dl）。発売日とは別に、締切が近いものをわかりやすくする */
+const dlList = it => (Array.isArray(it.dl) ? it.dl : []).filter(x => x && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(x.until||""));
+const nextDls = it => dlList(it).filter(x => PT(x.until) > new Date()).sort((a,b)=>PT(a.until)-PT(b.until));
+function leftText(until){
+  const t = PT(until), ms = t - new Date(), h = ms/3600e3;
+  const j = new Date(t.getTime()+9*3600e3), hm = until.slice(11,16);
+  const today = new Date(Date.now()+9*3600e3).toISOString().slice(0,10), dd = until.slice(0,10);
+  const tom = new Date(Date.now()+9*3600e3+864e5).toISOString().slice(0,10);
+  if (h < 3){ const mm = Math.max(1,Math.floor(ms/60000)); return {txt:`あと${mm>=60?`${Math.floor(mm/60)}時間${mm%60}分`:`${mm}分`}（${hm}まで）`, hot:true}; }
+  if (dd===today) return {txt:`今日${hm}まで（あと${Math.floor(h)}時間）`, hot:true};
+  if (dd===tom) return {txt:`明日${hm}まで`, hot:h<24};
+  return {txt:`${j.getUTCMonth()+1}/${j.getUTCDate()}(${DOW[j.getUTCDay()]}) ${hm}まで`, hot:false};
+}
 function status(it){
+  const nd = nextDls(it)[0];
+  if (nd && PT(nd.until) - new Date() < 7*864e5){
+    const L = leftText(nd.until);
+    return {k:"ending", label:`${nd.k||"応募"}締切 ${L.txt.replace(/（.*）$/,"")}`, rank:0};
+  }
   const rv = rsvState(it);
   if (rv==="before"){
     const n = diffDays(it.sd,TODAY);
@@ -106,6 +124,8 @@ function status(it){
 /* その情報で「次に気にする日」 */
 function keyOf(it){
   const k = status(it).k;
+  if (k==="ending" && it.sd > TODAY && nextDls(it).length) return {d:it.sd, kind:"start"};   // 抽選の締切が近い発売前の商品は、発売日を出す
+  if (k==="ending" && !it.ed && nextDls(it).length) return {d:it.sd, kind:"since"};
   if (k==="upcoming"||k==="soon") return {d:it.sd, kind:"start"};
   if ((k==="on"||k==="ending") && it.ed) return {d:it.ed, kind:"end"};
   if (k==="on") return {d:it.sd, kind:"since"};
@@ -212,6 +232,8 @@ function card(it, opt){
   const en = isRsv(it) ? (it.eNote||"").replace(/^受注締切[^・（]*[・]?/, "") : it.eNote;
   if (en) period += `<span>${esc(en)}</span>`;
   else if (!it.ed && !isEvent(it)) period += `<span>なくなり次第終了</span>`;
+  const dls = nextDls(it).slice(0,2);
+  const dlh = dls.length ? `<div class="dlbs">${dls.map(x=>{ const L = leftText(x.until); const u = safeUrl(x.u); return `<div class="dlb${L.hot?" hot":""}"><span class="dlk">⏰ ${esc(x.k||"応募")}締切</span><span class="num">${esc(L.txt)}</span>${x.n?`<small>${esc(x.n)}</small>`:""}${u?`<a href="${esc(u)}" target="_blank" rel="noopener" data-dl>応募・くわしく →</a>`:""}</div>`; }).join("")}</div>` : "";
   const g = gcal(it), src = safeUrl(it.src);
   const m = mine[it.id]||"";
   return `<article class="card ${st.k==="ended"?"ended":""} ${m==="want"?"wanted":""}" data-id="${esc(it.id)}">
@@ -220,6 +242,7 @@ function card(it, opt){
       <div class="meta"><span class="pill st-${st.k}">${st.label}</span>${regionOf(it)!=="jp"?`<span class="pill rg">${REG[regionOf(it)]}</span>`:""}<span class="cat">${CAT[it.cat]||""}</span></div>
       <h3><a href="/items/${encodeURIComponent(it.id)}/">${esc(it.t)}</a></h3>
       <div class="period">${period}</div>
+      ${dlh}
       <dl class="info">
         ${it.place?`<dt>場所</dt><dd>${esc(it.place)}</dd>`:""}
         ${it.price?`<dt>価格</dt><dd class="num">${esc(it.price)}${regionOf(it)==="jp"?"（税込）":""}</dd>`:""}
@@ -253,7 +276,7 @@ function placeholder(){
 
 /* ===== 一覧 ===== */
 const state = { st:"next", cat:"all", q:"", focus:null, fromSum:false };
-const ST = [["next","これからの予定"],["ending","まもなく終了"],["sellout","なくなり次第終了"],["rsv","予約・受注"],["onsale","販売中"],["ended","終了"]];
+const ST = [["next","これからの予定"],["ending","まもなく締切・終了"],["sellout","なくなり次第終了"],["rsv","予約・受注"],["onsale","販売中"],["ended","終了"]];
 // 「なくなり次第終了」：在庫がなくなると買えなくなるもの（くじも含む）。終わったものは除く
 const SELLOUT_RE = /なくなり次第|数量限定|在庫限り|在庫がなくなり|売り切れ次第|品切れ次第|完売次第/;
 function isSellout(it){ return status(it).k!=="ended" && !isEvent(it) && (SELLOUT_RE.test((it.eNote||"")+" "+(it.note||"")) || it.cat==="kuji"); }
@@ -343,13 +366,13 @@ function renderListInner(){
   } else arr = sortItems(arr);
   // 絞り込み中の表示
   fb.hidden = !(state.focus || state.fromSum);
-  if (!fb.hidden) document.getElementById("focusTxt").textContent = state.focus==="soon" ? "7日以内に発売・開始するものだけ表示中" : "7日以内に終わるものだけ表示中";
-  const desc = {rsv:"公式通販などの予約・受注です。受付中のもの（締切が近い順）、これから受付が始まるものの順。", sellout:"在庫がなくなると終わるグッズ・くじです。いま買えるもの、これから出るものの順。", ending:"1週間以内に終わるものです。終わる日が近い順。", next:"日付が近い順（開催中のものは終わる日の順）", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
+  if (!fb.hidden) document.getElementById("focusTxt").textContent = state.focus==="soon" ? "7日以内に発売・開始するものだけ表示中" : "7日以内に締切・終了するものだけ表示中";
+  const desc = {rsv:"公式通販などの予約・受注です。受付中のもの（締切が近い順）、これから受付が始まるものの順。", sellout:"在庫がなくなると終わるグッズ・くじです。いま買えるもの、これから出るものの順。", ending:"1週間以内に締切・終了するものです（抽選・受注の締切を含む）。近い順。", next:"日付が近い順（開催中のものは終わる日の順）", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
   document.getElementById("count").textContent = `${arr.length}件　${desc}`;
   if (!arr.length){
     const msg = R.region==="os"&&!VIS().length ? "この国・地域の情報はまだありません。"
       : (q||state.cat!=="all"||state.focus) ? "条件に合う情報が見つかりませんでした。キーワードや種類の絞り込みを変えてみてください。"
-      : state.st==="next" ? "これからの予定はまだありません。" : state.st==="ending" ? "1週間以内に終わるものはありません。" : state.st==="sellout" ? "いま「なくなり次第終了」のものはありません。" : state.st==="rsv" ? "いま受付中・受付予定の予約はありません。" : "まだありません。";
+      : state.st==="next" ? "これからの予定はまだありません。" : state.st==="ending" ? "1週間以内に締切・終了するものはありません。" : state.st==="sellout" ? "いま「なくなり次第終了」のものはありません。" : state.st==="rsv" ? "いま受付中・受付予定の予約はありません。" : "まだありません。";
     el.innerHTML = `<div class="empty">${msg}</div>` + backAll();
     return;
   }
@@ -378,7 +401,15 @@ function renderListInner(){
   const near = VIS().filter(x=>rsvState(x)==="open" && x.re).sort((a,b)=>PT(a.re)-PT(b.re))[0];
   const nextS = VIS().filter(x=>rsvState(x)==="before").sort((a,b)=>PT(a.rs)-PT(b.rs))[0];
   const sub = near ? `${esc(fmtDT(near.re))}締切：${esc(near.t.replace(/（予約）$/,""))}` : nextS ? `${esc(fmtDT(nextS.rs))}開始：${esc(nextS.t.replace(/（予約）$/,""))}` : "";
-  const strip = (ro||rb) && state.st==="next" && !state.focus ? `<button type="button" class="rsvstrip" data-gorsv><span class="rs-ic" aria-hidden="true">🛒</span><span class="rs-tx"><b>${ro?`いま予約受付中 ${ro}件`:""}${ro&&rb?"・":""}${rb?`予約開始予定 ${rb}件`:""}</b>${sub?`<small>${sub}</small>`:""}</span><span class="rs-go">見る →</span></button>` : "";
+  // 72時間以内の締切（抽選・受注などの dl と、予約の締切）を近い順に
+  const dlNear = [];
+  for (const x of VIS()){
+    for (const d of nextDls(x)) if (PT(d.until) - new Date() < 72*3600e3) dlNear.push({it:x, k:d.k||"応募", until:d.until});
+    if (rsvState(x)==="open" && x.re && x.re.length>10 && PT(x.re) - new Date() < 72*3600e3) dlNear.push({it:x, k:"予約", until:x.re});
+  }
+  dlNear.sort((a,b)=>PT(a.until)-PT(b.until));
+  const dlStrip = dlNear.length && state.st==="next" && !state.focus ? `<div class="dlstrip"><div class="dlsh"><b>⏰ 締切が近いもの</b><span>72時間以内</span></div>${dlNear.slice(0,4).map(d=>{ const L = leftText(d.until); return `<a class="dlrow${L.hot?" hot":""}" href="/items/${encodeURIComponent(d.it.id)}/"><span class="dlk">${esc(d.k)}</span><span class="dlt">${esc(d.it.t.replace(/（予約）$/,""))}</span><span class="dll num">${esc(L.txt)}</span></a>`; }).join("")}${(ro||rb)?`<button type="button" class="dlmore" data-gorsv>予約・受注の一覧を見る（${ro?`受付中${ro}件`:""}${ro&&rb?"・":""}${rb?`開始予定${rb}件`:""}）→</button>`:""}</div>` : "";
+  const strip = dlStrip ? dlStrip : (ro||rb) && state.st==="next" && !state.focus ? `<button type="button" class="rsvstrip" data-gorsv><span class="rs-ic" aria-hidden="true">🛒</span><span class="rs-tx"><b>${ro?`いま予約受付中 ${ro}件`:""}${ro&&rb?"・":""}${rb?`予約開始予定 ${rb}件`:""}</b>${sub?`<small>${sub}</small>`:""}</span><span class="rs-go">見る →</span></button>` : "";
   el.innerHTML = strip + h + backAll();
   setTimeout(()=>{ fillPop(); fillCamp(); }, 0);   // 下で定義する部品が読み込まれてから
 }

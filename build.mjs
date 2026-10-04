@@ -175,7 +175,7 @@ write("install.js", installJs);
 write("sw.js", swJs.replace("__VER__", BUILD));
 fs.mkdirSync(path.join(OUT, "icons"), { recursive: true });
 for (const f of fs.readdirSync("src/icons")) fs.copyFileSync(path.join("src/icons", f), path.join(OUT, "icons", f));
-write("push-items.json", JSON.stringify(items.map(it => ({ id: it.id, t: it.t, s: it.s, sp: it.sp || "day", e: it.e || null, cat: it.cat, place: it.place || "", rs: it.rs || null, re: it.re || null, rsv: Array.isArray(it.rsv) ? it.rsv.some(x => !x.so) : !!it.rsv }))));
+write("push-items.json", JSON.stringify(items.map(it => ({ id: it.id, t: it.t, s: it.s, sp: it.sp || "day", e: it.e || null, cat: it.cat, place: it.place || "", rs: it.rs || null, re: it.re || null, rsv: Array.isArray(it.rsv) ? it.rsv.some(x => !x.so) : !!it.rsv, dl: (Array.isArray(it.dl) ? it.dl : []).filter(x => x && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(x.until || "")).map(x => ({ k: x.k || "応募", until: x.until, n: x.n || "" })) }))));
 write("manifest.webmanifest", JSON.stringify({
   id: "/",
   name: "ちい活ノート｜ちいかわのスケジュール帳",
@@ -194,7 +194,7 @@ write("manifest.webmanifest", JSON.stringify({
     { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
   ],
   shortcuts: [
-    { name: "まもなく終了", url: "/?v=ending", icons: [{ src: "/icons/icon-192.png", sizes: "192x192" }] },
+    { name: "まもなく締切・終了", url: "/?v=ending", icons: [{ src: "/icons/icon-192.png", sizes: "192x192" }] },
     { name: "カレンダー", url: "/?v=cal", icons: [{ src: "/icons/icon-192.png", sizes: "192x192" }] },
     { name: "マイリスト", url: "/?v=mine", icons: [{ src: "/icons/icon-192.png", sizes: "192x192" }] },
   ],
@@ -253,6 +253,7 @@ for (const it of items) {
     <dl class="info">
       <dt>${it.rsv ? "予約受付" : ev ? "開始" : "発売"}</dt><dd>${esc(start)}${it.time ? " " + esc(it.time) : ""}</dd>
       ${end ? `<dt>${it.rsv ? "締切" : "終了"}</dt><dd>${esc(end)}${it.rsv && it.re && it.re.length > 10 ? " " + esc(it.re.slice(11, 16)) : ""}</dd>` : `<dt>終了</dt><dd>${esc(it.eNote || (ev ? "未定" : "なくなり次第終了"))}</dd>`}
+      ${(Array.isArray(it.dl) ? it.dl : []).filter(x => x && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(x.until || "")).map(x => `<dt>${esc(x.k || "応募")}締切</dt><dd><b>${esc(fmt(x.until.slice(0, 10)))} ${esc(x.until.slice(11, 16))}まで</b>${x.n ? `<br><small>${esc(x.n)}</small>` : ""}${/^https:\/\//.test(x.u || "") ? `<br><a href="${esc(x.u)}" target="_blank" rel="noopener">応募・くわしくはこちら →</a>` : ""}</dd>`).join("")}
       ${it.place ? `<dt>場所</dt><dd>${esc(it.place)}</dd>` : ""}
       ${it.price ? `<dt>価格</dt><dd>${esc(it.price)}${(it.region || "jp") === "jp" ? "（税込）" : ""}</dd>` : ""}
       ${it.note ? `<dt>メモ</dt><dd>${esc(it.note)}</dd>` : ""}
