@@ -129,6 +129,11 @@ export async function relayInfo(env, fetcher = fetch, now = Date.now()) {
 const CHII = /ちいかわ|チイカワ|chiikawa|ハチワレ|ナガノ/i;
 const FEEDS = [
   { key: "prtimes", name: "PR TIMES", url: "https://prtimes.jp/index.rdf", official: true },
+  // Yahoo!ニュースに記事を配信している主なメディアの公式RSS（Yahoo!ニュース自体は自動での読み取りを認めていないため、元のメディアを直接見る）
+  { key: "inside", name: "インサイド", url: "https://www.inside-games.jp/rss/index.rdf", official: false },
+  { key: "animeanime", name: "アニメ！アニメ！", url: "https://animeanime.jp/rss/index.rdf", official: false },
+  { key: "netlab", name: "ねとらぼ", url: "https://rss.itmedia.co.jp/rss/2.0/netlab.xml", official: false },
+  { key: "natalie", name: "コミックナタリー", url: "https://natalie.mu/comic/feed/news", official: false },
   { key: "bing", name: "Bingニュース", url: "https://www.bing.com/news/search?format=rss&setlang=ja&cc=JP&q=" + encodeURIComponent("ちいかわ"), official: false },
   { key: "gnews", name: "Googleニュース", url: "https://news.google.com/rss/search?q=" + encodeURIComponent("ちいかわ") + "&hl=ja&gl=JP&ceid=JP:ja", official: false },
 ];
