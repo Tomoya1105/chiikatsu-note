@@ -577,6 +577,7 @@ function setView(v){
     document.getElementById("view-"+k).hidden = k!==v;
     document.querySelector(`[data-view="${k}"]`).setAttribute("aria-selected", k===v);
   });
+  if (v==="list" && loaded) renderList();   // 前回マイリストやカレンダーで閉じたときも、一覧に戻ったら必ず描く
   if (v==="cal"){ renderCal(); setTimeout(fillSeason, 0); }
   if (v==="mine") renderMine();
   if (v==="shop") renderShop();
