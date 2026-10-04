@@ -48,7 +48,7 @@ export async function onRequestGet({ request, env }) {
 
   if (!env.REPORT_KEY || q("key") !== env.REPORT_KEY) return new Response("forbidden", { status: 403 });
 
-  if (op === "page") return Response.redirect(new URL(`/api/x?t=${await token(env)}`, u.origin).href, 302);
+  if (op === "page") return Response.redirect(new URL(`/api/xdraft?t=${await token(env)}`, u.origin).href, 302);
 
   if (op === "claim") {
     const id = await env.REPORTS.get("x:lasttest");
@@ -58,8 +58,8 @@ export async function onRequestGet({ request, env }) {
     await env.REPORTS.put("x:owners", JSON.stringify(owners.slice(0, 5)));
     await env.REPORTS.delete("x:lasttest");
     const t = await token(env);
-    const r = env.VAPID_PRIVATE ? await notifyOwners(env, { title: "Xの投稿案の通知を登録しました", body: "これから朝・昼・夜に、投稿案ができたらここに届きます。", url: `/api/x?t=${t}`, tag: "x-claim" }) : { sent: 0 };
-    return html(msg("登録しました", `この端末に、Xの投稿案のお知らせが届くようになりました（確認の通知を${r.sent ? "送りました" : "送れませんでした。通知がオンになっているか確かめてください"}）。`, `/api/x?t=${t}`));
+    const r = env.VAPID_PRIVATE ? await notifyOwners(env, { title: "Xの投稿案の通知を登録しました", body: "これから朝・昼・夜に、投稿案ができたらここに届きます。", url: `/api/xdraft?t=${t}`, tag: "x-claim" }) : { sent: 0 };
+    return html(msg("登録しました", `この端末に、Xの投稿案のお知らせが届くようになりました（確認の通知を${r.sent ? "送りました" : "送れませんでした。通知がオンになっているか確かめてください"}）。`, `/api/xdraft?t=${t}`));
   }
 
   if (op === "add") {
@@ -76,7 +76,7 @@ export async function onRequestGet({ request, env }) {
     const tk = await token(env);
     const first = posts[0].t.replace(/\s+/g, " ");
     const r = env.VAPID_PRIVATE
-      ? await notifyOwners(env, { title: `Xの投稿案（${slot}）ができました`, body: first.length > 60 ? first.slice(0, 60) + "…" : first, url: `/api/x?t=${tk}`, tag: `x-${slot}` })
+      ? await notifyOwners(env, { title: `Xの投稿案（${slot}）ができました`, body: first.length > 60 ? first.slice(0, 60) + "…" : first, url: `/api/xdraft?t=${tk}`, tag: `x-${slot}` })
       : { owners: 0, sent: 0 };
     return Response.json({ ok: true, slot, posts: posts.length, ...r });
   }
