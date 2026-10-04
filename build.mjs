@@ -149,7 +149,7 @@ function page({ title, desc, url, body, head = "", scripts = "", ogType = "websi
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&display=swap"></noscript>
-<link rel="stylesheet" href="/style.css?v=${TODAY}">
+<link rel="stylesheet" href="/style.css?v=${BUILD}">
 ${OSHI_BOOT}
 ${head}
 </head>
@@ -211,7 +211,7 @@ write("index.html", page({
   url: "/",
   head: `<script type="application/ld+json">${JSON.stringify(homeLd)}</script>`,
   body: homeBody,
-  scripts: `<script>window.__ITEMS=${JSON.stringify(items).replace(/</g, "\\u003c")};window.__NEWS=${JSON.stringify(news).replace(/</g, "\\u003c")};window.__CAMP=${JSON.stringify(camps).replace(/</g, "\\u003c")};</script>\n<script src="/app.js?v=${TODAY}"></script>`,
+  scripts: `<script>window.__ITEMS=${JSON.stringify(items).replace(/</g, "\\u003c")};window.__NEWS=${JSON.stringify(news).replace(/</g, "\\u003c")};window.__CAMP=${JSON.stringify(camps).replace(/</g, "\\u003c")};</script>\n<script src="/app.js?v=${BUILD}"></script>`,
 }));
 
 // ---- 共有用の画像（OGP）

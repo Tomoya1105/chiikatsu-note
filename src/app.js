@@ -665,11 +665,11 @@ function normItem(raw){
   if (img && typeof img==="object") img = img.imageUrl;
   if (img) img = img.replace(/\?_ex=\d+x\d+/, "?_ex=300x300");
   return { name:x.itemName||"", price:+x.itemPrice||0, url:(x.affiliateUrl && x.affiliateUrl.includes("hb.afl.rakuten.co.jp")) ? x.affiliateUrl : x.itemUrl ? `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(x.itemUrl)}` : "", img:img||"",
-    shop:x.shopName||"", rc:+x.reviewCount||0, ra:+x.reviewAverage||0, code:x.itemCode||"" };
+    shop:x.shopName||"", rc:+x.reviewCount||0, ra:+x.reviewAverage||0, code:x.itemCode||(x.itemUrl?"u:"+x.itemUrl:"") };
 }
 /* 楽天APIは1秒1回まで。順番待ちで呼び、結果は6時間この端末に覚えておく */
 const RK_TTL = 6*3600*1000;
-const RK_VER = "3";
+const RK_VER = "4";   // 保存する中身を変えたら上げる（古い覚え書きを使わないように）
 let rkChain = Promise.resolve(), rkLast = 0;
 function rkSearch(params){
   const qs = new URLSearchParams(Object.assign({applicationId:RAK.app, accessKey:RAK.key, affiliateId:AFF.rakutenId,
@@ -784,7 +784,7 @@ document.addEventListener("click", e=>{
 const FAV_FRESH = {};
 async function refreshFav(){
   for (const f of FAV.slice(0,30)){
-    if (f.c in FAV_FRESH) continue;
+    if (f.c in FAV_FRESH || f.c.startsWith("u:")) continue;   // 商品コードがないものは、保存したときの情報のまま
     try{ const v = await rkSearch({itemCode:f.c, hits:"1"}); FAV_FRESH[f.c] = v.items[0] || null; }catch(e){ FAV_FRESH[f.c] = undefined; continue; }
     const g = document.getElementById("favGrid"); if (g) g.innerHTML = favCards();
   }
