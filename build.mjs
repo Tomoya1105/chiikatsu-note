@@ -50,7 +50,7 @@ try {
 } catch (e) {}
 const sjisEncode = str => [...str].map(ch => /[A-Za-z0-9\-_.]/.test(ch) ? ch : ch === " " ? "+" : sjis.get(ch) || (ch.charCodeAt(0) < 128 ? "%" + ch.charCodeAt(0).toString(16).toUpperCase().padStart(2, "0") : "")).join("");
 const aff = u => `https://hb.afl.rakuten.co.jp/hgc/${AFF}/?pc=${encodeURIComponent(u)}`;
-const rakutenSearch = q => aff("https://search.rakuten.co.jp/search/mall/" + encodeURIComponent(q) + "/");
+const rakutenSearch = q => aff("https://search.rakuten.co.jp/search/mall/" + encodeURIComponent(/ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q) + "/");
 // 海外は楽天トラベルの「海外ホテル」一覧へ（キーワード検索は国内のホテルしか出ないため）
 const OS_HOTEL = [
   [/台北/, "03kaigaiTaiwanTaipei", "台北"], [/台中/, "03kaigaiTaiwanTaizhong", "台中"], [/高雄/, "03kaigaiTaiwanKaohsiung", "高雄"], [/台南/, "03kaigaiTaiwantainam", "台南"],
@@ -259,7 +259,7 @@ for (const it of items) {
       if (ok.every(x => x.so)) return `<div class="rsvbox closed"><div class="rsvh">予約はすべて完売しました</div></div>`;
       return `<div class="rsvbox open"><div class="rsvh">予約・受注${it.re ? `<small>締切 ${esc(fmt(it.re.slice(0, 10)))} ${esc(it.re.slice(11, 16))}</small>` : ""}</div><div class="rsvbtns">${ok.slice().sort((p, q) => (p.so ? 1 : 0) - (q.so ? 1 : 0)).map(x => x.so ? `<span class="btn rsvbtn so">${x.n ? esc(x.n) + " " : ""}完売</span>` : `<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>予約はこちら${x.n ? "（" + esc(x.n) + "）" : ""}</a>`).join("")}</div></div>`; })()}
     <div class="acts">
-      ${it.q ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored">楽天市場で探す <span class="tag">PR</span></a>` : ""}
+      ${it.q ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored" data-rkd="${esc(JSON.stringify({ q: it.q, t: it.t, p: it.price || "", pre: it.s > TODAY }))}">楽天市場で探す <span class="tag">PR</span></a>` : ""}
       ${/^https:\/\//.test(it.src || "") ? `<a class="btn" href="${esc(it.src)}" target="_blank" rel="noopener">公式情報</a>` : ""}
     </div>
     ${(() => { const tr = it.area ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}

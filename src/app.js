@@ -120,6 +120,7 @@ function fmtEnd(it){ const d=it.ed; return `${d.getMonth()+1}/${d.getDate()}(${D
 
 /* ===== リンク ===== */
 function rakuten(q){
+  if (!/ちいかわ|chiikawa/i.test(q)) q = "ちいかわ "+q;   // 「ちいかわ」が入っていないと、ほかの商品（本物のまんじゅうなど）が出てしまう
   const u = "https://search.rakuten.co.jp/search/mall/"+encodeURIComponent(q)+"/";
   return AFF.rakutenId ? `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(u)}` : u;
 }

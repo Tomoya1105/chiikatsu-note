@@ -52,7 +52,8 @@
     var a = e.target.closest("a[href]"); if (!a) return;
     var h = a.href;
     if (/hb\.afl\.rakuten/.test(h)) {
-      if (a.classList.contains("trip")) ct("c:travel");
+      if (a.hasAttribute("data-rkd")) ct(a.dataset.hit ? (a.dataset.pre ? "c:rkpre" : "c:rk") : "c:rksearch");
+      else if (a.classList.contains("trip")) ct("c:travel");
       else if (a.classList.contains("prod")) ct("c:shop");
       else if (a.closest("[data-rk]") || a.closest("[data-pimg]")) ct(a.dataset.pre ? "c:rkpre" : "c:rk");
       else ct("c:rksearch");
@@ -103,6 +104,52 @@
       if (!f.querySelector("iframe")) xFail(f, id);
     }).catch(function(){ done = true; xFail(f, id); });
   });
+
+
+  /* ---- 詳細ページ：楽天で「同じ商品」が見つかったら、検索ではなくその商品ページへ直接つなぐ ---- */
+  (function(){
+    var b = document.querySelector("[data-rkd]"); if (!b) return;
+    var d; try { d = JSON.parse(b.getAttribute("data-rkd")); } catch (e) { return; }
+    var RAK = { app: "d328e43a-4e55-4bd7-8ce4-f265afcf674d", key: "pk_xcGUmu6xmFCHvq4iCebKJjAiwMb2IAKrSJhQgGb49vo",
+  ep: "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701" }, AFF = { rakutenId: "582a6f7f.e1ade2b2.582a6f84.d5f85faa" };
+    var KINDS = ["かるた","ぬいぐるみ","キーホルダー","キーリング","Tシャツ","トレーナー","パーカー","ステッカー","缶バッジ","ポーチ","巾着","タオル","ハンカチ","ソックス","靴下","グミ","ガム","チョコ","クッキー","フィギュア","アクリルスタンド","アクスタ","下敷き","クリアファイル","ノート","付箋","ボールペン","マグ","コップ","お弁当箱","ランチボックス","パジャマ","スリッパ","ブランケット","クッション","バッグ","トート","リュック","財布","スマホケース","カレンダー","手帳","絵本","コミック","カード","シール","マスコット","入浴剤","ガチャ","くじ"], NG = ["中古","USED","ユーズド","美品","未使用品","開封済","プレミア","入手困難","完売品","転売","並行輸入","非公式","互換","ノーブランド","ハンドメイド","レンタル","まとめ買い","ケース販売","業務用","大量"], OTHER_IP = /ディズニー|ミッキー|ミニー|プリンセス|アナと雪|アナ雪|トイ・?ストーリー|サンリオ|キティ|マイメロ|クロミ|シナモ|ポムポム|すみっコ|リラックマ|ポケモン|ピカチュウ|カービィ|マリオ|アンパンマン|ドラえもん|しんちゃん|クレヨンしんちゃん|鬼滅|呪術|スヌーピー|ムーミン|ミッフィー|トミカ|プラレール|戦隊|仮面ライダー|プリキュア|スパイダーマン|マーベル|ちいかわ以外/g;
+    var BULK = /×\s?\d{2,}\s?(個|本|袋|枚)|\d{2,}\s?(個|袋)セット/, CH = /ちいかわ|chiikawa|ハチワレ|ナガノ/i;
+    var N = function(s){ return String(s || "").normalize("NFKC").toLowerCase().replace(/\s+/g, " "); };
+    var q = /ちいかわ|chiikawa/i.test(d.q) ? d.q : "ちいかわ " + d.q;
+    var tokens = N(d.q).split(" ").filter(function(t){ return t && !/^(ちいかわ|アニメ|映画)$/.test(t); });
+    var distinct = tokens.filter(function(t){ return t.length >= 2 && !KINDS.some(function(k){ return N(k) === t; }); });
+    if (!distinct.length) return;   // 種類名だけでは同じ商品か判断できない
+    var m = String(d.p).replace(/,/g, "").match(/(\d{2,6})\s*円/), ref = m ? +m[1] : 0;
+    var mine = N(d.t + " " + d.q);
+    function ok(x){
+      var n = x.itemName || "", nm = N(n);
+      if (!CH.test(n) || BULK.test(n) || NG.some(function(w){ return n.indexOf(w) >= 0; })) return false;
+      var ip = n.match(OTHER_IP) || []; if (new Set(ip).size >= 2) return false;
+      if (ref && +x.itemPrice > ref * 1.6) return false;
+      if (!tokens.every(function(t){ return nm.indexOf(t) >= 0; })) return false;
+      return !KINDS.some(function(k){ return nm.indexOf(N(k)) >= 0 && mine.indexOf(N(k)) < 0; });
+    }
+    function paint(h){
+      if (!h) return;
+      var search = b.href;
+      b.href = h.url; b.setAttribute("data-hit", "1"); if (d.pre) b.setAttribute("data-pre", "1");
+      b.innerHTML = (d.pre ? "楽天で予約する " : "楽天で見る ") + "¥" + Number(h.price).toLocaleString("ja-JP") + ' <span class="tag">PR</span>';
+      var more = document.createElement("a");
+      more.className = "rkmore"; more.href = search; more.target = "_blank"; more.rel = "noopener sponsored";
+      more.textContent = "ほかの商品も楽天で探す";
+      b.parentNode.appendChild(more);
+    }
+    var ck = "rkd1:" + q;
+    try { var c = JSON.parse(localStorage.getItem(ck) || "null"); if (c && Date.now() - c.t < 6 * 3600e3) return paint(c.v); } catch (e) {}
+    var qs = new URLSearchParams({ applicationId: RAK.app, accessKey: RAK.key, affiliateId: AFF.rakutenId, format: "json", formatVersion: "2",
+      availability: "1", imageFlag: "1", NGKeyword: "中古 USED 美品", keyword: q, hits: "10" });
+    fetch(RAK.ep + "?" + qs.toString()).then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
+      var x = j && (j.Items || []).map(function(i){ return i.Item || i; }).filter(ok)[0];
+      var v = x ? { price: +x.itemPrice, url: (x.affiliateUrl && x.affiliateUrl.indexOf("hb.afl.rakuten.co.jp") >= 0) ? x.affiliateUrl : "https://hb.afl.rakuten.co.jp/hgc/" + AFF.rakutenId + "/?pc=" + encodeURIComponent(x.itemUrl) } : null;
+      try { localStorage.setItem(ck, JSON.stringify({ t: Date.now(), v: v })); } catch (e) {}
+      paint(v);
+    }).catch(function(){});
+  })();
 
   /* ---- 小さな部品 ---- */
   var SHARE = '<svg class="ii" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10H6.5A1.5 1.5 0 0 0 5 11.5v8A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5H16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
