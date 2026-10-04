@@ -419,10 +419,13 @@ function renderMine(){
   const want = sortItems(ITEMS.filter(it=>mine[it.id]==="want"));
   const got = sortItems(ITEMS.filter(it=>mine[it.id]==="got"));
   let h = "";
-  if (!want.length && !got.length) h = `<div class="empty">「♡ ほしい」を押した商品やイベントがここに集まります。<br>発売日や終了日が近い順に並ぶので、買い逃し防止に使えます。</div>`;
+  if (!want.length && !got.length && !FAV.length) h = `<div class="empty">「♡ ほしい」を押した商品やイベントがここに集まります。<br>発売日や終了日が近い順に並ぶので、買い逃し防止に使えます。</div>`;
   if (want.length) h += `<h3 class="dayhead">ほしいもの（${want.length}）</h3>`+want.map(card).join("");
   if (got.length) h += `<h3 class="dayhead">ゲット済み（${got.length}）</h3>`+got.map(card).join("");
+  if (FAV.length) h += `<h3 class="dayhead">気になる商品（${FAV.length}）</h3><p class="favnote">「おすすめ」で♡を押した楽天の商品です。値段は開いたときに楽天から読み直しています。</p><div class="pgrid" id="favGrid">${favCards()}</div>`;
+  else h += `<p class="favnote">「おすすめ」タブの商品の♡を押すと、ここに「気になる商品」として保存されます。</p>`;
   el.innerHTML = h;
+  if (FAV.length) setTimeout(refreshFav, 0);
 }
 function renderSummary(){
   const c = k=>VIS().filter(it=>status(it).k===k).length;
@@ -662,7 +665,7 @@ function normItem(raw){
   if (img && typeof img==="object") img = img.imageUrl;
   if (img) img = img.replace(/\?_ex=\d+x\d+/, "?_ex=300x300");
   return { name:x.itemName||"", price:+x.itemPrice||0, url:(x.affiliateUrl && x.affiliateUrl.includes("hb.afl.rakuten.co.jp")) ? x.affiliateUrl : x.itemUrl ? `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(x.itemUrl)}` : "", img:img||"",
-    shop:x.shopName||"", rc:+x.reviewCount||0, ra:+x.reviewAverage||0 };
+    shop:x.shopName||"", rc:+x.reviewCount||0, ra:+x.reviewAverage||0, code:x.itemCode||"" };
 }
 /* 楽天APIは1秒1回まで。順番待ちで呼び、結果は6時間この端末に覚えておく */
 const RK_TTL = 6*3600*1000;
@@ -748,12 +751,46 @@ const SH = {cat:"all", kw:"", sort:"standard", page:1, items:[], pageCount:1, bu
 function shopChips(){
   document.getElementById("shopCats").innerHTML = SHOPCAT.map(([k,l])=>`<button class="chip" data-sc="${k}" aria-pressed="${SH.cat===k}">${l}</button>`).join("");
 }
-function prodCard(x){
+/* 気になる商品（楽天）：♡を押した商品をこの端末に保存して、マイリストに並べる */
+const FAV_KEY = "chiikatsu-fav";
+let FAV = []; try{ FAV = (JSON.parse(localStorage.getItem(FAV_KEY)||"[]")||[]).filter(x=>x && x.c); }catch(e){}
+const favHas = c => FAV.some(x=>x.c===c);
+function favSave(){ try{ localStorage.setItem(FAV_KEY, JSON.stringify(FAV.slice(0,60))); }catch(e){} }
+let PROD_BY_CODE = {};
+function prodCard(x, opt){
+  if (x.code) PROD_BY_CODE[x.code] = x;
   const stars = x.rc ? `<span class="pr2">★${x.ra.toFixed(1)}（${x.rc}件）</span>` : "";
-  return `<a class="prod" href="${esc(x.url)}" target="_blank" rel="noopener sponsored">
+  const on = x.code && favHas(x.code);
+  return `<div class="prodw${opt&&opt.gone?" gone":""}"><a class="prod" href="${esc(x.url)}" target="_blank" rel="noopener sponsored">
     <div class="ph"><img src="${esc(x.img)}" alt="" loading="lazy"></div>
-    <div class="pb"><span class="pn">${esc(x.name)}</span>${stars}<span class="pp num">${yen(x.price)}</span><span class="ps">${esc(x.shop)}</span><span class="tag">PR・楽天市場</span></div>
-  </a>`;
+    <div class="pb"><span class="pn">${esc(x.name)}</span>${stars}<span class="pp num">${opt&&opt.gone?"売り切れか、販売が終わったかもしれません":yen(x.price)}</span><span class="ps">${esc(x.shop)}</span><span class="tag">PR・楽天市場</span></div>
+  </a>${x.code?`<button type="button" class="fav" data-fav="${esc(x.code)}" aria-pressed="${on}" aria-label="${on?"気になる商品から外す":"気になる商品に保存"}">${on?"♥":"♡"}</button>`:""}</div>`;
+}
+document.addEventListener("click", e=>{
+  const b = e.target.closest("[data-fav]"); if (!b) return;
+  e.preventDefault();
+  const c = b.dataset.fav;
+  if (favHas(c)){ FAV = FAV.filter(x=>x.c!==c); toast("気になる商品から外しました"); }
+  else {
+    const x = PROD_BY_CODE[c]; if (!x) return;
+    FAV.unshift({c, n:x.name, p:x.price, i:x.img, u:x.url, s:x.shop, at:Date.now()});
+    toast("マイリストの「気になる商品」に保存しました"); if (window.ct) window.ct("fav");
+  }
+  favSave();
+  document.querySelectorAll(`[data-fav="${CSS.escape(c)}"]`).forEach(el=>{ const on = favHas(c); el.textContent = on?"♥":"♡"; el.setAttribute("aria-pressed", on); });
+  if (document.getElementById("view-mine") && !document.getElementById("view-mine").hidden) renderMine();
+});
+/* マイリストを開いたら、保存した商品の今の値段を楽天から読み直す（6時間はこの端末に覚えておく） */
+const FAV_FRESH = {};
+async function refreshFav(){
+  for (const f of FAV.slice(0,30)){
+    if (f.c in FAV_FRESH) continue;
+    try{ const v = await rkSearch({itemCode:f.c, hits:"1"}); FAV_FRESH[f.c] = v.items[0] || null; }catch(e){ FAV_FRESH[f.c] = undefined; continue; }
+    const g = document.getElementById("favGrid"); if (g) g.innerHTML = favCards();
+  }
+}
+function favCards(){
+  return FAV.map(f=>{ const fr = FAV_FRESH[f.c]; const x = fr ? fr : {name:f.n, price:f.p, img:f.i, url:f.u, shop:f.s, code:f.c, rc:0}; return prodCard(x, {gone: fr===null}); }).join("");
 }
 async function loadShop(reset){
   if (SH.busy) return;

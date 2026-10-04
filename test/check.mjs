@@ -12,7 +12,7 @@ for (const f of ["dist/app.js", "dist/install.js", "dist/sw.js"]) {
 }
 const html = read("dist/index.html"), app = read("dist/app.js");
 const ids = new Set([...app.matchAll(/getElementById\("([^"]+)"\)/g)].map(m => m[1]));
-for (const id of ids) if (!html.includes(`id="${id}"`) && !["toast","newsPeek"].includes(id)) errs.push(`トップページに id="${id}" がありません（app.js が使っています）`);
+for (const id of ids) if (!html.includes(`id="${id}"`) && !["toast","newsPeek","favGrid"].includes(id)) errs.push(`トップページに id="${id}" がありません（app.js が使っています）`);
 if (!app.includes(AFF)) errs.push("app.js から楽天アフィリエイトIDが消えています");
 if (!app.includes(RAK_APP)) errs.push("app.js から楽天APIのアプリIDが消えています");
 const pagesToCheck = ["items", "month", "area"].flatMap(dir => fs.existsSync(`dist/${dir}`) ? fs.readdirSync(`dist/${dir}`).filter(d => fs.existsSync(`dist/${dir}/${d}/index.html`)).map(d => `${dir}/${d}`) : []);
