@@ -48,7 +48,7 @@ async function audit(items, env) {
         out.rakutenChecked++;
         if (!r.ok) { out.rakutenErrors++; out.lastRakutenStatus = r.status; out.lastRakutenBody = (await r.text()).slice(0, 200); continue; }
         const list = ((await r.json()).Items || []).map(i => { const x = i.Item || i; let img = (x.mediumImageUrls || [])[0]; if (img && typeof img === "object") img = img.imageUrl;
-          return { name: x.itemName || "", price: +x.itemPrice || 0, img: img ? img.replace(/\?_ex=\d+x\d+/, "") + "?_ex=400x400" : "", link: (x.affiliateUrl || "").includes("hb.afl.rakuten.co.jp") ? x.affiliateUrl : `https://hb.afl.rakuten.co.jp/hgc/${AFF}/?pc=${encodeURIComponent(x.itemUrl || "")}` }; });
+          return { name: x.itemName || "", price: +x.itemPrice || 0, img: img ? img.replace(/\?_ex=\d+x\d+/, "") + "?_ex=400x400" : "", link: RKM.affUrl(x.affiliateUrl, x.itemUrl) }; });
         const h = RKM.pick({ t: it.t, q: it.q, price: it.price, cat: it.cat }, list);
         if (h && IMG_OK.test(h.img)) await env.REPORTS.put(`v:rk:${it.id}`, JSON.stringify({ kind: "rakuten", src: RK_SRC, basis: RK_BASIS, name: h.name.slice(0, 200), price: h.price, link: h.link, img: h.img, by: "点検", at: new Date().toISOString() }), { expirationTtl: 60 * 60 * 24 * 14 });
         else await env.REPORTS.delete(`v:rk:${it.id}`);
@@ -95,7 +95,7 @@ export async function onRequestGet({ request, env }) {
     const xOk = !!(it.x && (!xv || xv.ok));   // まだ確かめていないものは表示できる扱い（端末側でも読めなければ消える）
     const visual = rk ? "rakuten" : xOk ? "x" : "none";
     rows.push({ id: it.id, t: it.t, event: it.event, visual,
-      image: rk ? { src: rk.src, basis: rk.basis, link: rk.link, img: rk.img, name: rk.name, at: rk.at, by: rk.by } : null,
+      image: rk ? { src: rk.src, basis: rk.basis, link: RKM.fixAff(rk.link), img: rk.img, name: rk.name, at: rk.at, by: rk.by } : null,
       x: it.x ? { src: `${it.x.account}のXの投稿`, basis: X_BASIS, link: it.x.url, note: it.x.note || "", checked: xv ? (xv.ok ? "表示できる" : `表示できない（${xv.status}）`) : "未確認" } : null,
       none: visual === "none" ? (it.qNone || (it.event ? "公式Xの投稿がまだ登録されていない" : it.rakuten ? "楽天で同じ商品が見つかっていない" : "検索語がない")) : undefined });
   }

@@ -17,6 +17,11 @@ const ids = new Set([...app.matchAll(/getElementById\("([^"]+)"\)/g)].map(m => m
 for (const id of ids) if (!html.includes(`id="${id}"`) && !["toast","newsPeek","favGrid"].includes(id)) errs.push(`トップページに id="${id}" がありません（app.js が使っています）`);
 if (!app.includes(AFF)) errs.push("app.js から楽天アフィリエイトIDが消えています");
 if (!app.includes(RAK_APP)) errs.push("app.js から楽天APIのアプリIDが消えています");
+// 楽天の商品リンクは必ず自分のアフィリエイトIDで作る（API の affiliateUrl は別のIDのことがある）
+{ const ok1 = RKM.affUrl("https://hb.afl.rakuten.co.jp/hgc/g00t6k4o.gnvjz135.g00t6k4o.gnvk4ef1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fa%2Fb%2F", "https://item.rakuten.co.jp/a/b/");
+  const ok2 = RKM.fixAff("https://hb.afl.rakuten.co.jp/hgc/g00t6k4o.gnvjz135.g00t6k4o.gnvk4ef1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fa%2Fb%2F&m=x");
+  if (!ok1.includes(`/hgc/${AFF}/`) || !ok2.includes(`/hgc/${AFF}/`) || !ok2.includes(encodeURIComponent("https://item.rakuten.co.jp/a/b/"))) errs.push("楽天の商品リンクが自分のアフィリエイトIDで作られていません（RKM.affUrl / fixAff）");
+  for (const f of ["dist/app.js", "dist/install.js"]) if (/affiliateUrl\s*:\s*|\?\s*x\.affiliateUrl\s*:/.test(read(f))) errs.push(`${f}: API の affiliateUrl をそのまま使っています。RKM.affUrl を使ってください`); }
 const pagesToCheck = ["items", "month", "area"].flatMap(dir => fs.existsSync(`dist/${dir}`) ? fs.readdirSync(`dist/${dir}`).filter(d => fs.existsSync(`dist/${dir}/${d}/index.html`)).map(d => `${dir}/${d}`) : []);
 for (const d of pagesToCheck) {
   const h = read(`dist/${d}/index.html`);

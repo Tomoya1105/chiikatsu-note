@@ -179,7 +179,7 @@
         hero.innerHTML = '<div class="dh-txt"><p class="dh-k">楽天市場では、まだ同じ商品が見つかっていません</p><a class="dh-b sub" href="' + esc(search || b.href) + '" target="_blank" rel="noopener sponsored">関連する商品を楽天で探す</a> <span class="tag">PR</span></div>';
       }
     }
-    var ck = "rkd2:" + p.query;
+    var ck = "rkd3:" + p.query;   // リンクの作り方を直したので、古い覚え書きは使わない
     try { var c = JSON.parse(localStorage.getItem(ck) || "null"); if (c && Date.now() - c.t < 6 * 3600e3) return paint(c.v); } catch (e) {}
     var qs = new URLSearchParams({ applicationId: RAK.app, accessKey: RAK.key, affiliateId: AFF.rakutenId, format: "json", formatVersion: "2",
       availability: "1", imageFlag: "1", NGKeyword: "中古 USED 美品", keyword: p.query, hits: "10" });
@@ -189,7 +189,7 @@
         if (img && typeof img === "object") img = img.imageUrl;
         if (img) img = img.replace(/\?_ex=\d+x\d+/, "") + "?_ex=400x400";
         return { name: x.itemName || "", price: +x.itemPrice || 0, img: img || "",
-          url: (x.affiliateUrl && x.affiliateUrl.indexOf("hb.afl.rakuten.co.jp") >= 0) ? x.affiliateUrl : "https://hb.afl.rakuten.co.jp/hgc/" + AFF.rakutenId + "/?pc=" + encodeURIComponent(x.itemUrl) };
+          url: RKM.affUrl(x.affiliateUrl, x.itemUrl) };
       });
       var v = RKM.pick(it, list);
       try { localStorage.setItem(ck, JSON.stringify({ t: Date.now(), v: v })); } catch (e) {}

@@ -35,5 +35,19 @@ export var RKM = (function(){
     }
     return null;
   }
-  return { plan: plan, pick: pick, norm: norm };
+  // 楽天の商品リンク：必ずちい活ノートのアフィリエイトIDで作る。
+  // API が返す affiliateUrl は、別のID（楽天ウェブサービスの既定ID）になっていることがあるので、自分のIDが入っているときだけ使う。
+  var AFF_ID = "582a6f7f.e1ade2b2.582a6f84.d5f85faa";
+  function affUrl(affiliateUrl, itemUrl){
+    if (affiliateUrl && affiliateUrl.indexOf("/hgc/" + AFF_ID + "/") >= 0) return affiliateUrl;
+    var u = itemUrl || "";
+    if (!u && affiliateUrl) { try { u = new URL(affiliateUrl).searchParams.get("pc") || ""; } catch (e) {} }
+    return u ? "https://hb.afl.rakuten.co.jp/hgc/" + AFF_ID + "/?pc=" + encodeURIComponent(u) : "";
+  }
+  // すでに作られたリンク（端末に保存された♡の商品など）も、別のIDなら直す
+  function fixAff(link){
+    if (!link || link.indexOf("hb.afl.rakuten.co.jp") < 0 || link.indexOf("/hgc/" + AFF_ID + "/") >= 0) return link;
+    return affUrl(link, "") || link;
+  }
+  return { plan: plan, pick: pick, norm: norm, affUrl: affUrl, fixAff: fixAff, AFF_ID: AFF_ID };
 })();

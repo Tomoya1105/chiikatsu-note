@@ -694,12 +694,12 @@ function normItem(raw){
   let img = (x.mediumImageUrls||[])[0];
   if (img && typeof img==="object") img = img.imageUrl;
   if (img) img = img.replace(/\?_ex=\d+x\d+/, "?_ex=300x300");
-  return { name:x.itemName||"", price:+x.itemPrice||0, url:(x.affiliateUrl && x.affiliateUrl.includes("hb.afl.rakuten.co.jp")) ? x.affiliateUrl : x.itemUrl ? `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(x.itemUrl)}` : "", img:img||"",
+  return { name:x.itemName||"", price:+x.itemPrice||0, url:RKM.affUrl(x.affiliateUrl, x.itemUrl), img:img||"",
     shop:x.shopName||"", rc:+x.reviewCount||0, ra:+x.reviewAverage||0, code:x.itemCode||(x.itemUrl?"u:"+x.itemUrl:"") };
 }
 /* 楽天APIは1秒1回まで。順番待ちで呼び、結果は6時間この端末に覚えておく */
 const RK_TTL = 6*3600*1000;
-const RK_VER = "4";   // 保存する中身を変えたら上げる（古い覚え書きを使わないように）
+const RK_VER = "5";   // 保存する中身を変えたら上げる（古い覚え書きを使わないように）
 let rkChain = Promise.resolve(), rkLast = 0;
 function rkSearch(params){
   const qs = new URLSearchParams(Object.assign({applicationId:RAK.app, accessKey:RAK.key, affiliateId:AFF.rakutenId,
@@ -792,7 +792,7 @@ function prodCard(x, opt){
   if (x.code) PROD_BY_CODE[x.code] = x;
   const stars = x.rc ? `<span class="pr2">★${x.ra.toFixed(1)}（${x.rc}件）</span>` : "";
   const on = x.code && favHas(x.code);
-  return `<div class="prodw${opt&&opt.gone?" gone":""}"><a class="prod" href="${esc(x.url)}" target="_blank" rel="noopener sponsored">
+  return `<div class="prodw${opt&&opt.gone?" gone":""}"><a class="prod" href="${esc(RKM.fixAff(x.url))}" target="_blank" rel="noopener sponsored">
     <div class="ph"><img src="${esc(x.img)}" alt="" loading="lazy"></div>
     <div class="pb"><span class="pn">${esc(x.name)}</span>${stars}<span class="pp num">${opt&&opt.gone?"売り切れか、販売が終わったかもしれません":yen(x.price)}</span>${opt&&opt.was&&x.price<opt.was?`<span class="pdrop">値下がり ${yen(opt.was)} → ${yen(x.price)}</span>`:""}<span class="ps">${esc(x.shop)}</span><span class="tag">PR・楽天市場</span></div>
   </a>${x.code?`<button type="button" class="fav" data-fav="${esc(x.code)}" aria-pressed="${on}" aria-label="${on?"気になる商品から外す":"気になる商品に保存"}">${on?"♥":"♡"}</button>`:""}</div>`;
