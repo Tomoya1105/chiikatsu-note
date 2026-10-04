@@ -62,6 +62,48 @@
     else if (a.classList.contains("off") || /公式/.test(a.textContent)) ct("c:official");
   }, true);
 
+
+  /* ---- 公式Xの投稿（画像）を、押したときだけここに表示する（サイトから離れずに見られる） ---- */
+  var xLoading = null;
+  function loadX(){
+    if (window.twttr && window.twttr.widgets && window.twttr.widgets.load) return Promise.resolve(window.twttr);
+    if (xLoading) return xLoading;
+    xLoading = new Promise(function(res, rej){
+      var s = document.createElement("script");
+      s.src = "https://platform.twitter.com/widgets.js"; s.async = true; s.charset = "utf-8";
+      s.onload = function(){ if (window.twttr && window.twttr.ready) window.twttr.ready(function(t){ res(t); }); else rej(); };
+      s.onerror = function(){ xLoading = null; rej(); };
+      document.head.appendChild(s);
+    });
+    return xLoading;
+  }
+  function isDark(){
+    var t = document.documentElement.getAttribute("data-theme");
+    return t ? t === "dark" : !!(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  }
+  function xFail(f, id){
+    f.innerHTML = '<p class="xwait">画像を読み込めませんでした。通信の状態や、広告・トラッキングをブロックする設定を確かめてください。<a href="https://x.com/i/status/' + id + '" target="_blank" rel="noopener">Xで見る</a></p>';
+  }
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("[data-xembed]"); if (!b) return;
+    e.preventDefault();
+    var box = b.closest(".xbox"), f = box.querySelector(".xframe"), id = b.getAttribute("data-xembed");
+    if (!/^\d+$/.test(id)) return;
+    if (box.classList.contains("open")){
+      box.classList.remove("open"); f.innerHTML = ""; b.setAttribute("aria-expanded", "false");
+      b.querySelector(".xl").textContent = "公式の画像を見る"; return;
+    }
+    box.classList.add("open"); b.setAttribute("aria-expanded", "true"); b.querySelector(".xl").textContent = "画像をとじる";
+    f.innerHTML = '<p class="xwait">読み込み中…</p><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none" data-lang="ja" data-theme="' + (isDark() ? "dark" : "light") + '"><a href="https://twitter.com/i/status/' + id + '"></a></blockquote>';
+    ct("x:embed");
+    var done = false;
+    setTimeout(function(){ if (!done && box.classList.contains("open") && !f.querySelector("iframe")) xFail(f, id); }, 12000);
+    loadX().then(function(t){ return t.widgets.load(f); }).then(function(){
+      done = true; var w = f.querySelector(".xwait"); if (w) w.remove();
+      if (!f.querySelector("iframe")) xFail(f, id);
+    }).catch(function(){ done = true; xFail(f, id); });
+  });
+
   /* ---- 小さな部品 ---- */
   var SHARE = '<svg class="ii" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10H6.5A1.5 1.5 0 0 0 5 11.5v8A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5H16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   var DOTS3 = '<svg class="ii" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="19" cy="12" r="2" fill="currentColor"/></svg>';

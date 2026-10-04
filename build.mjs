@@ -18,6 +18,8 @@ try { news = JSON.parse(fs.readFileSync("data/news.json", "utf8")).filter(n => !
 let camps = [];
 try { camps = JSON.parse(fs.readFileSync("data/campaigns.json", "utf8")).filter(c => c.end >= TODAY); } catch (e) {}
 const installJs = fs.readFileSync("src/install.js", "utf8");
+const XPOST_SRC = fs.readFileSync("src/xpost.js", "utf8");
+const { xpostOf, xbox } = new Function(XPOST_SRC + "; return { xpostOf, xbox };")();
 const swJs = fs.readFileSync("src/sw.js", "utf8");
 const BUILD = Date.now().toString(36);
 
@@ -165,7 +167,7 @@ function write(file, content) {
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 write("style.css", css);
-write("app.js", app);
+write("app.js", XPOST_SRC + "\n" + app);
 write("install.js", installJs);
 write("sw.js", swJs.replace("__VER__", BUILD));
 fs.mkdirSync(path.join(OUT, "icons"), { recursive: true });
@@ -252,6 +254,7 @@ for (const it of items) {
       ${it.price ? `<dt>価格</dt><dd>${esc(it.price)}${(it.region || "jp") === "jp" ? "（税込）" : ""}</dd>` : ""}
       ${it.note ? `<dt>メモ</dt><dd>${esc(it.note)}</dd>` : ""}
     </dl>
+    ${xbox(xpostOf(it))}
     ${(() => { const L = Array.isArray(it.rsv) ? it.rsv : it.rsv ? [{ n: "", u: it.rsv }] : []; const ok = L.filter(x => /^https:\/\//.test(x.u || "")); if (!ok.length || (it.re && new Date(it.re + ":00+09:00") < new Date())) return "";
       if (ok.every(x => x.so)) return `<div class="rsvbox closed"><div class="rsvh">予約はすべて完売しました</div></div>`;
       return `<div class="rsvbox open"><div class="rsvh">予約・受注${it.re ? `<small>締切 ${esc(fmt(it.re.slice(0, 10)))} ${esc(it.re.slice(11, 16))}</small>` : ""}</div><div class="rsvbtns">${ok.slice().sort((p, q) => (p.so ? 1 : 0) - (q.so ? 1 : 0)).map(x => x.so ? `<span class="btn rsvbtn so">${x.n ? esc(x.n) + " " : ""}完売</span>` : `<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>予約はこちら${x.n ? "（" + esc(x.n) + "）" : ""}</a>`).join("")}</div></div>`; })()}
@@ -289,7 +292,7 @@ write("about/index.html", page({
   body: doc("運営者について", `<p>ちい活ノートは、ちいかわが大好きな個人が運営している非公式のスケジュール帳です。グッズの発売日やイベントの会期を、買い逃し・行き逃しがないようにひとつの場所で見られることを目指しています。</p>
 <h2>情報の集め方</h2><p>ちいかわ公式サイト・公式SNS、各社のプレスリリース、会場の公式発表をもとに、毎日AIを使って情報を集めて掲載しています。まちがいを見つけた方は、各情報の「情報のまちがいを報告する」から教えてください。確認して直します。</p>
 <h2>広告について</h2><p>当サイトは楽天アフィリエイトを利用しています。「PR」と表示したリンクから商品の購入や宿泊の予約があると、運営者に紹介料が支払われます。紹介料によって掲載内容や順番を変えることはありません。</p>
-<h2>権利について</h2><p>「ちいかわ」に関する著作権・商標権はナガノ氏および権利者に帰属します。当サイトは権利者とは関係がなく、キャラクターの画像やイラストは掲載していません。商品画像は楽天ウェブサービスを通じて表示しています。</p>`),
+<h2>権利について</h2><p>「ちいかわ」に関する著作権・商標権はナガノ氏および権利者に帰属します。当サイトは権利者とは関係がなく、キャラクターの画像やイラストを当サイトに保存・掲載することはしていません。商品画像は楽天ウェブサービスを通じて、公式の画像は「公式の画像を見る」を押したときにX（旧Twitter）の埋め込み機能で公式アカウントの投稿をそのまま表示しています。</p>`),
 }));
 write("official/index.html", page({
   title: "ちいかわ公式サイト・公式アカウントのリンク集｜ちい活ノート",
@@ -300,7 +303,7 @@ write("official/index.html", page({
 write("privacy/index.html", page({
   title: "プライバシーポリシー｜ちい活ノート", desc: "ちい活ノートのプライバシーポリシー。", url: "/privacy/",
   body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。</p>
-<h2>まちがい報告</h2><p>「情報のまちがいを報告する」から送られた内容（選んだ項目と入力した文章）は、掲載情報を直すためだけに使います。個人を特定できる情報は書き込まないでください。</p>
+<h2>Xの投稿の表示について</h2><p>「公式の画像を見る」を押したときだけ、X（旧Twitter）の埋め込み機能で公式アカウントの投稿を表示します。そのとき、閲覧情報がX社に送られることがあります（X社のプライバシーポリシーが適用されます）。押さなければXには何も送られません。トラッキングを控える設定（DNT）で読み込んでいます。</p><h2>まちがい報告</h2><p>「情報のまちがいを報告する」から送られた内容（選んだ項目と入力した文章）は、掲載情報を直すためだけに使います。個人を特定できる情報は書き込まないでください。</p>
 <h2>アフィリエイトについて</h2><p>当サイトは楽天グループ株式会社の「楽天アフィリエイト」に参加しています。リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
 <h2>アクセス解析・広告配信について</h2><p>今後、アクセス解析ツールや第三者配信の広告（Google AdSense など）を導入する場合は、Cookieを使って閲覧情報を集めることがあります。導入する際はこのページでお知らせします。</p>
 <h2>免責事項</h2><p>掲載情報は正確になるよう努めていますが、発売日や会期は変更されることがあります。掲載内容によって生じた損害について、運営者は責任を負いません。最新の情報は必ず公式の発表をご確認ください。</p>

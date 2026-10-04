@@ -854,6 +854,7 @@ function newsCard(n){
     <div class="nmeta"><span class="ntag t-${esc(n.tag||"topic")}">${esc(NTAG[n.tag]||"話題")}</span><time class="num">${esc(nDate(n.date))}</time>${isNew?`<span class="nnew">NEW</span>`:""}</div>
     <h3><a href="${esc(n.src)}" target="_blank" rel="noopener">${esc(n.title)}</a></h3>
     ${n.sum?`<p>${esc(n.sum)}</p>`:""}
+    ${xbox(xpostOf(n) || xpostOf(n.itemId && ITEMS.find(x=>x.id===n.itemId)))}
     ${newsItem(n)}
     <a class="nsrc" href="${esc(n.src)}" target="_blank" rel="noopener">記事を読む（${esc(n.source||"出典")}）↗</a>
   </article>`;

@@ -35,8 +35,13 @@ for (const it of items) {
   else if (srcTypeOf(it.src) === "aggregator") errs.push(`${it.id}: src がまとめサイト・個人ブログです（${it.src.slice(0, 60)}）。公式・メーカー・プレスリリース・報道のURLにしてください`);
   if (!SRC_TYPES.includes(it.srcType)) errs.push(`${it.id}: srcType は ${SRC_TYPES.join("|")} のどれか（いま "${it.srcType ?? ""}"）`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(it.verifiedAt || "")) errs.push(`${it.id}: verifiedAt（最後に情報源で確かめた日 YYYY-MM-DD）がありません`);
+  if (it.xpost && !/^https:\/\/(x|twitter)\.com\/[A-Za-z0-9_]{1,15}\/status\/\d{5,25}/.test(it.xpost)) errs.push(`${it.id}: xpost は https://x.com/（アカウント）/status/（数字） の形にしてください`);
   if (it.srcs && (!Array.isArray(it.srcs) || it.srcs.some(u => !/^https:\/\//.test(u)))) errs.push(`${it.id}: srcs は https のURLの配列にしてください`);
 }
+
+try {
+  for (const n of JSON.parse(read("data/news.json"))) if (n.x && !/^https:\/\/(x|twitter)\.com\/[A-Za-z0-9_]{1,15}\/status\/\d{5,25}/.test(n.x)) errs.push(`news ${n.id}: x は https://x.com/（アカウント）/status/（数字） の形にしてください`);
+} catch (e) { errs.push("data/news.json が読めません"); }
 
 // 重複のうたがい（止めずに知らせる。自動更新は報告に書き、同じものなら1つにまとめる）
 const warns = [];
