@@ -16,7 +16,9 @@
   "src": "https://chiikawa-info.jp/ck_w/taipei/index.html",
   "t": "CHIIKAWA SHOP in TAIPEI（台湾の常設店）",
   "time": "12:00〜20:00",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20260227-seoul-yongsan",
@@ -35,7 +37,9 @@
   "src": "https://popga.co.kr/popup/5599",
   "t": "ちいかわショップ 龍山店（ソウルの常設店）",
   "time": "10:30〜22:00",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "news",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20260418-hk-moko",
@@ -54,7 +58,9 @@
   "src": "https://www.timeout.com/hong-kong/news/hong-kongs-first-permanent-chiikawa-shop-is-opening-in-mong-kok-this-month-041426",
   "t": "香港のちいかわ常設店（MOKO・旺角）",
   "time": "10:00〜21:00（2Fは10:30〜21:30）",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "news",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20260708-22",
@@ -71,7 +77,9 @@
   "src": "https://recommend.jr-central.co.jp/tsutsuurauratabi/",
   "t": "映画ちいかわ×JR東海 ツツウラウラ旅",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260710-21",
@@ -89,7 +97,9 @@
   "src": "https://www.tokyo-skytree.jp/event/special/chiikawa/",
   "t": "ちいかわ☆星ふるスカイツリーとひみつの島",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260724-24",
@@ -106,7 +116,9 @@
   "src": "https://escape.id/chiikawa/",
   "t": "映画ちいかわ×東京メトロ 謎解きゲーム",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260724-25",
@@ -123,7 +135,9 @@
   "src": "https://cafe.parco.jp/event/chiikawamovie_cafe",
   "t": "映画ちいかわ Collaboration CAFE 心斎橋",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260724-27",
@@ -141,7 +155,9 @@
   "src": "https://chiikawabakery.jp/topics/20260715/",
   "t": "映画公開記念メニュー（ちいかわベーカリー）",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260731-33",
@@ -158,7 +174,9 @@
   "src": "https://chiikawa-info.jp/ramenbuta.html",
   "t": "ちいかわラーメン豚 冷し中華",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260806-23",
@@ -175,7 +193,9 @@
   "src": "https://www.sunflower.co.jp/lp/chiikawa/",
   "t": "ちいかわ×さんふらわあ ちいかわとのんびり船旅",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260813-pus-naha",
@@ -195,7 +215,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠0%NAHA",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20260821-32",
@@ -212,7 +234,9 @@
   "src": "https://www.kurasushi.co.jp/topic/008159.html",
   "t": "ちいかわ×くら寿司 コラボ第4弾",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260901-31",
@@ -229,7 +253,9 @@
   "src": "https://prtimes.jp/main/html/rd/p/000000087.000005136.html",
   "t": "モンテール むちゃうまプリンのシュークリーム＆エクレア",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "press",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260904-26",
@@ -247,7 +273,9 @@
   "src": "https://cafe.parco.jp/event/chiikawamovie_cafe",
   "t": "映画ちいかわ Collaboration CAFE 名古屋",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260908-pus-centrair",
@@ -267,7 +295,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠中部国際空港",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20260912-shanghai-days",
@@ -286,7 +316,9 @@
   "src": "https://x.com/chiikawa_kouhou/status/2094259380485251181",
   "t": "CHIIKAWA DAYS 上海特展",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20260912-shanghai-goods",
@@ -304,7 +336,9 @@
   "src": "https://news.qq.com/rain/a/20260901A0C9DS00",
   "t": "上海限定「CHIIKAWA LONGTANG EATS」シリーズ",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "news",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20260914-35",
@@ -321,7 +355,9 @@
   "src": "https://www.sej.co.jp/products/christmas.html",
   "t": "セブン‐イレブン ちいかわクリスマスケーキ予約",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260918-07",
@@ -338,7 +374,9 @@
   "src": "https://chiikawamarket.jp/",
   "t": "SHOICCOペンホルダー",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260918-08",
@@ -355,7 +393,9 @@
   "src": "https://chiikawamarket.jp/collections/20260918",
   "t": "おいしすぎるよッ「水」…ッマスコット",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260918-28",
@@ -372,7 +412,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠JR池袋駅",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260918-30",
@@ -390,7 +432,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠米子天満屋",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260919-34",
@@ -407,7 +451,9 @@
   "src": "https://chiikawa.toho-movie.jp/specialitem.html",
   "t": "映画ちいかわ 入場者特典 第5弾「ひみつ本」",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260924-01",
@@ -424,7 +470,9 @@
   "src": "https://online-kuji.chiikawamarket.jp/store/lottery/kurimanju",
   "t": "くりまんじゅうだらけくじ",
   "time": "11:00〜",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260924-29",
@@ -442,7 +490,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠泉北高島屋",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260925-03",
@@ -460,7 +510,9 @@
   "src": "https://chiikawapark-tokyo.jp/",
   "t": "ちいかわパーク ハロウィーン限定企画",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260925-05",
@@ -477,7 +529,9 @@
   "src": "https://chiikawamarket.jp/",
   "t": "ボンボンドロップシール（ちいかわ寿司／Chiikawa Baby）",
   "time": "11:00〜",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260925-06",
@@ -494,7 +548,9 @@
   "src": "https://chiikawamarket.jp/",
   "t": "みんなで仮装なマスコット",
   "time": "11:00〜",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260926-pus-niihama",
@@ -514,7 +570,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠イオンモール新居浜",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20260928-09",
@@ -531,7 +589,9 @@
   "src": "https://morning.kodansha.co.jp/news/4252.html",
   "t": "なにがでるかな？シールコレクション",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260928-10",
@@ -548,7 +608,9 @@
   "src": "https://www.bandai.co.jp/candy/chiikawa/",
   "t": "映画ちいかわ ダイカットステッカー付きグミ",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20260928-366days",
@@ -565,7 +627,9 @@
   "src": "https://x.com/chiikawa_kouhou",
   "t": "366days anniversary key ring",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261001-02",
@@ -582,7 +646,9 @@
   "src": "https://online-kuji.chiikawamarket.jp/",
   "t": "シーサーだらけくじ",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261001-11",
@@ -600,7 +666,9 @@
   "src": "https://chiikawabakery.jp/",
   "t": "ちいかわベーカリー OKINAWA POP UP SHOP",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261001-pus-sendai",
@@ -620,7 +688,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠JR仙台駅",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261002-04",
@@ -637,7 +707,9 @@
   "src": "https://chiikawamarket.jp/",
   "t": "ちいかわパーク ハロウィーングッズ（オンライン販売）",
   "time": "11:00〜",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261002-12",
@@ -655,7 +727,9 @@
   "src": "https://chiikawabakery.jp/topics/20260909/",
   "t": "ちいかわベーカリー ハロウィン限定パン",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261002-13",
@@ -672,7 +746,9 @@
   "src": "https://x.com/chiikawa_kouhou",
   "t": "オキシクリーン 1500g ちいかわパッケージ",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261002-14",
@@ -689,7 +765,9 @@
   "src": "https://prtimes.jp/main/html/rd/p/000019682.000007006.html",
   "t": "絵本『ちいかわ あいうえお』",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "press",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261002-pus-aomori",
@@ -709,7 +787,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠青森ELM",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261002-pus-saga",
@@ -729,7 +809,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠イオンモール佐賀大和",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261007-taipei-xinyi",
@@ -748,7 +830,9 @@
   "src": "https://universe.oneone.com.tw/posts/6969",
   "t": "ちいかわPOP UP STORE 台北・信義新光三越",
   "time": "11:00〜22:00",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "news",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261009-nikuman",
@@ -768,7 +852,9 @@
   "src": "https://x.com/chiikawa_market/status/2103417374833827878",
   "t": "肉まん食べるよマスコット・あったかもこもこブランケットなど新グッズ",
   "time": "11:00〜",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261009-pus-machida",
@@ -788,7 +874,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠町田モディ",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261009-pus-mito",
@@ -808,7 +896,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠イオンモール水戸内原",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261009-pus-tsudanuma",
@@ -828,7 +918,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠イオンモール津田沼",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261009-tabenomi",
@@ -848,7 +940,9 @@
   "src": "https://www.inside-games.jp/article/2026/09/28/188355.html",
   "t": "たべのみ処くりまんじゅう・ちいかわ寿司などの新グッズ",
   "time": "11:00〜",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "news",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261013-15",
@@ -865,7 +959,9 @@
   "src": "https://x.com/chiikawa_kouhou",
   "t": "ちいかわカレンダー2027",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261015-bakery2nd",
@@ -885,7 +981,9 @@
   "src": "https://www.pashplus.jp/event/497018/",
   "t": "ちいかわベーカリー2周年 コロネなマスコット",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "news",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261016-16",
@@ -902,7 +1000,9 @@
   "src": "https://x.com/chiikawa_kouhou",
   "t": "しかけ絵本『とびだす アニメちいかわ』",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261016-pus-fukuoka",
@@ -922,7 +1022,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠福岡三越",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261016-pus-tokoname",
@@ -942,7 +1044,9 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠イオンモール常滑",
   "time": "",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "official",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261022-17",
@@ -959,7 +1063,9 @@
   "src": "https://hello.toshocard.com/limited_edition2026/",
   "t": "限定版 ちいかわ図書カードNEXT",
   "time": "",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20261025-20",
@@ -976,7 +1082,9 @@
   "src": "https://www.ana.co.jp/ja/jp/domestic/theme/chiikawa-jet/",
   "t": "ちいかわ×ANA「ちいかわジェット」就航",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261026-18",
@@ -993,7 +1101,9 @@
   "src": "https://heart-ltd.jp/product/111149/",
   "t": "アニメちいかわ クリスマスおかしソックス",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261031-19",
@@ -1010,7 +1120,9 @@
   "src": "https://toy.bandai.co.jp/",
   "t": "ちいかわフォンすまーと",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261101-37",
@@ -1027,7 +1139,9 @@
   "src": "https://www.bandai.co.jp/candy/chiikawa/",
   "t": "チョコサプ ちいかわ2",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261105-kairo",
@@ -1035,16 +1149,21 @@
   "cat": "goods",
   "e": null,
   "eNote": "",
-  "note": "2段階温度調整、モバイルバッテリー機能付き。",
-  "place": "通販（楽天市場など）",
-  "price": "",
+  "note": "パジャマ姿の全3種。2段階温度調整、モバイルバッテリー機能付き。11月上旬〜中旬発売予定。",
+  "place": "グルマンディーズ公式通販、ちいかわらんど、ちいかわマーケット",
+  "price": "5,478円",
   "q": "ちいかわ 充電式カイロ",
   "s": "2026-11-05",
   "sp": "early",
-  "src": "https://prizenavi.com/10354/",
+  "src": "https://www.inside-games.jp/article/2026/09/08/187400.html",
   "t": "ちいかわ 充電式カイロ",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-10-04",
+  "srcs": [
+   "https://www.gourmandise.jp/view/item/000000010978"
+  ],
+  "verifiedAt": "2026-10-04",
+  "srcType": "news"
  },
  {
   "id": "20261120-36",
@@ -1061,7 +1180,9 @@
   "src": "https://x.com/chiikawa_kouhou",
   "t": "コミック『ちいかわ』9巻（通常版・特装版）",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261204-38",
@@ -1078,7 +1199,9 @@
   "src": "https://x.com/chiikawa_kouhou",
   "t": "カードダス アニメちいかわ",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "official",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261215-anymykuji",
@@ -1095,7 +1218,9 @@
   "src": "https://anymy.jp/kuji/projects/31",
   "t": "エニマイくじ ちいかわ",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261221-39",
@@ -1112,7 +1237,9 @@
   "src": "https://bandai-lifestyle.jp/",
   "t": "ブックマークコレクション ちいかわ Vol.6",
   "time": "",
-  "updatedAt": "2026-09-27"
+  "updatedAt": "2026-09-27",
+  "srcType": "partner",
+  "verifiedAt": "2026-09-27"
  },
  {
   "id": "20261026-lightstick",
@@ -1132,7 +1259,9 @@
   "note": "光るスティックライト型チャーム。全8種、ソーダ味ガム付き。",
   "autoAdded": true,
   "addedAt": "2026-10-03",
-  "updatedAt": "2026-10-03"
+  "updatedAt": "2026-10-03",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-03"
  },
  {
   "id": "20261003-chiipla",
@@ -1171,7 +1300,9 @@
   ],
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "official",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260928-parallel-set",
@@ -1200,7 +1331,9 @@
   ],
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "official",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260918-pus-okazaki",
@@ -1220,7 +1353,9 @@
   "note": "",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "official",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260918-pus-wakayama",
@@ -1240,7 +1375,9 @@
   "note": "",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "official",
+  "verifiedAt": "2026-10-04"
  },
  {
   "region": "jp",
@@ -1260,7 +1397,9 @@
   "cat": "event",
   "s": "2026-10-10",
   "place": "『映画ちいかわ 人魚の島のひみつ』上映館",
-  "src": "https://chiikawa.toho-movie.jp/specialitem.html"
+  "src": "https://chiikawa.toho-movie.jp/specialitem.html",
+  "srcType": "official",
+  "verifiedAt": "2026-10-04"
  },
  {
   "region": "jp",
@@ -1280,7 +1419,9 @@
   "cat": "food",
   "s": "2026-10-19",
   "place": "全国の量販店の菓子売場など",
-  "src": "https://www.bandai.co.jp/candy/products/2026/4570117927843000.html"
+  "src": "https://www.bandai.co.jp/candy/products/2026/4570117927843000.html",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-04"
  },
  {
   "region": "jp",
@@ -1300,7 +1441,9 @@
   "cat": "food",
   "s": "2026-10-22",
   "place": "全国のスーパーなど",
-  "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html"
+  "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
+  "srcType": "press",
+  "verifiedAt": "2026-10-04"
  },
  {
   "region": "jp",
@@ -1320,7 +1463,9 @@
   "cat": "goods",
   "s": "2026-10-25",
   "place": "全国のガシャポン売場",
-  "src": "https://gashapon.jp/products/detail.php?jan_code=4570118206206000"
+  "src": "https://gashapon.jp/products/detail.php?jan_code=4570118206206000",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-04"
  },
  {
   "region": "jp",
@@ -1340,7 +1485,9 @@
   "cat": "goods",
   "s": "2026-11-20",
   "place": "GU店舗・GUオンラインストア",
-  "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa"
+  "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260930-kr-movie",
@@ -1360,7 +1507,9 @@
   "note": "韓国題は「극장판 치이카와: 인어 섬의 비밀」。公開4日目で観客46万人を超え、興行ランキング1位。",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "news",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20261003-kr-cgv-popcorn",
@@ -1380,7 +1529,9 @@
   "note": "CGVだけで買える、ななめがけストラップ付きのポップコーン容器。第1弾と販売館が変わっています。",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "news",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260921-hk-airside",
@@ -1400,7 +1551,9 @@
   "note": "9/26からは誰でも入場可（先着順）。ランタン姿のぬいぐるみやキーホルダーなど限定グッズ。",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "news",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260925-cn-shenzhen-shop",
@@ -1420,7 +1573,9 @@
   "note": "広東の武術をテーマにした店。カンフー姿の広東限定シリーズを販売。",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "news",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260925-cn-guangzhou-shop",
@@ -1440,7 +1595,9 @@
   "note": "深圳店と同じく、カンフー姿の広東限定シリーズを販売。",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "news",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20261016-years-2027",
@@ -1460,7 +1617,9 @@
   "note": "満天の夜空を旅するちいかわたちのデザイン。星の部分は見る角度で色がやさしく変わります。10/16から順次発売（山加商店 公式ECは1会計3個まで）。",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "official",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20260928-nendoroid-kuri-shisa",
@@ -1480,7 +1639,9 @@
   "note": "2027年5月発送予定。公式ショップでの予約はセリフプレート＋支柱つき。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20261001-tokyobanana-solamachi",
@@ -1500,7 +1661,9 @@
   "note": "初登場のエコバッグあり。人気商品は早めに売り切れる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "press",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20261002-sasumata-ramune",
@@ -1520,7 +1683,9 @@
   "note": "ちいかわ・ハチワレの2種。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "official",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20261005-wiener3",
@@ -1540,7 +1705,9 @@
   "note": "パッケージ2種、ウインナー表面に全16種のイラスト。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "press",
+  "verifiedAt": "2026-10-04"
  },
  {
   "id": "20261125-bakery-advent",
@@ -1560,6 +1727,8 @@
   "note": "オンライン予約は終了。店頭販売は11月下旬から。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04"
+  "updatedAt": "2026-10-04",
+  "srcType": "official",
+  "verifiedAt": "2026-10-04"
  }
 ]
