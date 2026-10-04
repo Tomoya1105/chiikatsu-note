@@ -15,7 +15,7 @@ const jstNow = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 16
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const html = (body, status = 200) => new Response(body, { status, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex" } });
 
-async function token(env) {
+export async function token(env) {
   let t = await env.REPORTS.get("x:tok");
   if (!t) {
     const b = crypto.getRandomValues(new Uint8Array(18));

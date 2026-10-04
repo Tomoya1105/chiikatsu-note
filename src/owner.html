@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>運営者メニュー｜ちい活ノート</title>
+<link rel="icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<style>
+:root{--bg:#FBF6F8;--surface:#fff;--ink:#3A3346;--ink-2:#6D6479;--acc:#E27496;--on:#fff;--soft:#FBE3EB;--line:#EEDDE5;--ok:#3C9A6E}
+@media (prefers-color-scheme:dark){:root{--bg:#1F1A21;--surface:#2B2430;--ink:#F1ECF6;--ink-2:#C2B9CE;--acc:#F095B0;--on:#2A1720;--soft:#3E2C36;--line:#443A46;--ok:#7FD3A7}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;line-height:1.7}
+.w{max-width:560px;margin:0 auto;padding:20px 16px 50px}
+h1{font-size:20px;margin:0 0 4px}
+.lead{color:var(--ink-2);font-size:13px;margin:0 0 16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px}
+.card h2{font-size:16px;margin:0 0 4px}
+.card p{font-size:13px;color:var(--ink-2);margin:0 0 10px}
+textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);resize:vertical}
+.btn{display:block;width:100%;font:inherit;font-weight:700;font-size:15px;border:none;border-radius:12px;padding:12px;margin-top:10px;cursor:pointer;text-align:center;text-decoration:none}
+.go{background:var(--acc);color:var(--on)}
+.sub{background:var(--soft);color:var(--ink)}
+.msg{font-size:13px;margin-top:8px;min-height:1em}
+.msg.ok{color:var(--ok);font-weight:700}
+ol{margin:0 0 4px;padding-left:20px;font-size:13.5px}
+.ng{text-align:center;padding:30px 10px;color:var(--ink-2)}
+</style>
+</head>
+<body>
+<div class="w" id="app"><p class="ng">読み込み中…</p></div>
+<script>
+(function(){
+  var K = "chiikatsu-owner", t = "";
+  var m = /[#&]k=([A-Za-z0-9_-]{10,})/.exec(location.hash);
+  if (m) { t = m[1]; try { localStorage.setItem(K, t); } catch (e) {} }
+  else { try { t = localStorage.getItem(K) || ""; } catch (e) {} }
+  var app = document.getElementById("app");
+  if (!t) { app.innerHTML = '<p class="ng">このページは運営者専用です。</p>'; return; }
+  function call(op, extra){
+    var body = { t: t, op: op }; for (var k in extra) body[k] = extra[k];
+    return fetch("/api/owner", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }).then(function(r){ return r.json(); });
+  }
+  app.innerHTML =
+    '<h1>運営者メニュー</h1><p class="lead">ちい活ノートの運営者だけが使うページです。このページをホーム画面に追加しておくと便利です。</p>' +
+    '<div class="card"><h2>見つけた情報を送る</h2><p>Xなどで見つけた新商品・イベント・話題のグッズの投稿URLを貼ってください。本文もコピーして貼ると、より確実です。次の自動更新で確かめてサイトに載せます。</p>' +
+    '<form id="tip"><textarea name="text" rows="5" maxlength="2000" required placeholder="ここに貼り付け"></textarea><button class="btn go" type="submit">送る</button><div class="msg" id="tipmsg"></div></form></div>' +
+    '<div class="card"><h2>Xの投稿案を見る</h2><p>自動更新が作った投稿案です。「Xで投稿する」で文章が入った状態のXが開きます。</p><button class="btn sub" type="button" id="drafts">投稿案のページを開く</button><div class="msg" id="dmsg"></div></div>' +
+    '<div class="card"><h2>投稿案の通知を、このスマホで受け取る</h2><ol><li>ホーム画面の「ちい活ノート」アプリを開き、マイリストの通知の<b>「テスト通知を送る」</b>を押す</li><li>10分以内にこのページに戻って、下のボタンを押す</li></ol><button class="btn sub" type="button" id="claim">通知を登録する</button><div class="msg" id="cmsg"></div></div>';
+  document.getElementById("tip").addEventListener("submit", function(e){
+    e.preventDefault(); var f = e.target, ms = document.getElementById("tipmsg");
+    ms.className = "msg"; ms.textContent = "送信中…";
+    call("tip", { text: f.text.value }).then(function(j){
+      if (j.ok) { f.reset(); ms.className = "msg ok"; ms.textContent = "送りました。次の自動更新で確かめます"; }
+      else ms.textContent = j.reason || "送れませんでした";
+    }).catch(function(){ ms.textContent = "送れませんでした。通信を確かめてください"; });
+  });
+  document.getElementById("drafts").addEventListener("click", function(){
+    var ms = document.getElementById("dmsg"); ms.textContent = "開いています…";
+    call("page").then(function(j){ if (j.ok) location.href = j.url; else ms.textContent = j.reason || "開けませんでした"; }).catch(function(){ ms.textContent = "開けませんでした"; });
+  });
+  document.getElementById("claim").addEventListener("click", function(){
+    var ms = document.getElementById("cmsg"); ms.className = "msg"; ms.textContent = "登録中…";
+    call("claim").then(function(j){
+      if (j.ok) { ms.className = "msg ok"; ms.textContent = j.sent ? "登録しました。確認の通知を送りました" : "登録しました"; }
+      else ms.textContent = j.reason || "登録できませんでした";
+    }).catch(function(){ ms.textContent = "登録できませんでした"; });
+  });
+})();
+</script>
+</body>
+</html>

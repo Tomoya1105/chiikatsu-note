@@ -300,6 +300,7 @@ write("official/index.html", page({
   url: "/official/",
   body: doc("公式サイト・公式アカウント", `<p>『ちいかわ』に関する公式のサイトとアカウントをまとめました。発売日や会期の最新情報、購入の方法は、こちらの公式の発表をご確認ください。</p>${officialHtml}<p class="credit">リンク先はすべて公式のページです（ちい活ノートとは関係ありません）。リンクの誤りに気づいたら、トップページ下の「サイトへのご意見」から教えてください。</p>`),
 }));
+write("owner/index.html", fs.readFileSync("src/owner.html", "utf8"));   // 運営者メニュー（検索に出さない・サイトマップに入れない）
 write("privacy/index.html", page({
   title: "プライバシーポリシー｜ちい活ノート", desc: "ちい活ノートのプライバシーポリシー。", url: "/privacy/",
   body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。</p>
@@ -315,6 +316,6 @@ write("404.html", page({ title: "ページが見つかりません｜ちい活�
 // ---- 検索エンジン向け
 const urls = ["/", "/official/", "/about/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}\n</urlset>\n`);
-write("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
+write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /owner/\nSitemap: ${SITE}/sitemap.xml\n`);
 
 console.log(`built ${items.length} items → ${OUT}/`);
