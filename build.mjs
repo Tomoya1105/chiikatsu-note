@@ -264,6 +264,14 @@ for (const it of items) {
       <a class="btn" href="https://x.com/intent/post?text=${encodeURIComponent(it.t + "（" + ogWhenText(it) + "）")}&url=${encodeURIComponent(SITE + url)}&hashtags=${encodeURIComponent("ちいかわ")}" target="_blank" rel="noopener">Xでポスト</a>
       <button class="btn" type="button" onclick="(navigator.share?navigator.share({title:document.title,url:location.href}):navigator.clipboard.writeText(location.href).then(()=>alert('URLをコピーしました'))).catch(()=>{})">URLをコピー・共有</button>
     </div>
+    <details class="drep"><summary>情報のまちがいを報告する</summary>
+      <form class="drepf" data-id="${esc(it.id)}" data-t="${esc(it.t)}">
+        <div class="rep-k">${[["date","日付がちがう"],["place","場所がちがう"],["price","価格がちがう"],["cancel","中止・延期になった"],["other","その他"]].map(([k, l], i) => `<label><input type="radio" name="rk" value="${k}"${i === 0 ? " checked" : ""}> ${l}</label>`).join("")}</div>
+        <textarea maxlength="400" placeholder="正しい情報や、わかった場所（公式のお知らせのURLなど）があれば書いてください"></textarea>
+        <button class="btn" type="submit">報告する</button><span class="drepmsg" role="status"></span>
+      </form>
+    </details>
+    <script>document.querySelector(".drepf").addEventListener("submit",async function(e){e.preventDefault();var f=this,m=f.querySelector(".drepmsg"),b=f.querySelector("button");b.disabled=true;try{var r=await fetch("/api/report",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({itemId:f.dataset.id,title:f.dataset.t,kind:(f.querySelector("input:checked")||{}).value||"other",text:f.querySelector("textarea").value.trim().slice(0,400)})});if(!r.ok)throw 0;f.reset();m.textContent="報告ありがとうございます。確認して直します";}catch(err){b.disabled=false;m.textContent="送れませんでした。時間をおいてもう一度お試しください";}});</script>
     <p class="credit">掲載情報の更新日：${esc(it.updatedAt || it.addedAt || "")}。発売日や会期は変わることがあります。お出かけ・購入の前に公式情報をご確認ください。</p>
   </main>
   <p style="margin:18px 0"><a class="btn" href="/">ちいかわのスケジュールを一覧で見る</a></p>

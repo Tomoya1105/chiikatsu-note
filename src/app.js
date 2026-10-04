@@ -223,7 +223,6 @@ function card(it, opt){
         <button class="lnk got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
       </div>
       ${(()=>{ const tr = it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}</span><span class="tag">楽天トラベル・PR</span></a>` : ""; })()}
-      <button class="repbtn" type="button" data-report>情報のまちがいを報告する</button>
     </div>
     ${it.q?`<div class="pimg" data-pimg="${esc(it.id)}"></div>`:""}
   </article>`;
@@ -522,7 +521,7 @@ function setView(v){
     document.getElementById("view-"+k).hidden = k!==v;
     document.querySelector(`[data-view="${k}"]`).setAttribute("aria-selected", k===v);
   });
-  if (v==="cal") renderCal();
+  if (v==="cal"){ renderCal(); setTimeout(fillSeason, 0); }
   if (v==="mine") renderMine();
   if (v==="shop") renderShop();
   if (v==="news") renderNews();
@@ -744,6 +743,11 @@ document.getElementById("shopQ").addEventListener("search", e=>{ if (!e.target.v
 document.getElementById("shopSort").onchange = e=>{ SH.sort=e.target.value; loadShop(true); };
 document.getElementById("shopMore").onclick = ()=>{ SH.page++; loadShop(false); };
 if (v0==="shop") setView("shop");
+try{
+  const st = JSON.parse(localStorage.getItem("chiikatsu-install")||"{}")||{};
+  if (!localStorage.getItem("chiikatsu-intro-off") && (st.visits||0) <= 3){ document.getElementById("intro").hidden = false; document.documentElement.classList.add("has-intro"); }
+}catch(e){ document.getElementById("intro").hidden = false; }
+document.getElementById("introX").onclick = ()=>{ document.getElementById("intro").hidden = true; document.documentElement.classList.remove("has-intro"); try{ localStorage.setItem("chiikatsu-intro-off","1"); }catch(e){} };
 try{ if (R.region==="jp" && !POP && !popBusy) loadPop(); }catch(e){}
 
 /* ===== 楽天で人気のちいかわグッズ（一覧の途中） ===== */
@@ -772,6 +776,29 @@ document.addEventListener("click", e=>{
   shopStarted = true; shopChips(); setView("shop"); loadShop(true);
   document.getElementById("view-shop").scrollIntoView({behavior:"smooth", block:"start"});
 });
+
+/* ===== 季節のおすすめ（カレンダー・ニュースのタブだけ。一覧には出さない） ===== */
+function seasonTheme(){
+  const m = new Date(Date.now()+9*3600e3).getUTCMonth()+1;
+  return ({1:["冬のちいかわグッズ","ちいかわ 冬"],2:["バレンタインのちいかわグッズ","ちいかわ バレンタイン"],3:["春のちいかわグッズ","ちいかわ 春"],4:["春のちいかわグッズ","ちいかわ 春"],5:["初夏のちいかわグッズ","ちいかわ 夏"],6:["夏のちいかわグッズ","ちいかわ 夏"],7:["夏のちいかわグッズ","ちいかわ 夏"],8:["夏のちいかわグッズ","ちいかわ 夏"],9:["秋のちいかわグッズ","ちいかわ 秋"],10:["ハロウィンのちいかわグッズ","ちいかわ ハロウィン"],11:["秋冬のちいかわグッズ","ちいかわ 冬"],12:["クリスマスのちいかわグッズ","ちいかわ クリスマス"]})[m];
+}
+var SEASON = null, seasonBusy = false;
+function fillSeason(){
+  const els = document.querySelectorAll("[data-season-strip]"); if (!els.length || R.region!=="jp") return;
+  const [title, kw] = seasonTheme();
+  if (!SEASON){
+    if (!seasonBusy){ seasonBusy = true;
+      rkSearch({keyword:kw, hits:"30", maxPrice:"30000"}).then(v=>{ SEASON = v.items.filter(x=>okItem(x) && x.img).slice(0,10); seasonBusy=false; fillSeason(); })
+        .catch(()=>{ seasonBusy=false; SEASON = []; fillSeason(); });
+    }
+    return;
+  }
+  if (!SEASON.length){ els.forEach(e=>e.remove()); return; }
+  const html = `<div class="pophead"><h3>${esc(title)}</h3></div>
+    <div class="poprow">${SEASON.map(x=>`<a class="popc" href="${esc(x.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(x.img)}" alt="" loading="lazy"><span class="pn">${esc(x.name)}</span><span class="pp num">${yen(x.price)}</span></a>`).join("")}</div>
+    <p class="tag" style="margin:4px 0 0">PR・楽天市場</p>`;
+  els.forEach(e=>{ if (!e.dataset.done){ e.innerHTML = html; e.dataset.done = "1"; } });
+}
 
 /* ===== 楽天のセール期間の帯 ===== */
 const CAMP = window.__CAMP || [];
@@ -842,10 +869,10 @@ function renderNews(){
   document.getElementById("newsTags").innerHTML = tags.map(([k,l])=>`<button class="chip" data-nt="${k}" aria-pressed="${NS.tag===k}">${l}</button>`).join("");
   const arr = NEWS.filter(n=>NS.tag==="all" || n.tag===NS.tag);
   document.getElementById("newsList").innerHTML = arr.length
-    ? arr.map((n,i)=>newsCard(n)+(i===3||i===13?AD:"")).join("")
+    ? arr.map((n,i)=>newsCard(n)+(i===3||i===13?AD:"")+(i===3?`<div class="popstrip season" data-season-strip></div>`:"")).join("") + (arr.length<=3?`<div class="popstrip season" data-season-strip></div>`:"")
     : `<div class="empty">まだニュースはありません。</div>`;
   // 開いたら既読に（NEW の表示は今回だけ残す）
-  NEWS.forEach(n=>newsSeen.add(n.id)); saveSeen(); renderNewsBadge(); renderNewsPeek(); fillCamp();
+  NEWS.forEach(n=>newsSeen.add(n.id)); saveSeen(); renderNewsBadge(); renderNewsPeek(); fillCamp(); setTimeout(fillSeason, 0);
 }
 document.getElementById("newsTags").onclick = e=>{ const b=e.target.closest("[data-nt]"); if(!b) return; NS.tag=b.dataset.nt; renderNews(); };
 document.addEventListener("click", e=>{

@@ -538,3 +538,21 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .trip-t::before{content:"🏨 "}
 .trip .tag{margin-left:2px;flex:none}
 .detail .trip{border-style:solid;background:var(--surface-2);font-size:13px;padding:8px 14px}
+
+/* はじめての方へ */
+.intro{display:flex;align-items:flex-start;gap:6px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:12px;padding:8px 6px 8px 12px;margin:4px 0 10px}
+.intro p{margin:0;font-size:12.5px;line-height:1.65;color:var(--ink-2);flex:1}
+.intro b{display:block;color:var(--ink);font-size:13px}
+.intro .ins-x{width:30px;height:30px;font-size:18px}
+/* 季節のおすすめ */
+.popstrip.season{margin:16px 0 4px}
+.popstrip.season:empty{display:none}
+.drep{margin:10px 0 4px}
+.drep summary{cursor:pointer;font-size:12.5px;color:var(--ink-3);text-decoration:underline}
+.drepf{display:flex;flex-direction:column;gap:8px;margin-top:8px;background:var(--surface-2);border-radius:12px;padding:12px}
+.drepf .rep-k{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:13px}
+.drepf textarea{min-height:70px;border:1px solid var(--line);border-radius:10px;padding:8px;font:inherit;font-size:14px;background:var(--surface);color:var(--ink)}
+.drepf .btn{align-self:flex-start}
+.drepmsg{font-size:12.5px;color:var(--ink-2)}
+.has-intro .ins-top{display:none}   /* 初めての案内を出している間は、ホーム画面に追加の案内は出さない */
+.detail .trip-t{white-space:normal}
