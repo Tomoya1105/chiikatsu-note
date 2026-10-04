@@ -585,7 +585,8 @@ function setView(v){
   if (v==="shop") safe(renderShop, "shop");
   if (v==="news") safe(renderNews, "news");
   if (window.ct) window.ct("tab:"+v);
-  try{ localStorage.setItem("chiikatsu-view",v); }catch(e){}
+  // 開いているページは「アプリを開いている間」だけ覚える。完全に閉じたら次は一覧から
+  try{ sessionStorage.setItem("chiikatsu-view",v); }catch(e){}
 }
 function currentView(){ return VIEWS.find(k=>!document.getElementById("view-"+k).hidden); }
 // どれか1つの表示で問題が起きても、ほかの表示やページ全体は止めない
@@ -616,8 +617,9 @@ document.getElementById("today").textContent = `今日 ${TODAY.getMonth()+1}/${T
 
 chips(document.getElementById("stChips"),ST,"st");
 chips(document.getElementById("catChips"),[["all","すべての種類"],...Object.entries(CAT)],"cat");
-let v0="list"; try{ v0 = localStorage.getItem("chiikatsu-view")||"list"; }catch(e){}
-setView(["list","cal","mine"].includes(v0)?v0:"list");
+try{ localStorage.removeItem("chiikatsu-view"); }catch(e){}   // 以前の「ずっと覚える」方式の名残を消す
+let RESUME_V = null; try{ RESUME_V = sessionStorage.getItem("chiikatsu-view"); }catch(e){}   // 下の setView で上書きされる前に読む
+setView("list");   // 隠していた間に読み直された場合のページ戻しは、ファイルの最後で行う
 renderSummary();
 
 
@@ -839,7 +841,6 @@ document.getElementById("shopSearch").onsubmit = e=>{
 document.getElementById("shopQ").addEventListener("search", e=>{ if (!e.target.value && SH.kw){ SH.kw=""; loadShop(true); } });
 document.getElementById("shopSort").onchange = e=>{ SH.sort=e.target.value; loadShop(true); };
 document.getElementById("shopMore").onclick = ()=>{ SH.page++; loadShop(false); };
-if (v0==="shop") setView("shop");
 try{
   const st = JSON.parse(localStorage.getItem("chiikatsu-install")||"{}")||{};
   if (!localStorage.getItem("chiikatsu-intro-off") && (st.visits||0) <= 3){ document.getElementById("intro").hidden = false; document.documentElement.classList.add("has-intro"); }
@@ -1004,7 +1005,6 @@ document.addEventListener("click", e=>{
   }
 });
 renderNewsBadge(); renderNewsPeek();
-if (v0==="news") setView("news");
 
 /* ===== 発売前日・当日の通知 ===== */
 const VAPID = "BLcj6kLGL1ub20otavL50U2UJRfekzyX3zdS54fh10bhFW9yyn4vyeFoVulCPi6AljaZForJRTkXBjvpcNDZZ_o";
@@ -1093,5 +1093,14 @@ try{
   const qv = new URLSearchParams(location.search).get("v");
   if (qv==="ending"){ const b=document.querySelector('.sum [data-jump="ending"]'); if (b) b.click(); }
   else if (["cal","mine","shop","list","news"].includes(qv)) setView(qv);
+  else {
+    // アプリを隠している間にスマホが画面を読み直したときは、見ていたページと位置に戻す
+    const sv = RESUME_V; let sy = 0; try{ sy = +sessionStorage.getItem("chiikatsu-y") || 0; }catch(e){}
+    if (sv && sv!=="list" && VIEWS.includes(sv)) setView(sv);
+    if (sy > 0) { const back = ()=>window.scrollTo(0, sy); requestAnimationFrame(back); setTimeout(back, 600); }
+  }
   if (location.search) history.replaceState(null, "", "/" + location.hash);
 }catch(e){}
+
+// 隠す直前のスクロール位置を覚えておく（読み直されたときに戻すため）
+document.addEventListener("visibilitychange", ()=>{ if (document.visibilityState==="hidden"){ try{ sessionStorage.setItem("chiikatsu-y", String(Math.round(window.scrollY))); }catch(e){} } });
