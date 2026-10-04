@@ -843,7 +843,8 @@ function newsItem(n){
   const v = isEvent(it) ? "開始" : "発売";
   const when = it.sd > TODAY ? `${v}日 ${fmtStart(it)}` : it.ed && it.ed >= TODAY ? `${fmtEnd(it)}まで` : isEvent(it) ? "開催中" : "発売中";
   const on = mine[it.id]==="want";
-  return `<div class="nitem"><span class="nwhen">📅 ${esc(when)}</span><button class="btn nmark${on?" on":""}" type="button" data-nmark="${esc(it.id)}" aria-pressed="${on}">${on?"♥ ほしい":"♡ ほしい"}</button><a class="btn" href="/items/${encodeURIComponent(it.id)}/">くわしく</a></div>`;
+  const g = status(it).k!=="ended" ? gcal(it) : null;   // 日付が決まっている予定だけ
+  return `<div class="nitem"><span class="nwhen">📅 ${esc(when)}</span><div class="nbtns"><button class="btn nmark${on?" on":""}" type="button" data-nmark="${esc(it.id)}" aria-pressed="${on}">${on?"♥ ほしい":"♡ ほしい"}</button>${g?`<a class="btn" href="${g}" target="_blank" rel="noopener">カレンダーに追加</a>`:""}<a class="btn" href="/items/${encodeURIComponent(it.id)}/">くわしく</a></div></div>`;
 }
 function newsCard(n){
   const isNew = !newsSeen.has(n.id);
