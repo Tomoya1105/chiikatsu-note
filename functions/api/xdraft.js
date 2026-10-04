@@ -73,7 +73,9 @@ export async function onRequestGet({ request, env }) {
     const posts = [];
     for (let i = 1; i <= 3; i++) {
       const t = q(`p${i}`).trim().slice(0, 600);
-      if (t) posts.push({ t, n: q(`m${i}`).trim().slice(0, 400) });
+      // r1〜r3：引用したい公式ポスト（x.com/…/status/…）や記事のURL。空白区切りで3つまで
+      const r = (q(`r${i}`).match(/https:\/\/[^\s<>"']+/g) || []).slice(0, 3);
+      if (t) posts.push({ t, n: q(`m${i}`).trim().slice(0, 400), r });
     }
     if (!posts.length) return Response.json({ ok: false, reason: "p1 が必要" });
     const drafts = JSON.parse((await env.REPORTS.get("x:drafts")) || "[]");
@@ -131,6 +133,10 @@ const CSS = `:root{--bg:#FBF6F8;--surface:#fff;--ink:#3A3346;--ink-2:#6D6479;--a
 .btn{font:inherit;font-weight:700;font-size:14px;border-radius:12px;padding:9px 14px;border:none;cursor:pointer;text-decoration:none;display:inline-block}
 .go{background:var(--acc);color:var(--on)}.cp{background:var(--soft);color:var(--ink)}
 .cnt{font-size:12px;color:var(--ink-2);margin-left:auto}.cnt.over{color:var(--warn);font-weight:700}
+.ref{border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:10px}.ref.main{border-color:var(--acc)}
+.refh{font-size:13px;font-weight:700}.refh a{color:var(--acc)}.refu{font-size:11.5px;color:var(--ink-2);word-break:break-all}
+.paste input{flex:1;min-width:0;font:inherit;font-size:13px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.lite{background:none;color:var(--ink-2);font-weight:400;font-size:13px;padding:6px 4px;text-decoration:underline}
 .tip{font-size:12.5px;color:var(--ink-2);border-top:1px dashed var(--line);margin-top:22px;padding-top:12px}`;
 
 function msg(title, text, link) {
@@ -145,11 +151,31 @@ function weight(s) {
   return n;
 }
 
+// 引用・URL付き投稿に使うURL。新しい投稿案は r に入っている。古いものはメモの中のURLを使う
+const isPost = u => /^https:\/\/(x|twitter)\.com\/[A-Za-z0-9_]+\/status\/\d+/.test(u);
+function refsOf(p) {
+  const L = (p.r && p.r.length ? p.r : (String(p.n || "").match(/https:\/\/[^\s<>"'、。）)]+/g) || [])).filter(u => /^https:\/\//.test(u));
+  return [...new Set(L)].slice(0, 3);
+}
+function refLabel(u) {
+  if (isPost(u)) { const m = u.match(/(?:x|twitter)\.com\/([A-Za-z0-9_]+)\//); return `@${m[1]} のポスト`; }
+  try { const h = new URL(u).hostname.replace(/^www\./, ""); return h === "chiikatsunote.com" ? "ちい活ノートのページ" : h === "prtimes.jp" ? "PR TIMES の記事" : h; } catch (e) { return "記事"; }
+}
+const intent = text => `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+
 function page(drafts, contacts = []) {
   const groups = drafts.map(d => `<div class="grp">${esc(d.at)}　${esc(d.slot)}の投稿案</div>` + d.posts.map(p => {
-    const w = weight(p.t);
+    const refs = refsOf(p);
+    const cnt = t => { const w = weight(t); return `<span class="cnt${w > 280 ? " over" : ""}">${Math.ceil(w / 2)}/140字${w > 280 ? "（長すぎます）" : ""}</span>`; };
+    const refRows = refs.map((u, i) => {
+      const post = isPost(u), text = p.t + "\n" + u;
+      return `<div class="ref${i ? "" : " main"}"><div class="refh">${post ? "引用元" : "付けるURL"}${refs.length > 1 ? (i ? "（ほかの候補）" : "（おすすめ）") : ""}：<a href="${esc(u)}" target="_blank" rel="noopener">${esc(refLabel(u))}</a></div><div class="refu">${esc(u)}</div>
+<div class="row"><a class="btn ${i ? "cp" : "go"}" href="${esc(intent(text))}" target="_blank" rel="noopener">${post ? "このポストを引用して投稿" : "URL付きで投稿"}</a>${post ? `<a class="btn cp" href="${esc(u)}" target="_blank" rel="noopener">ポストを開く</a>` : ""}${cnt(text)}</div></div>`;
+    }).join("");
     return `<div class="card"><div class="txt">${esc(p.t)}</div>${p.n ? `<div class="note">${esc(p.n)}</div>` : ""}
-<div class="row"><a class="btn go" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(p.t)}" target="_blank" rel="noopener">Xで投稿する</a><button class="btn cp" type="button" data-copy="${esc(p.t)}">コピー</button><span class="cnt${w > 280 ? " over" : ""}">${Math.ceil(w / 2)}/140字${w > 280 ? "（長すぎます）" : ""}</span></div></div>`;
+${refRows || `<div class="ref main"><div class="refh">引用元が見つかっていません。公式のポストを見つけたら、URLを下に貼ってください</div></div>`}
+<div class="row paste"><input type="url" inputmode="url" placeholder="ほかのポストのURLを貼って引用する" data-pin><button class="btn cp" type="button" data-pgo="${esc(p.t)}">引用して投稿</button></div>
+<div class="row sub"><a class="btn lite" href="${esc(intent(p.t))}" target="_blank" rel="noopener">URLなしで投稿</a><button class="btn lite" type="button" data-copy="${esc(p.t)}">本文をコピー</button>${cnt(p.t)}</div></div>`;
   }).join("")).join("");
   return `<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Xの投稿案</title><style>${CSS}</style></head><body><div class="w">
 <h1>運営者ページ</h1>
@@ -157,9 +183,9 @@ function page(drafts, contacts = []) {
 <h2 style="font-size:17px;margin:20px 0 6px">Xの投稿案</h2>
 <div class="card"><b>見つけた情報を送る</b><p class="lead" style="margin:4px 0 8px">Xなどで見つけた新商品・イベントを、URLと一緒に貼り付けてください（本文もコピーして貼るとより確実です）。次の自動更新で確かめて載せます。</p>
 <form id="tip"><textarea name="text" rows="4" maxlength="2000" required placeholder="例）https://x.com/chiikawa_kouhou/status/… 2027年イヤーズアイテム 10/16発売" style="width:100%;font:inherit;font-size:14px;padding:9px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)"></textarea>
-<div class="row"><button class="btn go" type="submit">送る</button><span class="cnt" id="tipmsg"></span></div></form></div><p class="lead">「Xで投稿する」を押すと、この文章が入った状態でXが開きます。そのまま送らず、あなたの気持ちをひとこと足してから投稿してください。新しい順です。</p>
+<div class="row"><button class="btn go" type="submit">送る</button><span class="cnt" id="tipmsg"></span></div></form></div><p class="lead">「引用して投稿」「URL付きで投稿」を押すと、文章と引用元のURLが入った状態でXが開きます（文の最後にポストのURLがあると、引用リポストとして表示されます）。そのまま送らず、あなたの気持ちをひとこと足してから投稿してください。新しい順です。</p>
 ${groups || '<div class="card">まだ投稿案はありません。次の自動更新をお待ちください。</div>'}
 <p class="tip">ナガノさんの最新話は、読んだ気持ちをそのまま引用リポストで。自動更新は漫画を読めないので、感想は書きません。</p>
 </div><script>(function(){if(!/iPhone|iPad|iPod|Android/.test(navigator.userAgent))return;document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest('a[href*="/intent/tweet"],a[href*="/intent/post"]');if(!a)return;var u=new URL(a.href),m=u.searchParams.get("text")||"";e.preventDefault();var left=false,f=function(){left=true};window.addEventListener("blur",f);document.addEventListener("visibilitychange",function(){if(document.hidden)left=true});location.href="twitter://post?message="+encodeURIComponent(m);setTimeout(function(){window.removeEventListener("blur",f);if(!left&&!document.hidden)location.href=a.href},1800)},true)})();</script><script>document.getElementById("tip").addEventListener("submit",function(e){e.preventDefault();var f=e.target,m=document.getElementById("tipmsg");m.textContent="送信中…";fetch(location.pathname+location.search+"&op=tip",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({text:f.text.value})}).then(function(r){return r.json()}).then(function(j){if(j.ok){f.reset();m.textContent="送りました。次の自動更新で確かめます"}else m.textContent="送れませんでした"}).catch(function(){m.textContent="送れませんでした"})});
-document.addEventListener("click",function(e){var d=e.target.closest("[data-cdel]");if(d){fetch(location.pathname+location.search+"&op=cdel&id="+encodeURIComponent(d.getAttribute("data-cdel")),{method:"POST"}).then(function(){var n=d.closest("[data-c]");if(n)n.remove()});return}var b=e.target.closest("[data-copy]");if(!b)return;navigator.clipboard.writeText(b.getAttribute("data-copy")).then(function(){b.textContent="コピーしました";setTimeout(function(){b.textContent="コピー"},1600)})});</script></body></html>`;
+document.addEventListener("click",function(e){var g=e.target.closest("[data-pgo]");if(g){var inp=g.parentNode.querySelector("[data-pin]"),u=(inp.value||"").trim();if(!/^https:\/\/\S+$/.test(u)){inp.focus();inp.placeholder="https:// から始まるURLを貼ってください";return}var a=document.createElement("a");a.href="https://twitter.com/intent/tweet?text="+encodeURIComponent(g.getAttribute("data-pgo")+"\n"+u);a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();return}var d=e.target.closest("[data-cdel]");if(d){fetch(location.pathname+location.search+"&op=cdel&id="+encodeURIComponent(d.getAttribute("data-cdel")),{method:"POST"}).then(function(){var n=d.closest("[data-c]");if(n)n.remove()});return}var b=e.target.closest("[data-copy]");if(!b)return;navigator.clipboard.writeText(b.getAttribute("data-copy")).then(function(){b.textContent="コピーしました";setTimeout(function(){b.textContent="コピー"},1600)})});</script></body></html>`;
 }
