@@ -875,9 +875,21 @@ function newsCard(n){
     <a class="nsrc" href="${esc(n.src)}" target="_blank" rel="noopener">記事を読む（${esc(n.source||"出典")}）↗</a>
   </article>`;
 }
+/* ニュース速報：見張り役が10分ごとに見つけた公式の新しい発表を、すぐに表示する（/api/fresh） */
+let FRESH = [];
+const agoText = t => { const m = Math.max(1, Math.round((Date.now()-t)/60000)); return m < 60 ? `${m}分前` : m < 1440 ? `${Math.round(m/60)}時間前` : `${Math.round(m/1440)}日前`; };
+function renderFresh(){
+  const el = document.getElementById("freshBox"); if (!el) return;
+  if (!FRESH.length){ el.hidden = true; return; }
+  el.hidden = false;
+  el.innerHTML = `<div class="freshh"><b>📣 速報</b><span>公式の発表を見つけしだい表示（10分ごとに確認）</span></div><ul>${FRESH.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener" data-fresh><span class="fm">${esc(x.src)}・${agoText(x.at)}${newsSeen.has("f:"+x.url)?"":`<i class="nnew">NEW</i>`}</span><span class="ft">${esc(x.title)}</span></a></li>`).join("")}</ul><p class="freshn">公式の見出しをそのまま載せています。くわしい内容は確認しだい、下のニュースと一覧に追加します。</p>`;
+}
+function loadFresh(){
+  fetch("/api/fresh").then(r=>r.ok?r.json():null).then(j=>{ if (!j) return; FRESH = (j.items||[]).filter(x=>x && /^https:\/\//.test(x.url||"")); renderFresh(); renderNewsBadge(); }).catch(()=>{});
+}
 function renderNewsBadge(){
   const c = document.getElementById("newsCnt"); if (!c) return;
-  const k = NEWS.filter(n=>!newsSeen.has(n.id)).length;
+  const k = NEWS.filter(n=>!newsSeen.has(n.id)).length + FRESH.filter(x=>!newsSeen.has("f:"+x.url)).length;
   c.textContent = k>9 ? "9+" : k; c.hidden = !k;
 }
 function renderNewsPeek(){
@@ -895,7 +907,8 @@ function renderNews(){
     ? arr.map((n,i)=>newsCard(n)+(i===3||i===13?AD:"")+(i===3?`<div class="popstrip season" data-season-strip></div>`:"")).join("") + (arr.length<=3?`<div class="popstrip season" data-season-strip></div>`:"")
     : `<div class="empty">まだニュースはありません。</div>`;
   // 開いたら既読に（NEW の表示は今回だけ残す）
-  NEWS.forEach(n=>newsSeen.add(n.id)); saveSeen(); renderNewsBadge(); renderNewsPeek(); fillCamp(); setTimeout(fillSeason, 0);
+  renderFresh(); loadFresh();
+  NEWS.forEach(n=>newsSeen.add(n.id)); FRESH.forEach(x=>newsSeen.add("f:"+x.url)); saveSeen(); renderNewsBadge(); renderNewsPeek(); loadFresh(); fillCamp(); setTimeout(fillSeason, 0);
 }
 document.getElementById("newsTags").onclick = e=>{ const b=e.target.closest("[data-nt]"); if(!b) return; NS.tag=b.dataset.nt; renderNews(); };
 document.addEventListener("click", e=>{
@@ -927,14 +940,16 @@ const u8 = s=>{ s=s.replace(/-/g,"+").replace(/_/g,"/"); const b=atob(s+"===".sl
 const wantIds = ()=>Object.keys(mine).filter(id=>mine[id]==="want");
 async function pushPost(body){ const r = await fetch("/api/push-sub",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)}); if(!r.ok) throw new Error(r.status); return r.json(); }
 let pushRsv = true; try{ pushRsv = localStorage.getItem("chiikatsu-push-rsv")!=="0"; }catch(e){}
+let pushNews = true; try{ pushNews = localStorage.getItem("chiikatsu-push-news")!=="0"; }catch(e){}
 const PCH = ["ちいかわ","ハチワレ","うさぎ","モモンガ","くりまんじゅう","ラッコ","シーサー","古本屋"];
 let pushChars = []; try{ pushChars = JSON.parse(localStorage.getItem("chiikatsu-push-chars")||"[]").filter(c=>PCH.includes(c)); }catch(e){}
 let syncT = null;
-window.pushSync = ()=>{ if (!pushSub) return; clearTimeout(syncT); syncT = setTimeout(()=>pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, chars:pushChars}).catch(()=>{}), 1200); };
+window.pushSync = ()=>{ if (!pushSub) return; clearTimeout(syncT); syncT = setTimeout(()=>pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars}).catch(()=>{}), 1200); };
 const PUSH_WHAT = `<ul class="pwhat">
     <li><b>🛒 予約開始</b>ちいかわマーケットの予約は、始まる前の日の夜・当日の朝・30分前にお知らせ。予告なしで始まった予約も、5分以内にお知らせします</li>
     <li><b>🔄 再入荷</b>完売した商品がまた買えるようになったら、5分以内にお知らせ</li>
     <li><b>♡ ほしい</b>「ほしい」に入れた予定は、発売・開始の前日の夜と当日の朝に。終わる日の前日にも</li>
+    <li><b>📣 ニュース速報</b>メーカー・コラボ先の公式発表や、公式通販の新商品を見つけたら、10分以内にお知らせ</li>
     <li><b>👆 通知を押すと</b>公式通販の商品ページがそのまま開くので、すぐに予約・購入できます</li>
   </ul>`;
 function drawPush(){
@@ -946,7 +961,7 @@ function drawPush(){
   } else if (Notification.permission==="denied"){
     h = `<b>🔔 通知がブロックされています</b><p>端末やブラウザの設定で、このサイトの通知を「許可」にすると受け取れます。</p>`;
   } else if (pushSub){
-    h = `<b>🔔 通知はオンです</b><details class="pwd"><summary>どんなときに届く？</summary>${PUSH_WHAT}</details><label class="pchk"><input type="checkbox" data-prsv ${pushRsv?"checked":""}> <span>ちいかわマーケットの<strong>予約開始・再入荷</strong>も受け取る<small>オフにすると「ほしい」に入れた予定だけになります</small></span></label>${pushRsv?`<div class="pch"><span>推しで絞る：選んだキャラが出てくる商品だけお知らせ（何も選ばなければ全部）</span><div>${PCH.map(c=>`<button type="button" class="chip" data-pch="${c}" aria-pressed="${pushChars.includes(c)}">${c}</button>`).join("")}</div></div>`:""}<div class="acts"><button class="btn" type="button" data-ptest>テスト通知を送る</button><button class="btn" type="button" data-poff>通知をやめる</button></div>`;
+    h = `<b>🔔 通知はオンです</b><details class="pwd"><summary>どんなときに届く？</summary>${PUSH_WHAT}</details><label class="pchk"><input type="checkbox" data-prsv ${pushRsv?"checked":""}> <span>ちいかわマーケットの<strong>予約開始・再入荷</strong>も受け取る<small>オフにすると「ほしい」に入れた予定だけになります</small></span></label>${pushRsv?`<div class="pch"><span>推しで絞る：選んだキャラが出てくる商品だけお知らせ（何も選ばなければ全部）</span><div>${PCH.map(c=>`<button type="button" class="chip" data-pch="${c}" aria-pressed="${pushChars.includes(c)}">${c}</button>`).join("")}</div></div>`:""}<label class="pchk"><input type="checkbox" data-pnews ${pushNews?"checked":""}> <span><strong>ニュース速報</strong>（公式の新しい発表）も受け取る<small>新しいグッズやコラボの発表を見つけしだいお知らせします</small></span></label><div class="acts"><button class="btn" type="button" data-ptest>テスト通知を送る</button><button class="btn" type="button" data-poff>通知をやめる</button></div>`;
   } else {
     h = `<b>🔔 予約開始・再入荷・発売日を通知でお知らせ</b><p>争奪戦に負けないための、ちい活ノートの通知です。登録はいりません。</p>${PUSH_WHAT}<button class="btn ok" type="button" data-pon>通知を受け取る</button>`;
   }
@@ -958,6 +973,11 @@ async function pushInit(){
   drawPush();
   if (pushSub) window.pushSync();
 }
+document.addEventListener("change", e=>{
+  const c = e.target.closest("[data-pnews]"); if (!c) return;
+  pushNews = c.checked; try{ localStorage.setItem("chiikatsu-push-news", pushNews?"1":"0"); }catch(err){}
+  window.pushSync(); toast(pushNews ? "ニュース速報のお知らせをオンにしました" : "ニュース速報のお知らせをオフにしました");
+});
 document.addEventListener("change", e=>{
   const c = e.target.closest("[data-prsv]"); if (!c) return;
   pushRsv = c.checked; try{ localStorage.setItem("chiikatsu-push-rsv", pushRsv?"1":"0"); }catch(err){}
@@ -977,7 +997,7 @@ document.addEventListener("click", async e=>{
       if (perm!=="granted"){ drawPush(); return; }
       const reg = await navigator.serviceWorker.register("/sw.js").then(()=>navigator.serviceWorker.ready);
       pushSub = await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:u8(VAPID)});
-      await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, chars:pushChars});
+      await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars});
       toast("通知をオンにしました"); if (window.ct) window.ct("push:on");
     }catch(err){ toast("通知をオンにできませんでした。時間をおいてお試しください"); }
     drawPush();
@@ -987,7 +1007,7 @@ document.addEventListener("click", async e=>{
     pushSub = null; toast("通知をやめました"); drawPush();
   }
   if (e.target.closest("[data-ptest]") && pushSub){
-    try{ await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, chars:pushChars}); const r = await fetch("/api/push-test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({endpoint:pushSub.endpoint})}); const j = await r.json().catch(()=>({})); toast(j.ok ? "テスト通知を送りました" : "テスト通知を送れませんでした"); }catch(err){ toast("テスト通知を送れませんでした"); }
+    try{ await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars}); const r = await fetch("/api/push-test",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({endpoint:pushSub.endpoint})}); const j = await r.json().catch(()=>({})); toast(j.ok ? "テスト通知を送りました" : "テスト通知を送れませんでした"); }catch(err){ toast("テスト通知を送れませんでした"); }
   }
 });
 pushInit();

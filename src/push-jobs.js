@@ -21,6 +21,11 @@ const md = s => { const [, m, d] = s.slice(0, 10).split("-").map(Number); return
 
 // 1人ぶんの中身を作る（送らないときは null）
 export function payloadFor(job, rec) {
+  if (job.type === "news") {   // ニュース速報（公式の発表）：オフにした人には送らない
+    if (rec.news === false) return null;
+    if (!charOk(rec, job.payload.title + " " + (job.payload.body || ""))) return null;
+    return job.payload;
+  }
   if (job.type === "broadcast") {
     if (rec.rsv === false) return null;
     if (!charOk(rec, job.payload.title + " " + (job.payload.body || ""))) return null;

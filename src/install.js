@@ -61,6 +61,7 @@
     } else if (/af\.moshimo\.com/.test(h)) ct(/p_id=1225/.test(h) ? "c:yahoo" : "c:amazon");
     else if (a.hasAttribute("data-rsv")) ct("c:rsv");
     else if (a.closest(".ncard")) ct("c:news");
+    else if (a.hasAttribute("data-fresh")) ct("c:fresh");
     else if (/calendar\.google/.test(h)) ct("c:gcal");
     else if (a.classList.contains("off") || /公式/.test(a.textContent)) ct("c:official");
   }, true);
