@@ -377,7 +377,11 @@ function renderListInner(){
     const msg = R.region==="os"&&!VIS().length ? "この国・地域の情報はまだありません。"
       : (q||state.cat!=="all"||state.focus) ? "条件に合う情報が見つかりませんでした。キーワードや種類の絞り込みを変えてみてください。"
       : state.st==="next" ? "これからの予定はまだありません。" : state.st==="ending" ? "1週間以内に締切・終了するものはありません。" : state.st==="sellout" ? "いま「なくなり次第終了」のものはありません。" : state.st==="rsv" ? "いま受付中・受付予定の予約はありません。" : "まだありません。";
-    el.innerHTML = `<div class="empty">${msg}</div>` + backAll();
+    // ほかの区分（販売中など）にはあるときは、そちらへの近道を出す（例：韓国の常設店は「販売中」にある）
+    const alt = (q||state.focus) ? [] : [["onsale","販売中"],["next","これからの予定"],["ended","終了"]].filter(([k])=>k!==state.st)
+      .map(([k,l])=>[k,l,VIS().filter(it=>bucket(it)===k && (state.cat==="all"||it.cat===state.cat)).length]).filter(x=>x[2]);
+    const altH = alt.length ? `<div class="altst">${alt.map(([k,l,n])=>`<button type="button" class="btn" data-gost="${k}">「${l}」に${n}件あります</button>`).join("")}</div>` : "";
+    el.innerHTML = `<div class="empty">${msg}${altH}</div>` + backAll();
     return;
   }
   let h = "", cur = "", groups = 0, campDone = false;
@@ -629,6 +633,7 @@ document.addEventListener("click", e=>{
   saveMine(); renderAll();
   if (mine[id]==="want") shareNudge(id);
 });
+document.addEventListener("click", e=>{ const b=e.target.closest("[data-gost]"); if(!b) return; state.st=b.dataset.gost; state.focus=null; state.fromSum=false; chips(document.getElementById("stChips"),ST,"st"); renderList(); });
 document.getElementById("q").addEventListener("input", e=>{ state.q=e.target.value; renderList(); });
 document.getElementById("focusClear").onclick = goAll;
 document.getElementById("today").textContent = `今日 ${TODAY.getMonth()+1}/${TODAY.getDate()}(${DOW[TODAY.getDay()]})`;
