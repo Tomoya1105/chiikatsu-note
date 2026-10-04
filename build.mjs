@@ -3,6 +3,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { makeOg, ogAvailable } from "./src/og.mjs";
+import { buildSeo, areasOf, monthOf } from "./src/seo.mjs";
 
 const SITE = "https://chiikatsunote.com";
 const AFF = "582a6f7f.e1ade2b2.582a6f84.d5f85faa";
@@ -107,7 +108,7 @@ const INSTALL_MINE = `<div class="ins-card ins-mine" data-ins-card>${ICO}<div cl
 const FOOT = `<footer class="about">
     ${INSTALL_CARD}
     ${RESPECT}
-    <div class="sitelinks"><a href="/">トップ</a><a href="/about/">運営者について</a><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div>
+    <div class="sitelinks"><a href="/">トップ</a><a href="/month/">月別まとめ</a><a href="/area/">地域別</a><a href="/about/">運営者について</a><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div>
     <p class="credit"><a href="https://webservice.rakuten.co.jp/" target="_blank" rel="noopener">Supported by Rakuten Developers</a></p>
     <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
   </footer>`;
@@ -281,10 +282,11 @@ for (const it of items) {
     <p class="credit">掲載情報の更新日：${esc(it.updatedAt || it.addedAt || "")}。発売日や会期は変わることがあります。お出かけ・購入の前に公式情報をご確認ください。</p>
   </main>
   <p style="margin:18px 0"><a class="btn" href="/">ちいかわのスケジュールを一覧で見る</a></p>
+  <p class="slrel"><span>まとめて見る</span><a href="/month/${monthOf(it)}/">${Number(it.s.slice(0, 4))}年${Number(it.s.slice(5, 7))}月の新商品・イベント</a>${areasOf(it).map(a => `<a href="/area/${a.slug}/">${esc(a.name)}のPOP UP・イベント</a>`).join("")}</p>
   ${related.length ? `<h2 class="wk">ほかの${esc(CAT[it.cat] || "")}</h2><ul class="alllinks" style="margin-top:8px">${related.map(x => `<li><a href="/items/${encodeURIComponent(x.id)}/">${esc(x.t)}</a></li>`).join("")}</ul>` : ""}
   ${FOOT}
 </div>`;
-  write(`items/${it.id}/index.html`, page({ title, desc, url, body, ogType: "article", ogImage: hasOg ? `/og/${encodeURIComponent(it.id)}.png` : "/og/home.png", head: ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : "" }));
+  write(`items/${it.id}/index.html`, page({ title, desc, url, body, ogType: "article", ogImage: hasOg ? `/og/${encodeURIComponent(it.id)}.png` : "/og/home.png", head: (ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : "") + `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [["ちい活ノート", "/"], [`${Number(it.s.slice(0, 4))}年${Number(it.s.slice(5, 7))}月のまとめ`, `/month/${monthOf(it)}/`], [it.t, url]].map(([name, u], i) => ({ "@type": "ListItem", position: i + 1, name, item: SITE + u })) })}</script>` }));
 }
 
 // ---- 運営者について・プライバシーポリシー
@@ -332,7 +334,9 @@ write("offline/index.html", page({ title: "電波がつながっていません�
 write("404.html", page({ title: "ページが見つかりません｜ちい活ノート", desc: "", url: "/404", body: doc("ページが見つかりません", `<p>お探しのページは移動したか、掲載を終えた可能性があります。</p><p><a class="btn" href="/">トップへ戻る</a></p>`) }));
 
 // ---- 検索エンジン向け
-const urls = ["/", "/official/", "/about/", "/contact/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
+// ---- 検索から来る人のためのまとめページ（月別・地域別）
+const seo = buildSeo({ items, page, write, esc, fmt, md, CAT, REG, BRAND, FOOT, SITE, TODAY, isEvent, aff, sjisEncode, rakutenSearch });
+const urls = ["/", ...seo.urls, "/official/", "/about/", "/contact/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /owner/\nSitemap: ${SITE}/sitemap.xml\n`);
 

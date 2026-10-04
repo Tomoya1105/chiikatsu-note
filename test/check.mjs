@@ -15,11 +15,12 @@ const ids = new Set([...app.matchAll(/getElementById\("([^"]+)"\)/g)].map(m => m
 for (const id of ids) if (!html.includes(`id="${id}"`) && !["toast","newsPeek"].includes(id)) errs.push(`トップページに id="${id}" がありません（app.js が使っています）`);
 if (!app.includes(AFF)) errs.push("app.js から楽天アフィリエイトIDが消えています");
 if (!app.includes(RAK_APP)) errs.push("app.js から楽天APIのアプリIDが消えています");
-for (const d of fs.readdirSync("dist/items")) {
-  const h = read(`dist/items/${d}/index.html`);
+const pagesToCheck = ["items", "month", "area"].flatMap(dir => fs.existsSync(`dist/${dir}`) ? fs.readdirSync(`dist/${dir}`).filter(d => fs.existsSync(`dist/${dir}/${d}/index.html`)).map(d => `${dir}/${d}`) : []);
+for (const d of pagesToCheck) {
+  const h = read(`dist/${d}/index.html`);
   for (const m of h.matchAll(/href="(https:\/\/[^"]*rakuten[^"]*)"/g)) {
     if (m[1].startsWith("https://webservice.rakuten.co.jp")) continue; // 楽天APIのクレジット表記（必須・対象外）
-    if (!m[1].startsWith(`https://hb.afl.rakuten.co.jp/hgc/${AFF}/`)) errs.push(`items/${d}: アフィリエイトIDのない楽天リンク ${m[1].slice(0, 80)}`);
+    if (!m[1].startsWith(`https://hb.afl.rakuten.co.jp/hgc/${AFF}/`)) errs.push(`${d}: アフィリエイトIDのない楽天リンク ${m[1].slice(0, 80)}`);
   }
 }
 try { JSON.parse(read("dist/manifest.webmanifest")); } catch (e) { errs.push("manifest.webmanifest が壊れています"); }
