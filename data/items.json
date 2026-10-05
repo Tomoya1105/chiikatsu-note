@@ -170,7 +170,12 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-04",
+  "org": {
+   "name": "株式会社エルティーアール（ちいかわベーカリー運営）",
+   "url": "https://chiikawabakery.jp/",
+   "src": "https://prtimes.jp/main/html/rd/p/000000232.000086964.html"
+  }
  },
  {
   "id": "20260731-33",
@@ -701,7 +706,12 @@
   "srcType": "official",
   "verifiedAt": "2026-10-05",
   "xpost": "https://x.com/chiikawabakery/status/2100797269436203365",
-  "xpostNote": "投稿日2026-09-18。本文に「デパートリウボウ 6階」「10/1(木)～10/12(月)」"
+  "xpostNote": "投稿日2026-09-18。本文に「デパートリウボウ 6階」「10/1(木)～10/12(月)」",
+  "org": {
+   "name": "株式会社エルティーアール（ちいかわベーカリー運営）",
+   "url": "https://chiikawabakery.jp/",
+   "src": "https://prtimes.jp/main/html/rd/p/000000232.000086964.html"
+  }
  },
  {
   "id": "20261001-pus-sendai",

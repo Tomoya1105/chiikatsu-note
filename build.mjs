@@ -248,13 +248,19 @@ for (const it of items) {
   const title = `${it.t}｜${ev ? "開催期間・場所" : "発売日・販売場所"}【ちい活ノート】`;
   const desc = `${it.t}は${when}。${it.place ? "場所：" + it.place + "。" : ""}${it.price ? "価格：" + it.price + "。" : ""}${it.note || ""}`.slice(0, 150);
   const url = `/items/${encodeURIComponent(it.id)}/`;
-  const ld = ev && it.sp === "day" ? {
-    "@context": "https://schema.org", "@type": "Event", name: it.t, startDate: it.s, endDate: it.e || it.s,
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", eventStatus: "https://schema.org/EventScheduled",
-    location: { "@type": "Place", name: it.place || reg, address: it.place || reg }, description: desc, url: SITE + url,
-  } : null;
+
   const ogWhen = it.e ? `${mdSp(it.s, it.sp)} 〜 ${md(it.e)}` : `${mdSp(it.s, it.sp)} ${ev ? "から" : "発売"}`;
   const hasOg = writeOg(it.id, { label: (CAT[it.cat] || "") + (reg !== "日本" ? "・" + reg : ""), title: it.t, when: ogWhen, sub: it.place || it.price || "", accent: ev ? "#3E9C83" : "#E27496" });
+  // 構造化データ（イベント）：会場で期間限定に開かれる催しだけ。常設店・全国キャンペーン・入場者特典などは「イベント」にしない。
+  // 主催者（organizer）は公式の情報で分かったときだけ（items.json の org）。値段・出演者は分からないので入れない（推測で書かない）。
+  const isRealEvent = ev && it.sp === "day" && !!it.e && !/常設/.test(it.eNote || "") && !/全国|各地|上映館|国内線|全店/.test(it.place || "");
+  const ld = isRealEvent ? {
+    "@context": "https://schema.org", "@type": "Event", name: it.t, startDate: it.s, endDate: it.e,
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode", eventStatus: "https://schema.org/EventScheduled",
+    location: { "@type": "Place", name: it.place || reg, address: it.place || reg }, description: desc, url: SITE + url,
+    ...(hasOg ? { image: [`${SITE}/og/${encodeURIComponent(it.id)}.png`] } : {}),
+    ...(it.org && it.org.name ? { organizer: { "@type": "Organization", name: it.org.name, ...(/^https:\/\//.test(it.org.url || "") ? { url: it.org.url } : {}) } } : {}),
+  } : null;
   const related = sorted.filter(x => x.id !== it.id && (x.region || "jp") === (it.region || "jp") && x.cat === it.cat).slice(-6);
   const body = `<div class="wrap">
   ${BRAND}
