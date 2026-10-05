@@ -9,6 +9,17 @@ const AFF = "582a6f7f.e1ade2b2.582a6f84.d5f85faa";
 const RAK_APP = "d328e43a-4e55-4bd7-8ce4-f265afcf674d";
 const errs = [];
 const read = f => fs.readFileSync(f, "utf8");
+// ページに直接書いたスクリプト（<script>…</script>）の文法も確かめる（1つ壊れると、そのページのボタンが全部動かなくなるため）
+{ const walk = d => fs.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(`${d}/${e.name}`) : e.name.endsWith(".html") ? [`${d}/${e.name}`] : []);
+  for (const f of walk("dist")) for (const m of read(f).matchAll(/<script(?![^>]*(?:type="application\/ld\+json"|src=))[^>]*>([\s\S]*?)<\/script>/g)) {
+    try { new Function(m[1]); } catch (e) { errs.push(`${f} のページ内スクリプトに文法エラー: ${e.message}`); } } }
+// 運営者ページ（投稿案・お問い合わせ）はサーバーで作るので、仮のデータで作ってみて確かめる
+{ const { onRequestGet } = await import("../functions/api/xdraft.js");
+  const kv = new Map(); const env = { REPORT_KEY: "K", REPORTS: { get: async k => kv.get(k) ?? null, put: async (k, v) => kv.set(k, v), delete: async k => kv.delete(k), list: async () => ({ keys: [] }) } };
+  const call = q => onRequestGet({ request: new Request("https://chiikatsunote.com/api/xdraft?" + q), env });
+  await call("key=K&op=add&slot=" + encodeURIComponent("朝") + "&p1=" + encodeURIComponent("テスト\n2行目") + "&r1=" + encodeURIComponent("https://x.com/chiikawa_kouhou/status/1"));
+  const html = await (await call("tok=" + kv.get("x:tok"))).text();
+  for (const m of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) { try { new Function(m[1]); } catch (e) { errs.push(`運営者ページ（/api/xdraft）のスクリプトに文法エラー: ${e.message}`); } } }
 for (const f of ["dist/app.js", "dist/install.js", "dist/sw.js"]) {
   try { execSync(`node --check ${f}`, { stdio: "pipe" }); } catch (e) { errs.push(`${f} に文法エラー: ${e.stderr}`); }
 }
