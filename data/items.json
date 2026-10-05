@@ -906,7 +906,7 @@
   "time": "11:00〜",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-06"
  },
  {
   "id": "20261009-pus-machida",
@@ -928,7 +928,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-06"
  },
  {
   "id": "20261009-pus-mito",
@@ -950,7 +950,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-06"
  },
  {
   "id": "20261009-pus-tsudanuma",
@@ -972,7 +972,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-06"
  },
  {
   "id": "20261009-tabenomi",
@@ -994,9 +994,9 @@
   "time": "11:00〜",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-03",
+  "verifiedAt": "2026-10-06",
   "xpost": "https://x.com/chiikawa_kouhou/status/2104481246151909590",
-  "xpostNote": "2026-10-04より前に登録（確認内容の記録なし。次の見直しで確かめ直す）"
+  "xpostNote": "投稿日2026-09-28（IDから計算）。本文に「10月9日(金)より ちいかわ寿司シリーズの新商品が登場」「ちいかわらんど、ちいかわマーケット ほかにて順次発売」"
  },
  {
   "id": "20261013-15",
@@ -1043,7 +1043,10 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-06",
+  "srcs": [
+   "https://prtimes.jp/main/html/rd/p/000000328.000086964.html"
+  ]
  },
  {
   "id": "20261016-16",
@@ -1087,7 +1090,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-06"
  },
  {
   "id": "20261016-pus-tokoname",
@@ -1109,7 +1112,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-06"
  },
  {
   "id": "20261022-17",
@@ -2113,5 +2116,31 @@
   "autoAdded": true,
   "addedAt": "2026-10-05",
   "updatedAt": "2026-10-05"
+ },
+ {
+  "id": "20261015-carabiner-pouch",
+  "region": "jp",
+  "t": "ちいかわ カラビナつきもこもこポーチ（プライズ）",
+  "cat": "goods",
+  "s": "2026-10-15",
+  "sp": "mid",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のゲームセンター（プライズ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（ゲームセンターの景品）",
+  "src": "https://www.parade-inc.net/products/p261004",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/05/188741.html"
+  ],
+  "verifiedAt": "2026-10-06",
+  "note": "もこもこ手ざわりのカラビナつきポーチ（約W9cm）。全8種。公式の展開時期は「2026年10月中旬より順次」。",
+  "autoAdded": true,
+  "addedAt": "2026-10-06",
+  "updatedAt": "2026-10-06"
  }
 ]

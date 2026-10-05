@@ -45,6 +45,28 @@
   "addedAt": "2026-10-05"
  },
  {
+  "id": "20261005-movie-171oku",
+  "date": "2026-10-05",
+  "tag": "anime",
+  "title": "映画ちいかわの興行収入が171億円を超える",
+  "sum": "『映画ちいかわ 人魚の島のひみつ』の興行収入が171億円、観客動員が1176万人を突破。10/10からは入場者特典の第6弾も始まります。",
+  "source": "MANTANWEB",
+  "src": "https://mantan-web.jp/article/20261005dog00m200059000a.html",
+  "itemId": "20261010-tokuten6",
+  "addedAt": "2026-10-06"
+ },
+ {
+  "id": "20261005-carabiner-pouch",
+  "date": "2026-10-05",
+  "tag": "goods",
+  "title": "もこもこのカラビナつきポーチがプライズに",
+  "sum": "パレードのプライズに、ちいかわたちのもこもこポーチ全8種が登場。落ち着いた色合いで、10月中旬から順次ゲームセンターに並びます。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/05/188741.html",
+  "itemId": "20261015-carabiner-pouch",
+  "addedAt": "2026-10-06"
+ },
+ {
   "id": "20261004-heart-xmas",
   "date": "2026-10-04",
   "tag": "goods",
