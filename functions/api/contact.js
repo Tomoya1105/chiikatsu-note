@@ -1,4 +1,4 @@
-// お問い合わせフォーム（/contact/）の受け取り。KV の c:<時刻> に180日間だけ保存し、運営者の端末に通知する。
+// お問い合わせフォーム（/contact/）の受け取り。KV の c:<時刻> に180日間だけ保存し、運営者の端末に通知する。運営者のGmail（contact@chiikatsunote.com の転送先）にも送る。
 // 運営者は投稿案のページ（/api/xdraft?tok=…）の「お問い合わせ」で読む。自動更新（AI）は読まない。
 import { token } from "./xdraft.js";
 import { sendPush } from "../../src/webpush.js";
@@ -25,6 +25,9 @@ export async function onRequestPost({ request, env }) {
   await env.REPORTS.put(rk, String(n + 1), { expirationTtl: 60 * 60 * 26 });
   const id = `c:${Date.now()}:${crypto.randomUUID().slice(0, 6)}`;
   await env.REPORTS.put(id, JSON.stringify({ at: jstNow(), kind: KINDS[kind], name, email, text }), { expirationTtl: 60 * 60 * 24 * 180 });
+  // 運営者のGmailにも送る（実際の送信は見張り役（worker）が1分以内に行う）
+  const q = JSON.parse((await env.REPORTS.get("mailq")) || "[]"); q.push(id);
+  await env.REPORTS.put("mailq", JSON.stringify(q.slice(-50)));
   // 運営者の端末に知らせる
   if (env.VAPID_PRIVATE) {
     const owners = JSON.parse((await env.REPORTS.get("x:owners")) || "[]");

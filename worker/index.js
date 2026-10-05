@@ -238,8 +238,40 @@ export async function watchNews(env, fetcher = fetch, now = Date.now()) {
   return { status, fresh: fresh.length, cands: cands.length };
 }
 
+// ---- お問い合わせをGmailに送る（Cloudflare Email Routing の送信機能。宛先は wrangler.toml の send_email で確認済みのアドレスだけ）
+const b64 = s => { const u = new TextEncoder().encode(s); let bin = ""; for (const x of u) bin += String.fromCharCode(x); return btoa(bin); };
+const mimeWord = s => `=?UTF-8?B?${b64(s)}?=`;
+export function buildMail(c, id, to = "chiikatsunote@gmail.com") {
+  const from = "noreply@chiikatsunote.com";
+  const body = [`お問い合わせが届きました（${c.at}）`, "", `種類：${c.kind}`, `お名前：${c.name || "（なし）"}`, `返信先：${c.email || "（なし）"}`, "", "―― 内容 ――", c.text, "", c.email ? "※このメールに「返信」すると、送ってくれた方に届きます。" : "※返信先の書かれていないお問い合わせです。", "運営者ページでも読めます。"].join("\r\n");
+  const lines = [
+    `From: ${mimeWord("ちい活ノート お問い合わせ")} <${from}>`, `To: ${to}`,
+    ...(c.email && /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(c.email) ? [`Reply-To: ${c.email}`] : []),
+    `Subject: ${mimeWord(`【ちい活ノート】${c.kind}：${String(c.text).replace(/\s+/g, " ").slice(0, 30)}`)}`,
+    `Message-ID: <${id.replace(/[^A-Za-z0-9.-]/g, "")}@chiikatsunote.com>`, `Date: ${new Date().toUTCString()}`,
+    "MIME-Version: 1.0", "Content-Type: text/plain; charset=UTF-8", "Content-Transfer-Encoding: base64", "",
+    b64(body).replace(/.{76}/g, "$&\r\n")];
+  return { from, to, raw: lines.join("\r\n") };
+}
+async function sendContactMails(env) {
+  if (!env.MAIL) return { skipped: "no MAIL binding" };
+  const q = JSON.parse((await env.REPORTS.get("mailq")) || "[]"); if (!q.length) return { sent: 0 };
+  const { EmailMessage } = await import("cloudflare:email");
+  const rest = []; let sent = 0;
+  for (const id of q) {
+    const c = JSON.parse((await env.REPORTS.get(id)) || "null"); if (!c) continue;
+    try { const m = buildMail(c, id); await env.MAIL.send(new EmailMessage(m.from, m.to, m.raw)); sent++; }
+    catch (e) { c.mailTries = (c.mailTries || 0) + 1; if (c.mailTries < 5) rest.push(id); await env.REPORTS.put(id, JSON.stringify(c), { expirationTtl: 60 * 60 * 24 * 180 }); await env.REPORTS.put("w:mailerr", String(e).slice(0, 300), { expirationTtl: 86400 * 7 }); }
+  }
+  // 送っている間に新しく届いた分は残す
+  const now = JSON.parse((await env.REPORTS.get("mailq")) || "[]");
+  await env.REPORTS.put("mailq", JSON.stringify([...rest, ...now.filter(x => !q.includes(x))]));
+  return { sent, retry: rest.length };
+}
+
 export async function tick(env, t = Date.now()) {
   const out = {};
+  try { out.mail = await sendContactMails(env); } catch (e) { out.mail = { error: String(e) }; }
   if (new Date(t).getUTCMinutes() % 5 === 0) {
     try { out.watch = await watchMarket(env, fetch, t); }
     catch (e) { out.watch = { ok: false, error: String(e) }; try { await env.REPORTS.put("w:err", "error: " + String(e).slice(0, 200), { expirationTtl: 86400 }); } catch (e2) {} }

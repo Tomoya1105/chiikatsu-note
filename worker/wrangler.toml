@@ -10,3 +10,8 @@ crons = ["* * * * *"]
 [[kv_namespaces]]
 binding = "REPORTS"
 id = "c9427c16e44a4541a6161e0ca693e163"
+
+# お問い合わせをGmailに送る（Cloudflare Email Routing で確認済みの宛先だけに送れる）
+[[send_email]]
+name = "MAIL"
+destination_address = "chiikatsunote@gmail.com"
