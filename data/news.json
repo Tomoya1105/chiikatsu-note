@@ -1,5 +1,38 @@
 [
  {
+  "id": "20261005-dashiwari",
+  "date": "2026-10-05",
+  "tag": "goods",
+  "title": "くりまんじゅうの「だし割り」がおうちで作れるセットに",
+  "sum": "玉乃光酒造が日本酒・つゆ・目盛り付きカップのセットを11/10に発売。4,400円で、公式オンラインショップで10/5から予約できます。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000020.000096911.html",
+  "itemId": "20261110-dashiwari",
+  "addedAt": "2026-10-05"
+ },
+ {
+  "id": "20261005-mejirushi3-resale",
+  "date": "2026-10-05",
+  "tag": "goods",
+  "title": "めじるしアクセサリー3の再販は10月第4週",
+  "sum": "雨カッパ姿の5種がそろうガシャポンが、10月第4週から再び全国の売場に。1回300円で、5月に出たものと同じ商品です。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/05/188763.html",
+  "itemId": "20261025-mejirushi3",
+  "addedAt": "2026-10-05"
+ },
+ {
+  "id": "20261005-chiipla-kotobukiya",
+  "date": "2026-10-05",
+  "tag": "goods",
+  "title": "ちいプラ自転車3種、コトブキヤの通販でも予約開始",
+  "sum": "ちいかわ・うさぎは各1,650円、ふたり乗りのハチワレは1,980円。コトブキヤのオンラインショップでも予約でき、1人3個まで。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/05/188757.html",
+  "itemId": "20261003-chiipla",
+  "addedAt": "2026-10-05"
+ },
+ {
   "id": "20261004-heart-xmas",
   "date": "2026-10-04",
   "tag": "goods",
@@ -18,7 +51,7 @@
   "sum": "リボンを付けたちいかわ・ハチワレ・うさぎなどの腹巻が、しまむらパークで10/9の15時から販売予定。各1,089円で、M〜L・L〜LLの2サイズです。",
   "source": "インサイド",
   "src": "https://www.inside-games.jp/article/2026/10/04/188726.html",
-  "itemId": "",
+  "itemId": "20261009-shimamura-haramaki",
   "addedAt": "2026-10-04"
  },
  {
@@ -150,7 +183,7 @@
   "sum": "雨カッパ姿のちいかわ・ハチワレ・うさぎ・モモンガ・古本屋の全5種。1回300円で、全国のガシャポン売り場に並びます。",
   "source": "インサイド",
   "src": "https://www.inside-games.jp/article/2026/09/28/188361.html",
-  "itemId": "",
+  "itemId": "20261025-mejirushi3",
   "addedAt": "2026-10-04"
  },
  {

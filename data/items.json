@@ -233,7 +233,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03",
+  "verifiedAt": "2026-10-05",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -1049,7 +1049,10 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-05",
+  "srcs": [
+   "https://animeanime.jp/article/2026/08/25/102345.html"
+  ]
  },
  {
   "id": "20261016-pus-fukuoka",
@@ -1191,12 +1194,15 @@
   "q": "チョコサプ ちいかわ2",
   "s": "2026-11-01",
   "sp": "month",
-  "src": "https://www.bandai.co.jp/candy/chiikawa/",
+  "src": "https://www.bandai.co.jp/candy/products/2026/4570117922190000.html",
   "t": "チョコサプ ちいかわ2",
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-05",
+  "srcs": [
+   "https://www.bandai.co.jp/candy/chocosurp/chiikawa2/"
+  ]
  },
  {
   "id": "20261105-kairo",
@@ -1232,12 +1238,12 @@
   "q": "ちいかわ なんか小さくてかわいいやつ 9",
   "s": "2026-11-20",
   "sp": "day",
-  "src": "https://x.com/chiikawa_kouhou",
+  "src": "https://x.com/chiikawa_comic/status/2095868102743613939",
   "t": "コミック『ちいかわ』9巻（通常版・特装版）",
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27",
+  "verifiedAt": "2026-10-05",
   "rb": [
    {
     "n": "通常版",
@@ -1247,6 +1253,9 @@
     "n": "特装版",
     "u": "https://books.rakuten.co.jp/rb/18798063/"
    }
+  ],
+  "srcs": [
+   "https://animeanime.jp/article/2026/09/04/102659.html"
   ]
  },
  {
@@ -1266,7 +1275,11 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-05",
+  "srcs": [
+   "https://www.bandai.co.jp/catalog/item.php?jan_cd=4570118001948000",
+   "https://sec.carddass.com/club/products/detail/chiikawa_04/"
+  ]
  },
  {
   "id": "20261215-anymykuji",
@@ -1285,7 +1298,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27",
+  "verifiedAt": "2026-10-05",
   "qNone": "くじ（オンラインくじ）"
  },
  {
@@ -1300,12 +1313,15 @@
   "q": "ブックマークコレクション ちいかわ Vol.6",
   "s": "2026-12-21",
   "sp": "day",
-  "src": "https://bandai-lifestyle.jp/",
+  "src": "https://www.bandai.co.jp/catalog/item.php?jan_cd=4582770092813000",
   "t": "ブックマークコレクション ちいかわ Vol.6",
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-09-27"
+  "verifiedAt": "2026-10-05",
+  "srcs": [
+   "https://animeanime.jp/article/2026/09/26/103251.html"
+  ]
  },
  {
   "id": "20261026-lightstick",
@@ -1905,5 +1921,105 @@
   "autoAdded": true,
   "addedAt": "2026-10-05",
   "updatedAt": "2026-10-05"
+ },
+ {
+  "id": "20261110-dashiwari",
+  "region": "jp",
+  "autoAdded": true,
+  "addedAt": "2026-10-05",
+  "updatedAt": "2026-10-05",
+  "verifiedAt": "2026-10-05",
+  "t": "ちいかわ 日本酒とお出汁のだし割りセット（玉乃光酒造）",
+  "cat": "food",
+  "s": "2026-11-10",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "玉乃光酒造オンラインショップ",
+  "area": "",
+  "price": "4,400円",
+  "q": "",
+  "qNone": "玉乃光酒造の公式オンラインショップでの販売で、楽天で同じ商品を特定できない",
+  "src": "https://prtimes.jp/main/html/rd/p/000000020.000096911.html",
+  "srcType": "press",
+  "srcs": [
+   "https://ec.tamanohikari.co.jp/products/cds"
+  ],
+  "note": "くりまんじゅうが作中で楽しんでいた「だし割り」のセット（純米吟醸酒180ml・つゆ・専用カップ・レシピ）。10/5から予約受付中。お酒なので20歳以上向け。"
+ },
+ {
+  "id": "20261025-mejirushi3",
+  "region": "jp",
+  "autoAdded": true,
+  "addedAt": "2026-10-05",
+  "updatedAt": "2026-10-05",
+  "verifiedAt": "2026-10-05",
+  "t": "ガシャポン ちいかわ めじるしアクセサリー3（再販）",
+  "cat": "goods",
+  "s": "2026-10-25",
+  "sp": "late",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のガシャポン売場",
+  "area": "",
+  "price": "1回300円",
+  "q": "",
+  "qNone": "カプセルトイ（店頭）",
+  "src": "https://gashapon.jp/products/detail.php?jan_code=4570117984075000",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/05/188763.html"
+  ],
+  "note": "2026年5月発売と同じ商品の再販。雨カッパ姿のちいかわ・ハチワレ・うさぎ・モモンガ・古本屋の全5種。公式の発売時期は「10月第4週」。"
+ },
+ {
+  "id": "20261009-shimamura-haramaki",
+  "region": "jp",
+  "autoAdded": true,
+  "addedAt": "2026-10-05",
+  "updatedAt": "2026-10-05",
+  "verifiedAt": "2026-10-05",
+  "t": "しまむら ちいかわ 腹巻（オンライン販売）",
+  "cat": "goods",
+  "s": "2026-10-09",
+  "sp": "day",
+  "e": null,
+  "time": "15:00〜",
+  "eNote": "",
+  "place": "しまむらパーク（しまむらのオンラインストア）",
+  "area": "",
+  "price": "各1,089円",
+  "q": "",
+  "qNone": "しまむらでの販売で、楽天で同じ商品を特定できない",
+  "src": "https://www.inside-games.jp/article/2026/10/04/188726.html",
+  "srcType": "news",
+  "note": "リボンを付けたちいかわ・ハチワレ・うさぎなどのデザイン。レディースのM〜L・L〜LL。販売開始は10/6から10/9に訂正されています。"
+ },
+ {
+  "id": "20261002-roomwear",
+  "region": "jp",
+  "autoAdded": true,
+  "addedAt": "2026-10-05",
+  "updatedAt": "2026-10-05",
+  "verifiedAt": "2026-10-05",
+  "t": "ルームウェアセットアップ（M／L・全2柄）",
+  "cat": "goods",
+  "s": "2026-10-02",
+  "sp": "day",
+  "e": null,
+  "time": "11:00〜",
+  "eNote": "",
+  "place": "ちいかわマーケット（公式通販）",
+  "area": "",
+  "price": "各8,470円",
+  "q": "",
+  "qNone": "公式通販の商品で、楽天で同じ商品を特定できない",
+  "src": "https://x.com/chiikawa_market/status/2105587349849862280",
+  "srcType": "official",
+  "xpost": "https://x.com/chiikawa_market/status/2105587349849862280",
+  "xpostNote": "投稿日2026-10-01（IDから計算）。本文に「ルームウェアセットアップ（M／L）（全2柄）」「各8,470円」「10/2(金)11時発売」",
+  "note": "ふわふわ生地で後ろにポケット付き。座るとひざに「ごろ寝」たちが見えるデザイン。"
  }
 ]
