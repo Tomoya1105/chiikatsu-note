@@ -316,7 +316,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-05"
  },
  {
   "id": "20260912-shanghai-days",
@@ -334,10 +334,10 @@
   "sp": "day",
   "src": "https://x.com/chiikawa_kouhou/status/2094259380485251181",
   "t": "CHIIKAWA DAYS 上海特展",
-  "time": "",
-  "updatedAt": "2026-10-03",
+  "time": "10:00〜22:00（有料展示エリアの最終入場 21:00）",
+  "updatedAt": "2026-10-05",
   "srcType": "official",
-  "verifiedAt": "2026-10-03",
+  "verifiedAt": "2026-10-05",
   "xpost": "https://x.com/chiikawa_kouhou/status/2094258886781927591",
   "xpostNote": "投稿日2026-08-31。本文に「上海静安嘉里中心（JAKC）」「2026年9月12日(土)～11月1日(日)」"
  },
@@ -359,8 +359,11 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-03",
-  "qNone": "海外（上海）限定"
+  "verifiedAt": "2026-10-05",
+  "qNone": "海外（上海）限定",
+  "srcs": [
+   "https://x.com/chiikawa_kouhou/status/2094621282461532543"
+  ]
  },
  {
   "id": "20260914-35",
@@ -599,7 +602,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-05"
  },
  {
   "id": "20260928-09",
@@ -720,7 +723,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-05"
  },
  {
   "id": "20261002-04",
@@ -828,7 +831,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-05"
  },
  {
   "id": "20261002-pus-saga",
@@ -850,7 +853,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-05"
  },
  {
   "id": "20261007-taipei-xinyi",
@@ -871,7 +874,7 @@
   "time": "11:00〜22:00",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-05"
  },
  {
   "id": "20261009-nikuman",
@@ -2024,5 +2027,81 @@
   "xpost": "https://x.com/chiikawa_market/status/2105587349849862280",
   "xpostNote": "投稿日2026-10-01（IDから計算）。本文に「ルームウェアセットアップ（M／L）（全2柄）」「各8,470円」「10/2(金)11時発売」",
   "note": "ふわふわ生地で後ろにポケット付き。座るとひざに「ごろ寝」たちが見えるデザイン。"
+ },
+ {
+  "id": "20260917-tokyobanana-ikebukuro",
+  "region": "jp",
+  "t": "ちいかわ×東京ばな奈 POP UP STORE＠池袋駅",
+  "cat": "food",
+  "s": "2026-09-17",
+  "sp": "day",
+  "e": "2026-10-14",
+  "time": "10:00〜21:00（最終日は18:00まで）",
+  "eNote": "期間限定（10/14まで）・早期完売の可能性あり",
+  "place": "池袋駅 イベントステーション池袋南通路（東京都豊島区）",
+  "area": "池袋",
+  "price": "エコバッグ 1,200円、バナナプリンケーキ8個入 1,706円など",
+  "q": "",
+  "qNone": "期間限定ショップの案内",
+  "src": "https://prtimes.jp/main/html/rd/p/000002111.000025606.html",
+  "srcType": "press",
+  "srcs": [
+   "https://www.tokyobanana.jp/products/banana_chiikawa.html"
+  ],
+  "verifiedAt": "2026-10-05",
+  "note": "10/1〜10/14はエコバッグとそのセットを販売（9/30まではトートバッグ）。新作のちいかわクッキーサンドもあり。",
+  "autoAdded": true,
+  "addedAt": "2026-10-05",
+  "updatedAt": "2026-10-05"
+ },
+ {
+  "id": "20260915-citen",
+  "region": "jp",
+  "t": "ちいかわ×CITEN スペシャルコレクション（ルームウェア・バッグ・ポーチ）",
+  "cat": "goods",
+  "s": "2026-09-15",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "CITEN全店舗・公式EC、ちいかわらんど、Talking",
+  "area": "",
+  "price": "ルームウェア 各8,910円、トートバッグ 2,530円、ポーチ 2,970円など",
+  "q": "",
+  "qNone": "CITEN・ちいかわらんど・Talkingでの販売で、楽天で同じ商品を特定できない",
+  "src": "https://prtimes.jp/main/html/rd/p/000000511.000003197.html",
+  "srcType": "press",
+  "srcs": [
+   "https://prtimes.jp/main/html/rd/p/000000011.000179675.html",
+   "https://shop.talking.design/collections/ck-citen"
+  ],
+  "verifiedAt": "2026-10-05",
+  "note": "全6型。購入は1人につき各商品各色1点まで。台湾のCITEN（誠品生活南西店・京站店）でも10月に一部の商品が発売予定。",
+  "autoAdded": true,
+  "addedAt": "2026-10-05",
+  "updatedAt": "2026-10-05"
+ },
+ {
+  "id": "20261015-otoshidama",
+  "region": "jp",
+  "t": "ちいかわ お年玉袋・金封（2027年用）",
+  "cat": "goods",
+  "s": "2026-10-15",
+  "sp": "mid",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわマーケット、全国のロフト・ハンズ・量販店、APJオンラインショップ（一部はセブン‐イレブン）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "デザインが多く、楽天で同じ商品を特定できない",
+  "src": "https://animeanime.jp/article/2026/09/26/103251.html",
+  "srcType": "news",
+  "verifiedAt": "2026-10-05",
+  "note": "お年玉袋・金封それぞれ全3種。10月中旬ごろから順次発売。",
+  "autoAdded": true,
+  "addedAt": "2026-10-05",
+  "updatedAt": "2026-10-05"
  }
 ]
