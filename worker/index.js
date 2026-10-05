@@ -146,6 +146,8 @@ const FEEDS = [
   { key: "inside", name: "インサイド", url: "https://www.inside-games.jp/rss/index.rdf", official: false },
   { key: "animeanime", name: "アニメ！アニメ！", url: "https://animeanime.jp/rss/index.rdf", official: false },
   { key: "netlab", name: "ねとらぼ", url: "https://rss.itmedia.co.jp/rss/2.0/netlab.xml", official: false },
+  // ちいかわ関連店舗の公式サイトのお知らせ（公式なので、題名に「ちいかわ」がなくても全部対象：all）
+  { key: "mogumogu", name: "ちいかわもぐもぐ本舗", url: "https://www.chiikawamogumogu.jp/feed/", official: true, all: true },
   { key: "bing", name: "Bingニュース", url: "https://www.bing.com/news/search?format=rss&setlang=ja&cc=JP&q=" + encodeURIComponent("ちいかわ"), official: false },
 ];
 const unx = s => String(s || "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/<[^>]+>/g, "").trim();
@@ -195,7 +197,7 @@ export async function watchNews(env, fetcher = fetch, now = Date.now()) {
     try {
       const r = await fetcher(f.url, { headers: { "user-agent": "Mozilla/5.0 (compatible; chiikatsu-note-watch/1.0; +https://chiikatsunote.com/)", "accept-language": "ja" } });
       if (!r.ok) { status[f.key] = r.status; continue; }
-      const items = parseFeed(await r.text()).filter(x => CHII.test(x.title));
+      const items = parseFeed(await r.text()).filter(x => f.all || CHII.test(x.title));
       status[f.key] = items.length;
       const firstSrc = !seeded.has(f.key); seeded.add(f.key);
       for (const it of items) {

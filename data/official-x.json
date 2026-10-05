@@ -36,6 +36,12 @@
    "kind": "アニメ公式",
    "evidence": "https://anime-chiikawa.jp/ （アニメ公式サイトに「アニメ公式X」として twitter.com/anime_chiikawa）",
    "checkedAt": "2026-10-04"
+  },
+  "chiikawamgmg": {
+   "name": "ちいかわもぐもぐ本舗",
+   "kind": "店舗公式",
+   "evidence": "https://www.chiikawamogumogu.jp/ （公式サイトから x.com/chiikawamgmg にリンク）、https://prtimes.jp/main/html/rd/p/000000160.000035374.html （運営の株式会社寺子屋のプレスリリースに公式Xとして記載）",
+   "checkedAt": "2026-10-06"
   }
  },
  "candidates": {

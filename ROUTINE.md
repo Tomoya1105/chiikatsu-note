@@ -117,7 +117,7 @@ reports-done.json に key がない報告ごとに、対象の情報（id が it
   - トップページの新着（常設店のオープン、コラボ、限定グッズ）も同じように確かめる。
   - WebFetch で 403 などで読めないときは、見張り役が30分ごとに読んでおいた写しを使う：https://chiikatsunote.com/api/info?key=（鍵）&p=pus （POP UP一覧）と &p=top （トップの新着）。中身は同じ内容の文字なので、これで全件を突き合わせる。
   - 写しも読めなかったときだけ、その回の報告の最初に「ちいかわインフォが読めませんでした」と書く。
-- ちいかわグッズ公式X（@chiikawa_kouhou）・ちいかわマーケット公式X（@chiikawa_market）・ちいかわPOP UP STORE公式X（@chiikawa_popup）・ちいかわベーカリー公式X（@chiikawabakery）。ちいかわらんど（@chiikawa_land）は手がかりとして見る。X は直接読めないので、下の「取りこぼし確認」の方法で読む。
+- ちいかわグッズ公式X（@chiikawa_kouhou）・ちいかわマーケット公式X（@chiikawa_market）・ちいかわPOP UP STORE公式X（@chiikawa_popup）・ちいかわベーカリー公式X（@chiikawabakery）・ちいかわもぐもぐ本舗公式X（@chiikawamgmg。公式サイト https://www.chiikawamogumogu.jp/ のお知らせも見る）。ちいかわらんど（@chiikawa_land）は手がかりとして見る。X は直接読めないので、下の「取りこぼし確認」の方法で読む。
 - PR TIMES の「ちいかわ」関連
 - バンダイ キャンディ https://www.bandai.co.jp/candy/chiikawa/
 - ちいかわベーカリー・ちいかわパーク・映画ちいかわの公式サイト
