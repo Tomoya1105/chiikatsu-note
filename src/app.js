@@ -381,7 +381,9 @@ function renderListInner(){
     const alt = (q||state.focus) ? [] : [["onsale","販売中"],["next","これからの予定"],["ended","終了"]].filter(([k])=>k!==state.st)
       .map(([k,l])=>[k,l,VIS().filter(it=>bucket(it)===k && (state.cat==="all"||it.cat===state.cat)).length]).filter(x=>x[2]);
     const altH = alt.length ? `<div class="altst">${alt.map(([k,l,n])=>`<button type="button" class="btn" data-gost="${k}">「${l}」に${n}件あります</button>`).join("")}</div>` : "";
-    el.innerHTML = `<div class="empty">${msg}${altH}</div>` + backAll();
+    // 探して見つからなかったときは、載っていない情報を教えてもらう入口を出す（検索した言葉を入れておく）
+    const tipH = `<div class="tipbox"><p>${q ? `「${esc(q)}」はまだ載っていないかもしれません。` : "探している情報が載っていないかもしれません。"}知っている情報があれば教えてください。公式の発表で確かめて掲載します。</p><button type="button" class="btn" data-tip data-tipq="${esc(q)}">情報を教える</button></div>`;
+    el.innerHTML = `<div class="empty">${msg}${altH}</div>` + tipH + backAll();
     return;
   }
   let h = "", cur = "", groups = 0, campDone = false;

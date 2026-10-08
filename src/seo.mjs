@@ -35,6 +35,7 @@ export function areasOf(it) {
 }
 export const monthOf = it => it.s.slice(0, 7);
 
+const TIPBOX = ctx => `<div class="tipbox"><p><b>載っていない情報はありませんか？</b>見つけたら教えてください。公式の発表で確かめて掲載します。</p><button type="button" class="btn" data-tip data-tipctx="${ctx}">情報を教える</button></div>`;
 export function buildSeo(ctx) {
   const { items, page, write, esc, fmt, md, CAT, REG, BRAND, FOOT, SITE, TODAY, isEvent, aff, sjisEncode, rakutenSearch, writeOg } = ctx;
   // まとめページ用の共有画像（キャラクターは使わず、文字だけ）。作れなかったときはトップの画像
@@ -90,6 +91,7 @@ export function buildSeo(ctx) {
 ${sections || `<p>この月に始まる予定は、まだありません。</p>`}
 ${ongoing.length ? `<h2>${mo}月も開催中のイベント・お店</h2>${list(ongoing)}` : ""}
 ${os.length ? `<h2>海外のちいかわ情報（${os.length}件）</h2>${list(os)}` : ""}
+${TIPBOX(esc(label))}
 <nav class="slnav">${prev ? `<a class="btn" href="/month/${prev}/">← ${ym(prev).label}</a>` : "<span></span>"}<a class="btn" href="/month/">月別まとめ一覧</a>${next ? `<a class="btn" href="/month/${next}/">${ym(next).label} →</a>` : "<span></span>"}</nav>
 <p><a href="/area/">地域別のPOP UP・イベント情報はこちら →</a></p>`);
     write(`month/${m}/index.html`, page({
@@ -130,6 +132,7 @@ ${now.length ? `<h2>開催中・発売中（${now.length}件）</h2>${list(now)}
 ${soon.length ? `<h2>これから（${soon.length}件）</h2>${list(soon)}` : ""}
 ${!now.length && !soon.length ? `<p>いま${esc(nm)}で予定されているものはありません。決まり次第追加します。</p>` : ""}
 ${hotel && (now.length || soon.length) ? `<a class="trip" href="${esc(hotel.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(hotel.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""}
+${TIPBOX(esc(nm))}
 ${ended.length ? `<h2>最近終わったもの</h2>${list(ended)}` : ""}
 <p style="margin-top:18px"><a class="btn" href="/area/">ほかの地域を見る</a> <a class="btn" href="/month/${thisMonth}/">今月の新商品まとめ</a></p>`);
     write(`area/${slug}/index.html`, page({

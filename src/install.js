@@ -300,6 +300,58 @@
     if (b){ e.preventDefault(); openSheet(); }
   });
 
+  /* ---- 載っていない情報を教えてもらう（一覧の件数の行・検索で見つからないとき・月別／地域別のまとめページ） ----
+     送られた内容は手がかりとしてだけ使い、自動更新が公式の発表で確かめられたものだけを載せる */
+  var tipSheet = null, TIPK = "chiikatsu-tips";
+  function tipOpen(b){
+    ct("tip:open");
+    if (!tipSheet){
+      tipSheet = document.createElement("div");
+      tipSheet.className = "ins-sheet tip-sheet"; tipSheet.hidden = true;
+      tipSheet.innerHTML = '<div class="ins-back" data-tipclose></div><div class="ins-panel" role="dialog" aria-modal="true" aria-labelledby="tipTitle">' +
+        '<div class="ins-head"><div><h2 id="tipTitle">載っていない情報を教える</h2><p>新商品・イベント・予約開始など</p></div><button class="ins-x" type="button" data-tipclose aria-label="閉じる">×</button></div>' +
+        '<form class="tipform" novalidate><label>どんな情報ですか？<textarea name="text" maxlength="600" rows="3" placeholder="例：〇〇でちいかわのPOP UPが11月から開催されるみたいです"></textarea></label>' +
+        '<label>情報がのっているページのURL（あれば）<input name="url" type="url" inputmode="url" maxlength="500" placeholder="https://"></label>' +
+        '<p class="tipnote">公式サイトや公式Xのリンクがあると、早く確かめられます。お名前やメールアドレスは必要ありません。</p>' +
+        '<p class="tipnote">いただいた情報は、公式の発表で確かめられたものだけを掲載します。</p>' +
+        '<button type="submit" class="ins-btn">送る</button><p class="tipmsg" role="status"></p></form></div>';
+      document.body.appendChild(tipSheet);
+      tipSheet.addEventListener("click", function(e){ if (e.target.closest("[data-tipclose]")) tipClose(); });
+      tipSheet.querySelector("form").addEventListener("submit", tipSend);
+    }
+    var f = tipSheet.querySelector("form"), q = b.getAttribute("data-tipq"), c = b.getAttribute("data-tipctx");
+    f.reset(); f.querySelector(".tipmsg").textContent = ""; f.querySelector("button").disabled = false;
+    if (q) f.text.value = "「" + q + "」で探しましたが見つかりませんでした。";
+    tipSheet.dataset.ctx = c || "";
+    tipSheet.hidden = false; document.documentElement.classList.add("ins-open");
+    setTimeout(function(){ try { f.text.focus(); } catch (e) {} }, 50);
+  }
+  function tipClose(){ if (tipSheet){ tipSheet.hidden = true; document.documentElement.classList.remove("ins-open"); } }
+  function tipSend(e){
+    e.preventDefault();
+    var f = e.target, msg = f.querySelector(".tipmsg"), text = f.text.value.trim(), url = f.url.value.trim();
+    if (text.length < 2 && !url){ msg.textContent = "情報を書くか、URLを入れてください"; return; }
+    if (url && !/^https?:\/\/\S{3,}$/.test(url)){ msg.textContent = "URLは https:// から始まる形で入れてください"; return; }
+    // 同じ端末からの送りすぎを防ぐ（30秒に1回・1日10回まで）
+    var now = Date.now(), log = [];
+    try { log = (JSON.parse(localStorage.getItem(TIPK) || "[]") || []).filter(function(t){ return now - t < 864e5; }); } catch (err) {}
+    if (log.length && now - log[log.length - 1] < 30e3){ msg.textContent = "少し時間をおいてから送ってください"; return; }
+    if (log.length >= 10){ msg.textContent = "今日はたくさん送っていただきました。ありがとうございます。続きはまた明日お願いします"; return; }
+    var btn = f.querySelector("button"); btn.disabled = true; msg.textContent = "送っています…";
+    var ctx = tipSheet.dataset.ctx;
+    fetch("/api/report", { method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ itemId: "tip", title: "載っていない情報" + (ctx ? "（" + ctx + "）" : ""), kind: "tip", text: text.slice(0, 600), url: url.slice(0, 500), page: location.pathname }) })
+      .then(function(r){
+        if (!r.ok) throw new Error(r.status);
+        log.push(now); try { localStorage.setItem(TIPK, JSON.stringify(log)); } catch (err) {}
+        ct("tip:send"); tipClose();
+        say("ありがとうございます！公式の発表で確かめられたら掲載します");
+      })
+      .catch(function(){ btn.disabled = false; msg.textContent = "送れませんでした。時間をおいてもう一度お試しください"; });
+  }
+  document.addEventListener("click", function(e){ var b = e.target.closest("[data-tip]"); if (b){ e.preventDefault(); tipOpen(b); } });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") tipClose(); });
+
   window.chiikatsuInstall = { open: openSheet };
 })();
 
