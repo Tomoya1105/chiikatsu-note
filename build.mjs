@@ -113,7 +113,7 @@ const INSTALL_MINE = `<div class="ins-card ins-mine" data-ins-card>${ICO}<div cl
 const FOOT = `<footer class="about">
     ${INSTALL_CARD}
     ${RESPECT}
-    <div class="sitelinks"><a href="/">トップ</a><a href="/month/">月別まとめ</a><a href="/area/">地域別</a><a href="/about/">運営者について</a><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div>
+    <div class="sitelinks"><a href="/">トップ</a><a href="/goods/">グッズまとめ</a><a href="/month/">月別まとめ</a><a href="/area/">地域別</a><a href="/about/">運営者について</a><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div>
     <p class="credit"><a href="https://webservice.rakuten.co.jp/" target="_blank" rel="noopener">Supported by Rakuten Developers</a></p>
     <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
   </footer>`;
@@ -245,7 +245,9 @@ for (const it of items) {
   const start = fmt(it.s, it.sp);
   const end = it.e ? fmt(it.e) : "";
   const when = end ? `${start}〜${end}` : `${start}${ev ? "から" : "発売"}`;
-  const title = `${it.t}｜${ev ? "開催期間・場所" : "発売日・販売場所"}【ちい活ノート】`;
+  // 検索する人の疑問（いつ？どこで？）に答える形の題名。ページの中身（文字数）は変えない
+  const ask = it.rsv && !ev ? "予約はいつまで？価格" : ev ? `いつからいつまで？場所${it.time ? "・時間" : ""}` : `いつ発売？どこで買える？${it.price ? "価格" : ""}`;
+  const title = `${it.t}｜${ask}【ちい活ノート】`;
   const desc = `${it.t}は${when}。${it.place ? "場所：" + it.place + "。" : ""}${it.price ? "価格：" + it.price + "。" : ""}${it.note || ""}`.slice(0, 150);
   const url = `/items/${encodeURIComponent(it.id)}/`;
 
