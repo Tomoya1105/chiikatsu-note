@@ -300,6 +300,35 @@
     if (b){ e.preventDefault(); openSheet(); }
   });
 
+  /* ---- ちいかわ検定から来た人へ：トップに一度だけご案内を出す（閉じたら、この訪問中は出さない）。
+     「ホーム画面に追加する」から来たときは、追加のしかたを開く。追加の完了は、ブラウザが知らせてくれるとき（Android の Chrome など）しか分からない ---- */
+  var quizFlow = false;
+  try {
+    // トップでは、URLの ?from=quiz を app.js が消す前にページ先頭で sessionStorage に移してある（chiikatsu-qarr）
+    var qp = new URLSearchParams(location.search), arr = sessionStorage.getItem("chiikatsu-qarr");
+    if (arr) sessionStorage.removeItem("chiikatsu-qarr");
+    var fromQuiz = qp.get("from") === "quiz" || !!arr, wantAdd = qp.get("add") === "1" || arr === "add";
+    if (fromQuiz) { ct("qa:land"); sessionStorage.setItem("chiikatsu-qwel", sessionStorage.getItem("chiikatsu-qwel") === "0" ? "0" : "1"); }
+    quizFlow = fromQuiz || sessionStorage.getItem("chiikatsu-qwel") === "1";
+    var wel = isHome && quizFlow && document.querySelector("[data-qwel]");
+    if (wel) { wel.hidden = false; document.documentElement.classList.add("qwel-on"); }
+    if (qp.get("from") === "quiz") {
+      qp.delete("from"); qp.delete("add");
+      var rest = qp.toString();
+      history.replaceState(history.state, "", location.pathname + (rest ? "?" + rest : "") + location.hash);
+    }
+    if (fromQuiz && wantAdd) { ct("qa:sheet"); setTimeout(openSheet, 350); }
+  } catch (e) {}
+  document.addEventListener("click", function(e){
+    if (e.target.closest("[data-qwel-x]")) {
+      try { sessionStorage.setItem("chiikatsu-qwel", "0"); } catch (err) {}
+      var w = document.querySelector("[data-qwel]"); if (w) w.hidden = true;
+      document.documentElement.classList.remove("qwel-on");
+    }
+    if (e.target.closest("[data-qwel-add]")) ct("qa:sheet");
+    if (quizFlow && e.target.closest("[data-go]")) ct("qa:go");
+  });
+
   window.chiikatsuInstall = { open: openSheet };
 })();
 

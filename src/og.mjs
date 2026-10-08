@@ -51,3 +51,35 @@ export function makeOg({ label = "", title = "", when = "", sub = "", accent = "
   const r = new Resvg(svg, { fitTo: { mode: "width", value: 1200 }, font: { fontFiles: [FONT], loadSystemFonts: false, defaultFontFamily: "Noto Sans CJK JP" } });
   return r.render().asPng();
 }
+
+// ちいかわ検定（非公式）の共有画像。点数を大きく、称号をはっきり。100点だけ金色。キャラクターや公式ロゴは使わない。
+// score が null のときは検定トップ用（「あなたは何点？」）
+export function makeQuizOg({ score = null, title = "", sub = "" }) {
+  if (!ogAvailable()) return null;
+  const gold = score === 100;
+  const bg1 = gold ? "#FFF6D8" : "#FCE8EF", bg2 = gold ? "#EBCB6B" : "#F3D2DF";
+  const acc = gold ? "#B8860B" : "#E27496", frame = gold ? "#C99A1C" : "#FFFFFF";
+  const scoreBlock = score == null
+    ? `<text x="600" y="300" font-size="112" fill="#3A3346" text-anchor="middle">あなたは何点？</text>
+       <text x="600" y="380" font-size="40" fill="#6D6479" text-anchor="middle">全20問・4択・アニメ第1〜382話から出題</text>`
+    : `<text x="600" y="${gold ? 352 : 318}" text-anchor="middle" fill="${acc}"><tspan font-size="${gold ? 180 : 200}">${score}</tspan><tspan font-size="72" dx="8">点</tspan></text>
+       <text x="600" y="${gold ? 428 : 404}" font-size="${gold ? 58 : 62}" fill="#3A3346" text-anchor="middle">${esc(title)}</text>
+       <text x="600" y="${gold ? 474 : 456}" font-size="32" fill="#6D6479" text-anchor="middle">― ${esc(sub)} ―</text>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <circle cx="1120" cy="70" r="120" fill="#FFFFFF" opacity=".35"/><circle cx="70" cy="600" r="90" fill="#FFFFFF" opacity=".35"/>
+  <rect x="50" y="40" width="1100" height="550" rx="44" fill="#FFFFFF" stroke="${frame}" stroke-width="${gold ? 8 : 0}"/>
+  <g font-family="Noto Sans CJK JP" font-weight="700">
+    <rect x="${600 - 230}" y="78" width="460" height="58" rx="29" fill="${acc}"/>
+    <text x="600" y="118" font-size="32" fill="#FFFFFF" text-anchor="middle">ちいかわ検定（非公式）</text>
+    ${gold ? `<text x="600" y="184" font-size="34" fill="${acc}" text-anchor="middle">★ 全問正解 ★</text>` : ""}
+    ${scoreBlock}
+    ${ICON ? `<image href="${ICON}" x="110" y="500" width="56" height="56"/>` : ""}
+    <text x="180" y="540" font-size="32" fill="#3A3346">ちい活ノート</text>
+    <text x="1090" y="540" font-size="28" fill="${acc}" text-anchor="end">あなたも挑戦 → chiikatsunote.com/quiz</text>
+  </g>
+</svg>`;
+  const r = new Resvg(svg, { fitTo: { mode: "width", value: 1200 }, font: { fontFiles: [FONT], loadSystemFonts: false, defaultFontFamily: "Noto Sans CJK JP" } });
+  return r.render().asPng();
+}

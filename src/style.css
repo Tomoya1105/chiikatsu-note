@@ -676,3 +676,20 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 /* 詳細ページの公式Xの自動表示：読み込み中は場所を取っておき、表示後は中身の高さに合わせる */
 .xbox.auto.open:not(.ready) .xframe{min-height:420px}
 .altst{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px}
+
+/* ちいかわ検定への入口と、検定から来た人へのご案内（トップ） */
+.qzban{display:flex;align-items:center;gap:10px;margin:8px 0 6px;padding:9px 12px;border-radius:14px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.qzban-k{flex:none;font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--on-acc);background:var(--acc);border-radius:6px;padding:2px 6px}
+.qzban-t{flex:1;font-size:12.5px;color:var(--ink-2);line-height:1.4}
+.qzban-t b{display:block;font-size:14px;color:var(--ink)}
+.qzban-a{font-size:22px;color:var(--ink-3);line-height:1}
+.qwel{position:relative;margin:8px 0 10px;padding:14px 14px 12px;border-radius:18px;background:var(--surface);border:2px solid var(--acc-soft);box-shadow:var(--shadow)}
+.qwel-x{position:absolute;top:6px;right:6px;width:36px;height:36px;border:0;background:none;font-size:20px;color:var(--ink-3);cursor:pointer}
+.qwel-k{margin:0 34px 2px 0;font-size:12px;font-weight:700;color:var(--acc)}
+.qwel-h{margin:0 30px 8px 0;font-weight:700;font-size:15px;line-height:1.5;color:var(--ink)}
+.qwel-l{margin:0 0 10px;padding-left:1.2em;font-size:13px;line-height:1.7;color:var(--ink-2)}
+.qwel-l b{color:var(--ink)}
+.qwel-b{display:block;width:100%;border:0;border-radius:12px;padding:12px;font:inherit;font-size:14.5px;font-weight:700;background:var(--acc);color:var(--on-acc);cursor:pointer}
+.qwel-n{margin:6px 0 0;font-size:11.5px;color:var(--ink-3);text-align:center}
+.qwel-on #intro,.qwel-on .ins-top,.qwel-on .qzban{display:none}
+.is-app .qwel-b,.is-app .qwel-n{display:none}

@@ -75,6 +75,13 @@ ol{margin:0 0 4px;padding-left:20px;font-size:13.5px}
       [pct(d.aff, d.visits), "アフィリエイトのクリック率", "楽天" + d.rk + "・Yahoo!" + d.yahoo + "・Amazon" + d.amazon + "回 ÷ 訪問"],
       [d.share, "共有ボタンが押された回数", "「友だちにも教える」は" + d.nudgeShow + "回出して" + d.nudge + "回押された"]
     ];
+    if (d.qView) rows = rows.concat([
+      [d.qStart, "検定：挑戦した回数", "検定ページを開いた" + d.qView + "回のうち。再挑戦は別に" + d.qRetry + "回"],
+      [pct(d.qDone, d.qStart + d.qRetry), "検定：最後まで解いた割合", d.qDone + "回完了（100点は" + d.qPerfect + "回）"],
+      [pct(d.qShare, d.qDone), "検定：結果の共有率", "X・LINE・URLコピー " + d.qShare + "回。共有された結果から挑戦 " + d.qFromShare + "回"],
+      [pct(d.qToApp, d.qPromo), "検定→ちい活ノートへ移動", "紹介を見た" + d.qPromo + "回のうち、移動 " + d.qToApp + "回（トップに着いた " + d.qLand + "回）"],
+      [d.qAddTap + "／" + d.qSheet, "検定→ホーム画面追加の案内", "追加ボタン" + d.qAddTap + "回・手順を表示" + d.qSheet + "回・Androidの追加ボタン" + d.qGo + "回。追加の完了はAndroidの一部しか分からないため数えていません"]
+    ]);
     var mx = Math.max.apply(null, ST.daily.map(function(x){ return x.dev; }).concat(1));
     el.innerHTML = '<div class="kpi">' + rows.map(function(r){ return '<div><b>' + r[0] + '</b><span>' + r[1] + '</span><small>' + r[2] + '</small></div>'; }).join("") + '</div>' +
       '<div class="bars" title="直近14日の、使った人の数">' + ST.daily.slice().reverse().map(function(x){ return '<i style="height:' + Math.max(3, Math.round(x.dev / mx * 100)) + '%" title="' + x.day + '：' + x.dev + '人"></i>'; }).join("") + '</div>' +

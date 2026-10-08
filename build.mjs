@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { makeOg, ogAvailable } from "./src/og.mjs";
 import { buildSeo, areasOf, monthOf } from "./src/seo.mjs";
+import { buildQuiz } from "./src/quiz-build.mjs";
 
 const SITE = "https://chiikatsunote.com";
 const AFF = "582a6f7f.e1ade2b2.582a6f84.d5f85faa";
@@ -113,7 +114,7 @@ const INSTALL_MINE = `<div class="ins-card ins-mine" data-ins-card>${ICO}<div cl
 const FOOT = `<footer class="about">
     ${INSTALL_CARD}
     ${RESPECT}
-    <div class="sitelinks"><a href="/">トップ</a><a href="/month/">月別まとめ</a><a href="/area/">地域別</a><a href="/about/">運営者について</a><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div>
+    <div class="sitelinks"><a href="/">トップ</a><a href="/month/">月別まとめ</a><a href="/area/">地域別</a><a href="/quiz/">ちいかわ検定</a><a href="/about/">運営者について</a><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div>
     <p class="credit"><a href="https://webservice.rakuten.co.jp/" target="_blank" rel="noopener">Supported by Rakuten Developers</a></p>
     <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
   </footer>`;
@@ -221,7 +222,8 @@ write("index.html", page({
   title: "ちい活ノート｜ちいかわグッズの発売日・イベント日程カレンダー",
   desc: "ちいかわの新商品の発売日、POP UP STOREやコラボカフェの開催期間、海外のちいかわイベントをまとめた非公式スケジュール帳。まもなく終わるものや今週発売のグッズがひと目でわかります。",
   url: "/",
-  head: `<script type="application/ld+json">${JSON.stringify(homeLd)}</script>`,
+  // ちいかわ検定から来たことを、URLが整理される前（app.js より先）に覚えておく
+  head: `<script type="application/ld+json">${JSON.stringify(homeLd)}</script><script>try{var q=new URLSearchParams(location.search);if(q.get("from")==="quiz")sessionStorage.setItem("chiikatsu-qarr",q.get("add")==="1"?"add":"land")}catch(e){}</script>`,
   body: homeBody,
   scripts: `<script>window.__ITEMS=${JSON.stringify(items).replace(/</g, "\\u003c")};window.__NEWS=${JSON.stringify(news).replace(/</g, "\\u003c")};window.__CAMP=${JSON.stringify(camps).replace(/</g, "\\u003c")};</script>\n<script src="/app.js?v=${BUILD}"></script>`,
 }));
@@ -351,6 +353,7 @@ write("privacy/index.html", page({
   body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。また、Cloudflare社の「Cloudflare Web Analytics」で、訪問数や表示の速さを集計しています。こちらもCookieを使わず、個人を特定する情報は集めません。</p>
 <h2>Xの投稿の表示について</h2><p>「公式の画像を見る」を押したときだけ、X（旧Twitter）の埋め込み機能で公式アカウントの投稿を表示します。そのとき、閲覧情報がX社に送られることがあります（X社のプライバシーポリシーが適用されます）。押さなければXには何も送られません。トラッキングを控える設定（DNT）で読み込んでいます。</p><h2>お問い合わせについて</h2><p>お問い合わせ先：<a href="mailto:contact@chiikatsunote.com">contact@chiikatsunote.com</a>（またはお問い合わせフォーム）。お問い合わせフォームから送られた内容（種類・お名前・メールアドレス・本文）は、お返事とサイトの改善のためだけに使い、第三者に渡すことはありません。180日たつと自動で消えます。送りすぎを防ぐため、IPアドレスから作った一時的な値を1日だけ使いますが、IPアドレスそのものは保存しません。</p><h2>まちがい報告</h2><p>「情報のまちがいを報告する」から送られた内容（選んだ項目と入力した文章）は、掲載情報を直すためだけに使います。個人を特定できる情報は書き込まないでください。</p>
 <h2>アフィリエイトについて</h2><p>当サイトは楽天グループ株式会社の「楽天アフィリエイト」と、株式会社もしもの「もしもアフィリエイト」（Yahoo!ショッピングなど）に参加しています。リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
+<h2>ちいかわ検定（非公式）について</h2><p>ちいかわ検定を最後まで解くと、点数・問題ごとの正誤・かかった時間・初回の挑戦かどうかを、個人を特定しない形で保存し、平均点や順位（上位○％）の計算に使います。端末の区別には、ブラウザの中で作ったランダムな番号だけを使い、IPアドレス・名前・メールアドレスなどは保存しません。前回の点数やベストは、閲覧している端末のブラウザにだけ保存されます。</p>
 <h2>アクセス解析・広告配信について</h2><p>今後、アクセス解析ツールや第三者配信の広告（Google AdSense など）を導入する場合は、Cookieを使って閲覧情報を集めることがあります。導入する際はこのページでお知らせします。</p>
 <h2>免責事項</h2><p>掲載情報は正確になるよう努めていますが、発売日や会期は変更されることがあります。掲載内容によって生じた損害について、運営者は責任を負いません。最新の情報は必ず公式の発表をご確認ください。</p>
 <p class="credit">制定日：2026年10月3日</p>`),
@@ -361,8 +364,13 @@ write("404.html", page({ title: "ページが見つかりません｜ちい活�
 // ---- 検索エンジン向け
 // ---- 検索から来る人のためのまとめページ（月別・地域別）
 const seo = buildSeo({ items, page, write, esc, fmt, md, CAT, REG, BRAND, FOOT, SITE, TODAY, isEvent, aff, sjisEncode, rakutenSearch, writeOg });
-const urls = ["/", ...seo.urls, "/official/", "/about/", "/contact/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
+// ---- ちいかわ検定（非公式）
+const quizUrls = buildQuiz({ page, write, esc, SITE, BRAND, BUILD, OUT, ogOk });
+const urls = ["/", ...seo.urls, ...quizUrls, "/official/", "/about/", "/contact/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}\n</urlset>\n`);
+// Functions（サーバー側の処理）を通すURLを絞る。静的ファイルは Functions を通さず配信（無料・無制限）。
+// ページ本体（HTML）と /api/ は今までどおり通す（.pages.dev からの転送とAPIのため）。
+write("_routes.json", JSON.stringify({ version: 1, include: ["/*"], exclude: ["/og/*", "/icons/*", "/quiz/*", "/app.js", "/install.js", "/style.css", "/sw.js", "/manifest.webmanifest", "/camps.json", "/push-items.json", "/visuals.json", "/robots.txt", "/sitemap.xml"] }, null, 1));
 write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /owner/\nSitemap: ${SITE}/sitemap.xml\n`);
 
 console.log(`built ${items.length} items → ${OUT}/`);

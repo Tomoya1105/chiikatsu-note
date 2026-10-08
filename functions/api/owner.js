@@ -50,6 +50,10 @@ export async function onRequestPost({ request, env }) {
         aff: AFF.reduce((a, k) => a + sum(arr, k), 0), rk: sum(arr, "c:rk") + sum(arr, "c:rkpre") + sum(arr, "c:rksearch") + sum(arr, "c:books") + sum(arr, "c:shop") + sum(arr, "c:travel"), yahoo: sum(arr, "c:yahoo"), amazon: sum(arr, "c:amazon"),
         want: sum(arr, "mark:want"), favp: sum(arr, "fav"), pushOn: sum(arr, "push:on"), install: sum(arr, "install"),
         share: ["share:line", "share:x", "share:copy", "share:nudge"].reduce((a, k) => a + sum(arr, k), 0), nudgeShow: sum(arr, "nudge:show"), nudge: sum(arr, "share:nudge"),
+        // ちいかわ検定（非公式）：開始・完了・共有・ちい活ノートへの移動・ホーム画面追加の案内
+        qView: sum(arr, "quiz:view"), qStart: sum(arr, "quiz:start"), qRetry: sum(arr, "quiz:retry"), qDone: sum(arr, "quiz:done"), qPerfect: sum(arr, "quiz:perfect"),
+        qShare: sum(arr, "quiz:sx") + sum(arr, "quiz:sl") + sum(arr, "quiz:sc"), qFromShare: sum(arr, "quiz:fromshare"), qPromo: sum(arr, "quiz:promo"),
+        qToApp: sum(arr, "quiz:toapp"), qAddTap: sum(arr, "quiz:addtap"), qLand: sum(arr, "qa:land"), qSheet: sum(arr, "qa:sheet"), qGo: sum(arr, "qa:go"),
       };
     };
     return Response.json({ ok: true, d7: pack(days.slice(0, 7)), d28: pack(days), since: days.filter(d => d["u:dev"]).map(d => d.day).pop() || null, daily: days.slice(0, 14).map(d => ({ day: d.day, visits: d.visits || 0, dev: d["u:dev"] || 0 })) });
