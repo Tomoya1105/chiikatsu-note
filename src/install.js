@@ -277,13 +277,15 @@
   /* ---- 画面下のおすすめバー（スマホだけ・押しつけない） ---- */
   var bar = null;
   function closeBar(){ if (bar){ bar.remove(); bar = null; } }
-  function showBar(){
+  function showBar(why){
     if (bar || standalone || st.installed || !isMobile) return;
     if ((st.no || 0) >= 3) return;                                  // 3回閉じたら、もう出さない
     if (st.later && Date.now() - st.later < 14 * 864e5) return;     // 閉じたら2週間は出さない
     bar = document.createElement("div");
     bar.className = "ins-bar";
-    bar.innerHTML = ICON + '<p><b>ホーム画面に追加しませんか？</b><span>アイコンからすぐ開けて、毎日の確認がラクになります</span></p><button type="button" class="ins-open-btn">追加のしかた</button><button type="button" class="ins-x" aria-label="閉じる">×</button>';
+    var sub = why === "want" ? "「ほしい」に入れた予定を、アイコンからすぐ見られます" : "アイコンからすぐ開けて、毎日の確認がラクになります";
+    bar.innerHTML = ICON + '<p><b>ホーム画面に追加しませんか？</b><span>' + sub + '</span></p><button type="button" class="ins-open-btn">' + (inApp ? (isIOS ? "Safariで開く方法" : "ブラウザで開く方法") : "追加のしかた") + '</button><button type="button" class="ins-x" aria-label="閉じる">×</button>';
+    if (why) ct("ins:bar:" + why);
     bar.querySelector(".ins-open-btn").onclick = function(){ deferred ? prompt() : openSheet(); };
     bar.querySelector(".ins-x").onclick = function(){ st.later = Date.now(); st.no = (st.no || 0) + 1; save(st); closeBar(); };
     document.body.appendChild(bar);
@@ -294,7 +296,21 @@
   var isHome = location.pathname === "/" || location.pathname === "/index.html";
   if (isHome && st.visits >= 2 && document.documentElement.classList.contains("ins-off")) setTimeout(showBar, 6000);
   document.addEventListener("click", function(e){
-    if (e.target.closest("[data-mark]")) setTimeout(showBar, 900);
+    // 「♡ ほしい」を押したとき（はじめての訪問でも）、保存した予定をすぐ見られることと結びつけて1回だけ案内する
+    var mk = e.target.closest("[data-mark]");
+    if (mk) {
+      var card = mk.closest(".card"), mid = card && card.getAttribute("data-id"), tries = 0;
+      // 「追加しました♡」の案内（トースト）が出ている間は待ってから出す（重ならないように）
+      var wait = function(){
+        var t = document.getElementById("toast");
+        if (t && !t.hidden && tries++ < 16) return setTimeout(wait, 500);
+        var want = false;
+        try { want = !!mid && (JSON.parse(localStorage.getItem("chiikatsu-mine") || "{}") || {})[mid] === "want"; } catch (err) {}
+        showBar(want ? "want" : "");
+      };
+      setTimeout(wait, 900);
+    }
+    if (e.target.closest("[data-intro-add]")) ct("ins:intro");
     if (e.target.closest("[data-ins-hide]")){ st.topOff = true; save(st); document.documentElement.classList.add("ins-off"); return; }
     var b = e.target.closest("[data-install]");
     if (b){ e.preventDefault(); openSheet(); }
@@ -351,6 +367,9 @@
   }
   document.addEventListener("click", function(e){ var b = e.target.closest("[data-tip]"); if (b){ e.preventDefault(); tipOpen(b); } });
   document.addEventListener("keydown", function(e){ if (e.key === "Escape") tipClose(); });
+
+  // 「はじめての方へ」のボタン：X・LINE・インスタなどのアプリの中で開いているときは、先にSafari（ブラウザ）で開く必要があることを伝える
+  try { var ib = document.querySelector("[data-intro-add]"); if (ib && inApp) ib.textContent = (isIOS ? "Safari" : "ブラウザ") + "で開いて、ホーム画面に追加する ›"; } catch (e) {}
 
   window.chiikatsuInstall = { open: openSheet };
 })();

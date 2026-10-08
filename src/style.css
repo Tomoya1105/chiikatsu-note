@@ -688,3 +688,6 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .tipnote{margin:8px 0 0;font-size:12px;line-height:1.6;color:var(--ink-3)}
 .tipform .ins-btn{margin-top:14px}
 .tipmsg{min-height:1.4em;margin:8px 0 0;font-size:12.5px;color:var(--acc);text-align:center}
+/* 「はじめての方へ」の中の、ホーム画面に追加する方法のボタン */
+.introbtn{display:inline-block;margin:6px 0 0;padding:6px 12px;border:1px solid var(--acc);border-radius:999px;background:var(--surface);color:var(--acc);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.is-app .introbtn{display:none}
