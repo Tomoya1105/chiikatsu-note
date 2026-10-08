@@ -1486,10 +1486,10 @@
   "area": "",
   "price": "",
   "q": "",
-  "note": "ちいかわ＆ハチワレ、うさぎ＆モモンガのコンビ全2種をランダムで1人1つ配布。",
+  "note": "ちいかわ＆ハチワレ、うさぎ＆モモンガのコンビ全2種をランダムで1人1つ配布。数量限定のため早めに終わる見込み。早く終わった第3弾・第4弾・第6弾は年内にリバイバル配布が決定（日程は後日発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-09",
   "id": "20261010-tokuten6",
   "t": "映画ちいかわ 入場者特典 第6弾「チャームミニフィギュア」",
   "cat": "event",
@@ -1497,7 +1497,10 @@
   "place": "『映画ちいかわ 人魚の島のひみつ』上映館",
   "src": "https://chiikawa.toho-movie.jp/specialitem.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-09",
+  "srcs": [
+   "https://anime.eiga.com/news/127611/"
+  ]
  },
  {
   "region": "jp",
@@ -2142,5 +2145,54 @@
   "autoAdded": true,
   "addedAt": "2026-10-06",
   "updatedAt": "2026-10-06"
+ },
+ {
+  "id": "20261007-shimamura-calendar",
+  "region": "jp",
+  "t": "しまむらパーク ちいかわ 2027年カレンダー（卓上2種・壁掛け1種）",
+  "cat": "book",
+  "s": "2026-10-07",
+  "sp": "day",
+  "e": null,
+  "time": "12:00〜",
+  "eNote": "",
+  "place": "しまむらパーク（しまむらのオンラインストア）",
+  "area": "",
+  "price": "卓上（2か月）・卓上（メッセージ）各1,045円、壁掛け（クラフト紙風）1,870円",
+  "q": "",
+  "qNone": "しまむらのオンラインストア限定の商品で、楽天では同じ商品と言い切れない",
+  "src": "https://www.inside-games.jp/article/2026/10/07/188866.html",
+  "srcType": "news",
+  "srcs": [
+   "https://www.shop-shimamura.com/disp/itemlist/?popular_tag=%E3%81%A1%E3%81%84%E3%81%8B%E3%82%8F&b=chambre"
+  ],
+  "verifiedAt": "2026-10-09",
+  "note": "しまむらグループのシャンブルの商品。",
+  "autoAdded": true,
+  "addedAt": "2026-10-09",
+  "updatedAt": "2026-10-09"
+ },
+ {
+  "id": "20270401-ichiban-yuenchi",
+  "region": "jp",
+  "t": "一番くじ ちいかわ ～みんなで遊園地～",
+  "cat": "kuji",
+  "s": "2027-04-01",
+  "sp": "month",
+  "e": null,
+  "time": "",
+  "eNote": "なくなり次第終了",
+  "place": "全国のコンビニ・書店・ホビーショップなどの一番くじ取扱店",
+  "area": "",
+  "price": "1回795円",
+  "q": "",
+  "qNone": "くじ（店頭販売）",
+  "src": "https://1kuji.com/products/chiikawa5",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-09",
+  "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
+  "autoAdded": true,
+  "addedAt": "2026-10-09",
+  "updatedAt": "2026-10-09"
  }
 ]
