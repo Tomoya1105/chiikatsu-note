@@ -85,7 +85,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04",
+  "verifiedAt": "2026-10-09",
   "xpost": "https://x.com/chiikawa_kouhou/status/2064548449224413331",
   "xpostNote": "投稿日2026-06-10。本文に「東海道新幹線『ツツウラウラ旅』開催期間：7月8日〜10月31日」"
  },
@@ -107,7 +107,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04",
+  "verifiedAt": "2026-10-09",
   "xpost": "https://x.com/chiikawa_kouhou/status/2056622381393965225",
   "xpostNote": "投稿日2026-05-19。本文に「東京スカイツリーにてイベント開催決定」「ちいかわ☆星ふるスカイツリー®とひみつの島」"
  },
@@ -128,7 +128,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04",
+  "verifiedAt": "2026-10-09",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000001491.000020053.html"
   ]
@@ -170,7 +170,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-04",
+  "verifiedAt": "2026-10-09",
   "org": {
    "name": "株式会社エルティーアール（ちいかわベーカリー運営）",
    "url": "https://chiikawabakery.jp/",
@@ -213,7 +213,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04",
+  "verifiedAt": "2026-10-09",
   "srcs": [
    "https://www.sunflower.co.jp/information/event/20260806.html"
   ]
@@ -299,7 +299,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-09"
  },
  {
   "id": "20260908-pus-centrair",
@@ -387,7 +387,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04",
+  "verifiedAt": "2026-10-09",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ"
  },
  {
@@ -1054,18 +1054,18 @@
   "cat": "book",
   "e": null,
   "eNote": "",
-  "note": "",
+  "note": "ページから飛び出すポップアップ絵本（A4変型・12ページ）。",
   "place": "全国の書店、通販",
-  "price": "",
+  "price": "2,200円",
   "q": "とびだす アニメちいかわ",
-  "s": "2026-10-16",
+  "s": "2026-10-19",
   "sp": "day",
-  "src": "https://x.com/chiikawa_kouhou",
+  "src": "https://www.kodansha.co.jp/book/products/0000428734",
   "t": "しかけ絵本『とびだす アニメちいかわ』",
   "time": "",
-  "updatedAt": "2026-09-27",
-  "srcType": "official",
-  "verifiedAt": "2026-10-05",
+  "updatedAt": "2026-10-09",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-09",
   "srcs": [
    "https://animeanime.jp/article/2026/08/25/102345.html"
   ]
@@ -1359,7 +1359,7 @@
   "addedAt": "2026-10-03",
   "updatedAt": "2026-10-03",
   "srcType": "partner",
-  "verifiedAt": "2026-10-03"
+  "verifiedAt": "2026-10-09"
  },
  {
   "id": "20261003-chiipla",
@@ -2191,6 +2191,112 @@
   "srcType": "partner",
   "verifiedAt": "2026-10-09",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
+  "autoAdded": true,
+  "addedAt": "2026-10-09",
+  "updatedAt": "2026-10-09"
+ },
+ {
+  "id": "20261124-xmas-market",
+  "region": "jp",
+  "t": "ちいかわクリスマスマーケット",
+  "cat": "event",
+  "s": "2026-11-24",
+  "sp": "day",
+  "e": "2026-12-25",
+  "time": "11:00〜21:00（最終入場枠 18:30〜19:00）",
+  "eNote": "日時指定チケット制（先行抽選の申込は10/25まで）",
+  "place": "豊砂公園（イオンモール幕張新都心前）（千葉県千葉市美浜区）",
+  "area": "幕張",
+  "price": "大人 平日2,500円・土日祝2,800円／子ども（4〜11歳）平日1,200円・土日祝1,400円",
+  "q": "",
+  "src": "https://contents-abema.com/chiikawa-christmas-market/",
+  "srcType": "partner",
+  "srcs": [
+   "https://prtimes.jp/main/html/rd/p/000004081.000064643.html"
+  ],
+  "verifiedAt": "2026-10-09",
+  "dl": [
+   {
+    "k": "抽選",
+    "n": "入場チケット 先行抽選（アソビュー！）の申込締切",
+    "until": "2026-10-25T23:59",
+    "u": "https://www.asoview.com/base/165182/"
+   }
+  ],
+  "org": {
+   "name": "株式会社AbemaTV",
+   "url": "https://contents-abema.com/chiikawa-christmas-market/",
+   "src": "https://prtimes.jp/main/html/rd/p/000004081.000064643.html"
+  },
+  "note": "約6,000㎡の会場に高さ約6mのツリーや限定フード・限定グッズ。先行抽選の当落発表は10/30(金)12:00以降。チケット1枚につきガチャガチャ1回無料。",
+  "autoAdded": true,
+  "addedAt": "2026-10-09",
+  "updatedAt": "2026-10-09"
+ },
+ {
+  "id": "20261014-amazon-kids-tablet",
+  "region": "jp",
+  "t": "Amazon キッズ タブレット ちいかわ エディション（8・11インチ）",
+  "cat": "goods",
+  "s": "2026-10-14",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "Amazon.co.jp",
+  "area": "",
+  "price": "8インチ 41,980円／11インチ 56,980円",
+  "q": "",
+  "qNone": "Amazonで販売される端末で、楽天で同じ商品を特定できない",
+  "src": "https://www.aboutamazon.jp/news/devices/androidos-amazon-kids-tablet-series",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-09",
+  "note": "6歳以上向けモデルの日本限定版で、専用カバーがちいかわ。10/8から予約受付中、10/14出荷開始予定（変更の可能性あり）。",
+  "autoAdded": true,
+  "addedAt": "2026-10-09",
+  "updatedAt": "2026-10-09"
+ },
+ {
+  "id": "20261009-puku-churu3",
+  "region": "jp",
+  "t": "プライズ ちいかわ PUKU CHURU seal③",
+  "cat": "goods",
+  "s": "2026-10-09",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のアミューズメント施設・オンラインクレーンゲーム（プライズ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（ゲームセンターの景品）",
+  "src": "https://www.parade-inc.net/products/p261023",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-09",
+  "note": "全7種。10/9から順次展開。",
+  "autoAdded": true,
+  "addedAt": "2026-10-09",
+  "updatedAt": "2026-10-09"
+ },
+ {
+  "id": "20261026-charapaki",
+  "region": "jp",
+  "t": "ちいかわ キャラパキ チョコレート（大袋）",
+  "cat": "food",
+  "s": "2026-10-26",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国の量販店の菓子売場など",
+  "area": "",
+  "price": "397円（税込）",
+  "q": "ちいかわ キャラパキ チョコレート 大袋",
+  "src": "https://www.bandai.co.jp/candy/products/2026/4570117929205000.html",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-09",
+  "note": "9袋入り（ホワイトチョコ・いちごチョコの2種の味）。チョコのキャラは20種。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
   "updatedAt": "2026-10-09"

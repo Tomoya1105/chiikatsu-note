@@ -1,5 +1,38 @@
 [
  {
+  "id": "20261009-xmas-market",
+  "date": "2026-10-09",
+  "tag": "event",
+  "title": "幕張でちいかわのクリスマスマーケット開催へ",
+  "sum": "11/24〜12/25に豊砂公園（イオンモール幕張新都心前）で開催。高さ約6mのツリーや限定フード・グッズが並び、入場チケットの先行抽選は10/15〜10/25に受け付け。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000004081.000064643.html",
+  "itemId": "20261124-xmas-market",
+  "addedAt": "2026-10-09"
+ },
+ {
+  "id": "20261008-amazon-kids-tablet",
+  "date": "2026-10-08",
+  "tag": "goods",
+  "title": "Amazonキッズタブレットにちいかわ版が登場",
+  "sum": "8インチと11インチの「ちいかわ エディション」が日本限定で予約開始。10/14から出荷予定で、Amazon Kids+にはちいかわの動画・本が200作品以上追加された。",
+  "source": "Amazon（aboutamazon.jp）",
+  "src": "https://www.aboutamazon.jp/news/devices/androidos-amazon-kids-tablet-series",
+  "itemId": "20261014-amazon-kids-tablet",
+  "addedAt": "2026-10-09"
+ },
+ {
+  "id": "20261008-puku-churu3",
+  "date": "2026-10-08",
+  "tag": "goods",
+  "title": "ぷっくりシール「PUKU CHURU」第3弾がプライズに",
+  "sum": "パレードのプライズ「ちいかわ PUKU CHURU seal③」全7種が10/9から全国のゲームセンターやオンラインクレーンで順次登場。",
+  "source": "アニメ！アニメ！",
+  "src": "https://animeanime.jp/article/2026/10/08/103627.html",
+  "itemId": "20261009-puku-churu3",
+  "addedAt": "2026-10-09"
+ },
+ {
   "id": "20261008-1009-newgoods",
   "date": "2026-10-08",
   "tag": "goods",
