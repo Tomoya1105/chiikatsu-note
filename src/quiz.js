@@ -166,7 +166,7 @@
     fetch("/api/quiz/submit", { method: "POST", headers: { "content-type": "application/json" }, keepalive: true, signal: ctl ? ctl.signal : undefined,
       body: JSON.stringify({ ver: res.ver, id: res.id, dev: me.dev, picks: res.picks, dur: res.dur }) })
       .then(function(r){ return r.ok ? r.json() : null; })
-      .then(function(j){ clearTimeout(timer); res.sent = true; res.stats = j && j.stats || null; jset(sessionStorage, SR, res); paintStats(res.stats, res); })
+      .then(function(j){ clearTimeout(timer); res.sent = true; res.stats = j && j.stats || null; res.reached = !!(j && j.ok); jset(sessionStorage, SR, res); paintStats(res.stats, res); })
       .catch(function(){ clearTimeout(timer); paintStats(null, res); });
     if (stEl) stEl.innerHTML = '<p class="qz-muted">みんなの成績を読み込み中…</p>';
   }
@@ -174,6 +174,7 @@
   function paintStats(s, res){
     var el = document.getElementById("qzStats"); if (!el) return;
     if (res && res.demo) { el.innerHTML = '<p class="qz-muted">プレビュー用の表示のため、みんなの成績は表示しません。</p>'; return; }
+    if (!s && res && res.reached) { el.innerHTML = '<p class="qz-muted">みんなの成績は、いま準備中です。少し時間をおいて、また挑戦してみてください。</p>'; return; }
     if (!s) { el.innerHTML = '<p class="qz-muted">みんなの平均点は、いまは表示できません。通信できる状態で、あとでもう一度お試しください。</p>'; return; }
     if (!s.show) { el.innerHTML = '<p class="qz-muted">みんなの平均点と順位は、初回の挑戦が' + STATS_MIN + '回集まったら表示します。いまは集計中です。</p>'; return; }
     el.innerHTML = '<div class="qz-st"><div><span>みんなの平均</span><b class="num">' + s.avg + '<small>点</small></b></div>' +
