@@ -153,5 +153,42 @@ ${order.map(g => { const ps = areaPages.filter(p => p.group === g).sort((a, b) =
     write("area/index.html", page({ title: "地域別 ちいかわPOP UP・イベント・カフェ情報｜ちい活ノート", desc: "東京・大阪・名古屋・福岡など、都道府県ごと・海外の国ごとに、ちいかわPOP UP STOREとイベントの開催情報をまとめました。", url: "/area/", body, head: crumbs(trail) }));
     urls.push("/area/");
   }
+  // ---------- ちいかわグッズまとめ（「ちいかわ グッズ まとめ」で探す人の入口。毎回のビルドで最新に） ----------
+  {
+    const url = "/goods/";
+    // ビルドは日本時間の朝・昼・夜に動くので、日付は日本時間で数える
+    const NOWJ = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 16), TODAY = NOWJ.slice(0, 10);
+    const addD = (d, n) => new Date(Date.parse(d + "T00:00:00Z") + n * 864e5).toISOString().slice(0, 10);
+    const in7 = addD(TODAY, 7), nextM = (() => { const [y, mo] = thisMonth.split("-").map(Number); return mo === 12 ? `${y + 1}-01` : `${y}-${String(mo + 1).padStart(2, "0")}`; })();
+    const jpGoods = live.filter(it => !isEvent(it) && (it.region || "jp") === "jp");
+    const rsvOpen = jpGoods.filter(it => it.rsv && it.re && (it.re.length > 10 ? it.re > NOWJ : it.re >= TODAY) && it.eNote !== "完売").sort((a, b) => (a.re || "").localeCompare(b.re || ""));
+    const notRsv = it => !rsvOpen.includes(it);
+    const week = jpGoods.filter(it => notRsv(it) && it.s >= TODAY && it.s <= in7);
+    const month = jpGoods.filter(it => notRsv(it) && it.s > in7 && monthOf(it) === thisMonth);
+    const next = jpGoods.filter(it => notRsv(it) && monthOf(it) === nextM);
+    const recent = jpGoods.filter(it => notRsv(it) && it.s < TODAY && it.s >= addD(TODAY, -14) && !(endOf(it) && endOf(it) < TODAY)).reverse().slice(0, 8);
+    const CATS = [["goods", "グッズ"], ["food", "お菓子・食品"], ["kuji", "くじ"], ["book", "本・カレンダー"]];
+    const byCat = (arr) => CATS.map(([k, l]) => { const a = arr.filter(it => it.cat === k); return a.length ? `<h3>${l}（${a.length}件）</h3>${list(a, { buy: true })}` : ""; }).join("");
+    const sec = (h, arr, split) => arr.length ? `<h2>${h}（${arr.length}件）</h2>${split ? byCat(arr) : list(arr, { buy: true })}` : "";
+    const [, mo] = thisMonth.split("-").map(Number), nmo = Number(nextM.slice(5));
+    const body = wrap([["ちい活ノート", "/"], ["ちいかわグッズまとめ", url]], `<h1>ちいかわグッズまとめ（最新の発売日・予約）</h1>
+<p class="lead">ちいかわの新しいグッズ・お菓子・くじ・本を、予約中・今週・今月・来月に分けてまとめています。公式の発表をもとに毎日自動で更新しています（${md(TODAY)}更新）。</p>
+<p class="credit">発売日や販売店は変わることがあります。購入の前に、各ページの公式情報をご確認ください。</p>
+${sec("予約・受注を受付中", rsvOpen)}
+${sec("今週発売", week)}
+${sec(`${mo}月にこれから発売`, month, true)}
+${sec(`${nmo}月に発売`, next, true)}
+${sec("最近発売されたもの", recent)}${recent.length >= 8 ? `<p><a href="/month/${thisMonth}/">今月発売のものをすべて見る →</a></p>` : ""}
+${TIPBOX("グッズまとめ")}
+<p style="margin-top:18px"><a class="btn" href="/month/${thisMonth}/">今月の発売日カレンダー</a> <a class="btn" href="/area/">POP UP・イベントを地域で探す</a></p>`);
+    const n = rsvOpen.length + week.length + month.length + next.length;
+    write("goods/index.html", page({
+      title: "ちいかわグッズまとめ【最新】今週・今月の新商品・発売日・予約一覧｜ちい活ノート",
+      desc: `ちいかわの新商品グッズ・お菓子・くじ・本の発売日と予約をまとめた一覧。予約受付中${rsvOpen.length}件、今週発売${week.length}件。どこで買えるか・価格も、公式の発表をもとに毎日更新しています。`,
+      url, body, head: crumbs([["ちい活ノート", "/"], ["ちいかわグッズまとめ", url]]) + itemList([...rsvOpen, ...week, ...month, ...next]),
+      ogImage: og("goods", { label: "グッズまとめ", title: "ちいかわグッズまとめ【最新】", when: n ? `予約・発売予定 ${n}件` : "発売日と予約の一覧", sub: "予約中・今週・今月・来月の新商品を、毎日更新", accent: "#E27496" }),
+    }));
+    urls.push(url);
+  }
   return { urls };
 }
