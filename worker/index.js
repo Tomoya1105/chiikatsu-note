@@ -139,7 +139,8 @@ export async function relayInfo(env, fetcher = fetch, now = Date.now()) {
 // ・PR TIMES（企業の公式発表）に「ちいかわ」の新しいリリースが出たら → サイトの「速報」に公式の見出しのまま出し、希望者に通知
 // ・ちいかわマーケットに予約以外の新商品がまとめて出たら → 「速報」に出す
 // ・ニュースサイトのRSS・Bingニュース・ちいかわインフォの新しい案内 → 運営者に知らせ、自動更新が次の回で最優先に確かめる（サイトにはまだ出さない）
-const CHII = /ちいかわ|チイカワ|chiikawa|ハチワレ|ナガノ/i;
+// 「ナガノ」だけで拾うと、長野県の催し（ナガノアニエラフェスタ等）やパチンコの記事まで入ったため、作品名・キャラ名だけにする（2026-10-09）
+export const CHII = /ちいかわ|チイカワ|chiikawa|ハチワレ|吉伊卡哇|치이카와/i;
 const FEEDS = [
   { key: "prtimes", name: "PR TIMES", url: "https://prtimes.jp/index.rdf", official: true },
   // Yahoo!ニュースに記事を配信している主なメディアの公式RSS（Yahoo!ニュース自体は自動での読み取りを認めていないため、元のメディアを直接見る）

@@ -90,6 +90,12 @@ for (let i = 0; i < live.length; i++) for (let j = i + 1; j < live.length; j++) 
   const t = sim(norm(a.t), norm(b.t));
   if ((a.s === b.s && t >= 0.5) || (overlap && t >= 0.8)) warns.push(`重複のうたがい: ${a.id}「${a.t}」と ${b.id}「${b.t}」`);
 }
+// 見張り役のニュース判定：ちいかわと関係のない記事（「ナガノ」を含むだけのものなど）を拾わない
+{
+  const { CHII } = await import("../worker/index.js");
+  for (const t of ["無料パチンコ・パチスロアプリ『777Real』「ナガノアニエラフェスタ2026」出展レポート", "長野県ナガノの観光キャンペーン"]) if (CHII.test(t)) errs.push("ニュース判定がちいかわと関係のない記事を拾う: " + t);
+  for (const t of ["ちいかわの新グッズ", "ハチワレのぬいぐるみ", "Chiikawa POP UP", "吉伊卡哇 快閃店"]) if (!CHII.test(t)) errs.push("ニュース判定がちいかわの記事を拾えない: " + t);
+}
 if (warns.length) console.log("注意（止めはしません）:\n- " + warns.join("\n- "));
 if (errs.length) { console.error("チェックNG:\n- " + errs.join("\n- ")); process.exit(1); }
 console.log(`チェックOK（${items.length}件）`);
