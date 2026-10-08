@@ -30,6 +30,9 @@ await t("確定仕様の正解と一致（主要な問題）", () => {
   assert.equal(A[1], "なんか小さくてかわいいやつ");
   assert.equal(A[3], "ホットケーキ");
   assert.equal(A[13], "耳がレインコートを突き破って飛び出した");
+  assert.deepEqual(QUESTIONS[12].choices.slice(1).map(c => c.text), ["耳がフードの中にすっぽり収まった", "耳の形に合わせてフードが伸びた", "耳がきつくて、着るのをあきらめた"], "Q13の誤答（2026-10-08修正）");
+  assert.equal(QUESTIONS[12].q, "ポシェットの鎧さんの新作レインコート。うさぎが着ると、耳の部分はどうなった？");
+  assert.ok(QUESTIONS[12].ex.startsWith("鎧さんに耳のきつさを聞かれ"));
   assert.equal(A[14], "ヴェポラッブ（VapoRub）");
   assert.equal(A[18], "ケチャップとからし");
   assert.equal(A[19], "紫");
@@ -115,8 +118,9 @@ await t("平均と上位％（同点・100件のしきい値）", () => {
 });
 
 // ---- 受験記録API（D1は sqlite で代用）
-const post = async (env, body) => {
-  const r = await submit.onRequestPost({ request: new Request("http://x/api/quiz/submit", { method: "POST", body: JSON.stringify(body) }), env });
+const post = async (env, body, { url = "https://quiz.chiikatsu-note.pages.dev/api/quiz/submit", origin } = {}) => {
+  const o = origin === undefined ? new URL(url).origin : origin;
+  const r = await submit.onRequestPost({ request: new Request(url, { method: "POST", body: JSON.stringify(body), headers: o ? { origin: o } : {} }), env });
   return { status: r.status, j: await r.json() };
 };
 const id = () => "t" + Math.random().toString(16).slice(2, 12) + "-" + Math.random().toString(16).slice(2, 12);
@@ -144,6 +148,35 @@ await t("速すぎる受験は保存するが集計に入れない／形の崩�
   assert.equal((await post(env, { ver: QUIZ_VER + 1, id: id(), dev: id(), picks, dur: 99 })).status, 409);
   assert.equal((await post(env, { ver: QUIZ_VER, id: "x", dev: id(), picks, dur: 99 })).status, 400);
   assert.equal((await post(env, { ver: QUIZ_VER, id: id(), dev: id(), picks: picks.slice(2), dur: 99 })).status, 400);
+});
+await t("大量送信への備え：送信元・本番と確認用の分離・端末ごと／1日の上限", async () => {
+  const picks = QUESTIONS.map(q => q.ans), body = () => ({ ver: QUIZ_VER, id: id(), dev: id(), picks, dur: 90 });
+  // 送信元
+  assert.equal((await post({ QUIZDB: makeD1() }, body(), { origin: "https://evil.example" })).status, 403);
+  assert.equal((await post({ QUIZDB: makeD1() }, body(), { origin: "" })).status, 403);
+  assert.equal(submit.originOk("https://chiikatsunote.com"), true);
+  assert.equal(submit.originOk("https://quiz.chiikatsu-note.pages.dev"), true);
+  assert.equal(submit.originOk("https://chiikatsu-note.pages.dev.evil.com"), false);
+  // 本番用DBには本番ドメインからだけ、確認用DBにはプレビューからだけ保存する
+  let r = await post({ QUIZDB: makeD1("production") }, body());
+  assert.equal(r.j.saved, false); assert.equal(r.j.skip, "env"); assert.equal(r.j.score, 100);
+  r = await post({ QUIZDB: makeD1("production") }, body(), { url: "https://chiikatsunote.com/api/quiz/submit" });
+  assert.equal(r.j.saved, true);
+  r = await post({ QUIZDB: makeD1("preview") }, body(), { url: "https://chiikatsunote.com/api/quiz/submit" });
+  assert.equal(r.j.saved, false, "確認用DBに本番の受験を入れない");
+  r = await post({ QUIZDB: makeD1(null) }, body());
+  assert.equal(r.j.saved, false, "印のないDBには書かない");
+  // 同じ端末は1日 DEV_DAY_MAX 回まで
+  const env = { QUIZDB: makeD1() }, dev = id();
+  for (let k = 0; k < submit.DEV_DAY_MAX; k++) assert.equal((await post(env, { ...body(), dev })).j.saved, true);
+  r = await post(env, { ...body(), dev });
+  assert.equal(r.j.saved, false); assert.equal(r.j.skip, "dev_max"); assert.equal(r.j.score, 100);
+  // 1日の上限に達したら保存しない（点数とみんなの成績は返す）
+  const day = Number(new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10).replace(/-/g, ""));
+  env.QUIZDB.raw.prepare("UPDATE hist SET n = ? WHERE ver = 0 AND kind = 'd' AND score = ?").run(submit.DAY_MAX, day);
+  r = await post(env, body());
+  assert.equal(r.j.saved, false); assert.equal(r.j.skip, "day_max"); assert.ok(r.j.stats);
+  assert.ok(submit.DAY_MAX * 5 <= 50000, "1日の書き込みはD1無料枠（10万行）の半分以下");
 });
 await t("100件たまると平均と上位％を返す", async () => {
   const env = { QUIZDB: makeD1() };
@@ -178,6 +211,15 @@ await t("検定ページ・結果ページ21枚・共有画像22枚", () => {
     assert.ok(fs.statSync(`dist/og/quiz/${s}.png`).size > 10000);
   }
   assert.ok(fs.readFileSync("dist/sitemap.xml", "utf8").includes("/quiz/</loc>"));
+  for (const f of ["dist/quiz/index.html", "dist/quiz/r/85/index.html"]) {
+    const h = fs.readFileSync(f, "utf8");
+    assert.ok(h.indexOf('location.replace("/?from=homescreen")') > 0 && h.indexOf('location.replace("/?from=homescreen")') < h.indexOf("</head>"), "ホーム画面から開いたらトップへ：" + f);
+  }
+  assert.ok(fs.readFileSync("dist/install.js", "utf8").includes('sessionStorage.setItem("chiikatsu-launched"'));
+  const js = fs.readFileSync("dist/quiz/quiz.js", "utf8");
+  assert.ok(js.includes('location.hostname === "chiikatsunote.com" ? "https://chiikatsunote.com" : location.origin'), "プレビューの共有URLは本番に飛ばない");
+  const mf = JSON.parse(fs.readFileSync("dist/manifest.webmanifest", "utf8"));
+  assert.equal(mf.start_url, "/?from=homescreen"); assert.equal(mf.scope, "/");
   assert.ok(!fs.readFileSync("dist/sitemap.xml", "utf8").includes("/quiz/r/"));
 });
 await t("検定のスクリプトが文法どおり・問題データを含む", () => {
@@ -192,7 +234,7 @@ await t("_routes.json：上限内・API と通常ページは Functions を通�
   assert.ok(r.include.length >= 1 && r.include.length + r.exclude.length <= 100);
   for (const x of [...r.include, ...r.exclude]) assert.ok(x.length <= 100 && x.startsWith("/"));
   const excluded = p => r.exclude.some(x => x.endsWith("/*") ? p.startsWith(x.slice(0, -1)) : p === x);
-  for (const p of ["/api/hit", "/api/quiz/submit", "/api/report", "/api/owner", "/", "/items/x/", "/month/", "/area/", "/about/", "/owner/", "/contact/"]) assert.ok(!excluded(p), "Functions が必要：" + p);
+  for (const p of ["/api/hit", "/api/quiz/submit", "/api/report", "/api/owner", "/", "/items/x/", "/month/", "/area/", "/about/", "/owner/", "/contact/", "/quiz/", "/quiz/r/85/"]) assert.ok(!excluded(p), "Functions が必要：" + p);
   for (const p of ["/style.css", "/app.js", "/install.js", "/og/home.png", "/icons/icon-192.png", "/quiz/quiz.js"]) assert.ok(excluded(p), p);
   for (const x of r.exclude) { const f = "dist" + (x.endsWith("/*") ? x.slice(0, -2) : x); assert.ok(fs.existsSync(f), "存在しない除外先 " + x); }
 });

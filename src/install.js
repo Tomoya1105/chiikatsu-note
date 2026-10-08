@@ -21,6 +21,7 @@
     window.addEventListener("load", function(){ navigator.serviceWorker.register("/sw.js").catch(function(){}); });
   }
 
+  try { sessionStorage.setItem("chiikatsu-launched", "1"); } catch (e) {}   // この起動中にページを開いた印（検定ページがホーム画面から直接開かれたかの判定に使う）
   if (standalone) {
     st.installed = true; save(st);
     document.documentElement.classList.add("is-app");

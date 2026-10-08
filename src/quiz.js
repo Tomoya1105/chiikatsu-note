@@ -2,7 +2,8 @@
    回答中は通信しない。終わったときに1回だけ結果を送り、みんなの成績を受け取る（送れなくても結果は表示する）。 */
 (function(){
   "use strict";
-  var SITE = "https://chiikatsunote.com";
+  // 共有するURL：本番では chiikatsunote.com、プレビューではそのプレビューのURL（確認中に本番へ飛ばないように）
+  var SITE = location.hostname === "chiikatsunote.com" ? "https://chiikatsunote.com" : location.origin;
   var LS = "chiikatsu-quiz", SS = "chiikatsu-quiz-run", SR = "chiikatsu-quiz-res";
   var root = document.getElementById("qz");
   if (!root) return;

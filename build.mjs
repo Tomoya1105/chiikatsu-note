@@ -369,8 +369,8 @@ const quizUrls = buildQuiz({ page, write, esc, SITE, BRAND, BUILD, OUT, ogOk });
 const urls = ["/", ...seo.urls, ...quizUrls, "/official/", "/about/", "/contact/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 // Functions（サーバー側の処理）を通すURLを絞る。静的ファイルは Functions を通さず配信（無料・無制限）。
-// ページ本体（HTML）と /api/ は今までどおり通す（.pages.dev からの転送とAPIのため）。
-write("_routes.json", JSON.stringify({ version: 1, include: ["/*"], exclude: ["/og/*", "/icons/*", "/quiz/*", "/app.js", "/install.js", "/style.css", "/sw.js", "/manifest.webmanifest", "/camps.json", "/push-items.json", "/visuals.json", "/robots.txt", "/sitemap.xml"] }, null, 1));
+// ページ本体（HTML、検定ページも含む）と /api/ は今までどおり通す（.pages.dev・www からの転送とAPIのため）。
+write("_routes.json", JSON.stringify({ version: 1, include: ["/*"], exclude: ["/og/*", "/icons/*", "/quiz/quiz.js", "/quiz/quiz.css", "/app.js", "/install.js", "/style.css", "/sw.js", "/manifest.webmanifest", "/camps.json", "/push-items.json", "/visuals.json", "/robots.txt", "/sitemap.xml"] }, null, 1));
 write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /owner/\nSitemap: ${SITE}/sitemap.xml\n`);
 
 console.log(`built ${items.length} items → ${OUT}/`);

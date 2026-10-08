@@ -15,7 +15,7 @@ http.createServer(async (req, res) => {
     if (u.pathname === "/api/hit") { hits.push(JSON.parse(body || "{}")); res.writeHead(204); return res.end(); }
     if (u.pathname === "/api/_hits") { res.writeHead(200, { "content-type": "application/json" }); return res.end(JSON.stringify(hits)); }
     if (u.pathname === "/api/quiz/submit") {
-      const r = await submit.onRequestPost({ request: new Request("http://localhost" + req.url, { method: "POST", body }), env });
+      const r = await submit.onRequestPost({ request: new Request("http://localhost" + req.url, { method: "POST", body, headers: { origin: req.headers.origin || "" } }), env });
       res.writeHead(r.status, { "content-type": "application/json" }); return res.end(await r.text());
     }
     res.writeHead(204); return res.end();

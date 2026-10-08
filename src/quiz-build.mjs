@@ -25,7 +25,10 @@ export function buildQuiz({ page, write, esc, SITE, BRAND, BUILD, OUT, ogOk }) {
     }
   }
 
-  const head = `<link rel="stylesheet" href="/quiz/quiz.css?v=${BUILD}">`;
+  // ホーム画面のアイコンから開いたときは、検定ではなくトップを出す（iPhone は追加したときのページを開くことがあるため）。
+  // サイト内を移動して来たとき（この起動中に一度でもページを開いていれば install.js が印を付ける）は、そのまま検定を出す
+  const LAUNCH = `<script>try{var sa=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone===true;if(sa&&!sessionStorage.getItem("chiikatsu-launched"))location.replace("/?from=homescreen")}catch(e){}</script>`;
+  const head = LAUNCH + `<link rel="stylesheet" href="/quiz/quiz.css?v=${BUILD}">`;
   const foot = `<footer class="qz-foot"><p><a href="/">ちい活ノート</a>・<a href="/about/">運営者について</a>・<a href="/privacy/">プライバシーポリシー</a></p><p>ちい活ノートの非公式クイズです。公式の検定・認定ではありません。<br>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p></footer>`;
   const titleRows = TITLES.slice().reverse().map(t => {
     const pt = t.min === 100 ? "100点" : t.min === 95 ? "95点" : `${t.min}〜${TITLES[TITLES.indexOf(t) - 1].min - 5}点`;

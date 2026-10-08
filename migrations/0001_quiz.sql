@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS attempts (
   dur     INTEGER NOT NULL,   -- かかった秒数
   valid   INTEGER NOT NULL    -- 1＝集計に使う
 );
-CREATE INDEX IF NOT EXISTS idx_attempts_dev ON attempts(dev);
--- 点数の分布。kind：f＝初回の挑戦、a＝すべての挑戦（どちらも集計に使う受験だけ）
+CREATE INDEX IF NOT EXISTS idx_attempts_dev ON attempts(dev, created);
+-- 点数の分布。kind：f＝初回の挑戦、a＝すべての挑戦（どちらも集計に使う受験だけ）。ver=0・kind=d は日ごとの保存数（score に日付 YYYYMMDD）
 CREATE TABLE IF NOT EXISTS hist (
   ver   INTEGER NOT NULL,
   kind  TEXT NOT NULL,
@@ -21,3 +21,5 @@ CREATE TABLE IF NOT EXISTS hist (
   n     INTEGER NOT NULL,
   PRIMARY KEY (ver, kind, score)
 );
+-- このデータベースが本番用か確認用か（作ったあとに、どちらか1行だけを入れる。入れないと記録は保存されない）
+CREATE TABLE IF NOT EXISTS meta (k TEXT PRIMARY KEY, v TEXT NOT NULL);
