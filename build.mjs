@@ -53,7 +53,7 @@ try {
   }
 } catch (e) {}
 const sjisEncode = str => [...str].map(ch => /[A-Za-z0-9\-_.]/.test(ch) ? ch : ch === " " ? "+" : sjis.get(ch) || (ch.charCodeAt(0) < 128 ? "%" + ch.charCodeAt(0).toString(16).toUpperCase().padStart(2, "0") : "")).join("");
-const MOSHIMO_YAHOO = "a_id=5833703&p_id=1225&pc_id=1925&pl_id=18502";   // もしもアフィリエイト（Yahoo!ショッピング）
+const MOSHIMO_YAHOO = "a_id=5838536&p_id=1225&pc_id=1925&pl_id=18502";   // もしもアフィリエイト（Yahoo!ショッピング）。2026-10-09 アカウント作り直しで a_id を 5838536 に変更
 const yahooSearch = q => `https://af.moshimo.com/af/c/click?${MOSHIMO_YAHOO}&url=${encodeURIComponent("https://shopping.yahoo.co.jp/search?p=" + encodeURIComponent(/ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q))}`;
 const aff = u => `https://hb.afl.rakuten.co.jp/hgc/${AFF}/?pc=${encodeURIComponent(u)}`;
 const rakutenSearch = q => aff("https://search.rakuten.co.jp/search/mall/" + encodeURIComponent(/ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q) + "/");

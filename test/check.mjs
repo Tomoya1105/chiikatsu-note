@@ -42,8 +42,8 @@ for (const d of pagesToCheck) {
   }
 }
 // もしもアフィリエイトのリンクは、必ず自分のID（a_id）になっていること
-for (const d of pagesToCheck) for (const m of read(`dist/${d}/index.html`).matchAll(/href="(https:\/\/af\.moshimo\.com[^"]*)"/g)) if (!/a_id=5833703&/.test(m[1].replace(/&amp;/g, "&"))) errs.push(`${d}: もしものIDがちがうリンク ${m[1].slice(0, 80)}`);
-if (!app.includes('a_id: "5833703"')) errs.push("app.js から もしも（Yahoo!）のIDが消えています");
+for (const d of pagesToCheck) for (const m of read(`dist/${d}/index.html`).matchAll(/href="(https:\/\/af\.moshimo\.com[^"]*)"/g)) if (!/a_id=5838536&/.test(m[1].replace(/&amp;/g, "&"))) errs.push(`${d}: もしものIDがちがうリンク ${m[1].slice(0, 80)}`);
+if (!app.includes('a_id: "5838536"')) errs.push("app.js から もしも（Yahoo!）のIDが消えています");
 try { JSON.parse(read("dist/manifest.webmanifest")); } catch (e) { errs.push("manifest.webmanifest が壊れています"); }
 const items = JSON.parse(read("data/items.json"));
 const seen = new Set();

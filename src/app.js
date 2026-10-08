@@ -149,7 +149,7 @@ function rbList(it){
   return L.filter(x => x && /^https:\/\/books\.rakuten\.co\.jp\/rb\/\d+\/?$/.test(x.u||""));
 }
 /* もしもアフィリエイト（Yahoo!ショッピング）。検索結果へのリンクを作る */
-const MOSHIMO = { yahoo: { a_id: "5833703", p_id: "1225", pc_id: "1925", pl_id: "18502" } };
+const MOSHIMO = { yahoo: { a_id: "5838536", p_id: "1225", pc_id: "1925", pl_id: "18502" } };
 function moshimo(kind, url){ const m = MOSHIMO[kind]; return m ? `https://af.moshimo.com/af/c/click?a_id=${m.a_id}&p_id=${m.p_id}&pc_id=${m.pc_id}&pl_id=${m.pl_id}&url=${encodeURIComponent(url)}` : ""; }
 function yahooSearch(q){ if (!/ちいかわ|chiikawa/i.test(q)) q = "ちいかわ "+q; return moshimo("yahoo", "https://shopping.yahoo.co.jp/search?p="+encodeURIComponent(q)); }
 function affLink(u){ return `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(u)}`; }
