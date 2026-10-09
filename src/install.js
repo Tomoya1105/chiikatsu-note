@@ -35,66 +35,150 @@
     say("ホーム画面に追加しました。次からはアイコンから開けます");
   });
 
-  /* ---- かんたんな計測：1回の訪問ぶんをまとめて、ページを離れるときに1回だけ送る ---- */
-  var EV = {}, sent = false;
+  /* ---- かんたんな計測（段階0）：ページごとに回数をまとめ、ページを離れるときに1回だけ送る ----
+     サーバーには「日ごとの合計」しか残らない。端末を見分ける番号は作らず、送らない。
+     訪問＝同じタブで開いている間のひとまとまり（30分何もしなければ次は新しい訪問）。訪問の中で何をしたかの印は、このタブの中（sessionStorage）にだけ持つ。
+     テストモード（運営者・お友達の確認用）の端末は、区分「テスト」として送る（一般の数字に混ざらない）。 */
+  var EV = {};
   function ct(k){ EV[k] = (EV[k] || 0) + 1; }
   window.ct = ct;
-  var path = location.pathname;
-  ct(path === "/" || path === "/index.html" ? "pv:home" : path.indexOf("/items/") === 0 ? "pv:item" : "pv:other");
-  // 送ったら中身を空にして、アプリを開いたまま続けて使った分も次に隠したときに送る（「訪問」として数えるのは最初の1回だけ）
+  var path = location.pathname, now0 = Date.now();
+  var isHomeP = path === "/" || path === "/index.html", isItemP = path.indexOf("/items/") === 0;
+  function jst(ms){ return new Date(ms + 9 * 3600e3).toISOString().slice(0, 10); }
+  function lsGet(k, d){ try { return JSON.parse(localStorage.getItem(k) || "null") || d; } catch (e) { return d; } }
+  function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+  // テストモード：?test=on / ?test=off、運営者メニュー、画面左下の印から切り替える。30日たつと自動でオフ
+  var TKEY = "chiikatsu-test", TEST = lsGet(TKEY, null), qs0 = (isHomeP && window.__chiikatsuOnbQ) || location.search, tmMsg = "";
+  if (TEST && !(TEST.on && now0 - (TEST.at || 0) < 30 * 864e5)) { if (TEST.on) tmMsg = "テストモードを終了しました（30日たったため）"; TEST = null; try { localStorage.removeItem(TKEY); } catch (e) {} }
+  var tq = /[?&]test=(on|off)\b/.exec(qs0);
+  if (tq) {
+    if (tq[1] === "on" && !TEST) { TEST = { on: 1, at: now0 }; lsSet(TKEY, TEST); tmMsg = "この端末をテストモードにしました（数字は「テスト」に入ります）"; }
+    if (tq[1] === "off" && TEST) { TEST = null; try { localStorage.removeItem(TKEY); } catch (e) {} tmMsg = "テストモードを終了しました"; }
+    if (!isHomeP) try { history.replaceState(history.state, "", location.pathname + location.search.replace(/([?&])test=(on|off)&?/, "$1").replace(/[?&]$/, "") + location.hash); } catch (e) {}
+  }
   function flush(){
     if (!Object.keys(EV).length) return;
-    try { if (navigator.sendBeacon("/api/hit", JSON.stringify({ ev: EV, v: sent ? 0 : 1 }))) { EV = {}; sent = true; } } catch (e) {}
+    try { if (navigator.sendBeacon("/api/hit", JSON.stringify({ ev: EV, t: TEST ? 1 : 0 }))) EV = {}; } catch (e) {}
   }
-  /* 1日1回だけ、この端末の様子を数える（個人を特定するものは送らない）：
-     使った端末 / 2日目以降の端末（再訪） / 「ほしい」か♡が1つ以上ある端末と件数 / 通知を許可している端末 */
+
+  // 訪問のひとまとまり（このタブの中だけ）。区分（一般／テスト）が変わったら新しい訪問にする（同じ訪問が両方に入らないように）
+  var VKEY = "chiikatsu-vs", VS = null;
+  function vsSave(){ try { sessionStorage.setItem(VKEY, JSON.stringify(VS)); } catch (e) {} }
+  function newVisit(){
+    VS = { t: Date.now(), s: TEST ? "t" : "g", f: {} };
+    ct("v:new");
+    if (standalone) ct("v:hs");
+    var xin = null; try { xin = sessionStorage.getItem("chiikatsu-xin"); } catch (e) {}
+    if (xin === "1" || (!isHomeP && /[?&]utm_source=(x|twitter)\b/i.test(location.search))) { VS.x = 1; ct("v:x"); }
+    vsSave();
+  }
+  function once(f, k){ if (!VS || VS.f[f]) return; VS.f[f] = 1; ct(k); vsSave(); }
   try {
-    var today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
-    var U = JSON.parse(localStorage.getItem("chiikatsu-u") || "{}") || {};
+    VS = JSON.parse(sessionStorage.getItem(VKEY) || "null");
+    if (!VS || !VS.f || Date.now() - (VS.t || 0) > 30 * 60e3 || VS.s !== (TEST ? "t" : "g")) newVisit();
+    else { VS.t = Date.now(); if (!VS.x && (sessionStorage.getItem("chiikatsu-xin") === "1" || (!isHomeP && /[?&]utm_source=(x|twitter)\b/i.test(location.search)))) { VS.x = 1; ct("v:x"); } vsSave(); }
+    try { if (sessionStorage.getItem("chiikatsu-xin") === "1") sessionStorage.setItem("chiikatsu-xin", "2"); } catch (e) {}
+  } catch (e) { VS = null; }   // 保存できないブラウザでは、訪問の流れは数えない（ページ表示だけ数える）
+  function touch(){ if (VS) { VS.t = Date.now(); vsSave(); } }
+
+  ct(isHomeP ? "pv:home" : isItemP ? "pv:item" : "pv:other");
+  if (isHomeP) once("h", "f:h");
+  if (isItemP) { once("i", "f:i"); if (VS && VS.f.h) once("hi", "f:hi"); if (VS && VS.x) once("xi", "f:xi"); }
+
+  /* 1日1回・1週1回だけ、この端末の様子を数える（数えたかどうかは、この端末の中にだけ覚える）：
+     使った端末 / 前の日以前にも来た端末 / その週に使った端末と、先週も使った端末 / ホーム画面から開いた端末 /
+     「ほしい」か♡が1つ以上ある端末（その日に押した分も含む）/ 通知を許可している端末 */
+  var U = lsGet("chiikatsu-u", {}), today = jst(now0);
+  function weekOf(ms){ var d = new Date(ms + 9 * 3600e3), w = (d.getUTCDay() + 6) % 7; return jst(ms - w * 864e5); }   // その週の月曜（日本時間）
+  function nSaved(){ var m = lsGet("chiikatsu-mine", {}), f = lsGet("chiikatsu-fav", []); return Object.keys(m).filter(function(k){ return m[k] === "want"; }).length + (f.length || 0); }
+  function favCheck(){ if (U.fav !== today && nSaved()) { U.fav = today; ct("u:fav"); lsSet("chiikatsu-u", U); } }
+  try {
     if (U.last !== today) {
       ct("u:dev");
       if (U.first && U.first < today) ct("u:ret");
-      var mineObj = JSON.parse(localStorage.getItem("chiikatsu-mine") || "{}") || {}, favArr = JSON.parse(localStorage.getItem("chiikatsu-fav") || "[]") || [];
-      var nSaved = Object.keys(mineObj).filter(function(k){ return mineObj[k] === "want"; }).length + favArr.length;
-      if (nSaved) { ct("u:fav"); EV["u:saved"] = Math.min(50, nSaved); }
+      var ns = nSaved(); if (ns) EV["u:saved"] = Math.min(50, ns);
       if (window.Notification && Notification.permission === "granted") ct("u:push");
       U.first = U.first || today; U.last = today;
-      localStorage.setItem("chiikatsu-u", JSON.stringify(U));
     }
+    var wk = weekOf(now0);
+    if (U.wk !== wk) { ct("u:wk"); if (U.wk === weekOf(now0 - 7 * 864e5)) ct("u:wkret"); U.wk = wk; }
+    if (standalone && U.app !== today) { U.app = today; ct("u:app"); }
+    lsSet("chiikatsu-u", U);
+    favCheck();
   } catch (e) {}
-  /* Xのリンク（utm_source=x）から来た訪問と、「はじめての方へのご案内」を見たあと「ほしい」を押したか・詳細ページを見たか（各1回だけ） */
-  try {
-    if (sessionStorage.getItem("chiikatsu-xin") === "1") { ct("in:x"); sessionStorage.setItem("chiikatsu-xin", "2"); }
-    if (sessionStorage.getItem("chiikatsu-obs") === "1" && path.indexOf("/items/") === 0 && !sessionStorage.getItem("chiikatsu-obi")) { ct("ob:item"); sessionStorage.setItem("chiikatsu-obi", "1"); }
-  } catch (e) {}
-  document.addEventListener("click", function(e){
-    if (!e.target.closest("[data-mark='want'],[data-nmark]")) return;
-    try { if (sessionStorage.getItem("chiikatsu-obs") === "1" && !sessionStorage.getItem("chiikatsu-obw")) { ct("ob:want"); sessionStorage.setItem("chiikatsu-obw", "1"); } } catch (err) {}
-  }, true);
-  document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") flush(); });
+  // 「はじめての方へのご案内」を見た訪問で、詳細ページを見たか（1回だけ）
+  try { if (sessionStorage.getItem("chiikatsu-obs") === "1" && isItemP && !sessionStorage.getItem("chiikatsu-obi")) { ct("ob:item"); sessionStorage.setItem("chiikatsu-obi", "1"); } } catch (e) {}
+
+  document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") { touch(); flush(); } });
   window.addEventListener("pagehide", flush);
+
+  // 購入先の見分け：公式通販（公式通販の商品ページだと分かるものだけ）／公式の予約ページ／楽天／Yahoo!／Amazon。それ以外の公式リンクは「公式情報」
+  var OFFSHOP = /^https:\/\/(www\.)?chiikawamarket\.jp\/products\//;
+  function destOf(a, h){
+    if (/hb\.afl\.rakuten/.test(h)) return a.classList.contains("trip") ? "o:travel" : "rk";
+    if (/af\.moshimo\.com/.test(h)) return /p_id=1225/.test(h) ? "yh" : "am";
+    if (a.hasAttribute("data-rsv")) return "rsv";
+    if (OFFSHOP.test(h)) return "off";
+    if (a.closest(".ncard")) return "o:news";
+    if (a.hasAttribute("data-fresh")) return "o:fresh";
+    if (a.hasAttribute("data-dl")) return "o:dl";
+    if (/calendar\.google/.test(h)) return "o:gcal";
+    if (a.classList.contains("off") || /公式/.test(a.textContent)) return "o:info";
+    return "";
+  }
+  function placeOf(a){
+    if (isItemP) return "item";
+    if (isHomeP) return a.closest("#view-mine") ? "mine" : a.closest("#view-shop") ? "shop" : "list";
+    return "sum";
+  }
   document.addEventListener("click", function(e){
+    touch();
     var sb = e.target.closest("[data-share]"); if (sb) ct("share:" + sb.getAttribute("data-share"));
+    if (e.target.closest("[data-mark='want'],[data-nmark]")) {
+      once("w", "f:w"); if (VS && VS.x) once("xw", "f:xw");
+      try { if (sessionStorage.getItem("chiikatsu-obs") === "1" && !sessionStorage.getItem("chiikatsu-obw")) { ct("ob:want"); sessionStorage.setItem("chiikatsu-obw", "1"); } } catch (err) {}
+      setTimeout(favCheck, 0);
+    }
     var a = e.target.closest("a[href]"); if (!a) return;
     var h = a.href;
     if (/^https:\/\/line\.me\/R\/share/.test(h)) ct("share:line");
     else if (/^https:\/\/(x|twitter)\.com\/intent\//.test(h) && !sb) ct("share:x");
-    if (/hb\.afl\.rakuten/.test(h)) {
-      if (a.hasAttribute("data-rkhero")) ct(a.dataset.pre ? "c:rkpre" : "c:rk");
-      else if (a.hasAttribute("data-rb")) ct("c:books");
-      else if (a.hasAttribute("data-rkd")) ct(a.dataset.hit ? (a.dataset.pre ? "c:rkpre" : "c:rk") : "c:rksearch");
-      else if (a.classList.contains("trip")) ct("c:travel");
-      else if (a.classList.contains("prod")) ct("c:shop");
-      else if (a.closest("[data-rk]") || a.closest("[data-pimg]")) ct(a.dataset.pre ? "c:rkpre" : "c:rk");
-      else ct("c:rksearch");
-    } else if (/af\.moshimo\.com/.test(h)) ct(/p_id=1225/.test(h) ? "c:yahoo" : "c:amazon");
-    else if (a.hasAttribute("data-rsv")) ct("c:rsv");
-    else if (a.closest(".ncard")) ct("c:news");
-    else if (a.hasAttribute("data-fresh")) ct("c:fresh");
-    else if (/calendar\.google/.test(h)) ct("c:gcal");
-    else if (a.classList.contains("off") || /公式/.test(a.textContent)) ct("c:official");
+    var d = destOf(a, h); if (!d) return;
+    if (d.indexOf("o:") === 0) { ct(d); return; }
+    var pl = placeOf(a); ct("b:" + pl + ":" + d);
+    var card = a.closest(".card"), id = card ? card.getAttribute("data-id") : isItemP ? decodeURIComponent(path.split("/")[2] || "") : "";
+    if (id && pl !== "shop") ct("bi:" + id);
+    once("b", "f:b");
+    if (pl === "item") once("ib", "f:ib");
+    if (pl === "list") once("lb", "f:lb");
+    if (VS && VS.x) once("xb", "f:xb");
   }, true);
 
+  // テストモードの印（この端末にだけ見える）。押すと「やめる」が出て、もう一度押すと終了
+  function setTest(on){
+    flush();   // ここまでの分は、今までの区分で送ってから切り替える
+    if (on) { TEST = { on: 1, at: Date.now() }; lsSet(TKEY, TEST); } else { TEST = null; try { localStorage.removeItem(TKEY); } catch (e) {} }
+    try { if (VS) newVisit(); } catch (e) {}
+    drawTest();
+  }
+  window.chiikatsuTest = { set: setTest, get: function(){ return !!TEST; } };
+  var tmEl = null;
+  function drawTest(){
+    if (!TEST) { if (tmEl) { tmEl.remove(); tmEl = null; } return; }
+    if (tmEl) return;
+    tmEl = document.createElement("button"); tmEl.type = "button"; tmEl.className = "tm-badge"; tmEl.textContent = "テスト中";
+    tmEl.setAttribute("aria-label", "この端末はテストモードです。押すと、やめるボタンが出ます");
+    tmEl.style.cssText = "position:fixed;left:calc(8px + env(safe-area-inset-left,0px));bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:95;border:0;border-radius:99px;padding:6px 11px;font:700 11.5px/1.2 system-ui,sans-serif;background:#3A3346;color:#fff;opacity:.82;cursor:pointer";
+    tmEl.onclick = function(){
+      if (tmEl.dataset.open) { setTest(false); say("テストモードを終了しました"); return; }
+      tmEl.dataset.open = "1"; tmEl.textContent = "テストモードをやめる ×"; tmEl.style.background = "#E27496";
+      setTimeout(function(){ if (tmEl && tmEl.dataset.open) { delete tmEl.dataset.open; tmEl.textContent = "テスト中"; tmEl.style.background = "#3A3346"; } }, 4000);
+    };
+    (document.body || document.documentElement).appendChild(tmEl);
+  }
+  function tmStart(){ drawTest(); if (tmMsg) say(tmMsg); }
+  if (document.body) setTimeout(tmStart, 0); else document.addEventListener("DOMContentLoaded", tmStart);
 
   /* ---- 公式Xの投稿（画像）を、押したときだけここに表示する（サイトから離れずに見られる） ---- */
   var xLoading = null;

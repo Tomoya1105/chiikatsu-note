@@ -37,6 +37,17 @@ ol{margin:0 0 4px;padding-left:20px;font-size:13.5px}
 .bars i{flex:1;background:var(--acc);border-radius:3px 3px 0 0;min-height:2px;opacity:.85}
 .note{font-size:12px;color:var(--ink-2);margin-top:8px}
 .ng{text-align:center;padding:30px 10px;color:var(--ink-2)}
+.seg .gap{flex:0 0 10px}
+.health{font-size:13px;border-radius:12px;padding:10px 12px;margin:6px 0 10px;line-height:1.6}
+.health.ok{background:var(--soft)}.health.warn{background:#FFF3D6;color:#6B4E00}.health.bad{background:#FFE1E1;color:#8A1F1F}
+.health small{font-size:11.5px;opacity:.85}
+.card h3{font-size:13.5px;margin:14px 0 2px}
+.note.warn{color:#8A5A00}
+.tb{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}.tb th,.tb td{border-bottom:1px solid var(--line);padding:5px 3px;text-align:right}.tb th:first-child{text-align:left}
+.top{font-size:13px;padding-left:20px;margin:4px 0}.top a{color:var(--ink)}
+.bars i.stop{background:#C9A227}.bars i.none{background:var(--line)}
+.legacy{margin-top:14px;font-size:13px}.legacy summary{cursor:pointer;color:var(--ink-2)}
+code{font-size:11.5px;word-break:break-all}
 </style>
 </head>
 <body>
@@ -55,36 +66,103 @@ ol{margin:0 0 4px;padding-left:20px;font-size:13.5px}
   }
   app.innerHTML =
     '<h1>運営者メニュー</h1><p class="lead">ちい活ノートの運営者だけが使うページです。このページをホーム画面に追加しておくと便利です。</p>' +
-    '<div class="card"><h2>数字を見る</h2><div class="seg" id="seg"><button type="button" data-r="d7" aria-pressed="true">7日間</button><button type="button" data-r="d28" aria-pressed="false">28日間</button></div><div id="kpi"><p>読み込み中…</p></div></div>' +
+    '<div class="card"><h2>数字を見る</h2><div id="health"></div><div class="seg" id="seg"><button type="button" data-r="7" aria-pressed="true">7日間</button><button type="button" data-r="28" aria-pressed="false">28日間</button><span class="gap"></span><button type="button" data-g="g" aria-pressed="true">一般</button><button type="button" data-g="t" aria-pressed="false">テスト</button></div><div id="kpi"><p>読み込み中…</p></div><div id="tm"></div><details class="legacy" id="legacy"></details></div>' +
     '<div class="card"><h2>見つけた情報を送る</h2><p>Xなどで見つけた新商品・イベント・話題のグッズの投稿URLを貼ってください。本文もコピーして貼ると、より確実です。次の自動更新で確かめてサイトに載せます。</p>' +
     '<form id="tip"><textarea name="text" rows="5" maxlength="2000" required placeholder="ここに貼り付け"></textarea><button class="btn go" type="submit">送る</button><div class="msg" id="tipmsg"></div></form></div>' +
     '<div class="card"><h2>投稿案・お問い合わせを見る</h2><p>自動更新が作ったXの投稿案と、お問い合わせフォームに届いた内容を見られます。</p><button class="btn sub" type="button" id="drafts">運営者ページを開く</button><div class="msg" id="dmsg"></div></div>' +
     '<div class="card"><h2>投稿案の通知を、このスマホで受け取る</h2><ol><li>ホーム画面の「ちい活ノート」アプリを開き、マイリストの通知の<b>「テスト通知を送る」</b>を押す</li><li>10分以内にこのページに戻って、下のボタンを押す</li></ol><button class="btn sub" type="button" id="claim">通知を登録する</button><div class="msg" id="cmsg"></div></div>';
-  var ST = null, R = "d7";
+  var ST = null, LG = null, R = 7, G = "g", NAMES = {};
+  function esc(x){ return String(x == null ? "" : x).replace(/[&<>"]/g, function(c){ return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function pct(a, b){ return b ? Math.round(a / b * 1000) / 10 + "%" : "—"; }
+  // 割合は必ず「分子/分母」を添える。分母が20未満のときは「参考」
+  function rate(a, b, unit){ if (!b) return '<b>—</b><small>まだ分母がありません</small>'; return '<b>' + pct(a, b) + '</b><small>' + a + ' / ' + b + (unit || '') + (b < 20 ? '（件数が少ないため参考）' : '') + '</small>'; }
+  function jst(ms){ return new Date(ms + 9 * 3600e3).toISOString().slice(0, 10); }
+  function monday(ms){ var d = new Date(ms + 9 * 3600e3), w = (d.getUTCDay() + 6) % 7; return jst(ms - w * 864e5); }
+  // 期間・区分の合計
+  function sums(days, seg, from, to){
+    var o = {}; (ST.rows || []).forEach(function(r){ if (r[1] === seg && r[0] >= from && r[0] <= to) o[r[2]] = (o[r[2]] || 0) + r[3]; }); return o;
+  }
+  function v(o, k){ return o[k] || 0; }
+  function sumPre(o, pre){ var n = 0; for (var k in o) if (k.indexOf(pre) === 0) n += o[k]; return n; }
+  function drawHealth(){
+    var el = document.getElementById("health"), s = ST, h = "", cls = "ok";
+    var today = s.days && s.days[0];
+    if (!s.binding) { cls = "bad"; h = "計測のデータベースがつながっていません。いまは記録されていません。"; }
+    else if (!s.ok) { cls = "bad"; h = "計測のデータベースに接続できません（" + esc(s.dbErr || "") + "）。いまは記録されていない可能性があります。"; }
+    else if (s.env !== s.want) { cls = "bad"; h = "つないでいるデータベースの設定が、この画面（" + (s.want === "production" ? "本番" : "確認用") + "）と合っていません（" + esc(s.env || "未設定") + "）。記録していません。"; }
+    else {
+      h = "計測：正常" + (today && today.last ? "（今日の最終記録 " + esc(today.last.slice(11)) + "）" : "（今日はまだ記録がありません）");
+      if (today && today.mode === 1) { cls = "warn"; h = "今日は書き込みが多いため、" + esc((today.modeAt || "").slice(11)) + "から大事な項目だけを記録しています（ページ表示などは省略）。"; }
+      if (today && today.mode === 2) { cls = "bad"; h = "今日は上限に達したため、" + esc((today.modeAt || "").slice(11)) + "から記録を止めています（あすの0時に再開）。"; }
+      if (today) h += '<br><small>今日の計測の書き込み：' + today.w.toLocaleString() + '行（縮小 ' + s.limits.reduce.toLocaleString() + '行・停止 ' + s.limits.stop.toLocaleString() + '行。Cloudflareが数えた行数）</small>';
+    }
+    if (s.err && Date.now() - s.err.ms < 48 * 3600e3) h += '<br><small>直近のエラー：' + esc(s.err.at) + ' ' + esc(s.err.msg) + '</small>';
+    el.className = "health " + cls; el.innerHTML = h;
+  }
   function drawStats(){
-    var el = document.getElementById("kpi"); if (!ST) return;
-    var d = ST[R];
-    var rows = [
-      [d.dev, "使った人（端末・日ごと）", "1台が1日に何度開いても1"],
-      [d.visits, "訪問", "開いた回数"],
-      [pct(d.ret, d.dev), "再訪率", "前の日以前にも来たことがある人の割合"],
-      [pct(d.fav, d.dev), "ほしい登録率", "「ほしい」か♡が1つ以上ある人の割合"],
-      [d.fav ? Math.round(d.saved / d.fav * 10) / 10 + "件" : "—", "1人あたり保存件数", "保存している人の平均"],
-      [pct(d.push, d.dev), "通知許可率", "通知をオンにしている人の割合"],
-      [pct(d.aff, d.visits), "アフィリエイトのクリック率", "楽天" + d.rk + "・Yahoo!" + d.yahoo + "・Amazon" + d.amazon + "回 ÷ 訪問"],
-      [d.share, "共有ボタンが押された回数", "「友だちにも教える」は" + d.nudgeShow + "回出して" + d.nudge + "回押された"]
-    ];
-    var mx = Math.max.apply(null, ST.daily.map(function(x){ return x.dev; }).concat(1));
-    el.innerHTML = '<div class="kpi">' + rows.map(function(r){ return '<div><b>' + r[0] + '</b><span>' + r[1] + '</span><small>' + r[2] + '</small></div>'; }).join("") + '</div>' +
-      '<div class="bars" title="直近14日の、使った人の数">' + ST.daily.slice().reverse().map(function(x){ return '<i style="height:' + Math.max(3, Math.round(x.dev / mx * 100)) + '%" title="' + x.day + '：' + x.dev + '人"></i>'; }).join("") + '</div>' +
-      '<p class="note">棒は直近14日の「使った人」（左が古い日）。人の数・再訪率・登録率・通知許可率は' + (ST.since ? ST.since + 'から' : '今日から') + '数え始めたので、はじめの数日は少なめに出ます。</p>';
+    if (!ST) return;
+    drawHealth();
+    var el = document.getElementById("kpi"), now = Date.now(), to = ST.today, from = jst(now - (R - 1) * 864e5);
+    var o = sums(ST.rows, G, from, to);
+    var days = ST.days.slice(0, R), cut = days.filter(function(d){ return d.mode === 2; }), red = days.filter(function(d){ return d.mode === 1; });
+    var wk0 = monday(now), wk1 = monday(now - 7 * 864e5), wkEnd1 = jst(new Date(wk0 + "T00:00:00Z").getTime() - 864e5);
+    var tw = sums(ST.rows, G, wk0, to), lw = sums(ST.rows, G, wk1, wkEnd1);
+    var sec = function(t, rows){ return '<h3>' + t + '</h3><div class="kpi">' + rows.map(function(r){ return '<div>' + r[0] + '<span>' + r[1] + '</span>' + (r[2] ? '<small>' + r[2] + '</small>' : '') + '</div>'; }).join("") + '</div>'; };
+    var n = function(x){ return '<b>' + x.toLocaleString() + '</b>'; };
+    var h = "";
+    if (cut.length || red.length) h += '<p class="note warn">この期間には、上限で' + (cut.length ? '記録を止めた日（' + cut.map(function(d){ return d.day.slice(5); }).join("・") + '）' : '') + (cut.length && red.length ? 'と、' : '') + (red.length ? 'ページ表示などを省いた日（' + red.map(function(d){ return d.day.slice(5); }).join("・") + '）' : '') + 'があります。止めた日の数字は、止まるまでの分だけです。推定で補っていません。</p>';
+    h += sec("利用", [
+      [n(v(tw, "u:wk")), "今週使ったブラウザ（月曜から）", "先週：" + v(lw, "u:wk") + "。ブラウザごとに1つ（X内とSafariは別）。履歴を消すと重ねて数える"],
+      [rate(v(tw, "u:wkret"), v(tw, "u:wk")), "今週のうち、先週も開いたブラウザ", "同じブラウザで続けて開いた分だけ（参考値）"],
+      [n(v(o, "v:new")), "訪問", "同じタブで開いている間のひとまとまり（30分あくと次の訪問）"],
+      [n(sumPre(o, "pv:")), "ページ表示", "トップ " + v(o, "pv:home") + "・詳細 " + v(o, "pv:item") + "・その他 " + v(o, "pv:other")]
+    ]);
+    h += sec("行動の流れ（訪問ごと）", [
+      [rate(v(o, "f:hi"), v(o, "f:h"), "訪問"), "トップ → 詳細", "トップを見たあと、同じ訪問で詳細ページを開いた"],
+      [rate(v(o, "f:ib"), v(o, "f:i"), "訪問"), "詳細 → 購入先", "詳細ページで購入先（公式通販・公式の予約・楽天・Yahoo!）を押した"],
+      [rate(v(o, "f:lb"), v(o, "f:h"), "訪問"), "一覧 → 購入先", "トップの一覧から直接、購入先を押した"],
+      [rate(v(o, "f:w"), v(o, "v:new"), "訪問"), "♡を使った訪問", "「ほしい」か♡を1回以上押した（初回も含む）"]
+    ]);
+    var PL = [["list", "一覧"], ["item", "詳細"], ["mine", "マイリスト"], ["shop", "おすすめ"], ["sum", "まとめ"]], DS = [["off", "公式通販"], ["rsv", "公式の予約"], ["rk", "楽天"], ["yh", "Yahoo!"]];
+    h += '<h3>購入先へのクリック（回数）</h3><table class="tb"><tr><th></th>' + DS.map(function(d){ return '<th>' + d[1] + '</th>'; }).join("") + '<th>計</th></tr>' +
+      PL.map(function(p){ var t = 0; return '<tr><th>' + p[1] + '</th>' + DS.map(function(d){ var x = v(o, "b:" + p[0] + ":" + d[0]); t += x; return '<td>' + x + '</td>'; }).join("") + '<td><b>' + t + '</b></td></tr>'; }).join("") + '</table>' +
+      '<p class="note">回数なので、同じ人が何度押しても数えます。実際の購入・報酬は、楽天・もしもの管理画面の成果で確かめてください。公式情報（購入先ではない公式リンク）：' + v(o, "o:info") + '回</p>';
+    var top = Object.keys(o).filter(function(k){ return k.indexOf("bi:") === 0; }).sort(function(a, b){ return o[b] - o[a]; }).slice(0, 10);
+    if (top.length) h += '<h3>商品別の購入先クリック（上位10）</h3><ol class="top">' + top.map(function(k){ var id = k.slice(3); return '<li><a href="/items/' + encodeURIComponent(id) + '/" target="_blank">' + esc(NAMES[id] || id) + '</a> <b>' + o[k] + '</b></li>'; }).join("") + '</ol>';
+    h += sec("集客と定着", [
+      [rate(v(o, "v:x"), v(o, "v:new"), "訪問"), "Xのリンクから来た訪問", "utm_source=x 付きのリンク"],
+      [rate(v(o, "f:xi"), v(o, "v:x"), "訪問"), "Xから来て詳細を見た", "購入先：" + v(o, "f:xb") + "訪問・♡：" + v(o, "f:xw") + "訪問"],
+      [rate(v(o, "ob:done"), v(o, "ob:show"), "回"), "ご案内を最後まで見た", "スキップ " + v(o, "ob:skip") + "・閉じる " + v(o, "ob:close") + "・「使い方」から " + v(o, "ob:help") + "回"],
+      [rate(v(o, "v:hs"), v(o, "v:new"), "訪問"), "ホーム画面のアイコンから開いた訪問", "アイコンから使った端末（日ごと）：" + v(o, "u:app")],
+      [rate(v(o, "u:fav"), v(o, "u:dev"), "端末・日"), "♡を持っている端末", "その日に押した分も含む（端末×日で数える）"],
+      [n(v(o, "push:on")), "通知をオンにした回数", "共有ボタン：" + (v(o, "share:line") + v(o, "share:x") + v(o, "share:copy") + v(o, "share:nudge")) + "回"]
+    ]);
+    var mx = 1, bars = ST.days.slice(0, 14).map(function(d){ var x = 0; (ST.rows || []).forEach(function(r){ if (r[0] === d.day && r[1] === G && r[2] === "v:new") x += r[3]; }); if (x > mx) mx = x; return [d, x]; });
+    h += '<div class="bars" title="直近14日の訪問">' + bars.reverse().map(function(b){ var d = b[0], st = d.mode === 2 ? " stop" : (!d.w && b[1] === 0 ? " none" : ""); return '<i class="' + st + '" style="height:' + Math.max(3, Math.round(b[1] / mx * 100)) + '%" title="' + d.day + '：' + b[1] + '訪問' + (d.mode === 2 ? '（途中で停止）' : '') + (!d.w ? '（記録なし）' : '') + '"></i>'; }).join("") + '</div>';
+    var none = ST.days.slice(0, R).filter(function(d){ return !d.w && d.day !== ST.today; });
+    h += '<p class="note">棒は直近14日の訪問（左が古い日）。' + (G === "t" ? "いまは「テスト」の数字を表示しています。" : "テストモードの端末の数字は含みません。") + (none.length && ST.ok ? '記録が1件もない日：' + none.map(function(d){ return d.day.slice(5); }).join("・") + '（アクセスがなかったか、計測が止まっていた日。上の「直近のエラー」も確認）' : '') + '</p>';
+    el.innerHTML = h;
+  }
+  function drawTm(){
+    var on = false; try { var t = JSON.parse(localStorage.getItem("chiikatsu-test") || "null"); on = !!(t && t.on && Date.now() - (t.at || 0) < 30 * 864e5); } catch (e) {}
+    document.getElementById("tm").innerHTML = '<p class="note">この端末のテストモード：<b>' + (on ? "オン" : "オフ") + '</b>（オンの間は、サイトの左下に「テスト中」と出ます。30日で自動でオフ。お友達には <code>https://chiikatsunote.com/?test=on</code> を送ってください）</p><button type="button" class="btn sub" id="tmBtn">' + (on ? "この端末のテストモードをやめる" : "この端末をテストモードにする") + '</button>';
+    document.getElementById("tmBtn").onclick = function(){ try { if (on) localStorage.removeItem("chiikatsu-test"); else localStorage.setItem("chiikatsu-test", JSON.stringify({ on: 1, at: Date.now() })); } catch (e) {} drawTm(); };
+  }
+  function drawLegacy(){
+    var el = document.getElementById("legacy"), d = LG;
+    if (!d) { el.hidden = true; return; }
+    el.innerHTML = '<summary>参考：旧方式の数字（' + esc(d.from.slice(5)) + '〜' + esc(d.to.slice(5)) + '・テストを含む・定義がちがう）</summary><p class="note">新しい数字とは比べないでください。「使った人」は端末×日の合計、「訪問」はページ表示の回数、「ほしい登録率」はその日に押した♡を数えない方式でした。</p>' +
+      '<div class="kpi">' + [[d.dev, "使った人（端末×日）"], [d.visits, "ページ表示"], [pct(d.ret, d.dev), "再訪（端末×日）"], [pct(d.fav, d.dev), "♡がある端末（旧）"], [pct(d.push, d.dev), "通知許可（端末×日）"], [d.aff, "アフィリエイトのクリック（楽天" + d.rk + "・Yahoo!" + d.yahoo + "・Amazon" + d.amazon + "）"], [d.want, "♡が押された回数"], [d.share, "共有ボタン"]].map(function(r){ return '<div><b>' + r[0] + '</b><span>' + r[1] + '</span></div>'; }).join("") + '</div>';
   }
   document.getElementById("seg").addEventListener("click", function(e){
-    var b = e.target.closest("[data-r]"); if (!b) return; R = b.dataset.r;
-    [].forEach.call(this.children, function(x){ x.setAttribute("aria-pressed", x === b); }); drawStats();
+    var b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.r) { R = +b.dataset.r; [].forEach.call(this.querySelectorAll("[data-r]"), function(x){ x.setAttribute("aria-pressed", x === b); }); }
+    if (b.dataset.g) { G = b.dataset.g; [].forEach.call(this.querySelectorAll("[data-g]"), function(x){ x.setAttribute("aria-pressed", x === b); }); }
+    drawStats();
   });
-  call("stats").then(function(j){ if (j.ok) { ST = j; drawStats(); } else document.getElementById("kpi").innerHTML = "<p>" + (j.reason || "読み込めませんでした") + "</p>"; }).catch(function(){ document.getElementById("kpi").innerHTML = "<p>読み込めませんでした</p>"; });
+  drawTm();
+  fetch("/push-items.json").then(function(r){ return r.json(); }).then(function(a){ a.forEach(function(x){ NAMES[x.id] = x.t; }); drawStats(); }).catch(function(){});
+  call("stats").then(function(j){ if (j.ok) { ST = j.stats; LG = j.legacy; drawStats(); drawLegacy(); } else document.getElementById("kpi").innerHTML = "<p>" + (j.reason || "読み込めませんでした") + "</p>"; }).catch(function(){ document.getElementById("kpi").innerHTML = "<p>読み込めませんでした</p>"; });
   document.getElementById("tip").addEventListener("submit", function(e){
     e.preventDefault(); var f = e.target, ms = document.getElementById("tipmsg");
     ms.className = "msg"; ms.textContent = "送信中…";

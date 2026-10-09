@@ -358,7 +358,7 @@ write("contact/index.html", page({
 }));
 write("privacy/index.html", page({
   title: "プライバシーポリシー｜ちい活ノート", desc: "ちい活ノートのプライバシーポリシー。", url: "/privacy/",
-  body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。また、Cloudflare社の「Cloudflare Web Analytics」で、訪問数や表示の速さを集計しています。こちらもCookieを使わず、個人を特定する情報は集めません。</p>
+  body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。同じ訪問の中で「詳細を見た」「購入先を押した」などの流れを数えるため、ブラウザの中（タブを閉じると消える領域）に一時的な印を置きますが、送るのは日ごとの合計に足す回数だけです。運営者や確認に協力いただく方の端末は「テストモード」にでき、その印はその端末のブラウザの中にだけ保存されます。また、Cloudflare社の「Cloudflare Web Analytics」で、訪問数や表示の速さを集計しています。こちらもCookieを使わず、個人を特定する情報は集めません。</p>
 <h2>Xの投稿の表示について</h2><p>「公式の画像を見る」を押したときだけ、X（旧Twitter）の埋め込み機能で公式アカウントの投稿を表示します。そのとき、閲覧情報がX社に送られることがあります（X社のプライバシーポリシーが適用されます）。押さなければXには何も送られません。トラッキングを控える設定（DNT）で読み込んでいます。</p><h2>お問い合わせについて</h2><p>お問い合わせ先：<a href="mailto:contact@chiikatsunote.com">contact@chiikatsunote.com</a>（またはお問い合わせフォーム）。お問い合わせフォームから送られた内容（種類・お名前・メールアドレス・本文）は、お返事とサイトの改善のためだけに使い、第三者に渡すことはありません。180日たつと自動で消えます。送りすぎを防ぐため、IPアドレスから作った一時的な値を1日だけ使いますが、IPアドレスそのものは保存しません。</p><h2>まちがい報告・情報の提供</h2><p>「情報のまちがいを報告する」と「情報を教える」から送られた内容（選んだ項目、入力した文章とURL）は、掲載情報を直したり、新しい情報を確かめて載せたりするためだけに使い、90日たつと自動で消えます。送られた情報は、公式の発表で確かめられたものだけを掲載します。個人を特定できる情報は書き込まないでください。</p>
 <h2>アフィリエイトについて</h2><p>当サイトは楽天グループ株式会社の「楽天アフィリエイト」と、株式会社もしもの「もしもアフィリエイト」（Yahoo!ショッピングなど）に参加しています。リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
 <h2>アクセス解析・広告配信について</h2><p>今後、アクセス解析ツールや第三者配信の広告（Google AdSense など）を導入する場合は、Cookieを使って閲覧情報を集めることがあります。導入する際はこのページでお知らせします。</p>
@@ -373,6 +373,9 @@ write("404.html", page({ title: "ページが見つかりません｜ちい活�
 const seo = buildSeo({ items, page, write, esc, fmt, md, CAT, REG, BRAND, FOOT, SITE, TODAY, isEvent, aff, sjisEncode, rakutenSearch, writeOg });
 const urls = ["/", ...seo.urls, "/official/", "/about/", "/contact/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}\n</urlset>\n`);
+// Functions（サーバー側の処理）を通すURLを絞る。画像・スクリプトなどの静的ファイルは Functions を通さず配信（無料枠を使わない）。
+// ページ本体（HTML）と /api/ は今までどおり通す（.pages.dev・www からの転送と API のため）。
+write("_routes.json", JSON.stringify({ version: 1, include: ["/*"], exclude: ["/og/*", "/icons/*", "/app.js", "/install.js", "/onboard.js", "/style.css", "/sw.js", "/manifest.webmanifest", "/camps.json", "/push-items.json", "/visuals.json", "/robots.txt", "/sitemap.xml"] }, null, 1));
 write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /owner/\nSitemap: ${SITE}/sitemap.xml\n`);
 
 console.log(`built ${items.length} items → ${OUT}/`);
