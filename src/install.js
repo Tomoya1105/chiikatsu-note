@@ -64,16 +64,26 @@
 
   // 訪問のひとまとまり（このタブの中だけ）。区分（一般／テスト）が変わったら新しい訪問にする（同じ訪問が両方に入らないように）
   var VKEY = "chiikatsu-vs", VS = null;
-  function vsSave(){ try { sessionStorage.setItem(VKEY, JSON.stringify(VS)); } catch (e) {} }
+  // 戻る操作で復元された古いページが、別ページの付けた印を消さないように、保存する前と印を付ける前に、保存されている最新を読み直して合わせる
+  function vsPull(){
+    try {
+      var cur = JSON.parse(sessionStorage.getItem(VKEY) || "null");
+      if (!cur || !cur.f || !VS) return;
+      if (cur.id !== VS.id) { VS = cur; return; }
+      for (var k in cur.f) VS.f[k] = 1;
+      if (cur.x) VS.x = 1;
+    } catch (e) {}
+  }
+  function vsSave(){ try { vsPull(); sessionStorage.setItem(VKEY, JSON.stringify(VS)); } catch (e) {} }
   function newVisit(){
-    VS = { t: Date.now(), s: TEST ? "t" : "g", f: {} };
+    VS = { id: Date.now() + "." + Math.floor(Math.random() * 1e6), t: Date.now(), s: TEST ? "t" : "g", f: {} };
     ct("v:new");
     if (standalone) ct("v:hs");
     var xin = null; try { xin = sessionStorage.getItem("chiikatsu-xin"); } catch (e) {}
     if (xin === "1" || (!isHomeP && /[?&]utm_source=(x|twitter)\b/i.test(location.search))) { VS.x = 1; ct("v:x"); }
-    vsSave();
+    try { sessionStorage.setItem(VKEY, JSON.stringify(VS)); } catch (e) {}   // 新しい訪問は、古い保存を読み直さずにそのまま書く
   }
-  function once(f, k){ if (!VS || VS.f[f]) return; VS.f[f] = 1; ct(k); vsSave(); }
+  function once(f, k){ vsPull(); if (!VS || VS.f[f]) return; VS.f[f] = 1; ct(k); vsSave(); }
   try {
     VS = JSON.parse(sessionStorage.getItem(VKEY) || "null");
     if (!VS || !VS.f || Date.now() - (VS.t || 0) > 30 * 60e3 || VS.s !== (TEST ? "t" : "g")) newVisit();
@@ -134,6 +144,8 @@
   }
   document.addEventListener("click", function(e){
     touch();
+    // サイト内の別ページへ移る直前に、ここまでの分を送っておく（移動中に送信が落ちて、訪問や「トップを見た」印が欠けないように。件数は変わらない）
+    var ia = e.target.closest && e.target.closest("a[href]"); if (ia && ia.origin === location.origin && !ia.hasAttribute("download") && !ia.target) flush();
     var sb = e.target.closest("[data-share]"); if (sb) ct("share:" + sb.getAttribute("data-share"));
     if (e.target.closest("[data-mark='want'],[data-nmark]")) {
       once("w", "f:w"); if (VS && VS.x) once("xw", "f:xw");
