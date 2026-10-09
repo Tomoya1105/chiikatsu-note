@@ -9,10 +9,10 @@ const jstNow = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 16
 async function sha256(s) { const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join(""); }
 
 export async function onRequestPost({ request, env }) {
-  if (!env.REPORTS) return new Response("not configured", { status: 503 });
   let b; try { b = await request.json(); } catch (e) { return new Response("bad request", { status: 400 }); }
   if (!b || typeof b.t !== "string" || (await sha256(b.t)) !== OWNER_HASH) return Response.json({ ok: false, reason: "合言葉がちがいます" }, { status: 403 });
-  const tok = await token(env);
+  if (!env.REPORTS && b.op !== "stats") return new Response("not configured", { status: 503 });   // 確認用（プレビュー）では KV がないので、数字を見ることだけできる
+  const tok = b.op === "stats" ? "" : await token(env);
   if (b.op === "page") return Response.json({ ok: true, url: `/api/xdraft?tok=${tok}` });
   if (b.op === "tip") {
     const text = String(b.text || "").trim().slice(0, 2000);
@@ -38,7 +38,7 @@ export async function onRequestPost({ request, env }) {
     // 新方式（D1）：日ごとの合計と、計測の状態（接続・最終記録時刻・上限）。旧方式（KV）の数字は参考として別に返す
     const now = Date.now(), day0 = jstDay(now), from = jstDay(now - 27 * 864e5);
     const st = { binding: !!env.STATSDB, ok: false, env: null, want: new URL(request.url).hostname === "chiikatsunote.com" ? "production" : "preview", days: [], rows: [], err: null };
-    try { st.err = JSON.parse((await env.REPORTS.get("stats:err")) || "null"); } catch (e) {}
+    try { if (env.REPORTS) st.err = JSON.parse((await env.REPORTS.get("stats:err")) || "null"); } catch (e) {}
     if (env.STATSDB) {
       try {
         const meta = (await env.STATSDB.prepare("SELECT k, v, t FROM meta WHERE k = 'env' OR substr(k, 3) >= ?1").bind(from).all()).results || [];
@@ -56,7 +56,7 @@ export async function onRequestPost({ request, env }) {
     const days = [];
     for (let i = 0; i < 28; i++) {
       const day = jstDay(now - i * 864e5);
-      const v = await env.REPORTS.get(`s:${day}`);
+      const v = env.REPORTS ? await env.REPORTS.get(`s:${day}`) : null;
       if (v) days.push({ day, ...JSON.parse(v) });
     }
     const AFF = ["c:rk", "c:rkpre", "c:rksearch", "c:books", "c:shop", "c:travel", "c:yahoo", "c:amazon"];
