@@ -65,16 +65,19 @@
   // 訪問のひとまとまり（このタブの中だけ）。区分（一般／テスト）が変わったら新しい訪問にする（同じ訪問が両方に入らないように）
   var VKEY = "chiikatsu-vs", VS = null;
   // 戻る操作で復元された古いページが、別ページの付けた印を消さないように、保存する前と印を付ける前に、保存されている最新を読み直して合わせる
+  // 同じ訪問の印は、別のタブ（ページ復元・「新しいタブで開く」で引き継がれたタブ）とも合わせる。保存するのは、ランダムな訪問番号と印だけ
+  var VF = "chiikatsu-vf";
+  function vfGet(){ try { var m = JSON.parse(localStorage.getItem(VF) || "null"); return m && typeof m === "object" ? m : {}; } catch (e) { return {}; } }
+  function vfPut(x){ try { var m = vfGet(), ks = Object.keys(m), now = Date.now(); ks.forEach(function(k){ if (!m[k] || now - (m[k].t || 0) > 2 * 3600e3) delete m[k]; }); if (VS) m[VS.id] = { f: VS.f, x: x || VS.x || 0, t: now }; ks = Object.keys(m).sort(function(a, b){ return m[b].t - m[a].t; }); ks.slice(6).forEach(function(k){ delete m[k]; }); localStorage.setItem(VF, JSON.stringify(m)); } catch (e) {} }
   function vsPull(){
     try {
       var cur = JSON.parse(sessionStorage.getItem(VKEY) || "null");
-      if (!cur || !cur.f || !VS) return;
-      if (cur.id !== VS.id) { VS = cur; return; }
-      for (var k in cur.f) VS.f[k] = 1;
-      if (cur.x) VS.x = 1;
+      if (cur && cur.f && VS) { if (cur.id !== VS.id) VS = cur; else { for (var k in cur.f) VS.f[k] = 1; if (cur.x) VS.x = 1; } }
+      var sh = VS && vfGet()[VS.id];
+      if (sh && sh.f) { for (var k2 in sh.f) VS.f[k2] = 1; if (sh.x) VS.x = 1; }
     } catch (e) {}
   }
-  function vsSave(){ try { vsPull(); sessionStorage.setItem(VKEY, JSON.stringify(VS)); } catch (e) {} }
+  function vsSave(){ try { vsPull(); sessionStorage.setItem(VKEY, JSON.stringify(VS)); } catch (e) {} vfPut(); }
   function newVisit(){
     VS = { id: Date.now() + "." + Math.floor(Math.random() * 1e6), t: Date.now(), s: TEST ? "t" : "g", f: {} };
     ct("v:new");
@@ -82,6 +85,7 @@
     var xin = null; try { xin = sessionStorage.getItem("chiikatsu-xin"); } catch (e) {}
     if (xin === "1" || (!isHomeP && /[?&]utm_source=(x|twitter)\b/i.test(location.search))) { VS.x = 1; ct("v:x"); }
     try { sessionStorage.setItem(VKEY, JSON.stringify(VS)); } catch (e) {}   // 新しい訪問は、古い保存を読み直さずにそのまま書く
+    vfPut();
   }
   function once(f, k){ vsPull(); if (!VS || VS.f[f]) return; VS.f[f] = 1; ct(k); vsSave(); }
   try {

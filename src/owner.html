@@ -75,7 +75,7 @@ code{font-size:11.5px;word-break:break-all}
   function esc(x){ return String(x == null ? "" : x).replace(/[&<>"]/g, function(c){ return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function pct(a, b){ return b ? Math.round(a / b * 1000) / 10 + "%" : "—"; }
   // 割合は必ず「分子/分母」を添える。分母が20未満のときは「参考」
-  function rate(a, b, unit){ if (!b) return '<b>—</b><small>まだ分母がありません</small>'; return '<b>' + pct(a, b) + '</b><small>' + a + ' / ' + b + (unit || '') + (b < 20 ? '（件数が少ないため参考）' : '') + '</small>'; }
+  function rate(a, b, unit){ if (a > b && b) return '<b>—</b><small>' + a + ' / ' + b + (unit || '') + '（分子が分母を超えたため、割合は出しません。計測の欠けか、複数タブの重なり）</small>'; if (!b) return '<b>—</b><small>まだ分母がありません</small>'; return '<b>' + pct(a, b) + '</b><small>' + a + ' / ' + b + (unit || '') + (b < 20 ? '（件数が少ないため参考）' : '') + '</small>'; }
   function jst(ms){ return new Date(ms + 9 * 3600e3).toISOString().slice(0, 10); }
   function monday(ms){ var d = new Date(ms + 9 * 3600e3), w = (d.getUTCDay() + 6) % 7; return jst(ms - w * 864e5); }
   // 期間・区分の合計
