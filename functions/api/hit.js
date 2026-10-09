@@ -4,10 +4,10 @@
 // ・D1の無料枠（書き込み1日10万行・アカウント全体で検定と共有）を守るため、その日の書き込みが
 //   REDUCE 行を超えたら「大事な項目だけ」に縮小、STOP 行を超えたらその日は記録しない（推定値は作らない）。
 // ・どんな失敗でも 204 を返すだけ。サイト本体・通知の登録などには影響しない。KV には書かない（エラーの記録だけ、30分に1回まで）。
-import ITEMS from "../../data/items.json" with { type: "json" };
+import { IDS as ID_LIST } from "./_ids.js";   // 掲載中の商品ID（build.mjs が公開のたびに作る）
 
 export const REDUCE = 30000, STOP = 45000;
-const IDS = new Set((Array.isArray(ITEMS) ? ITEMS : ITEMS.items || []).map(i => i.id));
+const IDS = new Set(ID_LIST);
 // 大事な項目（縮小中も記録する）：訪問の流れ・購入先クリック・♡・ご案内・端末の数
 export const CORE = /^(v:(new|hs|x)|f:(h|i|hi|b|ib|lb|w|xi|xb|xw)|b:(list|item|mine|shop|sum):(off|rsv|rk|yh|am)|bi:.+|mark:want|ob:(show|done|skip|close|add|help)|u:(dev|wk|wkret|app|fav|push)|push:on)$/;
 // それ以外の項目（ふだんは記録、縮小中は省く）

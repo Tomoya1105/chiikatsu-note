@@ -183,6 +183,8 @@ write("visuals.json", JSON.stringify({ builtAt: new Date().toISOString(), items:
 }) }));
 write("app.js", RKM_SRC + "\n" + XPOST_SRC + "\n" + app);
 write("install.js", RKM_SRC + "\n" + installJs);
+// 計測の受け口（functions/api/hit.js）が「掲載中の商品か」を確かめるためのID一覧。Functions は build のあとに組み立てられるので、ここで作る
+fs.writeFileSync("functions/api/_ids.js", "// build.mjs が作るファイル（手で直さない）\nexport const IDS = " + JSON.stringify(items.map(it => it.id)) + ";\n");
 write("onboard.js", fs.readFileSync("src/onboard.js", "utf8"));
 write("sw.js", swJs.replace("__VER__", BUILD));
 fs.mkdirSync(path.join(OUT, "icons"), { recursive: true });
