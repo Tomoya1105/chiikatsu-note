@@ -238,7 +238,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-09",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -342,7 +342,7 @@
   "time": "10:00〜22:00（有料展示エリアの最終入場 21:00）",
   "updatedAt": "2026-10-05",
   "srcType": "official",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-09",
   "xpost": "https://x.com/chiikawa_kouhou/status/2094258886781927591",
   "xpostNote": "投稿日2026-08-31。本文に「上海静安嘉里中心（JAKC）」「2026年9月12日(土)～11月1日(日)」"
  },
@@ -364,7 +364,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-09",
   "qNone": "海外（上海）限定",
   "srcs": [
    "https://x.com/chiikawa_kouhou/status/2094621282461532543"
@@ -1226,21 +1226,21 @@
   "cat": "goods",
   "e": null,
   "eNote": "",
-  "note": "パジャマ姿の全3種。2段階温度調整、モバイルバッテリー機能付き。11月上旬〜中旬発売予定。",
+  "note": "パジャマ姿の全3種（ちいかわ・ハチワレ・うさぎ）。2段階温度調整、モバイルバッテリー機能付き。メーカー公式通販では「11月中旬発売予定」。",
   "place": "グルマンディーズ公式通販、ちいかわらんど、ちいかわマーケット",
   "price": "5,478円",
   "q": "ちいかわ 充電式カイロ",
-  "s": "2026-11-05",
-  "sp": "early",
-  "src": "https://www.inside-games.jp/article/2026/09/08/187400.html",
+  "s": "2026-11-15",
+  "sp": "mid",
+  "src": "https://www.gourmandise.jp/view/item/000000010978",
   "t": "ちいかわ 充電式カイロ",
   "time": "",
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-09",
   "srcs": [
-   "https://www.gourmandise.jp/view/item/000000010978"
+   "https://www.inside-games.jp/article/2026/09/08/187400.html"
   ],
-  "verifiedAt": "2026-10-04",
-  "srcType": "news"
+  "verifiedAt": "2026-10-09",
+  "srcType": "partner"
  },
  {
   "id": "20261120-36",
@@ -1566,7 +1566,7 @@
   "place": "全国のガシャポン売場",
   "src": "https://gashapon.jp/products/detail.php?jan_code=4570118206206000",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04",
+  "verifiedAt": "2026-10-09",
   "qNone": "ガシャポン（カプセルトイ）"
  },
  {
@@ -1589,7 +1589,7 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04",
+  "verifiedAt": "2026-10-09",
   "qNone": "GUの店舗・公式通販のみ"
  },
  {
@@ -1842,7 +1842,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "official",
-  "verifiedAt": "2026-10-04",
+  "verifiedAt": "2026-10-09",
   "qNone": "ちいかわベーカリーの店頭販売のみ"
  },
  {
@@ -2370,6 +2370,31 @@
   ],
   "verifiedAt": "2026-10-09",
   "note": "『映画ちいかわ 人魚の島のひみつ』を、音に合わせて光るペンライトの演出付きで応援しながら観られる上映。前売券・ムビチケなどは使用可、招待券・無料鑑賞券は不可。ペンライトは数量限定で販売。",
+  "autoAdded": true,
+  "addedAt": "2026-10-09",
+  "updatedAt": "2026-10-09"
+ },
+ {
+  "id": "20260925-clearcard-gum",
+  "region": "jp",
+  "t": "アニメちいかわ キラキラクリアカードコレクションガム",
+  "cat": "food",
+  "s": "2026-09-25",
+  "sp": "late",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "エンスカイショップ（公式通販）、ちいかわらんど、全国の雑貨店・食品売場など",
+  "area": "",
+  "price": "1パック220円（1BOX 18パック 3,960円）",
+  "q": "ちいかわ キラキラクリアカードコレクションガム",
+  "src": "https://www.enskyshop.com/products/detail/32278",
+  "srcType": "partner",
+  "srcs": [
+   "https://gourmet.watch.impress.co.jp/docs/news/2147244.html"
+  ],
+  "verifiedAt": "2026-10-09",
+  "note": "キラキラ加工のクリアカード全36種から1パックに2枚とソーダ味のガム1枚入り。9月下旬から順次出荷（エンスカイショップのBOXは在庫切れ）。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
   "updatedAt": "2026-10-09"
