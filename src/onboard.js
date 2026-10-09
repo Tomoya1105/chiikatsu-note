@@ -56,7 +56,7 @@
   /* ---- 見た目 ---- */
   var CSS = [
     "html.ob-on{overflow:hidden}",
-    ".ob{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font-family:var(--body);padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);overscroll-behavior:contain;-webkit-text-size-adjust:100%}",
+    ".ob{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;height:var(--ob-h,100dvh);box-sizing:border-box;z-index:90;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font-family:var(--body);padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) calc(env(safe-area-inset-bottom,0px) + var(--ob-res,0px)) env(safe-area-inset-left,0px);overscroll-behavior:contain;-webkit-text-size-adjust:100%}",
     ".ob::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 60% at 50% 0%,var(--acc-soft),transparent 70%)}",
     ".ob>*{position:relative}",
     ".ob-top{display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 6px 0 8px;flex:none}",
@@ -64,10 +64,12 @@
     ".ob-skip{font-size:14px;padding:0 12px}",
     ".ob-x{font-size:24px;line-height:1;width:44px}",
     ".ob-skip:focus-visible,.ob-x:focus-visible,.ob-btn:focus-visible,.ob-sub:focus-visible,.ob-heart:focus-visible{outline:3px solid var(--acc);outline-offset:2px}",
-    ".ob-track{flex:1;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}",
+    ".ob-track{flex:1;min-height:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}",
     ".ob-track::-webkit-scrollbar{display:none}",
-    ".ob-s{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 24px 8px;box-sizing:border-box;overflow-y:auto;text-align:center}",
-    ".ob-vis{width:100%;max-width:340px;height:min(46vh,330px);min-height:220px;position:relative;margin:0 auto 22px}",
+    ".ob-s{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;display:flex;flex-direction:column;padding:4px 24px 8px;box-sizing:border-box;overflow-y:auto;overscroll-behavior-y:contain;text-align:center}",
+    ".ob-in{margin:auto 0;width:100%;display:flex;flex-direction:column;align-items:center}",
+    ".ob-vis{flex:none;width:100%;max-width:340px;height:calc(300px * var(--vs,1));position:relative;margin:0 auto 20px}",
+    ".ob-stage{position:absolute;left:50%;top:0;width:340px;height:300px;transform:translateX(-50%) scale(var(--vs,1));transform-origin:50% 0}",
     ".ob-h{font-family:var(--display);font-weight:900;font-size:clamp(22px,6.4vw,27px);line-height:1.4;margin:0 0 10px;letter-spacing:.01em;outline:none}",
     ".ob-p{font-size:15.5px;line-height:1.7;color:var(--ink-2);margin:0;max-width:22em}",
     ".ob-fn{font-size:12px;line-height:1.6;color:var(--ink-3);margin:10px 0 0;max-width:26em}",
@@ -148,7 +150,18 @@
     " @keyframes obRing{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.7)}}",
     " .ob-track{scroll-behavior:smooth}",
     "}",
-    "@media (max-height:700px){.ob-vis{height:min(40vh,270px);min-height:200px;margin-bottom:14px}.ob-v2{gap:7px}.ob-item{padding:10px 12px}.ob-pl{display:none}.ob-heart{min-height:40px}.ob-mine{padding:7px 12px}.ob-p{font-size:14.5px}.ob-h{margin-bottom:6px}}",
+    ".ob.cmp .ob-top{height:44px}",
+    ".ob.cmp .ob-vis{margin-bottom:12px}",
+    ".ob.cmp .ob-h{font-size:21px;line-height:1.38;margin-bottom:6px}",
+    ".ob.cmp .ob-p{font-size:14px;line-height:1.6}",
+    ".ob.cmp .ob-fn{font-size:11.5px;line-height:1.5;margin-top:6px}",
+    ".ob.cmp .ob-s:nth-child(3) .ob-fn{display:none}",
+    ".ob.cmp .ob-badges{margin-top:8px}",
+    ".ob.cmp .ob-foot{padding:4px 16px 8px}",
+    ".ob.cmp .ob-dots{margin:0 0 8px}",
+    ".ob.cmp .ob-btn,.ob.cmp .ob-back{min-height:50px}",
+    ".ob.cmp .ob-sub{min-height:36px;margin-top:2px}",
+    ".ob.tiny .ob-h{font-size:19px}.ob.tiny .ob-p{font-size:13.5px}.ob.tiny .ob-badges{display:none}.ob.tiny .ob-top{height:40px}",
     /* 閉じたあと：一覧の最初の「♡ ほしい」をそっと光らせる（押しつけない・数秒で消える） */
     "@media (prefers-reduced-motion:no-preference){.ob-hint{animation:obHint 1.2s ease-in-out 3}}",
     "@keyframes obHint{0%,100%{box-shadow:0 0 0 0 transparent}50%{box-shadow:0 0 0 6px var(--acc-soft)}}"
@@ -167,7 +180,7 @@
       }).join("") + '</div>',
       alt: "見本：今週の予定と、発売日・予約開始・開催期間の一覧" },
     { h: "気になるグッズは、<br>♡で保存。", p: "ほしいものをまとめて、<br>発売日も忘れずチェック！",
-      fn: "「通知を受け取る」をオンにすると、♡を付けた予定を前日の夜と当日の朝にお知らせします（iPhoneはホーム画面に追加すると使えます）。",
+      fn: "「通知を受け取る」をオンにすると、♡の予定を前日の夜と当日の朝にお知らせ（iPhoneはホーム画面に追加すると使えます）。",
       vis: '<div class="ob-v2"><div class="ob-noti" aria-hidden="true">' + ICON + '<p><b>ちい活ノート</b><span>明日発売：' + esc(p2.t) + '</span></p><small>通知の例</small></div>' +
         '<div class="ob-card ob-item"><span class="ob-tag rel">' + esc(p2.d) + '</span><p class="ob-it">' + esc(p2.t) + '</p>' + (p2.place ? '<p class="ob-pl">' + esc(p2.place) + '</p>' : "") +
         '<button type="button" class="ob-heart" aria-pressed="false" data-ob-heart><span class="hh" aria-hidden="true">♡</span><span class="hl">ほしい</span><span class="burst" aria-hidden="true"></span></button></div>' +
@@ -191,8 +204,8 @@
       '<div class="ob-top"><button type="button" class="ob-skip" data-ob="skip">スキップ</button><button type="button" class="ob-x" data-ob="close" aria-label="閉じる">×</button></div>' +
       '<div class="ob-track" tabindex="-1">' + S.map(function(s, i){
         return '<section class="ob-s" role="group" aria-roledescription="スライド" aria-label="3枚中' + (i + 1) + '枚目"' + (i ? ' aria-hidden="true" inert' : "") + '>' +
-          '<div class="ob-vis" role="img" aria-label="' + esc(s.alt) + '">' + s.vis + '</div>' +
-          '<h2 class="ob-h" tabindex="-1">' + s.h + '</h2><p class="ob-p">' + s.p + '</p>' + (s.after || "") + (s.fn ? '<p class="ob-fn">' + s.fn + '</p>' : "") + '</section>';
+          '<div class="ob-in"><div class="ob-vis" role="img" aria-label="' + esc(s.alt) + '"><div class="ob-stage">' + s.vis + '</div></div>' +
+          '<h2 class="ob-h" tabindex="-1">' + s.h + '</h2><p class="ob-p">' + s.p + '</p>' + (s.after || "") + (s.fn ? '<p class="ob-fn">' + s.fn + '</p>' : "") + '</div></section>';
       }).join("") + '</div>' +
       '<div class="ob-foot"><div class="ob-dots" aria-hidden="true"><i></i><i></i><i></i></div>' +
       '<div class="ob-nav"><button type="button" class="ob-back" data-ob="back">戻る</button><button type="button" class="ob-btn" data-ob="next">次へ</button></div>' +
@@ -221,9 +234,47 @@
       clearTimeout(tmr);
       tmr = setTimeout(function(){ var i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); if (i !== cur) setCur(i, true); }, 80);
     }, { passive: true });
-    window.addEventListener("resize", function(){ if (!closed) track.scrollLeft = cur * track.clientWidth; });
+    var relayout = function(){ if (closed) return; fit(); track.scrollLeft = cur * track.clientWidth; };
+    window.addEventListener("resize", relayout);
+    window.addEventListener("orientationchange", function(){ setTimeout(relayout, 300); });
+    if (window.visualViewport) visualViewport.addEventListener("resize", relayout);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+    fit();
     setCur(0, false);
     setTimeout(function(){ var h = slides[0].querySelector(".ob-h"); if (h) h.focus({ preventScroll: true }); }, 50);
+  }
+
+  /* 表示できる高さに合わせる。
+     iPhone の Xアプリ内ブラウザは、ページの下の部分にXの投稿のシート（と、その上のツールバー）が重なって出る。
+     ページ側からはシートの大きさを知る方法がないので、Xアプリ内と分かるときだけ、画面の下 約1/3 を空けて
+     ボタンをその上に置く（画面写真で、シートとツールバーは画面の下 約31% を覆っていた）。
+     そのうえで、イラストを縮め、それでも入らないときは説明の部分だけをスクロールできるようにする。 */
+  var ua = navigator.userAgent || "", iOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var qs = window.__chiikatsuOnbQ || "";
+  var xApp = /[?&]obx=1\b/.test(qs) || (iOS && (/Twitter|\bX\/\d/i.test(ua) || (!/Safari\//.test(ua) && !!window.__chiikatsuOnbX)));
+  function fit(){
+    var vv = window.visualViewport, H = Math.round(Math.min(window.innerHeight || 9999, vv ? vv.height : 9999));
+    if (!(H > 0) || H === 9999) H = document.documentElement.clientHeight;
+    var sh = (window.screen && screen.height) || H;
+    var res = xApp ? Math.max(0, Math.min(Math.round(H * 0.4), Math.round(H - sh * 0.66))) : 0;
+    root.style.setProperty("--ob-h", H + "px");
+    root.style.setProperty("--ob-res", res + "px");
+    root.classList.toggle("ob-xapp", xApp);
+    var cs = getComputedStyle(root), usable = H - res - (parseFloat(cs.paddingTop) || 0);
+    root.classList.toggle("cmp", usable < 680);
+    root.classList.toggle("tiny", usable < 480);   // とても狭いとき（iPhone SE を Xアプリで開いたときなど）
+    // スライドごとに、文章とボタンを入れたうえで残る高さまでイラストを縮める
+    var avail = track.clientHeight;
+    for (var k = 0; k < slides.length; k++) {
+      var sl = slides[k], vis = sl.querySelector(".ob-vis"), inn = sl.querySelector(".ob-in");
+      sl.style.setProperty("--vs", "1");
+      var mb = parseFloat(getComputedStyle(vis).marginBottom) || 0, ps = getComputedStyle(sl);
+      var other = inn.offsetHeight - vis.offsetHeight - mb;   // イラスト以外（文章など）の高さ
+      var room = avail - other - mb - (parseFloat(ps.paddingTop) || 0) - (parseFloat(ps.paddingBottom) || 0);
+      var w = Math.max(200, sl.clientWidth - 48);
+      var vs = Math.max(0.42, Math.min(1, room / 300, w / 340));
+      sl.style.setProperty("--vs", vs.toFixed(3));
+    }
   }
 
   function go(i){
@@ -242,6 +293,7 @@
     back.setAttribute("aria-hidden", i ? "false" : "true"); back.tabIndex = i ? 0 : -1;
     next.textContent = last ? "ちい活ノートをはじめる ♡" : "次へ";
     sub.hidden = !last || root.__app;
+    if (sub.hidden !== root.__subH) { root.__subH = sub.hidden; fit(); }   // 最後の1枚はリンクのぶんボタンの場所が上がるので、イラストを測り直す
     live.textContent = "3枚中" + (i + 1) + "枚目：" + slides[i].querySelector(".ob-h").textContent;
     if (!seen[i]) { seen[i] = 1; T("ob:s" + (i + 1)); }
     if (i === 1) play2();
