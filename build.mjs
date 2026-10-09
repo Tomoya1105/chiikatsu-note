@@ -183,6 +183,7 @@ write("visuals.json", JSON.stringify({ builtAt: new Date().toISOString(), items:
 }) }));
 write("app.js", RKM_SRC + "\n" + XPOST_SRC + "\n" + app);
 write("install.js", RKM_SRC + "\n" + installJs);
+write("onboard.js", fs.readFileSync("src/onboard.js", "utf8"));
 write("sw.js", swJs.replace("__VER__", BUILD));
 fs.mkdirSync(path.join(OUT, "icons"), { recursive: true });
 for (const f of fs.readdirSync("src/icons")) fs.copyFileSync(path.join("src/icons", f), path.join(OUT, "icons", f));
@@ -216,6 +217,12 @@ write("manifest.webmanifest", JSON.stringify({
 const sorted = items.slice().sort((a, b) => a.s.localeCompare(b.s));
 const allLinks = `<details><summary class="credit" style="cursor:pointer">掲載中のすべての情報（${sorted.length}件）</summary><ul class="alllinks">${sorted.map(it => `<li><a href="/items/${encodeURIComponent(it.id)}/">${esc(it.t)}</a></li>`).join("")}</ul></details>`;
 homeBody = homeBody.replace("{{RESPECT}}", RESPECT).replace("{{INSTALL_CARD}}", INSTALL_CARD).replace("{{INSTALL_TOP}}", INSTALL_TOP).replace("{{INSTALL_MINE}}", INSTALL_MINE).replace("{{ALL_LINKS}}", allLinks).replace("<h1>ちい活ノート</h1>", "<h1>ちい活ノート</h1>");
+// ---- はじめての方へのご案内（オンボーディング）の判定。トップの先頭で、app.js が URL を整理する前に1回だけ動く。
+// 出す人：Xから（utm_source=x／twitter、または t.co・x.com からのリンク）トップに初めて来た人で、まだご案内を閉じていない人。
+// 出さない人：リピーター、ホーム画面から開いた人、ちいかわ検定から来た人（検定の歓迎案内が出るため）。?ob=1 で確認用に必ず出す。
+// 出す人にだけ /onboard.js を読み込むので、ほかの人のページの重さは変わらない。
+const ONB_GATE = String.raw`<script>(function(){try{var q=new URLSearchParams(location.search),s=(q.get("utm_source")||"").toLowerCase(),fx=s==="x"||s==="twitter"||s==="t.co",rx=/^https?:\/\/(t\.co|([a-z]+\.)?(x|twitter)\.com)\//i.test(document.referrer||""),force=q.get("ob")==="1";if(fx)sessionStorage.setItem("chiikatsu-xin","1");window.__chiikatsuOnbQ=location.search;if(!force){if(!(fx||rx))return;if(q.get("from"))return;if(sessionStorage.getItem("chiikatsu-qarr")||sessionStorage.getItem("chiikatsu-qwel"))return;if((window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone)return;if(localStorage.getItem("chiikatsu-onb"))return;var ic=JSON.parse(localStorage.getItem("chiikatsu-install")||"{}")||{};if(ic.visits>0||ic.installed)return;var u=JSON.parse(localStorage.getItem("chiikatsu-u")||"{}")||{};if(u.first)return}var e=document.createElement("script");e.src="/onboard.js?v=${BUILD}";e.async=true;document.head.appendChild(e)}catch(e){}})()</script>`;
+homeBody = homeBody.replace("{{ONB_GATE}}", ONB_GATE);
 const homeLd = { "@context": "https://schema.org", "@type": "WebSite", name: "ちい活ノート", url: SITE + "/", inLanguage: "ja" };
 write("index.html", page({
   title: "ちい活ノート｜ちいかわグッズの発売日・イベント日程カレンダー",

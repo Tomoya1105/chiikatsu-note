@@ -62,6 +62,15 @@
       localStorage.setItem("chiikatsu-u", JSON.stringify(U));
     }
   } catch (e) {}
+  /* Xのリンク（utm_source=x）から来た訪問と、「はじめての方へのご案内」を見たあと「ほしい」を押したか・詳細ページを見たか（各1回だけ） */
+  try {
+    if (sessionStorage.getItem("chiikatsu-xin") === "1") { ct("in:x"); sessionStorage.setItem("chiikatsu-xin", "2"); }
+    if (sessionStorage.getItem("chiikatsu-obs") === "1" && path.indexOf("/items/") === 0 && !sessionStorage.getItem("chiikatsu-obi")) { ct("ob:item"); sessionStorage.setItem("chiikatsu-obi", "1"); }
+  } catch (e) {}
+  document.addEventListener("click", function(e){
+    if (!e.target.closest("[data-mark='want'],[data-nmark]")) return;
+    try { if (sessionStorage.getItem("chiikatsu-obs") === "1" && !sessionStorage.getItem("chiikatsu-obw")) { ct("ob:want"); sessionStorage.setItem("chiikatsu-obw", "1"); } } catch (err) {}
+  }, true);
   document.addEventListener("visibilitychange", function(){ if (document.visibilityState === "hidden") flush(); });
   window.addEventListener("pagehide", flush);
   document.addEventListener("click", function(e){
