@@ -1,13 +1,15 @@
 // かんたんなアクセス・クリック計測。1回の訪問ぶんの回数をまとめて受け取り、日ごとの合計に足す。
 // 個人を特定する情報（IPアドレスなど）は保存しない。保存先は報告と同じ KV（REPORTS）。
 const OK = /^(pv:(home|item|other)|tab:(list|cal|mine|shop|news)|st:[a-z]+|c:(rk|rkpre|rksearch|shop|travel|official|news|gcal|rsv|books|yahoo|amazon|fresh)|mark:(want|got)|shopq|install|push:on|x:embed|fav|nudge:show|share:(nudge|line|x|copy)|u:(dev|ret|fav|push|saved)|tip:(open|send)|ins:(intro|bar:want))$/;
+// はじめての方へのご案内（ob:）と、Xのリンクから来た訪問（in:x）
+const OB = /^(ob:(show|s2|s3|done|skip|close|add|want|item|help)|in:x)$/;
 export async function onRequestPost({ request, env }) {
   if (!env.REPORTS) return new Response(null, { status: 204 });
   let b;
   try { b = JSON.parse(await request.text()); } catch (e) { return new Response(null, { status: 400 }); }
   const ev = b && typeof b.ev === "object" ? b.ev : {};
   const add = {};
-  for (const [k, v] of Object.entries(ev).slice(0, 40)) if (OK.test(k)) add[k] = Math.min(50, Math.max(0, v | 0));
+  for (const [k, v] of Object.entries(ev).slice(0, 40)) if (OK.test(k) || OB.test(k)) add[k] = Math.min(50, Math.max(0, v | 0));
   if (!Object.keys(add).length) return new Response(null, { status: 204 });
   const day = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10); // 日本時間の日付
   const key = `s:${day}`;
