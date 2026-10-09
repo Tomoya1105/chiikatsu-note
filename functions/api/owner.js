@@ -3,7 +3,7 @@
 // 合言葉そのものは保存せず、ハッシュ（下の OWNER_HASH）だけを置いている。
 import { token } from "./xdraft.js";
 import { sendPush } from "../../src/webpush.js";
-import { REDUCE, STOP, jstDay } from "./hit.js";
+import { REDUCE, STOP, jstDay, cfDay } from "./hit.js";
 const OWNER_HASH = "a10f78fbd8ad0dbfa641861a3de409679e8fc7e76bb53cc0e0355411363982e9";
 const jstNow = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 16).replace("T", " ");
 async function sha256(s) { const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join(""); }
@@ -41,13 +41,22 @@ export async function onRequestPost({ request, env }) {
     try { if (env.REPORTS) st.err = JSON.parse((await env.REPORTS.get("stats:err")) || "null"); } catch (e) {}
     if (env.STATSDB) {
       try {
-        const meta = (await env.STATSDB.prepare("SELECT k, v, t FROM meta WHERE k = 'env' OR substr(k, 3) >= ?1").bind(from).all()).results || [];
+        // 書き込み量の1日は Cloudflare の区切り（UTC 0時＝日本の朝9時）。表の集計の日（日本の日付）とは別に持つ
+        const fromCf = cfDay(now - 28 * 864e5);
+        const meta = (await env.STATSDB.prepare("SELECT k, v, t FROM meta WHERE k = 'env' OR substr(k, 3) >= ?1").bind(fromCf).all()).results || [];
         const er = meta.find(r => r.k === "env"); st.env = er ? er.t : null;
-        for (let i = 0; i < 28; i++) {
-          const d = jstDay(now - i * 864e5), w = meta.find(r => r.k === "w:" + d), m = meta.find(r => r.k === "m:" + d);
-          st.days.push({ day: d, w: w ? w.v : 0, last: w ? w.t : null, mode: m ? m.v : 0, modeAt: m ? m.t : null });
-        }
+        const mv = k => meta.find(r => r.k === k);
         st.rows = ((await env.STATSDB.prepare("SELECT day, seg, k, n FROM daily WHERE day >= ?1").bind(from).all()).results || []).map(r => [r.day, r.seg, r.k, r.n]);
+        const hasRows = new Set(st.rows.map(r => r[0]));
+        const c0 = cfDay(now), w0 = mv("w:" + c0), m0 = mv("m:" + c0);
+        st.cf = { day: c0, w: w0 ? w0.v : 0, last: w0 ? w0.t : null, mode: m0 ? m0.v : 0, modeAt: m0 ? m0.t : null };
+        for (let i = 0; i < 28; i++) {
+          const d = jstDay(now - i * 864e5), c2 = cfDay(new Date(d + "T00:00:00Z").getTime()), c1 = cfDay(new Date(d + "T00:00:00Z").getTime() - 864e5);
+          // 日本の1日は、Cloudflareの2つの「1日」にまたがる（朝9時までと、朝9時から）。どちらかで止まっていれば、その日は一部が止まっていた
+          const ms = [mv("m:" + c1), mv("m:" + c2)].filter(Boolean), md = ms.reduce((a, r) => r.v > a ? r.v : a, 0);
+          const lasts = [mv("w:" + c1), mv("w:" + c2)].filter(r => r && r.t && r.t.slice(0, 10) === d).map(r => r.t).sort();
+          st.days.push({ day: d, w: hasRows.has(d) ? 1 : 0, last: lasts.length ? lasts[lasts.length - 1] : null, mode: md, modeAt: (ms.find(r => r.v === md) || {}).t || null });
+        }
         st.ok = true;
       } catch (e) { st.dbErr = String(e && e.message || e).slice(0, 200); }
     }

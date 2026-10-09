@@ -3,7 +3,7 @@
 import { DatabaseSync } from "node:sqlite";
 import fs from "node:fs";
 import assert from "node:assert/strict";
-import { record, pick, REDUCE, STOP, onRequestPost } from "../functions/api/hit.js";
+import { record, pick, REDUCE, STOP, onRequestPost, cfDay } from "../functions/api/hit.js";
 
 // D1 のうち、hit.js が使う形（prepare/bind/all/run/batch と meta.rows_written）だけを真似る
 function d1(){
@@ -25,6 +25,7 @@ const HOST = "chiikatsunote.com", DAYMS = 864e5;
 let base = Date.parse("2026-11-01T03:00:00Z"), dn = 0;
 const nextDay = () => base + (dn++) * DAYMS;   // テストごとに日を変える（その日の「停止」の覚え書きを持ち越さない）
 const dayOf = ms => new Date(ms + 9 * 3600e3).toISOString().slice(0, 10);
+const cfOf = ms => new Date(ms).toISOString().slice(0, 10);   // Cloudflareの1日（UTC 0時＝日本の朝9時）。書き込み量・縮小・停止はこの区切り
 const items = JSON.parse(fs.readFileSync(new URL("../data/items.json", import.meta.url), "utf8"));
 const ID = (Array.isArray(items) ? items : items.items)[0].id;
 let ok = 0; const t = async (name, fn) => { await fn(); ok++; console.log("OK", name); };
@@ -36,7 +37,7 @@ await t("同時に200回送っても合計が合う", async () => {
   assert.equal(get(db, dayOf(now), "g", "v:new"), 200);
   assert.equal(get(db, dayOf(now), "g", "pv:home"), 400);
   // 書き込み量は Cloudflare が返す行数（ここでは SQLite の変更行数）の合計＋1回あたり2
-  assert.equal(meta(db, "w:" + dayOf(now)).v, 200 * (2 + 2));
+  assert.equal(meta(db, "w:" + cfOf(now)).v, 200 * (2 + 2));
 });
 await t("決めた項目だけ・商品IDは掲載中のものだけ・1回3件まで・値は50まで", async () => {
   const r = pick({ "evil": 3, "pv:home": 999, ["bi:" + ID]: 1, "bi:nope": 1, "b:list:rk": 1, "b:list:zz": 1, "u:saved": 70 }, 0);
@@ -64,18 +65,18 @@ await t("本番の画面から確認用のデータベースには書かない�
 await t(`書き込みが${REDUCE}行を超えたら大事な項目だけ（推定はしない）`, async () => {
   const db = d1(); db.raw.exec("INSERT INTO meta VALUES ('env',0,'production')");
   const now = nextDay(), day = dayOf(now);
-  db.raw.prepare("INSERT INTO meta VALUES (?, ?, ?)").run("w:" + day, REDUCE, "x");
+  db.raw.prepare("INSERT INTO meta VALUES (?, ?, ?)").run("w:" + cfOf(now), REDUCE, "x");
   await record(db, { ev: { "v:new": 1, "pv:home": 1, "b:item:rk": 1, "tab:cal": 1 } }, HOST, now);
   assert.equal(get(db, day, "g", "v:new"), 1); assert.equal(get(db, day, "g", "b:item:rk"), 1);
   assert.equal(get(db, day, "g", "pv:home"), 0); assert.equal(get(db, day, "g", "tab:cal"), 0);
-  assert.equal(meta(db, "m:" + day).v, 1);
+  assert.equal(meta(db, "m:" + cfOf(now)).v, 1);
 });
 await t(`書き込みが${STOP}行を超えたらその日は記録しない・それ以降はD1も読まない`, async () => {
   const db = d1(); db.raw.exec("INSERT INTO meta VALUES ('env',0,'production')");
   const now = nextDay(), day = dayOf(now);
-  db.raw.prepare("INSERT INTO meta VALUES (?, ?, ?)").run("w:" + day, STOP, "x");
+  db.raw.prepare("INSERT INTO meta VALUES (?, ?, ?)").run("w:" + cfOf(now), STOP, "x");
   assert.equal((await record(db, { ev: { "v:new": 1 } }, HOST, now)).skip, "stop");
-  assert.equal(get(db, day, "g", "v:new"), 0); assert.equal(meta(db, "m:" + day).v, 2);
+  assert.equal(get(db, day, "g", "v:new"), 0); assert.equal(meta(db, "m:" + cfOf(now)).v, 2);
   const before = db.q.n;
   for (let i = 0; i < 50; i++) await record(db, { ev: { "v:new": 1 } }, HOST, now);
   assert.equal(db.q.n, before);   // 止まった日は、この実行単位では読み書きゼロ
@@ -85,10 +86,22 @@ await t("その日の最初の記録で、400日より古い合計を片付け�
   const now = nextDay(), old = dayOf(now - 401 * DAYMS), keep = dayOf(now - 300 * DAYMS);
   db.raw.prepare("INSERT INTO daily VALUES (?, 'g', 'v:new', 5)").run(old);
   db.raw.prepare("INSERT INTO daily VALUES (?, 'g', 'v:new', 5)").run(keep);
-  db.raw.prepare("INSERT INTO meta VALUES (?, 9, 'x')").run("w:" + old);
+  db.raw.prepare("INSERT INTO meta VALUES (?, 9, 'x')").run("w:" + cfOf(now - 401 * DAYMS));
   await record(db, { ev: { "v:new": 1 } }, HOST, now);
   assert.equal(get(db, old, "g", "v:new"), 0); assert.equal(get(db, keep, "g", "v:new"), 5);
-  assert.equal(meta(db, "w:" + old), undefined);
+  assert.equal(meta(db, "w:" + cfOf(now - 401 * DAYMS)), undefined);
+});
+await t("書き込み量の1日はCloudflareの区切り（UTC 0時＝日本の朝9時）。日本の0時をまたいでも同じ1日として数える", async () => {
+  const db = d1(); db.raw.exec("INSERT INTO meta VALUES ('env',0,'production')");
+  const a = Date.parse("2026-11-20T14:30:00Z"), b = Date.parse("2026-11-20T15:30:00Z"), c = Date.parse("2026-11-21T00:10:00Z");   // 日本の23:30・翌日0:30・翌日9:10
+  await record(db, { ev: { "v:new": 1 } }, HOST, a); await record(db, { ev: { "v:new": 1 } }, HOST, b);
+  assert.equal(dayOf(a) !== dayOf(b), true);                 // 表の集計は日本の日付で分かれる
+  assert.equal(meta(db, "w:" + cfOf(a)).v, 2 * 3);           // 書き込み量は同じ1日にまとまる（1行＋2）
+  assert.equal(meta(db, "w:" + cfOf(c)), undefined);
+  await record(db, { ev: { "v:new": 1 } }, HOST, c);       // 朝9時を過ぎると、書き込み量は0から数え直す
+  assert.equal(meta(db, "w:" + cfOf(c)).v, 3); assert.equal(meta(db, "w:" + cfOf(a)).v, 6);
+  db.raw.prepare("UPDATE meta SET v = ? WHERE k = ?").run(STOP, "w:" + cfOf(b));   // 日本の0時をまたいでも、停止は朝9時まで続く
+  assert.equal((await record(db, { ev: { "v:new": 1 } }, HOST, Date.parse("2026-11-20T20:00:00Z"))).skip, "stop");
 });
 await t("D1がない・壊れているときも 204 を返し、エラーは KV に30分に1回だけ残す", async () => {
   const req = () => new Request("https://chiikatsunote.com/api/hit", { method: "POST", body: JSON.stringify({ ev: { "v:new": 1 } }) });

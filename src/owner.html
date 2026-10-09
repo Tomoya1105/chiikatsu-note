@@ -92,15 +92,15 @@ code{font-size:11.5px;word-break:break-all}
   function sumPre(o, pre){ var n = 0; for (var k in o) if (k.indexOf(pre) === 0) n += o[k]; return n; }
   function drawHealth(){
     var el = document.getElementById("health"), s = ST, h = "", cls = "ok";
-    var today = s.days && s.days[0];
+    var today = s.cf || (s.days && s.days[0]);
     if (!s.binding) { cls = "bad"; h = "計測のデータベースがつながっていません。いまは記録されていません。"; }
     else if (!s.ok) { cls = "bad"; h = "計測のデータベースに接続できません（" + esc(s.dbErr || "") + "）。いまは記録されていない可能性があります。"; }
     else if (s.env !== s.want) { cls = "bad"; h = "つないでいるデータベースの設定が、この画面（" + (s.want === "production" ? "本番" : "確認用") + "）と合っていません（" + esc(s.env || "未設定") + "）。記録していません。"; }
     else {
-      h = "計測：正常" + (today && today.last ? "（今日の最終記録 " + esc(today.last.slice(11)) + "）" : "（今日はまだ記録がありません）");
-      if (today && today.mode === 1) { cls = "warn"; h = "今日は書き込みが多いため、" + esc((today.modeAt || "").slice(11)) + "から大事な項目だけを記録しています（ページ表示などは省略）。"; }
-      if (today && today.mode === 2) { cls = "bad"; h = "今日は上限に達したため、" + esc((today.modeAt || "").slice(11)) + "から記録を止めています（あすの0時に再開）。"; }
-      if (today) h += '<br><small>今日の計測の書き込み：' + today.w.toLocaleString() + '行（縮小 ' + s.limits.reduce.toLocaleString() + '行・停止 ' + s.limits.stop.toLocaleString() + '行。Cloudflareが数えた行数）</small>';
+      h = "計測：正常" + (today && today.last ? "（最終記録 " + esc(today.last.slice(5)) + "）" : "（まだ記録がありません）");
+      if (today && today.mode === 1) { cls = "warn"; h = "書き込みが多いため、" + esc((today.modeAt || "").slice(5)) + "から大事な項目だけを記録しています（ページ表示などは省略）。"; }
+      if (today && today.mode === 2) { cls = "bad"; h = "上限に達したため、" + esc((today.modeAt || "").slice(5)) + "から記録を止めています（日本時間の朝9時に再開）。"; }
+      if (today) h += '<br><small>計測の書き込み（日本時間の朝9時から数える1日）：' + today.w.toLocaleString() + '行（縮小 ' + s.limits.reduce.toLocaleString() + '行・停止 ' + s.limits.stop.toLocaleString() + '行。Cloudflareが数えた行数）</small>';
     }
     if (s.err && Date.now() - s.err.ms < 48 * 3600e3) h += '<br><small>直近のエラー：' + esc(s.err.at) + ' ' + esc(s.err.msg) + '</small>';
     el.className = "health " + cls; el.innerHTML = h;
