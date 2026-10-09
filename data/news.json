@@ -1,5 +1,16 @@
 [
  {
+  "id": "20261009-hikaru-pajama",
+  "date": "2026-10-09",
+  "tag": "goods",
+  "title": "暗闇で光るちいかわの冬パジャマが予約開始",
+  "sum": "バンダイの「光るパジャマ」にちいかわが登場。起毛とダンボールニットの2タイプで各3,630円、プレミアムバンダイで予約受付中、11月上旬から順次発売。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000001022.000055569.html",
+  "itemId": "20261009-hikaru-pajama",
+  "addedAt": "2026-10-09"
+ },
+ {
   "id": "20261009-xmas-market",
   "date": "2026-10-09",
   "tag": "event",
@@ -8,6 +19,17 @@
   "source": "PR TIMES",
   "src": "https://prtimes.jp/main/html/rd/p/000004081.000064643.html",
   "itemId": "20261124-xmas-market",
+  "addedAt": "2026-10-09"
+ },
+ {
+  "id": "20261008-penlight-ouen",
+  "date": "2026-10-08",
+  "tag": "anime",
+  "title": "映画ちいかわ、光るペンライトで応援上映が決定",
+  "sum": "10/16〜18にTOHOシネマズ7劇場で、音に合わせてペンライトが光る演出付きの応援上映を実施。声を出して応援できる回です。",
+  "source": "TOHOシネマズ",
+  "src": "https://www.tohotheater.jp/event/chiikawa-penlightouen10161718.html",
+  "itemId": "20261016-penlight-ouen",
   "addedAt": "2026-10-09"
  },
  {

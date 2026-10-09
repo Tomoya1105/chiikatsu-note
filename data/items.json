@@ -465,7 +465,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-09"
  },
  {
   "id": "20260919-34",
@@ -1131,7 +1131,7 @@
   "time": "",
   "updatedAt": "2026-10-04",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-09"
  },
  {
   "id": "20261025-20",
@@ -1431,7 +1431,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "official",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-09"
  },
  {
   "id": "20260918-pus-okazaki",
@@ -1522,7 +1522,7 @@
   "place": "全国の量販店の菓子売場など",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117927843000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-09"
  },
  {
   "region": "jp",
@@ -1544,7 +1544,7 @@
   "place": "全国のスーパーなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-09"
  },
  {
   "region": "jp",
@@ -1752,7 +1752,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "partner",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-09"
  },
  {
   "id": "20261001-tokyobanana-solamachi",
@@ -1774,7 +1774,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-05",
   "srcType": "press",
-  "verifiedAt": "2026-10-04",
+  "verifiedAt": "2026-10-09",
   "qNone": "期間限定ショップの案内"
  },
  {
@@ -2297,6 +2297,79 @@
   "srcType": "partner",
   "verifiedAt": "2026-10-09",
   "note": "9袋入り（ホワイトチョコ・いちごチョコの2種の味）。チョコのキャラは20種。",
+  "autoAdded": true,
+  "addedAt": "2026-10-09",
+  "updatedAt": "2026-10-09"
+ },
+ {
+  "id": "20261009-hikaru-pajama",
+  "region": "jp",
+  "t": "光るパジャマ アニメちいかわ 冬物パジャマ（予約）",
+  "cat": "goods",
+  "s": "2026-10-09",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "数量限定（予定数に達し次第終了）",
+  "place": "プレミアムバンダイ（公式通販）",
+  "area": "",
+  "price": "各3,630円",
+  "q": "",
+  "qNone": "プレミアムバンダイでの予約販売で、楽天で同じ商品を特定できない",
+  "src": "https://prtimes.jp/main/html/rd/p/000001022.000055569.html",
+  "srcType": "press",
+  "srcs": [
+   "https://p-bandai.jp/apparel/hikarucp/"
+  ],
+  "verifiedAt": "2026-10-09",
+  "rsv": [
+   {
+    "n": "起毛パジャマ",
+    "u": "https://p-bandai.jp/item/item-1000259649/",
+    "so": false
+   },
+   {
+    "n": "ダンボールニット（ちいかわ）",
+    "u": "https://p-bandai.jp/item/item-1000259651/",
+    "so": false
+   },
+   {
+    "n": "ダンボールニット（ハチワレ）",
+    "u": "https://p-bandai.jp/item/item-1000259653/",
+    "so": false
+   },
+   {
+    "n": "ダンボールニット（うさぎ）",
+    "u": "https://p-bandai.jp/item/item-1000259654/",
+    "so": false
+   }
+  ],
+  "note": "暗いところでちいかわたちが浮かび上がる蓄光プリントのパジャマ。起毛（ブルー・ピンク）とダンボールニット（ちいかわ・ハチワレ・うさぎ）。2026年11月上旬から順次発売。受注生産ではありません。",
+  "autoAdded": true,
+  "addedAt": "2026-10-09",
+  "updatedAt": "2026-10-09"
+ },
+ {
+  "id": "20261016-penlight-ouen",
+  "region": "jp",
+  "t": "映画ちいかわ 自動制御ペンライト演出付き応援上映（TOHOシネマズ7劇場）",
+  "cat": "event",
+  "s": "2026-10-16",
+  "sp": "day",
+  "e": "2026-10-18",
+  "time": "10/16(金) 19:00〜、10/17(土)・10/18(日) 16:00〜",
+  "eNote": "",
+  "place": "TOHOシネマズ すすきの・日比谷・新宿・池袋・名古屋栄・梅田・天神ソラリア館",
+  "area": "",
+  "price": "通常料金",
+  "q": "",
+  "src": "https://www.tohotheater.jp/event/chiikawa-penlightouen10161718.html",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.tohotheater.jp/theater/076/info/event/chiikawa-penlightouen10161718.html"
+  ],
+  "verifiedAt": "2026-10-09",
+  "note": "『映画ちいかわ 人魚の島のひみつ』を、音に合わせて光るペンライトの演出付きで応援しながら観られる上映。前売券・ムビチケなどは使用可、招待券・無料鑑賞券は不可。ペンライトは数量限定で販売。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
   "updatedAt": "2026-10-09"
