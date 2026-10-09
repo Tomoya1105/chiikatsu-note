@@ -196,7 +196,7 @@
   var root, track, slides, dots, back, next, sub, live, cur = 0, seen = { 0: 1 }, lastFocus = null, closed = false, outs = [];
 
   function build(){
-    var st = document.createElement("style"); st.textContent = CSS; document.head.appendChild(st);
+    if (!document.getElementById("ob-css")) { var st = document.createElement("style"); st.id = "ob-css"; st.textContent = CSS; document.head.appendChild(st); }
     root = document.createElement("div");
     root.className = "ob"; root.setAttribute("role", "dialog"); root.setAttribute("aria-modal", "true"); root.setAttribute("aria-roledescription", "はじめての方へのご案内");
     root.setAttribute("aria-label", "ちい活ノートの使い方（3枚）");
@@ -235,9 +235,14 @@
       tmr = setTimeout(function(){ var i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); if (i !== cur) setCur(i, true); }, 80);
     }, { passive: true });
     var relayout = function(){ if (closed) return; fit(); track.scrollLeft = cur * track.clientWidth; };
-    window.addEventListener("resize", relayout);
-    window.addEventListener("orientationchange", function(){ setTimeout(relayout, 300); });
-    if (window.visualViewport) visualViewport.addEventListener("resize", relayout);
+    window.__obRelayout = relayout;
+    if (!window.__obBound) {   // 2回目以降（「使い方」から開き直したとき）に同じ見張りを重ねない
+      window.__obBound = 1;
+      var rl = function(){ if (window.__obRelayout) window.__obRelayout(); };
+      window.addEventListener("resize", rl);
+      window.addEventListener("orientationchange", function(){ setTimeout(rl, 300); });
+      if (window.visualViewport) visualViewport.addEventListener("resize", rl);
+    }
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
     fit();
     setCur(0, false);
@@ -295,7 +300,7 @@
     sub.hidden = !last || root.__app;
     if (sub.hidden !== root.__subH) { root.__subH = sub.hidden; fit(); }   // 最後の1枚はリンクのぶんボタンの場所が上がるので、イラストを測り直す
     live.textContent = "3枚中" + (i + 1) + "枚目：" + slides[i].querySelector(".ob-h").textContent;
-    if (!seen[i]) { seen[i] = 1; T("ob:s" + (i + 1)); }
+    if (!seen[i]) { seen[i] = 1; M("ob:s" + (i + 1)); }
     if (i === 1) play2();
     if (bySwipe) { var h = slides[i].querySelector(".ob-h"); if (h && root.contains(document.activeElement) && document.activeElement.classList.contains("ob-h")) h.focus({ preventScroll: true }); }
   }
@@ -334,7 +339,7 @@
     else if (a === "back") go(cur - 1);
     else if (a === "skip") finish("skip");
     else if (a === "close") finish("close");
-    else if (a === "add") { T("ob:add"); finish("done", true); }
+    else if (a === "add") { M("ob:add"); finish("done", true); }
   }
   function onKey(e){
     if (e.key === "Escape") { e.preventDefault(); finish("close"); return; }
@@ -354,7 +359,7 @@
     try { localStorage.setItem("chiikatsu-intro-off", "1"); } catch (e) {}   // 「はじめての方へ」の案内は、ここで見たので重ねて出さない
     var intro = document.getElementById("intro"); if (intro) intro.hidden = true;
     document.documentElement.classList.remove("has-intro");
-    T("ob:" + how);
+    M("ob:" + how);
     timers.forEach(clearTimeout);
     outs.forEach(function(el){ el.removeAttribute("inert"); el.removeAttribute("aria-hidden"); });
     document.documentElement.classList.remove("ob-on");
@@ -368,12 +373,25 @@
     }, 250);
   }
 
+  // 「使い方」から開いたとき（help）は、はじめての方の数字と混ざらないよう ob:help だけを数える
+  var help = false;
+  function M(k){ if (!help) T(k); }
   function start(){
-    if (closed || !document.body) return;
-    try { if (localStorage.getItem(DONE) && !/[?&]ob=1\b/.test(window.__chiikatsuOnbQ || "")) return; } catch (e) {}
+    if (!closed && root || !document.body) return;
+    help = !!window.__chiikatsuOnbForce || /[?&]ob=1\b/.test(window.__chiikatsuOnbQ || "");
+    if (help) { open(); return; }
+    try { if (localStorage.getItem(DONE)) return; } catch (e) {}
     try { sessionStorage.setItem("chiikatsu-obs", "1"); } catch (e) {}   // この訪問で見た印（「ほしい」・詳細ページの利用を数えるため）
     build();
     T("ob:show");
   }
+  // トップの下の「使い方」から、何度でも開き直せる
+  function open(){
+    if (root && !closed) return;
+    help = true; closed = false; cur = 0; seen = { 0: 1 }; played = false; timers = []; outs = []; lastFocus = null;
+    build();
+    T("ob:help");
+  }
+  window.chiikatsuOnb = { open: open };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();

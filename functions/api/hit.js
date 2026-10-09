@@ -2,7 +2,7 @@
 // 個人を特定する情報（IPアドレスなど）は保存しない。保存先は報告と同じ KV（REPORTS）。
 const OK = /^(pv:(home|item|other)|tab:(list|cal|mine|shop|news)|st:[a-z]+|c:(rk|rkpre|rksearch|shop|travel|official|news|gcal|rsv|books|yahoo|amazon|fresh)|mark:(want|got)|shopq|install|push:on|x:embed|fav|nudge:show|share:(nudge|line|x|copy)|u:(dev|ret|fav|push|saved)|tip:(open|send)|ins:(intro|bar:want))$/;
 // はじめての方へのご案内（ob:）と、Xのリンクから来た訪問（in:x）
-const OB = /^(ob:(show|s2|s3|done|skip|close|add|want|item)|in:x)$/;
+const OB = /^(ob:(show|s2|s3|done|skip|close|add|want|item|help)|in:x)$/;
 export async function onRequestPost({ request, env }) {
   if (!env.REPORTS) return new Response(null, { status: 204 });
   let b;
