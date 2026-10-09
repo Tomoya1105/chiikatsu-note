@@ -48,6 +48,7 @@ ol{margin:0 0 4px;padding-left:20px;font-size:13.5px}
 .bars i.stop{background:#C9A227}.bars i.none{background:var(--line)}
 .legacy{margin-top:14px;font-size:13px}.legacy summary{cursor:pointer;color:var(--ink-2)}
 code{font-size:11.5px;word-break:break-all}
+.kpi .an{color:#b3261e}.note.anom{background:#fdecea;border:1px solid #f1b0aa;border-radius:12px;padding:10px 12px;color:#7a1c14}
 </style>
 </head>
 <body>
@@ -75,7 +76,12 @@ code{font-size:11.5px;word-break:break-all}
   function esc(x){ return String(x == null ? "" : x).replace(/[&<>"]/g, function(c){ return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function pct(a, b){ return b ? Math.round(a / b * 1000) / 10 + "%" : "—"; }
   // 割合は必ず「分子/分母」を添える。分母が20未満のときは「参考」
-  function rate(a, b, unit){ if (a > b && b) return '<b>—</b><small>' + a + ' / ' + b + (unit || '') + '（分子が分母を超えたため、割合は出しません。計測の欠けか、複数タブの重なり）</small>'; if (!b) return '<b>—</b><small>まだ分母がありません</small>'; return '<b>' + pct(a, b) + '</b><small>' + a + ' / ' + b + (unit || '') + (b < 20 ? '（件数が少ないため参考）' : '') + '</small>'; }
+  var ANOM = [];
+  function rate(a, b, unit, label){
+    if (b && a > b) { ANOM.push({ label: label || "", a: a, b: b, unit: unit || "" }); return '<b class="an">異常</b><small class="an">実際の値：' + a + ' / ' + b + (unit || '') + '（分子が分母より多いので、割合は出しません。送信の欠け、または複数タブの重なりが考えられます）</small>'; }
+    if (!b) return '<b>—</b><small>まだ分母がありません</small>';
+    return '<b>' + pct(a, b) + '</b><small>' + a + ' / ' + b + (unit || '') + (b < 20 ? '（件数が少ないため参考）' : '') + '</small>';
+  }
   function jst(ms){ return new Date(ms + 9 * 3600e3).toISOString().slice(0, 10); }
   function monday(ms){ var d = new Date(ms + 9 * 3600e3), w = (d.getUTCDay() + 6) % 7; return jst(ms - w * 864e5); }
   // 期間・区分の合計
@@ -101,7 +107,7 @@ code{font-size:11.5px;word-break:break-all}
   }
   function drawStats(){
     if (!ST) return;
-    drawHealth();
+    drawHealth(); ANOM = [];
     var el = document.getElementById("kpi"), now = Date.now(), to = ST.today, from = jst(now - (R - 1) * 864e5);
     var o = sums(ST.rows, G, from, to);
     var days = ST.days.slice(0, R), cut = days.filter(function(d){ return d.mode === 2; }), red = days.filter(function(d){ return d.mode === 1; });
@@ -113,15 +119,15 @@ code{font-size:11.5px;word-break:break-all}
     if (cut.length || red.length) h += '<p class="note warn">この期間には、上限で' + (cut.length ? '記録を止めた日（' + cut.map(function(d){ return d.day.slice(5); }).join("・") + '）' : '') + (cut.length && red.length ? 'と、' : '') + (red.length ? 'ページ表示などを省いた日（' + red.map(function(d){ return d.day.slice(5); }).join("・") + '）' : '') + 'があります。止めた日の数字は、止まるまでの分だけです。推定で補っていません。</p>';
     h += sec("利用", [
       [n(v(tw, "u:wk")), "今週使ったブラウザ（月曜から）", "先週：" + v(lw, "u:wk") + "。ブラウザごとに1つ（X内とSafariは別）。履歴を消すと重ねて数える"],
-      [rate(v(tw, "u:wkret"), v(tw, "u:wk")), "今週のうち、先週も開いたブラウザ", "同じブラウザで続けて開いた分だけ（参考値）"],
+      [rate(v(tw, "u:wkret"), v(tw, "u:wk"), "", "今週のうち、先週も開いたブラウザ"), "今週のうち、先週も開いたブラウザ", "同じブラウザで続けて開いた分だけ（参考値）"],
       [n(v(o, "v:new")), "訪問", "同じタブで開いている間のひとまとまり（30分あくと次の訪問）"],
       [n(sumPre(o, "pv:")), "ページ表示", "トップ " + v(o, "pv:home") + "・詳細 " + v(o, "pv:item") + "・その他 " + v(o, "pv:other")]
     ]);
     h += sec("行動の流れ（訪問ごと）", [
-      [rate(v(o, "f:hi"), v(o, "f:h"), "訪問"), "トップ → 詳細", "トップを見たあと、同じ訪問で詳細ページを開いた"],
-      [rate(v(o, "f:ib"), v(o, "f:i"), "訪問"), "詳細 → 購入先", "詳細ページで購入先（公式通販・公式の予約・楽天・Yahoo!）を押した"],
-      [rate(v(o, "f:lb"), v(o, "f:h"), "訪問"), "一覧 → 購入先", "トップの一覧から直接、購入先を押した"],
-      [rate(v(o, "f:w"), v(o, "v:new"), "訪問"), "♡を使った訪問", "「ほしい」か♡を1回以上押した（初回も含む）"]
+      [rate(v(o, "f:hi"), v(o, "f:h"), "訪問", "トップ → 詳細"), "トップ → 詳細", "トップを見たあと、同じ訪問で詳細ページを開いた"],
+      [rate(v(o, "f:ib"), v(o, "f:i"), "訪問", "詳細 → 購入先"), "詳細 → 購入先", "詳細ページで購入先（公式通販・公式の予約・楽天・Yahoo!）を押した"],
+      [rate(v(o, "f:lb"), v(o, "f:h"), "訪問", "一覧 → 購入先"), "一覧 → 購入先", "トップの一覧から直接、購入先を押した"],
+      [rate(v(o, "f:w"), v(o, "v:new"), "訪問", "♡を使った訪問"), "♡を使った訪問", "「ほしい」か♡を1回以上押した（初回も含む）"]
     ]);
     var PL = [["list", "一覧"], ["item", "詳細"], ["mine", "マイリスト"], ["shop", "おすすめ"], ["sum", "まとめ"]], DS = [["off", "公式通販"], ["rsv", "公式の予約"], ["rk", "楽天"], ["yh", "Yahoo!"]];
     h += '<h3>購入先へのクリック（回数）</h3><table class="tb"><tr><th></th>' + DS.map(function(d){ return '<th>' + d[1] + '</th>'; }).join("") + '<th>計</th></tr>' +
@@ -130,17 +136,22 @@ code{font-size:11.5px;word-break:break-all}
     var top = Object.keys(o).filter(function(k){ return k.indexOf("bi:") === 0; }).sort(function(a, b){ return o[b] - o[a]; }).slice(0, 10);
     if (top.length) h += '<h3>商品別の購入先クリック（上位10）</h3><ol class="top">' + top.map(function(k){ var id = k.slice(3); return '<li><a href="/items/' + encodeURIComponent(id) + '/" target="_blank">' + esc(NAMES[id] || id) + '</a> <b>' + o[k] + '</b></li>'; }).join("") + '</ol>';
     h += sec("集客と定着", [
-      [rate(v(o, "v:x"), v(o, "v:new"), "訪問"), "Xのリンクから来た訪問", "utm_source=x 付きのリンク"],
-      [rate(v(o, "f:xi"), v(o, "v:x"), "訪問"), "Xから来て詳細を見た", "購入先：" + v(o, "f:xb") + "訪問・♡：" + v(o, "f:xw") + "訪問"],
-      [rate(v(o, "ob:done"), v(o, "ob:show"), "回"), "ご案内を最後まで見た", "スキップ " + v(o, "ob:skip") + "・閉じる " + v(o, "ob:close") + "・「使い方」から " + v(o, "ob:help") + "回"],
-      [rate(v(o, "v:hs"), v(o, "v:new"), "訪問"), "ホーム画面のアイコンから開いた訪問", "アイコンから使った端末（日ごと）：" + v(o, "u:app")],
-      [rate(v(o, "u:fav"), v(o, "u:dev"), "端末・日"), "♡を持っている端末", "その日に押した分も含む（端末×日で数える）"],
+      [rate(v(o, "v:x"), v(o, "v:new"), "訪問", "Xのリンクから来た訪問"), "Xのリンクから来た訪問", "utm_source=x 付きのリンク"],
+      [rate(v(o, "f:xi"), v(o, "v:x"), "訪問", "Xから来て詳細を見た"), "Xから来て詳細を見た", "購入先：" + v(o, "f:xb") + "訪問・♡：" + v(o, "f:xw") + "訪問"],
+      [rate(v(o, "ob:done"), v(o, "ob:show"), "回", "ご案内を最後まで見た"), "ご案内を最後まで見た", "スキップ " + v(o, "ob:skip") + "・閉じる " + v(o, "ob:close") + "・「使い方」から " + v(o, "ob:help") + "回"],
+      [rate(v(o, "v:hs"), v(o, "v:new"), "訪問", "ホーム画面のアイコンから開いた訪問"), "ホーム画面のアイコンから開いた訪問", "アイコンから使った端末（日ごと）：" + v(o, "u:app")],
+      [rate(v(o, "u:fav"), v(o, "u:dev"), "端末・日", "♡を持っている端末"), "♡を持っている端末", "その日に押した分も含む（端末×日で数える）"],
       [n(v(o, "push:on")), "通知をオンにした回数", "共有ボタン：" + (v(o, "share:line") + v(o, "share:x") + v(o, "share:copy") + v(o, "share:nudge")) + "回"]
     ]);
     var mx = 1, bars = ST.days.slice(0, 14).map(function(d){ var x = 0; (ST.rows || []).forEach(function(r){ if (r[0] === d.day && r[1] === G && r[2] === "v:new") x += r[3]; }); if (x > mx) mx = x; return [d, x]; });
     h += '<div class="bars" title="直近14日の訪問">' + bars.reverse().map(function(b){ var d = b[0], st = d.mode === 2 ? " stop" : (!d.w && b[1] === 0 ? " none" : ""); return '<i class="' + st + '" style="height:' + Math.max(3, Math.round(b[1] / mx * 100)) + '%" title="' + d.day + '：' + b[1] + '訪問' + (d.mode === 2 ? '（途中で停止）' : '') + (!d.w ? '（記録なし）' : '') + '"></i>'; }).join("") + '</div>';
     var none = ST.days.slice(0, R).filter(function(d){ return !d.w && d.day !== ST.today; });
     h += '<p class="note">棒は直近14日の訪問（左が古い日）。' + (G === "t" ? "いまは「テスト」の数字を表示しています。" : "テストモードの端末の数字は含みません。") + (none.length && ST.ok ? '記録が1件もない日：' + none.map(function(d){ return d.day.slice(5); }).join("・") + '（アクセスがなかったか、計測が止まっていた日。上の「直近のエラー」も確認）' : '') + '</p>';
+    if (ANOM.length) {
+      var box = '<p class="note anom"><b>計測の異常：割合の分子が分母を超えた項目が ' + ANOM.length + ' 件あります。</b><br>' + ANOM.map(function(x){ return esc(x.label) + '：分子 ' + x.a + ' ／ 分母 ' + x.b + esc(x.unit); }).join('<br>') + '<br><small>この期間・この区分の数字です。割合は出していません。送信の欠け（ページ移動中の失敗）や、複数タブの重なりが考えられます。繰り返し出るときは、期間を短くして、いつから出ているか確かめてください。</small></p>';
+      h = box + h;
+      var hl = document.getElementById("health"); if (hl) { hl.className = "health bad"; hl.innerHTML += '<br>割合の異常が ' + ANOM.length + ' 件あります（下の「計測の異常」を確認）。'; }
+    }
     el.innerHTML = h;
   }
   function drawTm(){
