@@ -607,7 +607,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-05"
+  "verifiedAt": "2026-10-10"
  },
  {
   "id": "20260928-09",
@@ -704,7 +704,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-10",
   "xpost": "https://x.com/chiikawabakery/status/2100797269436203365",
   "xpostNote": "投稿日2026-09-18。本文に「デパートリウボウ 6階」「10/1(木)～10/12(月)」",
   "org": {
@@ -841,7 +841,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-05"
+  "verifiedAt": "2026-10-10"
  },
  {
   "id": "20261002-pus-saga",
@@ -863,7 +863,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-05"
+  "verifiedAt": "2026-10-10"
  },
  {
   "id": "20261007-taipei-xinyi",
@@ -884,7 +884,7 @@
   "time": "11:00〜22:00",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-05"
+  "verifiedAt": "2026-10-10"
  },
  {
   "id": "20261009-nikuman",
@@ -2064,7 +2064,7 @@
   "srcs": [
    "https://www.tokyobanana.jp/products/banana_chiikawa.html"
   ],
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-10",
   "note": "10/1〜10/14はエコバッグとそのセットを販売（9/30まではトートバッグ）。新作のちいかわクッキーサンドもあり。",
   "autoAdded": true,
   "addedAt": "2026-10-05",
@@ -2398,5 +2398,49 @@
   "autoAdded": true,
   "addedAt": "2026-10-09",
   "updatedAt": "2026-10-09"
+ },
+ {
+  "id": "20261023-pus-ebina-marui",
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "time": "",
+  "eNote": "",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "verifiedAt": "2026-10-10",
+  "autoAdded": true,
+  "addedAt": "2026-10-10",
+  "updatedAt": "2026-10-10",
+  "t": "ちいかわPOP UP STORE＠海老名マルイ",
+  "s": "2026-10-23",
+  "e": "2026-11-29",
+  "place": "海老名マルイ（神奈川県海老名市）",
+  "area": "海老名",
+  "note": "会場は5F イベントスペース。"
+ },
+ {
+  "id": "20261023-pus-oita-parkplace",
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "time": "",
+  "eNote": "",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "verifiedAt": "2026-10-10",
+  "autoAdded": true,
+  "addedAt": "2026-10-10",
+  "updatedAt": "2026-10-10",
+  "t": "ちいかわPOP UP STORE＠イオンパークプレイス大分",
+  "s": "2026-10-23",
+  "e": "2026-11-08",
+  "place": "イオンパークプレイス大分（大分県大分市）",
+  "area": "大分",
+  "note": "会場はサニーウォーク1階 レプシィム前。"
  }
 ]
