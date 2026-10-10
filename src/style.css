@@ -755,6 +755,7 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .wantnote[hidden]{display:none}
 .buybox{margin:10px 0 12px}
 .buybox .acts{margin-top:0}
+.buybox .rsvbox{margin:0 0 10px}
 .buyh{margin:0 0 6px;font-size:13px;font-weight:700;color:var(--ink-2)}
 
 /* 段階1③：商品カードを詰める（画像は題名の右に小さく。画像・題名は詳細ページへ。購入先ボタンと日付・価格は残す） */
