@@ -223,15 +223,18 @@
     if (!/^\d+$/.test(id)) return;
     box.classList.add("open"); if (auto) box.classList.add("auto");
     b.setAttribute("aria-expanded", "true"); b.querySelector(".xl").textContent = "画像をとじる";
-    f.innerHTML = '<p class="xwait">公式の投稿を読み込み中…</p><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none" data-lang="ja" data-theme="' + (isDark() ? "dark" : "light") + '"><a href="https://twitter.com/i/status/' + id + '"></a></blockquote>';
+    f.innerHTML = auto ? '' : '<p class="xwait">公式の投稿を読み込み中…</p>';
     ct("x:embed");
     var done = false;
     function fail(){ if (auto) { box.hidden = true; f.innerHTML = ""; } else xFail(f, id); }
     setTimeout(function(){ if (!done && box.classList.contains("open") && !f.querySelector("iframe")) { done = true; fail(); } }, 12000);
-    loadX().then(function(t){ return t.widgets.load(f); }).then(function(){
+    loadX().then(function(t){
+      // blockquote + widgets.load は、描画が終わる前に完了して「失敗」と誤判定することがあった。createTweet は描画後に要素を返す（診断ページで20件すべて表示を確認）
+      return t.widgets.createTweet(id, f, { dnt: true, conversation: "none", lang: "ja", theme: isDark() ? "dark" : "light" });
+    }).then(function(el){
       if (done) return; done = true;
       var w = f.querySelector(".xwait"); if (w) w.remove();
-      if (!f.querySelector("iframe")) fail(); else box.classList.add("ready");
+      if (!el || !f.querySelector("iframe")) fail(); else box.classList.add("ready");
     }).catch(function(){ if (!done) { done = true; fail(); } });
   }
   document.addEventListener("click", function(e){
