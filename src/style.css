@@ -691,3 +691,57 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 /* 「はじめての方へ」の中の、ホーム画面に追加する方法のボタン */
 .introbtn{display:inline-block;margin:6px 0 0;padding:6px 12px;border:1px solid var(--acc);border-radius:999px;background:var(--surface);color:var(--acc);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
 .is-app .introbtn{display:none}
+
+/* 段階1①：トップの上部を詰めて、最初の商品が1画面目に入るように（スマホ。文字の大きさはほぼそのまま、余白と重なりを減らす） */
+@media (max-width:520px){
+  /* 見出し：ロゴ・題名・推しカラーの1行と、説明文の1行（幅いっぱい）の2段に */
+  .top{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"ic ti os" "tg tg tg";align-items:center;column-gap:9px;row-gap:0;padding-block:6px 0}
+  .top .brand,.top .brand > div{display:contents}
+  .brand svg{grid-area:ic;width:34px;height:34px}
+  .brand h1{grid-area:ti;font-size:22px}
+  .brand p{grid-area:tg;margin:0;font-size:11.5px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tag2 span{display:inline}
+  .topr{grid-area:os}
+  .oshibtn{padding:4px 10px 4px 5px;font-size:12.5px}
+  .intro{margin:6px 0 4px;padding:7px 4px 7px 11px;gap:4px}
+  .intro p{line-height:1.5}
+  .intro-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px}
+  .intro-t{display:block}
+  .introbtn{margin:0;padding:4px 11px}
+  .intro .ins-x{width:28px;height:28px}
+  .pr{margin:0 0 5px;font-size:10.5px;line-height:1.35}
+  .top + .pr{margin-top:1px}
+  .region{margin-bottom:5px;gap:6px}
+  .seg{padding:3px;gap:3px}
+  .seg button{padding:4px 6px;font-size:13.5px}
+  .sum{gap:6px;margin-bottom:2px}
+  .sum button{padding:5px 10px;gap:0}
+  .sum .v{font-size:19px}
+  .sum .v small{font-size:12px}
+  .ins-top{margin:5px 0 0;padding:5px 4px 5px 10px;gap:8px}
+  .ins-top .appicon{width:30px;height:30px;border-radius:8px}
+  .ins-top .ins-txt b{font-size:12.5px;white-space:nowrap}
+  .ins-top .ins-cta{padding:7px 11px}
+  .ins-top .ins-x{width:28px;height:28px}
+  .tabs{padding-block:4px}
+  .tabs button{padding-block:7px}
+  .filters{gap:4px;margin:0 0 6px}
+  .search input{padding:7px 0}
+  .chip{padding:3px 12px;font-size:12.5px}
+  .row{align-items:center}
+  .tiplink{padding:3px 10px}
+  .list{gap:10px}
+  .wk{margin:0 2px -6px;gap:8px}
+  .dlstrip{padding:7px 10px;margin:0;gap:4px;border-radius:14px}
+  .dlsh{flex-wrap:wrap;gap:0 8px}
+  .dlsh b{font-size:14.5px}
+  .dlsh .dlmore{margin-left:auto}
+  .dlrow{padding:4px 9px;gap:0 8px}
+  .dlrow .dlt{font-size:13.5px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .dlmore{padding:0;white-space:nowrap}
+  .dlrest{align-self:flex-end}
+  .rsvstrip{margin:0;padding:8px 12px}
+}
+@media (max-width:380px){.ins-top .ins-txt b{white-space:normal;line-height:1.3}}
+@media (max-width:380px){.sum button{min-width:0}.sum .k{white-space:normal;line-height:1.25}}
+

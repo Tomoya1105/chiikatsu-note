@@ -371,7 +371,7 @@ function renderListInner(){
   // 絞り込み中の表示
   fb.hidden = !(state.focus || state.fromSum);
   if (!fb.hidden) document.getElementById("focusTxt").textContent = state.focus==="soon" ? "7日以内に発売・開始するものだけ表示中" : "7日以内に締切・終了するものだけ表示中";
-  const desc = {rsv:"公式通販などの予約・受注です。受付中のもの（締切が近い順）、これから受付が始まるものの順。", sellout:"在庫がなくなると終わるグッズ・くじです。いま買えるもの、これから出るものの順。", ending:"1週間以内に締切・終了するものです（抽選・受注の締切を含む）。近い順。", next:"日付が近い順（開催中のものは終わる日の順）", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
+  const desc = {rsv:"予約・受注（締切が近い順）", sellout:"なくなり次第終了（新しく出た順）", ending:"7日以内に締切・終了（近い順）", next:"日付順（開催中は終了日順）", onsale:"終了日未定・常設（新しい順）", ended:"最近終わった順"}[state.st];
   document.getElementById("count").textContent = `${arr.length}件　${desc}`;
   if (!arr.length){
     const msg = R.region==="os"&&!VIS().length ? "この国・地域の情報はまだありません。"
@@ -418,7 +418,8 @@ function renderListInner(){
     if (rsvState(x)==="open" && x.re && x.re.length>10 && PT(x.re) - new Date() < 72*3600e3) dlNear.push({it:x, k:"予約", until:x.re});
   }
   dlNear.sort((a,b)=>PT(a.until)-PT(b.until));
-  const dlStrip = dlNear.length && state.st==="next" && !state.focus ? `<div class="dlstrip"><div class="dlsh"><b>⏰ 締切が近いもの</b><span>72時間以内</span></div>${dlNear.slice(0,4).map(d=>{ const L = leftText(d.until); return `<a class="dlrow${L.hot?" hot":""}" href="/items/${encodeURIComponent(d.it.id)}/"><span class="dlk">${esc(d.k)}</span><span class="dlt">${esc(d.it.t.replace(/（予約）$/,""))}</span><span class="dll num">${esc(L.txt)}</span></a>`; }).join("")}${(ro||rb)?`<button type="button" class="dlmore" data-gorsv>予約・受注の一覧を見る（${ro?`受付中${ro}件`:""}${ro&&rb?"・":""}${rb?`開始予定${rb}件`:""}）→</button>`:""}</div>` : "";
+  const rsvLink = (ro||rb) ? `<button type="button" class="dlmore" data-gorsv>予約・受注 ${ro?`受付中${ro}件`:""}${ro&&rb?"・":""}${rb?`開始予定${rb}件`:""} →</button>` : "";
+  const dlStrip = dlNear.length && state.st==="next" && !state.focus ? `<div class="dlstrip"><div class="dlsh"><b title="72時間以内に締切のもの">⏰ 締切が近いもの</b>${rsvLink}</div>${dlNear.slice(0,2).map(d=>{ const L = leftText(d.until); return `<a class="dlrow${L.hot?" hot":""}" href="/items/${encodeURIComponent(d.it.id)}/"><span class="dlk">${esc(d.k)}</span><span class="dlt">${esc(d.it.t.replace(/（予約）$/,""))}</span><span class="dll num">${esc(L.txt)}</span></a>`; }).join("")}${dlNear.length>2?`<button type="button" class="dlmore dlrest" data-jump="ending">ほか${dlNear.length-2}件の締切を見る →</button>`:""}</div>` : "";
   const strip = dlStrip ? dlStrip : (ro||rb) && state.st==="next" && !state.focus ? `<button type="button" class="rsvstrip" data-gorsv><span class="rs-ic" aria-hidden="true">🛒</span><span class="rs-tx"><b>${ro?`いま予約受付中 ${ro}件`:""}${ro&&rb?"・":""}${rb?`予約開始予定 ${rb}件`:""}</b>${sub?`<small>${sub}</small>`:""}</span><span class="rs-go">見る →</span></button>` : "";
   el.innerHTML = strip + h + backAll();
   setTimeout(()=>{ fillPop(); fillCamp(); }, 0);   // 下で定義する部品が読み込まれてから
