@@ -928,7 +928,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-06"
+  "verifiedAt": "2026-10-11"
  },
  {
   "id": "20261009-pus-mito",
@@ -950,7 +950,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-06"
+  "verifiedAt": "2026-10-11"
  },
  {
   "id": "20261009-pus-tsudanuma",
@@ -972,7 +972,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-06"
+  "verifiedAt": "2026-10-11"
  },
  {
   "id": "20261009-tabenomi",
@@ -1030,8 +1030,8 @@
   "autoAdded": false,
   "cat": "cafe",
   "e": null,
-  "eNote": "なくなり次第終了",
-  "note": "税込3,300円以上の購入で2周年の缶バッジ、ドリンク購入でコースター。",
+  "eNote": "",
+  "note": "税込3,300円以上の購入で2周年のマット缶バッジ（1会計1つ・なくなり次第終了）、ドリンク購入でコースター。",
   "place": "ちいかわベーカリー各店、ラフォーレ原宿のPOP UP SHOP",
   "price": "マスコット各2,310円／全8種",
   "q": "",
@@ -1040,12 +1040,18 @@
   "sp": "day",
   "src": "https://www.pashplus.jp/event/497018/",
   "t": "ちいかわベーカリー2周年 コロネなマスコット",
-  "time": "",
-  "updatedAt": "2026-10-03",
+  "time": "11:00〜20:00",
+  "updatedAt": "2026-10-11",
   "srcType": "news",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-11",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000328.000086964.html"
+  ],
+  "log": [
+   {
+    "d": "2026-10-11",
+    "t": "「なくなり次第終了」は缶バッジの特典のことだったので直しました"
+   }
   ]
  },
  {
@@ -1079,7 +1085,7 @@
   "e": "2026-11-03",
   "eNote": "",
   "note": "",
-  "place": "福岡三越（福岡市天神）",
+  "place": "福岡三越 9階 三越ギャラリー（福岡市天神）",
   "price": "",
   "q": "",
   "region": "jp",
@@ -1087,10 +1093,23 @@
   "sp": "day",
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠福岡三越",
-  "time": "",
-  "updatedAt": "2026-10-03",
+  "time": "10:00〜19:00（最終日は17:00まで）",
+  "updatedAt": "2026-10-11",
   "srcType": "official",
-  "verifiedAt": "2026-10-06"
+  "verifiedAt": "2026-10-11",
+  "srcs": [
+   "https://prtimes.jp/main/html/rd/p/000000483.000027592.html"
+  ],
+  "how": [
+   "10/16(金)〜10/18(日)の入場はLINEの整理券が必要です",
+   "特典・ノベルティはなくなり次第終了"
+  ],
+  "log": [
+   {
+    "d": "2026-10-11",
+    "t": "会場の階と営業時間を追加しました"
+   }
+  ]
  },
  {
   "id": "20261016-pus-tokoname",
@@ -1112,7 +1131,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-06"
+  "verifiedAt": "2026-10-11"
  },
  {
   "id": "20261022-17",
@@ -1290,13 +1309,9 @@
   "src": "https://x.com/chiikawa_kouhou",
   "t": "カードダス アニメちいかわ",
   "time": "",
-  "updatedAt": "2026-09-27",
+  "updatedAt": "2026-10-11",
   "srcType": "official",
-  "verifiedAt": "2026-10-05",
-  "srcs": [
-   "https://www.bandai.co.jp/catalog/item.php?jan_cd=4570118001948000",
-   "https://sec.carddass.com/club/products/detail/chiikawa_04/"
-  ]
+  "verifiedAt": "2026-10-05"
  },
  {
   "id": "20261215-anymykuji",
@@ -2144,7 +2159,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/10/05/188741.html"
   ],
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-11",
   "note": "もこもこ手ざわりのカラビナつきポーチ（約W9cm）。全8種。公式の展開時期は「2026年10月中旬より順次」。",
   "autoAdded": true,
   "addedAt": "2026-10-06",
@@ -2596,5 +2611,74 @@
    "https://www.inside-games.jp/article/2026/10/08/188941.html"
   ],
   "note": "ちいかわ・ハチワレ・くりまんじゅう・シーサーの全4種（約70mm）。2026年5月に出たものの再販で、10月上旬から順次。"
+ },
+ {
+  "id": "20261002-jigsaw-artdeco",
+  "region": "jp",
+  "t": "ちいかわ 108ピース アートデコレーションジグソーパズル",
+  "cat": "goods",
+  "s": "2026-10-02",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわマーケット（公式通販）ほか",
+  "area": "",
+  "price": "3,520円",
+  "q": "",
+  "qNone": "同じシリーズのほかの絵柄と見分けられず、楽天で同じ商品と言い切れない",
+  "src": "https://chiikawamarket.jp/collections/20261002",
+  "srcType": "official",
+  "verifiedAt": "2026-10-11",
+  "note": "エンスカイの完成後そのまま飾れるパズル（No.108-DP13）。",
+  "autoAdded": true,
+  "addedAt": "2026-10-11",
+  "updatedAt": "2026-10-11"
+ },
+ {
+  "id": "20261002-pile-crew-socks",
+  "region": "jp",
+  "t": "ちいかわ パイルクルーソックス（レディース用・全8種）",
+  "cat": "goods",
+  "s": "2026-10-02",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわマーケット（公式通販）ほか",
+  "area": "",
+  "price": "各1,078円",
+  "q": "",
+  "qNone": "色ちがいが多く、楽天で同じ商品と言い切れない",
+  "src": "https://chiikawamarket.jp/collections/20261002",
+  "srcType": "official",
+  "verifiedAt": "2026-10-11",
+  "note": "ちいかわ・ハチワレ・うさぎ・モモンガ×各2色。10/11時点でモモンガ（ペイルライラック）は売り切れ。",
+  "autoAdded": true,
+  "addedAt": "2026-10-11",
+  "updatedAt": "2026-10-11"
+ },
+ {
+  "id": "20261010-shimamura-park",
+  "region": "jp",
+  "t": "しまむらパーク ちいかわ ソックス・ルームライトなど（シャンブル）",
+  "cat": "goods",
+  "s": "2026-10-10",
+  "sp": "day",
+  "e": null,
+  "time": "12:00〜",
+  "eNote": "",
+  "place": "しまむらパーク（オンラインストア）",
+  "area": "",
+  "price": "パイルソックス各869円・ホームソックス各759円・オムライスLEDルームライト6,600円・映画ちいかわ ゼンマイフィギュア2,090円",
+  "q": "",
+  "qNone": "しまむらの商品で、楽天で同じ商品と言い切れない",
+  "src": "https://www.inside-games.jp/article/2026/10/09/189023.html",
+  "srcType": "news",
+  "verifiedAt": "2026-10-11",
+  "note": "しまむらの公式通販が読めなかったため記事で確認。ソックスはちいかわ・ハチワレ・うさぎ・モモンガの4柄ずつ。",
+  "autoAdded": true,
+  "addedAt": "2026-10-11",
+  "updatedAt": "2026-10-11"
  }
 ]
