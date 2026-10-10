@@ -18,3 +18,16 @@ const XICO = '<svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22"
 function xbox(x) {
   return x ? `<div class="xbox"><button type="button" class="xbtn" data-xembed="${x.id}" aria-expanded="false">${XICO}<span class="xt"><b class="xl">公式の画像を見る</b><small>${x.name}のXの投稿を表示</small></span><span class="xchev" aria-hidden="true">▾</span></button><div class="xframe"></div></div>` : "";
 }
+
+// 公式の画像がまだない件：公式アカウントの検索へのリンク（Xの検索を開くだけ。投稿を取り違える心配がない）
+function xsearchUrl(it) {
+  const raw = String((it && it.t) || ""), at = /[＠@]\s*(.+)$/.exec(raw);
+  const t = (at ? at[1] : raw.replace(/^(映画)?ちいかわ[×x ]?/, "")).replace(/[「」『』【】（）()［］\[\]“”"!！?？〜～・、。]/g, " ").replace(/\s+/g, " ").trim().split(" ").slice(0, 2).join(" ");
+  if (!t) return "";
+  const who = /POP ?UP|ポップアップ/i.test(it.t) ? "(from:chiikawa_popup OR from:chiikawa_kouhou)" : /ベーカリー/.test(it.t) ? "(from:chiikawabakery OR from:chiikawa_kouhou)" : "(from:chiikawa_kouhou OR from:chiikawa_market OR from:chiikawa_popup OR from:chiikawabakery)";
+  return "https://x.com/search?q=" + encodeURIComponent(who + " " + t) + "&f=live";
+}
+function xsearch(it, cls) {
+  const u = xpostOf(it) ? "" : xsearchUrl(it);
+  return u ? `<a class="${cls || "lnk"} xsearch" href="${u}" target="_blank" rel="noopener">公式Xで探す</a>` : "";
+}

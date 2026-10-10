@@ -23,7 +23,7 @@ try { camps = JSON.parse(fs.readFileSync("data/campaigns.json", "utf8")).filter(
 const installJs = fs.readFileSync("src/install.js", "utf8");
 const OFFICIAL_X = JSON.parse(fs.readFileSync("data/official-x.json", "utf8")).accounts;
 const XPOST_SRC = fs.readFileSync("src/xpost.js", "utf8").replace("/*OFFICIAL_X*/{}", JSON.stringify(Object.fromEntries(Object.entries(OFFICIAL_X).map(([k, v]) => [k.toLowerCase(), v.name]))));
-const { xpostOf, xbox } = new Function(XPOST_SRC + "; return { xpostOf, xbox };")();
+const { xpostOf, xbox, xsearch } = new Function(XPOST_SRC + "; return { xpostOf, xbox, xsearch };")();
 const swJs = fs.readFileSync("src/sw.js", "utf8");
 const BUILD = Date.now().toString(36);
 
@@ -312,7 +312,7 @@ ui();if(m[id]==="want"){n.hidden=false;n.innerHTML="\u3053\u306E\u7AEF\u672B\u30
 addEventListener("pageshow",ui);addEventListener("storage",ui);ui();})();</script>
     ${hasBuy ? `<div class="buybox" data-buy="top">${buyInner}</div>` : ""}
     ${RKM.plan(it) ? `<div class="dhero" data-dhero><div class="dh-img" aria-hidden="true"></div><div class="dh-txt"><p class="dh-k">楽天市場で同じ商品を探しています…</p></div></div>` : ""}
-    ${xbox(xpostOf(it))}
+    ${xbox(xpostOf(it)) || (xsearch(it, "btn xs") ? `<p class="xsrch">${xsearch(it, "xsl")}</p>` : "")}
     ${hasBuy ? `<div class="buybox" data-buy="bottom"><p class="buyh">この商品の購入先・予約</p>${buyInner}</div>` : ""}
     ${hasBuy ? `<script>(function(){var bb=document.querySelector('[data-buy="bottom"]'),tb=document.querySelector('[data-buy="top"]');if(!bb||!tb)return;bb.hidden=true;
 function f(){var sh=document.querySelector(".share");if(!sh)return;var h=document.querySelector("[data-dhero]"),long=(h&&/(^| )on( |$)/.test(h.className))||(sh.getBoundingClientRect().top-tb.getBoundingClientRect().bottom>innerHeight*.6);bb.hidden=!long;}
