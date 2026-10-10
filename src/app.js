@@ -331,6 +331,14 @@ function goAll(){
   const t = document.getElementById("view-list"); if (t) t.scrollIntoView({behavior:"smooth", block:"start"});
 }
 document.addEventListener("click", e=>{ if (e.target.closest("[data-backall]")) goAll(); });
+// カードの空いている所をタップしたら、詳細ページを開く（タイトルのリンクと同じ行き先。ボタン・リンク・入力・開いた画像の中は除く）
+document.addEventListener("click", e=>{
+  if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const c = e.target.closest(".card"); if (!c) return;
+  if (e.target.closest("a,button,input,textarea,select,summary,label,iframe,.xbox,.rsvbox,.dlbs")) return;
+  if (window.getSelection && String(window.getSelection())) return;
+  const a = c.querySelector("h3 a[href]"); if (a) location.href = a.href;
+});
 document.addEventListener("click", e=>{
   if (!e.target.closest("[data-gorsv]")) return;
   state.st="rsv"; state.focus=null; state.fromSum=true; state.cat="all";
