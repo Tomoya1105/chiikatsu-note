@@ -385,6 +385,7 @@ write("privacy/index.html", page({
 <h2>免責事項</h2><p>掲載情報は正確になるよう努めていますが、発売日や会期は変更されることがあります。掲載内容によって生じた損害について、運営者は責任を負いません。最新の情報は必ず公式の発表をご確認ください。</p>
 <p class="credit">制定日：2026年10月3日</p>`),
 }));
+write("xtest/index.html", fs.readFileSync("src/xtest.html", "utf8"));
 write("offline/index.html", page({ title: "電波がつながっていません｜ちい活ノート", desc: "", url: "/offline/", body: doc("電波がつながっていません", `<p>インターネットにつながると、最新のスケジュールが表示されます。電波のよいところで開き直してください。</p><p><a class="btn" href="/">もう一度開く</a></p>`) }).replace("<head>", '<head>\n<meta name="robots" content="noindex">'));
 write("404.html", page({ title: "ページが見つかりません｜ちい活ノート", desc: "", url: "/404", body: doc("ページが見つかりません", `<p>お探しのページは移動したか、掲載を終えた可能性があります。</p><p><a class="btn" href="/">トップへ戻る</a></p>`) }));
 
