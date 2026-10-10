@@ -5,7 +5,9 @@ const XPOST_RE = /^https:\/\/(?:x|twitter)\.com\/([A-Za-z0-9_]{1,15})\/status\/(
 function xpostOf(it) {
   if (!it) return null;
   const m0 = XPOST_RE.exec(it.xpost || it.x || "");
-  if (m0 && XOFF_ACCT[m0[1].toLowerCase()]) return { id: m0[2], name: XOFF_ACCT[m0[1].toLowerCase()] };   // 一覧にない（公式と確かめていない）アカウントは表示しない
+  if (m0 && XOFF_ACCT[m0[1].toLowerCase()]) return { id: m0[2], name: XOFF_ACCT[m0[1].toLowerCase()] };
+  // 一覧にないアカウントは、一覧にある公式アカウントがリポストしたもの（xpostVia）だけ表示する（運営者の方針：公式がリポストしたものは公式の情報として扱う）
+  if (m0 && it.xpostVia && XOFF_ACCT[String(it.xpostVia).toLowerCase()]) return { id: m0[2], name: "@" + m0[1] + "（" + XOFF_ACCT[String(it.xpostVia).toLowerCase()] + "がリポスト）" };
   for (const u of [it.src, ...(Array.isArray(it.srcs) ? it.srcs : [])]) {
     const m = XPOST_RE.exec(u || "");
     if (m && XOFF_ACCT[m[1].toLowerCase()]) return { id: m[2], name: XOFF_ACCT[m[1].toLowerCase()] };
