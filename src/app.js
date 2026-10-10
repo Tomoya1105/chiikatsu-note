@@ -243,8 +243,13 @@ function card(it, opt){
   return `<article class="card ${st.k==="ended"?"ended":""} ${m==="want"?"wanted":""}" data-id="${esc(it.id)}">
     <div class="stamp" aria-hidden="true">${stamp}</div>
     <div class="body">
-      <div class="meta"><span class="pill st-${st.k}">${st.label}</span>${regionOf(it)!=="jp"?`<span class="pill rg">${REG[regionOf(it)]}</span>`:""}<span class="cat">${CAT[it.cat]||""}</span></div>
-      <h3><a href="/items/${encodeURIComponent(it.id)}/">${esc(it.t)}</a></h3>
+      <div class="chead">
+        <div class="ctxt">
+          <div class="meta"><span class="pill st-${st.k}">${st.label}</span>${regionOf(it)!=="jp"?`<span class="pill rg">${REG[regionOf(it)]}</span>`:""}<span class="cat">${CAT[it.cat]||""}</span></div>
+          <h3><a href="/items/${encodeURIComponent(it.id)}/">${esc(it.t)}</a></h3>
+        </div>
+        ${it.q?`<div class="pimg" data-pimg="${esc(it.id)}"></div>`:""}
+      </div>
       <div class="period">${period}</div>
       ${dlh}
       <dl class="info">
@@ -264,11 +269,10 @@ function card(it, opt){
         ${src?`<a class="lnk" href="${esc(src)}" target="_blank" rel="noopener">公式情報</a>`:""}
         ${g&&st.k!=="ended"?`<a class="lnk" href="${g}" target="_blank" rel="noopener">カレンダーに追加</a>`:""}
         ${it.q&&st.k!=="ended"?`<a class="lnk yh" href="${esc(yahooSearch(it.q))}" target="_blank" rel="noopener sponsored" data-yh>Yahoo!で探す<span class="tag">PR</span></a>`:""}
+        ${(()=>{ const tr = isEvent(it) && it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="lnk trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored">🏨 ${esc(tr.label)}<span class="tag">PR</span></a>` : ""; })()}
         <button class="lnk got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
       </div>
-      ${(()=>{ const tr = it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}</span><span class="tag">楽天トラベル・PR</span></a>` : ""; })()}
     </div>
-    ${it.q?`<div class="pimg" data-pimg="${esc(it.id)}"></div>`:""}
   </article>`;
 }
 // 広告枠：AdSense が決まるまでは何も出さない（決まったらここに広告のタグを入れる）
@@ -765,7 +769,7 @@ function visLog(id, hit){
 function paintRakuten(id, hit){
   document.querySelectorAll(`[data-pimg="${CSS.escape(id)}"]`).forEach(el=>{
     if (!hit || !hit.img) return;
-    el.innerHTML = `<a href="${esc(hit.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(hit.img)}" alt="${esc(hit.name)}" loading="lazy"></a><small>楽天市場</small>`;
+    el.innerHTML = `<a href="/items/${encodeURIComponent(id)}/" aria-label="${esc((ITEMS.find(x=>x.id===id)||{}).t||"")}の詳細"><img src="${esc(hit.img)}" alt="${esc(hit.name)}" loading="lazy"></a><small>楽天市場の画像</small>`;
     el.classList.add("on");
   });
   document.querySelectorAll(`[data-rk="${CSS.escape(id)}"]`).forEach(el=>{

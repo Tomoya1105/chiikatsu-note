@@ -756,3 +756,24 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .buybox{margin:10px 0 12px}
 .buybox .acts{margin-top:0}
 .buyh{margin:0 0 6px;font-size:13px;font-weight:700;color:var(--ink-2)}
+
+/* 段階1③：商品カードを詰める（画像は題名の右に小さく。画像・題名は詳細ページへ。購入先ボタンと日付・価格は残す） */
+.chead{display:flex;gap:10px;align-items:flex-start}
+.ctxt{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.card .pimg{display:none;grid-column:auto;padding:0;flex:none;align-self:flex-start}
+.card .pimg.on{display:block}
+.card .pimg a{width:84px;border-radius:12px}
+.card .pimg small{font-size:9.5px;margin-top:2px;text-align:center;line-height:1.2}
+.card .acts.sub .trip{display:inline;border:0;background:none;padding:0;margin:0;font-size:12.5px;font-weight:500;color:var(--ink-2);white-space:normal;text-decoration:underline;text-underline-offset:2px}
+.card .acts.sub .trip .tag{display:inline;margin-left:4px;font-size:10px}
+@media (max-width:520px){
+  .card .pimg{grid-column:auto;padding:0}
+  .card .pimg a{width:64px;border-radius:10px}
+  .card .rsvbox{padding:8px 10px;gap:6px;margin-top:2px}
+  .card .btn.rsvbtn{padding:8px 12px;border-radius:14px;line-height:1.35}
+  .card .info{gap:0 8px}
+  .body{padding:10px 12px 10px;gap:5px}
+  .acts.main{margin-top:4px;gap:6px}
+  .acts.main .btn{padding:8px 12px;font-size:13px}
+  .acts.sub{margin-top:2px}
+}
