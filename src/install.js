@@ -245,8 +245,27 @@
       box.classList.remove("open", "auto", "ready"); f.innerHTML = ""; b.setAttribute("aria-expanded", "false");
       b.querySelector(".xl").textContent = "公式の画像を見る"; return;
     }
+    // 一覧では同時に開くのは1件だけ（重さと縦の長さを抑える）
+    var top0 = b.getBoundingClientRect().top;
+    if (box.classList.contains("xlist")) document.querySelectorAll(".xbox.xlist.open").forEach(function(o){
+      var ob = o.querySelector("[data-xembed]"); o.classList.remove("open", "ready"); o.querySelector(".xframe").innerHTML = ""; ob.setAttribute("aria-expanded", "false"); ob.querySelector(".xl").textContent = "公式の画像を見る";
+    });
+    // 先に開いていた画像を閉じると、その分だけ下の内容が上に動く。押したボタンが同じ位置に見えるように、スクロールを補正する
+    var d0 = b.getBoundingClientRect().top - top0; if (d0) window.scrollBy(0, d0);
     openX(b, false);
   });
+  // 一覧に画像ボタンがあるとき、そこに近づいたらXの部品を先に読み込んでおく（押してから出るまでの待ちを短くする）
+  (function(){
+    var pre = false, tick = false;
+    function check(){
+      tick = false; if (pre) return;
+      var el = document.querySelector(".xbox.xlist"); if (!el) return;
+      if (el.getBoundingClientRect().top < window.innerHeight + 900) { pre = true; try { var l = document.createElement("link"); l.rel = "preconnect"; l.href = "https://platform.twitter.com"; document.head.appendChild(l); } catch (e) {} loadX().catch(function(){}); }
+    }
+    function sched(){ if (!tick) { tick = true; requestAnimationFrame(check); } }
+    window.addEventListener("scroll", sched, { passive: true });
+    setTimeout(sched, 1500); setTimeout(sched, 4000);
+  })();
   // 詳細ページでは、公式の投稿が画面に近づいたら自動で表示する（最初の表示は軽いまま。Xの読み込みは近づいてから）
   if (/^\/items\//.test(location.pathname) && "IntersectionObserver" in window) {
     var xo = new IntersectionObserver(function(ents){

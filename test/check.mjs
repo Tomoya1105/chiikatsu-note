@@ -62,7 +62,9 @@ for (const it of items) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(it.verifiedAt || "")) errs.push(`${it.id}: verifiedAt（最後に情報源で確かめた日 YYYY-MM-DD）がありません`);
   if (it.xpost && !/^https:\/\/(x|twitter)\.com\/[A-Za-z0-9_]{1,15}\/status\/\d{5,25}/.test(it.xpost)) errs.push(`${it.id}: xpost は https://x.com/（アカウント）/status/（数字） の形にしてください`);
   // 公式Xの埋め込み：一覧（data/official-x.json）にある公式アカウントのポストだけ
-  { const m = /^https:\/\/(?:x|twitter)\.com\/([A-Za-z0-9_]{1,15})\/status\//.exec(it.xpost || ""); if (m && !OFFICIAL_X[m[1].toLowerCase()]) errs.push(`${it.id}: xpost の @${m[1]} は公式アカウントの一覧（data/official-x.json）にありません。公式と確かめてから一覧に足すか、xpost を外してください`); }
+  { const m = /^https:\/\/(?:x|twitter)\.com\/([A-Za-z0-9_]{1,15})\/status\//.exec(it.xpost || ""); if (m && !OFFICIAL_X[m[1].toLowerCase()] && !(it.xpostVia && OFFICIAL_X[String(it.xpostVia).toLowerCase()])) errs.push(`${it.id}: xpost の @${m[1]} は公式アカウントの一覧（data/official-x.json）にありません。公式と確かめてから一覧に足すか、一覧にある公式アカウントがリポストしたもの（xpostVia にそのアカウント名）だけにしてください`); }
+  if (it.xpostVia && !OFFICIAL_X[String(it.xpostVia).toLowerCase()]) errs.push(`${it.id}: xpostVia の @${it.xpostVia} が公式アカウントの一覧にありません`);
+  if (it.xpostVia && !it.xpost) errs.push(`${it.id}: xpostVia があるのに xpost がありません`);
   if (it.xpost && !String(it.xpostNote || "").trim()) errs.push(`${it.id}: xpost を入れたときは xpostNote に確かめた内容（投稿日、本文にあった会場・期間など）を書いてください`);
   // グッズは画像を出すための検索語（q）が原則必須。商品を1つに決められないものは qNone に理由を書く（画像なしでよい）
   if (!it.hidden && it.cat !== "event" && it.cat !== "cafe" && !RKM.plan(it) && !String(it.qNone || "").trim()) errs.push(`${it.id}: グッズの検索語 q がない（または「ちいかわ ぬいぐるみ」のような種類名だけ）です。商品名の固有の言葉を入れるか、楽天で同じ商品を特定できない理由を qNone に書いてください`);

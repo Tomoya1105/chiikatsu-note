@@ -784,3 +784,10 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 }
 
 .buybox[hidden]{display:none}
+
+/* 一覧のカード：公式の画像を、押したときだけその場で開く（詳細ページに移らずに見られる） */
+.card .xbox.xlist{margin:8px 0 0}
+.card .xbox.xlist .xbtn{padding:7px 10px;border-radius:12px;gap:8px}
+.card .xbox.xlist .xbtn small{display:none}
+.card .xbox.xlist .xbtn .xl{font-size:13px}
+.card .xbox.xlist .xbtn svg{width:18px;height:18px}
