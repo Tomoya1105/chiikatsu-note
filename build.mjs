@@ -274,23 +274,8 @@ for (const it of items) {
     ...(it.org && it.org.name ? { organizer: { "@type": "Organization", name: it.org.name, ...(/^https:\/\//.test(it.org.url || "") ? { url: it.org.url } : {}) } } : {}),
   } : null;
   const related = sorted.filter(x => x.id !== it.id && (x.region || "jp") === (it.region || "jp") && x.cat === it.cat).slice(-6);
-  const body = `<div class="wrap">
-  ${BRAND}
-  <p class="crumb"><a href="/">ちい活ノート</a> › ${esc(CAT[it.cat] || "")}${reg !== "日本" ? "（" + reg + "）" : ""}</p>
-  <main class="detail">
-    <div class="meta"><span class="pill rg">${esc(reg)}</span><span class="cat">${esc(CAT[it.cat] || "")}</span></div>
-    <h1>${esc(it.t)}</h1>
-    ${RKM.plan(it) ? `<div class="dhero" data-dhero><div class="dh-img" aria-hidden="true"></div><div class="dh-txt"><p class="dh-k">楽天市場で同じ商品を探しています…</p></div></div>` : ""}
-    <dl class="info">
-      <dt>${it.rsv ? "予約受付" : ev ? "開始" : "発売"}</dt><dd>${esc(start)}${it.time ? " " + esc(it.time) : ""}</dd>
-      ${end ? `<dt>${it.rsv ? "締切" : "終了"}</dt><dd>${esc(end)}${it.rsv && it.re && it.re.length > 10 ? " " + esc(it.re.slice(11, 16)) : ""}</dd>` : `<dt>終了</dt><dd>${esc(it.eNote || (ev ? "未定" : "なくなり次第終了"))}</dd>`}
-      ${(Array.isArray(it.dl) ? it.dl : []).filter(x => x && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(x.until || "")).map(x => `<dt>${esc(x.k || "応募")}締切</dt><dd><b>${esc(fmt(x.until.slice(0, 10)))} ${esc(x.until.slice(11, 16))}まで</b>${x.n ? `<br><small>${esc(x.n)}</small>` : ""}${/^https:\/\//.test(x.u || "") ? `<br><a href="${esc(x.u)}" target="_blank" rel="noopener">応募・くわしくはこちら →</a>` : ""}</dd>`).join("")}
-      ${it.place ? `<dt>場所</dt><dd>${esc(it.place)}</dd>` : ""}
-      ${it.price ? `<dt>価格</dt><dd>${esc(it.price)}${(it.region || "jp") === "jp" ? "（税込）" : ""}</dd>` : ""}
-      ${it.note ? `<dt>メモ</dt><dd>${esc(it.note)}</dd>` : ""}
-    </dl>
-    ${xbox(xpostOf(it))}
-    ${(() => { const L = Array.isArray(it.rsv) ? it.rsv : it.rsv ? [{ n: "", u: it.rsv }] : []; const ok = L.filter(x => /^https:\/\//.test(x.u || "")); if (!ok.length || (it.re && new Date(it.re + ":00+09:00") < new Date())) return "";
+  // 購入先のブロック（公式の予約・楽天・Yahoo!・公式情報）。上と下の2か所に同じ中身を置く（URLも同じ。計測は a の属性で見分けるので、どちらを押しても同じ定義で数える）
+  const buyInner = `${(() => { const L = Array.isArray(it.rsv) ? it.rsv : it.rsv ? [{ n: "", u: it.rsv }] : []; const ok = L.filter(x => /^https:\/\//.test(x.u || "")); if (!ok.length || (it.re && new Date(it.re + ":00+09:00") < new Date())) return "";
       if (ok.every(x => x.so)) return `<div class="rsvbox closed"><div class="rsvh">予約はすべて完売しました</div></div>`;
       return `<div class="rsvbox open"><div class="rsvh">予約・受注${it.re ? `<small>締切 ${esc(fmt(it.re.slice(0, 10)))} ${esc(it.re.slice(11, 16))}</small>` : ""}</div><div class="rsvbtns">${ok.slice().sort((p, q) => (p.so ? 1 : 0) - (q.so ? 1 : 0)).map(x => x.so ? `<span class="btn rsvbtn so">${x.n ? esc(x.n) + " " : ""}完売</span>` : `<a class="btn rsvbtn" href="${esc(x.u)}" target="_blank" rel="noopener" data-rsv>予約はこちら${x.n ? "（" + esc(x.n) + "）" : ""}</a>`).join("")}</div></div>`; })()}
     <div class="acts">
@@ -299,7 +284,36 @@ for (const it of items) {
       ${it.q && !(Array.isArray(it.rb) && it.rb.length) ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored" data-rkd="${esc(JSON.stringify({ q: it.q, t: it.t, p: it.price || "", pre: it.s > TODAY, cat: it.cat }))}">楽天市場で探す <span class="tag">PR</span></a>` : ""}
       ${it.q ? `<a class="btn" href="${esc(yahooSearch(it.q))}" target="_blank" rel="noopener sponsored" data-yh>Yahoo!ショッピングで探す <span class="tag">PR</span></a>` : ""}
       ${/^https:\/\//.test(it.src || "") ? `<a class="btn" href="${esc(it.src)}" target="_blank" rel="noopener">公式情報</a>` : ""}
-    </div>
+    </div>`;
+  const hasBuy = /class="(btn|rsvbtn)/.test(buyInner);
+  // ♡ ほしい（トップのカードと同じ「マイリスト」＝この端末の chiikatsu-mine に保存。通知がすぐ登録されたとは言わない）
+  const wantRow = `<div class="wantrow" data-id="${esc(it.id)}" data-end="${esc((it.e || it.s || "").slice(0, 10))}"><button type="button" class="btn want" data-mark="want" aria-pressed="false">♡ ほしい</button><p class="wantnote" role="status" hidden></p></div>`;
+  const body = `<div class="wrap">
+  ${BRAND}
+  <p class="crumb"><a href="/">ちい活ノート</a> › ${esc(CAT[it.cat] || "")}${reg !== "日本" ? "（" + reg + "）" : ""}</p>
+  <main class="detail">
+    <div class="meta"><span class="pill rg">${esc(reg)}</span><span class="cat">${esc(CAT[it.cat] || "")}</span></div>
+    <h1>${esc(it.t)}</h1>
+    <dl class="info">
+      <dt>${it.rsv ? "予約受付" : ev ? "開始" : "発売"}</dt><dd>${esc(start)}${it.time ? " " + esc(it.time) : ""}</dd>
+      ${end ? `<dt>${it.rsv ? "締切" : "終了"}</dt><dd>${esc(end)}${it.rsv && it.re && it.re.length > 10 ? " " + esc(it.re.slice(11, 16)) : ""}</dd>` : `<dt>終了</dt><dd>${esc(it.eNote || (ev ? "未定" : "なくなり次第終了"))}</dd>`}
+      ${(Array.isArray(it.dl) ? it.dl : []).filter(x => x && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(x.until || "")).map(x => `<dt>${esc(x.k || "応募")}締切</dt><dd><b>${esc(fmt(x.until.slice(0, 10)))} ${esc(x.until.slice(11, 16))}まで</b>${x.n ? `<br><small>${esc(x.n)}</small>` : ""}${/^https:\/\//.test(x.u || "") ? `<br><a href="${esc(x.u)}" target="_blank" rel="noopener">応募・くわしくはこちら →</a>` : ""}</dd>`).join("")}
+      ${it.place ? `<dt>場所</dt><dd>${esc(it.place)}</dd>` : ""}
+      ${it.price ? `<dt>価格</dt><dd>${esc(it.price)}${(it.region || "jp") === "jp" ? "（税込）" : ""}</dd>` : ""}
+      ${it.note ? `<dt>メモ</dt><dd>${esc(it.note)}</dd>` : ""}
+    </dl>
+    ${wantRow}
+    <script>(function(){var w=document.querySelector(".wantrow");if(!w)return;var id=w.dataset.id,b=w.querySelector("button"),n=w.querySelector(".wantnote"),K="chiikatsu-mine";
+var d=new Date(Date.now()+9*36e5).toISOString().slice(0,10);if(w.dataset.end&&w.dataset.end<d){w.hidden=true;return;}
+function rd(){try{return JSON.parse(localStorage.getItem(K)||"{}")||{}}catch(e){return{}}}
+function ui(){var on=rd()[id]==="want";b.setAttribute("aria-pressed",on);b.textContent=on?"\u2665 \u30DE\u30A4\u30EA\u30B9\u30C8\u306B\u5165\u308C\u3066\u3044\u307E\u3059":"\u2661 \u307B\u3057\u3044";if(!on)n.hidden=true;}
+b.addEventListener("click",function(){var m=rd();if(m[id]==="want"){delete m[id];}else{m[id]="want";}try{localStorage.setItem(K,JSON.stringify(m));}catch(e){n.hidden=false;n.textContent="\u3053\u306E\u7AEF\u672B\u3067\u306F\u4FDD\u5B58\u3067\u304D\u307E\u305B\u3093\u3067\u3057\u305F";return;}
+ui();if(m[id]==="want"){n.hidden=false;n.innerHTML="\u3053\u306E\u7AEF\u672B\u306E\u30DE\u30A4\u30EA\u30B9\u30C8\u306B\u4FDD\u5B58\u3057\u307E\u3057\u305F\u3002\u901A\u77E5\u306F\u3001<a href='/?v=mine'>\u30C8\u30C3\u30D7\u306E\u300C\u30DE\u30A4\u30EA\u30B9\u30C8\u300D</a>\u3067\u30AA\u30F3\u306B\u3057\u3066\u3044\u308B\u5834\u5408\u3001\u30C8\u30C3\u30D7\u3092\u958B\u3044\u305F\u3068\u304D\u306B\u53CD\u6620\u3055\u308C\u307E\u3059\u3002";}});
+addEventListener("pageshow",ui);addEventListener("storage",ui);ui();})();</script>
+    ${hasBuy ? `<div class="buybox" data-buy="top">${buyInner}</div>` : ""}
+    ${RKM.plan(it) ? `<div class="dhero" data-dhero><div class="dh-img" aria-hidden="true"></div><div class="dh-txt"><p class="dh-k">楽天市場で同じ商品を探しています…</p></div></div>` : ""}
+    ${xbox(xpostOf(it))}
+    ${hasBuy ? `<div class="buybox" data-buy="bottom"><p class="buyh">この商品の購入先・予約</p>${buyInner}</div>` : ""}
     ${(() => { const tr = it.area ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
     <div class="share"><span class="k">友だちに教える</span>
       <a class="btn" href="https://line.me/R/share?text=${encodeURIComponent(it.t + "\n" + SITE + url)}" target="_blank" rel="noopener">LINEで送る</a>

@@ -620,6 +620,15 @@ function renderAll(){
   const v = currentView();
   if (v==="list") renderList(); else if (v==="cal") safe(renderCal, "cal"); else if (v==="mine") safe(renderMine, "mine");
 }
+/* 詳細ページで♡を押してから戻ってきたとき（戻る操作で前の画面がそのまま出る場合を含む）、古い「ほしい」の記憶で上書きしないよう読み直す */
+function reloadMine(){
+  let n; try { n = JSON.parse(localStorage.getItem("chiikatsu-mine")||"{}")||{}; } catch(e){ return; }
+  if (JSON.stringify(n) === JSON.stringify(mine)) return;
+  mine = n; safe(renderAll, "mine-reload");
+}
+addEventListener("pageshow", e=>{ if (e.persisted) reloadMine(); });
+document.addEventListener("visibilitychange", ()=>{ if (!document.hidden) reloadMine(); });
+addEventListener("storage", e=>{ if (e.key==="chiikatsu-mine") reloadMine(); });
 document.querySelector(".tabs").onclick = e=>{ const b=e.target.closest("[data-view]"); if(b) setView(b.dataset.view); };
 document.querySelector(".sum").onclick = e=>{
   const b=e.target.closest("[data-jump]"); if(!b) return;

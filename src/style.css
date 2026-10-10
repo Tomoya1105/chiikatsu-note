@@ -695,11 +695,11 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 /* 段階1①：トップの上部を詰めて、最初の商品が1画面目に入るように（スマホ。文字の大きさはほぼそのまま、余白と重なりを減らす） */
 @media (max-width:520px){
   /* 見出し：ロゴ・題名・推しカラーの1行と、説明文の1行（幅いっぱい）の2段に */
-  .top{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"ic ti os" "tg tg tg";align-items:center;column-gap:9px;row-gap:0;padding-block:6px 0}
-  .top .brand,.top .brand > div{display:contents}
-  .brand svg{grid-area:ic;width:34px;height:34px}
+  .top:has(.brand h1){display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"ic ti os" "tg tg tg";align-items:center;column-gap:9px;row-gap:0;padding-block:6px 0}
+  .top:has(.brand h1) .brand,.top:has(.brand h1) .brand > div{display:contents}
+  .top:has(.brand h1) .brand svg{grid-area:ic;width:34px;height:34px}
   .brand h1{grid-area:ti;font-size:22px}
-  .brand p{grid-area:tg;margin:0;font-size:11.5px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .top:has(.brand h1) .brand p{grid-area:tg;margin:0;font-size:11.5px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .tag2 span{display:inline}
   .topr{grid-area:os}
   .oshibtn{padding:4px 10px 4px 5px;font-size:12.5px}
@@ -745,3 +745,14 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 @media (max-width:380px){.ins-top .ins-txt b{white-space:normal;line-height:1.3}}
 @media (max-width:380px){.sum button{min-width:0}.sum .k{white-space:normal;line-height:1.25}}
 
+
+/* 段階1② 詳細ページ：♡ ほしい と 購入先（上と下） */
+.wantrow{margin:10px 0 4px}
+.wantrow[hidden]{display:none}
+.wantrow .btn.want{border:1.5px solid var(--acc);color:var(--acc);background:var(--surface);padding:9px 18px;font-size:14px}
+.wantrow .btn.want[aria-pressed="true"]{background:var(--acc);color:var(--on-acc)}
+.wantnote{margin:6px 0 0;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+.wantnote[hidden]{display:none}
+.buybox{margin:10px 0 12px}
+.buybox .acts{margin-top:0}
+.buyh{margin:0 0 6px;font-size:13px;font-weight:700;color:var(--ink-2)}
