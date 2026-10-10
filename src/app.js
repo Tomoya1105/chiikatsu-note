@@ -272,6 +272,7 @@ function card(it, opt){
         ${(()=>{ const tr = isEvent(it) && it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="lnk trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored">🏨 ${esc(tr.label)}<span class="tag">PR</span></a>` : ""; })()}
         <button class="lnk got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
       </div>
+      ${xbox(xpostOf(it)).replace('class="xbox"','class="xbox xlist"')}
     </div>
   </article>`;
 }

@@ -245,6 +245,10 @@
       box.classList.remove("open", "auto", "ready"); f.innerHTML = ""; b.setAttribute("aria-expanded", "false");
       b.querySelector(".xl").textContent = "公式の画像を見る"; return;
     }
+    // 一覧では同時に開くのは1件だけ（重さと縦の長さを抑える）
+    if (box.classList.contains("xlist")) document.querySelectorAll(".xbox.xlist.open").forEach(function(o){
+      var ob = o.querySelector("[data-xembed]"); o.classList.remove("open", "ready"); o.querySelector(".xframe").innerHTML = ""; ob.setAttribute("aria-expanded", "false"); ob.querySelector(".xl").textContent = "公式の画像を見る";
+    });
     openX(b, false);
   });
   // 詳細ページでは、公式の投稿が画面に近づいたら自動で表示する（最初の表示は軽いまま。Xの読み込みは近づいてから）
