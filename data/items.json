@@ -1193,7 +1193,7 @@
   "time": "",
   "updatedAt": "2026-10-05",
   "srcType": "partner",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-10",
   "srcs": [
    "https://toy.bandai.co.jp/ja/item/01_21066/"
   ]
@@ -1215,7 +1215,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-10",
   "srcs": [
    "https://www.bandai.co.jp/candy/chocosurp/chiikawa2/"
   ]
@@ -1259,7 +1259,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-10",
   "rb": [
    {
     "n": "通常版",
@@ -1271,7 +1271,8 @@
    }
   ],
   "srcs": [
-   "https://animeanime.jp/article/2026/09/04/102659.html"
+   "https://animeanime.jp/article/2026/09/04/102659.html",
+   "https://dengekionline.com/article/202610/89719"
   ]
  },
  {
@@ -1314,7 +1315,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-10",
   "qNone": "くじ（オンラインくじ）"
  },
  {
@@ -1334,7 +1335,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-10",
   "srcs": [
    "https://animeanime.jp/article/2026/09/26/103251.html"
   ]
@@ -1431,7 +1432,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "official",
-  "verifiedAt": "2026-10-09"
+  "verifiedAt": "2026-10-10"
  },
  {
   "id": "20260918-pus-okazaki",
@@ -1730,7 +1731,10 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "official",
-  "verifiedAt": "2026-10-04"
+  "verifiedAt": "2026-10-10",
+  "srcs": [
+   "https://yamakashoten.official.ec/"
+  ]
  },
  {
   "id": "20260928-nendoroid-kuri-shisa",
@@ -1946,8 +1950,8 @@
   "region": "jp",
   "autoAdded": true,
   "addedAt": "2026-10-05",
-  "updatedAt": "2026-10-05",
-  "verifiedAt": "2026-10-05",
+  "updatedAt": "2026-10-10",
+  "verifiedAt": "2026-10-10",
   "t": "ちいかわ 日本酒とお出汁のだし割りセット（玉乃光酒造）",
   "cat": "food",
   "s": "2026-11-10",
@@ -1966,7 +1970,7 @@
    "https://ec.tamanohikari.co.jp/products/cds",
    "https://x.com/chiikawa_kouhou/status/2106912254197383508"
   ],
-  "note": "くりまんじゅうが作中で楽しんでいた「だし割り」のセット（純米吟醸酒180ml・つゆ・専用カップ・レシピ）。10/5から予約受付中。お酒なので20歳以上向け。",
+  "note": "くりまんじゅうが作中で楽しんでいた「だし割り」のセット（純米吟醸酒180ml・つゆ・専用カップ・レシピ）。10/5から予約受付中。お酒なので20歳以上向け。注文が多く、今から注文した分は2027年中のお届け予定（時期は未定）と公式ショップが案内しています（10/7）。",
   "xpost": "https://x.com/chiikawa_kouhou/status/2106912254197383508",
   "xpostNote": "投稿日2026-10-05（IDから計算）。本文に「ちいかわ 日本酒とお出汁のだし割りセット」「11月10日(火)発売」「10月5日(月)より予約開始」"
  },
@@ -2514,5 +2518,83 @@
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10"
+ },
+ {
+  "region": "jp",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "area": "",
+  "autoAdded": true,
+  "addedAt": "2026-10-10",
+  "updatedAt": "2026-10-10",
+  "verifiedAt": "2026-10-10",
+  "id": "20261025-sunstar-pochi",
+  "t": "ちいかわ ポチ袋（サンスター文具）",
+  "cat": "goods",
+  "s": "2026-10-25",
+  "sp": "late",
+  "place": "ちいかわらんど、ちいかわマーケット、文具店・雑貨店・スーパーなど",
+  "price": "110円〜330円",
+  "q": "",
+  "qNone": "柄が多く、楽天で同じ商品を特定できない",
+  "src": "https://www.sun-star-st.jp/items/260817053812/",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/09/188987.html"
+  ],
+  "note": "レギュラー・札用（各110円）、マスコット（220円）、シール付き（330円）の4種類。袴姿のちいかわたちや五円玉になったうさぎの柄など。10月下旬から順次発売（一部取り扱いのない店舗あり）。"
+ },
+ {
+  "region": "jp",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "area": "",
+  "autoAdded": true,
+  "addedAt": "2026-10-10",
+  "updatedAt": "2026-10-10",
+  "verifiedAt": "2026-10-10",
+  "id": "20261015-okao-bottle2",
+  "t": "ちいかわ おかおマイボトル②（プライズ）",
+  "cat": "goods",
+  "s": "2026-10-15",
+  "sp": "mid",
+  "place": "全国のアミューズメント施設（GiGO・タイトーステーション・ラウンドワンなど）、オンラインクレーンゲーム",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（アミューズメント施設の景品）",
+  "src": "https://www.parade-inc.net/products/p261019",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/06/188854.html"
+  ],
+  "note": "うさぎ・モモンガの全2種（高さ約22cm・約490ml）。第1弾のちいかわ・ハチワレも再登場。10月中旬から順次展開。"
+ },
+ {
+  "region": "jp",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "area": "",
+  "autoAdded": true,
+  "addedAt": "2026-10-10",
+  "updatedAt": "2026-10-10",
+  "verifiedAt": "2026-10-10",
+  "id": "20261005-osuwari-resale",
+  "t": "カプセルトイ ちいかわ おすわりぬいぐるみ①（再販）",
+  "cat": "goods",
+  "s": "2026-10-05",
+  "sp": "early",
+  "place": "全国のカプセルトイ売り場",
+  "price": "1回500円",
+  "q": "",
+  "qNone": "カプセルトイ（店頭販売）",
+  "src": "https://www.parade-inc.net/products/c260501",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/08/188941.html"
+  ],
+  "note": "ちいかわ・ハチワレ・くりまんじゅう・シーサーの全4種（約70mm）。2026年5月に出たものの再販で、10月上旬から順次。"
  }
 ]
