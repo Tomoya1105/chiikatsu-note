@@ -257,7 +257,7 @@
      画像は楽天ウェブサービス（商品検索API）が返す楽天のサーバー上の画像をそのまま表示する（保存・コピーはしない）。
      同じ商品かどうかは RKM.pick で厳しく判定し、怪しければ画像は出さない。 */
   (function(){
-    var b = document.querySelector("[data-rkd]"); if (!b) return;
+    var bs = document.querySelectorAll("[data-rkd]"), b = bs[0]; if (!b) return;   // 購入先は上と下の2か所。どちらも同じ内容にそろえる
     var d; try { d = JSON.parse(b.getAttribute("data-rkd")); } catch (e) { return; }
     var it = { t: d.t, q: d.q, price: d.p, cat: d.cat || "goods" };
     var p = RKM.plan(it); if (!p) return;   // 商品を特定できる言葉がない → 画像なし（枠も作っていない）
@@ -267,12 +267,14 @@
     function paint(h){
       if (!h) return fillHero(null, b.href);
       var search = b.href;
-      b.href = h.url; b.setAttribute("data-hit", "1"); if (d.pre) b.setAttribute("data-pre", "1");
-      b.innerHTML = (d.pre ? "楽天で予約する " : "楽天で見る ") + "¥" + Number(h.price).toLocaleString("ja-JP") + ' <span class="tag">PR</span>';
-      var more = document.createElement("a");
-      more.className = "rkmore"; more.href = search; more.target = "_blank"; more.rel = "noopener sponsored";
-      more.textContent = "ほかの商品も楽天で探す";
-      b.parentNode.appendChild(more);
+      Array.prototype.forEach.call(bs, function(x){
+        x.href = h.url; x.setAttribute("data-hit", "1"); if (d.pre) x.setAttribute("data-pre", "1");
+        x.innerHTML = (d.pre ? "楽天で予約する " : "楽天で見る ") + "¥" + Number(h.price).toLocaleString("ja-JP") + ' <span class="tag">PR</span>';
+        var more = document.createElement("a");
+        more.className = "rkmore"; more.href = search; more.target = "_blank"; more.rel = "noopener sponsored";
+        more.textContent = "ほかの商品も楽天で探す";
+        x.parentNode.appendChild(more);
+      });
       fillHero(h, search);
     }
     // ページ上部の枠（高さは最初から確保してあるので、中身が変わっても下の文章は動かない）
@@ -408,7 +410,7 @@
     // 「♡ ほしい」を押したとき（はじめての訪問でも）、保存した予定をすぐ見られることと結びつけて1回だけ案内する
     var mk = e.target.closest("[data-mark]");
     if (mk) {
-      var card = mk.closest(".card"), mid = card && card.getAttribute("data-id"), tries = 0;
+      var card = mk.closest(".card,.wantrow"), mid = card && card.getAttribute("data-id"), tries = 0;
       // 「追加しました♡」の案内（トースト）が出ている間は待ってから出す（重ならないように）
       var wait = function(){
         var t = document.getElementById("toast");

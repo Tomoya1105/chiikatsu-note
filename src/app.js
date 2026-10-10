@@ -243,8 +243,13 @@ function card(it, opt){
   return `<article class="card ${st.k==="ended"?"ended":""} ${m==="want"?"wanted":""}" data-id="${esc(it.id)}">
     <div class="stamp" aria-hidden="true">${stamp}</div>
     <div class="body">
-      <div class="meta"><span class="pill st-${st.k}">${st.label}</span>${regionOf(it)!=="jp"?`<span class="pill rg">${REG[regionOf(it)]}</span>`:""}<span class="cat">${CAT[it.cat]||""}</span></div>
-      <h3><a href="/items/${encodeURIComponent(it.id)}/">${esc(it.t)}</a></h3>
+      <div class="chead">
+        <div class="ctxt">
+          <div class="meta"><span class="pill st-${st.k}">${st.label}</span>${regionOf(it)!=="jp"?`<span class="pill rg">${REG[regionOf(it)]}</span>`:""}<span class="cat">${CAT[it.cat]||""}</span></div>
+          <h3><a href="/items/${encodeURIComponent(it.id)}/">${esc(it.t)}</a></h3>
+        </div>
+        ${it.q?`<div class="pimg" data-pimg="${esc(it.id)}"></div>`:""}
+      </div>
       <div class="period">${period}</div>
       ${dlh}
       <dl class="info">
@@ -264,11 +269,10 @@ function card(it, opt){
         ${src?`<a class="lnk" href="${esc(src)}" target="_blank" rel="noopener">公式情報</a>`:""}
         ${g&&st.k!=="ended"?`<a class="lnk" href="${g}" target="_blank" rel="noopener">カレンダーに追加</a>`:""}
         ${it.q&&st.k!=="ended"?`<a class="lnk yh" href="${esc(yahooSearch(it.q))}" target="_blank" rel="noopener sponsored" data-yh>Yahoo!で探す<span class="tag">PR</span></a>`:""}
+        ${(()=>{ const tr = isEvent(it) && it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="lnk trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored">🏨 ${esc(tr.label)}<span class="tag">PR</span></a>` : ""; })()}
         <button class="lnk got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
       </div>
-      ${(()=>{ const tr = it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}</span><span class="tag">楽天トラベル・PR</span></a>` : ""; })()}
     </div>
-    ${it.q?`<div class="pimg" data-pimg="${esc(it.id)}"></div>`:""}
   </article>`;
 }
 // 広告枠：AdSense が決まるまでは何も出さない（決まったらここに広告のタグを入れる）
@@ -371,7 +375,7 @@ function renderListInner(){
   // 絞り込み中の表示
   fb.hidden = !(state.focus || state.fromSum);
   if (!fb.hidden) document.getElementById("focusTxt").textContent = state.focus==="soon" ? "7日以内に発売・開始するものだけ表示中" : "7日以内に締切・終了するものだけ表示中";
-  const desc = {rsv:"公式通販などの予約・受注です。受付中のもの（締切が近い順）、これから受付が始まるものの順。", sellout:"在庫がなくなると終わるグッズ・くじです。いま買えるもの、これから出るものの順。", ending:"1週間以内に締切・終了するものです（抽選・受注の締切を含む）。近い順。", next:"日付が近い順（開催中のものは終わる日の順）", onsale:"終わりの日が決まっていない商品や常設店です。新しく出た順。", ended:"最近終わった順です。"}[state.st];
+  const desc = {rsv:"予約・受注（締切が近い順）", sellout:"なくなり次第終了（新しく出た順）", ending:"7日以内に締切・終了（近い順）", next:"日付順（開催中は終了日順）", onsale:"終了日未定・常設（新しい順）", ended:"最近終わった順"}[state.st];
   document.getElementById("count").textContent = `${arr.length}件　${desc}`;
   if (!arr.length){
     const msg = R.region==="os"&&!VIS().length ? "この国・地域の情報はまだありません。"
@@ -418,7 +422,8 @@ function renderListInner(){
     if (rsvState(x)==="open" && x.re && x.re.length>10 && PT(x.re) - new Date() < 72*3600e3) dlNear.push({it:x, k:"予約", until:x.re});
   }
   dlNear.sort((a,b)=>PT(a.until)-PT(b.until));
-  const dlStrip = dlNear.length && state.st==="next" && !state.focus ? `<div class="dlstrip"><div class="dlsh"><b>⏰ 締切が近いもの</b><span>72時間以内</span></div>${dlNear.slice(0,4).map(d=>{ const L = leftText(d.until); return `<a class="dlrow${L.hot?" hot":""}" href="/items/${encodeURIComponent(d.it.id)}/"><span class="dlk">${esc(d.k)}</span><span class="dlt">${esc(d.it.t.replace(/（予約）$/,""))}</span><span class="dll num">${esc(L.txt)}</span></a>`; }).join("")}${(ro||rb)?`<button type="button" class="dlmore" data-gorsv>予約・受注の一覧を見る（${ro?`受付中${ro}件`:""}${ro&&rb?"・":""}${rb?`開始予定${rb}件`:""}）→</button>`:""}</div>` : "";
+  const rsvLink = (ro||rb) ? `<button type="button" class="dlmore" data-gorsv>予約・受注 ${ro?`受付中${ro}件`:""}${ro&&rb?"・":""}${rb?`開始予定${rb}件`:""} →</button>` : "";
+  const dlStrip = dlNear.length && state.st==="next" && !state.focus ? `<div class="dlstrip"><div class="dlsh"><b title="72時間以内に締切のもの">⏰ 締切が近いもの</b>${rsvLink}</div>${dlNear.slice(0,2).map(d=>{ const L = leftText(d.until); return `<a class="dlrow${L.hot?" hot":""}" href="/items/${encodeURIComponent(d.it.id)}/"><span class="dlk">${esc(d.k)}</span><span class="dlt">${esc(d.it.t.replace(/（予約）$/,""))}</span><span class="dll num">${esc(L.txt)}</span></a>`; }).join("")}${dlNear.length>2?`<button type="button" class="dlmore dlrest" data-jump="ending">ほか${dlNear.length-2}件の締切を見る →</button>`:""}</div>` : "";
   const strip = dlStrip ? dlStrip : (ro||rb) && state.st==="next" && !state.focus ? `<button type="button" class="rsvstrip" data-gorsv><span class="rs-ic" aria-hidden="true">🛒</span><span class="rs-tx"><b>${ro?`いま予約受付中 ${ro}件`:""}${ro&&rb?"・":""}${rb?`予約開始予定 ${rb}件`:""}</b>${sub?`<small>${sub}</small>`:""}</span><span class="rs-go">見る →</span></button>` : "";
   el.innerHTML = strip + h + backAll();
   setTimeout(()=>{ fillPop(); fillCamp(); }, 0);   // 下で定義する部品が読み込まれてから
@@ -619,6 +624,15 @@ function renderAll(){
   const v = currentView();
   if (v==="list") renderList(); else if (v==="cal") safe(renderCal, "cal"); else if (v==="mine") safe(renderMine, "mine");
 }
+/* 詳細ページで♡を押してから戻ってきたとき（戻る操作で前の画面がそのまま出る場合を含む）、古い「ほしい」の記憶で上書きしないよう読み直す */
+function reloadMine(){
+  let n; try { n = JSON.parse(localStorage.getItem("chiikatsu-mine")||"{}")||{}; } catch(e){ return; }
+  if (JSON.stringify(n) === JSON.stringify(mine)) return;
+  mine = n; safe(renderAll, "mine-reload");
+}
+addEventListener("pageshow", e=>{ if (e.persisted) reloadMine(); });
+document.addEventListener("visibilitychange", ()=>{ if (!document.hidden) reloadMine(); });
+addEventListener("storage", e=>{ if (e.key==="chiikatsu-mine") reloadMine(); });
 document.querySelector(".tabs").onclick = e=>{ const b=e.target.closest("[data-view]"); if(b) setView(b.dataset.view); };
 document.querySelector(".sum").onclick = e=>{
   const b=e.target.closest("[data-jump]"); if(!b) return;
@@ -755,7 +769,7 @@ function visLog(id, hit){
 function paintRakuten(id, hit){
   document.querySelectorAll(`[data-pimg="${CSS.escape(id)}"]`).forEach(el=>{
     if (!hit || !hit.img) return;
-    el.innerHTML = `<a href="${esc(hit.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(hit.img)}" alt="${esc(hit.name)}" loading="lazy"></a><small>楽天市場</small>`;
+    el.innerHTML = `<a href="/items/${encodeURIComponent(id)}/" aria-label="${esc((ITEMS.find(x=>x.id===id)||{}).t||"")}の詳細"><img src="${esc(hit.img)}" alt="${esc(hit.name)}" loading="lazy"></a><small>楽天市場の画像</small>`;
     el.classList.add("on");
   });
   document.querySelectorAll(`[data-rk="${CSS.escape(id)}"]`).forEach(el=>{
