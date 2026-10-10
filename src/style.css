@@ -791,7 +791,3 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .card .xbox.xlist .xbtn small{display:none}
 .card .xbox.xlist .xbtn .xl{font-size:13px}
 .card .xbox.xlist .xbtn svg{width:18px;height:18px}
-
-/* 公式の画像がない件：公式Xの検索へのリンク */
-.xsrch{margin:10px 0 4px;font-size:13px}
-.xsrch .xsl{color:var(--acc);text-decoration:underline;text-underline-offset:3px}

@@ -270,7 +270,6 @@ function card(it, opt){
         ${g&&st.k!=="ended"?`<a class="lnk" href="${g}" target="_blank" rel="noopener">カレンダーに追加</a>`:""}
         ${it.q&&st.k!=="ended"?`<a class="lnk yh" href="${esc(yahooSearch(it.q))}" target="_blank" rel="noopener sponsored" data-yh>Yahoo!で探す<span class="tag">PR</span></a>`:""}
         ${(()=>{ const tr = isEvent(it) && it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="lnk trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored">🏨 ${esc(tr.label)}<span class="tag">PR</span></a>` : ""; })()}
-        ${xsearch(it, "lnk")}
         <button class="lnk got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
       </div>
       ${xbox(xpostOf(it)).replace('class="xbox"','class="xbox xlist"')}
