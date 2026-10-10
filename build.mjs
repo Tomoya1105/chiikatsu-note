@@ -314,6 +314,10 @@ addEventListener("pageshow",ui);addEventListener("storage",ui);ui();})();</scrip
     ${RKM.plan(it) ? `<div class="dhero" data-dhero><div class="dh-img" aria-hidden="true"></div><div class="dh-txt"><p class="dh-k">楽天市場で同じ商品を探しています…</p></div></div>` : ""}
     ${xbox(xpostOf(it))}
     ${hasBuy ? `<div class="buybox" data-buy="bottom"><p class="buyh">この商品の購入先・予約</p>${buyInner}</div>` : ""}
+    ${hasBuy ? `<script>(function(){var bb=document.querySelector('[data-buy="bottom"]'),tb=document.querySelector('[data-buy="top"]');if(!bb||!tb)return;bb.hidden=true;
+function f(){var sh=document.querySelector(".share");if(!sh)return;var h=document.querySelector("[data-dhero]"),long=(h&&/(^| )on( |$)/.test(h.className))||(sh.getBoundingClientRect().top-tb.getBoundingClientRect().bottom>innerHeight*.6);bb.hidden=!long;}
+document.addEventListener("DOMContentLoaded",f);addEventListener("load",f);addEventListener("resize",f);if(window.ResizeObserver){var m=document.querySelector("main");if(m)new ResizeObserver(f).observe(m);}
+var hh=document.querySelector("[data-dhero]");if(hh&&window.MutationObserver)new MutationObserver(f).observe(hh,{attributes:true,attributeFilter:["class"]});})();</script>` : ""}
     ${(() => { const tr = it.area ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
     <div class="share"><span class="k">友だちに教える</span>
       <a class="btn" href="https://line.me/R/share?text=${encodeURIComponent(it.t + "\n" + SITE + url)}" target="_blank" rel="noopener">LINEで送る</a>

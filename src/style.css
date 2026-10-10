@@ -777,3 +777,5 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
   .acts.main .btn{padding:8px 12px;font-size:13px}
   .acts.sub{margin-top:2px}
 }
+
+.buybox[hidden]{display:none}
