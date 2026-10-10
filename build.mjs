@@ -249,6 +249,27 @@ writeOg("home", { label: "非公式スケジュール帳", title: "ちいかわ�
 
 const ogWhenText = it => it.e ? `${mdSp(it.s, it.sp)}〜${md(it.e)}` : `${mdSp(it.s, it.sp)}${isEvent(it) ? "から" : "発売"}`;
 // ---- 項目ごとのページ（検索から来た人の入口）
+
+// 詳細ページ「あわせてチェック」：同じ会場・同じシリーズ・同じ日に始まるもの（終了したものは出さない）
+const REL_GENERIC = /^(ちいかわマーケット|ちいかわらんど|全国|各地|国内線|全店|書店|通販|コンビニ|スーパー|ECサイト|オンライン|ドン・キホーテ|上映館|対象)/;
+const REL_SERIES = /(ちいかわパーク|ちいかわベーカリー|映画ちいかわ|ちいかわ ?POP ?UP ?STORE|ちいかわらんど|アニメちいかわ|ちいかわぽけっと|ちいかわもぐもぐ本舗|まじかるちいかわ|ちいかわ×[^\s　・（(]{2,10})/i;
+function venueKey(x) { const v = String(x.place || "").split(/[、,（(／/]/)[0].trim(); return v.length >= 4 && !REL_GENERIC.test(v) ? v : ""; }
+function seriesKey(x) { const m = REL_SERIES.exec(x.t || ""); return m ? m[1].replace(/\s/g, "").toLowerCase() : ""; }
+function relatedOf(it, all) {
+  const vk = venueKey(it), sk = seriesKey(it), out = [];
+  for (const x of all) {
+    if (x.id === it.id || (x.e && x.e < TODAY)) continue;
+    const why = [];
+    if (vk && venueKey(x) === vk) why.push("同じ会場");
+    if (sk && seriesKey(x) === sk) why.push("同じシリーズ");
+    if (x.s && x.s === it.s) why.push("同じ日スタート");
+    if (!why.length) continue;
+    out.push({ x, why: why[0], sc: why.length * 10 - Math.min(9, Math.abs((new Date(x.s) - new Date(it.s)) / 864e5) / 10) });
+  }
+  return out.sort((p, q) => q.sc - p.sc).slice(0, 6);
+}
+const ev0 = it => it.cat === "event" || it.cat === "cafe";
+
 for (const it of items) {
   const reg = REG[it.region] || "日本";
   const ev = isEvent(it);
@@ -313,12 +334,14 @@ addEventListener("pageshow",ui);addEventListener("storage",ui);ui();})();</scrip
     ${hasBuy ? `<div class="buybox" data-buy="top">${buyInner}</div>` : ""}
     ${RKM.plan(it) ? `<div class="dhero" data-dhero><div class="dh-img" aria-hidden="true"></div><div class="dh-txt"><p class="dh-k">楽天市場で同じ商品を探しています…</p></div></div>` : ""}
     ${xbox(xpostOf(it))}
+    ${(() => { const H = (Array.isArray(it.how) ? it.how : []).filter(s => typeof s === "string" && s.trim()).slice(0, 6); return H.length ? `<section class="howbox"><h2 class="howh">買い方・参加のしかた</h2><ul>${H.map(s => `<li>${esc(s)}</li>`).join("")}</ul><p class="hown">公式の発表をもとにしています。変更されることがあるので、行く前・買う前に公式情報でご確認ください。</p></section>` : ""; })()}
     ${hasBuy ? `<div class="buybox" data-buy="bottom"><p class="buyh">この商品の購入先・予約</p>${buyInner}</div>` : ""}
     ${hasBuy ? `<script>(function(){var bb=document.querySelector('[data-buy="bottom"]'),tb=document.querySelector('[data-buy="top"]');if(!bb||!tb)return;bb.hidden=true;
 function f(){var sh=document.querySelector(".share");if(!sh)return;var h=document.querySelector("[data-dhero]"),long=(h&&/(^| )on( |$)/.test(h.className))||(sh.getBoundingClientRect().top-tb.getBoundingClientRect().bottom>innerHeight*.6);bb.hidden=!long;}
 document.addEventListener("DOMContentLoaded",f);addEventListener("load",f);addEventListener("resize",f);if(window.ResizeObserver){var m=document.querySelector("main");if(m)new ResizeObserver(f).observe(m);}
 var hh=document.querySelector("[data-dhero]");if(hh&&window.MutationObserver)new MutationObserver(f).observe(hh,{attributes:true,attributeFilter:["class"]});})();</script>` : ""}
     ${(() => { const tr = it.area ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
+    ${(() => { const R = relatedOf(it, items); return R.length ? `<section class="relbox"><h2 class="relh">あわせてチェック</h2><ul class="rel">${R.map(r => `<li><a href="/items/${encodeURIComponent(r.x.id)}/"><span class="relk">${esc(r.why)}</span><span class="relt">${esc(r.x.t)}</span><span class="reld">${(md => md(r.x.s) + (r.x.e ? "〜" + md(r.x.e) : ""))(v => Number(v.slice(5, 7)) + "/" + Number(v.slice(8, 10)))}</span></a></li>`).join("")}</ul></section>` : ""; })()}
     <div class="share"><span class="k">友だちに教える</span>
       <a class="btn" href="https://line.me/R/share?text=${encodeURIComponent(it.t + "\n" + SITE + url)}" target="_blank" rel="noopener">LINEで送る</a>
       <a class="btn" href="https://x.com/intent/post?text=${encodeURIComponent(it.t + "（" + ogWhenText(it) + "）")}&url=${encodeURIComponent(SITE + url)}&hashtags=${encodeURIComponent("ちいかわ")}" target="_blank" rel="noopener">Xでポスト</a>
@@ -332,6 +355,7 @@ var hh=document.querySelector("[data-dhero]");if(hh&&window.MutationObserver)new
       </form>
     </details>
     <script>document.querySelector(".drepf").addEventListener("submit",async function(e){e.preventDefault();var f=this,m=f.querySelector(".drepmsg"),b=f.querySelector("button");b.disabled=true;try{var r=await fetch("/api/report",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({itemId:f.dataset.id,title:f.dataset.t,kind:(f.querySelector("input:checked")||{}).value||"other",text:f.querySelector("textarea").value.trim().slice(0,400)})});if(!r.ok)throw 0;f.reset();m.textContent="報告ありがとうございます。確認して直します";}catch(err){b.disabled=false;m.textContent="送れませんでした。時間をおいてもう一度お試しください";}});</script>
+    ${(() => { const Lg = (Array.isArray(it.log) ? it.log : []).filter(x => x && /^\d{4}-\d{2}-\d{2}$/.test(x.d || "") && typeof x.t === "string" && x.t.trim()).sort((p, q) => q.d.localeCompare(p.d)).slice(0, 3); return Lg.length ? `<section class="logbox"><h2 class="logh">更新の記録</h2><ul>${Lg.map(x => `<li><time datetime="${esc(x.d)}">${esc(fmt(x.d))}</time> ${esc(x.t)}</li>`).join("")}</ul></section>` : ""; })()}
     <p class="credit">掲載情報の更新日：${esc(it.updatedAt || it.addedAt || "")}。発売日や会期は変わることがあります。お出かけ・購入の前に公式情報をご確認ください。</p>
   </main>
   <p style="margin:18px 0"><a class="btn" href="/">ちいかわのスケジュールを一覧で見る</a></p>

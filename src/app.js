@@ -255,7 +255,7 @@ function card(it, opt){
       <dl class="info">
         ${it.place?`<dt>場所</dt><dd>${esc(it.place)}</dd>`:""}
         ${it.price?`<dt>価格</dt><dd class="num">${esc(it.price)}${regionOf(it)==="jp"?"（税込）":""}</dd>`:""}
-        ${it.note?`<dt>メモ</dt><dd>${esc(it.note)}</dd>`:""}
+        ${it.note?`<dt>メモ</dt><dd class="note">${esc(it.note)}</dd>`:""}
       </dl>
       ${(()=>{ const rv = rsvState(it), L = rsvList(it); if (!L.length || rv==="closed") return "";
         if (rv==="soldout") return `<div class="rsvbox closed"><div class="rsvh">すべて完売しました</div></div>`;
