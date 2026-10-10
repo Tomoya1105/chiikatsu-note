@@ -223,7 +223,7 @@
     if (!/^\d+$/.test(id)) return;
     box.classList.add("open"); if (auto) box.classList.add("auto");
     b.setAttribute("aria-expanded", "true"); b.querySelector(".xl").textContent = "画像をとじる";
-    f.innerHTML = '<p class="xwait">公式の投稿を読み込み中…</p><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none" data-lang="ja" data-theme="' + (isDark() ? "dark" : "light") + '"><a href="https://twitter.com/i/status/' + id + '"></a></blockquote>';
+    f.innerHTML = (auto ? '' : '<p class="xwait">公式の投稿を読み込み中…</p>') + '<blockquote class="twitter-tweet" data-dnt="true" data-conversation="none" data-lang="ja" data-theme="' + (isDark() ? "dark" : "light") + '"><a href="https://twitter.com/i/status/' + id + '"></a></blockquote>';
     ct("x:embed");
     var done = false;
     function fail(){ if (auto) { box.hidden = true; f.innerHTML = ""; } else xFail(f, id); }
