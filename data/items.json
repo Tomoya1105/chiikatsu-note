@@ -342,7 +342,7 @@
   "time": "10:00〜22:00（有料展示エリアの最終入場 21:00）",
   "updatedAt": "2026-10-05",
   "srcType": "official",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "xpost": "https://x.com/chiikawa_kouhou/status/2094258886781927591",
   "xpostNote": "投稿日2026-08-31。本文に「上海静安嘉里中心（JAKC）」「2026年9月12日(土)～11月1日(日)」"
  },
@@ -364,7 +364,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "qNone": "海外（上海）限定",
   "srcs": [
    "https://x.com/chiikawa_kouhou/status/2094621282461532543"
@@ -387,7 +387,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ"
  },
  {
@@ -465,7 +465,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-09"
+  "verifiedAt": "2026-10-11"
  },
  {
   "id": "20260919-34",
@@ -1771,7 +1771,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09"
+  "verifiedAt": "2026-10-11"
  },
  {
   "id": "20261001-tokyobanana-solamachi",
@@ -1793,7 +1793,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-05",
   "srcType": "press",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "qNone": "期間限定ショップの案内"
  },
  {
@@ -2269,7 +2269,7 @@
   "qNone": "Amazonで販売される端末で、楽天で同じ商品を特定できない",
   "src": "https://www.aboutamazon.jp/news/devices/androidos-amazon-kids-tablet-series",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "note": "6歳以上向けモデルの日本限定版で、専用カバーがちいかわ。10/8から予約受付中、10/14出荷開始予定（変更の可能性あり）。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2796,6 +2796,32 @@
   ],
   "verifiedAt": "2026-10-11",
   "note": "綿100％のワッフル素材、M／Lサイズ。10/11時点で「小さいの ホワイト」は売り切れ、「プカー グレー」は在庫あり。",
+  "autoAdded": true,
+  "addedAt": "2026-10-11",
+  "updatedAt": "2026-10-11"
+ },
+ {
+  "id": "20260925-minum-liner",
+  "region": "jp",
+  "t": "minum ちいかわデザイン ぷにゅグリップライナー（チャーム付き）",
+  "cat": "goods",
+  "s": "2026-09-25",
+  "sp": "late",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のドラッグストア・バラエティショップ、ちいかわらんど",
+  "area": "",
+  "price": "各1,265円",
+  "q": "ちいかわ ぷにゅグリップライナー",
+  "src": "https://prtimes.jp/main/html/rd/p/000000204.000034263.html",
+  "srcType": "press",
+  "verifiedAt": "2026-10-11",
+  "how": [
+   "9月下旬から順次発売。取り扱いがない店舗もあるので、在庫は各店舗に問い合わせを",
+   "全5色（ピュアブラック・シアーブラック・グレージュ・イエベブラウン・ブルベブラウン）"
+  ],
+  "note": "コスメブランド「minum（ミニュム）」とちいかわのコラボ第1弾。アイライナーにチャームが付く。オンライン販売は後日案内。",
   "autoAdded": true,
   "addedAt": "2026-10-11",
   "updatedAt": "2026-10-11"
