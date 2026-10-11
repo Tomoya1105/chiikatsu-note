@@ -85,7 +85,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "xpost": "https://x.com/chiikawa_kouhou/status/2064548449224413331",
   "xpostNote": "投稿日2026-06-10。本文に「東海道新幹線『ツツウラウラ旅』開催期間：7月8日〜10月31日」"
  },
@@ -107,7 +107,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "xpost": "https://x.com/chiikawa_kouhou/status/2056622381393965225",
   "xpostNote": "投稿日2026-05-19。本文に「東京スカイツリーにてイベント開催決定」「ちいかわ☆星ふるスカイツリー®とひみつの島」"
  },
@@ -128,7 +128,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000001491.000020053.html"
   ]
@@ -170,7 +170,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "org": {
    "name": "株式会社エルティーアール（ちいかわベーカリー運営）",
    "url": "https://chiikawabakery.jp/",
@@ -213,7 +213,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "srcs": [
    "https://www.sunflower.co.jp/information/event/20260806.html"
   ]
@@ -238,7 +238,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-11",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -299,7 +299,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09"
+  "verifiedAt": "2026-10-11"
  },
  {
   "id": "20260908-pus-centrair",
@@ -2772,5 +2772,32 @@
   "addedAt": "2026-10-11",
   "updatedAt": "2026-10-11",
   "verifiedAt": "2026-10-11"
+ },
+ {
+  "id": "20261002-waffle-longt",
+  "region": "jp",
+  "t": "ちいかわ ワッフル長袖Tシャツ（小さいの／プカー）",
+  "cat": "goods",
+  "s": "2026-10-02",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわマーケット（公式通販）ほか",
+  "area": "",
+  "price": "各6,050円",
+  "q": "",
+  "qNone": "公式通販の衣類で、楽天で同じ商品と言い切れない",
+  "src": "https://chiikawamarket.jp/collections/20261002",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawamarket.jp/products/4570189211741",
+   "https://chiikawamarket.jp/products/4570189211765"
+  ],
+  "verifiedAt": "2026-10-11",
+  "note": "綿100％のワッフル素材、M／Lサイズ。10/11時点で「小さいの ホワイト」は売り切れ、「プカー グレー」は在庫あり。",
+  "autoAdded": true,
+  "addedAt": "2026-10-11",
+  "updatedAt": "2026-10-11"
  }
 ]
