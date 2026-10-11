@@ -1071,7 +1071,7 @@
   "time": "",
   "updatedAt": "2026-10-09",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-12",
   "srcs": [
    "https://animeanime.jp/article/2026/08/25/102345.html"
   ]
@@ -1148,9 +1148,11 @@
   "src": "https://hello.toshocard.com/limited_edition2026/",
   "t": "限定版 ちいかわ図書カードNEXT",
   "time": "",
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-12",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09"
+  "verifiedAt": "2026-10-12",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2057280217773953417",
+  "xpostNote": "投稿日2026-05-21（IDから計算）。本文に「限定版 ちいかわ図書カード」「2種類（各1000円）」「10月下旬頃より全国の本屋さんで発売予定」（2026-10-12確認）"
  },
  {
   "id": "20261025-20",
@@ -1361,7 +1363,7 @@
   "t": "ちいかわ Light stick charm（バンダイ キャンディ）",
   "cat": "goods",
   "s": "2026-10-26",
-  "sp": "late",
+  "sp": "day",
   "e": null,
   "time": "",
   "eNote": "全国のお菓子売場ほか",
@@ -1373,9 +1375,15 @@
   "note": "光るスティックライト型チャーム。全8種、ソーダ味ガム付き。",
   "autoAdded": true,
   "addedAt": "2026-10-03",
-  "updatedAt": "2026-10-03",
+  "updatedAt": "2026-10-12",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09"
+  "verifiedAt": "2026-10-12",
+  "log": [
+   {
+    "d": "2026-10-12",
+    "t": "発売日が10/26(月)と公式で決まっていたので、日付の表示を直しました"
+   }
+  ]
  },
  {
   "id": "20261003-chiipla",
@@ -1538,7 +1546,7 @@
   "place": "全国の量販店の菓子売場など",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117927843000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09"
+  "verifiedAt": "2026-10-12"
  },
  {
   "region": "jp",
@@ -1560,7 +1568,7 @@
   "place": "全国のスーパーなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-09"
+  "verifiedAt": "2026-10-12"
  },
  {
   "region": "jp",
@@ -1582,7 +1590,7 @@
   "place": "全国のガシャポン売場",
   "src": "https://gashapon.jp/products/detail.php?jan_code=4570118206206000",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-12",
   "qNone": "ガシャポン（カプセルトイ）"
  },
  {
@@ -1744,12 +1752,14 @@
   "note": "満天の夜空を旅するちいかわたちのデザイン。星の部分は見る角度で色がやさしく変わります。10/16から順次発売（山加商店 公式ECは1会計3個まで）。",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-12",
   "srcType": "official",
   "verifiedAt": "2026-10-10",
   "srcs": [
    "https://yamakashoten.official.ec/"
-  ]
+  ],
+  "xpost": "https://x.com/chiikawa_kouhou/status/2105855302738587873",
+  "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「2027年イヤーズアイテム」「10月16日(金)より順次 ちいかわマーケット、ちいかわらんど、山加商店 公式ECにて発売」（2026-10-12確認）"
  },
  {
   "id": "20260928-nendoroid-kuri-shisa",
@@ -2387,7 +2397,7 @@
   "srcs": [
    "https://www.tohotheater.jp/theater/076/info/event/chiikawa-penlightouen10161718.html"
   ],
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-12",
   "note": "『映画ちいかわ 人魚の島のひみつ』を、音に合わせて光るペンライトの演出付きで応援しながら観られる上映。前売券・ムビチケなどは使用可、招待券・無料鑑賞券は不可。ペンライトは数量限定で販売。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
