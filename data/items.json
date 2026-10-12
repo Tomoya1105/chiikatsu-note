@@ -544,7 +544,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-12",
   "srcs": [
    "https://www.cinemacafe.net/article/2026/09/24/112822.html"
   ]
@@ -607,7 +607,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-10"
+  "verifiedAt": "2026-10-12"
  },
  {
   "id": "20260928-09",
@@ -704,7 +704,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-12",
   "xpost": "https://x.com/chiikawabakery/status/2100797269436203365",
   "xpostNote": "投稿日2026-09-18。本文に「デパートリウボウ 6階」「10/1(木)～10/12(月)」",
   "org": {
@@ -841,7 +841,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-10"
+  "verifiedAt": "2026-10-12"
  },
  {
   "id": "20261002-pus-saga",
@@ -863,7 +863,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-10"
+  "verifiedAt": "2026-10-12"
  },
  {
   "id": "20261007-taipei-xinyi",
@@ -884,7 +884,7 @@
   "time": "11:00〜22:00",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-10"
+  "verifiedAt": "2026-10-12"
  },
  {
   "id": "20261009-nikuman",
@@ -1613,8 +1613,11 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
-  "qNone": "GUの店舗・公式通販のみ"
+  "verifiedAt": "2026-10-12",
+  "qNone": "GUの店舗・公式通販のみ",
+  "srcs": [
+   "https://www.famitsu.com/article/202609/88383"
+  ]
  },
  {
   "id": "20260930-kr-movie",
@@ -2858,6 +2861,31 @@
   ],
   "verifiedAt": "2026-10-12",
   "note": "コーデュロイ生地のパジャマ姿のちいかわ・ハチワレ・うさぎ、全3種（高さ約10cm）。公式の展開時期は「2026年10月中旬より順次」。",
+  "autoAdded": true,
+  "addedAt": "2026-10-12",
+  "updatedAt": "2026-10-12"
+ },
+ {
+  "id": "20261115-safety-pouch",
+  "region": "jp",
+  "t": "ちいかわ セーフティポーチ（グルマンディーズ）",
+  "cat": "goods",
+  "s": "2026-11-15",
+  "sp": "mid",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "グルマンディーズ公式通販ほか",
+  "area": "",
+  "price": "2,508円",
+  "q": "ちいかわ セーフティポーチ",
+  "src": "https://www.gourmandise.jp/view/item/000000010968",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-12",
+  "how": [
+   "グルマンディーズ公式通販で予約受付中（発売後、順次発送）"
+  ],
+  "note": "モバイルバッテリーなどを入れておける、難燃生地（UL94規格）のポーチ。ホワイト・ブラックの2色。公式の発売時期は「11月中旬発売予定」。",
   "autoAdded": true,
   "addedAt": "2026-10-12",
   "updatedAt": "2026-10-12"
