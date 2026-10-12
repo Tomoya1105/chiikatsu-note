@@ -960,7 +960,7 @@
   "cat": "event",
   "e": "2026-10-26",
   "eNote": "",
-  "note": "",
+  "note": "会場はSouth 3階 スターバックス前。",
   "place": "イオンモール津田沼（千葉県習志野市）",
   "price": "",
   "q": "",
@@ -970,9 +970,11 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠イオンモール津田沼",
   "time": "",
-  "updatedAt": "2026-10-03",
+  "updatedAt": "2026-10-13",
   "srcType": "official",
-  "verifiedAt": "2026-10-11"
+  "verifiedAt": "2026-10-11",
+  "xpost": "https://x.com/chiikawa_popup/status/2108356771077316799",
+  "xpostNote": "投稿日2026-10-09 9:40（IDから計算）。本文に「千葉県にて本日より開催」「イオンモール 津田沼 South 3階スターバックス前」「2026年10月9日(金)～10月26日(月)」（2026-10-13 検索結果で確認）"
  },
  {
   "id": "20261009-tabenomi",
@@ -1015,7 +1017,7 @@
   "time": "",
   "updatedAt": "2026-10-10",
   "srcType": "partner",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "rb": [
    {
     "n": "",
@@ -1169,13 +1171,25 @@
   "src": "https://www.ana.co.jp/ja/jp/domestic/theme/chiikawa-jet/",
   "t": "ちいかわ×ANA「ちいかわジェット」就航",
   "time": "",
-  "updatedAt": "2026-10-10",
+  "updatedAt": "2026-10-13",
   "srcType": "partner",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "xpost": "https://x.com/chiikawa_kouhou/status/2084157319114621084",
   "xpostNote": "投稿日2026-08-03。本文に「ちいかわ×ANA」「特別デザイン機『ちいかわジェット』」",
   "srcs": [
-   "https://travel.watch.impress.co.jp/docs/news/2130078.html"
+   "https://travel.watch.impress.co.jp/docs/news/2130078.html",
+   "https://www.aviationwire.jp/archives/352011/print/"
+  ],
+  "how": [
+   "就航記念キャンペーン第1弾「ちいかわと旅にでよう！」：10/19(月)10:00〜12/31(木)にANAアプリなどで参加登録した人から抽選で500人にアクリルスタンド",
+   "第2弾：第1弾の条件を満たし、2027年2/1〜4/30にANA国内線に搭乗した人から抽選で100人にパスポートケース",
+   "ちいかわジェットが飛ぶ便は運航状況で決まり、当日まで分かりません"
+  ],
+  "log": [
+   {
+    "d": "2026-10-13",
+    "t": "就航記念キャンペーンの期間と賞品を追加しました"
+   }
   ]
  },
  {
@@ -1757,7 +1771,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-12",
   "srcType": "official",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "srcs": [
    "https://yamakashoten.official.ec/"
   ],
@@ -2146,7 +2160,7 @@
   "qNone": "デザインが多く、楽天で同じ商品を特定できない",
   "src": "https://animeanime.jp/article/2026/09/26/103251.html",
   "srcType": "news",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "note": "お年玉袋・金封それぞれ全3種。10月中旬ごろから順次発売。",
   "autoAdded": true,
   "addedAt": "2026-10-05",
@@ -2442,7 +2456,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2582,7 +2596,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "id": "20261015-okao-bottle2",
   "t": "ちいかわ おかおマイボトル②（プライズ）",
   "cat": "goods",
@@ -2889,5 +2903,66 @@
   "autoAdded": true,
   "addedAt": "2026-10-12",
   "updatedAt": "2026-10-12"
+ },
+ {
+  "id": "20261014-kr-tokuten-3rd",
+  "region": "kr",
+  "t": "韓国 映画ちいかわ 第3週の入場者特典「ひみつの本」",
+  "cat": "goods",
+  "s": "2026-10-14",
+  "sp": "day",
+  "e": "2026-10-20",
+  "time": "",
+  "eNote": "なくなり次第終了（先着順）",
+  "place": "韓国のCGV・ロッテシネマ・メガボックス、CineQ",
+  "area": "ソウル",
+  "price": "",
+  "q": "",
+  "qNone": "海外（韓国の映画館）の入場者特典",
+  "src": "https://www.ggilbo.com/news/articleView.html?idxno=1186161",
+  "srcType": "news",
+  "srcs": [
+   "https://www.topstarnews.net/news/articleView.html?idxno=16244382"
+  ],
+  "verifiedAt": "2026-10-13",
+  "how": [
+   "CGV・ロッテシネマ・メガボックスは10/14〜10/20の平日に、観た日のチケットを見せて上映後に受け取り（先着順）",
+   "観た劇場でだけ受け取れます",
+   "CineQは10/14からなくなり次第終了で、ポストカード2種もつきます"
+  ],
+  "note": "翻訳つきの「ひみつの本（비밀책）」。配給の大元ムービーが10/12に公式SNSで発表。",
+  "autoAdded": true,
+  "addedAt": "2026-10-13",
+  "updatedAt": "2026-10-13"
+ },
+ {
+  "id": "20261120-tw-gu",
+  "region": "tw",
+  "t": "台湾GU×ちいかわ 冬コラボ（第1弾・第2弾）",
+  "cat": "goods",
+  "s": "2026-11-20",
+  "sp": "day",
+  "e": null,
+  "time": "オンラインは9:00〜（台湾時間）",
+  "eNote": "数量限定（売り切れ次第終了）",
+  "place": "台湾のGU全店・GU台湾オンラインストア",
+  "area": "台北",
+  "price": "",
+  "q": "",
+  "qNone": "海外（台湾のGU）での販売",
+  "src": "https://faq-tw.gu-global.com/articles/zh_TW/Knowledge/000010330",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.4gamers.com.tw/news/detail/82126/chiikawa-gu-winter-collaboration-2026"
+  ],
+  "verifiedAt": "2026-10-13",
+  "how": [
+   "第1弾は11/20(金)、第2弾は11/27(金)に発売",
+   "取り置き・店舗間の取り寄せはなし。転売目的と判断された注文は断られることがあります"
+  ],
+  "note": "日本と同じ日程の台湾での発売。原文：吉伊卡哇、網路商店及全台實體店鋪。",
+  "autoAdded": true,
+  "addedAt": "2026-10-13",
+  "updatedAt": "2026-10-13"
  }
 ]
