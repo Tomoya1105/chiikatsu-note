@@ -1,5 +1,27 @@
 [
  {
+  "id": "20261012-kr-weekend-top",
+  "date": "2026-10-12",
+  "tag": "overseas",
+  "title": "韓国で映画ちいかわが週末の観客動員1位に",
+  "sum": "10月9日〜11日の週末に約40.8万人を動員し、韓国の週末ランキングで1位に。累計の観客数は約128万人になりました。",
+  "source": "RBB TODAY",
+  "src": "https://www.rbbtoday.com/article/2026/10/12/254321.html",
+  "itemId": "20260930-kr-movie",
+  "addedAt": "2026-10-12"
+ },
+ {
+  "id": "20261012-corduroy-pajama",
+  "date": "2026-10-12",
+  "tag": "goods",
+  "title": "コーデュロイのパジャマ姿マスコットがプライズに",
+  "sum": "ちいかわ・ハチワレ・うさぎがコーデュロイ生地のパジャマを着たマスコット全3種。10月中旬から全国のアミューズメント施設に順次登場します。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/12/189139.html",
+  "itemId": "20261015-corduroy-pajama",
+  "addedAt": "2026-10-12"
+ },
+ {
   "id": "20261011-gu-lineup",
   "date": "2026-10-11",
   "tag": "goods",

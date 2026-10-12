@@ -1260,7 +1260,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/09/08/187400.html"
   ],
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-12",
   "srcType": "partner"
  },
  {
@@ -1455,7 +1455,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "official",
-  "verifiedAt": "2026-10-10"
+  "verifiedAt": "2026-10-12"
  },
  {
   "id": "20260918-pus-okazaki",
@@ -1871,7 +1871,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "official",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-12",
   "qNone": "ちいかわベーカリーの店頭販売のみ"
  },
  {
@@ -2093,7 +2093,7 @@
   "srcs": [
    "https://www.tokyobanana.jp/products/banana_chiikawa.html"
   ],
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-12",
   "note": "10/1〜10/14はエコバッグとそのセットを販売（9/30まではトートバッグ）。新作のちいかわクッキーサンドもあり。",
   "autoAdded": true,
   "addedAt": "2026-10-05",
@@ -2218,7 +2218,7 @@
   "qNone": "くじ（店頭販売）",
   "src": "https://1kuji.com/products/chiikawa5",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-12",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2243,7 +2243,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000004081.000064643.html"
   ],
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-12",
   "dl": [
    {
     "k": "抽選",
@@ -2324,7 +2324,7 @@
   "q": "ちいかわ キャラパキ チョコレート 大袋",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929205000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-12",
   "note": "9袋入り（ホワイトチョコ・いちごチョコの2種の味）。チョコのキャラは20種。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2835,5 +2835,31 @@
   "autoAdded": true,
   "addedAt": "2026-10-11",
   "updatedAt": "2026-10-11"
+ },
+ {
+  "id": "20261015-corduroy-pajama",
+  "region": "jp",
+  "t": "ちいかわ フッサフッサでコーデュロイなパジャママスコット（プライズ）",
+  "cat": "goods",
+  "s": "2026-10-15",
+  "sp": "mid",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のアミューズメント施設（プライズ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（アミューズメント施設の景品）",
+  "src": "https://www.parade-inc.net/products/p261002",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/12/189139.html"
+  ],
+  "verifiedAt": "2026-10-12",
+  "note": "コーデュロイ生地のパジャマ姿のちいかわ・ハチワレ・うさぎ、全3種（高さ約10cm）。公式の展開時期は「2026年10月中旬より順次」。",
+  "autoAdded": true,
+  "addedAt": "2026-10-12",
+  "updatedAt": "2026-10-12"
  }
 ]
