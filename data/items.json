@@ -74,7 +74,7 @@
   "cat": "event",
   "e": "2026-10-31",
   "eNote": "",
-  "note": "",
+  "note": "ちいかわらんど TOKYO Station・まじかるちいかわストア梅田HEP FIVE店では、ノベルティと引換証の配布を終了しています。",
   "place": "東海道新幹線、ちいかわらんど TOKYO Station ほか",
   "price": "",
   "q": "",
@@ -83,11 +83,17 @@
   "src": "https://recommend.jr-central.co.jp/tsutsuurauratabi/",
   "t": "映画ちいかわ×JR東海 ツツウラウラ旅",
   "time": "",
-  "updatedAt": "2026-09-27",
+  "updatedAt": "2026-10-14",
   "srcType": "partner",
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-14",
   "xpost": "https://x.com/chiikawa_kouhou/status/2064548449224413331",
-  "xpostNote": "投稿日2026-06-10。本文に「東海道新幹線『ツツウラウラ旅』開催期間：7月8日〜10月31日」"
+  "xpostNote": "投稿日2026-06-10。本文に「東海道新幹線『ツツウラウラ旅』開催期間：7月8日〜10月31日」",
+  "log": [
+   {
+    "d": "2026-10-14",
+    "t": "東京駅・梅田HEP FIVEでノベルティ配布終了と追記"
+   }
+  ]
  },
  {
   "id": "20260710-21",
@@ -107,7 +113,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-14",
   "xpost": "https://x.com/chiikawa_kouhou/status/2056622381393965225",
   "xpostNote": "投稿日2026-05-19。本文に「東京スカイツリーにてイベント開催決定」「ちいかわ☆星ふるスカイツリー®とひみつの島」"
  },
@@ -128,7 +134,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-14",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000001491.000020053.html"
   ]
@@ -170,12 +176,14 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-14",
   "org": {
    "name": "株式会社エルティーアール（ちいかわベーカリー運営）",
    "url": "https://chiikawabakery.jp/",
    "src": "https://prtimes.jp/main/html/rd/p/000000232.000086964.html"
-  }
+  },
+  "xpost": "https://x.com/chiikawabakery/status/2080476311576060232",
+  "xpostNote": "投稿日2026-07-24（IDから計算・開始当日）。本文に「『映画ちいかわ 人魚の島のひみつ』公開記念パンが本日より販売開始」「花かんむりのフェイス型パン」「後半限定(9/18〜)のセイレーンカレーパン」"
  },
  {
   "id": "20260731-33",
@@ -213,10 +221,12 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-14",
   "srcs": [
    "https://www.sunflower.co.jp/information/event/20260806.html"
-  ]
+  ],
+  "xpost": "https://x.com/chiikawa_kouhou/status/2073980259834138782",
+  "xpostNote": "投稿日2026-07-06（IDから計算）。本文に「商船三井さんふらわあ × 映画ちいかわ」「8月6日(水)からコラボグッズの販売がスタート」、#ちいかわとのんびり船旅"
  },
  {
   "id": "20260813-pus-naha",
@@ -950,7 +960,9 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-11"
+  "verifiedAt": "2026-10-14",
+  "xpost": "https://x.com/chiikawa_popup/status/2103428383350964266",
+  "xpostNote": "投稿日2026-09-25（IDから計算）。本文に「イオンモール 水戸内原 2階 アジェデアクセサリーズ前」「2026年10月9日(金)～10月26日(月)」"
  },
  {
   "id": "20261009-pus-tsudanuma",
@@ -1366,7 +1378,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-14",
   "srcs": [
    "https://animeanime.jp/article/2026/09/26/103251.html"
   ]
@@ -2534,7 +2546,7 @@
   "srcs": [
    "https://x.com/chiikawa_parkjp/status/2108116648880455976"
   ],
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-14",
   "xpost": "https://x.com/chiikawa_parkjp/status/2108074916067312094",
   "xpostNote": "投稿日2026-10-08（IDから計算）。ちいかわパーク公式サイトに埋め込まれた公式ポスト。本文に「10月16日（金）より登場」「おでかけポーチ ちいかわの家 ホワイト／穴に落ちたハチワレ グリーン」「各¥3,300（税込）」",
   "note": "パークの人気スポットをデザインしたポーチ。ちいかわの家（ホワイト）・穴に落ちたハチワレ（グリーン）・シャッターチャンス（イエロー）・ゴブリンたちの牢屋（ブラック）。",
@@ -3170,7 +3182,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000078.000168561.html"
   ],
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-14",
   "rs": "2026-10-13T18:00",
   "re": "2026-10-20T12:00",
   "rsv": [
@@ -3198,7 +3210,9 @@
   "note": "強くなったハチワレ・強くなったうさぎ・あのこの大きな抱きぬいぐるみ。公式オンラインストア限定。2027年2月下旬から順次発送予定。",
   "autoAdded": true,
   "addedAt": "2026-10-13",
-  "updatedAt": "2026-10-13"
+  "updatedAt": "2026-10-13",
+  "xpost": "https://x.com/chiikawa_market/status/2109932159473504417",
+  "xpostNote": "投稿日2026-10-13 18:00（IDから計算・受付開始時）。本文に「ふんわりもっちり ごろりん抱きぬいぐるみ（全3種）」「受注期間：10/13(火)18時～10/20(火)正午12時」"
  },
  {
   "id": "20261120-park-xmas",
@@ -3226,5 +3240,37 @@
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13"
+ },
+ {
+  "id": "20261015-bakery2nd-market",
+  "region": "jp",
+  "t": "ちいかわベーカリー コロネなマスコット・長袖Tシャツなど（ちいかわマーケット）",
+  "cat": "goods",
+  "s": "2026-10-15",
+  "sp": "day",
+  "e": null,
+  "time": "11:00〜",
+  "eNote": "",
+  "place": "ちいかわマーケット（公式通販）",
+  "area": "",
+  "price": "マスコット各2,310円（全8種）、長袖Tシャツ各4,950円、ニットカーディガン6,050円、バンダナ1,650円",
+  "q": "",
+  "qNone": "公式通販の新商品で、楽天で同じ商品と言い切れない",
+  "src": "https://chiikawamarket.jp/collections/20261015",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawamarket.jp/products/4571609335344",
+   "https://chiikawamarket.jp/products/4570189212397"
+  ],
+  "verifiedAt": "2026-10-14",
+  "how": [
+   "ちいかわマーケット（公式通販）で10/15(木)11時から販売",
+   "コロネなマスコットは1会計につき各1個まで",
+   "長袖Tシャツは1会計につき各サイズ1個まで"
+  ],
+  "note": "ちいかわベーカリー2周年のグッズ。マスコットはちいかわ・ハチワレ・うさぎ・モモンガ・くりまんじゅう・シーサー・ラッコ・古本屋の8種。",
+  "autoAdded": true,
+  "addedAt": "2026-10-14",
+  "updatedAt": "2026-10-14"
  }
 ]
