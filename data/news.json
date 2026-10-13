@@ -44,6 +44,50 @@
   "addedAt": "2026-10-13"
  },
  {
+  "id": "20261013-movie-179oku",
+  "date": "2026-10-13",
+  "tag": "anime",
+  "title": "映画ちいかわ、興収179億円を超える",
+  "sum": "公開81日で観客1229万人・興行収入179.5億円に。10/9〜11の週末も約37.5万人が見て、ふたたび1位になりました。",
+  "source": "オリコン",
+  "src": "https://www.oricon.co.jp/news/2486071/full/",
+  "itemId": "",
+  "addedAt": "2026-10-14"
+ },
+ {
+  "id": "20261013-ana-jet-first",
+  "date": "2026-10-13",
+  "tag": "event",
+  "title": "ちいかわジェット初便は10/19の羽田→長崎",
+  "sum": "10/19のANA661便（羽田8:15発）が最初の便に。機内では限定のヘッドレストカバーや紙コップが使われます。",
+  "source": "NBC長崎放送",
+  "src": "https://news.yahoo.co.jp/articles/ef3b98f5261b14c140a94329aae95506c12685e3",
+  "itemId": "20261025-20",
+  "addedAt": "2026-10-14"
+ },
+ {
+  "id": "20261013-big-blanket",
+  "date": "2026-10-13",
+  "tag": "goods",
+  "title": "約100×140cmの大きなブランケットがプライズに",
+  "sum": "お菓子作りと金太郎の2つの絵柄のふわふわブランケット。10月中旬から全国のゲームセンターなどに順次登場します。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/13/189208.html",
+  "itemId": "20261015-big-blanket",
+  "addedAt": "2026-10-14"
+ },
+ {
+  "id": "20261013-multitowel-resale",
+  "date": "2026-10-13",
+  "tag": "goods",
+  "title": "映画ちいかわのマルチタオルがガチャで再販へ",
+  "sum": "9月に出た約30cm角のカプセルトイ（1回400円・全5種）の再販が決まりました。お店に並ぶ時期は後日発表です。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/13/189204.html",
+  "itemId": "",
+  "addedAt": "2026-10-14"
+ },
+ {
   "id": "20261012-nendoroid-tom",
   "date": "2026-10-12",
   "tag": "goods",
@@ -75,6 +119,17 @@
   "src": "https://www.inside-games.jp/article/2026/10/12/189139.html",
   "itemId": "20261015-corduroy-pajama",
   "addedAt": "2026-10-12"
+ },
+ {
+  "id": "20261012-seoul-shop-queue",
+  "date": "2026-10-12",
+  "tag": "overseas",
+  "title": "ソウル龍山のちいかわ常設店に夜通しの行列",
+  "sum": "10/7、龍山アイパークモールの常設店に夜通しの行列ができ、整理券は700番台に。韓国での映画公開が人気を後押ししていると報じられました。",
+  "source": "KOREA WAVE",
+  "src": "https://news.yahoo.co.jp/articles/f244cc0f025e699cb773d0d8d17cac71a6fb0116",
+  "itemId": "20260227-seoul-yongsan",
+  "addedAt": "2026-10-14"
  },
  {
   "id": "20261011-gu-lineup",
