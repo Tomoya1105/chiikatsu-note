@@ -8,6 +8,7 @@
 // POST ?tok=TOKEN&op=tip     … 運営者が見つけた情報（XのURLや文章）を送る。自動更新が次の回で載せる
 // ?key=REPORT_KEY&op=tips  … 送られた情報の一覧（自動更新が読む）／ &op=tipdone&id=… 対応済みにする
 import { sendPush } from "../../src/webpush.js";
+import { listTips, doneTip, addManualTip } from "../../src/tips.js";
 
 const SUBJECT = "https://chiikatsunote.com";
 const SLOTS = ["朝", "昼", "夜"];
@@ -89,12 +90,10 @@ export async function onRequestGet({ request, env }) {
     return Response.json({ ok: true, slot, posts: posts.length, ...r });
   }
 
-  if (op === "tips") return Response.json(JSON.parse((await env.REPORTS.get("x:tips")) || "[]"), { headers: { "cache-control": "no-store" } });
+  if (op === "tips") return Response.json(await listTips(env), { headers: { "cache-control": "no-store" } });
   if (op === "tipdone") {
-    const tips = JSON.parse((await env.REPORTS.get("x:tips")) || "[]");
-    const rest = tips.filter(x => x.id !== q("id"));
-    await env.REPORTS.put("x:tips", JSON.stringify(rest));
-    return Response.json({ ok: true, removed: tips.length - rest.length, left: rest.length });
+    const r = await doneTip(env, q("id"));
+    return Response.json({ ok: true, removed: r.removed, left: r.left });
   }
 
   return Response.json({ ok: false, reason: "op が必要（add / claim / page / tips / tipdone）" });
@@ -115,10 +114,8 @@ export async function onRequestPost({ request, env }) {
   let b; try { b = await request.json(); } catch (e) { return new Response("bad request", { status: 400 }); }
   const text = String(b && b.text || "").trim().slice(0, 2000);
   if (!text) return Response.json({ ok: false });
-  const tips = JSON.parse((await env.REPORTS.get("x:tips")) || "[]");
-  tips.push({ id: Date.now().toString(36), at: jstNow(), text });
-  await env.REPORTS.put("x:tips", JSON.stringify(tips.slice(-50)));
-  return Response.json({ ok: true, count: tips.length });
+  const count = await addManualTip(env, { id: Date.now().toString(36), at: jstNow(), text });
+  return Response.json({ ok: true, count });
 }
 
 const CSS = `:root{--bg:#FBF6F8;--surface:#fff;--ink:#3A3346;--ink-2:#6D6479;--acc:#E27496;--on:#fff;--soft:#FBE3EB;--line:#EEDDE5;--warn:#C9821D}

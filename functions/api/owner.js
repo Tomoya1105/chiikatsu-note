@@ -3,6 +3,7 @@
 // 合言葉そのものは保存せず、ハッシュ（下の OWNER_HASH）だけを置いている。
 import { token } from "./xdraft.js";
 import { sendPush } from "../../src/webpush.js";
+import { addManualTip } from "../../src/tips.js";
 import { REDUCE, STOP, jstDay, cfDay } from "./hit.js";
 const OWNER_HASH = "a10f78fbd8ad0dbfa641861a3de409679e8fc7e76bb53cc0e0355411363982e9";
 const jstNow = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 16).replace("T", " ");
@@ -17,10 +18,8 @@ export async function onRequestPost({ request, env }) {
   if (b.op === "tip") {
     const text = String(b.text || "").trim().slice(0, 2000);
     if (!text) return Response.json({ ok: false, reason: "空です" });
-    const tips = JSON.parse((await env.REPORTS.get("x:tips")) || "[]");
-    tips.push({ id: Date.now().toString(36), at: jstNow(), text });
-    await env.REPORTS.put("x:tips", JSON.stringify(tips.slice(-50)));
-    return Response.json({ ok: true, count: tips.length });
+    const count = await addManualTip(env, { id: Date.now().toString(36), at: jstNow(), text });
+    return Response.json({ ok: true, count });
   }
   if (b.op === "claim") {
     const id = await env.REPORTS.get("x:lasttest");

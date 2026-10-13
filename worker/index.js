@@ -3,6 +3,8 @@
 // ・通知の送り残し（KV の "jobs"）を少しずつ送る
 import { addJob, loadJobs, saveJobs, runJob, PER_RUN } from "../src/push-jobs.js";
 import { sendPush } from "../src/webpush.js";
+import { canonKey, cleanUrl, seenHas, seenHasAny, seenAdd, fromLegacy } from "../src/news-seen.js";
+import { addAutoCandidates } from "../src/tips.js";
 
 const MARKET = "https://chiikawamarket.jp";
 const RSV_RE = /予約|受注|抽選/;
@@ -163,7 +165,14 @@ export function parseFeed(xml) {
   }
   return out;
 }
-async function seenSet(env) { return new Set(JSON.parse((await env.REPORTS.get("w:seen:news")) || "[]")); }
+// 見た記事の記録：新方式 w:seen:2（情報源ごと・記事のURLでそろえる）。無ければ旧 w:seen:news（と w:fresh）から引き継ぐ。旧キーは書き換えない
+async function loadSeen(env) {
+  const cur = JSON.parse((await env.REPORTS.get("w:seen:2")) || "null");
+  if (cur && typeof cur === "object" && !Array.isArray(cur)) return { store: cur, migrated: false };
+  const legacy = JSON.parse((await env.REPORTS.get("w:seen:news")) || "[]");
+  const fr = JSON.parse((await env.REPORTS.get("w:fresh")) || "[]");
+  return { store: fromLegacy(legacy, fr, FEEDS), migrated: true };
+}
 async function pushOwners(env, payload) {
   if (!env.VAPID_PRIVATE) return 0;
   let n = 0;
@@ -174,26 +183,22 @@ async function pushOwners(env, payload) {
   return n;
 }
 export async function addFresh(env, entries, now) {
-  if (!entries.length) return;
+  if (!entries.length) return [];
   const cut = now - 72 * 3600e3;
   const list = JSON.parse((await env.REPORTS.get("w:fresh")) || "[]").filter(x => x.at > cut);
-  for (const e of entries) if (!list.some(x => x.url === e.url)) list.unshift(e);
-  await env.REPORTS.put("w:fresh", JSON.stringify(list.slice(0, 20)));
-}
-async function addCandidates(env, lines, now) {
-  if (!lines.length) return;
-  const at = new Date(now + 9 * 3600e3).toISOString().slice(0, 16).replace("T", " ");
-  const tips = JSON.parse((await env.REPORTS.get("x:tips")) || "[]");
-  for (const t of lines) tips.push({ id: (now + tips.length).toString(36), at, auto: true, text: "【自動で見つけた候補・未確認】" + t });
-  await env.REPORTS.put("x:tips", JSON.stringify(tips.slice(-50)));
+  const added = [];
+  for (const e of entries) if (!list.some(x => x.url === e.url)) { list.unshift(e); added.push(e); }
+  if (added.length) await env.REPORTS.put("w:fresh", JSON.stringify(list.slice(0, 20)));
+  return added;   // 本当に新しい速報だけ（すでに載っているURLは返さない）
 }
 export async function watchNews(env, fetcher = fetch, now = Date.now()) {
   const status = {};
-  const seen = await seenSet(env);
+  const { store: seen, migrated } = await loadSeen(env);
+  let seenChanged = migrated;
   const seeded = new Set(JSON.parse((await env.REPORTS.get("w:seen:src")) || "[]"));   // 一度でも読めた情報源（初回は覚えるだけ）
-  const seenBefore = seen.size, seededBefore = seeded.size;
+  const seededBefore = seeded.size;
   const first = false;
-  const fresh = [], cands = [];
+  let fresh = []; const cands = [];
   for (const f of FEEDS) {
     try {
       const r = await fetcher(f.url, { headers: { "user-agent": "Mozilla/5.0 (compatible; chiikatsu-note-watch/1.0; +https://chiikatsunote.com/)", "accept-language": "ja" } });
@@ -202,14 +207,15 @@ export async function watchNews(env, fetcher = fetch, now = Date.now()) {
       status[f.key] = items.length;
       const firstSrc = !seeded.has(f.key); seeded.add(f.key);
       for (const it of items) {
-        const id = f.key + ":" + it.link.slice(0, 200);
-        if (seen.has(id)) continue;
-        seen.add(id);
+        const key = canonKey(it.link);
+        // 公式の情報源は自分の記録だけで判定。そのほかは、どの情報源で見た記事でも二重に出さない
+        if (f.official ? seenHas(seen, f.key, key) : seenHasAny(seen, key)) continue;
+        seenAdd(seen, f.key, key); seenChanged = true;
         if (firstSrc) continue;   // その情報源を初めて読めたときは、今あるものを覚えるだけ（昔の記事を速報にしない）
         const age = it.date ? now - Date.parse(it.date) : 0;
         if (age > 48 * 3600e3) continue;
         if (f.official) fresh.push({ at: now, src: f.name, title: it.title.slice(0, 120), url: it.link, official: true });
-        cands.push(`${f.name}：${it.title.slice(0, 100)}${it.source ? "（" + it.source + "）" : ""} ${it.link}`);
+        cands.push({ key, text: `${f.name}：${it.title.slice(0, 100)}${it.source ? "（" + it.source + "）" : ""} ${cleanUrl(it.link)}` });
       }
     } catch (e) { status[f.key] = "error"; }
   }
@@ -219,24 +225,25 @@ export async function watchNews(env, fetcher = fetch, now = Date.now()) {
     if (info) {
       const links = [...new Set([...info.text.matchAll(/\[(https?:\/\/[^\]\s]+|\/[^\]\s]*)\]/g)].map(m => m[1]))];
       const prev = JSON.parse((await env.REPORTS.get("w:info:links")) || "null");
-      if (prev) for (const l of links) if (!prev.includes(l)) cands.push(`ちいかわインフォに新しい案内：${l.startsWith("/") ? "https://chiikawa-info.jp" + l : l}`);
+      if (prev) for (const l of links) if (!prev.includes(l)) { const u = l.startsWith("/") ? "https://chiikawa-info.jp" + l : l; cands.push({ key: canonKey(u), text: `ちいかわインフォに新しい案内：${u}` }); }
       if (!prev || links.join() !== prev.join()) await env.REPORTS.put("w:info:links", JSON.stringify(links));
       status.info = links.length;
     }
   } catch (e) { status.info = "error"; }
   // 保存の回数を節約（無料枠）：変わったときだけ書く
-  if (seen.size !== seenBefore) await env.REPORTS.put("w:seen:news", JSON.stringify([...seen].slice(-600)));
+  if (seenChanged) await env.REPORTS.put("w:seen:2", JSON.stringify(seen));
   if (seeded.size !== seededBefore) await env.REPORTS.put("w:seen:src", JSON.stringify([...seeded]));
-  await addFresh(env, fresh, now);
-  await addCandidates(env, cands, now);
-  if (cands.length) await pushOwners(env, { title: `📰 ニュース候補 ${cands.length}件`, body: cands.slice(0, 3).map(c => c.replace(/ https?:\S+$/, "")).join("\n"), url: "/owner/", tag: `news-${now}` });
+  fresh = await addFresh(env, fresh, now);
+  const at = new Date(now + 9 * 3600e3).toISOString().slice(0, 16).replace("T", " ");
+  const added = await addAutoCandidates(env, cands, at, now);   // 新しく入った分だけ通知
+  if (added) await pushOwners(env, { title: `📰 ニュース候補 ${added}件`, body: cands.slice(0, 3).map(c => c.text.replace(/ https?:\S+$/, "")).join("\n"), url: "/owner/", tag: `news-${now}` });
   if (fresh.length) {
     const one = fresh.length === 1;
     await addJob(env, { type: "news", at: now, payload: { title: one ? `📣 速報：${fresh[0].title.slice(0, 60)}` : `📣 速報 ${fresh.length}件：${fresh[0].title.slice(0, 40)} ほか`, body: one ? `${fresh[0].src}（公式の発表）・タップでくわしく` : fresh.slice(1, 4).map(x => x.title.slice(0, 40)).join("\n"), url: one ? fresh[0].url : "/?v=news", tag: `news-${now}` } });
   }
   const stKey = JSON.stringify(status), prevSt = JSON.parse((await env.REPORTS.get("w:news:status")) || "null");
   if (!prevSt || prevSt.s !== stKey || now - prevSt.at > 6 * 3600e3) await env.REPORTS.put("w:news:status", JSON.stringify({ at: now, s: stKey }));
-  return { status, fresh: fresh.length, cands: cands.length };
+  return { status, fresh: fresh.length, cands: added };
 }
 
 // ---- お問い合わせをGmailに送る（Cloudflare Email Routing の送信機能。宛先は wrangler.toml の send_email で確認済みのアドレスだけ）
