@@ -124,4 +124,61 @@ await t("PR TIMES で見た記事を Bing が運んできても候補に出な�
   await NEW.watchNews(e, async u => u.includes("prtimes") ? { ok: true, status: 200, text: async () => rss([{ title: "ちいかわ X", link: "https://prtimes.jp/x", at: NOW }]) } : u.includes("bing.com") ? { ok: true, status: 200, text: async () => rss([{ title: "ちいかわ X", link: bingLink("https://prtimes.jp/x", "q"), at: NOW }]) } : { ok: true, status: 200, text: async () => rss([]) }, NOW);
   assert.equal(JSON.parse(e.REPORTS.m.get("x:cands") || "[]").length, 1);   // PR TIMES 自身の1件だけ（Bing の分は増えない）
 });
+
+// ---- 保存順序・途中失敗（候補 → 速報 → 見た記事の記録）
+const SEEDED = JSON.stringify(["prtimes", "inside", "animeanime", "netlab", "mogumogu", "bing"]);
+function kvFail(init, failKey) {   // failKey の書き込みを fail.on=true の間だけ失敗させる
+  const k = kv(init); const fail = { on: true }; const put = k.put;
+  k.put = async (key, v) => { if (fail.on && key === failKey) throw new Error("put fail " + key); return put(key, v); };
+  return { REPORTS: k, fail };
+}
+await t("候補の保存に失敗 → 既読にしない → 次回取得で再試行できる", async () => {
+  const e = kvFail({ "w:seen:src": SEEDED }, "x:cands");
+  await assert.rejects(NEW.watchNews(e, fetcherAt(0, [], 5), NOW));
+  assert.equal(e.REPORTS.m.has("w:seen:2"), false);   // 既読は進めていない
+  e.fail.on = false;
+  const r = await NEW.watchNews(e, fetcherAt(1, [], 5), NOW + 600e3);
+  assert.equal(r.cands, 5); assert.equal(JSON.parse(e.REPORTS.m.get("x:cands")).length, 5);
+});
+await t("候補の保存に失敗しても、速報（ジョブ）は出ず、次回に1回だけ出る", async () => {
+  const pr = [{ title: "ちいかわ 新発表", link: "https://prtimes.jp/n1", at: NOW }];
+  const e = kvFail({ "w:seen:src": SEEDED, "w:seen:2": JSON.stringify({ prtimes: [] }) }, "x:cands");
+  await assert.rejects(NEW.watchNews(e, fetcherAt(0, pr, 0), NOW));
+  assert.equal(e.REPORTS.m.get("jobs") ?? null, null);
+  e.fail.on = false;
+  await NEW.watchNews(e, fetcherAt(1, pr, 0), NOW + 600e3);
+  await NEW.watchNews(e, fetcherAt(2, pr, 0), NOW + 1200e3);
+  assert.equal(JSON.parse(e.REPORTS.m.get("jobs")).filter(j => j.type === "news").length, 1);
+});
+await t("候補は保存できたが既読の保存に失敗 → 次回、同じ候補は重複登録されない", async () => {
+  const e = kvFail({ "w:seen:src": SEEDED }, "w:seen:2");
+  await assert.rejects(NEW.watchNews(e, fetcherAt(0, [], 5), NOW));
+  assert.equal(JSON.parse(e.REPORTS.m.get("x:cands")).length, 5);
+  e.fail.on = false;
+  const r = await NEW.watchNews(e, fetcherAt(1, [], 5), NOW + 600e3);   // tid が変わっても同じ記事
+  assert.equal(r.cands, 0); assert.equal(JSON.parse(e.REPORTS.m.get("x:cands")).length, 5);
+  assert.ok(e.REPORTS.m.has("w:seen:2"));
+});
+await t("速報を出した後に既読の保存に失敗 → 次回、同じ速報は二重に出ない", async () => {
+  const pr = [{ title: "ちいかわ 新発表", link: "https://prtimes.jp/n2", at: NOW }];
+  const e = kvFail({ "w:seen:src": SEEDED, "w:seen:2": JSON.stringify({ prtimes: [] }) }, "w:seen:2");
+  await assert.rejects(NEW.watchNews(e, fetcherAt(0, pr, 0), NOW));
+  e.fail.on = false;
+  await NEW.watchNews(e, fetcherAt(1, pr, 0), NOW + 600e3);
+  assert.equal(JSON.parse(e.REPORTS.m.get("jobs")).filter(j => j.type === "news").length, 1);
+});
+await t("正常時の書き込みは増えない（新しい記事がある回は seen+cands、ない回は0）", async () => {
+  const e = env({ "w:seen:src": SEEDED, "w:seen:2": JSON.stringify({}) });
+  await NEW.watchNews(e, fetcherAt(0, [], 5), NOW);
+  assert.deepEqual({ ...e.REPORTS.w, "w:news:status": 0 }, { "w:seen:2": 1, "x:cands": 1, "w:news:status": 0 });
+  const before = { ...e.REPORTS.w };
+  await NEW.watchNews(e, fetcherAt(1, [], 5), NOW + 600e3);
+  assert.deepEqual(e.REPORTS.w, before);
+});
+await t("失敗後の再実行でも、運営者の情報は残る", async () => {
+  const e = kvFail({ "w:seen:src": SEEDED, "x:tips": JSON.stringify([{ id: "m1", at: "a", text: "運営者" }]) }, "w:seen:2");
+  await assert.rejects(NEW.watchNews(e, fetcherAt(0, [], 5), NOW)); e.fail.on = false;
+  await NEW.watchNews(e, fetcherAt(1, [], 5), NOW + 600e3);
+  assert.equal((await listTips(e))[0].id, "m1");
+});
 console.log(`news OK ${ok}${process.exitCode ? "（失敗あり）" : ""}`);

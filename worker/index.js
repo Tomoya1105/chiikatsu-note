@@ -230,17 +230,19 @@ export async function watchNews(env, fetcher = fetch, now = Date.now()) {
       status.info = links.length;
     }
   } catch (e) { status.info = "error"; }
-  // 保存の回数を節約（無料枠）：変わったときだけ書く
-  if (seenChanged) await env.REPORTS.put("w:seen:2", JSON.stringify(seen));
-  if (seeded.size !== seededBefore) await env.REPORTS.put("w:seen:src", JSON.stringify([...seeded]));
-  fresh = await addFresh(env, fresh, now);
+  // 保存の順番：候補 → 速報 → 「見た記事」の記録。途中で失敗したら記録は進めないので、次回の取得でやり直せる
+  //（候補は同じ記事を1回しか入れず、速報は同じURLを1回しか出さないので、やり直しても二重にならない）
   const at = new Date(now + 9 * 3600e3).toISOString().slice(0, 16).replace("T", " ");
   const added = await addAutoCandidates(env, cands, at, now);   // 新しく入った分だけ通知
   if (added) await pushOwners(env, { title: `📰 ニュース候補 ${added}件`, body: cands.slice(0, 3).map(c => c.text.replace(/ https?:\S+$/, "")).join("\n"), url: "/owner/", tag: `news-${now}` });
+  fresh = await addFresh(env, fresh, now);
   if (fresh.length) {
     const one = fresh.length === 1;
     await addJob(env, { type: "news", at: now, payload: { title: one ? `📣 速報：${fresh[0].title.slice(0, 60)}` : `📣 速報 ${fresh.length}件：${fresh[0].title.slice(0, 40)} ほか`, body: one ? `${fresh[0].src}（公式の発表）・タップでくわしく` : fresh.slice(1, 4).map(x => x.title.slice(0, 40)).join("\n"), url: one ? fresh[0].url : "/?v=news", tag: `news-${now}` } });
   }
+  // 保存の回数を節約（無料枠）：変わったときだけ書く。ここまで成功してから「見た」ことにする
+  if (seenChanged) await env.REPORTS.put("w:seen:2", JSON.stringify(seen));
+  if (seeded.size !== seededBefore) await env.REPORTS.put("w:seen:src", JSON.stringify([...seeded]));
   const stKey = JSON.stringify(status), prevSt = JSON.parse((await env.REPORTS.get("w:news:status")) || "null");
   if (!prevSt || prevSt.s !== stKey || now - prevSt.at > 6 * 3600e3) await env.REPORTS.put("w:news:status", JSON.stringify({ at: now, s: stKey }));
   return { status, fresh: fresh.length, cands: added };
