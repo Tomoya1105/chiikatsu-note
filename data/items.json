@@ -1209,7 +1209,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-10"
+  "verifiedAt": "2026-10-13"
  },
  {
   "id": "20261031-19",
@@ -1228,7 +1228,7 @@
   "time": "",
   "updatedAt": "2026-10-05",
   "srcType": "partner",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "srcs": [
    "https://toy.bandai.co.jp/ja/item/01_21066/"
   ]
@@ -1981,7 +1981,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/10/04/188724.html"
   ],
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "note": "クリスマスケーキ風の缶にクッキー入り。",
   "autoAdded": true,
   "addedAt": "2026-10-05",
@@ -2022,7 +2022,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-05",
   "updatedAt": "2026-10-05",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "t": "ガシャポン ちいかわ めじるしアクセサリー3（再販）",
   "cat": "goods",
   "s": "2026-10-25",
@@ -2478,7 +2478,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2570,7 +2570,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-10-10",
+  "verifiedAt": "2026-10-13",
   "id": "20261025-sunstar-pochi",
   "t": "ちいかわ ポチ袋（サンスター文具）",
   "cat": "goods",
@@ -2964,5 +2964,187 @@
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "eNote": "",
+  "price": "",
+  "q": "",
+  "src": "https://prtimes.jp/main/html/rd/p/000000046.000156996.html",
+  "srcType": "press",
+  "srcs": [
+   "https://chiikawa-info.jp/ck_pocket.html"
+  ],
+  "verifiedAt": "2026-10-13",
+  "autoAdded": true,
+  "addedAt": "2026-10-13",
+  "updatedAt": "2026-10-13",
+  "id": "20261024-chiipoke-ikebukuro",
+  "t": "ちいかわぽけっと POP UP STORE＠池袋PARCO",
+  "s": "2026-10-24",
+  "e": "2026-11-23",
+  "time": "11:00〜21:00",
+  "place": "池袋PARCO 本館6F 0% IKEBUKURO（東京都豊島区）",
+  "area": "池袋",
+  "how": [
+   "購入特典：POP UPで買うと「ちいぽけ オリジナルスタンプ Vol.4」、2,200円（税込）以上で専用ショッパーとアプリのホームアイテムステッカー（芸術の秋）",
+   "購入数の制限あり（POP UPはお1人様各1点まで など。商品ごとに異なる）",
+   "販売はアプリ『ちいかわぽけっと』の公式グッズ第4弾（お弁当・お店屋さんがテーマ）"
+  ],
+  "note": "スマホアプリ『ちいかわぽけっと』のポップアップ。お弁当マスコット（全7種）やアクリルスタンドなど第4弾グッズを販売。"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "eNote": "",
+  "price": "",
+  "q": "",
+  "src": "https://prtimes.jp/main/html/rd/p/000000046.000156996.html",
+  "srcType": "press",
+  "srcs": [
+   "https://chiikawa-info.jp/ck_pocket.html"
+  ],
+  "verifiedAt": "2026-10-13",
+  "autoAdded": true,
+  "addedAt": "2026-10-13",
+  "updatedAt": "2026-10-13",
+  "id": "20261030-chiipoke-tennoji",
+  "t": "ちいかわぽけっと POP UP STORE＠天王寺ミオ",
+  "s": "2026-10-30",
+  "e": "2026-11-15",
+  "time": "10:30〜20:30",
+  "place": "天王寺ミオ 本館6F ミオラボ（大阪府大阪市天王寺区）",
+  "area": "天王寺",
+  "how": [
+   "購入特典：POP UPで買うと「ちいぽけ オリジナルスタンプ Vol.4」、2,200円（税込）以上で専用ショッパーとアプリのホームアイテムステッカー（芸術の秋）",
+   "購入数の制限あり（POP UPはお1人様各1点まで など。商品ごとに異なる）",
+   "販売はアプリ『ちいかわぽけっと』の公式グッズ第4弾（お弁当・お店屋さんがテーマ）"
+  ],
+  "note": "スマホアプリ『ちいかわぽけっと』のポップアップ。お弁当マスコット（全7種）やアクリルスタンドなど第4弾グッズを販売。"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "eNote": "",
+  "price": "",
+  "q": "",
+  "src": "https://prtimes.jp/main/html/rd/p/000000046.000156996.html",
+  "srcType": "press",
+  "srcs": [
+   "https://chiikawa-info.jp/ck_pocket.html"
+  ],
+  "verifiedAt": "2026-10-13",
+  "autoAdded": true,
+  "addedAt": "2026-10-13",
+  "updatedAt": "2026-10-13",
+  "id": "20261103-chiipoke-sendai",
+  "t": "ちいかわぽけっと POP UP STORE＠イオンモール仙台上杉",
+  "s": "2026-11-03",
+  "e": "2026-11-23",
+  "time": "10:00〜21:00（最終日は17:00まで）",
+  "place": "イオンモール仙台上杉 1階 あまみやコート（宮城県仙台市青葉区）",
+  "area": "仙台",
+  "how": [
+   "購入特典：POP UPで買うと「ちいぽけ オリジナルスタンプ Vol.4」、2,200円（税込）以上で専用ショッパーとアプリのホームアイテムステッカー（芸術の秋）",
+   "購入数の制限あり（POP UPはお1人様各1点まで など。商品ごとに異なる）",
+   "販売はアプリ『ちいかわぽけっと』の公式グッズ第4弾（お弁当・お店屋さんがテーマ）"
+  ],
+  "note": "スマホアプリ『ちいかわぽけっと』のポップアップ。お弁当マスコット（全7種）やアクリルスタンドなど第4弾グッズを販売。"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "eNote": "",
+  "price": "",
+  "q": "",
+  "src": "https://prtimes.jp/main/html/rd/p/000000046.000156996.html",
+  "srcType": "press",
+  "srcs": [
+   "https://chiikawa-info.jp/ck_pocket.html"
+  ],
+  "verifiedAt": "2026-10-13",
+  "autoAdded": true,
+  "addedAt": "2026-10-13",
+  "updatedAt": "2026-10-13",
+  "id": "20261106-chiipoke-fukuoka",
+  "t": "ちいかわぽけっと POP UP STORE＠福岡PARCO",
+  "s": "2026-11-06",
+  "e": "2026-11-23",
+  "time": "10:00〜20:30（最終日は17:00まで）",
+  "place": "福岡PARCO 本館B1F EVENT SPACE（福岡県福岡市中央区）",
+  "area": "天神",
+  "how": [
+   "購入特典：POP UPで買うと「ちいぽけ オリジナルスタンプ Vol.4」、2,200円（税込）以上で専用ショッパーとアプリのホームアイテムステッカー（芸術の秋）",
+   "購入数の制限あり（POP UPはお1人様各1点まで など。商品ごとに異なる）",
+   "販売はアプリ『ちいかわぽけっと』の公式グッズ第4弾（お弁当・お店屋さんがテーマ）"
+  ],
+  "note": "スマホアプリ『ちいかわぽけっと』のポップアップ。お弁当マスコット（全7種）やアクリルスタンドなど第4弾グッズを販売。"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "eNote": "",
+  "price": "",
+  "q": "",
+  "src": "https://prtimes.jp/main/html/rd/p/000000046.000156996.html",
+  "srcType": "press",
+  "srcs": [
+   "https://chiikawa-info.jp/ck_pocket.html"
+  ],
+  "verifiedAt": "2026-10-13",
+  "autoAdded": true,
+  "addedAt": "2026-10-13",
+  "updatedAt": "2026-10-13",
+  "id": "20261113-chiipoke-nagoya",
+  "t": "ちいかわぽけっと POP UP STORE＠名古屋PARCO",
+  "s": "2026-11-13",
+  "e": "2026-11-29",
+  "time": "10:00〜20:00（最終日は17:00まで）",
+  "place": "名古屋PARCO 西館5F イベントスペース（愛知県名古屋市中区）",
+  "area": "栄",
+  "how": [
+   "購入特典：POP UPで買うと「ちいぽけ オリジナルスタンプ Vol.4」、2,200円（税込）以上で専用ショッパーとアプリのホームアイテムステッカー（芸術の秋）",
+   "購入数の制限あり（POP UPはお1人様各1点まで など。商品ごとに異なる）",
+   "販売はアプリ『ちいかわぽけっと』の公式グッズ第4弾（お弁当・お店屋さんがテーマ）"
+  ],
+  "note": "スマホアプリ『ちいかわぽけっと』のポップアップ。お弁当マスコット（全7種）やアクリルスタンドなど第4弾グッズを販売。"
+ },
+ {
+  "region": "jp",
+  "cat": "goods",
+  "sp": "day",
+  "eNote": "",
+  "price": "330円〜3,630円（お弁当マスコット 各2,200円）",
+  "q": "",
+  "src": "https://prtimes.jp/main/html/rd/p/000000046.000156996.html",
+  "srcType": "press",
+  "srcs": [
+   "https://chiikawa-info.jp/ck_pocket.html",
+   "https://chiikawa-pocket-goods-store.com/"
+  ],
+  "verifiedAt": "2026-10-13",
+  "autoAdded": true,
+  "addedAt": "2026-10-13",
+  "updatedAt": "2026-10-13",
+  "id": "20261024-chiipoke-goods4",
+  "t": "ちいかわぽけっと 公式グッズ第4弾（お弁当・お店屋さん）",
+  "s": "2026-10-24",
+  "e": null,
+  "time": "11:00〜",
+  "place": "ちいかわぽけっとグッズストア（公式通販）・ちいかわぽけっと POP UP STORE",
+  "area": "",
+  "qNone": "アプリ公式通販とPOP UPの商品で、楽天で同じ商品を特定できない",
+  "how": [
+   "オンラインは「ちいかわぽけっとグッズストア」で10/24(土)11:00から発売",
+   "お弁当マスコットはオンラインでお1人様各2点まで、POP UPでは各1点まで。ランダム商品は1BOXまで",
+   "グッズストアかPOP UPで2,200円（税込）以上買うと、アプリのホームアイテムステッカー（芸術の秋）がもらえる"
+  ],
+  "note": "お弁当マスコット（全7種）、刺しゅう缶バッジ、アクリルスタンド、ステッカー、バスタオル、Tシャツなど。"
  }
 ]
