@@ -374,7 +374,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-15",
   "qNone": "海外（上海）限定",
   "srcs": [
    "https://x.com/chiikawa_kouhou/status/2094621282461532543"
@@ -554,7 +554,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "srcs": [
    "https://www.cinemacafe.net/article/2026/09/24/112822.html"
   ]
@@ -851,7 +851,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-12"
+  "verifiedAt": "2026-10-15"
  },
  {
   "id": "20261002-pus-saga",
@@ -873,7 +873,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-12"
+  "verifiedAt": "2026-10-15"
  },
  {
   "id": "20261007-taipei-xinyi",
@@ -1162,7 +1162,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-11"
+  "verifiedAt": "2026-10-15"
  },
  {
   "id": "20261022-17",
@@ -2443,7 +2443,7 @@
   "srcs": [
    "https://www.tohotheater.jp/theater/076/info/event/chiikawa-penlightouen10161718.html"
   ],
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "note": "『映画ちいかわ 人魚の島のひみつ』を、音に合わせて光るペンライトの演出付きで応援しながら観られる上映。前売券・ムビチケなどは使用可、招待券・無料鑑賞券は不可。ペンライトは数量限定で販売。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2905,7 +2905,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/10/12/189139.html"
   ],
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "note": "コーデュロイ生地のパジャマ姿のちいかわ・ハチワレ・うさぎ、全3種（高さ約10cm）。公式の展開時期は「2026年10月中旬より順次」。",
   "autoAdded": true,
   "addedAt": "2026-10-12",
@@ -3462,5 +3462,27 @@
   "autoAdded": true,
   "addedAt": "2026-10-14",
   "updatedAt": "2026-10-14"
+ },
+ {
+  "id": "20261201-wafer-yell",
+  "region": "jp",
+  "t": "ちいかわ ウエハース エールカードコレクション",
+  "cat": "food",
+  "s": "2026-12-01",
+  "sp": "month",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国量販店の菓子売場など",
+  "area": "",
+  "price": "各176円",
+  "q": "ちいかわ ウエハース エールカードコレクション",
+  "src": "https://www.bandai.co.jp/candy/products/2026/4570117930188000.html",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-15",
+  "note": "メタリックに輝くキラキラカード全25種（うちシークレット1種）入りのウエハース。2026年12月発売予定（日付は未発表）。",
+  "autoAdded": true,
+  "addedAt": "2026-10-15",
+  "updatedAt": "2026-10-15"
  }
 ]
