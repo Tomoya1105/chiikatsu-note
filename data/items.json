@@ -248,7 +248,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-14",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -309,7 +309,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-11"
+  "verifiedAt": "2026-10-14"
  },
  {
   "id": "20260908-pus-centrair",
@@ -352,7 +352,7 @@
   "time": "10:00〜22:00（有料展示エリアの最終入場 21:00）",
   "updatedAt": "2026-10-05",
   "srcType": "official",
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-14",
   "xpost": "https://x.com/chiikawa_kouhou/status/2094258886781927591",
   "xpostNote": "投稿日2026-08-31。本文に「上海静安嘉里中心（JAKC）」「2026年9月12日(土)～11月1日(日)」"
  },
@@ -397,7 +397,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-14",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ"
  },
  {
@@ -907,7 +907,7 @@
   "cat": "goods",
   "e": null,
   "eNote": "",
-  "note": "",
+  "note": "10/14時点でちいかわマーケットのマスコット・ブランケットは全種売り切れ表示。",
   "place": "ちいかわマーケット、ちいかわらんど",
   "price": "マスコット 1,870円、ブランケット 3,850円",
   "q": "ちいかわ 肉まん マスコット",
@@ -917,9 +917,12 @@
   "src": "https://x.com/chiikawa_market/status/2103417374833827878",
   "t": "肉まん食べるよマスコット・あったかもこもこブランケットなど新グッズ",
   "time": "11:00〜",
-  "updatedAt": "2026-10-03",
+  "updatedAt": "2026-10-14",
   "srcType": "official",
-  "verifiedAt": "2026-10-06"
+  "verifiedAt": "2026-10-14",
+  "srcs": [
+   "https://chiikawamarket.jp/collections/20261009"
+  ]
  },
  {
   "id": "20261009-pus-machida",
@@ -1049,26 +1052,37 @@
   "e": null,
   "eNote": "",
   "note": "税込3,300円以上の購入で2周年のマット缶バッジ（1会計1つ・なくなり次第終了）、ドリンク購入でコースター。",
-  "place": "ちいかわベーカリー各店、ラフォーレ原宿のPOP UP SHOP",
+  "place": "ちいかわベーカリー（表参道）・POP UP SHOP（ラフォーレ原宿）・OSAKA（KITTE大阪）・OSAKA POP UP SHOP",
   "price": "マスコット各2,310円／全8種",
   "q": "",
   "region": "jp",
   "s": "2026-10-15",
   "sp": "day",
-  "src": "https://www.pashplus.jp/event/497018/",
+  "src": "https://chiikawabakery.jp/topics/20260928",
   "t": "ちいかわベーカリー2周年 コロネなマスコット",
   "time": "11:00〜20:00",
-  "updatedAt": "2026-10-11",
-  "srcType": "news",
-  "verifiedAt": "2026-10-11",
+  "updatedAt": "2026-10-14",
+  "srcType": "official",
+  "verifiedAt": "2026-10-14",
   "srcs": [
+   "https://www.pashplus.jp/event/497018/",
    "https://prtimes.jp/main/html/rd/p/000000328.000086964.html"
   ],
   "log": [
    {
+    "d": "2026-10-14",
+    "t": "公式ページで販売店舗と特典を確かめ、買い方を追加しました"
+   },
+   {
     "d": "2026-10-11",
     "t": "「なくなり次第終了」は缶バッジの特典のことだったので直しました"
    }
+  ],
+  "how": [
+   "グッズは10/15(木)から4店舗で販売。",
+   "各店で税込3,300円以上の会計ごとに2周年マット缶バッジ1つ（数量限定・なくなり次第終了）。",
+   "テイクアウトドリンク1品ごとに2周年コースター1つ（数量限定）。",
+   "ランチボックス（M・1,540円）は10/29(木)から、パンを買った人のみ（表参道・OSAKAのみ）。"
   ]
  },
  {
@@ -1813,7 +1827,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "partner",
-  "verifiedAt": "2026-10-11"
+  "verifiedAt": "2026-10-14"
  },
  {
   "id": "20261001-tokyobanana-solamachi",
@@ -1835,7 +1849,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-05",
   "srcType": "press",
-  "verifiedAt": "2026-10-11",
+  "verifiedAt": "2026-10-14",
   "qNone": "期間限定ショップの案内"
  },
  {
@@ -3353,6 +3367,29 @@
    "すでにプレミアム会員の人は専用フォームから応募して抽選"
   ],
   "note": "キャンペーンは10月末までの予定で、先着上限に達し次第終了。",
+  "autoAdded": true,
+  "addedAt": "2026-10-14",
+  "updatedAt": "2026-10-14"
+ },
+ {
+  "id": "20261014-shimamura-anoko-light",
+  "region": "jp",
+  "t": "しまむらパーク ちいかわ オイテミルライト あのこ",
+  "cat": "goods",
+  "s": "2026-10-14",
+  "sp": "day",
+  "e": null,
+  "time": "12:00〜",
+  "eNote": "",
+  "place": "しまむらパーク（しまむらのオンラインストア）",
+  "area": "",
+  "price": "6,600円",
+  "q": "",
+  "qNone": "しまむらの商品で、楽天で同じ商品と言い切れない",
+  "src": "https://www.inside-games.jp/article/2026/10/14/189217.html",
+  "srcType": "news",
+  "verifiedAt": "2026-10-14",
+  "note": "しまむらグループのシャンブルの商品。ふわっと光る『あのこ』のルームライト（単4電池式・コードレス）。しまむらの公式通販が読めなかったため記事で確認。",
   "autoAdded": true,
   "addedAt": "2026-10-14",
   "updatedAt": "2026-10-14"
