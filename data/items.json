@@ -1212,7 +1212,7 @@
   "time": "",
   "updatedAt": "2026-10-13",
   "srcType": "partner",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "xpost": "https://x.com/chiikawa_kouhou/status/2084157319114621084",
   "xpostNote": "投稿日2026-08-03。本文に「ちいかわ×ANA」「特別デザイン機『ちいかわジェット』」",
   "srcs": [
@@ -2061,7 +2061,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-05",
   "updatedAt": "2026-10-05",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "t": "ガシャポン ちいかわ めじるしアクセサリー3（再販）",
   "cat": "goods",
   "s": "2026-10-25",
@@ -2511,7 +2511,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2533,7 +2533,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -3035,7 +3035,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3186,7 +3186,7 @@
    "https://chiikawa-info.jp/ck_pocket.html",
    "https://chiikawa-pocket-goods-store.com/"
   ],
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3542,5 +3542,38 @@
   "autoAdded": true,
   "addedAt": "2026-10-15",
   "updatedAt": "2026-10-15"
+ },
+ {
+  "id": "20261016-market-autumn-goods",
+  "region": "jp",
+  "t": "エコバッグ・ラガーシャツ・エプロンなど秋の新グッズ（ちいかわマーケット）",
+  "cat": "goods",
+  "s": "2026-10-16",
+  "sp": "day",
+  "e": null,
+  "time": "11:00〜",
+  "eNote": "",
+  "place": "ちいかわマーケット（公式通販）",
+  "area": "",
+  "price": "エコバッグ 各3,190円、ラガーシャツ 各6,380円、ニットカーディガン 各7,150円、Tシャツ 各3,850円、折りたたみクリアトレー 各1,320円、エプロン 各2,849円、タオルハンカチ 各1,100円",
+  "q": "",
+  "qNone": "シリーズ全体の案内で、商品を1つに決められない",
+  "src": "https://x.com/chiikawa_market/status/2110661248560050342",
+  "srcType": "official",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/15/189331.html",
+   "https://chiikawamarket.jp/collections/20261016"
+  ],
+  "verifiedAt": "2026-10-16",
+  "xpost": "https://x.com/chiikawa_market/status/2110661248560050342",
+  "xpostNote": "投稿日2026-10-15（IDから計算）。本文に「エコバッグ（全3種）各3,190円」「ちいかわマーケット（公式通販）では10/16(金)11時発売」（2026-10-16確認）",
+  "how": [
+   "ちいかわマーケット（公式通販）で10/16(金)11:00から発売",
+   "エコバッグ（全3種）はカラビナ付きで、たたむとコンパクトになる"
+  ],
+  "note": "カラビナ付きエコバッグ（全3種）のほか、ラガーシャツ・ニットカーディガン・Tシャツ（各全2柄）、アニメ『ちいかわ』折りたたみクリアトレー（全4種）、エプロン（全2種）、ちいかわパーク ハロウィンだ タオルハンカチ（全3種）も同時発売と報じられています。",
+  "autoAdded": true,
+  "addedAt": "2026-10-16",
+  "updatedAt": "2026-10-16"
  }
 ]

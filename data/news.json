@@ -1,5 +1,28 @@
 [
  {
+  "id": "20261015-xmas-market-food",
+  "date": "2026-10-15",
+  "tag": "event",
+  "title": "クリスマスマーケットの会場フード全35種が明らかに",
+  "sum": "幕張の会場で売られるオリジナルのフードやドリンク35種が公開。ちいかわまんやうさぎのピスタチオモンブラン、温かいココアなど冬らしいメニューがそろいます。",
+  "source": "GAME Watch",
+  "src": "https://game.watch.impress.co.jp/docs/news/2148538.html",
+  "itemId": "20261124-xmas-market",
+  "addedAt": "2026-10-16"
+ },
+ {
+  "id": "20261015-market-autumn-goods",
+  "date": "2026-10-15",
+  "tag": "goods",
+  "title": "ラガーシャツやエコバッグなど秋の新作が10/16発売",
+  "sum": "ちいかわマーケットで10/16の11時から、ラガーシャツやニットカーディガン、カラビナ付きエコバッグ、エプロン、ハロウィン柄のタオルハンカチなどが発売されます。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/15/189331.html",
+  "itemId": "20261016-market-autumn-goods",
+  "x": "https://x.com/chiikawa_market/status/2110661248560050342",
+  "addedAt": "2026-10-16"
+ },
+ {
   "id": "20261015-xmas-market-goods",
   "date": "2026-10-15",
   "tag": "event",
