@@ -1,5 +1,27 @@
 [
  {
+  "id": "20261015-ana-goods1",
+  "date": "2026-10-15",
+  "tag": "goods",
+  "title": "ANAの制服を着たちいかわたちのグッズ、10/23発売へ",
+  "sum": "ちいかわジェット就航に合わせ、パイロットや整備士姿のマスコットやぬいぐるみなど第1弾を10/23から販売。羽田などの空港売店は最初の3日間が予約制です。",
+  "source": "インサイド",
+  "src": "https://inside-games.jp/article/2026/10/15/189285.html",
+  "itemId": "20261023-ana-goods1",
+  "addedAt": "2026-10-15"
+ },
+ {
+  "id": "20261015-fukuoka-sushi-pus",
+  "date": "2026-10-15",
+  "tag": "event",
+  "title": "福岡三越のPOP UPはちいかわ寿司がテーマに",
+  "sum": "10/16〜11/3に福岡三越9階で開くPOP UP STOREは「むちゃうま！！ちいかわ寿司」が主役。寿司グッズ2,200円ごとにお皿みたいなトレカがもらえます。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000503.000027592.html",
+  "itemId": "20261016-pus-fukuoka",
+  "addedAt": "2026-10-15"
+ },
+ {
   "id": "20261014-movie-rank-1st",
   "date": "2026-10-14",
   "tag": "anime",

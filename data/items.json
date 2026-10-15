@@ -1102,7 +1102,7 @@
   "time": "",
   "updatedAt": "2026-10-09",
   "srcType": "partner",
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "srcs": [
    "https://animeanime.jp/article/2026/08/25/102345.html"
   ]
@@ -1115,7 +1115,7 @@
   "cat": "event",
   "e": "2026-11-03",
   "eNote": "",
-  "note": "",
+  "note": "「むちゃうま！！ちいかわ寿司」がテーマのPOP UP STORE。ナガノマーケット POP UP SHOPなども同時開催。",
   "place": "福岡三越 9階 三越ギャラリー（福岡市天神）",
   "price": "",
   "q": "",
@@ -1125,22 +1125,32 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "t": "ちいかわPOP UP STORE＠福岡三越",
   "time": "10:00〜19:00（最終日は17:00まで）",
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-15",
   "srcType": "official",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-15",
   "srcs": [
-   "https://prtimes.jp/main/html/rd/p/000000483.000027592.html"
+   "https://prtimes.jp/main/html/rd/p/000000483.000027592.html",
+   "https://prtimes.jp/main/html/rd/p/000000503.000027592.html"
   ],
   "how": [
-   "10/16(金)〜10/18(日)の入場はLINEの整理券が必要です",
-   "特典・ノベルティはなくなり次第終了"
+   "10/16(金)〜10/18(日)の入場はLINEの整理券が必要です（30分ごとの入れ替え制・本人確認あり）",
+   "「ちいかわ寿司」関連商品を税込2,200円買うごとに「お皿みたいなトレーディングカード」（全8種）を1枚（なくなり次第終了）"
   ],
   "log": [
+   {
+    "d": "2026-10-15",
+    "t": "ちいかわ寿司がテーマと分かり、購入特典を追加しました"
+   },
    {
     "d": "2026-10-11",
     "t": "会場の階と営業時間を追加しました"
    }
-  ]
+  ],
+  "org": {
+   "name": "ちいかわ福岡会場実行委員会",
+   "url": "https://chiikawa-info.jp/pus.html",
+   "src": "https://prtimes.jp/main/html/rd/p/000000503.000027592.html"
+  }
  },
  {
   "id": "20261016-pus-tokoname",
@@ -1181,7 +1191,7 @@
   "time": "",
   "updatedAt": "2026-10-12",
   "srcType": "partner",
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "xpost": "https://x.com/chiikawa_kouhou/status/2057280217773953417",
   "xpostNote": "投稿日2026-05-21（IDから計算）。本文に「限定版 ちいかわ図書カード」「2種類（各1000円）」「10月下旬頃より全国の本屋さんで発売予定」（2026-10-12確認）"
  },
@@ -1420,7 +1430,7 @@
   "addedAt": "2026-10-03",
   "updatedAt": "2026-10-12",
   "srcType": "partner",
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "log": [
    {
     "d": "2026-10-12",
@@ -1589,7 +1599,7 @@
   "place": "全国の量販店の菓子売場など",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117927843000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-12"
+  "verifiedAt": "2026-10-15"
  },
  {
   "region": "jp",
@@ -1611,7 +1621,7 @@
   "place": "全国のスーパーなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-12"
+  "verifiedAt": "2026-10-15"
  },
  {
   "region": "jp",
@@ -1633,7 +1643,7 @@
   "place": "全国のガシャポン売場",
   "src": "https://gashapon.jp/products/detail.php?jan_code=4570118206206000",
   "srcType": "partner",
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "qNone": "ガシャポン（カプセルトイ）"
  },
  {
@@ -2370,7 +2380,7 @@
   "q": "ちいかわ キャラパキ チョコレート 大袋",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929205000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "note": "9袋入り（ホワイトチョコ・いちごチョコの2種の味）。チョコのキャラは20種。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -3481,6 +3491,38 @@
   "srcType": "partner",
   "verifiedAt": "2026-10-15",
   "note": "メタリックに輝くキラキラカード全25種（うちシークレット1種）入りのウエハース。2026年12月発売予定（日付は未発表）。",
+  "autoAdded": true,
+  "addedAt": "2026-10-15",
+  "updatedAt": "2026-10-15"
+ },
+ {
+  "id": "20261023-ana-goods1",
+  "region": "jp",
+  "t": "ちいかわ×ANA オリジナルグッズ第1弾（ANA制服姿）",
+  "cat": "goods",
+  "s": "2026-10-23",
+  "sp": "day",
+  "e": null,
+  "time": "A-styleは10:00〜",
+  "eNote": "",
+  "place": "ANA FESTA（羽田B1フロアギフト店など空港の売店）・ANAショッピング A-style（通販）・ANA機内販売ほか",
+  "area": "",
+  "price": "マスコット各2,310円（全8種）、ぬいぐるみ各3,080円（全3種）、トレーディングアクリルキーホルダー1BOX 6,160円、トレーディング缶バッジ1BOX 2,640円、ステッカーセット2,200円、クリアファイルセット1,320円、タオルハンカチ880円、機内紙コップデザインのマグセット5,500円",
+  "q": "",
+  "qNone": "ANAグループの公式販売限定で、楽天で同じ商品と言い切れない",
+  "src": "https://www.astyle.jp/astyle/s/02/chiikawa-ana/",
+  "srcType": "partner",
+  "srcs": [
+   "https://inside-games.jp/article/2026/10/15/189285.html"
+  ],
+  "verifiedAt": "2026-10-15",
+  "how": [
+   "ANAショッピング A-styleは10/23(金)10:00から（アクセス集中時は待合室あり）",
+   "ANA FESTA羽田B1フロアギフト店・新千歳・福岡国内線ロビー・那覇ロビー1号店は10/23〜10/25は予約制。予約は10/16(金)11:00から先着順",
+   "10/25までは1人各2個まで（BOX商品は1人1BOX）。10/26から制限なし",
+   "地方空港のANA FESTAは11/4(水)から。機内販売は一部商品のみ"
+  ],
+  "note": "ちいかわジェット就航記念。パイロットや整備士などANAの制服姿のちいかわたちのグッズ。マグセットの通販の発売日は未定。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
   "updatedAt": "2026-10-15"
