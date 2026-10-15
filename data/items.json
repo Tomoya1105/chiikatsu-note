@@ -1313,7 +1313,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/09/08/187400.html"
   ],
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "srcType": "partner"
  },
  {
@@ -1666,7 +1666,7 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "qNone": "GUの店舗・公式通販のみ",
   "srcs": [
    "https://www.famitsu.com/article/202609/88383"
@@ -1927,7 +1927,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "official",
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "qNone": "ちいかわベーカリーの店頭販売のみ"
  },
  {
@@ -2199,7 +2199,7 @@
   "qNone": "デザインが多く、楽天で同じ商品を特定できない",
   "src": "https://animeanime.jp/article/2026/09/26/103251.html",
   "srcType": "news",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-15",
   "note": "お年玉袋・金封それぞれ全3種。10月中旬ごろから順次発売。",
   "autoAdded": true,
   "addedAt": "2026-10-05",
@@ -2274,7 +2274,7 @@
   "qNone": "くじ（店頭販売）",
   "src": "https://1kuji.com/products/chiikawa5",
   "srcType": "partner",
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2297,9 +2297,11 @@
   "src": "https://contents-abema.com/chiikawa-christmas-market/",
   "srcType": "partner",
   "srcs": [
-   "https://prtimes.jp/main/html/rd/p/000004081.000064643.html"
+   "https://prtimes.jp/main/html/rd/p/000004081.000064643.html",
+   "https://contents-abema.com/chiikawa-christmas-market/goods/",
+   "https://contents-abema.com/chiikawa-christmas-market/food/"
   ],
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "dl": [
    {
     "k": "抽選",
@@ -2316,7 +2318,21 @@
   "note": "約6,000㎡の会場に高さ約6mのツリーや限定フード・限定グッズ。先行抽選の当落発表は10/30(金)12:00以降。チケット1枚につきガチャガチャ1回無料。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
-  "updatedAt": "2026-10-09"
+  "updatedAt": "2026-10-15",
+  "how": [
+   "入場は日時指定チケット制。先行抽選（アソビュー！）の申込は10/25(日)23:59まで、当落発表は10/30(金)12:00以降",
+   "会場限定グッズは全86点。一部は11/24(火)11:00から「ちいかわぽけっとグッズストア」でも販売",
+   "会場で税込3,300円以上で刺繍缶バッジ（全8種）、6,600円以上で巾着（全3種）も（ランダム・会場限定・合算不可）",
+   "フードは入場後にスマホで注文（キャッシュレスのみ・1会計で同じ商品は1つまで）。スマホのない子ども券では注文不可"
+  ],
+  "log": [
+   {
+    "d": "2026-10-15",
+    "t": "限定グッズ86点と購入特典、フードの注文方法を追加しました"
+   }
+  ],
+  "xpost": "https://x.com/chiikawa_kouhou/status/2110566352322777109",
+  "xpostNote": "投稿日2026-10-15（IDから計算）。本文に「ちいかわクリスマスマーケット」「抽選締切：10/25(日)23:59」「開催期間：11/24(火)〜12/25(金)」「場所：豊砂公園（イオンモール幕張新都心前）」（2026-10-15確認）"
  },
  {
   "id": "20261014-amazon-kids-tablet",
@@ -2937,7 +2953,7 @@
   "q": "ちいかわ セーフティポーチ",
   "src": "https://www.gourmandise.jp/view/item/000000010968",
   "srcType": "partner",
-  "verifiedAt": "2026-10-12",
+  "verifiedAt": "2026-10-15",
   "how": [
    "グルマンディーズ公式通販で予約受付中（発売後、順次発送）"
   ],
@@ -2966,7 +2982,7 @@
   "srcs": [
    "https://www.topstarnews.net/news/articleView.html?idxno=16244382"
   ],
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-15",
   "how": [
    "CGV・ロッテシネマ・メガボックスは10/14〜10/20の平日に、観た日のチケットを見せて上映後に受け取り（先着順）",
    "観た劇場でだけ受け取れます",
