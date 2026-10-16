@@ -1333,7 +1333,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "rb": [
    {
     "n": "通常版",
@@ -2038,7 +2038,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-05",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "t": "ちいかわ 日本酒とお出汁のだし割りセット（玉乃光酒造）",
   "cat": "food",
   "s": "2026-11-10",
@@ -2619,7 +2619,7 @@
   "q": "ちいかわ キャラマグネッツ5",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929335000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "note": "アクリル製マグネット全21種（レアはオーロラ・キラキララメ・フレームの3種）＋ガム1個。2026年11月発売。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -3019,7 +3019,7 @@
   "srcs": [
    "https://www.4gamers.com.tw/news/detail/82126/chiikawa-gu-winter-collaboration-2026"
   ],
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "how": [
    "第1弾は11/20(金)、第2弾は11/27(金)に発売",
    "取り置き・店舗間の取り寄せはなし。転売目的と判断された注文は断られることがあります"
@@ -3101,7 +3101,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3131,7 +3131,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3161,7 +3161,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3608,6 +3608,61 @@
    "グルマンディーズ公式通販で「11月下旬発売予定」として掲載中"
   ],
   "note": "iPhone 18 Pro／17 Pro・18 Pro Max／17 Pro Max対応の新作。キャラクターが乗ったぷっくりフレームの「IIIIfit プランプフレーム」（MagSafe対応あり）、MagSafeリングに座る「Camera Frame」、カメラカバーなど。",
+  "autoAdded": true,
+  "addedAt": "2026-10-16",
+  "updatedAt": "2026-10-16"
+ },
+ {
+  "id": "20261015-book-keyholder2",
+  "region": "jp",
+  "t": "ガチャ ちいかわ ミニコレクトブックキーホルダー②",
+  "cat": "goods",
+  "s": "2026-10-15",
+  "sp": "mid",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のカプセルトイ売り場",
+  "area": "",
+  "price": "500円",
+  "q": "",
+  "qNone": "カプセルトイ（店頭販売）",
+  "src": "https://www.parade-inc.net/products/c261002",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/16/189370.html"
+  ],
+  "verifiedAt": "2026-10-16",
+  "how": [
+   "カプセルトイ（1回500円）。2026年10月中旬から順次発売"
+  ],
+  "note": "本の形のミニキーホルダー第2弾。うさぎ・モモンガ・ラッコ・古本屋の全4種（1種12ページ・24ポケット、約H60mm）。",
+  "autoAdded": true,
+  "addedAt": "2026-10-16",
+  "updatedAt": "2026-10-16"
+ },
+ {
+  "id": "20261025-bonbon-mini",
+  "region": "jp",
+  "t": "ちいかわ ボンボンドロップシールmini（サンスター文具）",
+  "cat": "goods",
+  "s": "2026-10-25",
+  "sp": "late",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわらんど、ちいかわマーケット、全国の量販店・書店・文具店など",
+  "area": "",
+  "price": "550円",
+  "q": "",
+  "qNone": "既存のボンボンドロップシールと楽天で区別しにくく、同じ商品と言い切れない",
+  "src": "https://www.sun-star-st.jp/items/bonbon_chiikawa/",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/16/189372.html"
+  ],
+  "verifiedAt": "2026-10-16",
+  "note": "ぷっくりしたボンボンドロップシールの小さいサイズ。ちいかわ・ハチワレ・うさぎ・3人・モモンガ・古本屋・みんな ニコニコ・みんな ポーズの全8種。メーカー公式は「2026年10月」発売、報道では10月下旬から順次発売。",
   "autoAdded": true,
   "addedAt": "2026-10-16",
   "updatedAt": "2026-10-16"

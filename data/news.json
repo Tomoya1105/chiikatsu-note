@@ -1,5 +1,27 @@
 [
  {
+  "id": "20261016-bonbon-mini",
+  "date": "2026-10-16",
+  "tag": "goods",
+  "title": "ボンボンドロップシールに小さい「mini」が登場",
+  "sum": "ぷっくりシールの小さい版が全8種で10月下旬から順次発売。ちいかわらんどや文具店などで扱われます。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/16/189372.html",
+  "itemId": "20261025-bonbon-mini",
+  "addedAt": "2026-10-16"
+ },
+ {
+  "id": "20261016-book-keyholder2",
+  "date": "2026-10-16",
+  "tag": "goods",
+  "title": "本の形のミニキーホルダー、ガチャで第2弾",
+  "sum": "うさぎ・モモンガ・ラッコ・古本屋の4種が1回500円のカプセルトイに。10月中旬から順次登場します。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/16/189370.html",
+  "itemId": "20261015-book-keyholder2",
+  "addedAt": "2026-10-16"
+ },
+ {
   "id": "20261015-xmas-market-food",
   "date": "2026-10-15",
   "tag": "event",
