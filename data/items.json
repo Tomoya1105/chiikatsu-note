@@ -102,7 +102,7 @@
   "cat": "event",
   "e": "2026-10-31",
   "eNote": "",
-  "note": "限定グッズ・カフェあり。",
+  "note": "限定グッズ・カフェあり。お食事券付き展望台入場券は期間中の販売予定数に達しました（再開の場合あり）。",
   "place": "東京スカイツリー",
   "price": "",
   "q": "",
@@ -111,11 +111,17 @@
   "src": "https://www.tokyo-skytree.jp/event/special/chiikawa/",
   "t": "ちいかわ☆星ふるスカイツリーとひみつの島",
   "time": "",
-  "updatedAt": "2026-09-27",
+  "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-17",
   "xpost": "https://x.com/chiikawa_kouhou/status/2056622381393965225",
-  "xpostNote": "投稿日2026-05-19。本文に「東京スカイツリーにてイベント開催決定」「ちいかわ☆星ふるスカイツリー®とひみつの島」"
+  "xpostNote": "投稿日2026-05-19。本文に「東京スカイツリーにてイベント開催決定」「ちいかわ☆星ふるスカイツリー®とひみつの島」",
+  "log": [
+   {
+    "d": "2026-10-17",
+    "t": "お食事券付き展望台入場券が販売予定数に達しました"
+   }
+  ]
  },
  {
   "id": "20260724-24",
@@ -134,7 +140,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-17",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000001491.000020053.html"
   ]
@@ -1385,7 +1391,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-17",
   "qNone": "くじ（オンラインくじ）"
  },
  {
@@ -2566,7 +2572,7 @@
   "q": "",
   "src": "https://www.westjr.co.jp/press/article/2026/09/30/items/260930_00_press_lucuasouth.pdf",
   "srcType": "press",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-17",
   "note": "池袋のちいかわパークの公式ショップが全国初出店。開業から当面の間、10F〜13Fへの入場は事前抽選または先着入場整理券制。同じ11Fにナガノマーケット UMEDA も同日オープン。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -3279,7 +3285,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000144.000074811.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-17",
   "how": [
    "入場は公式サイトのチケットが必要。当日入場できない場合があるので事前に確認。",
    "限定グッズ（スウェット・ファーハット・マフラー）は11/24(火)発売。",
@@ -3393,7 +3399,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000027.000054370.html"
   ],
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-17",
   "how": [
    "期間中にTOHO-ONEのプレミアム プランへ新規入会・アップグレードした先着の人に非売品ストラップ",
    "すでにプレミアム会員の人は専用フォームから応募して抽選"
@@ -3666,5 +3672,95 @@
   "autoAdded": true,
   "addedAt": "2026-10-16",
   "updatedAt": "2026-10-16"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "time": "",
+  "eNote": "",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "verifiedAt": "2026-10-17",
+  "autoAdded": true,
+  "addedAt": "2026-10-17",
+  "updatedAt": "2026-10-17",
+  "s": "2026-10-30",
+  "e": "2026-11-16",
+  "id": "20261030-pus-kurashiki",
+  "t": "ちいかわPOP UP STORE＠イオンモール倉敷",
+  "place": "イオンモール倉敷（岡山県倉敷市）",
+  "area": "倉敷",
+  "note": "会場は2F サウスコート。"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "time": "",
+  "eNote": "",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "verifiedAt": "2026-10-17",
+  "autoAdded": true,
+  "addedAt": "2026-10-17",
+  "updatedAt": "2026-10-17",
+  "s": "2026-10-30",
+  "e": "2026-11-16",
+  "id": "20261030-pus-kasukabe",
+  "t": "ちいかわPOP UP STORE＠イオンモール春日部",
+  "place": "イオンモール春日部（埼玉県春日部市）",
+  "area": "春日部",
+  "note": "会場は1F 藤の広場。"
+ },
+ {
+  "region": "jp",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "price": "",
+  "q": "",
+  "srcType": "news",
+  "verifiedAt": "2026-10-17",
+  "autoAdded": true,
+  "addedAt": "2026-10-17",
+  "updatedAt": "2026-10-17",
+  "area": "",
+  "id": "20261017-slot-coin-choco",
+  "t": "ちいかわ スロットコインチョコレート",
+  "cat": "food",
+  "s": "2026-10-17",
+  "eNote": "",
+  "place": "全国のちいかわらんど・観光売店",
+  "qNone": "ちいかわらんど・観光売店の店頭で売るお菓子",
+  "src": "https://animeanime.jp/article/2026/10/16/103894.html",
+  "note": "箱の横のレバーを回すとスロットが回り、中にはちいかわたちの絵柄のコインチョコが入っています。"
+ },
+ {
+  "region": "jp",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "price": "",
+  "q": "",
+  "srcType": "news",
+  "verifiedAt": "2026-10-17",
+  "autoAdded": true,
+  "addedAt": "2026-10-17",
+  "updatedAt": "2026-10-17",
+  "area": "",
+  "id": "20261101-chiikawa-shanmery",
+  "t": "ちいかわシャンメリー（クリスマス）",
+  "cat": "food",
+  "s": "2026-11-01",
+  "eNote": "",
+  "place": "全国のスーパー",
+  "qNone": "スーパーの店頭で売る食品",
+  "src": "https://animeanime.jp/article/2026/10/16/103894.html",
+  "note": "クリスマス向けのデザイン。11/1(日)から全国のスーパーで順次発売。"
  }
 ]
