@@ -1248,7 +1248,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-13"
+  "verifiedAt": "2026-10-16"
  },
  {
   "id": "20261031-19",
@@ -1267,7 +1267,7 @@
   "time": "",
   "updatedAt": "2026-10-05",
   "srcType": "partner",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "srcs": [
    "https://toy.bandai.co.jp/ja/item/01_21066/"
   ]
@@ -1289,7 +1289,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "srcs": [
    "https://www.bandai.co.jp/candy/chocosurp/chiikawa2/"
   ]
@@ -1805,17 +1805,23 @@
   "price": "プレート 4,950円、マグ 2,420円",
   "q": "ちいかわ イヤーズプレート 2027",
   "src": "https://x.com/chiikawa_kouhou/status/2105855302738587873",
-  "note": "満天の夜空を旅するちいかわたちのデザイン。星の部分は見る角度で色がやさしく変わります。10/16から順次発売（山加商店 公式ECは1会計3個まで）。",
+  "note": "満天の夜空を旅するちいかわたちのデザイン。星の部分は見る角度で色がやさしく変わります。10/16から順次発売（山加商店 公式ECは1会計3個まで）。山加商店 公式ECではイヤーズプレートが完売（10/16確認、マグは予約受付）。",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-12",
+  "updatedAt": "2026-10-16",
   "srcType": "official",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "srcs": [
    "https://yamakashoten.official.ec/"
   ],
   "xpost": "https://x.com/chiikawa_kouhou/status/2105855302738587873",
-  "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「2027年イヤーズアイテム」「10月16日(金)より順次 ちいかわマーケット、ちいかわらんど、山加商店 公式ECにて発売」（2026-10-12確認）"
+  "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「2027年イヤーズアイテム」「10月16日(金)より順次 ちいかわマーケット、ちいかわらんど、山加商店 公式ECにて発売」（2026-10-12確認）",
+  "log": [
+   {
+    "d": "2026-10-16",
+    "t": "山加商店 公式ECのイヤーズプレートが完売になりました"
+   }
+  ]
  },
  {
   "id": "20260928-nendoroid-kuri-shisa",
@@ -2020,7 +2026,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/10/04/188724.html"
   ],
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "note": "クリスマスケーキ風の缶にクッキー入り。",
   "autoAdded": true,
   "addedAt": "2026-10-05",
@@ -2628,7 +2634,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "id": "20261025-sunstar-pochi",
   "t": "ちいかわ ポチ袋（サンスター文具）",
   "cat": "goods",
@@ -3065,7 +3071,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-13",
+  "verifiedAt": "2026-10-16",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3572,6 +3578,36 @@
    "エコバッグ（全3種）はカラビナ付きで、たたむとコンパクトになる"
   ],
   "note": "カラビナ付きエコバッグ（全3種）のほか、ラガーシャツ・ニットカーディガン・Tシャツ（各全2柄）、アニメ『ちいかわ』折りたたみクリアトレー（全4種）、エプロン（全2種）、ちいかわパーク ハロウィンだ タオルハンカチ（全3種）も同時発売と報じられています。",
+  "autoAdded": true,
+  "addedAt": "2026-10-16",
+  "updatedAt": "2026-10-16"
+ },
+ {
+  "id": "20261125-iphone18-case",
+  "region": "jp",
+  "t": "ちいかわ iPhone 18 Pro／17 Pro・Pro Max対応ケース（グルマンディーズ）",
+  "cat": "goods",
+  "s": "2026-11-25",
+  "sp": "late",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "グルマンディーズ公式通販 ほか",
+  "area": "",
+  "price": "IIIIfit プランプフレーム 2,728円〜4,048円、Camera Frame 3,278円・4,048円、カメラカバー 2,728円",
+  "q": "",
+  "qNone": "機種・柄の種類が多く、楽天で同じ商品を1つに決められない",
+  "src": "https://www.gourmandise.jp/view/category/ct4773",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.gourmandise.jp/view/item/000000010928",
+   "https://www.gourmandise.jp/view/item/000000010925"
+  ],
+  "verifiedAt": "2026-10-16",
+  "how": [
+   "グルマンディーズ公式通販で「11月下旬発売予定」として掲載中"
+  ],
+  "note": "iPhone 18 Pro／17 Pro・18 Pro Max／17 Pro Max対応の新作。キャラクターが乗ったぷっくりフレームの「IIIIfit プランプフレーム」（MagSafe対応あり）、MagSafeリングに座る「Camera Frame」、カメラカバーなど。",
   "autoAdded": true,
   "addedAt": "2026-10-16",
   "updatedAt": "2026-10-16"
