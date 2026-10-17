@@ -85,7 +85,7 @@
   "time": "",
   "updatedAt": "2026-10-14",
   "srcType": "partner",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-17",
   "xpost": "https://x.com/chiikawa_kouhou/status/2064548449224413331",
   "xpostNote": "投稿日2026-06-10。本文に「東海道新幹線『ツツウラウラ旅』開催期間：7月8日〜10月31日」",
   "log": [
@@ -182,7 +182,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-17",
   "org": {
    "name": "株式会社エルティーアール（ちいかわベーカリー運営）",
    "url": "https://chiikawabakery.jp/",
@@ -227,7 +227,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-17",
   "srcs": [
    "https://www.sunflower.co.jp/information/event/20260806.html"
   ],
@@ -254,7 +254,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-17",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -315,7 +315,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-14"
+  "verifiedAt": "2026-10-17"
  },
  {
   "id": "20260908-pus-centrair",
@@ -358,7 +358,7 @@
   "time": "10:00〜22:00（有料展示エリアの最終入場 21:00）",
   "updatedAt": "2026-10-05",
   "srcType": "official",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-17",
   "xpost": "https://x.com/chiikawa_kouhou/status/2094258886781927591",
   "xpostNote": "投稿日2026-08-31。本文に「上海静安嘉里中心（JAKC）」「2026年9月12日(土)～11月1日(日)」"
  },
@@ -391,7 +391,7 @@
   "addedAt": "2026-09-27",
   "cat": "food",
   "e": "2026-12-19",
-  "eNote": "店頭予約の最終締切",
+  "eNote": "店頭予約の最終締切・数量限定",
   "note": "受取日によって締切が異なります。",
   "place": "セブン‐イレブン店頭・7NOW",
   "price": "1,620円〜",
@@ -401,9 +401,9 @@
   "src": "https://www.sej.co.jp/products/christmas.html",
   "t": "セブン‐イレブン ちいかわクリスマスケーキ予約",
   "time": "",
-  "updatedAt": "2026-09-27",
+  "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-17",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ"
  },
  {
@@ -1208,7 +1208,7 @@
   "e": null,
   "eNote": "",
   "note": "10/19の初便は羽田→長崎 ANA661便 8:15発（予定）。以降は路線を固定せず運航（当日まで路線は決まらない）。コラボグッズも登場予定。",
-  "place": "ANA国内線（初便は羽田→長崎。以降は羽田・伊丹・名古屋発着のさまざまな路線）",
+  "place": "ANA国内線（初便は羽田→長崎。以降は羽田・伊丹・名古屋・福岡発着のさまざまな路線）",
   "price": "",
   "q": "",
   "s": "2026-10-19",
@@ -1216,9 +1216,9 @@
   "src": "https://www.ana.co.jp/ja/jp/domestic/theme/chiikawa-jet/",
   "t": "ちいかわ×ANA「ちいかわジェット」就航",
   "time": "",
-  "updatedAt": "2026-10-13",
+  "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-17",
   "xpost": "https://x.com/chiikawa_kouhou/status/2084157319114621084",
   "xpostNote": "投稿日2026-08-03。本文に「ちいかわ×ANA」「特別デザイン機『ちいかわジェット』」",
   "srcs": [
@@ -1228,9 +1228,14 @@
   "how": [
    "就航記念キャンペーン第1弾「ちいかわと旅にでよう！」：10/19(月)10:00〜12/31(木)にANAアプリなどで参加登録した人から抽選で500人にアクリルスタンド",
    "第2弾：第1弾の条件を満たし、2027年2/1〜4/30にANA国内線に搭乗した人から抽選で100人にパスポートケース",
+   "飛ぶ可能性がある路線：10/24までは羽田発着7路線など、10/25以降は羽田発着15路線（函館・米子・熊本・宮崎・宇部・高知・鹿児島・石垣など）と伊丹・名古屋・福岡発着の一部",
    "ちいかわジェットが飛ぶ便は運航状況で決まり、当日まで分かりません"
   ],
   "log": [
+   {
+    "d": "2026-10-17",
+    "t": "10/25以降に飛ぶ可能性がある路線を追加しました"
+   },
    {
     "d": "2026-10-13",
     "t": "就航記念キャンペーンの期間と賞品を追加しました"
