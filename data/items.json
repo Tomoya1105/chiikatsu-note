@@ -380,7 +380,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "qNone": "海外（上海）限定",
   "srcs": [
    "https://x.com/chiikawa_kouhou/status/2094621282461532543"
@@ -560,9 +560,10 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "srcs": [
-   "https://www.cinemacafe.net/article/2026/09/24/112822.html"
+   "https://www.cinemacafe.net/article/2026/09/24/112822.html",
+   "https://www.inside-games.jp/release/prtimes/20260910/306201.html"
   ]
  },
  {
@@ -857,7 +858,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-15"
+  "verifiedAt": "2026-10-18"
  },
  {
   "id": "20261002-pus-saga",
@@ -1418,7 +1419,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-18",
   "srcs": [
    "https://animeanime.jp/article/2026/09/26/103251.html"
   ]
@@ -3245,7 +3246,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000078.000168561.html"
   ],
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-18",
   "rs": "2026-10-13T18:00",
   "re": "2026-10-20T12:00",
   "rsv": [
@@ -3480,7 +3481,7 @@
   "qNone": "発売前で楽天の商品を特定できないため",
   "src": "https://animeanime.jp/article/2026/10/14/103799.html",
   "srcType": "news",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-18",
   "note": "3段のボックスにリボンシュシュやハートブレスレットなどが入ったセット。10月下旬ごろから順次発売（一部取り扱いのない店舗あり）。",
   "autoAdded": true,
   "addedAt": "2026-10-14",
@@ -3541,7 +3542,7 @@
   "e": null,
   "time": "A-styleは10:00〜",
   "eNote": "",
-  "place": "ANA FESTA（羽田B1フロアギフト店など空港の売店）・ANAショッピング A-style（通販）・ANA機内販売ほか",
+  "place": "ANA FESTA（羽田B1フロアギフト店など空港の売店）・ANAショッピング A-style（通販）・ちいかわマーケット・ちいかわらんど（全店）・ANA機内販売ほか",
   "area": "",
   "price": "マスコット各2,310円（全8種）、ぬいぐるみ各3,080円（全3種）、トレーディングアクリルキーホルダー1BOX 6,160円、トレーディング缶バッジ1BOX 2,640円、ステッカーセット2,200円、クリアファイルセット1,320円、タオルハンカチ880円、機内紙コップデザインのマグセット5,500円",
   "q": "",
@@ -3549,19 +3550,28 @@
   "src": "https://www.astyle.jp/astyle/s/02/chiikawa-ana/",
   "srcType": "partner",
   "srcs": [
-   "https://inside-games.jp/article/2026/10/15/189285.html"
+   "https://inside-games.jp/article/2026/10/15/189285.html",
+   "https://prtimes.jp/main/html/rd/p/000000018.000035055.html",
+   "https://x.com/chiikawa_land/status/2110643022991892767"
   ],
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "how": [
    "ANAショッピング A-styleは10/23(金)10:00から（アクセス集中時は待合室あり）",
    "ANA FESTA羽田B1フロアギフト店・新千歳・福岡国内線ロビー・那覇ロビー1号店は10/23〜10/25は予約制。予約は10/16(金)11:00から先着順",
    "10/25までは1人各2個まで（BOX商品は1人1BOX）。10/26から制限なし",
+   "ちいかわらんどの一部店舗は10/23(金)の入店がLINEでの抽選／先着予約制（ソラマチ・名古屋パルコ・大阪梅田・札幌パルコ・仙台パルコは店全体を入場制限）",
    "地方空港のANA FESTAは11/4(水)から。機内販売は一部商品のみ"
   ],
   "note": "ちいかわジェット就航記念。パイロットや整備士などANAの制服姿のちいかわたちのグッズ。マグセットの通販の発売日は未定。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
-  "updatedAt": "2026-10-15"
+  "updatedAt": "2026-10-18",
+  "log": [
+   {
+    "d": "2026-10-18",
+    "t": "ちいかわマーケット・ちいかわらんどでの販売と、らんどの入店予約を追記"
+   }
+  ]
  },
  {
   "id": "20261016-market-autumn-goods",
