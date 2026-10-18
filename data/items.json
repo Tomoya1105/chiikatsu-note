@@ -1200,7 +1200,7 @@
   "time": "",
   "updatedAt": "2026-10-12",
   "srcType": "partner",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "xpost": "https://x.com/chiikawa_kouhou/status/2057280217773953417",
   "xpostNote": "投稿日2026-05-21（IDから計算）。本文に「限定版 ちいかわ図書カード」「2種類（各1000円）」「10月下旬頃より全国の本屋さんで発売予定」（2026-10-12確認）"
  },
@@ -1327,7 +1327,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/09/08/187400.html"
   ],
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "srcType": "partner"
  },
  {
@@ -1444,7 +1444,7 @@
   "addedAt": "2026-10-03",
   "updatedAt": "2026-10-12",
   "srcType": "partner",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "log": [
    {
     "d": "2026-10-12",
@@ -1635,7 +1635,7 @@
   "place": "全国のスーパーなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-15"
+  "verifiedAt": "2026-10-18"
  },
  {
   "region": "jp",
@@ -1657,8 +1657,12 @@
   "place": "全国のガシャポン売場",
   "src": "https://gashapon.jp/products/detail.php?jan_code=4570118206206000",
   "srcType": "partner",
-  "verifiedAt": "2026-10-15",
-  "qNone": "ガシャポン（カプセルトイ）"
+  "verifiedAt": "2026-10-18",
+  "qNone": "ガシャポン（カプセルトイ）",
+  "srcs": [
+   "https://gashapon.jp/products/detail.php?jan_code=4570118187321000",
+   "https://gashapon.jp/schedule/?ym=202610"
+  ]
  },
  {
   "region": "jp",
@@ -2417,7 +2421,7 @@
   "q": "ちいかわ キャラパキ チョコレート 大袋",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929205000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "note": "9袋入り（ホワイトチョコ・いちごチョコの2種の味）。チョコのキャラは20種。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2974,7 +2978,7 @@
   "q": "ちいかわ セーフティポーチ",
   "src": "https://www.gourmandise.jp/view/item/000000010968",
   "srcType": "partner",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "how": [
    "グルマンディーズ公式通販で予約受付中（発売後、順次発送）"
   ],
@@ -3783,5 +3787,30 @@
   "qNone": "スーパーの店頭で売る食品",
   "src": "https://animeanime.jp/article/2026/10/16/103894.html",
   "note": "クリスマス向けのデザイン。11/1(日)から全国のスーパーで順次発売。"
+ },
+ {
+  "id": "20261016-gpsbox-kiramekko-abeno",
+  "region": "jp",
+  "t": "GPSBOX＆Kiramekko POPUP STORE＠SHIBUYA109阿倍野店",
+  "cat": "event",
+  "s": "2026-10-16",
+  "sp": "day",
+  "e": "2026-10-27",
+  "time": "10:00〜21:00",
+  "eNote": "",
+  "place": "SHIBUYA109阿倍野店 DISP!!!（あべのキューズモール2F・大阪府大阪市阿倍野区）",
+  "area": "天王寺",
+  "price": "GPSBOX（ちいかわ）単品1,320円・BOX7,920円",
+  "q": "",
+  "src": "https://info.grayparkaservice.com/gpsboxkira_pus/abeno/",
+  "srcType": "partner",
+  "verifiedAt": "2026-10-18",
+  "note": "『映画ちいかわ』セイレーンだらけ・ハチワレだらけ・うさぎだらけのGPSBOXフィギュア（各全6種）を販売。ちいかわのGPSBOXは各1会計6点（1箱）まで。mofusandのグッズも同時販売。",
+  "autoAdded": true,
+  "addedAt": "2026-10-18",
+  "updatedAt": "2026-10-18",
+  "how": [
+   "ちいかわのGPSBOXは種類ごとに1会計6点（1箱）まで。単品はランダム封入、1箱で全6種がそろいます。"
+  ]
  }
 ]

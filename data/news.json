@@ -1,5 +1,16 @@
 [
  {
+  "id": "20261018-nagareboshi-gummy",
+  "date": "2026-10-18",
+  "tag": "goods",
+  "title": "黒い流れ星入りかも？ちいかわのハードグミ19日発売",
+  "sum": "バンダイからレモン味のかためグミが10/19発売。税込194円・38gで、すっぱい黒い流れ星が入っていることも。",
+  "source": "電撃ホビーウェブ",
+  "src": "https://hobby.dengeki.com/news/3194454",
+  "itemId": "20261019-nagareboshi-gummy",
+  "addedAt": "2026-10-18"
+ },
+ {
   "id": "20261018-nendoroid-kuri-shisa",
   "date": "2026-10-18",
   "tag": "goods",
@@ -53,6 +64,28 @@
   "src": "https://www.nikkei.com/article/DGXZQOUD0814W0Y6A001C2000000/",
   "itemId": "",
   "addedAt": "2026-10-17"
+ },
+ {
+  "id": "20261016-kr-150man",
+  "date": "2026-10-16",
+  "tag": "overseas",
+  "title": "韓国で映画ちいかわが150万人を突破",
+  "sum": "韓国での観客数が公開17日目に150万人を超えた。スラムダンクの映画より4日早いペースだという。",
+  "source": "世界日報",
+  "src": "https://www.segye.com/newsView/20261016519454",
+  "itemId": "",
+  "addedAt": "2026-10-18"
+ },
+ {
+  "id": "20261016-marketer-award",
+  "date": "2026-10-16",
+  "tag": "topic",
+  "title": "「ちいかわ経済圏」がマーケター・オブ・ザ・イヤーの賞に",
+  "sum": "日経クロストレンドの賞で、スパイラルキュートの川上洋一社長が「ちいかわ経済圏」を広げた取り組みで優秀賞に選ばれた。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000355.000041279.html",
+  "itemId": "",
+  "addedAt": "2026-10-18"
  },
  {
   "id": "20261016-xmas-shohin",
