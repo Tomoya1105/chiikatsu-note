@@ -1221,12 +1221,13 @@
   "time": "",
   "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-19",
   "xpost": "https://x.com/chiikawa_kouhou/status/2084157319114621084",
   "xpostNote": "投稿日2026-08-03。本文に「ちいかわ×ANA」「特別デザイン機『ちいかわジェット』」",
   "srcs": [
    "https://travel.watch.impress.co.jp/docs/news/2130078.html",
-   "https://www.aviationwire.jp/archives/352011/print/"
+   "https://www.aviationwire.jp/archives/352011/print/",
+   "https://www.aviationwire.jp/archives/352655"
   ],
   "how": [
    "就航記念キャンペーン第1弾「ちいかわと旅にでよう！」：10/19(月)10:00〜12/31(木)にANAアプリなどで参加登録した人から抽選で500人にアクリルスタンド",
@@ -1684,10 +1685,11 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-19",
   "qNone": "GUの店舗・公式通販のみ",
   "srcs": [
-   "https://www.famitsu.com/article/202609/88383"
+   "https://www.famitsu.com/article/202609/88383",
+   "https://x.com/gu_global/status/2100404374573076563"
   ]
  },
  {
@@ -1951,7 +1953,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "official",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-19",
   "qNone": "ちいかわベーカリーの店頭販売のみ"
  },
  {
@@ -2299,7 +2301,7 @@
   "qNone": "くじ（店頭販売）",
   "src": "https://1kuji.com/products/chiikawa5",
   "srcType": "partner",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-19",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2326,7 +2328,7 @@
    "https://contents-abema.com/chiikawa-christmas-market/goods/",
    "https://contents-abema.com/chiikawa-christmas-market/food/"
   ],
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-19",
   "dl": [
    {
     "k": "抽選",
@@ -2536,7 +2538,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2558,7 +2560,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -3530,7 +3532,7 @@
   "q": "ちいかわ ウエハース エールカードコレクション",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117930188000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-19",
   "note": "メタリックに輝くキラキラカード全25種（うちシークレット1種）入りのウエハース。2026年12月発売予定（日付は未発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
