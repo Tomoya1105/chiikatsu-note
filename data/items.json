@@ -880,7 +880,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-15"
+  "verifiedAt": "2026-10-18"
  },
  {
   "id": "20261007-taipei-xinyi",
@@ -1109,7 +1109,7 @@
   "time": "",
   "updatedAt": "2026-10-09",
   "srcType": "partner",
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "srcs": [
    "https://animeanime.jp/article/2026/08/25/102345.html"
   ]
@@ -1181,7 +1181,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-15"
+  "verifiedAt": "2026-10-18"
  },
  {
   "id": "20261022-17",
@@ -1613,7 +1613,7 @@
   "place": "全国の量販店の菓子売場など",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117927843000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-15"
+  "verifiedAt": "2026-10-18"
  },
  {
   "region": "jp",
@@ -2490,7 +2490,7 @@
   "srcs": [
    "https://www.tohotheater.jp/theater/076/info/event/chiikawa-penlightouen10161718.html"
   ],
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "note": "『映画ちいかわ 人魚の島のひみつ』を、音に合わせて光るペンライトの演出付きで応援しながら観られる上映。前売券・ムビチケなどは使用可、招待券・無料鑑賞券は不可。ペンライトは数量限定で販売。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -3003,7 +3003,7 @@
   "srcs": [
    "https://www.topstarnews.net/news/articleView.html?idxno=16244382"
   ],
-  "verifiedAt": "2026-10-15",
+  "verifiedAt": "2026-10-18",
   "how": [
    "CGV・ロッテシネマ・メガボックスは10/14〜10/20の平日に、観た日のチケットを見せて上映後に受け取り（先着順）",
    "観た劇場でだけ受け取れます",
@@ -3380,7 +3380,7 @@
   "qNone": "取扱店・商品の詳細が未発表で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "srcType": "official",
-  "verifiedAt": "2026-10-14",
+  "verifiedAt": "2026-10-18",
   "xpost": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「ちいかわ1分丈腹巻パンツ」「全国の量販店にて」「11月下旬」",
   "note": "同じ告知の「ちいかわ腹巻」は10月上旬から発売。",
@@ -3683,13 +3683,16 @@
   "src": "https://www.sun-star-st.jp/items/bonbon_chiikawa/",
   "srcType": "partner",
   "srcs": [
-   "https://www.inside-games.jp/article/2026/10/16/189372.html"
+   "https://www.inside-games.jp/article/2026/10/16/189372.html",
+   "https://x.com/chiikawa_kouhou/status/2110958918864457850"
   ],
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-18",
   "note": "ぷっくりしたボンボンドロップシールの小さいサイズ。ちいかわ・ハチワレ・うさぎ・3人・モモンガ・古本屋・みんな ニコニコ・みんな ポーズの全8種。メーカー公式は「2026年10月」発売、報道では10月下旬から順次発売。",
   "autoAdded": true,
   "addedAt": "2026-10-16",
-  "updatedAt": "2026-10-16"
+  "updatedAt": "2026-10-18",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2110958918864457850",
+  "xpostNote": "投稿日2026-10-16（IDから計算）。本文に「ボンボンドロップシールミニ ちいかわ（全8種）」「10月下旬より順次、ちいかわらんど、ちいかわマーケット、他全国の量販店・書店・文具店など」"
  },
  {
   "region": "jp",
