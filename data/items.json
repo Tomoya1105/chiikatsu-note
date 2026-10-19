@@ -85,7 +85,7 @@
   "time": "",
   "updatedAt": "2026-10-14",
   "srcType": "partner",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-20",
   "xpost": "https://x.com/chiikawa_kouhou/status/2064548449224413331",
   "xpostNote": "投稿日2026-06-10。本文に「東海道新幹線『ツツウラウラ旅』開催期間：7月8日〜10月31日」",
   "log": [
@@ -102,7 +102,7 @@
   "cat": "event",
   "e": "2026-10-31",
   "eNote": "",
-  "note": "限定グッズ・カフェあり。お食事券付き展望台入場券は期間中の販売予定数に達しました（再開の場合あり）。",
+  "note": "限定グッズ・カフェあり。お食事券付き展望台入場券は期間中の販売予定数に達しました（再開の場合あり）。10/16からイベントグッズの購入点数・回数の制限はなくなりました。",
   "place": "東京スカイツリー",
   "price": "",
   "q": "",
@@ -111,12 +111,16 @@
   "src": "https://www.tokyo-skytree.jp/event/special/chiikawa/",
   "t": "ちいかわ☆星ふるスカイツリーとひみつの島",
   "time": "",
-  "updatedAt": "2026-10-17",
+  "updatedAt": "2026-10-20",
   "srcType": "partner",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-20",
   "xpost": "https://x.com/chiikawa_kouhou/status/2056622381393965225",
   "xpostNote": "投稿日2026-05-19。本文に「東京スカイツリーにてイベント開催決定」「ちいかわ☆星ふるスカイツリー®とひみつの島」",
   "log": [
+   {
+    "d": "2026-10-20",
+    "t": "10/16からグッズの購入点数・回数の制限が終了しました"
+   },
    {
     "d": "2026-10-17",
     "t": "お食事券付き展望台入場券が販売予定数に達しました"
@@ -138,11 +142,25 @@
   "src": "https://escape.id/chiikawa/",
   "t": "映画ちいかわ×東京メトロ 謎解きゲーム",
   "time": "",
-  "updatedAt": "2026-09-27",
+  "updatedAt": "2026-10-20",
   "srcType": "partner",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-20",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000001491.000020053.html"
+  ],
+  "dl": [
+   {
+    "k": "予約",
+    "n": "謎解きキットのWeb販売",
+    "until": "2026-11-03T13:00",
+    "u": "https://prtimes.jp/main/html/rd/p/000001491.000020053.html"
+   }
+  ],
+  "log": [
+   {
+    "d": "2026-10-20",
+    "t": "謎解きキットのWeb販売は11/3 13:00までです"
+   }
   ]
  },
  {
@@ -182,7 +200,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-20",
   "org": {
    "name": "株式会社エルティーアール（ちいかわベーカリー運営）",
    "url": "https://chiikawabakery.jp/",
@@ -903,7 +921,8 @@
   "srcType": "partner",
   "verifiedAt": "2026-10-17",
   "srcs": [
-   "https://universe.oneone.com.tw/posts/6969"
+   "https://universe.oneone.com.tw/posts/6969",
+   "https://chiikawa-info.jp/p26/pus_smtk/index.html"
   ]
  },
  {
@@ -929,7 +948,9 @@
   "verifiedAt": "2026-10-14",
   "srcs": [
    "https://chiikawamarket.jp/collections/20261009"
-  ]
+  ],
+  "xpost": "https://x.com/chiikawa_market/status/2107427975390244999",
+  "xpostNote": "投稿日2026-10-06 20:09（IDから計算）。本文に「肉まん食べるよマスコット（全4種）」「各1,870円(税込)」「ちいかわマーケット（公式通販）にて 10/9(金)11時発売」（2026-10-20 検索結果で確認）"
  },
  {
   "id": "20261009-pus-machida",
@@ -1862,18 +1883,22 @@
   "price": "プレート 4,950円、マグ 2,420円",
   "q": "ちいかわ イヤーズプレート 2027",
   "src": "https://x.com/chiikawa_kouhou/status/2105855302738587873",
-  "note": "満天の夜空を旅するちいかわたちのデザイン。星の部分は見る角度で色がやさしく変わります。10/16から順次発売（山加商店 公式ECは1会計3個まで）。山加商店 公式ECではイヤーズプレートが完売（10/16確認、マグは予約受付）。",
+  "note": "満天の夜空を旅するちいかわたちのデザイン。星の部分は見る角度で色がやさしく変わります。10/16から順次発売（山加商店 公式ECは1会計3個まで）。山加商店 公式ECではイヤーズプレート・マグとも完売（10/20確認）。",
   "autoAdded": false,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-10-20",
   "srcType": "official",
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-20",
   "srcs": [
    "https://yamakashoten.official.ec/"
   ],
   "xpost": "https://x.com/chiikawa_kouhou/status/2105855302738587873",
   "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「2027年イヤーズアイテム」「10月16日(金)より順次 ちいかわマーケット、ちいかわらんど、山加商店 公式ECにて発売」（2026-10-12確認）",
   "log": [
+   {
+    "d": "2026-10-20",
+    "t": "山加商店 公式ECのマグも完売になりました"
+   },
    {
     "d": "2026-10-16",
     "t": "山加商店 公式ECのイヤーズプレートが完売になりました"
@@ -3077,7 +3102,7 @@
   "srcs": [
    "https://www.4gamers.com.tw/news/detail/82126/chiikawa-gu-winter-collaboration-2026"
   ],
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-20",
   "how": [
    "第1弾は11/20(金)、第2弾は11/27(金)に発売",
    "取り置き・店舗間の取り寄せはなし。転売目的と判断された注文は断られることがあります"
@@ -3289,7 +3314,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000078.000168561.html"
   ],
-  "verifiedAt": "2026-10-18",
+  "verifiedAt": "2026-10-20",
   "rs": "2026-10-13T18:00",
   "re": "2026-10-20T12:00",
   "rsv": [
@@ -3378,7 +3403,9 @@
   "note": "ちいかわベーカリー2周年のグッズ。マスコットはちいかわ・ハチワレ・うさぎ・モモンガ・くりまんじゅう・シーサー・ラッコ・古本屋の8種。",
   "autoAdded": true,
   "addedAt": "2026-10-14",
-  "updatedAt": "2026-10-14"
+  "updatedAt": "2026-10-14",
+  "xpost": "https://x.com/chiikawa_market/status/2109918385463238816",
+  "xpostNote": "投稿日2026-10-13 17:05（IDから計算）。本文に「ちいかわベーカリー コロネなマスコット（全8種）」「各2,310円(税込)」「ちいかわマーケット（公式通販）にて 10/15(木)11時発売」（2026-10-20 検索結果で確認）"
  },
  {
   "id": "20261015-big-blanket",
@@ -3451,7 +3478,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000027.000054370.html"
   ],
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-20",
   "how": [
    "期間中にTOHO-ONEのプレミアム プランへ新規入会・アップグレードした先着の人に非売品ストラップ",
    "すでにプレミアム会員の人は専用フォームから応募して抽選"
@@ -3670,7 +3697,7 @@
    "https://www.gourmandise.jp/view/item/000000010928",
    "https://www.gourmandise.jp/view/item/000000010925"
   ],
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-20",
   "how": [
    "グルマンディーズ公式通販で「11月下旬発売予定」として掲載中"
   ],
@@ -3788,11 +3815,11 @@
   "time": "",
   "price": "",
   "q": "",
-  "srcType": "news",
-  "verifiedAt": "2026-10-17",
+  "srcType": "official",
+  "verifiedAt": "2026-10-20",
   "autoAdded": true,
   "addedAt": "2026-10-17",
-  "updatedAt": "2026-10-17",
+  "updatedAt": "2026-10-20",
   "area": "",
   "id": "20261017-slot-coin-choco",
   "t": "ちいかわ スロットコインチョコレート",
@@ -3801,8 +3828,11 @@
   "eNote": "",
   "place": "全国のちいかわらんど・観光売店",
   "qNone": "ちいかわらんど・観光売店の店頭で売るお菓子",
-  "src": "https://animeanime.jp/article/2026/10/16/103894.html",
-  "note": "箱の横のレバーを回すとスロットが回り、中にはちいかわたちの絵柄のコインチョコが入っています。"
+  "src": "https://x.com/chiikawa_kouhou/status/2110581436491186499",
+  "note": "箱の横のレバーを回すとスロットが回り、中にはちいかわたちの絵柄のコインチョコが入っています。",
+  "srcs": [
+   "https://animeanime.jp/article/2026/10/16/103894.html"
+  ]
  },
  {
   "region": "jp",
@@ -3882,5 +3912,95 @@
   "autoAdded": true,
   "addedAt": "2026-10-19",
   "updatedAt": "2026-10-19"
+ },
+ {
+  "id": "20261021-kr-tokuten-4th",
+  "region": "kr",
+  "t": "韓国 映画ちいかわ 第4週の入場者特典「二重レイヤー アクリルキーホルダー」",
+  "cat": "goods",
+  "s": "2026-10-21",
+  "sp": "day",
+  "e": "2026-10-27",
+  "time": "",
+  "eNote": "なくなり次第終了（先着順）",
+  "place": "韓国のCGV・ロッテシネマ・メガボックス、CineQ",
+  "area": "ソウル",
+  "price": "",
+  "q": "",
+  "qNone": "海外（韓国の映画館）の入場者特典",
+  "src": "https://www.topstarnews.net/news/articleView.html?idxno=16251106",
+  "srcType": "news",
+  "verifiedAt": "2026-10-20",
+  "how": [
+   "CGV・ロッテシネマ・メガボックスは10/21〜10/27に劇場で受け取り",
+   "CineQは10/21からなくなり次第終了",
+   "受け取れる劇場と残りの数は各劇場の公式アプリ・サイトで確認できます"
+  ],
+  "note": "原文：이중 레이어 아크릴 키링",
+  "autoAdded": true,
+  "addedAt": "2026-10-20",
+  "updatedAt": "2026-10-20"
+ },
+ {
+  "id": "20261024-kr-4dx",
+  "region": "kr",
+  "t": "『映画ちいかわ 人魚の島のひみつ』韓国で4DX上映",
+  "cat": "event",
+  "s": "2026-10-24",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "韓国のCGV（4DX上映館）",
+  "area": "ソウル",
+  "price": "",
+  "q": "",
+  "src": "https://www.topstarnews.net/news/articleView.html?idxno=16251553",
+  "srcType": "news",
+  "verifiedAt": "2026-10-20",
+  "how": [
+   "チケットはCGVの公式アプリ・サイトで順番に発売",
+   "上映館と回は劇場のサイト・アプリで確認してください"
+  ],
+  "note": "配給会社が10/19に発表。原文：극장판 치이카와: 인어 섬의 비밀 4DX",
+  "autoAdded": true,
+  "addedAt": "2026-10-20",
+  "updatedAt": "2026-10-20"
+ },
+ {
+  "id": "20261030-kr-lotte-goods",
+  "region": "kr",
+  "t": "ロッテシネマ ちいかわ新グッズ（USB-Cカバーチャーム・レンチキュラーシール）",
+  "cat": "goods",
+  "s": "2026-10-30",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "なくなり次第終了",
+  "place": "韓国のロッテシネマ（一部の劇場）・ロッテシネマのスマートストア",
+  "area": "ソウル",
+  "price": "",
+  "q": "",
+  "qNone": "海外（韓国の映画館）限定",
+  "src": "https://www.ggilbo.com/news/articleView.html?idxno=1187145",
+  "srcType": "news",
+  "verifiedAt": "2026-10-20",
+  "dl": [
+   {
+    "k": "予約",
+    "n": "ロッテシネマ スマートストアでの事前予約",
+    "until": "2026-10-26T23:59",
+    "u": ""
+   }
+  ],
+  "how": [
+   "USB-Cカバーチャーム（全9種ランダム）とレンチキュラーシール（全20種ランダム）の2つ",
+   "スマートストアの事前予約は10/16〜10/26 23:59",
+   "劇場での販売は10/30から。劇場によって始まる日が違う場合があります"
+  ],
+  "note": "原文：먼작귀 C타입 커버 참、먼작귀 렌티큘러 띠부띠부 씰",
+  "autoAdded": true,
+  "addedAt": "2026-10-20",
+  "updatedAt": "2026-10-20"
  }
 ]
