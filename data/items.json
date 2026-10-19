@@ -1304,7 +1304,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "srcs": [
    "https://www.bandai.co.jp/candy/chocosurp/chiikawa2/"
   ]
@@ -1348,7 +1348,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "rb": [
    {
     "n": "通常版",
@@ -1572,7 +1572,7 @@
  {
   "region": "jp",
   "sp": "day",
-  "e": null,
+  "e": "2026-10-23",
   "time": "",
   "eNote": "なくなり次第終了",
   "area": "",
@@ -1581,7 +1581,7 @@
   "note": "ちいかわ＆ハチワレ、うさぎ＆モモンガのコンビ全2種をランダムで1人1つ配布。数量限定のため早めに終わる見込み。早く終わった第3弾・第4弾・第6弾は年内にリバイバル配布が決定（日程は後日発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-09",
+  "updatedAt": "2026-10-19",
   "id": "20261010-tokuten6",
   "t": "映画ちいかわ 入場者特典 第6弾「チャームミニフィギュア」",
   "cat": "event",
@@ -1589,10 +1589,47 @@
   "place": "『映画ちいかわ 人魚の島のひみつ』上映館",
   "src": "https://chiikawa.toho-movie.jp/specialitem.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-09",
+  "verifiedAt": "2026-10-19",
   "srcs": [
    "https://anime.eiga.com/news/127611/"
+  ],
+  "log": [
+   {
+    "d": "2026-10-19",
+    "t": "配布期間が10/23(金)までと公式に出たので終了日を入れました"
+   }
   ]
+ },
+ {
+  "id": "20261024-tokuten7",
+  "region": "jp",
+  "t": "映画ちいかわ 入場者特典 第7弾「ナガノ氏描き下ろしクリアカード」",
+  "cat": "event",
+  "s": "2026-10-24",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "なくなり次第終了",
+  "place": "『映画ちいかわ 人魚の島のひみつ』上映館",
+  "area": "",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa.toho-movie.jp/specialitem.html",
+  "srcType": "official",
+  "srcs": [
+   "https://animeanime.jp/article/2026/10/19/103969.html"
+  ],
+  "verifiedAt": "2026-10-19",
+  "how": [
+   "劇場に入るときに1人1枚（チケット購入時ではなく入場時に配布）",
+   "全4種からランダムで、種類は選べません",
+   "同じ上映回で座席指定券を何枚持っていても1人1枚",
+   "通常版・IMAX・4DXとも同じ特典。劇場ごとに数量限定でなくなり次第終了"
+  ],
+  "note": "ナガノ氏描き下ろしのホログラム仕様クリアカード（ちいかわ・ハチワレ・うさぎ／ひとは・ふたば／セイレーンと人魚たち／島二郎の全4種）。",
+  "autoAdded": true,
+  "addedAt": "2026-10-19",
+  "updatedAt": "2026-10-19"
  },
  {
   "region": "jp",
@@ -2058,7 +2095,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-05",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "t": "ちいかわ 日本酒とお出汁のだし割りセット（玉乃光酒造）",
   "cat": "food",
   "s": "2026-11-10",
@@ -2640,7 +2677,7 @@
   "q": "ちいかわ キャラマグネッツ5",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929335000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "note": "アクリル製マグネット全21種（レアはオーロラ・キラキララメ・フレームの3種）＋ガム1個。2026年11月発売。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -3122,7 +3159,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3152,7 +3189,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3182,7 +3219,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
