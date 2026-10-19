@@ -1,5 +1,38 @@
 [
  {
+  "id": "20261019-ana-jet-firstflight",
+  "date": "2026-10-19",
+  "tag": "topic",
+  "title": "ちいかわジェットが初フライト、満席で長崎へ",
+  "sum": "10/19朝、ちいかわたち8キャラを描いたANAの767が羽田から長崎へ初めて飛びました。初便は満席で、10/25からは羽田などを発着するいろいろな国内線を飛びます。",
+  "source": "トラベル Watch",
+  "src": "https://travel.watch.impress.co.jp/docs/news/2149094.html",
+  "itemId": "20261025-20",
+  "addedAt": "2026-10-19"
+ },
+ {
+  "id": "20261019-kr-2weeks-top",
+  "date": "2026-10-19",
+  "tag": "overseas",
+  "title": "韓国の映画ちいかわ、2週続けて週末1位に",
+  "sum": "韓国で10/16〜18の週末も動員1位を守り、この週末だけで約38万人。累計の観客は182万人になりました。",
+  "source": "朝鮮日報日本語版",
+  "src": "https://news.yahoo.co.jp/articles/a6a311225e3a0df1d2441a2506cad93902c4ed0a",
+  "itemId": "20260930-kr-movie",
+  "addedAt": "2026-10-19"
+ },
+ {
+  "id": "20261019-chiikawayaki-imo",
+  "date": "2026-10-19",
+  "tag": "goods",
+  "title": "ちいかわ焼きのさつまいも味モモンガが話題",
+  "sum": "公式のお店「ちいかわ焼き」の秋の限定、さつまいも味のモモンガが注目に。幕張新都心店では11/26まで、ほかの店では週がわりで秋の味が登場します。",
+  "source": "ORICON NEWS",
+  "src": "https://www.oricon.co.jp/news/2487242/full/",
+  "itemId": "20260831-chiikawayaki-autumn",
+  "addedAt": "2026-10-19"
+ },
+ {
   "id": "20261018-ana-jet-unveil",
   "date": "2026-10-18",
   "tag": "topic",

@@ -1263,7 +1263,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-16"
+  "verifiedAt": "2026-10-19"
  },
  {
   "id": "20261031-19",
@@ -1282,7 +1282,7 @@
   "time": "",
   "updatedAt": "2026-10-05",
   "srcType": "partner",
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "srcs": [
    "https://toy.bandai.co.jp/ja/item/01_21066/"
   ]
@@ -2046,7 +2046,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/10/04/188724.html"
   ],
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "note": "クリスマスケーキ風の缶にクッキー入り。",
   "autoAdded": true,
   "addedAt": "2026-10-05",
@@ -2655,7 +2655,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "id": "20261025-sunstar-pochi",
   "t": "ちいかわ ポチ袋（サンスター文具）",
   "cat": "goods",
@@ -3062,7 +3062,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3092,7 +3092,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3213,7 +3213,7 @@
    "https://chiikawa-info.jp/ck_pocket.html",
    "https://chiikawa-pocket-goods-store.com/"
   ],
-  "verifiedAt": "2026-10-16",
+  "verifiedAt": "2026-10-19",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3814,5 +3814,36 @@
   "how": [
    "ちいかわのGPSBOXは種類ごとに1会計6点（1箱）まで。単品はランダム封入、1箱で全6種がそろいます。"
   ]
+ },
+ {
+  "id": "20260831-chiikawayaki-autumn",
+  "region": "jp",
+  "t": "ちいかわ焼き 秋の限定味（モモンガ さつまいも・くりまんじゅう 渋皮マロン・ラッコ パンプキン）",
+  "cat": "food",
+  "s": "2026-08-31",
+  "sp": "day",
+  "e": "2026-11-26",
+  "time": "",
+  "eNote": "期間限定",
+  "place": "ちいかわ焼き イオンモール幕張新都心店（千葉県千葉市美浜区）・横浜ワールドポーターズ店（神奈川県横浜市中区）・名古屋パルコ店（愛知県名古屋市中区）",
+  "area": "幕張",
+  "price": "各350円",
+  "q": "",
+  "qNone": "店頭限定の食べもの",
+  "src": "https://www.chiikawa-yaki.com/",
+  "srcType": "official",
+  "srcs": [
+   "https://www.oricon.co.jp/news/2487242/full/"
+  ],
+  "verifiedAt": "2026-10-19",
+  "how": [
+   "幕張新都心店：モモンガ（さつまいも）8/31〜、くりまんじゅう（渋皮マロン）9/7〜、ラッコ（パンプキン）9/14〜、いずれも11/26まで",
+   "横浜ワールドポーターズ店・名古屋パルコ店：週がわりで販売（くりまんじゅう 10/19〜10/25、ラッコ 10/26〜11/1）",
+   "味やキャラクターの型は時期によって変わります。1個ずつの販売"
+  ],
+  "note": "ちいかわインフォに載っている公式のたい焼き風のお店「ちいかわ焼き」の秋の限定味。",
+  "autoAdded": true,
+  "addedAt": "2026-10-19",
+  "updatedAt": "2026-10-19"
  }
 ]
