@@ -245,7 +245,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-20",
   "srcs": [
    "https://www.sunflower.co.jp/information/event/20260806.html"
   ],
@@ -272,7 +272,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-20",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -333,7 +333,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-17"
+  "verifiedAt": "2026-10-20"
  },
  {
   "id": "20260908-pus-centrair",
@@ -376,7 +376,7 @@
   "time": "10:00〜22:00（有料展示エリアの最終入場 21:00）",
   "updatedAt": "2026-10-05",
   "srcType": "official",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-20",
   "xpost": "https://x.com/chiikawa_kouhou/status/2094258886781927591",
   "xpostNote": "投稿日2026-08-31。本文に「上海静安嘉里中心（JAKC）」「2026年9月12日(土)～11月1日(日)」"
  },
@@ -421,7 +421,7 @@
   "time": "",
   "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-20",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ"
  },
  {
@@ -919,7 +919,7 @@
   "time": "11:00〜22:00",
   "updatedAt": "2026-10-14",
   "srcType": "partner",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-20",
   "srcs": [
    "https://universe.oneone.com.tw/posts/6969",
    "https://chiikawa-info.jp/p26/pus_smtk/index.html"
@@ -1925,7 +1925,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "partner",
-  "verifiedAt": "2026-10-17"
+  "verifiedAt": "2026-10-20"
  },
  {
   "id": "20261001-tokyobanana-solamachi",
@@ -3832,7 +3832,9 @@
   "note": "箱の横のレバーを回すとスロットが回り、中にはちいかわたちの絵柄のコインチョコが入っています。",
   "srcs": [
    "https://animeanime.jp/article/2026/10/16/103894.html"
-  ]
+  ],
+  "xpost": "https://x.com/chiikawa_kouhou/status/2110581436491186499",
+  "xpostNote": "投稿日2026-10-15（IDから計算）。本文に「ちいかわ スロットコインチョコレート」「10月17日(土)より順次 全国のちいかわらんど、観光売店にて発売」（2026-10-20に検索結果で確認）"
  },
  {
   "region": "jp",
@@ -3999,6 +4001,37 @@
    "劇場での販売は10/30から。劇場によって始まる日が違う場合があります"
   ],
   "note": "原文：먼작귀 C타입 커버 참、먼작귀 렌티큘러 띠부띠부 씰",
+  "autoAdded": true,
+  "addedAt": "2026-10-20",
+  "updatedAt": "2026-10-20"
+ },
+ {
+  "id": "20261025-furifuri-head",
+  "region": "jp",
+  "t": "カプセルトイ 映画ちいかわ 人魚の島のひみつ ふりふりヘッドフィギュア①②",
+  "cat": "goods",
+  "s": "2026-10-25",
+  "sp": "late",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のカプセルトイ売場",
+  "area": "",
+  "price": "各500円",
+  "q": "",
+  "qNone": "カプセルトイ（店頭のガチャ）",
+  "src": "https://www.parade-inc.net/products/c260903",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.parade-inc.net/products/c260904",
+   "https://www.inside-games.jp/article/2026/10/20/189544.html"
+  ],
+  "verifiedAt": "2026-10-20",
+  "how": [
+   "カプセルトイ売場で10月下旬から順次発売",
+   "①はちいかわ・ハチワレ・くりまんじゅう・セイレーン、②はうさぎ・シーサー・モモンガ・島二郎（各全4種）"
+  ],
+  "note": "パレードのカプセルトイ。島の衣装のキャラの頭がふりふり揺れるフィギュア（高さ約45〜62mm）。",
   "autoAdded": true,
   "addedAt": "2026-10-20",
   "updatedAt": "2026-10-20"
