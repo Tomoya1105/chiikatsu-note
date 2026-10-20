@@ -48,6 +48,12 @@
    "kind": "ちいかわ公式（ちいかわパーク）",
    "evidence": "https://chiikawapark-tokyo.jp/ （ちいかわパーク公式サイトから x.com/chiikawa_parkjp にリンクし、公式アカウントとしてポストを掲載）",
    "checkedAt": "2026-10-10"
+  },
+  "chiikawa_movie": {
+   "name": "『映画ちいかわ 人魚の島のひみつ』公式",
+   "kind": "ちいかわ公式",
+   "evidence": "https://chiikawa.toho-movie.jp/ （映画の公式サイトから x.com/chiikawa_movie にリンク）",
+   "checkedAt": "2026-10-21"
   }
  },
  "candidates": {

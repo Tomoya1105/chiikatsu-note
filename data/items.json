@@ -398,7 +398,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-18",
+  "verifiedAt": "2026-10-21",
   "qNone": "海外（上海）限定",
   "srcs": [
    "https://x.com/chiikawa_kouhou/status/2094621282461532543"
@@ -578,7 +578,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-18",
+  "verifiedAt": "2026-10-21",
   "srcs": [
    "https://www.cinemacafe.net/article/2026/09/24/112822.html",
    "https://www.inside-games.jp/release/prtimes/20260910/306201.html"
@@ -1421,7 +1421,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-21",
   "qNone": "くじ（オンラインくじ）"
  },
  {
@@ -1638,9 +1638,10 @@
   "src": "https://chiikawa.toho-movie.jp/specialitem.html",
   "srcType": "official",
   "srcs": [
-   "https://animeanime.jp/article/2026/10/19/103969.html"
+   "https://animeanime.jp/article/2026/10/19/103969.html",
+   "https://x.com/chiikawa_movie/status/2112046083668922831"
   ],
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-21",
   "how": [
    "劇場に入るときに1人1枚（チケット購入時ではなく入場時に配布）",
    "全4種からランダムで、種類は選べません",
@@ -1650,7 +1651,9 @@
   "note": "ナガノ氏描き下ろしのホログラム仕様クリアカード（ちいかわ・ハチワレ・うさぎ／ひとは・ふたば／セイレーンと人魚たち／島二郎の全4種）。",
   "autoAdded": true,
   "addedAt": "2026-10-19",
-  "updatedAt": "2026-10-19"
+  "updatedAt": "2026-10-19",
+  "xpost": "https://x.com/chiikawa_movie/status/2112046083668922831",
+  "xpostNote": "投稿日2026-10-19（IDから計算）。本文に「10月24日(土)より 入場者特典第7弾 配布決定」「ナガノ氏描き下ろしクリアカード（全4種）」"
  },
  {
   "region": "jp",
@@ -2649,7 +2652,7 @@
   "q": "",
   "src": "https://www.westjr.co.jp/press/article/2026/09/30/items/260930_00_press_lucuasouth.pdf",
   "srcType": "press",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-21",
   "note": "池袋のちいかわパークの公式ショップが全国初出店。開業から当面の間、10F〜13Fへの入場は事前抽選または先着入場整理券制。同じ11Fにナガノマーケット UMEDA も同日オープン。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -3362,7 +3365,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000144.000074811.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-21",
   "how": [
    "入場は公式サイトのチケットが必要。当日入場できない場合があるので事前に確認。",
    "限定グッズ（スウェット・ファーハット・マフラー）は11/24(火)発売。",
@@ -3796,7 +3799,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-21",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-10-17",
@@ -3844,7 +3847,7 @@
   "price": "",
   "q": "",
   "srcType": "news",
-  "verifiedAt": "2026-10-17",
+  "verifiedAt": "2026-10-21",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-10-17",
@@ -4035,5 +4038,36 @@
   "autoAdded": true,
   "addedAt": "2026-10-20",
   "updatedAt": "2026-10-20"
+ },
+ {
+  "id": "20261022-sushi-yokohama",
+  "region": "jp",
+  "t": "むちゃうま!!ちいかわ寿司 POP UP STORE＠横浜スカイビル",
+  "cat": "event",
+  "s": "2026-10-22",
+  "sp": "day",
+  "e": "2026-11-01",
+  "time": "11:00〜19:00",
+  "eNote": "",
+  "place": "横浜スカイビル 8階 イベントスペース by マルイ（神奈川県横浜市西区）",
+  "area": "横浜",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/p26/muchauma-chiikawasushi/yokohama/",
+  "srcType": "official",
+  "srcs": [
+   "https://collabo-cafe.com/events/collabo/muchauma-chiikawa-sushi-popup-store-yokohama2026/",
+   "https://www.sumaitoseikatsu.yokohama/archives/67888"
+  ],
+  "verifiedAt": "2026-10-21",
+  "how": [
+   "10/22(木)〜10/25(日)は入店整理券の配布を予定（配布方法は公式ページで確認）",
+   "ちいかわ寿司のイベント商品を税込2,200円買うごとに「お皿みたいなトレーディングカード」（全8種）を1枚（カプセルトイは対象外・なくなり次第終了）",
+   "カプセルトイは店頭で1人10回まで。箸置きは1会計1BOX、ランチョンマット・湯呑みなどは1会計各1点まで"
+  ],
+  "note": "ちいかわたちがお寿司になった「むちゃうま!!ちいかわ寿司」のPOP UP STORE。同じ8階にちいかわらんど横浜店があります。",
+  "autoAdded": true,
+  "addedAt": "2026-10-21",
+  "updatedAt": "2026-10-21"
  }
 ]
