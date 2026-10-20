@@ -1,5 +1,16 @@
 [
  {
+  "id": "20261020-tobidasu-anime",
+  "date": "2026-10-20",
+  "tag": "book",
+  "title": "ページを開くとちいかわたちが飛び出す、しかけ絵本が発売",
+  "sum": "講談社のポップアップ絵本『とびだす アニメちいかわ』が10/19に発売。税込2,200円で、小さな子どもでも楽しめるつくりです。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000009071.000001719.html",
+  "itemId": "20261016-16",
+  "addedAt": "2026-10-20"
+ },
+ {
   "id": "20261020-furifuri-head",
   "date": "2026-10-20",
   "tag": "goods",
@@ -29,6 +40,17 @@
   "sum": "台湾の興行トップ10入りや韓国の2週連続1位、中国本土の旗艦店の行列などを紹介。競争社会でがんばるちいかわへの共感が背景だと分析している。",
   "source": "Yahoo!ニュース エキスパート",
   "src": "https://news.yahoo.co.jp/expert/articles/806d480f45fa1e58f94c71723453425855d68da4",
+  "itemId": "",
+  "addedAt": "2026-10-20"
+ },
+ {
+  "id": "20261019-daiso-kids-mask",
+  "date": "2026-10-19",
+  "tag": "goods",
+  "title": "ダイソーにちいかわの子ども用マスクが登場",
+  "sum": "4〜9歳向けのプリーツマスク（3枚入り）で、ちいかわ・ハチワレ・うさぎの全6柄。10/20から全国のダイソーで順次発売されます。",
+  "source": "All About ニュース",
+  "src": "https://news.allabout.co.jp/articles/o/131627",
   "itemId": "",
   "addedAt": "2026-10-20"
  },
