@@ -1610,7 +1610,7 @@
   "place": "『映画ちいかわ 人魚の島のひみつ』上映館",
   "src": "https://chiikawa.toho-movie.jp/specialitem.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "srcs": [
    "https://anime.eiga.com/news/127611/"
   ],
@@ -1619,7 +1619,9 @@
     "d": "2026-10-19",
     "t": "配布期間が10/23(金)までと公式に出たので終了日を入れました"
    }
-  ]
+  ],
+  "xpost": "https://x.com/chiikawa_movie/status/2104436099007570340",
+  "xpostNote": "投稿日2026-09-28。本文に「10/10(土)より 入場者特典第6弾 配布決定」「チャームミニフィギュア（全2種）」"
  },
  {
   "id": "20261024-tokuten7",
@@ -2603,7 +2605,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2625,7 +2627,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2720,7 +2722,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "id": "20261025-sunstar-pochi",
   "t": "ちいかわ ポチ袋（サンスター文具）",
   "cat": "goods",
@@ -3127,7 +3129,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3278,7 +3280,7 @@
    "https://chiikawa-info.jp/ck_pocket.html",
    "https://chiikawa-pocket-goods-store.com/"
   ],
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3651,7 +3653,9 @@
     "d": "2026-10-18",
     "t": "ちいかわマーケット・ちいかわらんどでの販売と、らんどの入店予約を追記"
    }
-  ]
+  ],
+  "xpost": "https://x.com/chiikawa_market/status/2112741334641774927",
+  "xpostNote": "投稿日2026-10-21。本文に「ちいかわ×ANA コラボグッズ」「ちいかわマーケットでも10/23(金)10時より発売」「ANAの制服を着たちいかわたち」"
  },
  {
   "id": "20261016-market-autumn-goods",
@@ -3914,7 +3918,7 @@
   "srcs": [
    "https://www.oricon.co.jp/news/2487242/full/"
   ],
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "how": [
    "幕張新都心店：モモンガ（さつまいも）8/31〜、くりまんじゅう（渋皮マロン）9/7〜、ラッコ（パンプキン）9/14〜、いずれも11/26まで",
    "横浜ワールドポーターズ店・名古屋パルコ店：週がわりで販売（くりまんじゅう 10/19〜10/25、ラッコ 10/26〜11/1）",
