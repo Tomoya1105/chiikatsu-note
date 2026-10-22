@@ -705,21 +705,39 @@
   "id": "20261001-02",
   "addedAt": "2026-09-27",
   "cat": "kuji",
-  "e": null,
-  "eNote": "",
-  "note": "詳細は10月発表予定。",
-  "place": "ちいかわマーケット ちいかわくじ",
-  "price": "後日発表",
+  "e": "2026-11-03",
+  "eNote": "なくなり次第終了",
+  "note": "オンラインくじ（全12種・A賞は超BIGぬいぐるみ）。ちいかわマーケットとは別サイトで、会員登録が必要。配送手数料は別。お届けは2027年3月下旬以降に順次。",
+  "place": "ちいかわマーケット ちいかわくじ（オンライン）",
+  "price": "1回1,100円",
   "q": "",
-  "s": "2026-10-01",
-  "sp": "month",
-  "src": "https://online-kuji.chiikawamarket.jp/",
-  "t": "シーサーだらけくじ",
-  "time": "",
-  "updatedAt": "2026-09-27",
-  "srcType": "official",
-  "verifiedAt": "2026-09-27",
-  "qNone": "くじ（店頭・オンラインくじ）"
+  "s": "2026-10-28",
+  "sp": "day",
+  "src": "https://prtimes.jp/main/html/rd/p/000000079.000168561.html",
+  "t": "ちいかわ シーサーだらけくじ",
+  "time": "11:00〜（11/3 23:59まで）",
+  "updatedAt": "2026-10-22",
+  "srcType": "press",
+  "verifiedAt": "2026-10-22",
+  "qNone": "くじ（店頭・オンラインくじ）",
+  "area": "",
+  "srcs": [
+   "https://x.com/chiikawa_market/status/2112876559182790836",
+   "https://online-kuji.chiikawamarket.jp/"
+  ],
+  "how": [
+   "ちいかわマーケットとは別サイトの「ちいかわくじ」で販売（会員登録が必要）",
+   "販売は10/28(水)11:00〜11/3(火)23:59、なくなり次第終了",
+   "1回1,100円（税込）、配送手数料は別。お届けは2027年3月下旬以降に順次"
+  ],
+  "xpost": "https://x.com/chiikawa_market/status/2112876559182790836",
+  "xpostNote": "投稿日2026-10-21（IDから計算）。本文に「シーサーだらけくじ」「1回1,100円」「販売期間：10/28(水)11:00～11/3(火)23:59」「お届け予定：2027年3月下旬頃より順次」（2026-10-22確認）",
+  "log": [
+   {
+    "d": "2026-10-22",
+    "t": "販売期間（10/28〜11/3）と価格が決まりました"
+   }
+  ]
  },
  {
   "id": "20261001-11",
@@ -2125,7 +2143,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-05",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "t": "ちいかわ 日本酒とお出汁のだし割りセット（玉乃光酒造）",
   "cat": "food",
   "s": "2026-11-10",
@@ -3159,7 +3177,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3189,7 +3207,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3219,7 +3237,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3249,7 +3267,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
