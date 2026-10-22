@@ -1387,7 +1387,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "rb": [
    {
     "n": "通常版",
@@ -1766,7 +1766,7 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "qNone": "GUの店舗・公式通販のみ",
   "srcs": [
    "https://www.famitsu.com/article/202609/88383",
@@ -2038,7 +2038,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "official",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "qNone": "ちいかわベーカリーの店頭販売のみ"
  },
  {
@@ -2413,7 +2413,7 @@
    "https://contents-abema.com/chiikawa-christmas-market/goods/",
    "https://contents-abema.com/chiikawa-christmas-market/food/"
   ],
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-22",
   "dl": [
    {
     "k": "抽選",
@@ -3647,22 +3647,27 @@
    "https://prtimes.jp/main/html/rd/p/000000018.000035055.html",
    "https://x.com/chiikawa_land/status/2110643022991892767",
    "https://chiikawamarket.jp/collections/ana",
-   "https://inside-games.jp/article/2026/10/21/189588.html"
+   "https://inside-games.jp/article/2026/10/21/189588.html",
+   "https://prtimes.jp/main/html/rd/p/000000019.000035055.html"
   ],
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-22",
   "how": [
    "ANAショッピング A-styleは10/23(金)10:00から（アクセス集中時は待合室あり）",
    "ちいかわマーケットは10/23(金)10時販売開始予定。1会計につき各1個まで",
    "ANA FESTA羽田B1フロアギフト店・新千歳・福岡国内線ロビー・那覇ロビー1号店は10/23〜10/25は予約制。予約は10/16(金)11:00から先着順",
-   "10/25までは1人各2個まで（BOX商品は1人1BOX）。10/26から制限なし",
+   "A-style・ANA FESTA・機内販売などは10/23から当面の間、1種類につき1人2個まで（BOX商品は1人1BOX）。ちいかわマーケット・らんどは制限が別",
    "ちいかわらんどの一部店舗は10/23(金)の入店がLINEでの抽選／先着予約制（ソラマチ・名古屋パルコ・大阪梅田・札幌パルコ・仙台パルコは店全体を入場制限）",
    "地方空港のANA FESTAは11/4(水)から。機内販売は一部商品のみ"
   ],
   "note": "ちいかわジェット就航記念。パイロットや整備士などANAの制服姿のちいかわたちのグッズ。マグセットの通販の発売日は未定。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
-  "updatedAt": "2026-10-21",
+  "updatedAt": "2026-10-22",
   "log": [
+   {
+    "d": "2026-10-22",
+    "t": "ANA側の購入個数制限が10/25までから「当面の間」に延長"
+   },
    {
     "d": "2026-10-21",
     "t": "ちいかわマーケットの販売開始（10/23 10時）と購入制限を追記"
