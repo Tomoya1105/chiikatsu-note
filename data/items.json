@@ -85,7 +85,7 @@
   "time": "",
   "updatedAt": "2026-10-14",
   "srcType": "partner",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-23",
   "xpost": "https://x.com/chiikawa_kouhou/status/2064548449224413331",
   "xpostNote": "投稿日2026-06-10。本文に「東海道新幹線『ツツウラウラ旅』開催期間：7月8日〜10月31日」",
   "log": [
@@ -113,7 +113,7 @@
   "time": "",
   "updatedAt": "2026-10-20",
   "srcType": "partner",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-23",
   "xpost": "https://x.com/chiikawa_kouhou/status/2056622381393965225",
   "xpostNote": "投稿日2026-05-19。本文に「東京スカイツリーにてイベント開催決定」「ちいかわ☆星ふるスカイツリー®とひみつの島」",
   "log": [
@@ -2386,7 +2386,7 @@
   "qNone": "くじ（店頭販売）",
   "src": "https://1kuji.com/products/chiikawa5",
   "srcType": "partner",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-23",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -3501,7 +3501,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000027.000054370.html"
   ],
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-23",
   "how": [
    "期間中にTOHO-ONEのプレミアム プランへ新規入会・アップグレードした先着の人に非売品ストラップ",
    "すでにプレミアム会員の人は専用フォームから応募して抽選"
@@ -4130,5 +4130,38 @@
   "autoAdded": true,
   "addedAt": "2026-10-21",
   "updatedAt": "2026-10-21"
+ },
+ {
+  "id": "20261023-market-1023",
+  "region": "jp",
+  "t": "すくいやすいカレー皿・てんし♡あくまルームウェア・うさぎだらけフィギュアなど（ちいかわマーケット 10/23発売）",
+  "cat": "goods",
+  "s": "2026-10-23",
+  "sp": "day",
+  "e": null,
+  "time": "10:00〜",
+  "eNote": "GPSBOX うさぎだらけフィギュアは数量限定",
+  "place": "ちいかわマーケット（公式通販）",
+  "area": "",
+  "price": "カレー皿L 各2,640円、ルームウェア 各8,800円、うさぎだらけフィギュア 単品1,320円・BOX7,920円",
+  "q": "",
+  "qNone": "公式通販の新商品で、楽天で同じ商品と言い切れない",
+  "src": "https://x.com/chiikawa_market/status/2113198697983230286",
+  "srcType": "official",
+  "srcs": [
+   "https://x.com/chiikawa_market/status/2112472025839349884",
+   "https://www.inside-games.jp/article/2026/10/22/189659.html"
+  ],
+  "verifiedAt": "2026-10-23",
+  "how": [
+   "ちいかわマーケット（公式通販）で10/23(金)10時から販売。商品は発売時間にページに出ます",
+   "GPSBOX うさぎだらけフィギュアは、予約をのがした人向けの数量限定の通常販売（単品はランダム、BOXは6種コンプリート）"
+  ],
+  "xpost": "https://x.com/chiikawa_market/status/2113198697983230286",
+  "xpostNote": "投稿日2026-10-22 18:20（IDから計算）。本文に「すくいやすいカレー皿L（全3種）」「各2,640円(税込)」「ちいかわマーケット（公式通販）では 10/23(金)「10時」発売」（2026-10-23 検索結果で確認）",
+  "note": "ほかに#Kiramekko ミニネコハウスポーチ（各2,860円）、キャラクリアフォト（20枚入りBOX 2,200円）、ちいかわパーク メジャー（1,500円）・キャンディポーチ カブトムシ（2,000円）、ポチ袋2027なども同時発売。",
+  "autoAdded": true,
+  "addedAt": "2026-10-23",
+  "updatedAt": "2026-10-23"
  }
 ]
