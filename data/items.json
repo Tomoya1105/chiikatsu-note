@@ -376,7 +376,7 @@
   "time": "10:00〜22:00（有料展示エリアの最終入場 21:00）",
   "updatedAt": "2026-10-05",
   "srcType": "official",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-23",
   "xpost": "https://x.com/chiikawa_kouhou/status/2094258886781927591",
   "xpostNote": "投稿日2026-08-31。本文に「上海静安嘉里中心（JAKC）」「2026年9月12日(土)～11月1日(日)」"
  },
@@ -421,7 +421,7 @@
   "time": "",
   "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-23",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ"
  },
  {
@@ -937,7 +937,7 @@
   "time": "11:00〜22:00",
   "updatedAt": "2026-10-14",
   "srcType": "partner",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-23",
   "srcs": [
    "https://universe.oneone.com.tw/posts/6969",
    "https://chiikawa-info.jp/p26/pus_smtk/index.html"
@@ -4202,6 +4202,37 @@
    "ちいかわ・ハチワレ・うさぎ・ちいかわ＆ハチワレ・ちいかわ＆ハチワレ＆うさぎの全5種"
   ],
   "note": "パレードのカプセルトイ。どれも小さなアクリルパーツ付き。",
+  "autoAdded": true,
+  "addedAt": "2026-10-23",
+  "updatedAt": "2026-10-23"
+ },
+ {
+  "id": "20261021-fujicolor-nenga",
+  "region": "jp",
+  "t": "フジカラーの年賀状2027 ちいかわデザイン",
+  "cat": "goods",
+  "s": "2026-10-21",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のフジカラー取扱店・富士フイルム公式サイト／アプリ（プリント＆ギフト）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "写真年賀状の印刷サービスで、楽天で買える商品ではない",
+  "src": "https://www.fujifilm.com/jp/ja/news/list/14129",
+  "srcType": "partner",
+  "srcs": [
+   "https://animeanime.jp/article/2026/10/23/104111.html"
+  ],
+  "verifiedAt": "2026-10-23",
+  "how": [
+   "全国のフジカラー取扱店と、富士フイルムの公式サイト・アプリで10/21から受付",
+   "人気キャラクターのデザインの中に、ちいかわのデザインがあります",
+   "年賀状1枚無料キャンペーンは店頭12/10・ネット12/14まで"
+  ],
+  "note": "ちいかわのデザインは全5種（写真入り4種・写真なし1種）と報じられています。",
   "autoAdded": true,
   "addedAt": "2026-10-23",
   "updatedAt": "2026-10-23"
