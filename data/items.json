@@ -144,7 +144,7 @@
   "time": "",
   "updatedAt": "2026-10-20",
   "srcType": "partner",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-23",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000001491.000020053.html"
   ],
@@ -245,7 +245,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-23",
   "srcs": [
    "https://www.sunflower.co.jp/information/event/20260806.html"
   ],
@@ -272,7 +272,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-23",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -333,7 +333,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-20"
+  "verifiedAt": "2026-10-23"
  },
  {
   "id": "20260908-pus-centrair",
@@ -2672,13 +2672,25 @@
   "q": "",
   "src": "https://www.westjr.co.jp/press/article/2026/09/30/items/260930_00_press_lucuasouth.pdf",
   "srcType": "press",
-  "verifiedAt": "2026-10-21",
-  "note": "池袋のちいかわパークの公式ショップが全国初出店。開業から当面の間、10F〜13Fへの入場は事前抽選または先着入場整理券制。同じ11Fにナガノマーケット UMEDA も同日オープン。",
+  "verifiedAt": "2026-10-23",
+  "note": "池袋のちいかわパークの公式ショップが全国初出店。入店は無料。ミニマスコットキーリング（全10種・各1,430円）やポップコーンバケツ（各4,180円）などを販売し、一部の商品は購入数の制限あり。同じ11Fにナガノマーケット UMEDA も同日オープン。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
-  "updatedAt": "2026-10-10",
+  "updatedAt": "2026-10-23",
   "srcs": [
-   "https://www.inside-games.jp/release/prtimes/20260930/310113.html"
+   "https://www.inside-games.jp/release/prtimes/20260930/310113.html",
+   "https://prtimes.jp/main/html/rd/p/000000145.000074811.html"
+  ],
+  "how": [
+   "ちいかわパークストアへの入場は無料",
+   "開業から当面の間、LUCUA SOUTH 10F〜13Fへの入場は事前抽選または先着の入場整理券制（詳細はLUCUA SOUTHの特設サイトと店舗公式Xで発表）",
+   "オープン記念で1会計ごとにホログラムステッカー、税込3,300円以上でチケット風マルチクリアファイル（なくなり次第終了）"
+  ],
+  "log": [
+   {
+    "d": "2026-10-23",
+    "t": "販売グッズとオープン記念ノベルティが発表されました"
+   }
   ]
  },
  {
@@ -4160,6 +4172,36 @@
   "xpost": "https://x.com/chiikawa_market/status/2113198697983230286",
   "xpostNote": "投稿日2026-10-22 18:20（IDから計算）。本文に「すくいやすいカレー皿L（全3種）」「各2,640円(税込)」「ちいかわマーケット（公式通販）では 10/23(金)「10時」発売」（2026-10-23 検索結果で確認）",
   "note": "ほかに#Kiramekko ミニネコハウスポーチ（各2,860円）、キャラクリアフォト（20枚入りBOX 2,200円）、ちいかわパーク メジャー（1,500円）・キャンディポーチ カブトムシ（2,000円）、ポチ袋2027なども同時発売。",
+  "autoAdded": true,
+  "addedAt": "2026-10-23",
+  "updatedAt": "2026-10-23"
+ },
+ {
+  "id": "20261025-coin-cylinder",
+  "region": "jp",
+  "t": "カプセルトイ ちいかわ コインシリンダー",
+  "cat": "goods",
+  "s": "2026-10-25",
+  "sp": "late",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "カプセルトイ売場（取扱店は未発表）",
+  "area": "",
+  "price": "400円",
+  "q": "",
+  "qNone": "カプセルトイ（店頭のガチャ）",
+  "src": "https://www.parade-inc.net/products/c261001",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/23/189683.html"
+  ],
+  "verifiedAt": "2026-10-23",
+  "how": [
+   "カプセルトイとして10月下旬から順次発売（1回400円）",
+   "ちいかわ・ハチワレ・うさぎ・ちいかわ＆ハチワレ・ちいかわ＆ハチワレ＆うさぎの全5種"
+  ],
+  "note": "パレードのカプセルトイ。どれも小さなアクリルパーツ付き。",
   "autoAdded": true,
   "addedAt": "2026-10-23",
   "updatedAt": "2026-10-23"
