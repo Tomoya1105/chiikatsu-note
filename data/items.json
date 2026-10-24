@@ -1013,7 +1013,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-24",
   "xpost": "https://x.com/chiikawa_popup/status/2103428383350964266",
   "xpostNote": "投稿日2026-09-25（IDから計算）。本文に「イオンモール 水戸内原 2階 アジェデアクセサリーズ前」「2026年10月9日(金)～10月26日(月)」"
  },
@@ -1037,7 +1037,7 @@
   "time": "",
   "updatedAt": "2026-10-13",
   "srcType": "official",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-24",
   "xpost": "https://x.com/chiikawa_popup/status/2108356771077316799",
   "xpostNote": "投稿日2026-10-09 9:40（IDから計算）。本文に「千葉県にて本日より開催」「イオンモール 津田沼 South 3階スターバックス前」「2026年10月9日(金)～10月26日(月)」（2026-10-13 検索結果で確認）"
  },
@@ -1720,7 +1720,12 @@
   "place": "全国のスーパーなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-21"
+  "verifiedAt": "2026-10-21",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2113072853088358705",
+  "xpostNote": "投稿日2026-10-22 10:00（IDから計算）。本文に「アニメちいかわ きのこのポタージュ・ほうれんそうのポタージュ」「10月22日（木）より」「オリジナルシール1枚入り」（2026-10-24 検索結果で確認）",
+  "srcs": [
+   "https://x.com/chiikawa_kouhou/status/2113072853088358705"
+  ]
  },
  {
   "region": "jp",
@@ -3670,7 +3675,8 @@
    "https://x.com/chiikawa_land/status/2110643022991892767",
    "https://chiikawamarket.jp/collections/ana",
    "https://inside-games.jp/article/2026/10/21/189588.html",
-   "https://prtimes.jp/main/html/rd/p/000000019.000035055.html"
+   "https://prtimes.jp/main/html/rd/p/000000019.000035055.html",
+   "https://www.fukuishimbun.co.jp/articles/-/2730264"
   ],
   "verifiedAt": "2026-10-22",
   "how": [
@@ -3681,11 +3687,15 @@
    "ちいかわらんどの一部店舗は10/23(金)の入店がLINEでの抽選／先着予約制（ソラマチ・名古屋パルコ・大阪梅田・札幌パルコ・仙台パルコは店全体を入場制限）",
    "地方空港のANA FESTAは11/4(水)から。機内販売は一部商品のみ"
   ],
-  "note": "ちいかわジェット就航記念。パイロットや整備士などANAの制服姿のちいかわたちのグッズ。マグセットの通販の発売日は未定。",
+  "note": "ちいかわジェット就航記念。パイロットや整備士などANAの制服姿のちいかわたちのグッズ。マグセットの通販の発売日は未定。一部の店舗で完売し、ANAは再入荷・追加生産を検討中で、決まりしだい知らせるとしている（10/24発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
-  "updatedAt": "2026-10-22",
+  "updatedAt": "2026-10-24",
   "log": [
+   {
+    "d": "2026-10-24",
+    "t": "ANAが完売店舗への再入荷・追加生産を検討中と発表"
+   },
    {
     "d": "2026-10-22",
     "t": "ANA側の購入個数制限が10/25までから「当面の間」に延長"

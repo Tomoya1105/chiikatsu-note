@@ -1,5 +1,27 @@
 [
  {
+  "id": "20261024-kr-movie-2m",
+  "date": "2026-10-24",
+  "tag": "overseas",
+  "title": "韓国の映画ちいかわ、公開25日で200万人に",
+  "sum": "韓国で公開中の『映画ちいかわ 人魚の島のひみつ』が10/24朝に観客204万人を超えた。今年のアニメ映画では2本目の200万人突破で、前売りの率も1位。",
+  "source": "朝鮮日報日本語版",
+  "src": "https://ekr.chosunonline.com/site/data/html_dir/2026/10/24/2026102480032.html",
+  "itemId": "20260930-kr-movie",
+  "addedAt": "2026-10-24"
+ },
+ {
+  "id": "20261024-ana-restock",
+  "date": "2026-10-24",
+  "tag": "goods",
+  "title": "ちいかわ×ANAグッズ、完売店の再入荷を検討",
+  "sum": "10/23に発売したANA制服姿のちいかわグッズが一部の店舗で完売。ANAは再入荷や追加生産を検討していて、決まりしだい案内するとしている。",
+  "source": "福井新聞（オリコン）",
+  "src": "https://www.fukuishimbun.co.jp/articles/-/2730264",
+  "itemId": "20261023-ana-goods1",
+  "addedAt": "2026-10-24"
+ },
+ {
   "id": "20261023-bonbon-mini-market",
   "date": "2026-10-23",
   "tag": "goods",
