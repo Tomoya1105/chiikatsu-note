@@ -54,6 +54,12 @@
    "kind": "ちいかわ公式",
    "evidence": "https://chiikawa.toho-movie.jp/ （映画の公式サイトから x.com/chiikawa_movie にリンク）",
    "checkedAt": "2026-10-21"
+  },
+  "chiikawa_pt_jp": {
+   "name": "ちいかわぽけっと公式",
+   "kind": "公式アプリ（運営：株式会社アプリボット）",
+   "evidence": "https://prtimes.jp/main/html/rd/p/000000046.000156996.html （運営会社アプリボットのプレスリリースの「URL一覧」に「公式X（＠chiikawa_pt_jp）」として x.com/chiikawa_pt_jp へのリンク）",
+   "checkedAt": "2026-10-24"
   }
  },
  "candidates": {
