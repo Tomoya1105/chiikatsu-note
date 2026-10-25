@@ -142,7 +142,7 @@
   "src": "https://escape.id/chiikawa/",
   "t": "映画ちいかわ×東京メトロ 謎解きゲーム",
   "time": "",
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-10-25",
   "srcType": "partner",
   "verifiedAt": "2026-10-23",
   "srcs": [
@@ -161,7 +161,9 @@
     "d": "2026-10-20",
     "t": "謎解きキットのWeb販売は11/3 13:00までです"
    }
-  ]
+  ],
+  "xpost": "https://x.com/chiikawa_movie/status/2079763375395909864",
+  "xpostNote": "投稿日2026-07-22（開始の2日前）。本文に「7/24(金)からスタートの『映画ちいかわ』東京メトロ脱出ゲーム」"
  },
  {
   "id": "20260724-25",
@@ -333,7 +335,8 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-23"
+  "verifiedAt": "2026-10-23",
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20260908-pus-centrair",
@@ -402,7 +405,8 @@
   "qNone": "海外（上海）限定",
   "srcs": [
    "https://x.com/chiikawa_kouhou/status/2094621282461532543"
-  ]
+  ],
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20260914-35",
@@ -422,7 +426,8 @@
   "updatedAt": "2026-10-17",
   "srcType": "partner",
   "verifiedAt": "2026-10-23",
-  "qNone": "セブン‐イレブンの店頭・ネット予約のみ"
+  "qNone": "セブン‐イレブンの店頭・ネット予約のみ",
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20260918-07",
@@ -576,13 +581,15 @@
   "src": "https://chiikawapark-tokyo.jp/",
   "t": "ちいかわパーク ハロウィーン限定企画",
   "time": "",
-  "updatedAt": "2026-09-27",
+  "updatedAt": "2026-10-25",
   "srcType": "official",
   "verifiedAt": "2026-10-21",
   "srcs": [
    "https://www.cinemacafe.net/article/2026/09/24/112822.html",
    "https://www.inside-games.jp/release/prtimes/20260910/306201.html"
-  ]
+  ],
+  "xpost": "https://x.com/chiikawa_parkjp/status/2103650762236838134",
+  "xpostNote": "投稿日2026-09-26（開催中）。本文に「ちいかわパークがハロウィーンに」「開催期間 2026年9月25日(金)～10月31日(土)」"
  },
  {
   "id": "20260925-05",
@@ -941,7 +948,8 @@
   "srcs": [
    "https://universe.oneone.com.tw/posts/6969",
    "https://chiikawa-info.jp/p26/pus_smtk/index.html"
-  ]
+  ],
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261009-nikuman",
@@ -1958,9 +1966,14 @@
   "note": "2027年5月発送予定。公式ショップでの予約はセリフプレート＋支柱つき。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-25",
   "srcType": "partner",
-  "verifiedAt": "2026-10-20"
+  "verifiedAt": "2026-10-25",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2103424283024257219",
+  "xpostNote": "投稿日2026-09-25（予約開始の3日前）。本文に「ねんどろいど（くりまんじゅう、シーサー）」「ご予約受付：9月28日(月)～11月11日(水)まで」「お届け予定：2027年5月頃」",
+  "srcs": [
+   "https://x.com/chiikawa_kouhou/status/2103424283024257219"
+  ]
  },
  {
   "id": "20261001-tokyobanana-solamachi",
@@ -3548,7 +3561,8 @@
   "note": "キャンペーンは10月末までの予定で、先着上限に達し次第終了。",
   "autoAdded": true,
   "addedAt": "2026-10-14",
-  "updatedAt": "2026-10-14"
+  "updatedAt": "2026-10-14",
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261014-shimamura-anoko-light",
@@ -3869,7 +3883,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-25",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-10-17",
@@ -4012,7 +4026,8 @@
   "note": "ちいかわインフォに載っている公式のたい焼き風のお店「ちいかわ焼き」の秋の限定味。",
   "autoAdded": true,
   "addedAt": "2026-10-19",
-  "updatedAt": "2026-10-19"
+  "updatedAt": "2026-10-19",
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261021-kr-tokuten-4th",
@@ -4085,7 +4100,7 @@
   "qNone": "海外（韓国の映画館）限定",
   "src": "https://www.ggilbo.com/news/articleView.html?idxno=1187145",
   "srcType": "news",
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-10-25",
   "dl": [
    {
     "k": "予約",
@@ -4102,7 +4117,8 @@
   "note": "原文：먼작귀 C타입 커버 참、먼작귀 렌티큘러 띠부띠부 씰",
   "autoAdded": true,
   "addedAt": "2026-10-20",
-  "updatedAt": "2026-10-20"
+  "updatedAt": "2026-10-20",
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261025-furifuri-head",
