@@ -1231,8 +1231,11 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-21",
-  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
+  "verifiedAt": "2026-10-26",
+  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず",
+  "srcs": [
+   "https://tokoname.aeonmall.jp/event"
+  ]
  },
  {
   "id": "20261022-17",
@@ -1369,7 +1372,7 @@
   "cat": "goods",
   "e": null,
   "eNote": "",
-  "note": "パジャマ姿の全3種（ちいかわ・ハチワレ・うさぎ）。2段階温度調整、モバイルバッテリー機能付き。メーカー公式通販では「11月中旬発売予定」。",
+  "note": "パジャマ姿の全3種（ちいかわ・ハチワレ・うさぎ）。2段階温度調整、モバイルバッテリー機能付き。メーカー公式通販では「11月中旬発売予定」。メーカー公式通販ではうさぎが売り切れ（10/26時点・再入荷通知あり）。",
   "place": "グルマンディーズ公式通販、ちいかわらんど、ちいかわマーケット",
   "price": "5,478円",
   "q": "ちいかわ 充電式カイロ",
@@ -1378,12 +1381,18 @@
   "src": "https://www.gourmandise.jp/view/item/000000010978",
   "t": "ちいかわ 充電式カイロ",
   "time": "",
-  "updatedAt": "2026-10-09",
+  "updatedAt": "2026-10-26",
   "srcs": [
    "https://www.inside-games.jp/article/2026/09/08/187400.html"
   ],
-  "verifiedAt": "2026-10-21",
-  "srcType": "partner"
+  "verifiedAt": "2026-10-26",
+  "srcType": "partner",
+  "log": [
+   {
+    "d": "2026-10-26",
+    "t": "メーカー公式通販でうさぎが売り切れになりました"
+   }
+  ]
  },
  {
   "id": "20261120-36",
@@ -2184,7 +2193,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-05",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-26",
   "t": "ちいかわ 日本酒とお出汁のだし割りセット（玉乃光酒造）",
   "cat": "food",
   "s": "2026-11-10",
@@ -2550,12 +2559,15 @@
   "q": "ちいかわ キャラパキ チョコレート 大袋",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929205000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-26",
   "note": "9袋入り（ホワイトチョコ・いちごチョコの2種の味）。チョコのキャラは20種。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
   "updatedAt": "2026-10-09",
-  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
+  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず",
+  "srcs": [
+   "https://game.watch.impress.co.jp/docs/news/2149224.html"
+  ]
  },
  {
   "id": "20261009-hikaru-pajama",
