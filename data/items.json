@@ -1743,7 +1743,7 @@
   "place": "全国のスーパーなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-26",
   "xpost": "https://x.com/chiikawa_kouhou/status/2113072853088358705",
   "xpostNote": "投稿日2026-10-22 10:00（IDから計算）。本文に「アニメちいかわ きのこのポタージュ・ほうれんそうのポタージュ」「10月22日（木）より」「オリジナルシール1枚入り」（2026-10-24 検索結果で確認）",
   "srcs": [
@@ -1790,7 +1790,7 @@
   "note": "11/20に第1弾（ニット・スウェットなど）、11/27に第2弾（ルームウェアなど）を発売。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-26",
   "id": "20261120-gu",
   "t": "ちいかわ×GU コラボ（おでかけ着・ルームウェア）",
   "cat": "goods",
@@ -1798,11 +1798,29 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-26",
   "qNone": "GUの店舗・公式通販のみ",
   "srcs": [
    "https://www.famitsu.com/article/202609/88383",
    "https://x.com/gu_global/status/2100404374573076563"
+  ],
+  "dl": [
+   {
+    "k": "予約",
+    "n": "GUオンラインストアの先行予約（11/19までにお届け）",
+    "until": "2026-11-08T23:59",
+    "u": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa"
+   }
+  ],
+  "how": [
+   "GUオンラインストアで11/2(月)7:15〜11/8(日)23:59に先行予約。予約分は11/19(木)までにお届け",
+   "第1弾は11/20(金)、第2弾は11/27(金)から通常販売（予定）"
+  ],
+  "log": [
+   {
+    "d": "2026-10-26",
+    "t": "オンラインストアの先行予約（11/2〜11/8）が決まりました"
+   }
   ]
  },
  {
@@ -3870,7 +3888,7 @@
   "sp": "day",
   "e": null,
   "time": "ちいかわマーケットは11:00〜",
-  "eNote": "",
+  "eNote": "数量制限あり（ちいかわマーケットは全8種完売）",
   "place": "ちいかわらんど、ちいかわマーケット、全国の量販店・書店・文具店など",
   "area": "",
   "price": "550円",
@@ -3882,13 +3900,14 @@
    "https://www.inside-games.jp/article/2026/10/16/189372.html",
    "https://x.com/chiikawa_kouhou/status/2110958918864457850",
    "https://x.com/chiikawa_market/status/2113563806924435907",
-   "https://www.inside-games.jp/article/2026/10/23/189717.html"
+   "https://www.inside-games.jp/article/2026/10/23/189717.html",
+   "https://chiikawamarket.jp/products/4901770054131"
   ],
-  "verifiedAt": "2026-10-24",
+  "verifiedAt": "2026-10-26",
   "note": "ぷっくりしたボンボンドロップシールの小さいサイズ。ちいかわ・ハチワレ・うさぎ・3人・モモンガ・古本屋・みんな ニコニコ・みんな ポーズの全8種。メーカー公式は「2026年10月」発売、報道では10月下旬から順次発売。",
   "autoAdded": true,
   "addedAt": "2026-10-16",
-  "updatedAt": "2026-10-24",
+  "updatedAt": "2026-10-26",
   "xpost": "https://x.com/chiikawa_kouhou/status/2110958918864457850",
   "xpostNote": "投稿日2026-10-16（IDから計算）。本文に「ボンボンドロップシールミニ ちいかわ（全8種）」「10月下旬より順次、ちいかわらんど、ちいかわマーケット、他全国の量販店・書店・文具店など」",
   "how": [
@@ -3896,6 +3915,10 @@
    "ちいかわらんど・全国の量販店・書店・文具店などは10月下旬から順次（一部取り扱いなしの店あり）"
   ],
   "log": [
+   {
+    "d": "2026-10-26",
+    "t": "ちいかわマーケットで全8種が完売しました"
+   },
    {
     "d": "2026-10-24",
     "t": "ちいかわマーケットの発売日時（10/26 11:00）が決まりました"
@@ -4366,5 +4389,65 @@
   "autoAdded": true,
   "addedAt": "2026-10-24",
   "updatedAt": "2026-10-24"
+ },
+ {
+  "id": "20261025-mochiru-big1",
+  "region": "jp",
+  "t": "ちいかわ もっちるおすわりBIGぬいぐるみ①（プライズ）",
+  "cat": "goods",
+  "s": "2026-10-25",
+  "sp": "late",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のアミューズメント施設・オンラインクレーンゲーム（プライズ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（ゲームセンターの景品）",
+  "src": "https://www.parade-inc.net/products/p261001",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/26/189833.html"
+  ],
+  "verifiedAt": "2026-10-26",
+  "note": "もちもちした生地の「もっちる」シリーズ第1弾。首をかしげておすわりした約28cmのぬいぐるみで、ちいかわ・ハチワレ・くりまんじゅう・シーサーの全4種。2026年10月下旬から順次展開。",
+  "how": [
+   "ゲームセンターなどのクレーンゲームの景品（プライズ）。店頭では販売されない",
+   "2026年10月下旬から順次。取り扱い店舗はメーカーの商品ページで確認できる"
+  ],
+  "autoAdded": true,
+  "addedAt": "2026-10-26",
+  "updatedAt": "2026-10-26"
+ },
+ {
+  "id": "20261101-pondecouleur",
+  "region": "jp",
+  "t": "ポンデクルール ちいかわ マルチカラーパウダー（ガシャポン）",
+  "cat": "goods",
+  "s": "2026-11-01",
+  "sp": "month",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のガシャポン売り場など",
+  "area": "",
+  "price": "500円",
+  "q": "",
+  "qNone": "カプセルトイ（ガシャポン）で、楽天で同じ商品と言い切れない",
+  "src": "https://gashapon.jp/products/detail.php?jan_code=4582770137750000",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.bandai.co.jp/catalog/item.php?jan_cd=4582770137750000"
+  ],
+  "verifiedAt": "2026-10-26",
+  "note": "アイシャドウやフェイスカラーに使えるサプライズコスメのガシャポン。ちいかわ・ハチワレ・うさぎ・モモンガ・3人・ちいかわとハチワレの全6種。対象年齢15才以上。公式の発売時期は「2026年11月」。",
+  "how": [
+   "ガシャポン（1回500円）。中身は開けるまでわからない全6種",
+   "発売日は地域・店舗によって異なる場合あり"
+  ],
+  "autoAdded": true,
+  "addedAt": "2026-10-26",
+  "updatedAt": "2026-10-26"
  }
 ]
