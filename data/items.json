@@ -3721,7 +3721,7 @@
   "q": "ちいかわ ウエハース エールカードコレクション",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117930188000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-26",
   "note": "メタリックに輝くキラキラカード全25種（うちシークレット1種）入りのウエハース。2026年12月発売予定（日付は未発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
@@ -4107,7 +4107,8 @@
   "note": "原文：이중 레이어 아크릴 키링",
   "autoAdded": true,
   "addedAt": "2026-10-20",
-  "updatedAt": "2026-10-20"
+  "updatedAt": "2026-10-20",
+  "xpostNote": "2026-10-26 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261024-kr-4dx",
@@ -4445,6 +4446,67 @@
   "how": [
    "ガシャポン（1回500円）。中身は開けるまでわからない全6種",
    "発売日は地域・店舗によって異なる場合あり"
+  ],
+  "autoAdded": true,
+  "addedAt": "2026-10-26",
+  "updatedAt": "2026-10-26",
+  "xpostNote": "2026-10-26 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
+ },
+ {
+  "id": "20261101-bonbon-magical",
+  "region": "jp",
+  "t": "ボンボンドロップシール ちいかわ マジカルシリーズ（全4種）",
+  "cat": "goods",
+  "s": "2026-11-01",
+  "sp": "month",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "クーリア公式オンラインストア",
+  "area": "",
+  "price": "各660円",
+  "q": "",
+  "qNone": "既存のボンボンドロップシールと楽天で区別しにくく、同じ商品と言い切れない",
+  "src": "https://qlia.store/collections/164161",
+  "srcType": "partner",
+  "srcs": [
+   "https://qlia.store/products/15099",
+   "https://www.inside-games.jp/article/2026/10/26/189838.html"
+  ],
+  "verifiedAt": "2026-10-26",
+  "note": "まじかるちいかわ・超まじかるちいかわ・悪いバージョン・てんし・あくまの全4種。クーリア公式オンラインストアの商品ページでは「販売は11月以降」と案内されており、正確な発売日は未発表。",
+  "how": [
+   "クーリア公式オンラインストアで販売（同ストアでの販売は11月以降と案内）"
+  ],
+  "autoAdded": true,
+  "addedAt": "2026-10-26",
+  "updatedAt": "2026-10-26",
+  "xpostNote": "2026-10-26 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
+ },
+ {
+  "id": "20260901-talking-halloween",
+  "region": "jp",
+  "t": "ちいかわ HAPPY HALLOWEEN 2026（Talking ODM 受注生産）",
+  "cat": "goods",
+  "s": "2026-09-01",
+  "sp": "day",
+  "e": "2026-11-01",
+  "time": "",
+  "eNote": "期間限定（受注生産）",
+  "place": "Talking ODM（オンラインショップ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "Talking ODMのオンラインショップのみの受注生産",
+  "src": "https://odm-shop.talking.design/blogs/news/ck-happy-halloween-2026-lp",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/26/189864.html"
+  ],
+  "verifiedAt": "2026-10-26",
+  "note": "ハロウィン姿のちいかわ・ハチワレ・うさぎなど全6デザイン。Tシャツ・ロンT・パーカー（新作）・スウェット・トートバッグ・マグカップなどを受注生産で販売。報道では販売期間は11/1まで。",
+  "how": [
+   "Talking ODMのオンラインショップで注文する受注生産。支払い後5〜10営業日ほどで発送（日時指定・お客様都合の返品交換は不可）"
   ],
   "autoAdded": true,
   "addedAt": "2026-10-26",
