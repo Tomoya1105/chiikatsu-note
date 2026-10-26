@@ -3958,7 +3958,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-27",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-10-17",
@@ -4511,5 +4511,35 @@
   "autoAdded": true,
   "addedAt": "2026-10-26",
   "updatedAt": "2026-10-26"
+ },
+ {
+  "id": "20261103-shimamura-roomshoes",
+  "region": "jp",
+  "t": "しまむらパーク ちいかわ ルームシューズ（全4種）",
+  "cat": "goods",
+  "s": "2026-11-03",
+  "sp": "day",
+  "e": null,
+  "time": "15:00〜",
+  "eNote": "",
+  "place": "しまむらパーク（しまむらのオンラインストア）",
+  "area": "",
+  "price": "レディース869円・キッズ759円",
+  "q": "",
+  "qNone": "しまむらのオンラインストア限定の販売で、楽天では同じ商品と言い切れないため",
+  "src": "https://www.inside-games.jp/article/2026/10/26/189883.html",
+  "srcType": "news",
+  "srcs": [
+   "https://x.com/shimamura_gr/status/2114673408298410242"
+  ],
+  "verifiedAt": "2026-10-27",
+  "note": "顔が大きくデザインされた、もこもこ素材のルームシューズ。ちいかわ・ハチワレ・うさぎ・モモンガの4種で、レディース（23〜25cm）とキッズ（19〜21cm）。状況により一部の店舗に入荷する場合あり。",
+  "how": [
+   "しまむらのオンラインストア「しまむらパーク」で11/3(火)15:00から販売",
+   "状況により一部の店舗に入荷する場合があります（入荷店は未発表）"
+  ],
+  "autoAdded": true,
+  "addedAt": "2026-10-27",
+  "updatedAt": "2026-10-27"
  }
 ]
