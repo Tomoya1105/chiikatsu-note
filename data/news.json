@@ -1,5 +1,16 @@
 [
  {
+  "id": "20261027-market-xmas-1106",
+  "date": "2026-10-27",
+  "tag": "goods",
+  "title": "テディベア姿のクリスマスぬいぐるみなど11/6に公式通販へ",
+  "sum": "ちいかわマーケットで11/6(金)11時から、クリスマス衣装のテディベアやまじかるちいかわのシールなど21商品を発売。ツリーなうさぎぬいぐるみは抽選販売です。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/10/27/189904.html",
+  "itemId": "20261106-market-xmas",
+  "addedAt": "2026-10-27"
+ },
+ {
   "id": "20261027-gu-preorder",
   "date": "2026-10-27",
   "tag": "goods",
@@ -8,6 +19,17 @@
   "source": "にじめん",
   "src": "https://nijimen.kusuguru.co.jp/topics/644527",
   "itemId": "20261120-gu",
+  "addedAt": "2026-10-27"
+ },
+ {
+  "id": "20261026-park-store-goods",
+  "date": "2026-10-26",
+  "tag": "goods",
+  "title": "大阪のちいかわパークストア、売るグッズと特典が判明",
+  "sum": "11/24(火)にLUCUA SOUTH 11Fで開く店では、池袋のちいかわパークのグッズを販売。1会計ごとのステッカーなどオープン記念の特典もあります。",
+  "source": "アニメ！アニメ！",
+  "src": "https://animeanime.jp/article/2026/10/26/104220.html",
+  "itemId": "20261124-park-store-osaka",
   "addedAt": "2026-10-27"
  },
  {

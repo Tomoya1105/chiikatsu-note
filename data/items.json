@@ -4225,7 +4225,7 @@
    "https://collabo-cafe.com/events/collabo/muchauma-chiikawa-sushi-popup-store-yokohama2026/",
    "https://www.sumaitoseikatsu.yokohama/archives/67888"
   ],
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-27",
   "how": [
    "10/22(木)〜10/25(日)は入店整理券の配布を予定（配布方法は公式ページで確認）",
    "ちいかわ寿司のイベント商品を税込2,200円買うごとに「お皿みたいなトレーディングカード」（全8種）を1枚（カプセルトイは対象外・なくなり次第終了）",
@@ -4538,6 +4538,68 @@
    "しまむらのオンラインストア「しまむらパーク」で11/3(火)15:00から販売",
    "状況により一部の店舗に入荷する場合があります（入荷店は未発表）"
   ],
+  "autoAdded": true,
+  "addedAt": "2026-10-27",
+  "updatedAt": "2026-10-27"
+ },
+ {
+  "id": "20261106-market-xmas",
+  "region": "jp",
+  "t": "Kiramekko Teddy Bear Christmas・クリスマスの精マスコット・まじかるちいかわ ボンボンドロップシール ジュエルなど（ちいかわマーケット 11/6発売）",
+  "cat": "goods",
+  "s": "2026-11-06",
+  "sp": "day",
+  "e": null,
+  "time": "11:00〜",
+  "eNote": "数量制限（1会計につき各1個まで）・ツリーなうさぎぬいぐるみは抽選販売",
+  "place": "ちいかわマーケット（公式通販）",
+  "area": "",
+  "price": "660円〜6,820円",
+  "q": "",
+  "qNone": "公式通販の新商品で、楽天で同じ商品と言い切れない",
+  "src": "https://chiikawamarket.jp/collections/20261106",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawamarket.jp/products/4571609413028",
+   "https://www.inside-games.jp/article/2026/10/27/189904.html"
+  ],
+  "verifiedAt": "2026-10-27",
+  "dl": [
+   {
+    "k": "抽選",
+    "n": "ちいかわ 動く！？ ツリーなうさぎぬいぐるみの抽選販売（当選発表は11/4以降順次）",
+    "until": "2026-11-02T12:00",
+    "u": "https://chiikawamarket.jp/products/4571609413028"
+   }
+  ],
+  "how": [
+   "ちいかわマーケット（公式通販）で11/6(金)11時から販売。商品は1会計につき各1個まで",
+   "「動く！？ ツリーなうさぎぬいぐるみ」だけ抽選販売。報道では応募は10/27(火)18時〜11/2(月)12時、当選者の注文は11/6(金)10時から",
+   "ボンボンドロップシール ジュエル（各660円）はクレジットカード決済のみ"
+  ],
+  "note": "Kiramekko Teddy Bear Christmas（ちいかわ・ハチワレ・うさぎ 各2,420円）、クリスマスリースなぬいぐるみ（6,820円）、ツリーなうさぎマスコット（1,650円）、クリスマスの精マスコット（各1,870円）、ライティングペンダント（星・1,870円）、まじかるちいかわ 強くなったハチワレ／うさぎマスコット（各2,090円）、ちいかわラーメン豚 店員さんなマスコット（全5種・各1,870円）など全21商品。",
+  "autoAdded": true,
+  "addedAt": "2026-10-27",
+  "updatedAt": "2026-10-27"
+ },
+ {
+  "id": "20261106-pus-suzaka",
+  "region": "jp",
+  "t": "ちいかわPOP UP STORE＠イオンモール須坂",
+  "cat": "event",
+  "s": "2026-11-06",
+  "sp": "day",
+  "e": "2026-11-23",
+  "time": "",
+  "eNote": "",
+  "place": "イオンモール須坂（長野県須坂市）",
+  "area": "須坂",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "verifiedAt": "2026-10-27",
+  "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-27",
   "updatedAt": "2026-10-27"
