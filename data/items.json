@@ -1337,7 +1337,7 @@
   "time": "",
   "updatedAt": "2026-10-05",
   "srcType": "partner",
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-28",
   "srcs": [
    "https://toy.bandai.co.jp/ja/item/01_21066/"
   ],
@@ -1463,7 +1463,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-28",
   "qNone": "くじ（オンラインくじ）"
  },
  {
@@ -3577,7 +3577,7 @@
   "qNone": "取扱店・商品の詳細が未発表で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "srcType": "official",
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-28",
   "xpost": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「ちいかわ1分丈腹巻パンツ」「全国の量販店にて」「11月下旬」",
   "note": "同じ告知の「ちいかわ腹巻」は10月上旬から発売。",
@@ -4264,7 +4264,7 @@
   "q": "",
   "src": "https://info.grayparkaservice.com/gpsboxkira_pus/umeda/",
   "srcType": "partner",
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-28",
   "how": [
    "10/21(水)はオンライン整理券を配布（12:30入場分は当日8:00に受付開始、13:00以降の回は各回の1時間前に受付開始）",
    "ちいかわのGPSBOXは1会計につき各商品1箱（6点）まで。単品はランダム封入",
@@ -4749,7 +4749,8 @@
   "src": "https://chiikawamogumogu.jp/2026/10/28/post-2505",
   "srcType": "official",
   "srcs": [
-   "https://prtimes.jp/main/html/rd/p/000000186.000035374.html"
+   "https://prtimes.jp/main/html/rd/p/000000186.000035374.html",
+   "https://chiikawamogumogu.jp/2026/10/28/post-2535"
   ],
   "verifiedAt": "2026-10-28",
   "dl": [
@@ -4763,6 +4764,36 @@
     "k": "抽選",
     "n": "11/23〜11/29の入店予約（LINEで抽選）",
     "until": "2026-11-14T18:00",
+    "u": "https://lin.ee/Di0FUyj"
+   },
+   {
+    "k": "抽選",
+    "n": "11/30〜12/6の入店予約（LINEで抽選）",
+    "until": "2026-11-21T18:00",
+    "u": "https://lin.ee/Di0FUyj"
+   },
+   {
+    "k": "抽選",
+    "n": "12/7〜12/13の入店予約（LINEで抽選）",
+    "until": "2026-11-28T18:00",
+    "u": "https://lin.ee/Di0FUyj"
+   },
+   {
+    "k": "抽選",
+    "n": "12/14〜12/20の入店予約（LINEで抽選）",
+    "until": "2026-12-05T18:00",
+    "u": "https://lin.ee/Di0FUyj"
+   },
+   {
+    "k": "抽選",
+    "n": "12/21〜12/27の入店予約（LINEで抽選）",
+    "until": "2026-12-12T18:00",
+    "u": "https://lin.ee/Di0FUyj"
+   },
+   {
+    "k": "抽選",
+    "n": "12/28〜1/3の入店予約（LINEで抽選）",
+    "until": "2026-12-19T18:00",
     "u": "https://lin.ee/Di0FUyj"
    }
   ],
@@ -4781,7 +4812,13 @@
   "note": "ちいかわベビーカステラの2号店。年中無休（季節などで営業時間の変更あり）。",
   "autoAdded": true,
   "addedAt": "2026-10-28",
-  "updatedAt": "2026-10-28"
+  "updatedAt": "2026-10-28",
+  "log": [
+   {
+    "d": "2026-10-28",
+    "t": "1/3までの入店予約の抽選日程をすべて追加しました"
+   }
+  ]
  },
  {
   "id": "20261030-tokyobanana-okinawa",
@@ -4864,6 +4901,31 @@
    "池袋PARCOのちいかわレストランで開催中の“討伐フェア”から、ドリンクとサイドメニューの一部を提供",
    "ドリンクスタンドは1F ぱるけカフェ、グッズショップは1F イベントスペース"
   ],
+  "note": "",
+  "autoAdded": true,
+  "addedAt": "2026-10-28",
+  "updatedAt": "2026-10-28"
+ },
+ {
+  "id": "20261111-pus-kobe-kita",
+  "region": "jp",
+  "t": "ちいかわPOP UP STORE＠イオンモール神戸北",
+  "cat": "event",
+  "s": "2026-11-11",
+  "sp": "day",
+  "e": "2026-11-25",
+  "time": "",
+  "eNote": "",
+  "place": "イオンモール神戸北 専門店1階 さざんかコート（兵庫県神戸市北区）",
+  "area": "神戸",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawa-info.jp/p26/pus_kbkt/index.html"
+  ],
+  "verifiedAt": "2026-10-28",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-28",
