@@ -2375,16 +2375,30 @@
   "eNote": "",
   "place": "ちいかわマーケット、全国のロフト・ハンズ・量販店、APJオンラインショップ（一部はセブン‐イレブン）",
   "area": "",
-  "price": "",
+  "price": "お年玉袋 各253円・金封 各330円",
   "q": "",
   "qNone": "デザインが多く、楽天で同じ商品を特定できない",
-  "src": "https://animeanime.jp/article/2026/09/26/103251.html",
-  "srcType": "news",
-  "verifiedAt": "2026-10-15",
-  "note": "お年玉袋・金封それぞれ全3種。10月中旬ごろから順次発売。",
+  "src": "https://x.com/chiikawa_market/status/2115013258189148652",
+  "srcType": "official",
+  "verifiedAt": "2026-10-29",
+  "note": "お年玉袋・金封それぞれ全3種（金封は金箔おし）。ちいかわマーケット（公式通販）では10/30(金)11時発売。ほかの店は10月中旬ごろから順次発売。",
   "autoAdded": true,
   "addedAt": "2026-10-05",
-  "updatedAt": "2026-10-05"
+  "updatedAt": "2026-10-29",
+  "srcs": [
+   "https://animeanime.jp/article/2026/09/26/103251.html"
+  ],
+  "how": [
+   "ちいかわマーケット（公式通販）では10/30(金)11:00から発売"
+  ],
+  "log": [
+   {
+    "d": "2026-10-29",
+    "t": "ちいかわマーケットの発売日（10/30 11時）と価格を追加しました"
+   }
+  ],
+  "xpost": "https://x.com/chiikawa_market/status/2115013258189148652",
+  "xpostNote": "投稿日2026-10-27（IDから計算）。本文に「お年玉袋（全3種）各253円」「金封（全3種）各330円」「ちいかわマーケット（公式通販）では10/30(金)11時発売」（2026-10-29確認）"
  },
  {
   "id": "20261015-carabiner-pouch",
@@ -2701,7 +2715,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2724,7 +2738,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -4080,7 +4094,7 @@
   "srcs": [
    "https://www.oricon.co.jp/news/2487242/full/"
   ],
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "how": [
    "幕張新都心店：モモンガ（さつまいも）8/31〜、くりまんじゅう（渋皮マロン）9/7〜、ラッコ（パンプキン）9/14〜、いずれも11/26まで",
    "横浜ワールドポーターズ店・名古屋パルコ店：週がわりで販売（くりまんじゅう 10/19〜10/25、ラッコ 10/26〜11/1）",
