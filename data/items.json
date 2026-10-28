@@ -3489,7 +3489,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000144.000074811.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-28",
   "how": [
    "入場は公式サイトのチケットが必要。当日入場できない場合があるので事前に確認。",
    "限定グッズ（スウェット・ファーハット・マフラー）は11/24(火)発売。",
@@ -4728,6 +4728,143 @@
   "how": [
    "9/27からは予約なしで入場できる（公式微博の案内を伝える報道より）"
   ],
+  "autoAdded": true,
+  "addedAt": "2026-10-28",
+  "updatedAt": "2026-10-28"
+ },
+ {
+  "id": "20261118-babycastella-kyoto-nishiki",
+  "region": "jp",
+  "t": "ちいかわベビーカステラ 京都錦店 オープン",
+  "cat": "cafe",
+  "s": "2026-11-18",
+  "sp": "day",
+  "e": null,
+  "time": "10:30〜17:30",
+  "eNote": "常設店（11/18〜1/3は事前予約・完全入れ替え制）",
+  "place": "錦市場（京都府京都市中京区鍛冶屋町205）",
+  "area": "京都市",
+  "price": "ベビーカステラ10個入り 700円・クリーム付き 800円、カップと繋がるマスコットセット 5,280円など",
+  "q": "",
+  "src": "https://chiikawamogumogu.jp/2026/10/28/post-2505",
+  "srcType": "official",
+  "srcs": [
+   "https://prtimes.jp/main/html/rd/p/000000186.000035374.html"
+  ],
+  "verifiedAt": "2026-10-28",
+  "dl": [
+   {
+    "k": "抽選",
+    "n": "11/18〜11/22の入店予約（LINEで抽選）",
+    "until": "2026-11-07T18:00",
+    "u": "https://lin.ee/Di0FUyj"
+   },
+   {
+    "k": "抽選",
+    "n": "11/23〜11/29の入店予約（LINEで抽選）",
+    "until": "2026-11-14T18:00",
+    "u": "https://lin.ee/Di0FUyj"
+   }
+  ],
+  "org": {
+   "name": "株式会社寺子屋",
+   "url": "https://chiikawamogumogu.jp/",
+   "src": "https://prtimes.jp/main/html/rd/p/000000186.000035374.html"
+  },
+  "xpost": "https://x.com/chiikawamgmg/status/2115247236053348700",
+  "xpostNote": "投稿日2026-10-28（IDから計算）。本文に「2026年11月18日(水)」「京都の錦市場に「ちいかわベビーカステラ 京都錦店」がオープン」",
+  "how": [
+   "11/18〜2027/1/3は事前予約・完全入れ替え制。ちいかわもぐもぐ本舗のLINE公式アカウントで抽選に申し込む（1人1枚のデジタルチケットが必要）",
+   "抽選は週ごと。11/18〜22分は11/4(水)18:00〜11/7(土)18:00受付、11/9(月)結果発表",
+   "オープン記念グッズは店舗限定（通販なし）"
+  ],
+  "note": "ちいかわベビーカステラの2号店。年中無休（季節などで営業時間の変更あり）。",
+  "autoAdded": true,
+  "addedAt": "2026-10-28",
+  "updatedAt": "2026-10-28"
+ },
+ {
+  "id": "20261030-tokyobanana-okinawa",
+  "region": "jp",
+  "t": "ちいかわ×東京ばな奈 沖縄初登場（Sweets Selection in PARCO CITY）",
+  "cat": "food",
+  "s": "2026-10-30",
+  "sp": "day",
+  "e": "2026-11-08",
+  "time": "10:00〜20:00",
+  "eNote": "早期完売の可能性あり",
+  "place": "サンエー浦添西海岸 PARCO CITY 2階センタープラザ（沖縄県浦添市）",
+  "area": "浦添市",
+  "price": "ちいかわバナナプリンケーキ 4個入 853円・8個入 1,706円、クッキーサンド 12枚入 1,850円・18枚入 2,700円など",
+  "q": "",
+  "qNone": "催事での店頭販売",
+  "src": "https://prtimes.jp/main/html/rd/p/000002181.000025606.html",
+  "srcType": "press",
+  "verifiedAt": "2026-10-28",
+  "how": [
+   "「大丸松坂屋百貨店監修 Sweets Selection in PARCO CITY」の会場で販売",
+   "トートバッグ・エコバッグはお菓子とのセットのみ（単品販売なし）"
+  ],
+  "note": "ちいかわ×東京ばな奈が沖縄県で初めての販売。",
+  "autoAdded": true,
+  "addedAt": "2026-10-28",
+  "updatedAt": "2026-10-28"
+ },
+ {
+  "id": "20261028-okeiko-poster",
+  "region": "jp",
+  "t": "ちいかわ おふろでたのしく おけいこポスター もじ＆かず＆とけい（KADOKAWA）",
+  "cat": "goods",
+  "s": "2026-10-28",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "書店・通販など",
+  "area": "",
+  "price": "1,320円",
+  "q": "ちいかわ おふろでたのしく おけいこポスター",
+  "src": "https://prtimes.jp/main/html/rd/p/000020277.000007006.html",
+  "srcType": "press",
+  "srcs": [
+   "https://yomeruba.com/product/character/chara-book/chiikawa/322408001742.html"
+  ],
+  "verifiedAt": "2026-10-28",
+  "note": "おふろに貼って、ひらがな・数字・時計の読み方を覚えられるポスター。",
+  "autoAdded": true,
+  "addedAt": "2026-10-28",
+  "updatedAt": "2026-10-28"
+ },
+ {
+  "id": "20261106-restaurant-drink-shizuoka",
+  "region": "jp",
+  "t": "ちいかわレストラン“討伐フェア”ドリンクスタンド＆グッズショップ＠静岡PARCO",
+  "cat": "cafe",
+  "s": "2026-11-06",
+  "sp": "day",
+  "e": "2026-12-13",
+  "time": "グッズショップ 平日10:30〜19:30・土日祝10:00〜19:30（12/4〜13は20:00まで）",
+  "eNote": "",
+  "place": "静岡PARCO 1F ぱるけカフェ・イベントスペース（静岡県静岡市葵区）",
+  "area": "静岡駅",
+  "price": "なんか大きい討伐成功！クリームソーダ 1,320円、虫（緑）討伐アイスデザート 1,100円、ハチワレのピーマン肉詰め 880円",
+  "q": "",
+  "src": "https://cafe.parco.jp/event/chiikawarestaurant_drinkT_shizuoka?area=031750",
+  "srcType": "partner",
+  "srcs": [
+   "https://prtimes.jp/main/html/rd/p/000004138.000003639.html"
+  ],
+  "verifiedAt": "2026-10-28",
+  "org": {
+   "name": "株式会社パルコ",
+   "url": "https://cafe.parco.jp/",
+   "src": "https://prtimes.jp/main/html/rd/p/000004138.000003639.html"
+  },
+  "how": [
+   "池袋PARCOのちいかわレストランで開催中の“討伐フェア”から、ドリンクとサイドメニューの一部を提供",
+   "ドリンクスタンドは1F ぱるけカフェ、グッズショップは1F イベントスペース"
+  ],
+  "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-28",
   "updatedAt": "2026-10-28"

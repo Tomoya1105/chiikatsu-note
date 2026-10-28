@@ -1,5 +1,50 @@
 [
  {
+  "id": "20261028-babycastella-kyoto",
+  "date": "2026-10-28",
+  "tag": "event",
+  "title": "ちいかわベビーカステラ2号店、京都・錦市場に11/18開店",
+  "sum": "京都の錦市場にベビーカステラの新店ができる。年明けまでは公式LINEの抽選による入れ替え制で、店舗限定のマスコットセットなども登場。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000186.000035374.html",
+  "itemId": "20261118-babycastella-kyoto-nishiki",
+  "x": "https://x.com/chiikawamgmg/status/2115247236053348700",
+  "addedAt": "2026-10-28"
+ },
+ {
+  "id": "20261028-tokyobanana-okinawa",
+  "date": "2026-10-28",
+  "tag": "goods",
+  "title": "ちいかわ×東京ばな奈が沖縄で初めて販売",
+  "sum": "浦添市のPARCO CITYで10/30〜11/8に開かれるスイーツ催事に、ちいかわのバナナプリンケーキやクッキーサンドが並ぶ。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000002181.000025606.html",
+  "itemId": "20261030-tokyobanana-okinawa",
+  "addedAt": "2026-10-28"
+ },
+ {
+  "id": "20261028-restaurant-shizuoka",
+  "date": "2026-10-28",
+  "tag": "event",
+  "title": "静岡PARCOにちいかわレストランのドリンクスタンド",
+  "sum": "11/6〜12/13、討伐フェアのクリームソーダやピーマン肉詰めを出すドリンクスタンドとグッズショップが静岡PARCO 1階に登場する。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000004138.000003639.html",
+  "itemId": "20261106-restaurant-drink-shizuoka",
+  "addedAt": "2026-10-28"
+ },
+ {
+  "id": "20261028-okeiko-poster",
+  "date": "2026-10-28",
+  "tag": "goods",
+  "title": "おふろで学べるちいかわのおけいこポスター発売",
+  "sum": "KADOKAWAから、ひらがな・数字・時計の読み方をおふろで覚えられるちいかわのポスターが10/28に出た。価格は1,320円。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000020277.000007006.html",
+  "itemId": "20261028-okeiko-poster",
+  "addedAt": "2026-10-28"
+ },
+ {
   "id": "20261027-nlab-ranking",
   "date": "2026-10-27",
   "tag": "topic",
