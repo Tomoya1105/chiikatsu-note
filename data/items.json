@@ -85,7 +85,7 @@
   "time": "",
   "updatedAt": "2026-10-14",
   "srcType": "partner",
-  "verifiedAt": "2026-10-23",
+  "verifiedAt": "2026-10-29",
   "xpost": "https://x.com/chiikawa_kouhou/status/2064548449224413331",
   "xpostNote": "投稿日2026-06-10。本文に「東海道新幹線『ツツウラウラ旅』開催期間：7月8日〜10月31日」",
   "log": [
@@ -113,7 +113,7 @@
   "time": "",
   "updatedAt": "2026-10-20",
   "srcType": "partner",
-  "verifiedAt": "2026-10-23",
+  "verifiedAt": "2026-10-29",
   "xpost": "https://x.com/chiikawa_kouhou/status/2056622381393965225",
   "xpostNote": "投稿日2026-05-19。本文に「東京スカイツリーにてイベント開催決定」「ちいかわ☆星ふるスカイツリー®とひみつの島」",
   "log": [
@@ -1360,7 +1360,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-29",
   "srcs": [
    "https://www.bandai.co.jp/candy/chocosurp/chiikawa2/"
   ],
@@ -1411,7 +1411,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "rb": [
    {
     "n": "通常版",
@@ -1439,12 +1439,12 @@
   "q": "カードダス アニメちいかわ",
   "s": "2026-12-04",
   "sp": "day",
-  "src": "https://x.com/chiikawa_kouhou",
+  "src": "https://x.com/chiikawa_kouhou/status/2091691964563660991",
   "t": "カードダス アニメちいかわ",
   "time": "",
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-29",
   "srcType": "official",
-  "verifiedAt": "2026-10-05"
+  "verifiedAt": "2026-10-29"
  },
  {
   "id": "20261215-anymykuji",
@@ -1735,19 +1735,25 @@
   "note": "カップスープ2種。キラキラシール（全10種）が1枚入り。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-29",
   "id": "20261022-marumiya-soup",
   "t": "丸美屋 アニメちいかわ きのこ／ほうれんそうのポタージュ",
   "cat": "food",
   "s": "2026-10-22",
-  "place": "全国のスーパーなど",
+  "place": "ちいかわらんど、ちいかわPOP UP STORE、スーパー、ドラッグストアなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-26",
+  "verifiedAt": "2026-10-29",
   "xpost": "https://x.com/chiikawa_kouhou/status/2113072853088358705",
   "xpostNote": "投稿日2026-10-22 10:00（IDから計算）。本文に「アニメちいかわ きのこのポタージュ・ほうれんそうのポタージュ」「10月22日（木）より」「オリジナルシール1枚入り」（2026-10-24 検索結果で確認）",
   "srcs": [
    "https://x.com/chiikawa_kouhou/status/2113072853088358705"
+  ],
+  "log": [
+   {
+    "d": "2026-10-29",
+    "t": "ちいかわらんど・POP UP STOREでも販売と分かり、販売場所を直しました"
+   }
   ]
  },
  {
@@ -2105,7 +2111,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-04",
   "srcType": "official",
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "qNone": "ちいかわベーカリーの店頭販売のみ"
  },
  {
@@ -2831,7 +2837,7 @@
   "q": "ちいかわ キャラマグネッツ5",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929335000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-19",
+  "verifiedAt": "2026-10-29",
   "note": "アクリル製マグネット全21種（レアはオーロラ・キラキララメ・フレームの3種）＋ガム1個。2026年11月発売。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -4482,12 +4488,12 @@
   "region": "jp",
   "t": "ボンボンドロップシール ちいかわ マジカルシリーズ（全4種）",
   "cat": "goods",
-  "s": "2026-11-01",
-  "sp": "month",
+  "s": "2026-11-06",
+  "sp": "day",
   "e": null,
-  "time": "",
-  "eNote": "",
-  "place": "クーリア公式オンラインストア",
+  "time": "11:00〜（ちいかわマーケット）",
+  "eNote": "数量制限（ちいかわマーケットは1会計につき各1個まで）",
+  "place": "ちいかわマーケット（公式通販）、まじかるちいかわストア、まじかるちいかわPOP UP STORE（クーリア公式オンラインストアは後日）",
   "area": "",
   "price": "各660円",
   "q": "",
@@ -4495,18 +4501,28 @@
   "src": "https://qlia.store/collections/164161",
   "srcType": "partner",
   "srcs": [
+   "https://x.com/bonbon_drop/status/2114899889943384431",
+   "https://chiikawamarket.jp/products/4571609403173",
    "https://qlia.store/products/15099",
    "https://www.inside-games.jp/article/2026/10/26/189838.html"
   ],
-  "verifiedAt": "2026-10-26",
-  "note": "まじかるちいかわ・超まじかるちいかわ・悪いバージョン・てんし・あくまの全4種。クーリア公式オンラインストアの商品ページでは「販売は11月以降」と案内されており、正確な発売日は未発表。",
+  "verifiedAt": "2026-10-29",
+  "note": "まじかるちいかわ・超まじかるちいかわ・悪いバージョン・てんし♡あくまの全4種（ちいかわマーケットでの名前は「ボンボンドロップシール ジュエル」）。クーリア公式オンラインストアでの販売日は後日発表。",
   "how": [
-   "クーリア公式オンラインストアで販売（同ストアでの販売は11月以降と案内）"
+   "11/6(金)から、ちいかわマーケット（公式通販）・まじかるちいかわストア・まじかるちいかわPOP UP STOREで販売",
+   "ちいかわマーケットでは1会計につき各1個まで・クレジットカード決済のみ",
+   "クーリア公式オンラインストアでの販売は後日お知らせ（同ストアでは「11月以降」と案内）"
   ],
   "autoAdded": true,
   "addedAt": "2026-10-26",
-  "updatedAt": "2026-10-26",
-  "xpostNote": "2026-10-26 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
+  "updatedAt": "2026-10-29",
+  "xpostNote": "2026-10-26 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず",
+  "log": [
+   {
+    "d": "2026-10-29",
+    "t": "発売日が11/6(金)に決まり、販売場所を追加しました"
+   }
+  ]
  },
  {
   "id": "20260901-talking-halloween",
@@ -4994,6 +5010,38 @@
   ],
   "verifiedAt": "2026-10-29",
   "note": "キラキラの鍵型チャーム全13種（開けるまでわからない）とオレンジ味のグミ（バンダイ キャンディ）。公式の発売時期は「2027年2月」。プレミアムバンダイでは12個入りBOX（4,752円）の予約も10/29から受付。",
+  "autoAdded": true,
+  "addedAt": "2026-10-29",
+  "updatedAt": "2026-10-29"
+ },
+ {
+  "id": "20261121-tw-obanyaki",
+  "region": "tw",
+  "t": "CHIIKAWA OBANYAKI in TAIPEI（ちいかわ大判焼き 台北店）オープン",
+  "cat": "cafe",
+  "s": "2026-11-21",
+  "sp": "day",
+  "e": null,
+  "time": "12:00〜20:00（L.O. 19:30）",
+  "eNote": "常設店・入店は事前予約制",
+  "place": "台北・台北市大同區赤峰街41巷9號",
+  "area": "台北",
+  "price": "大判焼き 各NT$95・ドリンク 各NT$90",
+  "q": "",
+  "src": "https://prtimes.jp/main/html/rd/p/000000004.000187317.html",
+  "srcType": "press",
+  "verifiedAt": "2026-10-29",
+  "how": [
+   "入店は事前予約制（予約方法は店舗の公式SNSで案内）。予約は入店の枠で、商品の確保ではありません",
+   "大判焼きは1人2個まで、ドリンクは1人2杯まで。グッズは1人各1点まで（制限は変わることがあります）",
+   "定休日は未定"
+  ],
+  "org": {
+   "name": "株式会社OMOLABO（企画）・大快國際股份有限公司（運営）",
+   "url": "https://prtimes.jp/main/html/rd/p/000000004.000187317.html",
+   "src": "https://prtimes.jp/main/html/rd/p/000000004.000187317.html"
+  },
+  "note": "台北で初めての、ちいかわ大判焼きのお店。大判焼きはクリーム・あんこ・さつまいもの3種、ドリンクは日月潭の紅茶と金萱ウーロン茶（アイス）。限定グッズに「ちいかわ大判焼き クッション」（NT$780）と「マスコット」（NT$390）。原文：吉伊卡哇大判燒台北店。",
   "autoAdded": true,
   "addedAt": "2026-10-29",
   "updatedAt": "2026-10-29"
