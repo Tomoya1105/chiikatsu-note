@@ -725,7 +725,7 @@
   "time": "11:00〜（11/3 23:59まで）",
   "updatedAt": "2026-10-22",
   "srcType": "press",
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "qNone": "くじ（店頭・オンラインくじ）",
   "area": "",
   "srcs": [
@@ -1483,7 +1483,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-21",
+  "verifiedAt": "2026-10-29",
   "srcs": [
    "https://animeanime.jp/article/2026/09/26/103251.html"
   ]
@@ -3255,7 +3255,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3287,7 +3287,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3319,7 +3319,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-25",
@@ -3351,7 +3351,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-25",
@@ -3383,7 +3383,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-22",
+  "verifiedAt": "2026-10-29",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -4944,5 +4944,58 @@
   "autoAdded": true,
   "addedAt": "2026-10-28",
   "updatedAt": "2026-10-28"
+ },
+ {
+  "id": "20261102-prison-potato",
+  "region": "jp",
+  "t": "ちいかわ プリズンポテト 濃厚サワクリ味",
+  "cat": "food",
+  "s": "2026-11-02",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国の量販店の菓子売場など",
+  "area": "",
+  "price": "171円（税込）",
+  "q": "ちいかわ プリズンポテト",
+  "src": "https://gourmetpress.net/1491909/",
+  "srcType": "press",
+  "srcs": [
+   "https://game.watch.impress.co.jp/docs/news/2152123.html"
+  ],
+  "verifiedAt": "2026-10-29",
+  "how": [
+   "全国の量販店の菓子売場などで販売（取り扱いのない店舗あり・発売日は店舗によって異なる場合あり）"
+  ],
+  "note": "「オデと牢獄」のエピソードがモチーフ。囚人服姿のちいかわ・ハチワレ・うさぎ・モモンガのパッケージ全4種（バンダイ）。",
+  "autoAdded": true,
+  "addedAt": "2026-10-29",
+  "updatedAt": "2026-10-29"
+ },
+ {
+  "id": "20270201-ribbon-charm-gummy",
+  "region": "jp",
+  "t": "ちいかわ きらっとミラクルリボンチャームグミ",
+  "cat": "food",
+  "s": "2027-02-01",
+  "sp": "month",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国の量販店の菓子売場など",
+  "area": "",
+  "price": "396円（税込）",
+  "q": "ちいかわ きらっとミラクルリボンチャームグミ",
+  "src": "https://www.bandai.co.jp/candy/products/2027/4570117927898000.html",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/29/190011.html"
+  ],
+  "verifiedAt": "2026-10-29",
+  "note": "キラキラの鍵型チャーム全13種（開けるまでわからない）とオレンジ味のグミ（バンダイ キャンディ）。公式の発売時期は「2027年2月」。プレミアムバンダイでは12個入りBOX（4,752円）の予約も10/29から受付。",
+  "autoAdded": true,
+  "addedAt": "2026-10-29",
+  "updatedAt": "2026-10-29"
  }
 ]
