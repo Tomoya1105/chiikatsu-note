@@ -1385,7 +1385,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/09/08/187400.html"
   ],
-  "verifiedAt": "2026-10-26",
+  "verifiedAt": "2026-10-31",
   "srcType": "partner",
   "log": [
    {
@@ -1804,7 +1804,7 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-10-26",
+  "verifiedAt": "2026-10-31",
   "qNone": "GUの店舗・公式通販のみ",
   "srcs": [
    "https://www.famitsu.com/article/202609/88383",
@@ -3748,7 +3748,7 @@
   "q": "ちいかわ ウエハース エールカードコレクション",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117930188000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-26",
+  "verifiedAt": "2026-10-31",
   "note": "メタリックに輝くキラキラカード全25種（うちシークレット1種）入りのウエハース。2026年12月発売予定（日付は未発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
@@ -4579,7 +4579,7 @@
   "srcs": [
    "https://x.com/shimamura_gr/status/2114673408298410242"
   ],
-  "verifiedAt": "2026-10-27",
+  "verifiedAt": "2026-10-31",
   "note": "顔が大きくデザインされた、もこもこ素材のルームシューズ。ちいかわ・ハチワレ・うさぎ・モモンガの4種で、レディース（23〜25cm）とキッズ（19〜21cm）。状況により一部の店舗に入荷する場合あり。",
   "how": [
    "しまむらのオンラインストア「しまむらパーク」で11/3(火)15:00から販売",
@@ -4610,7 +4610,7 @@
    "https://chiikawamarket.jp/products/4571609413028",
    "https://www.inside-games.jp/article/2026/10/27/189904.html"
   ],
-  "verifiedAt": "2026-10-27",
+  "verifiedAt": "2026-10-31",
   "dl": [
    {
     "k": "抽選",
@@ -5177,5 +5177,27 @@
   "autoAdded": true,
   "addedAt": "2026-10-30",
   "updatedAt": "2026-10-30"
+ },
+ {
+  "id": "20261113-pus-utsunomiya-tobu",
+  "region": "jp",
+  "t": "ちいかわPOP UP STORE＠東武宇都宮百貨店",
+  "cat": "event",
+  "s": "2026-11-13",
+  "sp": "day",
+  "e": "2026-12-01",
+  "time": "",
+  "eNote": "",
+  "place": "東武宇都宮百貨店（栃木県宇都宮市）",
+  "area": "宇都宮",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "verifiedAt": "2026-10-31",
+  "note": "",
+  "autoAdded": true,
+  "addedAt": "2026-10-31",
+  "updatedAt": "2026-10-31"
  }
 ]
