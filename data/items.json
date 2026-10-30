@@ -401,7 +401,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "news",
-  "verifiedAt": "2026-10-25",
+  "verifiedAt": "2026-10-30",
   "qNone": "海外（上海）限定",
   "srcs": [
    "https://x.com/chiikawa_kouhou/status/2094621282461532543"
@@ -583,7 +583,7 @@
   "time": "",
   "updatedAt": "2026-10-25",
   "srcType": "official",
-  "verifiedAt": "2026-10-25",
+  "verifiedAt": "2026-10-30",
   "srcs": [
    "https://www.cinemacafe.net/article/2026/09/24/112822.html",
    "https://www.inside-games.jp/release/prtimes/20260910/306201.html"
@@ -945,7 +945,7 @@
   "time": "11:00〜22:00",
   "updatedAt": "2026-10-14",
   "srcType": "partner",
-  "verifiedAt": "2026-10-23",
+  "verifiedAt": "2026-10-30",
   "srcs": [
    "https://universe.oneone.com.tw/posts/6969",
    "https://chiikawa-info.jp/p26/pus_smtk/index.html"
@@ -999,7 +999,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-10-24",
+  "verifiedAt": "2026-10-30",
   "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
  },
  {
@@ -1184,7 +1184,7 @@
   "time": "10:00〜19:00（最終日は17:00まで）",
   "updatedAt": "2026-10-15",
   "srcType": "official",
-  "verifiedAt": "2026-10-24",
+  "verifiedAt": "2026-10-30",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000483.000027592.html",
    "https://prtimes.jp/main/html/rd/p/000000503.000027592.html"
@@ -2475,7 +2475,7 @@
   "qNone": "くじ（店頭販売）",
   "src": "https://1kuji.com/products/chiikawa5",
   "srcType": "partner",
-  "verifiedAt": "2026-10-23",
+  "verifiedAt": "2026-10-30",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2772,7 +2772,7 @@
   "q": "",
   "src": "https://www.westjr.co.jp/press/article/2026/09/30/items/260930_00_press_lucuasouth.pdf",
   "srcType": "press",
-  "verifiedAt": "2026-10-23",
+  "verifiedAt": "2026-10-30",
   "note": "池袋のちいかわパークの公式ショップが全国初出店。入店は無料。ミニマスコットキーリング（全10種・各1,430円）やポップコーンバケツ（各4,180円）などを販売し、一部の商品は購入数の制限あり。同じ11Fにナガノマーケット UMEDA も同日オープン。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -5059,7 +5059,7 @@
   "sp": "day",
   "e": null,
   "time": "11:00〜",
-  "eNote": "",
+  "eNote": "数量制限（コンビネゾンは1会計1個・ほかは各2個まで）",
   "place": "ちいかわマーケット（公式通販）",
   "area": "",
   "price": "レディースコンビネゾン 各4,399円、KIDSコンビネゾン 各3,299円、保冷おにぎりケース 各1,760円、ペットボトルカバー 各1,430円、はん蔵 各1,199円",
@@ -5069,13 +5069,107 @@
   "srcType": "news",
   "srcs": [
    "https://x.com/chiikawa_market/status/2115368637842518489",
-   "https://x.com/chiikawa_market/status/2115013258189148652"
+   "https://x.com/chiikawa_market/status/2115013258189148652",
+   "https://chiikawamarket.jp/products/4580052816560"
   ],
   "verifiedAt": "2026-10-30",
   "how": [
    "ちいかわマーケット（公式通販）で10/30(金)11時から販売。商品は発売時間にページに出ます"
   ],
   "note": "レディースコンビネゾン（M／L・全3柄）、KIDSコンビネゾン（100／120・全3柄）、アニメ『ちいかわ』保冷おにぎりケース2個用・ペットボトルカバー（各全2種）、印鑑ホルダー はん蔵（全5種）、ちいかわ×サンリオキャラクターズ スニーカー丈ソックス（各539円）、Lovisia マスコットリップエッセンス（各1,100円）など。ほかにカプセルトイ（コインシリンダー・Light stick charmなど）、お年玉袋・金封、フォンすまーとも同時発売。",
+  "autoAdded": true,
+  "addedAt": "2026-10-30",
+  "updatedAt": "2026-10-30"
+ },
+ {
+  "id": "20261105-minum-turlin2",
+  "region": "jp",
+  "t": "turlin by minum ちいかわデザイン シャンプー＆トリートメント（コラボ第2弾）",
+  "cat": "goods",
+  "s": "2026-11-05",
+  "sp": "early",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のドラッグストア・バラエティショップ、ちいかわらんど（原宿・名古屋PARCO・大阪梅田）",
+  "area": "",
+  "price": "ボトルセット 4,180円、詰め替えセット 3,520円",
+  "q": "",
+  "qNone": "店頭で順次発売のコラボ品で、楽天で同じ商品と言い切れない",
+  "src": "https://prtimes.jp/main/html/rd/p/000000210.000034263.html",
+  "srcType": "press",
+  "verifiedAt": "2026-10-30",
+  "how": [
+   "11月上旬以降、全国のドラッグストア・バラエティショップなどで順次発売。取り扱いのない店舗もあります",
+   "どのセットにも、ちいかわデザインのオリジナルカチューシャ付き（種類はパッケージの外から確認できます）"
+  ],
+  "note": "minumとちいかわのコラボ第2弾。TSUYA MOIST うるツヤ シャンプー＆トリートメントのお試し容量ボトルセット（250mL/250g）と詰め替えセット（320mL/320g）。",
+  "autoAdded": true,
+  "addedAt": "2026-10-30",
+  "updatedAt": "2026-10-30"
+ },
+ {
+  "id": "20261113-mogumogu-fushimi-lottery",
+  "region": "jp",
+  "t": "ちいかわもぐもぐ本舗 京都伏見店 入店予約制（11/13〜11/15・抽選）",
+  "cat": "cafe",
+  "s": "2026-11-13",
+  "sp": "day",
+  "e": "2026-11-15",
+  "time": "",
+  "eNote": "入店は事前予約（抽選）制",
+  "place": "ちいかわもぐもぐ本舗 京都伏見店（京都府京都市伏見区深草稲荷中之町46-1）",
+  "area": "京都市",
+  "price": "",
+  "q": "",
+  "src": "https://www.chiikawamogumogu.jp/2026/10/30/post-2496",
+  "srcType": "official",
+  "srcs": [
+   "https://prtimes.jp/main/html/rd/p/000000138.000035374.html"
+  ],
+  "verifiedAt": "2026-10-30",
+  "dl": [
+   {
+    "k": "抽選",
+    "n": "もぐもぐ本舗 京都伏見店 11/13〜11/15の入店予約抽選（LINE公式アカウントで応募）",
+    "until": "2026-11-05T18:00",
+    "u": "https://www.chiikawamogumogu.jp/2026/10/30/post-2496"
+   }
+  ],
+  "how": [
+   "ちいかわもぐもぐ本舗のLINE公式アカウントで11/1(日)18:00〜11/5(木)18:00に応募。結果発表は11/7(土)",
+   "複数日に応募できるが（1日1枠）、当選は1つのLINEアカウントにつき1回まで",
+   "キャンセル分は前日20時から先着順で受付。予約は商品の購入を保証するものではありません"
+  ],
+  "note": "11/13(金)〜11/15(日)の3日間は、入店に事前予約が必要。",
+  "autoAdded": true,
+  "addedAt": "2026-10-30",
+  "updatedAt": "2026-10-30"
+ },
+ {
+  "id": "20261106-boa-blouson-trio",
+  "region": "jp",
+  "t": "ちいかわ ボアブルゾン 毛量（トリオ）",
+  "cat": "goods",
+  "s": "2026-11-06",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわらんど、ちいかわマーケット、トーキング ほか",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "公式の新商品で、楽天で同じ商品と言い切れない",
+  "src": "https://x.com/chiikawa_kouhou/status/2115730609649987811",
+  "srcType": "official",
+  "verifiedAt": "2026-10-30",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2115730609649987811",
+  "xpostNote": "投稿日2026-10-29（IDから計算）。本文に「ボアブルゾン 毛量(トリオ)」「11月6日(金)より ちいかわらんど、ちいかわマーケット、トーキング ほかにて順次発売」（2026-10-30確認）",
+  "how": [
+   "11/6(金)から、ちいかわらんど・ちいかわマーケット・トーキングなどで順次発売"
+  ],
+  "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-30",
   "updatedAt": "2026-10-30"
