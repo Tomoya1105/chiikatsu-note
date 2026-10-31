@@ -3184,7 +3184,7 @@
   "q": "ちいかわ セーフティポーチ",
   "src": "https://www.gourmandise.jp/view/item/000000010968",
   "srcType": "partner",
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "how": [
    "グルマンディーズ公式通販で予約受付中（発売後、順次発送）"
   ],
@@ -4049,7 +4049,7 @@
   "price": "",
   "q": "",
   "srcType": "news",
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-10-17",
@@ -4736,7 +4736,7 @@
   "srcs": [
    "https://www.ggilbo.com/news/articleView.html?idxno=1187872"
   ],
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "note": "韓国コスメ「the SAEM（더샘）」とのコラボ。コンシーラー（ちいかわ／ハチワレのミニパフ付き）、ハイライター（モモンガ／ラッコのヘアピン付き）、アイシャドウパレット、プライマーのセット（くりまんじゅうのポーチ付き）など。原文：더샘 × 먼작귀 에디션。価格は未発表。",
   "how": [
    "11/1からOLIVE YOUNGの店舗とオンラインモールだけで販売（店舗ごとの在庫はOLIVE YOUNGの商品ページで確認）"
@@ -4932,7 +4932,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000004138.000003639.html"
   ],
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "org": {
    "name": "株式会社パルコ",
    "url": "https://cafe.parco.jp/",
@@ -4966,7 +4966,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_kbkt/index.html"
   ],
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-28",
@@ -5208,5 +5208,34 @@
   "addedAt": "2026-10-31",
   "updatedAt": "2026-10-31",
   "xpostNote": "2026-10-31 公式ポストを検索したが、見つかったのは2025年11〜12月の同会場の回のみ（不一致）"
+ },
+ {
+  "id": "20261101-noodle-stopper-ramen",
+  "region": "jp",
+  "t": "ちいかわ ぬーどるストッパーフィギュア－合格ラーメン－（プライズ）",
+  "cat": "goods",
+  "s": "2026-11-01",
+  "sp": "month",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のアミューズメント施設（フリューのプライズ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（ゲームセンターの景品）",
+  "src": "https://x.com/FURYU_prize/status/2115262274910748884",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/10/28/189968.html"
+  ],
+  "verifiedAt": "2026-11-01",
+  "note": "合格ラーメンを食べるちいかわとハチワレの全2種。2つ並べるとマンガの場面を再現できる。11月から展開予定（フリュープライズ公式の発表）。",
+  "how": [
+   "ゲームセンターなどのクレーンゲームの景品（プライズ）。11月から順次展開予定"
+  ],
+  "autoAdded": true,
+  "addedAt": "2026-11-01",
+  "updatedAt": "2026-11-01"
  }
 ]
