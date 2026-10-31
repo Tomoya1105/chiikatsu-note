@@ -1385,7 +1385,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/09/08/187400.html"
   ],
-  "verifiedAt": "2026-10-26",
+  "verifiedAt": "2026-10-31",
   "srcType": "partner",
   "log": [
    {
@@ -1804,7 +1804,7 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-10-26",
+  "verifiedAt": "2026-10-31",
   "qNone": "GUの店舗・公式通販のみ",
   "srcs": [
    "https://www.famitsu.com/article/202609/88383",
@@ -2490,7 +2490,7 @@
   "sp": "day",
   "e": "2026-12-25",
   "time": "11:00〜21:00（最終入場枠 18:30〜19:00）",
-  "eNote": "日時指定チケット制（先着販売は10/31(土)12:00から）",
+  "eNote": "日時指定チケット制（10/31(土)12:00から先着販売）",
   "place": "豊砂公園（イオンモール幕張新都心前）（千葉県千葉市美浜区）",
   "area": "幕張",
   "price": "大人 平日2,500円・土日祝2,800円／子ども（4〜11歳）平日1,200円・土日祝1,400円",
@@ -2500,9 +2500,10 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000004081.000064643.html",
    "https://contents-abema.com/chiikawa-christmas-market/goods/",
-   "https://contents-abema.com/chiikawa-christmas-market/food/"
+   "https://contents-abema.com/chiikawa-christmas-market/food/",
+   "https://prtimes.jp/main/html/rd/p/000004179.000064643.html"
   ],
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-10-31",
   "dl": [
    {
     "k": "抽選",
@@ -2516,18 +2517,22 @@
    "url": "https://contents-abema.com/chiikawa-christmas-market/",
    "src": "https://prtimes.jp/main/html/rd/p/000004081.000064643.html"
   },
-  "note": "約6,000㎡の会場に高さ約6mのツリーや限定フード・限定グッズ。先行抽選の当落発表は10/30(金)12:00以降。チケット1枚につきガチャガチャ1回無料。",
+  "note": "約6,000㎡の会場に高さ約6mのツリーや限定フード・限定グッズ。チケット購入者には「飛び出す！クリスマスカード」と巨大ガチャガチャ1回無料（オーナメント全16種からランダム）。限定グッズはブッシュドノエルなスノードーム（4,620円）、クリスマスマーケットなぬいぐるみ（各3,190円）など。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-10-31",
   "how": [
    "入場は日時指定チケット制。先行抽選（アソビュー！）の申込は10/25(日)23:59で終了",
-   "先行抽選の当落発表は10/30(金)12:00以降。先着販売は10/31(土)12:00から「アソビュー！」のみ（現時点で当日券・コンビニ販売はなし）",
+   "先着販売は10/31(土)12:00から販売終了まで。1アカウント1回の申込で最大4名分。4歳未満は大人1名につき1名まで無料",
    "会場限定グッズは全86点。一部は11/24(火)11:00から「ちいかわぽけっとグッズストア」でも販売",
    "会場で税込3,300円以上で刺繍缶バッジ（全8種）、6,600円以上で巾着（全3種）も（ランダム・会場限定・合算不可）",
    "フードは入場後にスマホで注文（キャッシュレスのみ・1会計で同じ商品は1つまで）。スマホのない子ども券では注文不可"
   ],
   "log": [
+   {
+    "d": "2026-10-31",
+    "t": "先着販売の開始と、限定グッズの価格を追加しました"
+   },
    {
     "d": "2026-10-28",
     "t": "先着販売が10/31(土)12:00から始まることを追加しました"
@@ -3748,7 +3753,7 @@
   "q": "ちいかわ ウエハース エールカードコレクション",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117930188000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-26",
+  "verifiedAt": "2026-10-31",
   "note": "メタリックに輝くキラキラカード全25種（うちシークレット1種）入りのウエハース。2026年12月発売予定（日付は未発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
@@ -4262,7 +4267,7 @@
    "https://collabo-cafe.com/events/collabo/muchauma-chiikawa-sushi-popup-store-yokohama2026/",
    "https://www.sumaitoseikatsu.yokohama/archives/67888"
   ],
-  "verifiedAt": "2026-10-27",
+  "verifiedAt": "2026-10-31",
   "how": [
    "10/22(木)〜10/25(日)は入店整理券の配布を予定（配布方法は公式ページで確認）",
    "ちいかわ寿司のイベント商品を税込2,200円買うごとに「お皿みたいなトレーディングカード」（全8種）を1枚（カプセルトイは対象外・なくなり次第終了）",
@@ -4579,7 +4584,7 @@
   "srcs": [
    "https://x.com/shimamura_gr/status/2114673408298410242"
   ],
-  "verifiedAt": "2026-10-27",
+  "verifiedAt": "2026-10-31",
   "note": "顔が大きくデザインされた、もこもこ素材のルームシューズ。ちいかわ・ハチワレ・うさぎ・モモンガの4種で、レディース（23〜25cm）とキッズ（19〜21cm）。状況により一部の店舗に入荷する場合あり。",
   "how": [
    "しまむらのオンラインストア「しまむらパーク」で11/3(火)15:00から販売",
@@ -4610,7 +4615,7 @@
    "https://chiikawamarket.jp/products/4571609413028",
    "https://www.inside-games.jp/article/2026/10/27/189904.html"
   ],
-  "verifiedAt": "2026-10-27",
+  "verifiedAt": "2026-10-31",
   "dl": [
    {
     "k": "抽選",
@@ -5177,5 +5182,31 @@
   "autoAdded": true,
   "addedAt": "2026-10-30",
   "updatedAt": "2026-10-30"
+ },
+ {
+  "id": "20261113-pus-utsunomiya-tobu",
+  "region": "jp",
+  "t": "ちいかわPOP UP STORE＠東武宇都宮百貨店",
+  "cat": "event",
+  "s": "2026-11-13",
+  "sp": "day",
+  "e": "2026-12-01",
+  "time": "",
+  "eNote": "",
+  "place": "東武宇都宮百貨店 5階 イベントプラザ（栃木県宇都宮市）",
+  "area": "宇都宮",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawa-info.jp/p26/pus_tbun/index.html"
+  ],
+  "verifiedAt": "2026-10-31",
+  "note": "",
+  "autoAdded": true,
+  "addedAt": "2026-10-31",
+  "updatedAt": "2026-10-31",
+  "xpostNote": "2026-10-31 公式ポストを検索したが、見つかったのは2025年11〜12月の同会場の回のみ（不一致）"
  }
 ]
