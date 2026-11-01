@@ -1463,7 +1463,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "qNone": "くじ（オンラインくじ）"
  },
  {
@@ -2004,7 +2004,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-10-25",
   "srcType": "partner",
-  "verifiedAt": "2026-10-25",
+  "verifiedAt": "2026-11-01",
   "xpost": "https://x.com/chiikawa_kouhou/status/2103424283024257219",
   "xpostNote": "投稿日2026-09-25（予約開始の3日前）。本文に「ねんどろいど（くりまんじゅう、シーサー）」「ご予約受付：9月28日(月)～11月11日(水)まで」「お届け予定：2027年5月頃」",
   "srcs": [
@@ -3244,7 +3244,7 @@
   "srcs": [
    "https://www.4gamers.com.tw/news/detail/82126/chiikawa-gu-winter-collaboration-2026"
   ],
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-11-01",
   "how": [
    "第1弾は11/20(金)、第2弾は11/27(金)に発売",
    "取り置き・店舗間の取り寄せはなし。転売目的と判断された注文は断られることがあります"
@@ -3516,7 +3516,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000144.000074811.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "how": [
    "入場は公式サイトのチケットが必要。当日入場できない場合があるので事前に確認。",
    "限定グッズ（スウェット・ファーハット・マフラー）は11/24(火)発売。",
@@ -3604,7 +3604,7 @@
   "qNone": "取扱店・商品の詳細が未発表で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "srcType": "official",
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "xpost": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「ちいかわ1分丈腹巻パンツ」「全国の量販店にて」「11月下旬」",
   "note": "同じ告知の「ちいかわ腹巻」は10月上旬から発売。",
@@ -4111,7 +4111,7 @@
   "srcs": [
    "https://www.oricon.co.jp/news/2487242/full/"
   ],
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-01",
   "how": [
    "幕張新都心店：モモンガ（さつまいも）8/31〜、くりまんじゅう（渋皮マロン）9/7〜、ラッコ（パンプキン）9/14〜、いずれも11/26まで",
    "横浜ワールドポーターズ店・名古屋パルコ店：週がわりで販売（くりまんじゅう 10/19〜10/25、ラッコ 10/26〜11/1）",
@@ -4793,7 +4793,7 @@
    "https://prtimes.jp/main/html/rd/p/000000186.000035374.html",
    "https://chiikawamogumogu.jp/2026/10/28/post-2535"
   ],
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "dl": [
    {
     "k": "抽選",
@@ -5234,6 +5234,39 @@
   "how": [
    "ゲームセンターなどのクレーンゲームの景品（プライズ）。11月から順次展開予定"
   ],
+  "autoAdded": true,
+  "addedAt": "2026-11-01",
+  "updatedAt": "2026-11-01"
+ },
+ {
+  "id": "20261101-kitte-nagoya-vending",
+  "region": "jp",
+  "t": "ちいかわデザインの自動販売機（Kiramekko・GPSBOX）＠KITTE名古屋",
+  "cat": "goods",
+  "s": "2026-11-01",
+  "sp": "day",
+  "e": null,
+  "time": "施設の営業時間に準ずる",
+  "eNote": "数量限定",
+  "place": "KITTE名古屋 B1F（愛知県名古屋市中村区）",
+  "area": "名古屋",
+  "price": "",
+  "q": "",
+  "qNone": "KITTE名古屋の自動販売機での販売",
+  "src": "https://prtimes.jp/main/html/rd/p/000000081.000168561.html",
+  "srcType": "press",
+  "verifiedAt": "2026-11-01",
+  "org": {
+   "name": "株式会社グレイ・パーカー・サービス",
+   "url": "https://grayparkaservice.com/",
+   "src": "https://prtimes.jp/main/html/rd/p/000000081.000168561.html"
+  },
+  "how": [
+   "KITTE名古屋 B1Fのちいかわデザインの自動販売機で販売（11/1から）",
+   "GPSBOX ちいかわだらけ／ハチワレだらけ／うさぎだらけ／モモンガだらけフィギュア、Kiramekko Teddy Bear・Chiikawa Baby Kiramekko など",
+   "数量に限りあり。時期・在庫により商品が変わることがあります"
+  ],
+  "note": "名古屋駅直結のKITTE名古屋に登場。施設への問い合わせは控えるよう案内されています。",
   "autoAdded": true,
   "addedAt": "2026-11-01",
   "updatedAt": "2026-11-01"

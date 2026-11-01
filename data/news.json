@@ -1,5 +1,27 @@
 [
  {
+  "id": "20261101-kitte-nagoya-vending",
+  "date": "2026-11-01",
+  "tag": "goods",
+  "title": "KITTE名古屋にちいかわ柄の自販機、Kiramekkoなどを販売",
+  "sum": "名古屋駅直結のKITTE名古屋B1Fに、ちいかわデザインの自動販売機が11/1から登場。GPSBOXのフィギュアやKiramekkoのマスコットが買え、数量限定です。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000081.000168561.html",
+  "itemId": "20261101-kitte-nagoya-vending",
+  "addedAt": "2026-11-01"
+ },
+ {
+  "id": "20261101-fluffy-apparel",
+  "date": "2026-11-01",
+  "tag": "goods",
+  "title": "毛量たっぷりのハチワレたち、冬のファー小物とアパレルに",
+  "sum": "11/6から、ファーの帽子・バッグ・マフラーや「毛量」ニット、ボアブルゾンが、ちいかわらんど・ちいかわマーケット・トーキングなどで順次発売されます。",
+  "source": "アニメ！アニメ！",
+  "src": "https://animeanime.jp/article/2026/11/01/104391.html",
+  "itemId": "20261106-boa-blouson-trio",
+  "addedAt": "2026-11-01"
+ },
+ {
   "id": "20261101-gu-presale",
   "date": "2026-11-01",
   "tag": "goods",
