@@ -1463,7 +1463,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "qNone": "くじ（オンラインくじ）"
  },
  {
@@ -3516,7 +3516,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000144.000074811.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "how": [
    "入場は公式サイトのチケットが必要。当日入場できない場合があるので事前に確認。",
    "限定グッズ（スウェット・ファーハット・マフラー）は11/24(火)発売。",
@@ -4111,7 +4111,7 @@
   "srcs": [
    "https://www.oricon.co.jp/news/2487242/full/"
   ],
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-01",
   "how": [
    "幕張新都心店：モモンガ（さつまいも）8/31〜、くりまんじゅう（渋皮マロン）9/7〜、ラッコ（パンプキン）9/14〜、いずれも11/26まで",
    "横浜ワールドポーターズ店・名古屋パルコ店：週がわりで販売（くりまんじゅう 10/19〜10/25、ラッコ 10/26〜11/1）",
@@ -4793,7 +4793,7 @@
    "https://prtimes.jp/main/html/rd/p/000000186.000035374.html",
    "https://chiikawamogumogu.jp/2026/10/28/post-2535"
   ],
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-01",
   "dl": [
    {
     "k": "抽選",
@@ -5158,30 +5158,42 @@
  {
   "id": "20261106-boa-blouson-trio",
   "region": "jp",
-  "t": "ちいかわ ボアブルゾン 毛量（トリオ）",
+  "t": "ちいかわ 毛量・Fluffy Time 冬アパレル（ボアブルゾン・ニット・ファーハット・ファーバッグなど）",
   "cat": "goods",
   "s": "2026-11-06",
   "sp": "day",
   "e": null,
   "time": "",
   "eNote": "",
-  "place": "ちいかわらんど、ちいかわマーケット、トーキング ほか",
+  "place": "ちいかわらんど、ちいかわマーケット、トーキング、キデイランド（ちいかわ取扱店）ほか",
   "area": "",
-  "price": "",
+  "price": "3,300円〜8,250円",
   "q": "",
   "qNone": "公式の新商品で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2115730609649987811",
   "srcType": "official",
-  "verifiedAt": "2026-10-30",
+  "verifiedAt": "2026-11-01",
   "xpost": "https://x.com/chiikawa_kouhou/status/2115730609649987811",
   "xpostNote": "投稿日2026-10-29（IDから計算）。本文に「ボアブルゾン 毛量(トリオ)」「11月6日(金)より ちいかわらんど、ちいかわマーケット、トーキング ほかにて順次発売」（2026-10-30確認）",
   "how": [
-   "11/6(金)から、ちいかわらんど・ちいかわマーケット・トーキングなどで順次発売"
+   "11/6(金)から順次発売。ちいかわマーケット（公式通販）は11時から、トーキング通販は12時から",
+   "ニット 毛量だけは店頭販売が11/11(水)から（通販は11/6から）",
+   "ちいかわマーケットは棚卸しのため、注文分は11/16の出荷再開後に順次発送"
   ],
-  "note": "",
+  "note": "ボアブルゾン 毛量（トリオ・8,250円）、ニット 毛量（ちいかわ＆ハチワレ／うさぎ・各7,150円）、ファーハット（Fluffy Time／HAIRSTYLE CHANGE・各4,180円）、ファーバッグ Fluffy Time（各5,500円）、ファーマフラー Fluffy Time（各3,300円）、長袖Tシャツ2種など。",
   "autoAdded": true,
   "addedAt": "2026-10-30",
-  "updatedAt": "2026-10-30"
+  "updatedAt": "2026-11-01",
+  "srcs": [
+   "https://nijimen.kusuguru.co.jp/topics/647458",
+   "https://animeanime.jp/article/2026/11/01/104391.html"
+  ],
+  "log": [
+   {
+    "d": "2026-11-01",
+    "t": "ニット・ファーハットなど同じシリーズの商品と価格を追加しました"
+   }
+  ]
  },
  {
   "id": "20261113-pus-utsunomiya-tobu",
@@ -5234,6 +5246,42 @@
   "how": [
    "ゲームセンターなどのクレーンゲームの景品（プライズ）。11月から順次展開予定"
   ],
+  "autoAdded": true,
+  "addedAt": "2026-11-01",
+  "updatedAt": "2026-11-01"
+ },
+ {
+  "id": "20261101-kitte-nagoya-vending",
+  "region": "jp",
+  "t": "ちいかわデザインの自動販売機＠KITTE名古屋（GPSBOX・Kiramekko）",
+  "cat": "goods",
+  "s": "2026-11-01",
+  "sp": "day",
+  "e": null,
+  "time": "施設の営業時間に準ずる",
+  "eNote": "数量限定",
+  "place": "KITTE名古屋 B1F（愛知県名古屋市中村区）",
+  "area": "名古屋",
+  "price": "",
+  "q": "",
+  "qNone": "自動販売機での販売（店頭限定）",
+  "src": "https://prtimes.jp/main/html/rd/p/000000081.000168561.html",
+  "srcType": "press",
+  "srcs": [
+   "https://natalie.mu/comic/news/696198"
+  ],
+  "verifiedAt": "2026-11-01",
+  "org": {
+   "name": "株式会社グレイ・パーカー・サービス",
+   "url": "https://info.grayparkaservice.com/",
+   "src": "https://prtimes.jp/main/html/rd/p/000000081.000168561.html"
+  },
+  "how": [
+   "名古屋駅直結のKITTE名古屋 地下1階に設置された、ちいかわデザインの自動販売機で購入",
+   "GPSBOXの「だらけ」フィギュアや、Kiramekko（ちいかわ Teddy Bear・Chiikawa Baby・ちいかわ×サンリオキャラクターズなど）を販売",
+   "数量に限りあり。ラインナップは季節や在庫で予告なく変わる。施設への問い合わせは不可"
+  ],
+  "note": "ちいかわ・ハチワレ・うさぎ・モモンガの「だらけ」フィギュア（各6種）、Kiramekko ちいかわ Teddy Bear（6種）などを販売。",
   "autoAdded": true,
   "addedAt": "2026-11-01",
   "updatedAt": "2026-11-01"

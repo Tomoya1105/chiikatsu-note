@@ -1,5 +1,27 @@
 [
  {
+  "id": "20261101-kitte-nagoya-vending",
+  "date": "2026-11-01",
+  "tag": "goods",
+  "title": "KITTE名古屋にちいかわの自動販売機が登場",
+  "sum": "名古屋駅直結のKITTE名古屋 地下1階に、ちいかわデザインの自販機が11/1から設置。だらけフィギュアやKiramekkoのマスコットを数量限定で販売します。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000081.000168561.html",
+  "itemId": "20261101-kitte-nagoya-vending",
+  "addedAt": "2026-11-01"
+ },
+ {
+  "id": "20261101-fluffy-apparel",
+  "date": "2026-11-01",
+  "tag": "goods",
+  "title": "もこもこ毛量なニットやファー小物が11/6から",
+  "sum": "ハチワレやうさぎの毛量をデザインしたニットやボアブルゾン、ファーハット・バッグ・マフラーが11/6から順次発売。ニットの店頭販売は11/11からです。",
+  "source": "にじめん",
+  "src": "https://nijimen.kusuguru.co.jp/topics/647458",
+  "itemId": "20261106-boa-blouson-trio",
+  "addedAt": "2026-11-01"
+ },
+ {
   "id": "20261101-gu-presale",
   "date": "2026-11-01",
   "tag": "goods",
@@ -31,6 +53,17 @@
   "src": "https://www.inside-games.jp/article/2026/10/31/190138.html",
   "itemId": "20261031-19",
   "addedAt": "2026-10-31"
+ },
+ {
+  "id": "20261030-bakery-japanticket",
+  "date": "2026-10-30",
+  "tag": "topic",
+  "title": "ちいかわベーカリーの予約サイトで情報流出、公式がお知らせ",
+  "sum": "予約に使うJapanticketの外部ツールへの不正アクセスで、利用者の個人情報が流出。購入済みの優先入場券はそのまま使え、優先入場券の販売は一時停止中です。",
+  "source": "ちいかわベーカリー公式",
+  "src": "https://chiikawabakery.jp/20261030_news/",
+  "itemId": "",
+  "addedAt": "2026-11-01"
  },
  {
   "id": "20261030-movie-tuba-shimajiro",
