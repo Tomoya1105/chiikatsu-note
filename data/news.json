@@ -1,5 +1,49 @@
 [
  {
+  "id": "20261102-movie-186oku",
+  "date": "2026-11-02",
+  "tag": "anime",
+  "title": "映画ちいかわ、101日で興収186億円を突破",
+  "sum": "公開101日間で観客1277万人・興収186.6億円に。歴代12位で、『ONE PIECE FILM RED』の同じ時期より速いペースが続いています。",
+  "source": "オリコン（福井新聞ONLINE）",
+  "src": "https://fukuishimbun.co.jp/articles/-/2737433",
+  "itemId": "",
+  "addedAt": "2026-11-02"
+ },
+ {
+  "id": "20261102-gu-pouch-soldout",
+  "date": "2026-11-02",
+  "tag": "goods",
+  "title": "GU×ちいかわの1,990円ポーチ、先行予約で上限に",
+  "sum": "11/2朝に始まったGUオンラインストアの先行予約で、ちいかわのポーチが予約の上限に。通常販売は11/20から店舗とオンラインで予定です。",
+  "source": "ねとらぼ",
+  "src": "https://nlab.itmedia.co.jp/research/articles/4081308",
+  "itemId": "20261120-gu",
+  "addedAt": "2026-11-02"
+ },
+ {
+  "id": "20261102-famima-prison-potato",
+  "date": "2026-11-02",
+  "tag": "goods",
+  "title": "ファミマ限定のプリズンポテトも11/2から",
+  "sum": "囚人服姿のちいかわたちのポテトスナックに、ファミリーマート限定のサワークリームオニオン味（170円）も登場。予約や取り置きはできません。",
+  "source": "グルメ Watch（Yahoo!ニュース）",
+  "src": "https://news.yahoo.co.jp/articles/e5586c4cbbc0f5c40c6ebc3040e171560c36b2a2",
+  "itemId": "20261102-prison-potato",
+  "addedAt": "2026-11-02"
+ },
+ {
+  "id": "20261102-kiramekko-xmas",
+  "date": "2026-11-02",
+  "tag": "goods",
+  "title": "クリスマス姿のKiramekkoテディベアが11/6発売",
+  "sum": "ちいかわ・ハチワレ・うさぎの3種で各2,420円。ちいかわマーケットやちいかわらんど、各地のPOP UP STOREで扱い、クリスマスマーケットでは11/24から販売。",
+  "source": "EEO Today",
+  "src": "https://eeo.today/media/2026/11/02/408637/",
+  "itemId": "20261106-market-xmas",
+  "addedAt": "2026-11-02"
+ },
+ {
   "id": "20261102-parade-big-cushion",
   "date": "2026-11-02",
   "tag": "goods",

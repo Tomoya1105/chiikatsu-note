@@ -1417,7 +1417,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-02",
   "rb": [
    {
     "n": "通常版",
@@ -3383,7 +3383,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-02",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-25",
@@ -3415,7 +3415,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-02",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3625,7 +3625,7 @@
   "qNone": "取扱店・商品の詳細が未発表で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "srcType": "official",
-  "verifiedAt": "2026-10-28",
+  "verifiedAt": "2026-11-02",
   "xpost": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「ちいかわ1分丈腹巻パンツ」「全国の量販店にて」「11月下旬」",
   "note": "同じ告知の「ちいかわ腹巻」は10月上旬から発売。",
@@ -4003,7 +4003,7 @@
   "place": "イオンモール倉敷 2F サウスコート（岡山県倉敷市）",
   "area": "倉敷",
   "note": "会場は2F サウスコート。",
-  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず",
+  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず",
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_akrs/"
   ]
@@ -4029,7 +4029,7 @@
   "place": "イオンモール春日部 1F 藤の広場（埼玉県春日部市）",
   "area": "春日部",
   "note": "会場は1F 藤の広場。",
-  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず",
+  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず",
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_aksk/"
   ]
@@ -4502,17 +4502,19 @@
   "src": "https://gashapon.jp/products/detail.php?jan_code=4582770137750000",
   "srcType": "partner",
   "srcs": [
-   "https://www.bandai.co.jp/catalog/item.php?jan_cd=4582770137750000"
+   "https://www.bandai.co.jp/catalog/item.php?jan_cd=4582770137750000",
+   "https://bandai-lifestyle.jp/products/details.php?detail=4582769924866000"
   ],
-  "verifiedAt": "2026-10-30",
-  "note": "アイシャドウやフェイスカラーに使えるサプライズコスメのガシャポン。ちいかわ・ハチワレ・うさぎ・モモンガ・3人・ちいかわとハチワレの全6種。対象年齢15才以上。公式の発売時期は「2026年11月」。",
+  "verifiedAt": "2026-11-02",
+  "note": "アイシャドウやフェイスカラーに使えるサプライズコスメのガシャポン。ちいかわ・ハチワレ・うさぎ・モモンガ・3人・ちいかわとハチワレの全6種。対象年齢15才以上。公式の発売時期は「2026年11月」。 一般の売り場向けの箱入り版（全6種・550円）は11/23発売予定（バンダイ公式）。",
   "how": [
    "ガシャポン（1回500円）。中身は開けるまでわからない全6種",
-   "発売日は地域・店舗によって異なる場合あり"
+   "発売日は地域・店舗によって異なる場合あり",
+   "箱入りの一般販売版（550円・全6種）は11/23発売予定。ガシャポン版とは価格が異なります"
   ],
   "autoAdded": true,
   "addedAt": "2026-10-26",
-  "updatedAt": "2026-10-26",
+  "updatedAt": "2026-11-02",
   "xpostNote": "2026-10-26 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
@@ -4538,7 +4540,7 @@
    "https://qlia.store/products/15099",
    "https://www.inside-games.jp/article/2026/10/26/189838.html"
   ],
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-02",
   "note": "まじかるちいかわ・超まじかるちいかわ・悪いバージョン・てんし♡あくまの全4種（ちいかわマーケットでの名前は「ボンボンドロップシール ジュエル」）。クーリア公式オンラインストアでの販売日は後日発表。",
   "how": [
    "11/6(金)から、ちいかわマーケット（公式通販）・まじかるちいかわストア・まじかるちいかわPOP UP STOREで販売",
@@ -4677,7 +4679,8 @@
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-27",
-  "updatedAt": "2026-10-27"
+  "updatedAt": "2026-10-27",
+  "xpostNote": "2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261028-talking-kurimanjyu",
@@ -4966,7 +4969,8 @@
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-28",
-  "updatedAt": "2026-10-28"
+  "updatedAt": "2026-10-28",
+  "xpostNote": "2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261111-pus-kobe-kita",
@@ -4991,7 +4995,8 @@
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-28",
-  "updatedAt": "2026-10-28"
+  "updatedAt": "2026-10-28",
+  "xpostNote": "2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261102-prison-potato",
@@ -5010,16 +5015,18 @@
   "src": "https://gourmetpress.net/1491909/",
   "srcType": "press",
   "srcs": [
-   "https://game.watch.impress.co.jp/docs/news/2152123.html"
+   "https://game.watch.impress.co.jp/docs/news/2152123.html",
+   "https://news.yahoo.co.jp/articles/e5586c4cbbc0f5c40c6ebc3040e171560c36b2a2"
   ],
   "verifiedAt": "2026-11-02",
   "how": [
-   "全国の量販店の菓子売場などで販売（取り扱いのない店舗あり・発売日は店舗によって異なる場合あり）"
+   "全国の量販店の菓子売場などで販売（取り扱いのない店舗あり・発売日は店舗によって異なる場合あり）",
+   "ファミリーマート限定版（サワークリームオニオン味・170円）もあり。予約・取り置きはなし"
   ],
-  "note": "「オデと牢獄」のエピソードがモチーフ。囚人服姿のちいかわ・ハチワレ・うさぎ・モモンガのパッケージ全4種（バンダイ）。",
+  "note": "「オデと牢獄」のエピソードがモチーフ。囚人服姿のちいかわ・ハチワレ・うさぎ・モモンガのパッケージ全4種（バンダイ）。 ファミリーマートでは限定の「サワークリームオニオン味」（170円）を11/2から販売。",
   "autoAdded": true,
   "addedAt": "2026-10-29",
-  "updatedAt": "2026-10-29"
+  "updatedAt": "2026-11-02"
  },
  {
   "id": "20270201-ribbon-charm-gummy",
@@ -5174,7 +5181,8 @@
   "note": "11/13(金)〜11/15(日)の3日間は、入店に事前予約が必要。",
   "autoAdded": true,
   "addedAt": "2026-10-30",
-  "updatedAt": "2026-10-30"
+  "updatedAt": "2026-10-30",
+  "xpostNote": "2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261106-boa-blouson-trio",
@@ -5247,8 +5255,8 @@
   "region": "jp",
   "t": "ちいかわ ぬーどるストッパーフィギュア－合格ラーメン－（プライズ）",
   "cat": "goods",
-  "s": "2026-11-01",
-  "sp": "month",
+  "s": "2026-11-25",
+  "sp": "late",
   "e": null,
   "time": "",
   "eNote": "",
@@ -5257,19 +5265,27 @@
   "price": "",
   "q": "",
   "qNone": "プライズ（ゲームセンターの景品）",
-  "src": "https://x.com/FURYU_prize/status/2115262274910748884",
+  "src": "https://furyuprize.com/item/22488",
   "srcType": "partner",
   "srcs": [
-   "https://www.inside-games.jp/article/2026/10/28/189968.html"
+   "https://x.com/FURYU_prize/status/2115262274910748884",
+   "https://www.inside-games.jp/article/2026/10/28/189968.html",
+   "https://www.inside-games.jp/article/2026/11/02/190268.html"
   ],
-  "verifiedAt": "2026-11-01",
-  "note": "合格ラーメンを食べるちいかわとハチワレの全2種。2つ並べるとマンガの場面を再現できる。11月から展開予定（フリュープライズ公式の発表）。",
+  "verifiedAt": "2026-11-02",
+  "note": "合格ラーメンを食べるちいかわとハチワレの全2種（約7cm）。2つ並べるとマンガの場面を再現できる。フリュープライズ公式の登場時期は「2026年11月4週」。",
   "how": [
-   "ゲームセンターなどのクレーンゲームの景品（プライズ）。11月から順次展開予定"
+   "ゲームセンターなどのクレーンゲームの景品（プライズ）。11月4週から順次展開予定"
   ],
   "autoAdded": true,
   "addedAt": "2026-11-01",
-  "updatedAt": "2026-11-01"
+  "updatedAt": "2026-11-02",
+  "log": [
+   {
+    "d": "2026-11-02",
+    "t": "登場時期が11月4週に決まりました"
+   }
+  ]
  },
  {
   "id": "20261101-kitte-nagoya-vending",
@@ -5416,7 +5432,8 @@
   "note": "紅茶缶は11/6、クリスマスのマグカップは11/20、ショッパーは12/4から。",
   "autoAdded": true,
   "addedAt": "2026-11-02",
-  "updatedAt": "2026-11-02"
+  "updatedAt": "2026-11-02",
+  "xpostNote": "2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261103-parade-big-cushion",
@@ -5444,6 +5461,32 @@
    "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
   ],
   "note": "高さ約60cm、両面デザインの大きなクッション。ラーメン柄と草むしり検定柄の全2種。",
+  "autoAdded": true,
+  "addedAt": "2026-11-02",
+  "updatedAt": "2026-11-02"
+ },
+ {
+  "id": "20261101-yamazaki-chiikaman",
+  "region": "jp",
+  "t": "ちいかまん（ちいかわの焼印つき・山崎製パン）",
+  "cat": "food",
+  "s": "2026-11-01",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "山崎製パンのパンを扱う店舗のパン売り場",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "パン売り場の商品で、通販では買えない",
+  "src": "https://x.com/yamazakipan_cp/status/2116440034958086345",
+  "srcType": "partner",
+  "srcs": [
+   "https://x.com/yamazakipan_cp/status/2117059112731345378"
+  ],
+  "verifiedAt": "2026-11-02",
+  "note": "山崎製パン公式Xが11月の新商品として告知（10/31の投稿で「明日から発売」「かわいい焼印付き」）。中身・価格は公式の文章で確かめられていません。",
   "autoAdded": true,
   "addedAt": "2026-11-02",
   "updatedAt": "2026-11-02"
