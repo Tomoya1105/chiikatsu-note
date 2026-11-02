@@ -725,7 +725,7 @@
   "time": "11:00〜（11/3 23:59まで）",
   "updatedAt": "2026-10-22",
   "srcType": "press",
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-02",
   "qNone": "くじ（店頭・オンラインくじ）",
   "area": "",
   "srcs": [
@@ -1350,21 +1350,27 @@
   "e": null,
   "eNote": "",
   "note": "",
-  "place": "コンビニ、スーパーなど",
+  "place": "全国量販店の菓子売場など",
   "price": "385円／全14種",
   "q": "チョコサプ ちいかわ2",
-  "s": "2026-11-01",
-  "sp": "month",
+  "s": "2026-11-23",
+  "sp": "day",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117922190000.html",
   "t": "チョコサプ ちいかわ2",
   "time": "",
-  "updatedAt": "2026-09-27",
+  "updatedAt": "2026-11-02",
   "srcType": "partner",
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-02",
   "srcs": [
    "https://www.bandai.co.jp/candy/chocosurp/chiikawa2/"
   ],
-  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず",
+  "log": [
+   {
+    "d": "2026-11-02",
+    "t": "発売日が11/23に決まりました"
+   }
+  ]
  },
  {
   "id": "20261105-kairo",
@@ -2096,8 +2102,8 @@
   "region": "jp",
   "t": "ちいかわベーカリー アドベントカレンダー（店頭販売）",
   "cat": "food",
-  "s": "2026-11-25",
-  "sp": "late",
+  "s": "2026-11-24",
+  "sp": "day",
   "e": null,
   "time": "",
   "eNote": "",
@@ -2106,13 +2112,22 @@
   "price": "5,500円",
   "q": "",
   "src": "https://chiikawabakery.jp/topics/20260902/",
-  "note": "オンライン予約は終了。店頭販売は11月下旬から。",
+  "note": "オンライン予約は終了。店頭販売は11/24(火)から。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-11-02",
   "srcType": "official",
-  "verifiedAt": "2026-10-29",
-  "qNone": "ちいかわベーカリーの店頭販売のみ"
+  "verifiedAt": "2026-11-02",
+  "qNone": "ちいかわベーカリーの店頭販売のみ",
+  "srcs": [
+   "https://prtimes.jp/main/html/rd/p/000000335.000086964.html"
+  ],
+  "log": [
+   {
+    "d": "2026-11-02",
+    "t": "店頭販売の開始日が11/24に決まりました"
+   }
+  ]
  },
  {
   "id": "20261005-puku-churu",
@@ -2831,8 +2846,8 @@
   "region": "jp",
   "t": "ちいかわ キャラマグネッツ5（バンダイ キャンディ）",
   "cat": "food",
-  "s": "2026-11-01",
-  "sp": "month",
+  "s": "2026-11-16",
+  "sp": "day",
   "e": null,
   "time": "",
   "eNote": "",
@@ -2842,12 +2857,18 @@
   "q": "ちいかわ キャラマグネッツ5",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929335000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-29",
-  "note": "アクリル製マグネット全21種（レアはオーロラ・キラキララメ・フレームの3種）＋ガム1個。2026年11月発売。",
+  "verifiedAt": "2026-11-02",
+  "note": "アクリル製マグネット全21種（レアはオーロラ・キラキララメ・フレームの3種）＋ガム1個。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
-  "updatedAt": "2026-10-10",
-  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
+  "updatedAt": "2026-11-02",
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず",
+  "log": [
+   {
+    "d": "2026-11-02",
+    "t": "発売日が11/16に決まりました"
+   }
+  ]
  },
  {
   "region": "jp",
@@ -3298,7 +3319,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-02",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3330,7 +3351,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-02",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-25",
@@ -4991,7 +5012,7 @@
   "srcs": [
    "https://game.watch.impress.co.jp/docs/news/2152123.html"
   ],
-  "verifiedAt": "2026-10-29",
+  "verifiedAt": "2026-11-02",
   "how": [
    "全国の量販店の菓子売場などで販売（取り扱いのない店舗あり・発売日は店舗によって異なる場合あり）"
   ],
@@ -5365,5 +5386,66 @@
    "握手・ハイタッチはできません"
   ],
   "note": "ちいかわ・ハチワレ・ラッコとの写真撮影会とARラリー。"
+ },
+ {
+  "id": "20261111-bakery-xmas",
+  "region": "jp",
+  "t": "ちいかわベーカリー X'mas限定パン（サンタパン・ハチワレ豪華パン）",
+  "cat": "cafe",
+  "s": "2026-11-11",
+  "sp": "day",
+  "e": "2026-12-27",
+  "time": "11:00〜20:00",
+  "eNote": "なくなり次第終了",
+  "place": "ちいかわベーカリー（東急プラザ表参道「オモカド」3F）、ちいかわベーカリー OSAKA（KITTE大阪 3F）",
+  "area": "表参道",
+  "price": "サンタパン 各660円／ハチワレ豪華パン 1,600円",
+  "q": "",
+  "src": "https://chiikawabakery.jp/topics/20261102",
+  "srcType": "official",
+  "srcs": [
+   "https://prtimes.jp/main/html/rd/p/000000335.000086964.html"
+  ],
+  "verifiedAt": "2026-11-02",
+  "how": [
+   "サンタ姿のちいかわ・ハチワレ・うさぎパンは11/13(金)〜12/27(日)、表参道とOSAKAの両店で販売",
+   "3個買うと限定デザインのBOXに入れてもらえる（キャラクターは自由に選べる）",
+   "ハチワレ豪華パン（ティラミス風）は11/11(水)から表参道店だけ",
+   "季節限定品は数量限定・なくなり次第終了"
+  ],
+  "note": "紅茶缶は11/6、クリスマスのマグカップは11/20、ショッパーは12/4から。",
+  "autoAdded": true,
+  "addedAt": "2026-11-02",
+  "updatedAt": "2026-11-02"
+ },
+ {
+  "id": "20261103-parade-big-cushion",
+  "region": "jp",
+  "t": "ちいかわ 超BIGクッション（パレードのプライズ）",
+  "cat": "goods",
+  "s": "2026-11-05",
+  "sp": "early",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のアミューズメント施設・オンラインクレーンゲーム（パレードのプライズ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（ゲームセンターの景品）",
+  "src": "https://www.parade-inc.net/products/p261103",
+  "srcType": "partner",
+  "srcs": [
+   "https://nijimen.kusuguru.co.jp/topics/647921"
+  ],
+  "verifiedAt": "2026-11-02",
+  "how": [
+   "ゲームセンターやオンラインクレーンゲームの景品（プライズ）。11月上旬から順次登場",
+   "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
+  ],
+  "note": "高さ約60cm、両面デザインの大きなクッション。ラーメン柄と草むしり検定柄の全2種。",
+  "autoAdded": true,
+  "addedAt": "2026-11-02",
+  "updatedAt": "2026-11-02"
  }
 ]

@@ -1,5 +1,49 @@
 [
  {
+  "id": "20261102-parade-big-cushion",
+  "date": "2026-11-02",
+  "tag": "goods",
+  "title": "高さ60cmのちいかわクッションがプライズに",
+  "sum": "パレードのプライズに、両面デザインの超BIGクッションが登場。ラーメン柄と草むしり検定柄の2種で、11月上旬からゲームセンターなどで順次展開されます。",
+  "source": "にじめん",
+  "src": "https://nijimen.kusuguru.co.jp/topics/647921",
+  "itemId": "20261103-parade-big-cushion",
+  "addedAt": "2026-11-02"
+ },
+ {
+  "id": "20261102-charamagnets5",
+  "date": "2026-11-02",
+  "tag": "goods",
+  "title": "キャラマグネッツ5が11/16に発売",
+  "sum": "アクリルマグネット全21種（レア3種）とガムのセット、各297円。11/16から全国の量販店の菓子売場などに並びます。",
+  "source": "インサイド",
+  "src": "https://inside-games.jp/article/2026/11/02/190223.html",
+  "itemId": "20261101-charamagnets5",
+  "addedAt": "2026-11-02"
+ },
+ {
+  "id": "20261102-chocosurp2-date",
+  "date": "2026-11-02",
+  "tag": "goods",
+  "title": "チョコサプ ちいかわ2は11/23発売に",
+  "sum": "バンダイのチョコ菓子つきフィギュア第2弾は全14種（シークレット1種）で各385円。全国の量販店の菓子売場などで11/23から販売されます。",
+  "source": "インサイド",
+  "src": "https://inside-games.jp/article/2026/11/02/190219.html",
+  "itemId": "20261101-37",
+  "addedAt": "2026-11-02"
+ },
+ {
+  "id": "20261102-bakery-xmas-bread",
+  "date": "2026-11-02",
+  "tag": "goods",
+  "title": "ちいかわベーカリーにサンタ姿のパンが今年も",
+  "sum": "表参道とOSAKAの両店で、サンタ姿のちいかわ・ハチワレ・うさぎパン（各660円）を11/13から販売。表参道ではハチワレのティラミス風豪華パンも11/11から登場します。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000335.000086964.html",
+  "itemId": "20261111-bakery-xmas",
+  "addedAt": "2026-11-02"
+ },
+ {
   "id": "20261101-kitte-nagoya-vending",
   "date": "2026-11-01",
   "tag": "goods",
