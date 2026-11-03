@@ -3275,17 +3275,35 @@
   "src": "https://faq-tw.gu-global.com/articles/zh_TW/Knowledge/000010330",
   "srcType": "partner",
   "srcs": [
-   "https://www.4gamers.com.tw/news/detail/82126/chiikawa-gu-winter-collaboration-2026"
+   "https://www.4gamers.com.tw/news/detail/82126/chiikawa-gu-winter-collaboration-2026",
+   "https://www.nownews.com/news/6888575",
+   "https://faq-tw.gu-global.com/pkb_Home_GU_TW?id=kA0Ie000000TOev&l=zh_TW&fs=RelatedArticle"
   ],
-  "verifiedAt": "2026-10-20",
+  "verifiedAt": "2026-11-04",
   "how": [
    "第1弾は11/20(金)、第2弾は11/27(金)に発売",
-   "取り置き・店舗間の取り寄せはなし。転売目的と判断された注文は断られることがあります"
+   "GU台湾オンラインストアで先行予約：台湾時間11/2(月)9:00〜11/5(木)23:59（日本時間11/6 0:59まで）",
+   "予約は第1弾・第2弾の両方が対象で、11/10から順次発送。店舗での予約はなし",
+   "同じ商品・色・サイズは1アカウント2点まで。取り置き・店舗間の取り寄せはなし"
   ],
   "note": "日本と同じ日程の台湾での発売。原文：吉伊卡哇、網路商店及全台實體店鋪。",
   "autoAdded": true,
   "addedAt": "2026-10-13",
-  "updatedAt": "2026-10-13"
+  "updatedAt": "2026-11-04",
+  "dl": [
+   {
+    "k": "予約",
+    "n": "GU台湾オンラインストアの先行予約（台湾時間 11/2 9:00〜11/5 23:59。店舗では予約なし）",
+    "until": "2026-11-06T00:59",
+    "u": "https://www.gu-global.com/tw/zh_TW/feature_chiikawa_women.html"
+   }
+  ],
+  "log": [
+   {
+    "d": "2026-11-04",
+    "t": "オンライン先行予約の締切（日本時間11/6 0:59）を追加しました"
+   }
+  ]
  },
  {
   "region": "jp",
@@ -4003,16 +4021,16 @@
   "region": "jp",
   "cat": "event",
   "sp": "day",
-  "time": "",
+  "time": "10:00〜19:00（最終日は18:00まで）",
   "eNote": "",
   "price": "",
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "autoAdded": true,
   "addedAt": "2026-10-17",
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-11-04",
   "s": "2026-10-30",
   "e": "2026-11-16",
   "id": "20261030-pus-kurashiki",
@@ -4020,25 +4038,32 @@
   "place": "イオンモール倉敷 2F サウスコート（岡山県倉敷市）",
   "area": "倉敷",
   "note": "会場は2F サウスコート。",
-  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-03 公式ポストを再検索したが、本文とURLが確かめられるものは見つからず",
+  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-03 公式ポストを再検索したが、本文とURLが確かめられるものは見つからず／2026-11-04 再検索したが、見つかったのは2025年の同会場の回の言及のみ（不一致）",
   "srcs": [
-   "https://chiikawa-info.jp/p26/pus_akrs/"
+   "https://chiikawa-info.jp/p26/pus_akrs/",
+   "https://kurashiki.aeonmall.jp/event/45ff8373-61dc-475f-bec7-d3a8e3a06cab"
+  ],
+  "how": [
+   "10/30・10/31・11/1・11/6は整理券を配布（9:30から、ワクワク東入口エスカレーター下）",
+   "整理券の配布の有無や時間は当日の混雑で変わることあり",
+   "11/14(土)・11/15(日)はちいかわ・ハチワレ・うさぎが登場予定（詳細はイオンモール倉敷のページ）",
+   "購入特典：ステッカー（1会計1枚）、2,200円（税込）以上で専用ショッパー（なくなり次第終了）"
   ]
  },
  {
   "region": "jp",
   "cat": "event",
   "sp": "day",
-  "time": "",
+  "time": "10:00〜19:00（最終日は18:00まで）",
   "eNote": "",
   "price": "",
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "autoAdded": true,
   "addedAt": "2026-10-17",
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-11-04",
   "s": "2026-10-30",
   "e": "2026-11-16",
   "id": "20261030-pus-kasukabe",
@@ -4046,9 +4071,14 @@
   "place": "イオンモール春日部 1F 藤の広場（埼玉県春日部市）",
   "area": "春日部",
   "note": "会場は1F 藤の広場。",
-  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず",
+  "xpostNote": "2026-10-24 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-04 再検索したが、見つかったのは2025年7〜8月の同会場の回（chiikawa_kouhou/status/1943599277898695011）のみ（不一致）",
   "srcs": [
-   "https://chiikawa-info.jp/p26/pus_aksk/"
+   "https://chiikawa-info.jp/p26/pus_aksk/",
+   "https://kasukabe.aeonmall.jp/event/587712c5-e3bc-461b-bdd1-fe51e6698c2b"
+  ],
+  "how": [
+   "混雑日は整理券を配布（9:30からDモール西入口、開店後は店頭。配布の有無は当日の混雑で判断）",
+   "夜間の整列・割り込み・途中合流はできません。複数人で入るときは全員そろって並ぶ"
   ]
  },
  {
@@ -4655,7 +4685,7 @@
    "https://chiikawamarket.jp/products/4571609413028",
    "https://www.inside-games.jp/article/2026/10/27/189904.html"
   ],
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "dl": [
    {
     "k": "抽選",
@@ -4684,20 +4714,30 @@
   "s": "2026-11-06",
   "sp": "day",
   "e": "2026-11-23",
-  "time": "",
+  "time": "10:00〜19:00（最終日は18:00まで）",
   "eNote": "",
-  "place": "イオンモール須坂（長野県須坂市）",
+  "place": "イオンモール須坂 1F Goolightコート（長野県須坂市）",
   "area": "須坂",
   "price": "",
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-27",
-  "updatedAt": "2026-10-27",
-  "xpostNote": "2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
+  "updatedAt": "2026-11-04",
+  "xpostNote": "2026-11-02 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-04 再検索したが、本文とURLが確かめられる公式ポストは見つからず",
+  "how": [
+   "初日（11/6）は整理券を配布（9:30から。配布の有無は混雑状況で判断）",
+   "初日・混雑日は「C 1F SUZAKAノ庭縁入口」が優先入口",
+   "購入特典：ステッカー（1会計1枚）、2,200円（税込）以上でオリジナルショッパー（なくなり次第終了）",
+   "11/22(日)は写真撮影会（11:00・13:00・15:00、各回50組）。当日9:30ごろからC 1F SUZAKAノ庭縁入口で参加券を配布、1組5人まで"
+  ],
+  "srcs": [
+   "https://suzaka.aeonmall.com/news/detail/1834?t=event_news",
+   "https://suzaka.aeonmall.com/news/detail/1835?t=event_news"
+  ]
  },
  {
   "id": "20261028-talking-kurimanjyu",
@@ -4805,7 +4845,7 @@
   "srcs": [
    "https://m.21jingji.com/article/20261021/herald/f2cca8bea1c320cba86603cfbb4c4172.html"
   ],
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "note": "北京で初めてのちいかわ公式の展示・ポップアップ。ちいかわ公式微博の発表を伝える報道で確認。原文：吉伊卡哇 北京快闪店（朝阳合生汇）。",
   "how": [
    "9/27からは予約なしで入場できる（公式微博の案内を伝える報道より）"
@@ -4919,7 +4959,7 @@
   "qNone": "催事での店頭販売",
   "src": "https://prtimes.jp/main/html/rd/p/000002181.000025606.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "how": [
    "「大丸松坂屋百貨店監修 Sweets Selection in PARCO CITY」の会場で販売",
    "トートバッグ・エコバッグはお菓子とのセットのみ（単品販売なし）"
@@ -5258,14 +5298,18 @@
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
   "srcs": [
-   "https://chiikawa-info.jp/p26/pus_tbun/index.html"
+   "https://chiikawa-info.jp/p26/pus_tbun/index.html",
+   "https://www.tobu-u-dept.jp/event.html"
   ],
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-31",
-  "updatedAt": "2026-10-31",
-  "xpostNote": "2026-10-31 公式ポストを検索したが、見つかったのは2025年11〜12月の同会場の回のみ（不一致）"
+  "updatedAt": "2026-11-04",
+  "xpostNote": "2026-10-31 公式ポストを検索したが、見つかったのは2025年11〜12月の同会場の回のみ（不一致）／2026-11-04 再検索したが、2026年の回の公式ポストは見つからず（2025年の回 chiikawa_kouhou/status/1988897565320867889 のみ）",
+  "how": [
+   "最終日（12/1）は18:00閉場"
+  ]
  },
  {
   "id": "20261101-noodle-stopper-ramen",
@@ -5618,5 +5662,66 @@
   "autoAdded": true,
   "addedAt": "2026-11-03",
   "updatedAt": "2026-11-03"
+ },
+ {
+  "id": "20261106-penlight-ouen3",
+  "region": "jp",
+  "t": "映画ちいかわ 自動制御ペンライト演出付き応援上映（第3回・TOHOシネマズ7劇場）",
+  "cat": "event",
+  "s": "2026-11-06",
+  "sp": "day",
+  "e": "2026-11-06",
+  "time": "19:00〜",
+  "eNote": "",
+  "place": "TOHOシネマズ すすきの・日比谷・新宿・池袋・名古屋栄・梅田・天神",
+  "area": "",
+  "price": "通常料金",
+  "q": "",
+  "src": "https://chiikawa.toho-movie.jp/news/page/cheer_03.html",
+  "srcType": "official",
+  "srcs": [
+   "https://www.tohotheater.jp/event/chiikawa-penlightouen1106.html"
+  ],
+  "verifiedAt": "2026-11-04",
+  "how": [
+   "チケットは各劇場のWebサイトで10/30(金)0:00から販売中（TOHO-ONE会員の早期購入の対象外）",
+   "発声OKの応援上映。ペンライトは本編の音と連動してキャラクターに合わせて色が変わる",
+   "自動制御ペンライトは通販（TOHOエンタテインメントオンライン）で事前に買え、当日の劇場でも数量限定で販売"
+  ],
+  "note": "『映画ちいかわ 人魚の島のひみつ』のペンライト演出付き応援上映の3回目（11/6(金)19時から全国7劇場で一斉開催）。",
+  "xpostNote": "2026-11-04 chiikawa_movie の投稿を2回検索したが、11/6の回の本文とURLが確かめられるものは見つからず",
+  "autoAdded": true,
+  "addedAt": "2026-11-04",
+  "updatedAt": "2026-11-04"
+ },
+ {
+  "id": "20261109-junro-chiikawa",
+  "region": "jp",
+  "t": "純露 ちいかわ（UHA味覚糖・再登場）",
+  "cat": "food",
+  "s": "2026-11-09",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国の店舗、UHA味覚糖公式オンラインストア",
+  "area": "",
+  "price": "1袋227円（UHA味覚糖公式オンラインストア）",
+  "q": "ちいかわ 純露",
+  "src": "https://x.com/UMikakuto/status/2114477157116522997",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.uha-shop.jp/shop/products/07183"
+  ],
+  "verifiedAt": "2026-11-04",
+  "how": [
+   "11/9(月)から全国で発売（UHA味覚糖公式の告知）",
+   "UHA味覚糖公式オンラインストアでは1袋227円・6袋セット1,362円・18袋セット3,677円"
+  ],
+  "note": "2025年10月に出た、ちいかわデザインの純露の再登場。パッケージは「ちいかわ」と「うさぎ」の2種類で、1袋でべっこう飴と紅茶の2つの味。香料・着色料不使用。",
+  "xpostNote": "2026-11-04 chiikawa_kouhou の投稿を2回検索したが、2026年の再登場の投稿は見つからず（見つかったのは2025年10月の初回分）。UHA味覚糖のアカウントは official-x.json の accounts にないため xpost にしない",
+  "autoAdded": true,
+  "addedAt": "2026-11-04",
+  "updatedAt": "2026-11-04"
  }
 ]
