@@ -2243,7 +2243,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-05",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-10-30",
+  "verifiedAt": "2026-11-03",
   "t": "ちいかわ 日本酒とお出汁のだし割りセット（玉乃光酒造）",
   "cat": "food",
   "s": "2026-11-10",
@@ -2501,7 +2501,7 @@
   "qNone": "くじ（店頭販売）",
   "src": "https://1kuji.com/products/chiikawa5",
   "srcType": "partner",
-  "verifiedAt": "2026-10-30",
+  "verifiedAt": "2026-11-03",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2804,7 +2804,7 @@
   "q": "",
   "src": "https://www.westjr.co.jp/press/article/2026/09/30/items/260930_00_press_lucuasouth.pdf",
   "srcType": "press",
-  "verifiedAt": "2026-10-30",
+  "verifiedAt": "2026-11-03",
   "note": "池袋のちいかわパークの公式ショップが全国初出店。入店は無料。ミニマスコットキーリング（全10種・各1,430円）やポップコーンバケツ（各4,180円）などを販売し、一部の商品は購入数の制限あり。同じ11Fにナガノマーケット UMEDA も同日オープン。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -3549,7 +3549,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000144.000074811.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-01",
+  "verifiedAt": "2026-11-03",
   "how": [
    "入場は公式サイトのチケットが必要。当日入場できない場合があるので事前に確認。",
    "限定グッズ（スウェット・ファーハット・マフラー）は11/24(火)発売。",
@@ -3558,7 +3558,12 @@
   "note": "館内がクリスマスの装飾になり、クリスマス限定衣装のちいかわたちがグリーティングに登場（変更・中止の場合あり）。",
   "autoAdded": true,
   "addedAt": "2026-10-13",
-  "updatedAt": "2026-10-13"
+  "updatedAt": "2026-11-03",
+  "xpost": "https://x.com/chiikawa_parkjp/status/2109932814858653696",
+  "xpostNote": "投稿日2026-10-13（IDから計算）。本文に「ちいかわパークにクリスマスがやってくる」「開催期間 2026年11月20日(金)～12月25日(金)」（2026-11-03確認）",
+  "srcs": [
+   "https://x.com/chiikawa_parkjp/status/2109932814858653696"
+  ]
  },
  {
   "id": "20261015-bakery2nd-market",
@@ -3910,7 +3915,7 @@
    "https://www.gourmandise.jp/view/item/000000010928",
    "https://www.gourmandise.jp/view/item/000000010925"
   ],
-  "verifiedAt": "2026-10-30",
+  "verifiedAt": "2026-11-03",
   "how": [
    "グルマンディーズ公式通販で「11月下旬発売予定」として掲載中"
   ],
@@ -5147,7 +5152,7 @@
   "qNone": "店頭で順次発売のコラボ品で、楽天で同じ商品と言い切れない",
   "src": "https://prtimes.jp/main/html/rd/p/000000210.000034263.html",
   "srcType": "press",
-  "verifiedAt": "2026-10-30",
+  "verifiedAt": "2026-11-03",
   "how": [
    "11月上旬以降、全国のドラッグストア・バラエティショップなどで順次発売。取り扱いのない店舗もあります",
    "どのセットにも、ちいかわデザインのオリジナルカチューシャ付き（種類はパッケージの外から確認できます）"
@@ -5176,7 +5181,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000138.000035374.html"
   ],
-  "verifiedAt": "2026-10-30",
+  "verifiedAt": "2026-11-03",
   "dl": [
    {
     "k": "抽選",
