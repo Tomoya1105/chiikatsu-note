@@ -1395,7 +1395,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/09/08/187400.html"
   ],
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "srcType": "partner",
   "log": [
    {
@@ -1814,7 +1814,7 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "qNone": "GUの店舗・公式通販のみ",
   "srcs": [
    "https://www.famitsu.com/article/202609/88383",
@@ -2529,7 +2529,7 @@
    "https://contents-abema.com/chiikawa-christmas-market/food/",
    "https://prtimes.jp/main/html/rd/p/000004179.000064643.html"
   ],
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "dl": [
    {
     "k": "抽選",
@@ -3809,7 +3809,7 @@
   "q": "ちいかわ ウエハース エールカードコレクション",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117930188000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-10-31",
+  "verifiedAt": "2026-11-04",
   "note": "メタリックに輝くキラキラカード全25種（うちシークレット1種）入りのウエハース。2026年12月発売予定（日付は未発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
@@ -4179,7 +4179,7 @@
   "srcs": [
    "https://www.oricon.co.jp/news/2487242/full/"
   ],
-  "verifiedAt": "2026-11-01",
+  "verifiedAt": "2026-11-04",
   "how": [
    "幕張新都心店：モモンガ（さつまいも）8/31〜、くりまんじゅう（渋皮マロン）9/7〜、ラッコ（パンプキン）9/14〜、いずれも11/26まで",
    "横浜ワールドポーターズ店・名古屋パルコ店：週がわりで販売（くりまんじゅう 10/19〜10/25、ラッコ 10/26〜11/1）",
@@ -4872,9 +4872,10 @@
   "srcType": "official",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000186.000035374.html",
-   "https://chiikawamogumogu.jp/2026/10/28/post-2535"
+   "https://chiikawamogumogu.jp/2026/10/28/post-2535",
+   "https://www.chiikawamogumogu.jp/2026/11/04/post-2710"
   ],
-  "verifiedAt": "2026-11-01",
+  "verifiedAt": "2026-11-04",
   "dl": [
    {
     "k": "抽選",
@@ -4929,13 +4930,18 @@
   "how": [
    "11/18〜2027/1/3は事前予約・完全入れ替え制。ちいかわもぐもぐ本舗のLINE公式アカウントで抽選に申し込む（1人1枚のデジタルチケットが必要）",
    "抽選は週ごと。11/18〜22分は11/4(水)18:00〜11/7(土)18:00受付、11/9(月)結果発表",
-   "オープン記念グッズは店舗限定（通販なし）"
+   "オープン記念グッズは店舗限定（通販なし）",
+   "オープン日の11/18(水)は、京都錦店で食品・商品を買うと1会計につきオリジナルステッカーを1枚プレゼント（なくなり次第終了）"
   ],
   "note": "ちいかわベビーカステラの2号店。年中無休（季節などで営業時間の変更あり）。",
   "autoAdded": true,
   "addedAt": "2026-10-28",
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-11-04",
   "log": [
+   {
+    "d": "2026-11-04",
+    "t": "オープン日のノベルティ（ステッカー）の情報を追加しました"
+   },
    {
     "d": "2026-10-28",
     "t": "1/3までの入店予約の抽選日程をすべて追加しました"
@@ -5013,7 +5019,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000004138.000003639.html"
   ],
-  "verifiedAt": "2026-11-01",
+  "verifiedAt": "2026-11-04",
   "org": {
    "name": "株式会社パルコ",
    "url": "https://cafe.parco.jp/",
@@ -5048,7 +5054,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_kbkt/index.html"
   ],
-  "verifiedAt": "2026-11-01",
+  "verifiedAt": "2026-11-04",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-28",
@@ -5258,7 +5264,7 @@
   "qNone": "公式の新商品で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2115730609649987811",
   "srcType": "official",
-  "verifiedAt": "2026-11-01",
+  "verifiedAt": "2026-11-04",
   "xpost": "https://x.com/chiikawa_kouhou/status/2115730609649987811",
   "xpostNote": "投稿日2026-10-29（IDから計算）。本文に「ボアブルゾン 毛量(トリオ)」「11月6日(金)より ちいかわらんど、ちいかわマーケット、トーキング ほかにて順次発売」（2026-10-30確認）",
   "how": [
@@ -5720,6 +5726,75 @@
   ],
   "note": "2025年10月に出た、ちいかわデザインの純露の再登場。パッケージは「ちいかわ」と「うさぎ」の2種類で、1袋でべっこう飴と紅茶の2つの味。香料・着色料不使用。",
   "xpostNote": "2026-11-04 chiikawa_kouhou の投稿を2回検索したが、2026年の再登場の投稿は見つからず（見つかったのは2025年10月の初回分）。UHA味覚糖のアカウントは official-x.json の accounts にないため xpost にしない",
+  "autoAdded": true,
+  "addedAt": "2026-11-04",
+  "updatedAt": "2026-11-04"
+ },
+ {
+  "id": "20261115-parade-rubber-pen",
+  "region": "jp",
+  "t": "ちいかわ ラバーマスコットつきボールペン（プライズ）",
+  "cat": "goods",
+  "s": "2026-11-15",
+  "sp": "mid",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のアミューズメント施設・オンラインクレーンゲーム（パレードのプライズ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（ゲームセンターの景品）",
+  "src": "https://www.parade-inc.net/products/p261106",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/11/04/190328.html"
+  ],
+  "verifiedAt": "2026-11-04",
+  "how": [
+   "ゲームセンターやオンラインクレーンゲームの景品（プライズ）。2026年11月中旬から順次登場",
+   "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
+  ],
+  "note": "ラバーマスコットがついたボールペン（約H14cm）、全8種。",
+  "autoAdded": true,
+  "addedAt": "2026-11-04",
+  "updatedAt": "2026-11-04"
+ },
+ {
+  "id": "20261118-babycastella-otaru-lottery",
+  "region": "jp",
+  "t": "ちいかわベビーカステラ 小樽店 入店予約制（11/18〜11/22・抽選）",
+  "cat": "cafe",
+  "s": "2026-11-18",
+  "sp": "day",
+  "e": "2026-11-22",
+  "time": "9:30〜17:30",
+  "eNote": "期間中は入店予約制（LINEで抽選）",
+  "place": "ちいかわベビーカステラ 小樽店（北海道小樽市堺町6-1）",
+  "area": "小樽",
+  "price": "",
+  "q": "",
+  "src": "https://www.chiikawamogumogu.jp/2026/11/04/post-2517",
+  "srcType": "official",
+  "srcs": [
+   "https://www.chiikawamogumogu.jp/stores/otaru/"
+  ],
+  "verifiedAt": "2026-11-04",
+  "dl": [
+   {
+    "k": "抽選",
+    "n": "ちいかわベビーカステラ 小樽店 11/18〜11/22の入店予約（LINEで抽選）",
+    "until": "2026-11-07T18:00",
+    "u": "https://www.chiikawamogumogu.jp/2026/11/04/post-2517"
+   }
+  ],
+  "how": [
+   "11/18(水)〜11/22(日)は入店予約が必要。ちいかわもぐもぐ本舗のLINE公式アカウントで抽選に申し込む",
+   "申し込みは11/4(水)18:00〜11/7(土)18:00、結果発表は11/9(月)。1日1枠で複数日に申し込めるが、当選は1アカウント1枠まで",
+   "空き枠は来店前日20時からLINEで先着順に案内（位置情報が必要で、お店から約30km以内）",
+   "予約は入店の保証で、商品の購入を保証するものではない"
+  ],
+  "note": "営業時間は公式の店舗ページの表記（状況により変更あり）。",
   "autoAdded": true,
   "addedAt": "2026-11-04",
   "updatedAt": "2026-11-04"

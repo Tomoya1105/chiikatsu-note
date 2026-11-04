@@ -1,5 +1,60 @@
 [
  {
+  "id": "20261104-fns-movie-chiikawa",
+  "date": "2026-11-04",
+  "tag": "anime",
+  "title": "FNS歌謡祭に映画ちいかわが出演、劇中歌を3曲",
+  "sum": "12/2(水)放送の2026FNS歌謡祭 第1夜に「映画ちいかわ」が出演決定。人魚の島のひみつの劇中歌3曲を届ける予定。",
+  "source": "アニメ！アニメ！",
+  "src": "https://animeanime.jp/article/2026/11/04/104463.html",
+  "itemId": "",
+  "addedAt": "2026-11-04"
+ },
+ {
+  "id": "20261104-otaru-castella-lottery",
+  "date": "2026-11-04",
+  "tag": "event",
+  "title": "ベビーカステラ小樽店、11/18〜22は抽選の予約制",
+  "sum": "ちいかわベビーカステラ 小樽店は11/18〜22の入店が予約制に。LINE公式アカウントで11/7(土)18時まで抽選を受け付け、11/9に結果発表。",
+  "source": "ちいかわもぐもぐ本舗",
+  "src": "https://www.chiikawamogumogu.jp/2026/11/04/post-2517",
+  "itemId": "20261118-babycastella-otaru-lottery",
+  "addedAt": "2026-11-04"
+ },
+ {
+  "id": "20261104-nishiki-novelty",
+  "date": "2026-11-04",
+  "tag": "event",
+  "title": "ベビーカステラ京都錦店、開店日にステッカー配布",
+  "sum": "11/18(水)オープンの京都錦店で、当日に買い物をすると1会計につき非売品のオリジナルステッカーを1枚もらえる。なくなり次第終了。",
+  "source": "ちいかわもぐもぐ本舗",
+  "src": "https://www.chiikawamogumogu.jp/2026/11/04/post-2710",
+  "itemId": "20261118-babycastella-kyoto-nishiki",
+  "addedAt": "2026-11-04"
+ },
+ {
+  "id": "20261104-rubber-pen",
+  "date": "2026-11-04",
+  "tag": "goods",
+  "title": "マスコット付きボールペンが11月中旬プライズに",
+  "sum": "パレードのプライズに、ちいかわたちのラバーマスコットが付いたボールペン（全8種・約14cm）が登場。11月中旬から順次。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/04/190328.html",
+  "itemId": "20261115-parade-rubber-pen",
+  "addedAt": "2026-11-04"
+ },
+ {
+  "id": "20261104-lovisia-lip",
+  "date": "2026-11-04",
+  "tag": "goods",
+  "title": "マスコット付きのちいかわリップ美容液が話題",
+  "sum": "Lovisiaの、外せるシリコンマスコット付きリップエッセンス（全4種・各1,100円）が人気で、品切れの店もあるという。",
+  "source": "LASISA（Yahoo!ニュース）",
+  "src": "https://news.yahoo.co.jp/articles/0daacccc0d31f197793896aa0b141c0655f0b5c8",
+  "itemId": "20261030-market-1030",
+  "addedAt": "2026-11-04"
+ },
+ {
   "id": "20261103-jet-hakodate",
   "date": "2026-11-03",
   "tag": "topic",
