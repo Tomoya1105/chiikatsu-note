@@ -1443,18 +1443,27 @@
   "cat": "goods",
   "e": null,
   "eNote": "",
-  "note": "パック版。自販機版は12月上旬。",
-  "place": "カードダス自販機、アニメショップなど",
-  "price": "",
+  "note": "自販機版は12月上旬。",
+  "place": "カードダス自販機、アニメショップ、玩具売場など",
+  "price": "1パック220円（3枚入り）／全30種",
   "q": "カードダス アニメちいかわ",
   "s": "2026-12-04",
   "sp": "day",
   "src": "https://x.com/chiikawa_kouhou/status/2091691964563660991",
-  "t": "カードダス アニメちいかわ",
+  "t": "カードダス アニメちいかわ（パック）",
   "time": "",
-  "updatedAt": "2026-10-29",
+  "updatedAt": "2026-11-04",
   "srcType": "official",
-  "verifiedAt": "2026-11-03"
+  "verifiedAt": "2026-11-04",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/11/04/190359.html"
+  ],
+  "log": [
+   {
+    "d": "2026-11-04",
+    "t": "価格（1パック220円）と全30種が分かりました"
+   }
+  ]
  },
  {
   "id": "20261215-anymykuji",
@@ -1473,7 +1482,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-11-01",
+  "verifiedAt": "2026-11-04",
   "qNone": "くじ（オンラインくじ）"
  },
  {
@@ -1753,7 +1762,7 @@
   "place": "ちいかわらんど、ちいかわPOP UP STORE、スーパー、ドラッグストアなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-04",
   "xpost": "https://x.com/chiikawa_kouhou/status/2113072853088358705",
   "xpostNote": "投稿日2026-10-22 10:00（IDから計算）。本文に「アニメちいかわ きのこのポタージュ・ほうれんそうのポタージュ」「10月22日（木）より」「オリジナルシール1枚入り」（2026-10-24 検索結果で確認）",
   "srcs": [
@@ -2753,7 +2762,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-04",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2776,7 +2785,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-04",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -3217,7 +3226,7 @@
   "q": "ちいかわ セーフティポーチ",
   "src": "https://www.gourmandise.jp/view/item/000000010968",
   "srcType": "partner",
-  "verifiedAt": "2026-11-01",
+  "verifiedAt": "2026-11-04",
   "how": [
    "グルマンディーズ公式通販で予約受付中（発売後、順次発送）"
   ],
@@ -3317,7 +3326,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-04",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3349,7 +3358,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-04",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3381,7 +3390,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-04",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-25",
@@ -5795,6 +5804,92 @@
    "予約は入店の保証で、商品の購入を保証するものではない"
   ],
   "note": "営業時間は公式の店舗ページの表記（状況により変更あり）。",
+  "autoAdded": true,
+  "addedAt": "2026-11-04",
+  "updatedAt": "2026-11-04"
+ },
+ {
+  "id": "20261030-lovisia-lip",
+  "region": "jp",
+  "t": "Lovisia ちいかわ マスコットリップエッセンス",
+  "cat": "goods",
+  "s": "2026-10-30",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "Lovisiaオンラインショップ、全国のバラエティショップなど",
+  "area": "",
+  "price": "各1,100円",
+  "q": "ちいかわ Lovisia マスコットリップエッセンス",
+  "src": "https://prtimes.jp/main/html/rd/p/000000941.000035599.html",
+  "srcType": "press",
+  "verifiedAt": "2026-11-04",
+  "how": [
+   "Lovisiaオンラインショップでは10/30(金)10:00から販売",
+   "全国のバラエティショップなどで10/30から順次発売",
+   "ちいかわ（ピーチパイ）・ハチワレ（ソーダ）・うさぎ（パンケーキ）・モモンガ（ベリータルト）の香り全4種"
+  ],
+  "note": "立体マスコットのカバー付きで、チャームとしても使える。",
+  "autoAdded": true,
+  "addedAt": "2026-11-04",
+  "updatedAt": "2026-11-04"
+ },
+ {
+  "id": "20261113-kirapichi-12",
+  "region": "jp",
+  "t": "キラピチ12月号（付録：アニメちいかわ スケジュール帳＆シールセット）",
+  "cat": "book",
+  "s": "2026-11-13",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国の書店・ネット書店",
+  "area": "",
+  "price": "1,518円",
+  "q": "",
+  "qNone": "雑誌の付録のため、楽天で同じ号と言い切れる商品ページが見つからない",
+  "src": "https://prtimes.jp/main/html/rd/p/000009556.000002535.html",
+  "srcType": "press",
+  "verifiedAt": "2026-11-04",
+  "how": [
+   "11/4から書店・ネット書店で予約受付中",
+   "付録は2027年のスケジュール帳と、ちいかわたちのシャカシャカシール"
+  ],
+  "note": "学研の小学生向け雑誌。品切れになる店もあるとして予約がすすめられている。",
+  "autoAdded": true,
+  "addedAt": "2026-11-04",
+  "updatedAt": "2026-11-04"
+ },
+ {
+  "id": "20261104-metro-escape-home",
+  "region": "jp",
+  "t": "映画ちいかわ 東京メトロ脱出ゲーム「おうちで遊べる版」",
+  "cat": "goods",
+  "s": "2026-11-04",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ESCAPE.ID（郵送販売）、ローソンメトロス11店舗（11/9から）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "謎解きキット（ESCAPE.IDとローソンメトロスで販売）",
+  "src": "https://prtimes.jp/main/html/rd/p/000000192.000148619.html",
+  "srcType": "press",
+  "srcs": [
+   "https://escape.id/chiikawa/"
+  ],
+  "verifiedAt": "2026-11-04",
+  "how": [
+   "ESCAPE.IDで11/4から郵送販売、11/9(月)から順次発送",
+   "ローソンメトロス11店舗（赤坂見附・池袋南西口・渋谷・新宿東口など）で11/9から店頭販売",
+   "プレイできるのは11/9〜2027/2/28",
+   "この版だけのオリジナルポストカード付き"
+  ],
+  "note": "11/3までに通常版キットを買った人は、追加で買わなくても11/9から遊べる。",
   "autoAdded": true,
   "addedAt": "2026-11-04",
   "updatedAt": "2026-11-04"
