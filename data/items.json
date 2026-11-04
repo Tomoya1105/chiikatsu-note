@@ -1421,7 +1421,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "rb": [
    {
     "n": "通常版",
@@ -2525,7 +2525,7 @@
   "sp": "day",
   "e": "2026-12-25",
   "time": "11:00〜21:00（最終入場枠 18:30〜19:00）",
-  "eNote": "日時指定チケット制（10/31(土)12:00から先着販売）",
+  "eNote": "日時指定チケット制（チケットは全日程完売）",
   "place": "豊砂公園（イオンモール幕張新都心前）（千葉県千葉市美浜区）",
   "area": "幕張",
   "price": "大人 平日2,500円・土日祝2,800円／子ども（4〜11歳）平日1,200円・土日祝1,400円",
@@ -2536,9 +2536,10 @@
    "https://prtimes.jp/main/html/rd/p/000004081.000064643.html",
    "https://contents-abema.com/chiikawa-christmas-market/goods/",
    "https://contents-abema.com/chiikawa-christmas-market/food/",
-   "https://prtimes.jp/main/html/rd/p/000004179.000064643.html"
+   "https://prtimes.jp/main/html/rd/p/000004179.000064643.html",
+   "https://times.abema.tv/articles/-/10286120"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-05",
   "dl": [
    {
     "k": "抽選",
@@ -2555,15 +2556,19 @@
   "note": "約6,000㎡の会場に高さ約6mのツリーや限定フード・限定グッズ。チケット購入者には「飛び出す！クリスマスカード」と巨大ガチャガチャ1回無料（オーナメント全16種からランダム）。限定グッズはブッシュドノエルなスノードーム（4,620円）、クリスマスマーケットなぬいぐるみ（各3,190円）など。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
-  "updatedAt": "2026-10-31",
+  "updatedAt": "2026-11-05",
   "how": [
    "入場は日時指定チケット制。先行抽選（アソビュー！）の申込は10/25(日)23:59で終了",
-   "先着販売は10/31(土)12:00から販売終了まで。1アカウント1回の申込で最大4名分。4歳未満は大人1名につき1名まで無料",
+   "先着販売は10/31(土)12:00から。公式サイトで「チケットは完売いたしました」と案内（全日程完売）",
    "会場限定グッズは全86点。一部は11/24(火)11:00から「ちいかわぽけっとグッズストア」でも販売",
    "会場で税込3,300円以上で刺繍缶バッジ（全8種）、6,600円以上で巾着（全3種）も（ランダム・会場限定・合算不可）",
    "フードは入場後にスマホで注文（キャッシュレスのみ・1会計で同じ商品は1つまで）。スマホのない子ども券では注文不可"
   ],
   "log": [
+   {
+    "d": "2026-11-05",
+    "t": "入場チケットが全日程完売になりました"
+   },
    {
     "d": "2026-10-31",
     "t": "先着販売の開始と、限定グッズの価格を追加しました"
@@ -2878,7 +2883,7 @@
   "q": "ちいかわ キャラマグネッツ5",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929335000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "note": "アクリル製マグネット全21種（レアはオーロラ・キラキララメ・フレームの3種）＋ガム1個。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -3422,7 +3427,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-25",
@@ -3454,7 +3459,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -4596,7 +4601,7 @@
    "https://qlia.store/products/15099",
    "https://www.inside-games.jp/article/2026/10/26/189838.html"
   ],
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "note": "まじかるちいかわ・超まじかるちいかわ・悪いバージョン・てんし♡あくまの全4種（ちいかわマーケットでの名前は「ボンボンドロップシール ジュエル」）。クーリア公式オンラインストアでの販売日は後日発表。",
   "how": [
    "11/6(金)から、ちいかわマーケット（公式通販）・まじかるちいかわストア・まじかるちいかわPOP UP STOREで販売",
@@ -5273,7 +5278,7 @@
   "qNone": "公式の新商品で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2115730609649987811",
   "srcType": "official",
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-05",
   "xpost": "https://x.com/chiikawa_kouhou/status/2115730609649987811",
   "xpostNote": "投稿日2026-10-29（IDから計算）。本文に「ボアブルゾン 毛量(トリオ)」「11月6日(金)より ちいかわらんど、ちいかわマーケット、トーキング ほかにて順次発売」（2026-10-30確認）",
   "how": [
@@ -5281,15 +5286,20 @@
    "ニット 毛量だけは店頭販売が11/11(水)から（通販は11/6から）",
    "ちいかわマーケットは棚卸しのため、注文分は11/16の出荷再開後に順次発送"
   ],
-  "note": "ボアブルゾン 毛量（トリオ・8,250円）、ニット 毛量（ちいかわ＆ハチワレ／うさぎ・各7,150円）、ファーハット（Fluffy Time／HAIRSTYLE CHANGE・各4,180円）、ファーバッグ Fluffy Time（各5,500円）、ファーマフラー Fluffy Time（各3,300円）、長袖Tシャツ2種など。",
+  "note": "ボアブルゾン 毛量（トリオ・8,250円）、ニット 毛量（ちいかわ＆ハチワレ／うさぎ・各7,150円）、ファーハット（Fluffy Time／HAIRSTYLE CHANGE・各4,180円）、ファーバッグ Fluffy Time（各5,500円）、ファーマフラー Fluffy Time（各3,300円）、長袖Tシャツ2種など。同じ11/6からスウェットシャツ（ONIGIRI UMA!!・SMILE）、スウェットパンツ（ONIGIRI UMA!!・snap snap snap）、ぬくぬくソックス（全7種）も順次発売。",
   "autoAdded": true,
   "addedAt": "2026-10-30",
-  "updatedAt": "2026-11-01",
+  "updatedAt": "2026-11-05",
   "srcs": [
    "https://nijimen.kusuguru.co.jp/topics/647458",
-   "https://animeanime.jp/article/2026/11/01/104391.html"
+   "https://animeanime.jp/article/2026/11/01/104391.html",
+   "https://animeanime.jp/article/2026/11/04/104487.html"
   ],
   "log": [
+   {
+    "d": "2026-11-05",
+    "t": "同じ日に出るスウェット上下・ぬくぬくソックスを追加しました"
+   },
    {
     "d": "2026-11-01",
     "t": "ニット・ファーハットなど同じシリーズの商品と価格を追加しました"
@@ -5437,7 +5447,7 @@
   "autoAdded": true,
   "addedAt": "2026-11-02",
   "updatedAt": "2026-11-02",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "id": "20261107-photoparty-natori",
   "t": "ちいかわ むちゃフォトパーティ!!＠イオンモール名取",
   "s": "2026-11-07",
@@ -5500,7 +5510,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000335.000086964.html"
   ],
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "how": [
    "サンタ姿のちいかわ・ハチワレ・うさぎパンは11/13(金)〜12/27(日)、表参道とOSAKAの両店で販売",
    "3個買うと限定デザインのBOXに入れてもらえる（キャラクターは自由に選べる）",
@@ -5533,7 +5543,7 @@
   "srcs": [
    "https://nijimen.kusuguru.co.jp/topics/647921"
   ],
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "how": [
    "ゲームセンターやオンラインクレーンゲームの景品（プライズ）。11月上旬から順次登場",
    "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
@@ -5893,5 +5903,65 @@
   "autoAdded": true,
   "addedAt": "2026-11-04",
   "updatedAt": "2026-11-04"
+ },
+ {
+  "id": "20261106-talking-happy-holidays",
+  "region": "jp",
+  "t": "ちいかわ スウェットシャツ HAPPY HOLIDAYS（トーキング）",
+  "cat": "goods",
+  "s": "2026-11-06",
+  "sp": "day",
+  "e": null,
+  "time": "12:00〜",
+  "eNote": "",
+  "place": "トーキング（公式通販）",
+  "area": "",
+  "price": "各6,050円",
+  "q": "",
+  "qNone": "トーキング通販の新商品で、楽天で同じ商品と言い切れない",
+  "src": "https://shop.talking.design/collections/ck-happy-holidays",
+  "srcType": "partner",
+  "srcs": [
+   "https://shop.talking.design/products/ck26pr-191mf",
+   "https://shop.talking.design/products/ck26pr-192mf",
+   "https://www.inside-games.jp/article/2026/11/04/190357.html"
+  ],
+  "verifiedAt": "2026-11-05",
+  "how": [
+   "トーキングの公式通販で11/6(金)12時から販売",
+   "レッドとオフホワイトの2色、サイズはM・L"
+  ],
+  "note": "サンタさんとクリスマスを楽しむちいかわたちを描いたクリスマス柄のスウェット。",
+  "autoAdded": true,
+  "addedAt": "2026-11-05",
+  "updatedAt": "2026-11-05",
+  "xpostNote": "2026-11-05 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
+ },
+ {
+  "id": "20261109-charapaki-amaou",
+  "region": "jp",
+  "t": "ちいかわ キャラパキ charapaki my rich～あまおう苺～",
+  "cat": "food",
+  "s": "2026-11-09",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国量販店の菓子売場など",
+  "area": "",
+  "price": "257円",
+  "q": "ちいかわ キャラパキ あまおう",
+  "src": "https://www.bandai.co.jp/candy/products/2026/4570117931741000.html",
+  "srcType": "partner",
+  "verifiedAt": "2026-11-05",
+  "how": [
+   "全国の量販店の菓子売場などで11/9から",
+   "中身はお顔・全身デザインの全20種で、開けるまでわからない（5袋入り・個包装）"
+  ],
+  "note": "あまおう苺味のパフ入りチョコとホワイトチョコを組み合わせたキャラパキ（バンダイ キャンディ）。",
+  "autoAdded": true,
+  "addedAt": "2026-11-05",
+  "updatedAt": "2026-11-05",
+  "xpostNote": "2026-11-05 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  }
 ]

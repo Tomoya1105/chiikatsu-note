@@ -1,5 +1,49 @@
 [
  {
+  "id": "20261104-talking-happy-holidays",
+  "date": "2026-11-04",
+  "tag": "goods",
+  "title": "サンタと一緒のちいかわスウェット、トーキングで11/6から",
+  "sum": "クリスマス柄のスウェットシャツがレッドとオフホワイトの2色で登場。各6,050円で、トーキングの通販で11/6の12時から販売。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/04/190357.html",
+  "itemId": "20261106-talking-happy-holidays",
+  "addedAt": "2026-11-05"
+ },
+ {
+  "id": "20261104-sweat-socks",
+  "date": "2026-11-04",
+  "tag": "goods",
+  "title": "スウェット上下とぬくぬくソックスも11/6発売",
+  "sum": "おにぎりデザインなどのスウェットシャツ・パンツと、発熱素材の靴下（全7キャラ）が、ちいかわらんどやマーケットなどで11/6から順次発売。",
+  "source": "アニメ！アニメ！",
+  "src": "https://animeanime.jp/article/2026/11/04/104487.html",
+  "itemId": "20261106-boa-blouson-trio",
+  "addedAt": "2026-11-05"
+ },
+ {
+  "id": "20261104-xmas-market-soldout",
+  "date": "2026-11-04",
+  "tag": "event",
+  "title": "クリスマスマーケットの入場券、全日程が完売",
+  "sum": "幕張で11/24から開かれる「ちいかわクリスマスマーケット」は、10/31に始まった先着販売で全日程のチケットが売り切れに。限定グッズの詳細も出ています。",
+  "source": "ABEMA TIMES",
+  "src": "https://times.abema.tv/articles/-/10286120",
+  "itemId": "20261124-xmas-market",
+  "addedAt": "2026-11-05"
+ },
+ {
+  "id": "20261104-chiipoke-autumn",
+  "date": "2026-11-04",
+  "tag": "topic",
+  "title": "ちいぽけで秋のイベント、きのこの着ぐるみ衣装も",
+  "sum": "アプリ『ちいかわぽけっと』で10/30から「ちいさな秋」イベントが開催中。きのこの着ぐるみなどの新しい衣装や家具が登場しています。",
+  "source": "ABEMA TIMES",
+  "src": "https://times.abema.tv/articles/-/10286098",
+  "itemId": "",
+  "addedAt": "2026-11-05"
+ },
+ {
   "id": "20261104-kirapichi-chiikawa",
   "date": "2026-11-04",
   "tag": "book",
