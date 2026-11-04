@@ -1,6 +1,7 @@
 // ちい活ノート：サイトを組み立てるスクリプト
 // Cloudflare Pages のビルドコマンド `node build.mjs` で実行され、dist/ に公開用ファイルを書き出す。
 import fs from "node:fs";
+import { loadArticles, renderMd, KINDS } from "./src/notes.mjs";
 import path from "node:path";
 import { makeOg, ogAvailable } from "./src/og.mjs";
 import { buildSeo, areasOf, monthOf } from "./src/seo.mjs";
@@ -53,8 +54,16 @@ try {
   }
 } catch (e) {}
 const sjisEncode = str => [...str].map(ch => /[A-Za-z0-9\-_.]/.test(ch) ? ch : ch === " " ? "+" : sjis.get(ch) || (ch.charCodeAt(0) < 128 ? "%" + ch.charCodeAt(0).toString(16).toUpperCase().padStart(2, "0") : "")).join("");
-const MOSHIMO_YAHOO = "a_id=5838536&p_id=1225&pc_id=1925&pl_id=18502";   // もしもアフィリエイト（Yahoo!ショッピング）。2026-10-09 アカウント作り直しで a_id を 5838536 に変更
-const yahooSearch = q => `https://af.moshimo.com/af/c/click?${MOSHIMO_YAHOO}&url=${encodeURIComponent("https://shopping.yahoo.co.jp/search?p=" + encodeURIComponent(/ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q))}`;
+// Yahoo!ショッピングへのリンクの出し方（src/affiliate.json の yahoo）：affiliate=もしも経由（PR）／plain=通常リンク（広告ではない）／off=出さない
+const YAHOO_MODE = JSON.parse(fs.readFileSync("src/affiliate.json", "utf8")).yahoo;
+if (!["affiliate", "plain", "off"].includes(YAHOO_MODE)) throw new Error("src/affiliate.json の yahoo は affiliate / plain / off のどれか: " + YAHOO_MODE);
+const YAHOO_AD = YAHOO_MODE === "affiliate";   // PR・sponsored を付けるのは、もしも経由のときだけ
+const MOSHIMO_YAHOO = "a_id=5838536&p_id=1225&pc_id=1925&pl_id=18502";   // もしもアフィリエイト（Yahoo!ショッピング）。2026-10-09 アカウント作り直しで a_id を 5838536 に変更。2026-11 登録削除中のため通常は使わない（再審査後に affiliate へ戻す）
+const yahooSearch = q => { const u = "https://shopping.yahoo.co.jp/search?p=" + encodeURIComponent(/ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q); return YAHOO_AD ? `https://af.moshimo.com/af/c/click?${MOSHIMO_YAHOO}&url=${encodeURIComponent(u)}` : u; };
+const yahooBtn = q => YAHOO_MODE === "off" || !q ? "" : `<a class="btn" href="${esc(yahooSearch(q))}" target="_blank" rel="${YAHOO_AD ? "noopener sponsored" : "noopener"}" data-yh>Yahoo!ショッピングで探す${YAHOO_AD ? ' <span class="tag">PR</span>' : ""}</a>`;
+const AD_PARTNERS = YAHOO_AD ? "楽天アフィリエイトと、もしもアフィリエイト（Yahoo!ショッピングなど）" : "楽天アフィリエイト";
+const AD_PARTNERS_LONG = YAHOO_AD ? "楽天グループ株式会社の「楽天アフィリエイト」と、株式会社もしもの「もしもアフィリエイト」（Yahoo!ショッピングなど）" : "楽天グループ株式会社の「楽天アフィリエイト」";
+const YAHOO_PLAIN_NOTE = YAHOO_MODE === "plain" ? "Yahoo!ショッピングへのリンクは広告ではなく、紹介料は発生しません。" : "";
 const aff = u => `https://hb.afl.rakuten.co.jp/hgc/${AFF}/?pc=${encodeURIComponent(u)}`;
 const rakutenSearch = q => aff("https://search.rakuten.co.jp/search/mall/" + encodeURIComponent(/ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q) + "/");
 // 海外は楽天トラベルの「海外ホテル」一覧へ（キーワード検索は国内のホテルしか出ないため）
@@ -113,7 +122,7 @@ const INSTALL_MINE = `<div class="ins-card ins-mine" data-ins-card>${ICO}<div cl
 const FOOT = `<footer class="about">
     ${INSTALL_CARD}
     ${RESPECT}
-    <div class="sitelinks"><a href="/">トップ</a><a href="/goods/">グッズまとめ</a><a href="/month/">月別まとめ</a><a href="/area/">地域別</a><a href="/about/">運営者について</a><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div>
+    <div class="sitelinks"><a href="/">トップ</a><a href="/goods/">グッズまとめ</a><a href="/month/">月別まとめ</a><a href="/area/">地域別</a><a href="/note/">運営者のコラム</a><a href="/about/">運営者について</a><a href="/contact/">お問い合わせ</a><a href="/privacy/">プライバシーポリシー</a></div>
     <p class="credit"><a href="https://webservice.rakuten.co.jp/" target="_blank" rel="noopener">Supported by Rakuten Developers</a></p>
     <p>©nagano / chiikawa committee　本サイトは権利者とは関係のない個人運営のサイトです。</p>
   </footer>`;
@@ -181,7 +190,7 @@ write("visuals.json", JSON.stringify({ builtAt: new Date().toISOString(), items:
     rakuten: plan ? { query: plan.query } : null, qNone: it.qNone || "", src: it.src || "",
     x: x ? { url: `https://x.com/i/status/${x.id}`, account: x.name, note: it.xpostNote || "（情報源のURLとして登録された公式ポスト）" } : null };
 }) }));
-write("app.js", RKM_SRC + "\n" + XPOST_SRC + "\n" + app);
+write("app.js", RKM_SRC + "\n" + XPOST_SRC + "\n" + `const YAHOO_MODE = ${JSON.stringify(YAHOO_MODE)};   // src/affiliate.json から（affiliate / plain / off）\n` + app);
 write("install.js", RKM_SRC + "\n" + installJs);
 // 計測の受け口（functions/api/hit.js）が「掲載中の商品か」を確かめるためのID一覧。Functions は build のあとに組み立てられるので、ここで作る
 fs.writeFileSync("functions/api/_ids.js", "// build.mjs が作るファイル（手で直さない）\nexport const IDS = " + JSON.stringify(items.map(it => it.id)) + ";\n");
@@ -225,7 +234,7 @@ homeBody = homeBody.replace("{{RESPECT}}", RESPECT).replace("{{INSTALL_CARD}}", 
 // 出す人にだけ /onboard.js を読み込むので、ほかの人のページの重さは変わらない。
 // トップの下の「使い方」（data-ob-open）を押すと、閉じた人もいつでも見直せる。
 const ONB_GATE = String.raw`<script>(function(){function L(){var e=document.createElement("script");e.src="/onboard.js?v=${BUILD}";e.async=true;document.head.appendChild(e)}document.addEventListener("click",function(v){var a=v.target&&v.target.closest&&v.target.closest("[data-ob-open]");if(!a)return;v.preventDefault();window.__chiikatsuOnbForce=1;if(window.chiikatsuOnb)window.chiikatsuOnb.open();else L()});try{var q=new URLSearchParams(location.search),s=(q.get("utm_source")||"").toLowerCase(),fx=s==="x"||s==="twitter"||s==="t.co",rx=/^https?:\/\/(t\.co|([a-z]+\.)?(x|twitter)\.com)\//i.test(document.referrer||""),force=q.get("ob")==="1";if(fx)sessionStorage.setItem("chiikatsu-xin","1");window.__chiikatsuOnbQ=location.search;window.__chiikatsuOnbX=fx||rx;if(!force){if(!(fx||rx))return;if(q.get("from"))return;if(sessionStorage.getItem("chiikatsu-qarr")||sessionStorage.getItem("chiikatsu-qwel"))return;if((window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone)return;if(localStorage.getItem("chiikatsu-onb"))return;var ic=JSON.parse(localStorage.getItem("chiikatsu-install")||"{}")||{};if(ic.visits>0||ic.installed)return;var u=JSON.parse(localStorage.getItem("chiikatsu-u")||"{}")||{};if(u.first)return}L()}catch(e){}})()</script>`;
-homeBody = homeBody.replace("{{ONB_GATE}}", ONB_GATE);
+homeBody = homeBody.replace("{{ONB_GATE}}", ONB_GATE).replace("{{AD_NOTE}}", YAHOO_AD ? "※「PR」のリンクは広告（楽天・もしもアフィリエイト）です" : "※「PR」のリンクは広告（楽天アフィリエイト）です");
 const homeLd = { "@context": "https://schema.org", "@type": "WebSite", name: "ちい活ノート", url: SITE + "/", inLanguage: "ja" };
 write("index.html", page({
   title: "ちい活ノート｜ちいかわグッズの発売日・イベント日程カレンダー",
@@ -303,7 +312,7 @@ for (const it of items) {
       ${(() => { const L = (Array.isArray(it.rb) ? it.rb : []).filter(x => x && /^https:\/\/books\.rakuten\.co\.jp\/rb\/\d+\/?$/.test(x.u || "")); const pre = it.s > TODAY;
         return L.map(x => `<a class="btn buy" href="${esc(aff(x.u))}" target="_blank" rel="noopener sponsored" data-rb>${pre ? "楽天ブックスで予約する" : "楽天ブックスで見る"}${x.n ? "（" + esc(x.n) + "）" : ""} <span class="tag">PR</span></a>`).join(""); })()}
       ${it.q && !(Array.isArray(it.rb) && it.rb.length) ? `<a class="btn buy" href="${esc(rakutenSearch(it.q))}" target="_blank" rel="noopener sponsored" data-rkd="${esc(JSON.stringify({ q: it.q, t: it.t, p: it.price || "", pre: it.s > TODAY, cat: it.cat }))}">楽天市場で探す <span class="tag">PR</span></a>` : ""}
-      ${it.q ? `<a class="btn" href="${esc(yahooSearch(it.q))}" target="_blank" rel="noopener sponsored" data-yh>Yahoo!ショッピングで探す <span class="tag">PR</span></a>` : ""}
+      ${yahooBtn(it.q)}
       ${/^https:\/\//.test(it.src || "") ? `<a class="btn" href="${esc(it.src)}" target="_blank" rel="noopener">公式情報</a>` : ""}
     </div>`;
   const hasBuy = /class="(btn|rsvbtn)/.test(buyInner);
@@ -372,10 +381,26 @@ write("about/index.html", page({
   title: "運営者について｜ちい活ノート", desc: "ちい活ノートの運営方針と情報の集め方について。", url: "/about/",
   body: doc("運営者について", `<p>ちい活ノートは、ちいかわが大好きな個人が運営している非公式のスケジュール帳です。グッズの発売日やイベントの会期を、買い逃し・行き逃しがないようにひとつの場所で見られることを目指しています。</p>
 <h2>情報の集め方</h2><p>ちいかわ公式サイト・公式SNS、各社のプレスリリース、会場の公式発表をもとに、毎日AIを使って情報を集めて掲載しています。まちがいを見つけた方は、各情報の「情報のまちがいを報告する」から、載っていない情報を見つけた方は一覧の「＋ 情報を教える」から教えてください。公式の発表で確かめて直したり載せたりします。</p>
+<h2>運営者のプロフィール</h2><p>運営者の「いし」です。東京在住の30代で、2026年9月からちいかわにハマった新参者です。ちい活ノートを作った理由は、<a href="/note/why-i-made-chiikatsu-note/">コラム</a>に書きました。</p>
+<h2>情報の確認について</h2><p>情報の整理にはAIを使っています。掲載された情報のうちいくつかを選んで、運営者が公式の情報と照らして定期的に確認していますが、掲載前にすべてを確認しているわけではありません。まちがいを見つけたら、お知らせください。購入や来店の前には、必ず公式の情報をご確認ください。</p>
 <h2>運営者のX</h2><p><a href="https://x.com/ishi_chiikatsu" target="_blank" rel="noopener me">@ishi_chiikatsu</a>（いし｜ちい活はじめました）。ちい活ノートを作った本人のアカウントです。サイトの更新や、ちいかわの好きなところをつぶやいています。</p>
 <h2>連絡先</h2><p><a href="mailto:contact@chiikatsunote.com">contact@chiikatsunote.com</a>（<a href="/contact/">お問い合わせフォーム</a>からも送れます）</p>
-<h2>広告について</h2><p>当サイトは楽天アフィリエイトと、もしもアフィリエイト（Yahoo!ショッピングなど）を利用しています。「PR」と表示したリンクから商品の購入や宿泊の予約があると、運営者に紹介料が支払われます。紹介料によって掲載内容や順番を変えることはありません。</p>
+<h2>広告について</h2><p>当サイトは${AD_PARTNERS}を利用しています。「PR」と表示したリンクから商品の購入や宿泊の予約があると、運営者に紹介料が支払われます。${YAHOO_PLAIN_NOTE}紹介料によって掲載内容や順番を変えることはありません。</p>
 <h2>権利について</h2><p>「ちいかわ」に関する著作権・商標権はナガノ氏および権利者に帰属します。当サイトは権利者とは関係がなく、キャラクターの画像やイラストを当サイトに保存・掲載することはしていません。商品画像は楽天ウェブサービスを通じて、公式の画像は「公式の画像を見る」を押したときにX（旧Twitter）の埋め込み機能で公式アカウントの投稿をそのまま表示しています。</p>`),
+}));
+// ---- 運営者のコラム（/note/）。data/articles/ の承認済みの記事だけを出す（内容が承認と変わっていたら、ここでビルドが止まる）
+const articles = loadArticles();
+const NOTE_CSS = `<style>.note-meta{font-size:12.5px;color:var(--ink-2);margin:-6px 0 14px}.note-badge{display:inline-block;border:1px solid var(--ink-2);border-radius:99px;padding:0 8px;margin-right:6px;font-size:11.5px}.note-fn{font-size:12.5px;color:var(--ink-2);line-height:1.7}.doc blockquote{margin:12px 0;padding:6px 12px;border-left:3px solid var(--ink-2);color:var(--ink-2)}.note-list{list-style:none;padding:0}.note-list li{padding:12px 0;border-bottom:1px solid rgba(0,0,0,.08)}.note-list a{font-weight:700}.note-list small{display:block;color:var(--ink-2)}</style>`;
+for (const a of articles) {
+  write(`note/${a.slug}/index.html`, page({
+    title: `${a.title}｜ちい活ノート`, desc: a.summary, url: `/note/${a.slug}/`, ogType: "article",
+    head: `${NOTE_CSS}<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: a.title, datePublished: a.date, author: { "@type": "Person", name: "いし", url: "https://x.com/ishi_chiikatsu" }, description: a.summary, mainEntityOfPage: `${SITE}/note/${a.slug}/` }).replace(/</g, "\\u003c")}</script>`,
+    body: doc(esc(a.title), `<p class="note-meta"><span class="note-badge">${esc(KINDS[a.kind])}</span>${esc(a.date)}　文：いし（<a href="/about/">運営者について</a>）</p>${renderMd(a.md)}<p><a href="/note/">運営者のコラム一覧へ</a>　<a href="/">ちい活ノートのトップへ</a></p>`),
+  }));
+}
+write("note/index.html", page({
+  title: "運営者のコラム｜ちい活ノート", desc: "ちい活ノートの運営者「いし」が、自分の体験や考えを書いたコラムです。", url: "/note/", head: NOTE_CSS,
+  body: doc("運営者のコラム", `<p>運営者「いし」が、自分の体験や考えを書いたコラムです。スケジュールの情報とは分けて、運営者が内容を確認した記事だけを載せています。</p>${articles.length ? `<ul class="note-list">${articles.map(a => `<li><a href="/note/${a.slug}/">${esc(a.title)}</a><small>${esc(KINDS[a.kind])}｜${esc(a.date)}｜${esc(a.summary)}</small></li>`).join("")}</ul>` : "<p>準備中です。</p>"}`),
 }));
 write("official/index.html", page({
   title: "ちいかわ公式サイト・公式アカウントのリンク集｜ちい活ノート",
@@ -404,7 +429,7 @@ write("privacy/index.html", page({
   title: "プライバシーポリシー｜ちい活ノート", desc: "ちい活ノートのプライバシーポリシー。", url: "/privacy/",
   body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。同じ訪問の中で「詳細を見た」「購入先を押した」などの流れを数えるため、ブラウザの中（タブを閉じると消える領域）に一時的な印を置きますが、送るのは日ごとの合計に足す回数だけです。運営者や確認に協力いただく方の端末は「テストモード」にでき、その印はその端末のブラウザの中にだけ保存されます。また、Cloudflare社の「Cloudflare Web Analytics」で、訪問数や表示の速さを集計しています。こちらもCookieを使わず、個人を特定する情報は集めません。</p>
 <h2>Xの投稿の表示について</h2><p>「公式の画像を見る」を押したときだけ、X（旧Twitter）の埋め込み機能で公式アカウントの投稿を表示します。そのとき、閲覧情報がX社に送られることがあります（X社のプライバシーポリシーが適用されます）。押さなければXには何も送られません。トラッキングを控える設定（DNT）で読み込んでいます。</p><h2>お問い合わせについて</h2><p>お問い合わせ先：<a href="mailto:contact@chiikatsunote.com">contact@chiikatsunote.com</a>（またはお問い合わせフォーム）。お問い合わせフォームから送られた内容（種類・お名前・メールアドレス・本文）は、お返事とサイトの改善のためだけに使い、第三者に渡すことはありません。180日たつと自動で消えます。送りすぎを防ぐため、IPアドレスから作った一時的な値を1日だけ使いますが、IPアドレスそのものは保存しません。</p><h2>まちがい報告・情報の提供</h2><p>「情報のまちがいを報告する」と「情報を教える」から送られた内容（選んだ項目、入力した文章とURL）は、掲載情報を直したり、新しい情報を確かめて載せたりするためだけに使い、90日たつと自動で消えます。送られた情報は、公式の発表で確かめられたものだけを掲載します。個人を特定できる情報は書き込まないでください。</p>
-<h2>アフィリエイトについて</h2><p>当サイトは楽天グループ株式会社の「楽天アフィリエイト」と、株式会社もしもの「もしもアフィリエイト」（Yahoo!ショッピングなど）に参加しています。リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
+<h2>アフィリエイトについて</h2><p>当サイトは${AD_PARTNERS_LONG}に参加しています。${YAHOO_PLAIN_NOTE}リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
 <h2>アクセス解析・広告配信について</h2><p>今後、アクセス解析ツールや第三者配信の広告（Google AdSense など）を導入する場合は、Cookieを使って閲覧情報を集めることがあります。導入する際はこのページでお知らせします。</p>
 <h2>免責事項</h2><p>掲載情報は正確になるよう努めていますが、発売日や会期は変更されることがあります。掲載内容によって生じた損害について、運営者は責任を負いません。最新の情報は必ず公式の発表をご確認ください。</p>
 <p class="credit">制定日：2026年10月3日</p>`),
@@ -415,7 +440,7 @@ write("404.html", page({ title: "ページが見つかりません｜ちい活�
 // ---- 検索エンジン向け
 // ---- 検索から来る人のためのまとめページ（月別・地域別）
 const seo = buildSeo({ items, page, write, esc, fmt, md, CAT, REG, BRAND, FOOT, SITE, TODAY, isEvent, aff, sjisEncode, rakutenSearch, writeOg });
-const urls = ["/", ...seo.urls, "/official/", "/about/", "/contact/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
+const urls = ["/", ...seo.urls, "/official/", "/about/", "/note/", ...articles.map(a => `/note/${a.slug}/`), "/contact/", "/privacy/", ...items.map(it => `/items/${encodeURIComponent(it.id)}/`)];
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 // Functions（サーバー側の処理）を通すURLを絞る。画像・スクリプトなどの静的ファイルは Functions を通さず配信（無料枠を使わない）。
 // ページ本体（HTML）と /api/ は今までどおり通す（.pages.dev・www からの転送と API のため）。

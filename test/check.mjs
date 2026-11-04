@@ -41,9 +41,33 @@ for (const d of pagesToCheck) {
     if (!m[1].startsWith(`https://hb.afl.rakuten.co.jp/hgc/${AFF}/`) && !m[1].startsWith("https://af.moshimo.com/")) errs.push(`${d}: アフィリエイトIDのない楽天リンク ${m[1].slice(0, 80)}`);
   }
 }
-// もしもアフィリエイトのリンクは、必ず自分のID（a_id）になっていること
-for (const d of pagesToCheck) for (const m of read(`dist/${d}/index.html`).matchAll(/href="(https:\/\/af\.moshimo\.com[^"]*)"/g)) if (!/a_id=5838536&/.test(m[1].replace(/&amp;/g, "&"))) errs.push(`${d}: もしものIDがちがうリンク ${m[1].slice(0, 80)}`);
-if (!app.includes('a_id: "5838536"')) errs.push("app.js から もしも（Yahoo!）のIDが消えています");
+// Yahoo!の出し方（src/affiliate.json）に合わせて確かめる：affiliate=もしも経由で自分のID／plain=もしも経由のリンクが1つも無い／off=Yahoo!リンクが無い
+const YMODE = JSON.parse(read("src/affiliate.json")).yahoo;
+if (!app.includes(`const YAHOO_MODE = "${YMODE}"`)) errs.push("app.js の YAHOO_MODE が src/affiliate.json と合っていません");
+for (const d of pagesToCheck) {
+  const h = read(`dist/${d}/index.html`);
+  const mo = [...h.matchAll(/href="(https:\/\/af\.moshimo\.com[^"]*)"/g)].map(m => m[1]), yh = [...h.matchAll(/href="(https:\/\/shopping\.yahoo\.co\.jp[^"]*)"/g)];
+  if (YMODE === "affiliate") { for (const u of mo) if (!/a_id=5838536&/.test(u.replace(/&amp;/g, "&"))) errs.push(`${d}: もしものIDがちがうリンク ${u.slice(0, 80)}`); }
+  else if (mo.length) errs.push(`${d}: yahoo=${YMODE} なのに、もしものリンクが残っています`);
+  if (YMODE === "off" && (yh.length || /data-yh/.test(h))) errs.push(`${d}: yahoo=off なのに、Yahoo!のリンクが残っています`);
+  if (YMODE === "plain") { for (const m of h.matchAll(/<a [^>]*data-yh[^>]*>/g)) if (/sponsored/.test(m[0]) || !/href="https:\/\/shopping\.yahoo\.co\.jp\//.test(m[0])) errs.push(`${d}: plainのYahoo!リンクにsponsoredが付いているか、直接のURLではありません`); }
+}
+if (YMODE === "affiliate" && !app.includes('a_id: "5838536"')) errs.push("app.js から もしも（Yahoo!）のIDが消えています");
+if (YMODE !== "affiliate") for (const f of ["index.html", "privacy/index.html", "about/index.html"]) if (fs.existsSync(`dist/${f}`) && /もしもアフィリエイト/.test(read(`dist/${f}`))) errs.push(`${f}: yahoo=${YMODE} なのに、もしもアフィリエイトの記載が残っています`);
+// 運営者のコラム（/note/）：承認済みの記事が出ていること、AI利用の注記・非公式の注記があること、サイトマップに載っていること
+{
+  const lock = JSON.parse(read("data/articles.lock.json"));
+  if (!fs.existsSync("dist/note/index.html")) errs.push("note/index.html がありません");
+  for (const slug of Object.keys(lock)) {
+    const f = `dist/note/${slug}/index.html`;
+    if (!fs.existsSync(f)) { errs.push(`${f} がありません`); continue; }
+    const h = read(f);
+    if (!/AIに下書きを手伝ってもらい/.test(h)) errs.push(`${f}: AI利用の注記がありません`);
+    if (!/権利者とは関係のない/.test(h)) errs.push(`${f}: 非公式の注記がありません`);
+    if (!/<h1>/.test(h) || /\*\*|^## /m.test(h.replace(/<script[\s\S]*?<\/script>/g, ""))) errs.push(`${f}: Markdownの記号が残っています`);
+    if (!read("dist/sitemap.xml").includes(`/note/${slug}/`)) errs.push(`sitemap.xml に /note/${slug}/ がありません`);
+  }
+}
 try { JSON.parse(read("dist/manifest.webmanifest")); } catch (e) { errs.push("manifest.webmanifest が壊れています"); }
 const items = JSON.parse(read("data/items.json"));
 const seen = new Set();

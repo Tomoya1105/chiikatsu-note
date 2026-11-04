@@ -148,10 +148,11 @@ function rbList(it){
   const L = Array.isArray(it.rb) ? it.rb : [];
   return L.filter(x => x && /^https:\/\/books\.rakuten\.co\.jp\/rb\/\d+\/?$/.test(x.u||""));
 }
-/* もしもアフィリエイト（Yahoo!ショッピング）。検索結果へのリンクを作る */
-const MOSHIMO = { yahoo: { a_id: "5838536", p_id: "1225", pc_id: "1925", pl_id: "18502" } };
+/* Yahoo!ショッピング。YAHOO_MODE は build.mjs が src/affiliate.json から埋め込む（affiliate=もしも経由・PR／plain=通常リンク／off=出さない） */
+const MOSHIMO = { yahoo: { a_id: "5838536", p_id: "1225", pc_id: "1925", pl_id: "18502" } };   // 登録削除中のため通常は使わない（再審査後に affiliate へ戻す）
 function moshimo(kind, url){ const m = MOSHIMO[kind]; return m ? `https://af.moshimo.com/af/c/click?a_id=${m.a_id}&p_id=${m.p_id}&pc_id=${m.pc_id}&pl_id=${m.pl_id}&url=${encodeURIComponent(url)}` : ""; }
-function yahooSearch(q){ if (!/ちいかわ|chiikawa/i.test(q)) q = "ちいかわ "+q; return moshimo("yahoo", "https://shopping.yahoo.co.jp/search?p="+encodeURIComponent(q)); }
+function yahooSearch(q){ if (!/ちいかわ|chiikawa/i.test(q)) q = "ちいかわ "+q; const u = "https://shopping.yahoo.co.jp/search?p="+encodeURIComponent(q); return YAHOO_MODE==="affiliate" ? moshimo("yahoo", u) : u; }
+function yahooLink(it){ if (YAHOO_MODE==="off") return ""; const ad = YAHOO_MODE==="affiliate"; return `<a class="lnk yh" href="${esc(yahooSearch(it.q))}" target="_blank" rel="${ad?"noopener sponsored":"noopener"}" data-yh>Yahoo!で探す${ad?'<span class="tag">PR</span>':""}</a>`; }
 function affLink(u){ return `https://hb.afl.rakuten.co.jp/hgc/${AFF.rakutenId}/?pc=${encodeURIComponent(u)}`; }
 function rbBtns(it){
   const pre = it.sd > TODAY;
@@ -268,7 +269,7 @@ function card(it, opt){
       <div class="acts sub">
         ${src?`<a class="lnk" href="${esc(src)}" target="_blank" rel="noopener">公式情報</a>`:""}
         ${g&&st.k!=="ended"?`<a class="lnk" href="${g}" target="_blank" rel="noopener">カレンダーに追加</a>`:""}
-        ${it.q&&st.k!=="ended"?`<a class="lnk yh" href="${esc(yahooSearch(it.q))}" target="_blank" rel="noopener sponsored" data-yh>Yahoo!で探す<span class="tag">PR</span></a>`:""}
+        ${it.q&&st.k!=="ended"?yahooLink(it):""}
         ${(()=>{ const tr = isEvent(it) && it.area && st.k!=="ended" ? travel(it) : null; return tr ? `<a class="lnk trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored">🏨 ${esc(tr.label)}<span class="tag">PR</span></a>` : ""; })()}
         <button class="lnk got" data-mark="got" aria-pressed="${m==="got"}">${m==="got"?"✓ ゲット済み":"ゲットした"}</button>
       </div>

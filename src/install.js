@@ -132,6 +132,7 @@
   function destOf(a, h){
     if (/hb\.afl\.rakuten/.test(h)) return a.classList.contains("trip") ? "o:travel" : "rk";
     if (/af\.moshimo\.com/.test(h)) return /p_id=1225/.test(h) ? "yh" : "am";
+    if (/^https:\/\/shopping\.yahoo\.co\.jp\//.test(h)) return "yh";   // もしも経由でない通常リンクも、Yahoo!として数える
     if (a.hasAttribute("data-rsv")) return "rsv";
     if (OFFSHOP.test(h)) return "off";
     if (a.closest(".ncard")) return "o:news";
