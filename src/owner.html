@@ -141,7 +141,9 @@ code{font-size:11.5px;word-break:break-all}
       [rate(v(o, "ob:done"), v(o, "ob:show"), "回", "ご案内を最後まで見た"), "ご案内を最後まで見た", "スキップ " + v(o, "ob:skip") + "・閉じる " + v(o, "ob:close") + "・「使い方」から " + v(o, "ob:help") + "回"],
       [rate(v(o, "v:hs"), v(o, "v:new"), "訪問", "ホーム画面のアイコンから開いた訪問"), "ホーム画面のアイコンから開いた訪問", "アイコンから使った端末（日ごと）：" + v(o, "u:app")],
       [rate(v(o, "u:fav"), v(o, "u:dev"), "端末・日", "♡を持っている端末"), "♡を持っている端末", "その日に押した分も含む（端末×日で数える）"],
-      [n(v(o, "push:on")), "通知をオンにした回数", "共有ボタン：" + (v(o, "share:line") + v(o, "share:x") + v(o, "share:copy") + v(o, "share:nudge")) + "回"]
+      [n(v(o, "push:on")), "通知をオンにした回数", "共有ボタン：" + (v(o, "share:line") + v(o, "share:x") + v(o, "share:copy") + v(o, "share:nudge")) + "回"],
+      [rate(v(o, "pn:grant"), v(o, "pn:show"), "回", "通知の案内を見て、オンにした"), "通知の案内を見て、オンにした", "案内を出した " + v(o, "pn:show") + "・押した " + v(o, "pn:tap") + "・許可 " + v(o, "pn:grant") + "・許可されず " + v(o, "pn:deny") + "・あとで " + v(o, "pn:later")],
+      [rate(v(o, "pn:tap"), v(o, "pn:show"), "回", "案内から「通知をオンにする」を押した"), "案内から「通知をオンにする」を押した", "詳細ページで「ほしい」を押した直後の案内"]
     ]);
     var mx = 1, bars = ST.days.slice(0, 14).map(function(d){ var x = 0; (ST.rows || []).forEach(function(r){ if (r[0] === d.day && r[1] === G && r[2] === "v:new") x += r[3]; }); if (x > mx) mx = x; return [d, x]; });
     h += '<div class="bars" title="直近14日の訪問">' + bars.reverse().map(function(b){ var d = b[0], st = d.mode === 2 ? " stop" : (!d.w && b[1] === 0 ? " none" : ""); return '<i class="' + st + '" style="height:' + Math.max(3, Math.round(b[1] / mx * 100)) + '%" title="' + d.day + '：' + b[1] + '訪問' + (d.mode === 2 ? '（途中で停止）' : '') + (!d.w ? '（記録なし）' : '') + '"></i>'; }).join("") + '</div>';

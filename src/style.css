@@ -757,6 +757,11 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .wantrow .btn.want[aria-pressed="true"]{background:var(--acc);color:var(--on-acc)}
 .wantnote{margin:6px 0 0;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
 .wantnote[hidden]{display:none}
+.pnbox{margin:8px 0 0;padding:10px 12px;border-radius:12px;background:var(--surface-2,rgba(0,0,0,.04));font-size:13px;line-height:1.6;color:var(--ink-2)}
+.pnbox[hidden]{display:none}
+.pnbox p{margin:0 0 8px}.pnbox p:last-child{margin-bottom:0}
+.pnacts{display:flex;gap:8px;flex-wrap:wrap}
+.pnacts .btn{padding:8px 14px;font-size:13px}
 .buybox{margin:10px 0 12px}
 .buybox .acts{margin-top:0}
 .buybox .rsvbox{margin:0 0 10px}

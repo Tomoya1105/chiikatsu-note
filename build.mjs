@@ -192,6 +192,9 @@ write("visuals.json", JSON.stringify({ builtAt: new Date().toISOString(), items:
 }) }));
 write("app.js", RKM_SRC + "\n" + XPOST_SRC + "\n" + `const YAHOO_MODE = ${JSON.stringify(YAHOO_MODE)};   // src/affiliate.json から（affiliate / plain / off）\n` + app);
 write("install.js", RKM_SRC + "\n" + installJs);
+const VAPID_KEY = (app.match(/const VAPID = "([^"]+)"/) || [])[1];
+if (!VAPID_KEY) throw new Error("src/app.js から VAPID の公開鍵が読めません");
+write("push-lite.js", fs.readFileSync("src/push-lite.js", "utf8").replace("/*VAPID*/", VAPID_KEY));
 // 計測の受け口（functions/api/hit.js）が「掲載中の商品か」を確かめるためのID一覧。Functions は build のあとに組み立てられるので、ここで作る
 fs.writeFileSync("functions/api/_ids.js", "// build.mjs が作るファイル（手で直さない）\nexport const IDS = " + JSON.stringify(items.map(it => it.id)) + ";\n");
 write("onboard.js", fs.readFileSync("src/onboard.js", "utf8"));
@@ -338,8 +341,9 @@ var d=new Date(Date.now()+9*36e5).toISOString().slice(0,10);if(w.dataset.end&&w.
 function rd(){try{return JSON.parse(localStorage.getItem(K)||"{}")||{}}catch(e){return{}}}
 function ui(){var on=rd()[id]==="want";b.setAttribute("aria-pressed",on);b.textContent=on?"\u2665 \u30DE\u30A4\u30EA\u30B9\u30C8\u306B\u5165\u308C\u3066\u3044\u307E\u3059":"\u2661 \u307B\u3057\u3044";if(!on)n.hidden=true;}
 b.addEventListener("click",function(){var m=rd();if(m[id]==="want"){delete m[id];}else{m[id]="want";}try{localStorage.setItem(K,JSON.stringify(m));}catch(e){n.hidden=false;n.textContent="\u3053\u306E\u7AEF\u672B\u3067\u306F\u4FDD\u5B58\u3067\u304D\u307E\u305B\u3093\u3067\u3057\u305F";return;}
-ui();if(m[id]==="want"){n.hidden=false;n.innerHTML="\u3053\u306E\u7AEF\u672B\u306E\u30DE\u30A4\u30EA\u30B9\u30C8\u306B\u4FDD\u5B58\u3057\u307E\u3057\u305F\u3002\u901A\u77E5\u306F\u3001<a href='/?v=mine'>\u30C8\u30C3\u30D7\u306E\u300C\u30DE\u30A4\u30EA\u30B9\u30C8\u300D</a>\u3067\u30AA\u30F3\u306B\u3057\u3066\u3044\u308B\u5834\u5408\u3001\u30C8\u30C3\u30D7\u3092\u958B\u3044\u305F\u3068\u304D\u306B\u53CD\u6620\u3055\u308C\u307E\u3059\u3002";}});
+ui();document.dispatchEvent(new CustomEvent("chiikatsu-want",{detail:{id:id,on:m[id]==="want"}}));if(m[id]==="want"){n.hidden=false;n.innerHTML="\u3053\u306E\u7AEF\u672B\u306E\u30DE\u30A4\u30EA\u30B9\u30C8\u306B\u4FDD\u5B58\u3057\u307E\u3057\u305F\u3002\u901A\u77E5\u306F\u3001<a href='/?v=mine'>\u30C8\u30C3\u30D7\u306E\u300C\u30DE\u30A4\u30EA\u30B9\u30C8\u300D</a>\u3067\u30AA\u30F3\u306B\u3057\u3066\u3044\u308B\u5834\u5408\u3001\u30C8\u30C3\u30D7\u3092\u958B\u3044\u305F\u3068\u304D\u306B\u53CD\u6620\u3055\u308C\u307E\u3059\u3002";}});
 addEventListener("pageshow",ui);addEventListener("storage",ui);ui();})();</script>
+    <script src="/push-lite.js?v=${BUILD}" defer></script>
     ${hasBuy ? `<div class="buybox" data-buy="top">${buyInner}</div>` : ""}
     ${RKM.plan(it) ? `<div class="dhero" data-dhero><div class="dh-img" aria-hidden="true"></div><div class="dh-txt"><p class="dh-k">楽天市場で同じ商品を探しています…</p></div></div>` : ""}
     ${xbox(xpostOf(it))}
@@ -444,7 +448,7 @@ const urls = ["/", ...seo.urls, "/official/", "/about/", "/note/", ...articles.m
 write("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 // Functions（サーバー側の処理）を通すURLを絞る。画像・スクリプトなどの静的ファイルは Functions を通さず配信（無料枠を使わない）。
 // ページ本体（HTML）と /api/ は今までどおり通す（.pages.dev・www からの転送と API のため）。
-write("_routes.json", JSON.stringify({ version: 1, include: ["/*"], exclude: ["/og/*", "/icons/*", "/app.js", "/install.js", "/onboard.js", "/style.css", "/sw.js", "/manifest.webmanifest", "/camps.json", "/push-items.json", "/visuals.json", "/robots.txt", "/sitemap.xml"] }, null, 1));
+write("_routes.json", JSON.stringify({ version: 1, include: ["/*"], exclude: ["/og/*", "/icons/*", "/app.js", "/install.js", "/push-lite.js", "/onboard.js", "/style.css", "/sw.js", "/manifest.webmanifest", "/camps.json", "/push-items.json", "/visuals.json", "/robots.txt", "/sitemap.xml"] }, null, 1));
 write("robots.txt", `User-agent: *\nAllow: /\nDisallow: /owner/\nSitemap: ${SITE}/sitemap.xml\n`);
 
 console.log(`built ${items.length} items → ${OUT}/`);
