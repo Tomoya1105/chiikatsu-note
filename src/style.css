@@ -832,9 +832,14 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .pickh h2{margin:0 0 10px;font-family:var(--display);font-size:17px;font-weight:900}
 .pickrow{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 8px;margin-inline:-2px;scroll-snap-type:x proximity}
 .pickrow::-webkit-scrollbar{display:none}
-.pk{flex:none;width:232px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:15px 16px;color:var(--ink);text-decoration:none;box-shadow:var(--shadow)}
-.pk:hover{border-color:var(--acc)}
-.pk:focus-visible{outline:2.5px solid var(--acc)}
+.pkc{flex:none;width:232px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:15px 16px 12px;box-shadow:var(--shadow)}
+.pkc:has(.xbox.open){width:min(88vw,360px)}
+.pk{flex:1;display:flex;flex-direction:column;gap:8px;color:var(--ink);text-decoration:none}
+.pkc:hover{border-color:var(--acc)}
+.xpk{margin:4px 0 0}
+.xpk .xbtn{padding:8px 10px;gap:8px}
+.xpk .xbtn small{display:none}
+.pk:focus-visible{outline:2.5px solid var(--acc);border-radius:12px}
 .pkm{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-2)}
 .pkt{font-weight:700;font-size:15px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .pkw,.pkp{font-size:12px;line-height:1.5;color:var(--ink-2)}

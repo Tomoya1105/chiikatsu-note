@@ -468,7 +468,8 @@ function renderPick(){
     const st = status(it), v = isRsv(it) ? "予約受付" : isEvent(it)?"開始":"発売";
     const a = fmtStart(it), z = it.ed ? fmtEnd(it) : "";
     const when = `${v} ${esc(a)}` + (z && z!==a ? `〜${esc(z)}` : "");
-    return `<a class="pk" href="/items/${encodeURIComponent(it.id)}/"><span class="pkm"><span class="pill st-${st.k}">${st.label}</span><span class="cat">${CAT[it.cat]||""}</span></span><span class="pkt">${esc(it.t)}</span><span class="pkw num">${when}</span>${it.place?`<span class="pkp">${esc(it.place)}</span>`:""}</a>`;
+    const x = xpostOf(it);   // 公式Xの投稿があるものは、「公式の画像を見る」（押したときだけ表示）
+    return `<div class="pkc"><a class="pk" href="/items/${encodeURIComponent(it.id)}/"><span class="pkm"><span class="pill st-${st.k}">${st.label}</span><span class="cat">${CAT[it.cat]||""}</span></span><span class="pkt">${esc(it.t)}</span><span class="pkw num">${when}</span>${it.place?`<span class="pkp">${esc(it.place)}</span>`:""}</a>${x?xbox(x).replace('class="xbox"','class="xbox xpk"'):""}</div>`;
   }).join("");
 }
 function renderSummary(){

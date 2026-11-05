@@ -1,4 +1,4 @@
 {
-  "yahoo": "plain",
+  "yahoo": "off",
   "_doc": "Yahoo!ショッピングへのリンクの出し方。affiliate=もしもアフィリエイト経由（PR表示つき）／plain=通常のリンク（広告ではない）／off=リンクを出さない。もしもの再審査に通ったら affiliate に戻す（a_id などは build.mjs と app.js に残してある）。"
 }
