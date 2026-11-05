@@ -818,7 +818,7 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .card h3 a::after{content:" ›";color:var(--acc);font-weight:700;white-space:nowrap}
 
 /* ===== トップ画面の整理（最初の画面を「見てもらう」ことに絞る） ===== */
-.hero{margin:18px 0 14px;font-family:var(--display);font-weight:900;font-size:24px;line-height:1.4;color:var(--ink)}
+.hero{margin:18px 0 6px;font-family:var(--display);font-weight:900;font-size:24px;line-height:1.4;color:var(--ink)}
 .intro,.ins-top{display:none!important}                                   /* 「はじめての方へ」とホーム画面追加の帯は、トップの上には出さない（下の案内カードと使い方リンクは残す） */
 .sum.two{grid-template-columns:repeat(2,1fr)}
 .sum.two button.s3{display:none}
@@ -855,3 +855,4 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 /* 締切が近いもの：赤い太枠をやめて、やわらかい帯に */
 .dlstrip{border:1px solid #F0CBD3;background:#FBF0F3;border-radius:16px}
 .dlsh b{color:#A33A57;font-size:14.5px}
+.herosub{margin:0 0 14px;font-size:14px;line-height:1.5;color:var(--ink-2)}
