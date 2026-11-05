@@ -1,17 +1,29 @@
 // 運営者ページ（/owner/）用。運営者だけが知っている合言葉（URLの # のあと）で、
 // 見つけた情報を送る・投稿案のページを開く・通知を受け取る端末を登録する。
-// 合言葉そのものは保存せず、ハッシュ（下の OWNER_HASH）だけを置いている。
+// 合言葉そのものは保存せず、ハッシュだけを使う。ハッシュは、Cloudflare Pages の「シークレット」OWNER_HASH（SHA-256、16進64文字）に置く。
+// OWNER_HASH が未設定のあいだだけ、昔のハッシュ（LEGACY_HASH）で動く（公開リポジトリにあるので、合言葉を長いものに変えたら OWNER_HASH を設定し、LEGACY_HASH は削除する）。
+// 失敗が続いたら、その端末（IP）からの試行を15分止める（KVへの書き込みは、失敗したときだけ）。
 import { token } from "./xdraft.js";
 import { sendPush } from "../../src/webpush.js";
 import { addManualTip } from "../../src/tips.js";
 import { REDUCE, STOP, jstDay, cfDay } from "./hit.js";
-const OWNER_HASH = "a10f78fbd8ad0dbfa641861a3de409679e8fc7e76bb53cc0e0355411363982e9";
+const LEGACY_HASH = "a10f78fbd8ad0dbfa641861a3de409679e8fc7e76bb53cc0e0355411363982e9";
+export const FAIL_MAX = 5, LOCK_SEC = 900;
+const ownerHash = env => { const h = typeof env.OWNER_HASH === "string" ? env.OWNER_HASH.trim().toLowerCase() : ""; return /^[0-9a-f]{64}$/.test(h) ? h : LEGACY_HASH; };
+const same = (a, b) => { if (a.length !== b.length) return false; let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ b.charCodeAt(i); return d === 0; };
 const jstNow = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 16).replace("T", " ");
 async function sha256(s) { const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join(""); }
 
 export async function onRequestPost({ request, env }) {
   let b; try { b = await request.json(); } catch (e) { return new Response("bad request", { status: 400 }); }
-  if (!b || typeof b.t !== "string" || (await sha256(b.t)) !== OWNER_HASH) return Response.json({ ok: false, reason: "合言葉がちがいます" }, { status: 403 });
+  const lk = env.REPORTS ? "rl:" + (await sha256("owner:" + (request.headers.get("CF-Connecting-IP") || "?"))).slice(0, 16) : null;   // 確認用（KVなし）では、試行制限なし
+  let fails = 0; if (lk) { try { fails = parseInt(await env.REPORTS.get(lk) || "0", 10) || 0; } catch (e) {} }
+  if (fails >= FAIL_MAX) return Response.json({ ok: false, reason: "試行が多すぎます。15分ほどあけて、もう一度お試しください" }, { status: 429 });
+  if (!b || typeof b.t !== "string" || !same(await sha256(b.t), ownerHash(env))) {
+    if (lk) { try { await env.REPORTS.put(lk, String(fails + 1), { expirationTtl: LOCK_SEC }); } catch (e) {} }
+    return Response.json({ ok: false, reason: "合言葉がちがいます" }, { status: 403 });
+  }
+  if (lk && fails > 0) { try { await env.REPORTS.delete(lk); } catch (e) {} }
   if (!env.REPORTS && b.op !== "stats") return new Response("not configured", { status: 503 });   // 確認用（プレビュー）では KV がないので、数字を見ることだけできる
   const tok = b.op === "stats" ? "" : await token(env);
   if (b.op === "page") return Response.json({ ok: true, url: `/api/xdraft?tok=${tok}` });
