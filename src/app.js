@@ -417,7 +417,8 @@ function renderListInner(){
     }
     h += card(it);
     if (i===4 || i===14) h += AD;
-    if (i===5 && R.region==="jp") h += `<div class="popstrip" data-pop></div>`;   // 楽天の人気グッズは6件目のあと
+    if (i===5 && R.region==="jp") h += `<div class="popstrip" data-pop></div>`;
+    if (i===8) h += `<div class="insband" data-insband hidden></div>`;   // ホーム画面に追加のお願い：9件目のあとに1回だけ（出すかどうかは install.js が決める）   // 楽天の人気グッズは6件目のあと
     if (i===2 && groups<2 && arr.length<=6) campHere();
   });
   if (!campDone && arr.length) campHere();
@@ -453,6 +454,7 @@ function renderMine(){
   if (FAV.length) h += `<h3 class="dayhead">気になる商品（${FAV.length}）</h3><p class="favnote">「グッズ」で♡を押した楽天の商品です。値段は開いたときに楽天から読み直しています。</p><div class="pgrid" id="favGrid"></div>`;
   else h += `<p class="favnote">「グッズ」タブの商品の♡を押すと、ここに「気になる商品」として保存されます。</p>`;
   el.innerHTML = h;
+  if (window.chiikatsuInsBand) window.chiikatsuInsBand();
   // 商品カードの部品はこのファイルの後ろの方で定義しているので、読み込みが終わってから描く
   if (FAV.length) setTimeout(()=>{ safe(()=>{ const g=document.getElementById("favGrid"); if (g) g.innerHTML = favCards(); refreshFav(); }, "fav"); }, 0);
 }
