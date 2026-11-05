@@ -129,7 +129,7 @@ code{font-size:11.5px;word-break:break-all}
       [rate(v(o, "f:lb"), v(o, "f:h"), "訪問", "一覧 → 購入先"), "一覧 → 購入先", "トップの一覧から直接、購入先を押した"],
       [rate(v(o, "f:w"), v(o, "v:new"), "訪問", "♡を使った訪問"), "♡を使った訪問", "「ほしい」か♡を1回以上押した（初回も含む）"]
     ]);
-    var PL = [["list", "一覧"], ["item", "詳細"], ["mine", "マイリスト"], ["shop", "おすすめ"], ["sum", "まとめ"]], DS = [["off", "公式通販"], ["rsv", "公式の予約"], ["rk", "楽天"], ["yh", "Yahoo!"]];
+    var PL = [["list", "一覧"], ["item", "詳細"], ["mine", "マイリスト"], ["shop", "グッズ"], ["sum", "まとめ"]], DS = [["off", "公式通販"], ["rsv", "公式の予約"], ["rk", "楽天"], ["yh", "Yahoo!"]];
     h += '<h3>購入先へのクリック（回数）</h3><table class="tb"><tr><th></th>' + DS.map(function(d){ return '<th>' + d[1] + '</th>'; }).join("") + '<th>計</th></tr>' +
       PL.map(function(p){ var t = 0; return '<tr><th>' + p[1] + '</th>' + DS.map(function(d){ var x = v(o, "b:" + p[0] + ":" + d[0]); t += x; return '<td>' + x + '</td>'; }).join("") + '<td><b>' + t + '</b></td></tr>'; }).join("") + '</table>' +
       '<p class="note">回数なので、同じ人が何度押しても数えます。実際の購入・報酬は、楽天・もしもの管理画面の成果で確かめてください。公式情報（購入先ではない公式リンク）：' + v(o, "o:info") + '回</p>';

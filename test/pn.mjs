@@ -17,3 +17,7 @@ ok("トップには、詳細ページ用の部品を入れていない", !fs.rea
 ok("Functions を通さない静的ファイルに指定している", fs.readFileSync("dist/_routes.json", "utf8").includes("/push-lite.js"));
 ok("通知の許可は、押したときだけ（読み込み時に requestPermission を呼ばない）", (lite.match(/requestPermission\(/g) || []).length === 1 && /function turnOn\(\)\{\s*ct\("pn:tap"\);\s*Notification\.requestPermission/.test(lite));
 console.log(fails ? `NG ${fails}` : "pn OK"); process.exit(fails ? 1 : 0);
+// 状態ごとの表示（オン／許可済みで購読なし／ブロック／未対応）と、タブ名「グッズ」
+{ const fs = await import("node:fs"); const lite = fs.readFileSync("dist/push-lite.js", "utf8"), home = fs.readFileSync("dist/index.html", "utf8");
+  for (const t of ["通知はオンです", "いまオフです", "通知がブロックされています", "このブラウザでは、通知が使えません"]) console.log((lite.includes(t) ? "ok  " : "NG  ") + "表示文：" + t), lite.includes(t) || (process.exitCode = 1);
+  const tab = /data-view="shop">グッズ</.test(home); console.log((tab ? "ok  " : "NG  ") + "タブ名が「グッズ」"); if (!tab) process.exitCode = 1; }

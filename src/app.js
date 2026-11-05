@@ -449,8 +449,8 @@ function renderMine(){
   if (got.length) h += `<h3 class="dayhead">ゲット済み（${got.length}）</h3>`+got.map(card).join("");
   const cn = campNow();
   if (FAV.length && cn && cn.mode!=="day") h += `<a class="favcamp" href="${esc(cn.c.url? (cn.c.url.includes("hb.afl")?cn.c.url:affLink(cn.c.url)) : "#")}" target="_blank" rel="noopener sponsored">🛍 <b>${esc(cn.c.name)}${cn.mode==="on"?"開催中":"がもうすぐ"}</b><span>${cn.mode==="on"?"気になる商品をまとめて買うと、ポイントがアップします":"始まってからまとめて買うとお得です"}</span><span class="tag">PR</span></a>`;
-  if (FAV.length) h += `<h3 class="dayhead">気になる商品（${FAV.length}）</h3><p class="favnote">「おすすめ」で♡を押した楽天の商品です。値段は開いたときに楽天から読み直しています。</p><div class="pgrid" id="favGrid"></div>`;
-  else h += `<p class="favnote">「おすすめ」タブの商品の♡を押すと、ここに「気になる商品」として保存されます。</p>`;
+  if (FAV.length) h += `<h3 class="dayhead">気になる商品（${FAV.length}）</h3><p class="favnote">「グッズ」で♡を押した楽天の商品です。値段は開いたときに楽天から読み直しています。</p><div class="pgrid" id="favGrid"></div>`;
+  else h += `<p class="favnote">「グッズ」タブの商品の♡を押すと、ここに「気になる商品」として保存されます。</p>`;
   el.innerHTML = h;
   // 商品カードの部品はこのファイルの後ろの方で定義しているので、読み込みが終わってから描く
   if (FAV.length) setTimeout(()=>{ safe(()=>{ const g=document.getElementById("favGrid"); if (g) g.innerHTML = favCards(); refreshFav(); }, "fav"); }, 0);
@@ -809,7 +809,7 @@ function hookRakuten(){
 new MutationObserver(()=>hookRakuten()).observe(document.body, {childList:true, subtree:true});
 hookRakuten();
 
-/* おすすめタブ */
+/* グッズタブ */
 const SHOPCAT = [["all","すべて",""],["nui","ぬいぐるみ・マスコット","ぬいぐるみ"],["bun","文房具","文房具"],["zakka","雑貨・キッチン","雑貨"],["bag","バッグ・ポーチ","バッグ"],["wear","アパレル","Tシャツ"],["food","お菓子","お菓子"],["book","本・コミック","本"]];
 const SH = {cat:"all", kw:"", sort:"standard", page:1, items:[], pageCount:1, busy:false, err:false};
 function shopChips(){
