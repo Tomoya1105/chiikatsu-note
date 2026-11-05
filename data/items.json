@@ -949,7 +949,7 @@
   "time": "11:00〜22:00",
   "updatedAt": "2026-10-14",
   "srcType": "partner",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-05",
   "srcs": [
    "https://universe.oneone.com.tw/posts/6969",
    "https://chiikawa-info.jp/p26/pus_smtk/index.html"
@@ -1402,7 +1402,8 @@
     "d": "2026-10-26",
     "t": "メーカー公式通販でうさぎが売り切れになりました"
    }
-  ]
+  ],
+  "xpostNote": "2026-11-05 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず（chiikawa_kouhou グルマンディーズ 充電式カイロ）"
  },
  {
   "id": "20261120-36",
@@ -2023,7 +2024,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-11-03",
   "srcType": "partner",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-05",
   "xpost": "https://x.com/chiikawa_kouhou/status/2103424283024257219",
   "xpostNote": "投稿日2026-09-25（予約開始の3日前）。本文に「ねんどろいど（くりまんじゅう、シーサー）」「ご予約受付：9月28日(月)～11月11日(水)まで」「お届け予定：2027年5月頃」",
   "srcs": [
@@ -2252,7 +2253,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-05",
   "updatedAt": "2026-10-10",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-05",
   "t": "ちいかわ 日本酒とお出汁のだし割りセット（玉乃光酒造）",
   "cat": "food",
   "s": "2026-11-10",
@@ -3238,7 +3239,8 @@
   "note": "モバイルバッテリーなどを入れておける、難燃生地（UL94規格）のポーチ。ホワイト・ブラックの2色。公式の発売時期は「11月中旬発売予定」。",
   "autoAdded": true,
   "addedAt": "2026-10-12",
-  "updatedAt": "2026-10-12"
+  "updatedAt": "2026-10-12",
+  "xpostNote": "2026-11-05 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず（chiikawa_kouhou グルマンディーズ セーフティポーチ）"
  },
  {
   "id": "20261014-kr-tokuten-3rd",
@@ -5212,7 +5214,7 @@
   "qNone": "店頭で順次発売のコラボ品で、楽天で同じ商品と言い切れない",
   "src": "https://prtimes.jp/main/html/rd/p/000000210.000034263.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-05",
   "how": [
    "11月上旬以降、全国のドラッグストア・バラエティショップなどで順次発売。取り扱いのない店舗もあります",
    "どのセットにも、ちいかわデザインのオリジナルカチューシャ付き（種類はパッケージの外から確認できます）"
@@ -5220,7 +5222,8 @@
   "note": "minumとちいかわのコラボ第2弾。TSUYA MOIST うるツヤ シャンプー＆トリートメントのお試し容量ボトルセット（250mL/250g）と詰め替えセット（320mL/320g）。",
   "autoAdded": true,
   "addedAt": "2026-10-30",
-  "updatedAt": "2026-10-30"
+  "updatedAt": "2026-10-30",
+  "xpostNote": "2026-11-05 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず（chiikawa_kouhou minum シャンプー 第2弾）"
  },
  {
   "id": "20261113-mogumogu-fushimi-lottery",
@@ -5241,7 +5244,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000138.000035374.html"
   ],
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-05",
   "dl": [
    {
     "k": "抽選",
@@ -5677,7 +5680,7 @@
   "qNone": "海外（韓国の映画館）の入場者特典",
   "src": "https://www.ggilbo.com/news/articleView.html?idxno=1190591",
   "srcType": "news",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-05",
   "how": [
    "平日だけの特典。CGV・ロッテシネマ・メガボックスは11/4〜11/10",
    "CineQは11/4からなくなり次第終了",
@@ -5816,7 +5819,8 @@
   "note": "営業時間は公式の店舗ページの表記（状況により変更あり）。",
   "autoAdded": true,
   "addedAt": "2026-11-04",
-  "updatedAt": "2026-11-04"
+  "updatedAt": "2026-11-04",
+  "xpostNote": "2026-11-05 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず（chiikawamgmg ベビーカステラ 小樽 入店予約 抽選）"
  },
  {
   "id": "20261030-lovisia-lip",
