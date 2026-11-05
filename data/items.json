@@ -278,7 +278,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-05",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -339,7 +339,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-05",
   "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
@@ -429,7 +429,7 @@
   "time": "",
   "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-05",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ",
   "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
@@ -1364,7 +1364,7 @@
   "time": "",
   "updatedAt": "2026-11-02",
   "srcType": "partner",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "srcs": [
    "https://www.bandai.co.jp/candy/chocosurp/chiikawa2/"
   ],
@@ -2137,7 +2137,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-11-02",
   "srcType": "official",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "qNone": "ちいかわベーカリーの店頭販売のみ",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000335.000086964.html"
@@ -5358,7 +5358,7 @@
    "https://www.inside-games.jp/article/2026/10/28/189968.html",
    "https://www.inside-games.jp/article/2026/11/02/190268.html"
   ],
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "note": "合格ラーメンを食べるちいかわとハチワレの全2種（約7cm）。2つ並べるとマンガの場面を再現できる。フリュープライズ公式の登場時期は「2026年11月4週」。",
   "how": [
    "ゲームセンターなどのクレーンゲームの景品（プライズ）。11月4週から順次展開予定"
@@ -5475,7 +5475,7 @@
   "autoAdded": true,
   "addedAt": "2026-11-02",
   "updatedAt": "2026-11-02",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-05",
   "id": "20261122-photoparty-misumi",
   "t": "ちいかわ むちゃフォトパーティ!!＠オプシア ミスミ",
   "s": "2026-11-22",
@@ -5963,5 +5963,41 @@
   "addedAt": "2026-11-05",
   "updatedAt": "2026-11-05",
   "xpostNote": "2026-11-05 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
+ },
+ {
+  "id": "20261113-mogumogu-3rd-wasou",
+  "region": "jp",
+  "t": "ちいかわもぐもぐ本舗 3周年記念 和装グッズ（京都伏見店限定 舞妓さん・芸妓さんなど）",
+  "cat": "goods",
+  "s": "2026-11-13",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわもぐもぐ本舗 各店（京都伏見店・川越店・小樽店）、ちいかわもぐもぐ本舗オンラインストア",
+  "area": "",
+  "price": "和装なみんなマスコット 2,310円、伏見店限定 舞妓さん・芸妓さんなみんなのマスコット 2,530円 ほか",
+  "q": "",
+  "qNone": "もぐもぐ本舗の店舗・公式オンラインストアの商品で、楽天で同じ商品と言い切れない",
+  "src": "https://chiikawamogumogu.shop/collections/new2026-11-13",
+  "srcType": "official",
+  "srcs": [
+   "https://www.chiikawamogumogu.jp/2026/11/05/2600",
+   "https://www.chiikawamogumogu.jp/2026/11/05/post-2726",
+   "https://www.inside-games.jp/article/2026/11/05/190395.html"
+  ],
+  "verifiedAt": "2026-11-05",
+  "how": [
+   "11/13(金)から各店舗で発売。オンラインストアは11/13 9:30から",
+   "京都伏見店では11/13から税込3,000円以上でアクリルコネクタチャーム、8,000円以上でダイカットハンドタオル（なくなり次第終了・オンラインは対象外）",
+   "オンラインストアは11/13 9:30受注分から、税込8,000円以上（送料除く）でカトラリーセット（なくなり次第終了）",
+   "京都伏見店は11/13〜11/15の入店が事前予約（抽選）制"
+  ],
+  "xpost": "https://x.com/chiikawamgmg/status/2115971979425583334",
+  "xpostNote": "投稿日2026-10-30（IDから計算）。本文に「京都伏見店は、2026年11月14日(土)にオープン3周年」「新商品」「3周年を記念したノベルティ」",
+  "note": "京都伏見店のオープン3周年記念。ちりめん小物や和風マグネットのほか、川越店・小樽店の限定品もあります。",
+  "autoAdded": true,
+  "addedAt": "2026-11-05",
+  "updatedAt": "2026-11-05"
  }
 ]
