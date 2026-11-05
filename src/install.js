@@ -435,7 +435,7 @@
     var ok = !standalone && !st.installed && isMobile && (st.no || 0) < 3 && !(st.later && Date.now() - st.later < 14 * 864e5);
     for (var i = 0; i < els.length; i++){
       var el = els[i]; if (!ok) { el.remove(); continue; }
-      el.innerHTML = ICON + '<p><b>ホーム画面に追加すると、アプリみたいに使えます</b><span>アイコンからすぐ開けて、通知で発売日もお知らせ</span></p><button type="button" class="ins-open-btn" data-insband-tap>' + (inApp ? (isIOS ? "Safariで開く方法" : "ブラウザで開く方法") : "追加のしかた") + '</button><button type="button" class="ins-x" data-insband-x aria-label="閉じる">×</button>';
+      el.innerHTML = ICON + '<p><b>ホーム画面に追加</b><span>アプリみたいに使えます</span></p><button type="button" class="ins-open-btn" data-insband-tap>' + (inApp ? (isIOS ? "Safariで開く" : "ブラウザで開く") : "追加方法") + '</button><button type="button" class="ins-x" data-insband-x aria-label="閉じる">×</button>';
       el.hidden = false;
       if (!bandSeen && "IntersectionObserver" in window){
         var io = new IntersectionObserver(function(en){ if (en[0].isIntersecting && !bandSeen){ bandSeen = true; ct("ins:band:show"); io.disconnect(); } }, { threshold: 0.6 });

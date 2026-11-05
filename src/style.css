@@ -864,11 +864,12 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .pkpanel .xbtn{display:none}.pkpanel .xbox{margin:8px 0 6px}
 
 /* 一覧の途中の「ホーム画面に追加」のお願い：楽天の赤い帯と見分けがつくよう、サイトの色でやわらかく */
-.insband{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin:4px 0 12px;padding:14px 48px 12px 14px;background:var(--acc-soft);border:1px solid var(--line);border-radius:18px}
+.insband{display:flex;align-items:center;gap:8px;margin:4px 0 12px;padding:8px 4px 8px 12px;background:var(--acc-soft);border:1px solid var(--line);border-radius:16px}
 .insband[hidden]{display:none}
-.insband .appicon{width:40px;height:40px;border-radius:10px;flex:none}
-.insband p{margin:0;flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:2px;line-height:1.45}
-.insband b{font-size:14px;color:var(--ink)}
-.insband span{font-size:12px;color:var(--ink-2)}
-.insband .ins-open-btn{flex:0 0 auto;margin-left:52px;min-height:44px;padding:0 18px}
-.insband .ins-x{position:absolute;top:2px;right:2px;width:44px;height:44px}
+.insband .appicon{width:36px;height:36px;border-radius:9px;flex:none}
+.insband p{margin:0;flex:1 1 110px;min-width:0;display:flex;flex-direction:column;gap:1px;line-height:1.35}
+.insband b{font-size:13px;color:var(--ink);white-space:nowrap}
+.insband span{font-size:11px;color:var(--ink-2)}
+.insband .ins-open-btn{flex:none;white-space:nowrap;min-height:40px;padding:0 11px;font-size:12.5px}
+.insband .ins-x{flex:none;width:40px;height:40px}
+@media (max-width:380px){.insband span{display:none}}
