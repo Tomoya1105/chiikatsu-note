@@ -1503,7 +1503,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-06",
   "srcs": [
    "https://animeanime.jp/article/2026/09/26/103251.html"
   ]
@@ -2819,7 +2819,7 @@
   "q": "",
   "src": "https://www.westjr.co.jp/press/article/2026/09/30/items/260930_00_press_lucuasouth.pdf",
   "srcType": "press",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-06",
   "note": "池袋のちいかわパークの公式ショップが全国初出店。入店は無料。ミニマスコットキーリング（全10種・各1,430円）やポップコーンバケツ（各4,180円）などを販売し、一部の商品は購入数の制限あり。同じ11Fにナガノマーケット UMEDA も同日オープン。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -3583,7 +3583,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000144.000074811.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-06",
   "how": [
    "入場は公式サイトのチケットが必要。当日入場できない場合があるので事前に確認。",
    "限定グッズ（スウェット・ファーハット・マフラー）は11/24(火)発売。",
@@ -3949,7 +3949,7 @@
    "https://www.gourmandise.jp/view/item/000000010928",
    "https://www.gourmandise.jp/view/item/000000010925"
   ],
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-06",
   "how": [
    "グルマンディーズ公式通販で「11月下旬発売予定」として掲載中"
   ],
@@ -4545,7 +4545,8 @@
   ],
   "autoAdded": true,
   "addedAt": "2026-10-26",
-  "updatedAt": "2026-10-26"
+  "updatedAt": "2026-10-26",
+  "xpostNote": "2026-11-06 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261101-pondecouleur",
@@ -4678,7 +4679,8 @@
   ],
   "autoAdded": true,
   "addedAt": "2026-10-27",
-  "updatedAt": "2026-10-27"
+  "updatedAt": "2026-10-27",
+  "xpostNote": "2026-11-06 しまむら公式（shimamura_gr、一覧にないアカウント）の投稿は見つかったが、ちいかわ公式のリポストを確かめられず入れない"
  },
  {
   "id": "20261106-market-xmas",
@@ -4811,7 +4813,9 @@
   ],
   "autoAdded": true,
   "addedAt": "2026-10-27",
-  "updatedAt": "2026-10-27"
+  "updatedAt": "2026-10-27",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2114522405112881312",
+  "xpostNote": "投稿日2026-10-26（IDから計算）。本文に「プレミアムドームクッション ‐くりまんじゅう&シーサー‐（全2種）」「#セガプライズ」「10月30日より順次登場」（2026-11-06確認）"
  },
  {
   "id": "20261101-kr-thesaem",
@@ -4989,7 +4993,8 @@
   "note": "ちいかわ×東京ばな奈が沖縄県で初めての販売。",
   "autoAdded": true,
   "addedAt": "2026-10-28",
-  "updatedAt": "2026-10-28"
+  "updatedAt": "2026-10-28",
+  "xpostNote": "2026-11-06 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261028-okeiko-poster",
@@ -5095,17 +5100,27 @@
   "srcType": "press",
   "srcs": [
    "https://game.watch.impress.co.jp/docs/news/2152123.html",
-   "https://news.yahoo.co.jp/articles/e5586c4cbbc0f5c40c6ebc3040e171560c36b2a2"
+   "https://news.yahoo.co.jp/articles/e5586c4cbbc0f5c40c6ebc3040e171560c36b2a2",
+   "https://x.com/chiikawa_market/status/2118305845343924266"
   ],
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-06",
   "how": [
    "全国の量販店の菓子売場などで販売（取り扱いのない店舗あり・発売日は店舗によって異なる場合あり）",
-   "ファミリーマート限定版（サワークリームオニオン味・170円）もあり。予約・取り置きはなし"
+   "ファミリーマート限定版（サワークリームオニオン味・170円）もあり。予約・取り置きはなし",
+   "ちいかわマーケット（公式通販）でも11/6(金)11時から発売"
   ],
   "note": "「オデと牢獄」のエピソードがモチーフ。囚人服姿のちいかわ・ハチワレ・うさぎ・モモンガのパッケージ全4種（バンダイ）。 ファミリーマートでは限定の「サワークリームオニオン味」（170円）を11/2から販売。",
   "autoAdded": true,
   "addedAt": "2026-10-29",
-  "updatedAt": "2026-11-02"
+  "updatedAt": "2026-11-06",
+  "xpost": "https://x.com/chiikawa_market/status/2118305845343924266",
+  "xpostNote": "投稿日2026-11-05（IDから計算）。本文に「プリズンポテト 濃厚サワクリ味」「171円(税込)」「ちいかわマーケット（公式通販）では 11/6(金)11時発売」（2026-11-06確認）",
+  "log": [
+   {
+    "d": "2026-11-06",
+    "t": "ちいかわマーケットでの発売（11/6 11時）を追加しました"
+   }
+  ]
  },
  {
   "id": "20270201-ribbon-charm-gummy",
@@ -5126,7 +5141,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/10/29/190011.html"
   ],
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-06",
   "note": "キラキラの鍵型チャーム全13種（開けるまでわからない）とオレンジ味のグミ（バンダイ キャンディ）。公式の発売時期は「2027年2月」。プレミアムバンダイでは12個入りBOX（4,752円）の予約も10/29から受付。",
   "autoAdded": true,
   "addedAt": "2026-10-29",
@@ -5148,7 +5163,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000004.000187317.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-06",
   "how": [
    "入店は事前予約制（予約方法は店舗の公式SNSで案内）。予約は入店の枠で、商品の確保ではありません",
    "大判焼きは1人2個まで、ドリンクは1人2杯まで。グッズは1人各1点まで（制限は変わることがあります）",
@@ -5554,7 +5569,8 @@
   "note": "高さ約60cm、両面デザインの大きなクッション。ラーメン柄と草むしり検定柄の全2種。",
   "autoAdded": true,
   "addedAt": "2026-11-02",
-  "updatedAt": "2026-11-02"
+  "updatedAt": "2026-11-02",
+  "xpostNote": "2026-11-06 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261101-yamazaki-chiikaman",
@@ -5599,9 +5615,10 @@
   "src": "https://weibo.com/u/7963282024",
   "srcType": "official",
   "srcs": [
-   "https://www.sina.cn/media/7963282024"
+   "https://www.sina.cn/media/7963282024",
+   "https://www.ctdsb.net/c1738_202610/2875402.html"
   ],
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-06",
   "how": [
    "予約なしで入場できる（中国ちいかわ公式の告知より）"
   ],
@@ -5780,7 +5797,8 @@
   "note": "ラバーマスコットがついたボールペン（約H14cm）、全8種。",
   "autoAdded": true,
   "addedAt": "2026-11-04",
-  "updatedAt": "2026-11-04"
+  "updatedAt": "2026-11-04",
+  "xpostNote": "2026-11-06 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261118-babycastella-otaru-lottery",
@@ -5906,7 +5924,8 @@
   "note": "11/3までに通常版キットを買った人は、追加で買わなくても11/9から遊べる。",
   "autoAdded": true,
   "addedAt": "2026-11-04",
-  "updatedAt": "2026-11-04"
+  "updatedAt": "2026-11-04",
+  "xpostNote": "2026-11-06 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261106-talking-happy-holidays",
@@ -6003,5 +6022,32 @@
   "autoAdded": true,
   "addedAt": "2026-11-05",
   "updatedAt": "2026-11-05"
+ },
+ {
+  "id": "20261125-parade-mayer-blanket",
+  "region": "jp",
+  "t": "ちいかわ 超BIGマイヤーブランケット（パレードのプライズ・再登場）",
+  "cat": "goods",
+  "s": "2026-11-25",
+  "sp": "late",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のアミューズメント施設・オンラインクレーンゲーム（パレードのプライズ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（ゲームセンターの景品）",
+  "src": "https://www.parade-inc.net/products/p251104",
+  "srcType": "partner",
+  "verifiedAt": "2026-11-06",
+  "how": [
+   "ゲームセンターやオンラインクレーンゲームの景品（プライズ）。2026年11月下旬から順次登場",
+   "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
+  ],
+  "note": "約100cm×150cmの大きなブランケット（全2種）。2025年11月に出たものの再登場。",
+  "autoAdded": true,
+  "addedAt": "2026-11-06",
+  "updatedAt": "2026-11-06"
  }
 ]
