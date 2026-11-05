@@ -62,7 +62,7 @@ if (YMODE !== "affiliate") for (const f of ["index.html", "privacy/index.html", 
     const f = `dist/note/${slug}/index.html`;
     if (!fs.existsSync(f)) { errs.push(`${f} がありません`); continue; }
     const h = read(f);
-    if (!/AIに下書きを手伝ってもらい/.test(h)) errs.push(`${f}: AI利用の注記がありません`);
+    if (!/すべて運営者本人のものです/.test(h) || !/AIを使い/.test(h)) errs.push(`${f}: AI利用の注記（体験・考えは運営者本人のもの、AIは整える補助）がありません`);
     if (!/権利者とは関係のない/.test(h)) errs.push(`${f}: 非公式の注記がありません`);
     if (!/<h1>/.test(h) || /\*\*|^## /m.test(h.replace(/<script[\s\S]*?<\/script>/g, ""))) errs.push(`${f}: Markdownの記号が残っています`);
     if (!read("dist/sitemap.xml").includes(`/note/${slug}/`)) errs.push(`sitemap.xml に /note/${slug}/ がありません`);
