@@ -68,6 +68,15 @@ if (YMODE !== "affiliate") for (const f of ["index.html", "privacy/index.html", 
     if (!read("dist/sitemap.xml").includes(`/note/${slug}/`)) errs.push(`sitemap.xml に /note/${slug}/ がありません`);
   }
 }
+// カレンダーの今日のマス（.day.today）を隠すCSSがないこと。ヘッダーの「今日」（.topr .today）だけを隠す書き方でないと、スマホでカレンダーの今日が消えて、翌日以降の曜日がずれる（2026-11-05 に発生）
+{
+  const css = read("src/style.css").replace(/\/\*[\s\S]*?\*\//g, "");
+  for (const m of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    const sel = m[1].trim(), body = m[2];
+    if (!/display\s*:\s*none/.test(body)) continue;
+    for (const one of sel.split(",").map(x => x.trim())) if (/^\.today\b/.test(one) || /(^|[\s>+~])\.today$/.test(one) && !/\.topr\s+\.today$/.test(one)) errs.push(`style.css: ${one} が display:none で、カレンダーの今日のマス（.day.today）にも当たります`);
+  }
+}
 try { JSON.parse(read("dist/manifest.webmanifest")); } catch (e) { errs.push("manifest.webmanifest が壊れています"); }
 const items = JSON.parse(read("data/items.json"));
 const seen = new Set();
