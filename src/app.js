@@ -354,6 +354,7 @@ function sn(t){
   return x;
 }
 function renderList(){
+  fltDot();
   try{ renderListInner(); }catch(err){
     console.error(err);
     document.getElementById("list").innerHTML = `<div class="empty">一覧を表示できませんでした。ページを開き直してください。</div>`;
@@ -455,13 +456,31 @@ function renderMine(){
   // 商品カードの部品はこのファイルの後ろの方で定義しているので、読み込みが終わってから描く
   if (FAV.length) setTimeout(()=>{ safe(()=>{ const g=document.getElementById("favGrid"); if (g) g.innerHTML = favCards(); refreshFav(); }, "fav"); }, 0);
 }
+/* 今週のピックアップ：7日以内に始まるもの→締切・終了が近いものの順に、最大6件 */
+function renderPick(){
+  const box = document.getElementById("pick"), row = document.getElementById("pickRow"); if (!box || !row) return;
+  const vis = VIS(), key = it=>keyOf(it).d.getTime();
+  const soon = vis.filter(it=>status(it).k==="soon").sort((a,b)=>key(a)-key(b));
+  const ending = vis.filter(it=>status(it).k==="ending").sort((a,b)=>key(a)-key(b));
+  const picks = soon.concat(ending).slice(0,6);
+  box.hidden = !picks.length;
+  row.innerHTML = picks.map(it=>{
+    const st = status(it), v = isRsv(it) ? "予約受付" : isEvent(it)?"開始":"発売";
+    const a = fmtStart(it), z = it.ed ? fmtEnd(it) : "";
+    const when = `${v} ${esc(a)}` + (z && z!==a ? `〜${esc(z)}` : "");
+    return `<a class="pk" href="/items/${encodeURIComponent(it.id)}/"><span class="pkm"><span class="pill st-${st.k}">${st.label}</span><span class="cat">${CAT[it.cat]||""}</span></span><span class="pkt">${esc(it.t)}</span><span class="pkw num">${when}</span>${it.place?`<span class="pkp">${esc(it.place)}</span>`:""}</a>`;
+  }).join("");
+}
 function renderSummary(){
+  renderPick();
   const c = k=>VIS().filter(it=>status(it).k===k).length;
   document.getElementById("nSoon").innerHTML = c("soon")+"<small>件</small>";
   document.getElementById("nEnding").innerHTML = c("ending")+"<small>件</small>";
   const ids = new Set(ITEMS.map(i=>i.id));
   const w = Object.entries(mine).filter(([id,v])=>v==="want" && (!loaded || ids.has(id))).length + FAV.length;   // 「ほしい」の予定＋♡を押した商品
   document.getElementById("nWant").innerHTML = w+"<small>件</small>";
+  document.querySelector(".sum .s3").hidden = !w;   // まだ何も入れていない人には「0件」のカードを見せない
+  document.querySelector(".sum").classList.toggle("two", !w);
   const tc = document.getElementById("tabCnt"); tc.textContent = w; tc.hidden = !w;
   const last = ITEMS.map(i=>i.updatedAt||"").sort().pop();
   document.getElementById("lastUpd").textContent = last ? `掲載情報の最終更新日：${last.replace(/^(\d+)-0?(\d+)-0?(\d+).*/,"$1年$2月$3日")}。` : "";
@@ -660,6 +679,10 @@ document.addEventListener("click", e=>{
   if (mine[id]==="want" && !pushNudge()) shareNudge(id);
 });
 document.addEventListener("click", e=>{ const b=e.target.closest("[data-gost]"); if(!b) return; state.st=b.dataset.gost; state.focus=null; state.fromSum=false; chips(document.getElementById("stChips"),ST,"st"); renderList(); });
+(function(){ const b = document.getElementById("fltBtn"), x = document.getElementById("fltBox"); if (!b||!x) return;
+  b.addEventListener("click", ()=>{ x.hidden = !x.hidden; b.setAttribute("aria-expanded", String(!x.hidden)); });
+})();
+function fltDot(){ const d = document.getElementById("fltDot"); if (d) d.hidden = !(state.st!=="next" || state.cat!=="all"); }
 document.getElementById("q").addEventListener("input", e=>{ state.q=e.target.value; renderList(); });
 document.getElementById("focusClear").onclick = goAll;
 document.getElementById("today").textContent = `今日 ${TODAY.getMonth()+1}/${TODAY.getDate()}(${DOW[TODAY.getDay()]})`;

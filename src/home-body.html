@@ -19,6 +19,7 @@
     <div class="topr"><div class="today num" id="today"></div>
       <button class="oshibtn" id="oshiBtn" aria-expanded="false" aria-controls="oshiPanel"><span class="dot" aria-hidden="true"></span>推しカラー</button></div>
   </header>
+  <p class="hero">発売日もイベントも、<br>ひと目で。</p>
   <section class="oshipanel" id="oshiPanel" hidden>
     <div class="oshihead"><h2>推しカラーをえらぶ</h2><button type="button" class="oshix" data-oshiclose aria-label="閉じる">閉じる ×</button></div>
     <p>押すとすぐページの色が変わります。選んだ色はこの端末に保存されます。</p>
@@ -41,21 +42,29 @@
     <button class="s2" data-jump="ending"><span class="k">7日以内に締切・終了</span><span class="v num" id="nEnding">0<small>件</small></span></button>
     <button class="s3" data-jump="mine"><span class="k">ほしい・気になる</span><span class="v num" id="nWant">0<small>件</small></span></button>
   </section>
-  {{INSTALL_TOP}}
 
   <nav class="tabs" role="tablist" aria-label="表示切り替え">
-    <button role="tab" id="tab-list" aria-selected="true" data-view="list">一覧</button>
-    <button role="tab" id="tab-cal" aria-selected="false" data-view="cal">カレンダー</button>
-    <button role="tab" id="tab-mine" aria-selected="false" data-view="mine">マイリスト<span class="cnt num" id="tabCnt" hidden>0</span></button>
-    <button role="tab" id="tab-shop" aria-selected="false" data-view="shop">グッズ</button>
-    <button role="tab" id="tab-news" aria-selected="false" data-view="news">ニュース<span class="cnt num" id="newsCnt" hidden>0</span></button>
+    <button role="tab" id="tab-list" aria-selected="true" data-view="list"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg><span class="tl">一覧</span></button>
+    <button role="tab" id="tab-cal" aria-selected="false" data-view="cal"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><span class="tl">カレンダー</span></button>
+    <button role="tab" id="tab-mine" aria-selected="false" data-view="mine"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span class="tl">マイリスト</span><span class="cnt num" id="tabCnt" hidden>0</span></button>
+    <button role="tab" id="tab-shop" aria-selected="false" data-view="shop"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6zM9 8a3 3 0 0 1 6 0"/></svg><span class="tl">グッズ</span></button>
+    <button role="tab" id="tab-news" aria-selected="false" data-view="news"><svg class="ti" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5h14v14H5zM9 9h6M9 13h6"/></svg><span class="tl">ニュース</span><span class="cnt num" id="newsCnt" hidden>0</span></button>
   </nav>
 
   <section id="view-list">
+    <section class="pick" id="pick" aria-label="今週のピックアップ" hidden>
+      <div class="pickh"><h2>今週のピックアップ</h2></div>
+      <div class="pickrow" id="pickRow"></div>
+    </section>
     <div class="filters">
-      <label class="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.7" fill="none"/><path d="M11 11l3.2 3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><input id="q" type="search" placeholder="商品名・お店・キャラ名でさがす" aria-label="キーワード検索"></label>
-      <div class="chips" id="stChips" aria-label="状態で絞り込み"></div>
-      <div class="chips" id="catChips" aria-label="種類で絞り込み"></div>
+      <div class="srow">
+        <label class="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.7" fill="none"/><path d="M11 11l3.2 3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><input id="q" type="search" placeholder="商品名・お店・キャラ名でさがす" aria-label="キーワード検索"></label>
+        <button type="button" class="fbtn" id="fltBtn" aria-expanded="false" aria-controls="fltBox"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>絞り込み<span class="fdot" id="fltDot" hidden></span></button>
+      </div>
+      <div class="fbox" id="fltBox" hidden>
+        <div class="chips" id="stChips" aria-label="状態で絞り込み"></div>
+        <div class="chips" id="catChips" aria-label="種類で絞り込み"></div>
+      </div>
       <div class="row"><span id="count" class="num"></span>
         <button type="button" class="tiplink" data-tip>＋ 情報を教える</button>
 </div>
