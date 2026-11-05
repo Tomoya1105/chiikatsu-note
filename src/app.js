@@ -555,7 +555,7 @@ function shareNudge(id){
 function toast(msg, act){
   const t=document.getElementById("toast"); t.textContent=msg; t.hidden=false;
   if (act){ const b=document.createElement("button"); b.type="button"; b.className="toastbtn"; b.textContent=act.label; b.onclick=()=>{ t.hidden=true; act.fn(); }; t.append(" ", b); }
-  clearTimeout(toast._t); toast._t=setTimeout(()=>{t.hidden=true}, act?6000:2800);
+  clearTimeout(toast._t); toast._t=setTimeout(()=>{t.hidden=true}, act?7000:Math.max(2800, msg.length*130));
 }
 /* 読者からの報告フォーム */
 document.addEventListener("click", async e=>{
@@ -657,7 +657,7 @@ document.addEventListener("click", e=>{
   const id = b.closest(".card").dataset.id, k=b.dataset.mark;
   if (mine[id]===k) delete mine[id]; else { mine[id]=k; if (window.ct) window.ct("mark:"+k); }
   saveMine(); renderAll();
-  if (mine[id]==="want") shareNudge(id);
+  if (mine[id]==="want" && !pushNudge()) shareNudge(id);
 });
 document.addEventListener("click", e=>{ const b=e.target.closest("[data-gost]"); if(!b) return; state.st=b.dataset.gost; state.focus=null; state.fromSum=false; chips(document.getElementById("stChips"),ST,"st"); renderList(); });
 document.getElementById("q").addEventListener("input", e=>{ state.q=e.target.value; renderList(); });
@@ -1118,17 +1118,49 @@ document.addEventListener("click", e=>{
   try{ localStorage.setItem("chiikatsu-push-chars", JSON.stringify(pushChars)); }catch(err){}
   b.setAttribute("aria-pressed", pushChars.includes(c)); window.pushSync();
 });
+/* 一覧で「ほしい」を押したときに、通知の状態を、下の小さな表示（トースト）で知らせる。出したら true（そのとき「友だちにも教える」は出さない）。
+ * オン→「通知はオンです」／許可はあるが購読なし→「いまオフです」＋オンにする／未許可→「通知でお知らせしますか？」＋オンにする（1日1回まで）／ブロック中→設定で許可／iPhoneでホーム画面に未追加→追加方法。
+ * 許可のダイアログは、ボタンを押したときだけ出す。詳細ページ（push-lite.js）と同じく、最初は「ほしい」の通知だけオンにする。 */
+let pnNudgedVisit = false;
+function pushNudge(){
+  if (pnNudgedVisit) return false;
+  const DAY = 864e5; let last = 0; try{ last = parseInt(localStorage.getItem("chiikatsu-pn-list-at")||"0",10)||0; }catch(e){}
+  const quiet = last && Date.now()-last < DAY;                       // 誘うほうの表示は、1日1回まで
+  let later = 0; try{ later = parseInt(localStorage.getItem("chiikatsu-pn-later")||"0",10)||0; }catch(e){}
+  const mark = ()=>{ pnNudgedVisit = true; try{ localStorage.setItem("chiikatsu-pn-list-at", String(Date.now())); }catch(e){} };
+  if (!PUSH_OK){
+    if (!(IS_IOS && !IS_APP) || quiet) return false;
+    mark(); if (window.ct) window.ct("pn:show");
+    toast("通知は、ホーム画面に追加すると使えます", { label:"追加方法", fn:()=>{ const x=document.createElement("button"); x.dataset.install=""; document.body.append(x); x.click(); x.remove(); }});
+    return true;
+  }
+  if (Notification.permission==="denied"){ pnNudgedVisit = true; toast("通知がブロックされています。端末の設定で、このサイトの通知を許可すると、お知らせできます"); return true; }
+  if (pushSub){ pnNudgedVisit = true; toast("通知はオンです。この予定が近づいたら、お知らせします"); return true; }
+  const granted = Notification.permission==="granted";
+  if (!granted && (quiet || (later && Date.now()-later < 30*DAY))) return false;
+  mark(); if (window.ct) window.ct("pn:show");
+  toast(granted ? "この端末の通知は、いまオフです" : "通知で、発売日をお知らせしますか？", { label:"通知をオンにする", fn:()=>pushTurnOn(true) });
+  return true;
+}
+async function pushTurnOn(fromList){
+  if (fromList && window.ct) window.ct("pn:tap");
+  try{
+    const perm = await Notification.requestPermission();
+    if (perm!=="granted"){ if (fromList && window.ct) window.ct("pn:deny"); drawPush(); return; }
+    if (fromList){   // 一覧から入れたときは、最初は「ほしい」の通知だけ
+      try{ if (localStorage.getItem("chiikatsu-push-rsv")===null){ localStorage.setItem("chiikatsu-push-rsv","0"); pushRsv=false; } if (localStorage.getItem("chiikatsu-push-news")===null){ localStorage.setItem("chiikatsu-push-news","0"); pushNews=false; } }catch(e){}
+    }
+    const reg = await navigator.serviceWorker.register("/sw.js").then(()=>navigator.serviceWorker.ready);
+    pushSub = await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:u8(VAPID)});
+    await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars, favN:FAV.length});
+    toast(fromList ? "通知をオンにしました。「ほしい」の予定を、前日の夜と当日の朝にお知らせします" : "通知をオンにしました"); if (window.ct) window.ct("push:on");
+    if (fromList && window.ct) window.ct("pn:grant");
+  }catch(err){ toast("通知をオンにできませんでした。時間をおいてお試しください"); }
+  drawPush();
+}
 document.addEventListener("click", async e=>{
   if (e.target.closest("[data-pon]")){
-    try{
-      const perm = await Notification.requestPermission();
-      if (perm!=="granted"){ drawPush(); return; }
-      const reg = await navigator.serviceWorker.register("/sw.js").then(()=>navigator.serviceWorker.ready);
-      pushSub = await reg.pushManager.subscribe({userVisibleOnly:true, applicationServerKey:u8(VAPID)});
-      await pushPost({sub:pushSub.toJSON(), want:wantIds(), rsv:pushRsv, news:pushNews, chars:pushChars, favN:FAV.length});
-      toast("通知をオンにしました"); if (window.ct) window.ct("push:on");
-    }catch(err){ toast("通知をオンにできませんでした。時間をおいてお試しください"); }
-    drawPush();
+    await pushTurnOn(false);
   }
   if (e.target.closest("[data-poff]") && pushSub){
     try{ await pushPost({sub:pushSub.toJSON(), off:true}); await pushSub.unsubscribe(); }catch(err){}

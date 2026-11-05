@@ -21,3 +21,5 @@ console.log(fails ? `NG ${fails}` : "pn OK"); process.exit(fails ? 1 : 0);
 { const fs = await import("node:fs"); const lite = fs.readFileSync("dist/push-lite.js", "utf8"), home = fs.readFileSync("dist/index.html", "utf8");
   for (const t of ["通知はオンです", "いまオフです", "通知がブロックされています", "このブラウザでは、通知が使えません"]) console.log((lite.includes(t) ? "ok  " : "NG  ") + "表示文：" + t), lite.includes(t) || (process.exitCode = 1);
   const tab = /data-view="shop">グッズ</.test(home); console.log((tab ? "ok  " : "NG  ") + "タブ名が「グッズ」"); if (!tab) process.exitCode = 1; }
+{ const fs = await import("node:fs"); const app = fs.readdirSync("dist").filter(f => /^app.*\.js$/.test(f)).map(f => fs.readFileSync("dist/" + f, "utf8")).join("") + fs.readFileSync("dist/index.html", "utf8");
+  const okk = /function pushNudge\(/.test(app) && (app.match(/requestPermission\(/g) || []).length === 1; console.log((okk ? "ok  " : "NG  ") + "一覧の通知の案内がある／許可の要求は1か所（押したとき）だけ"); if (!okk) process.exitCode = 1; }
