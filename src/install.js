@@ -425,6 +425,31 @@
     document.body.appendChild(bar);
   }
 
+
+  /* ---- 一覧の途中に1回だけ出す、ホーム画面に追加のお願い（9件目のあと。画面にかぶせない） ----
+     出さない人：ホーム画面から開いている人／追加ずみ／スマホ以外／閉じて14日以内／3回閉じた人。
+     数えるもの：ins:band:show（画面に入った）／tap（追加のしかたを押した）／close（閉じた） */
+  var bandSeen = false;
+  window.chiikatsuInsBand = function(){
+    var els = document.querySelectorAll("[data-insband]"); if (!els.length) return;
+    var ok = !standalone && !st.installed && isMobile && (st.no || 0) < 3 && !(st.later && Date.now() - st.later < 14 * 864e5);
+    for (var i = 0; i < els.length; i++){
+      var el = els[i]; if (!ok) { el.remove(); continue; }
+      el.innerHTML = ICON + '<p><b>ホーム画面に追加</b><span>アプリみたいに使えます</span></p><button type="button" class="ins-open-btn" data-insband-tap>' + (inApp ? (isIOS ? "Safariで開く" : "ブラウザで開く") : "追加方法") + '</button><button type="button" class="ins-x" data-insband-x aria-label="閉じる">×</button>';
+      el.hidden = false;
+      if (!bandSeen && "IntersectionObserver" in window){
+        var io = new IntersectionObserver(function(en){ if (en[0].isIntersecting && !bandSeen){ bandSeen = true; ct("ins:band:show"); io.disconnect(); } }, { threshold: 0.6 });
+        io.observe(el);
+      }
+    }
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", window.chiikatsuInsBand); else setTimeout(window.chiikatsuInsBand, 0);   // install.js が一覧より後に読まれたとき用
+  document.addEventListener("click", function(e){
+    if (e.target.closest("[data-insband-tap]")){ ct("ins:band:tap"); deferred ? prompt() : openSheet(); return; }
+    var x = e.target.closest("[data-insband-x]");
+    if (x){ ct("ins:band:close"); st.later = Date.now(); st.no = (st.no || 0) + 1; save(st); var b = x.closest("[data-insband]"); if (b) b.remove(); }
+  });
+
   // 出すタイミング：2回目以降の訪問ですこし経ってから／初回は「ほしい」などを押したとき
   st.visits = (st.visits || 0) + 1; save(st);
   var isHome = location.pathname === "/" || location.pathname === "/index.html";

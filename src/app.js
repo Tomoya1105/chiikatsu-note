@@ -354,6 +354,7 @@ function sn(t){
   return x;
 }
 function renderList(){
+  fltDot();
   try{ renderListInner(); }catch(err){
     console.error(err);
     document.getElementById("list").innerHTML = `<div class="empty">一覧を表示できませんでした。ページを開き直してください。</div>`;
@@ -416,7 +417,8 @@ function renderListInner(){
     }
     h += card(it);
     if (i===4 || i===14) h += AD;
-    if (i===5 && R.region==="jp") h += `<div class="popstrip" data-pop></div>`;   // 楽天の人気グッズは6件目のあと
+    if (i===5 && R.region==="jp") h += `<div class="popstrip" data-pop></div>`;
+    if (i===8) h += `<div class="insband" data-insband hidden></div>`;   // ホーム画面に追加のお願い：9件目のあとに1回だけ（出すかどうかは install.js が決める）   // 楽天の人気グッズは6件目のあと
     if (i===2 && groups<2 && arr.length<=6) campHere();
   });
   if (!campDone && arr.length) campHere();
@@ -452,16 +454,50 @@ function renderMine(){
   if (FAV.length) h += `<h3 class="dayhead">気になる商品（${FAV.length}）</h3><p class="favnote">「グッズ」で♡を押した楽天の商品です。値段は開いたときに楽天から読み直しています。</p><div class="pgrid" id="favGrid"></div>`;
   else h += `<p class="favnote">「グッズ」タブの商品の♡を押すと、ここに「気になる商品」として保存されます。</p>`;
   el.innerHTML = h;
+  if (window.chiikatsuInsBand) window.chiikatsuInsBand();
   // 商品カードの部品はこのファイルの後ろの方で定義しているので、読み込みが終わってから描く
   if (FAV.length) setTimeout(()=>{ safe(()=>{ const g=document.getElementById("favGrid"); if (g) g.innerHTML = favCards(); refreshFav(); }, "fav"); }, 0);
 }
+/* 今週のピックアップ：7日以内に始まるもの→締切・終了が近いものの順に、最大6件 */
+const PICKX = {};
+function closePick(){ const pn = document.getElementById("pkPanel"); if (pn) { pn.hidden = true; pn.innerHTML = ""; } document.querySelectorAll(".pkx[aria-expanded=true]").forEach(b=>{ b.setAttribute("aria-expanded","false"); b.lastChild.textContent = "公式の画像を見る"; }); }
+document.addEventListener("click", e=>{
+  if (e.target.closest("[data-pkclose]")){ closePick(); return; }
+  const b = e.target.closest("[data-pkx]"); if (!b) return;
+  const id = b.dataset.pkx, x = PICKX[id], pn = document.getElementById("pkPanel"); if (!x || !pn) return;
+  const wasOpen = b.getAttribute("aria-expanded")==="true"; closePick(); if (wasOpen) return;
+  const it = ITEMS.find(i=>i.id===id);
+  pn.innerHTML = `<div class="pkph"><b>${esc(it?it.t:"")}</b><button type="button" class="pkclose" data-pkclose>閉じる ×</button></div>${xbox(x)}`;
+  pn.hidden = false; b.setAttribute("aria-expanded","true"); b.lastChild.textContent = "画像をとじる";
+  const xb = pn.querySelector(".xbtn"); if (xb) xb.click();
+  pn.scrollIntoView({behavior:"smooth", block:"nearest"});
+});
+function renderPick(){
+  const box = document.getElementById("pick"), row = document.getElementById("pickRow"); if (!box || !row) return;
+  const vis = VIS(), key = it=>keyOf(it).d.getTime();
+  const soon = vis.filter(it=>status(it).k==="soon").sort((a,b)=>key(a)-key(b));
+  const ending = vis.filter(it=>status(it).k==="ending").sort((a,b)=>key(a)-key(b));
+  const picks = soon.concat(ending).slice(0,6);
+  box.hidden = !picks.length;
+  row.innerHTML = picks.map(it=>{
+    const st = status(it), v = isRsv(it) ? "予約受付" : isEvent(it)?"開始":"発売";
+    const a = fmtStart(it), z = it.ed ? fmtEnd(it) : "";
+    const when = `${v} ${esc(a)}` + (z && z!==a ? `〜${esc(z)}` : "");
+    const x = xpostOf(it);   // 公式Xの投稿があるものは「公式の画像を見る」。押すと、カードの下の1つの枠に表示する（横に並んだカードの幅を崩さないため）
+    if (x) PICKX[it.id] = x;
+    return `<div class="pkc"><a class="pk" href="/items/${encodeURIComponent(it.id)}/"><span class="pkm"><span class="pill st-${st.k}">${st.label}</span><span class="cat">${CAT[it.cat]||""}</span></span><span class="pkt">${esc(it.t)}</span><span class="pkw num">${when}</span>${it.place?`<span class="pkp">${esc(it.place)}</span>`:""}</a>${x?`<button type="button" class="pkx" data-pkx="${esc(it.id)}" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><rect x="3" y="4" width="18" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="M4 18l5-4.5 3.2 2.6 3.3-3.6L20 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>公式の画像を見る</button>`:""}</div>`;
+  }).join("");
+}
 function renderSummary(){
+  renderPick();
   const c = k=>VIS().filter(it=>status(it).k===k).length;
   document.getElementById("nSoon").innerHTML = c("soon")+"<small>件</small>";
   document.getElementById("nEnding").innerHTML = c("ending")+"<small>件</small>";
   const ids = new Set(ITEMS.map(i=>i.id));
   const w = Object.entries(mine).filter(([id,v])=>v==="want" && (!loaded || ids.has(id))).length + FAV.length;   // 「ほしい」の予定＋♡を押した商品
   document.getElementById("nWant").innerHTML = w+"<small>件</small>";
+  document.querySelector(".sum .s3").hidden = !w;   // まだ何も入れていない人には「0件」のカードを見せない
+  document.querySelector(".sum").classList.toggle("two", !w);
   const tc = document.getElementById("tabCnt"); tc.textContent = w; tc.hidden = !w;
   const last = ITEMS.map(i=>i.updatedAt||"").sort().pop();
   document.getElementById("lastUpd").textContent = last ? `掲載情報の最終更新日：${last.replace(/^(\d+)-0?(\d+)-0?(\d+).*/,"$1年$2月$3日")}。` : "";
@@ -643,7 +679,18 @@ function reloadMine(){
 addEventListener("pageshow", e=>{ if (e.persisted) reloadMine(); });
 document.addEventListener("visibilitychange", ()=>{ if (!document.hidden) reloadMine(); });
 addEventListener("storage", e=>{ if (e.key==="chiikatsu-mine") reloadMine(); });
-document.querySelector(".tabs").onclick = e=>{ const b=e.target.closest("[data-view]"); if(b) setView(b.dataset.view); };
+document.querySelector(".tabs").onclick = e=>{
+  const b=e.target.closest("[data-view]"); if(!b) return;
+  const tabs = document.querySelector(".tabs"), before = tabs.getBoundingClientRect().top;
+  setView(b.dataset.view);
+  // 下までスクロールしたまま押すと、切り替えたタブの途中が見えてしまう（カレンダーが見えず、日ごとの一覧に飛ぶ）。押したら、そのタブの先頭（タブの帯のすぐ下）から見せる。
+  // 一番上のまま押したときは、画面を動かさない。
+  if (before <= 1) requestAnimationFrame(()=>{
+    const v = document.getElementById("view-"+b.dataset.view); if (!v) return;
+    const y = v.getBoundingClientRect().top + window.scrollY - tabs.offsetHeight - 6;
+    window.scrollTo({ top: Math.max(0, y) });
+  });
+};
 document.querySelector(".sum").onclick = e=>{
   const b=e.target.closest("[data-jump]"); if(!b) return;
   const j=b.dataset.jump;
@@ -660,6 +707,10 @@ document.addEventListener("click", e=>{
   if (mine[id]==="want" && !pushNudge()) shareNudge(id);
 });
 document.addEventListener("click", e=>{ const b=e.target.closest("[data-gost]"); if(!b) return; state.st=b.dataset.gost; state.focus=null; state.fromSum=false; chips(document.getElementById("stChips"),ST,"st"); renderList(); });
+(function(){ const b = document.getElementById("fltBtn"), x = document.getElementById("fltBox"); if (!b||!x) return;
+  b.addEventListener("click", ()=>{ x.hidden = !x.hidden; b.setAttribute("aria-expanded", String(!x.hidden)); });
+})();
+function fltDot(){ const d = document.getElementById("fltDot"); if (d) d.hidden = !(state.st!=="next" || state.cat!=="all"); }
 document.getElementById("q").addEventListener("input", e=>{ state.q=e.target.value; renderList(); });
 document.getElementById("focusClear").onclick = goAll;
 document.getElementById("today").textContent = `今日 ${TODAY.getMonth()+1}/${TODAY.getDate()}(${DOW[TODAY.getDay()]})`;

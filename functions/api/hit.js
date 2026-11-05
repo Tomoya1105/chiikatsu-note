@@ -11,7 +11,7 @@ const IDS = new Set(ID_LIST);
 // 大事な項目（縮小中も記録する）：訪問の流れ・購入先クリック・♡・ご案内・端末の数
 export const CORE = /^(v:(new|hs|x)|f:(h|i|hi|b|ib|lb|w|xi|xb|xw)|b:(list|item|mine|shop|sum):(off|rsv|rk|yh|am)|bi:.+|mark:want|ob:(show|done|skip|close|add|help)|u:(dev|wk|wkret|app|fav|push)|push:on)$/;
 // それ以外の項目（ふだんは記録、縮小中は省く）
-export const DETAIL = /^(pv:(home|item|other)|tab:(list|cal|mine|shop|news)|st:[a-z]{2,12}|o:(info|travel|gcal|news|fresh|dl)|mark:got|fav|shopq|install|x:embed|nudge:show|pn:(show|tap|grant|deny|later)|share:(nudge|line|x|copy)|u:(ret|saved)|tip:(open|send)|ins:(intro|bar:want)|ob:(s2|s3|want|item))$/;
+export const DETAIL = /^(pv:(home|item|other)|tab:(list|cal|mine|shop|news)|st:[a-z]{2,12}|o:(info|travel|gcal|news|fresh|dl)|mark:got|fav|shopq|install|x:embed|nudge:show|pn:(show|tap|grant|deny|later)|share:(nudge|line|x|copy)|u:(ret|saved)|tip:(open|send)|ins:(intro|bar:want|band:(show|tap|close))|ob:(s2|s3|want|item))$/;
 export function okKey(k){ if (k.startsWith("bi:")) return IDS.has(k.slice(3)); return CORE.test(k) || DETAIL.test(k); }
 
 export const jstDay = (ms = Date.now()) => new Date(ms + 9 * 3600e3).toISOString().slice(0, 10);

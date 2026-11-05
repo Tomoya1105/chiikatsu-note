@@ -816,3 +816,60 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 /* カードのどこを押しても詳細へ。タイトルの横に小さな › で、押せることを伝える */
 .card{cursor:pointer}
 .card h3 a::after{content:" ›";color:var(--acc);font-weight:700;white-space:nowrap}
+
+/* ===== トップ画面の整理（最初の画面を「見てもらう」ことに絞る） ===== */
+.hero{margin:18px 0 6px;font-family:var(--display);font-weight:900;font-size:24px;line-height:1.4;color:var(--ink)}
+.intro,.ins-top{display:none!important}                                   /* 「はじめての方へ」とホーム画面追加の帯は、トップの上には出さない（下の案内カードと使い方リンクは残す） */
+.sum.two{grid-template-columns:repeat(2,1fr)}
+.sum.two button.s3{display:none}
+/* タブ：5つとも画面に収め、アイコン＋短い名前 */
+.tabs{gap:3px}
+.tabs button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:56px;padding:6px 1px;border-radius:14px;font-size:11px;letter-spacing:0;white-space:nowrap}
+.tabs .ti{flex:none}
+.tabs .cnt{position:absolute;top:3px;right:3px;margin:0;min-width:16px;padding:0 4px;font-size:10px;line-height:16px;background:#B24A66;color:#fff}
+/* 今週のピックアップ */
+.pick{margin:6px 0 18px}
+.pickh h2{margin:0 0 10px;font-family:var(--display);font-size:17px;font-weight:900}
+.pickrow{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 8px;margin-inline:-2px;scroll-snap-type:x proximity}
+.pickrow::-webkit-scrollbar{display:none}
+.pkc{flex:none;width:232px;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:15px 16px 12px;box-shadow:var(--shadow)}
+.pk{flex:1;display:flex;flex-direction:column;gap:8px;color:var(--ink);text-decoration:none}
+.pkc:hover{border-color:var(--acc)}
+.pkx{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;margin-top:2px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);color:var(--ink);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.pkx svg{color:var(--acc)}
+.pkx[aria-expanded="true"]{border-color:var(--acc);background:var(--acc-soft)}
+.pkx:focus-visible{outline:2.5px solid var(--acc)}
+.pkpanel{margin-top:6px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:12px 14px 6px;box-shadow:var(--shadow)}
+.pkpanel[hidden]{display:none}
+.pkph{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13.5px}
+.pkph b{flex:1;min-width:0;line-height:1.4}
+.pkclose{flex:none;min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.pk:focus-visible{outline:2.5px solid var(--acc);border-radius:12px}
+.pkm{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-2)}
+.pkt{font-weight:700;font-size:15px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pkw,.pkp{font-size:12px;line-height:1.5;color:var(--ink-2)}
+/* 検索と絞り込みは1行 */
+.srow{display:flex;gap:10px}
+.srow .search{flex:1;min-width:0}
+.fbtn{flex:none;position:relative;display:flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.fbtn:focus-visible{outline:2.5px solid var(--acc)}
+.fbtn[aria-expanded="true"]{border-color:var(--acc);background:var(--acc-soft)}
+.fdot{position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:var(--acc)}
+.fbox{display:flex;flex-direction:column;gap:8px}
+.fbox[hidden]{display:none}
+/* 締切が近いもの：赤い太枠をやめて、やわらかい帯に */
+.dlstrip{border:1px solid #F0CBD3;background:#FBF0F3;border-radius:16px}
+.dlsh b{color:#A33A57;font-size:14.5px}
+.herosub{margin:0 0 14px;font-size:14px;line-height:1.5;color:var(--ink-2)}
+.pkpanel .xbtn{display:none}.pkpanel .xbox{margin:8px 0 6px}
+
+/* 一覧の途中の「ホーム画面に追加」のお願い：楽天の赤い帯と見分けがつくよう、サイトの色でやわらかく */
+.insband{display:flex;align-items:center;gap:8px;margin:4px 0 12px;padding:8px 4px 8px 12px;background:var(--acc-soft);border:1px solid var(--line);border-radius:16px}
+.insband[hidden]{display:none}
+.insband .appicon{width:36px;height:36px;border-radius:9px;flex:none}
+.insband p{margin:0;flex:1 1 110px;min-width:0;display:flex;flex-direction:column;gap:1px;line-height:1.35}
+.insband b{font-size:13px;color:var(--ink);white-space:nowrap}
+.insband span{font-size:11px;color:var(--ink-2)}
+.insband .ins-open-btn{flex:none;white-space:nowrap;min-height:40px;padding:0 11px;font-size:12.5px}
+.insband .ins-x{flex:none;width:40px;height:40px}
+@media (max-width:380px){.insband span{display:none}}
