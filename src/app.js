@@ -679,7 +679,18 @@ function reloadMine(){
 addEventListener("pageshow", e=>{ if (e.persisted) reloadMine(); });
 document.addEventListener("visibilitychange", ()=>{ if (!document.hidden) reloadMine(); });
 addEventListener("storage", e=>{ if (e.key==="chiikatsu-mine") reloadMine(); });
-document.querySelector(".tabs").onclick = e=>{ const b=e.target.closest("[data-view]"); if(b) setView(b.dataset.view); };
+document.querySelector(".tabs").onclick = e=>{
+  const b=e.target.closest("[data-view]"); if(!b) return;
+  const tabs = document.querySelector(".tabs"), before = tabs.getBoundingClientRect().top;
+  setView(b.dataset.view);
+  // 下までスクロールしたまま押すと、切り替えたタブの途中が見えてしまう（カレンダーが見えず、日ごとの一覧に飛ぶ）。押したら、そのタブの先頭（タブの帯のすぐ下）から見せる。
+  // 一番上のまま押したときは、画面を動かさない。
+  if (before <= 1) requestAnimationFrame(()=>{
+    const v = document.getElementById("view-"+b.dataset.view); if (!v) return;
+    const y = v.getBoundingClientRect().top + window.scrollY - tabs.offsetHeight - 6;
+    window.scrollTo({ top: Math.max(0, y) });
+  });
+};
 document.querySelector(".sum").onclick = e=>{
   const b=e.target.closest("[data-jump]"); if(!b) return;
   const j=b.dataset.jump;
