@@ -890,8 +890,9 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 @media (max-width:380px){.insband span{display:none}}
 /* スマホの縦の余白：必要なところだけ少しゆるめる */
 @media (max-width:520px){
-  .sum{margin-bottom:4px}
-  .tabs{margin-bottom:4px}
+  .region{margin-bottom:9px}
+  .sum{margin-bottom:8px}
+  .tabs{margin-bottom:8px}
   .filters{gap:6px;margin:0 0 10px}
 }
 @media (max-width:340px){.brand h1{font-size:19px;white-space:nowrap}}
