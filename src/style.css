@@ -916,3 +916,4 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .hdiv.b i{flex:1;height:1px;background:color-mix(in srgb,var(--acc) 30%,var(--bg))}
 .hdiv.b svg{flex:none}
 .hdiv.b{margin:4px auto 3px;color:color-mix(in srgb,var(--acc) 60%,var(--bg))}
+.hdiv.b{margin:10px auto 9px;color:color-mix(in srgb,var(--acc) 70%,var(--bg))}
