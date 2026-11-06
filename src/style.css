@@ -912,6 +912,6 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 /* サイト紹介と検索エリアのあいだの区切り線 */
 .herosub{margin-bottom:0}
 .hdiv{width:86%;height:1px;margin:9px auto 9px;background:color-mix(in srgb,var(--acc) 30%,var(--bg))}
-.hdiv.b{height:auto;background:none;display:flex;align-items:center;gap:10px;margin:7px auto 6px;color:color-mix(in srgb,var(--acc) 55%,var(--bg))}
+.hdiv.b{height:auto;background:none;display:flex;align-items:center;gap:10px;margin:4px auto 3px;color:color-mix(in srgb,var(--acc) 55%,var(--bg))}
 .hdiv.b i{flex:1;height:1px;background:color-mix(in srgb,var(--acc) 30%,var(--bg))}
 .hdiv.b svg{flex:none}
