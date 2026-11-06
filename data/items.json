@@ -3239,7 +3239,7 @@
   "q": "ちいかわ セーフティポーチ",
   "src": "https://www.gourmandise.jp/view/item/000000010968",
   "srcType": "partner",
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-07",
   "how": [
    "グルマンディーズ公式通販で予約受付中（発売後、順次発送）"
   ],
@@ -4912,7 +4912,7 @@
    "https://chiikawamogumogu.jp/2026/10/28/post-2535",
    "https://www.chiikawamogumogu.jp/2026/11/04/post-2710"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-07",
   "dl": [
    {
     "k": "抽選",
@@ -5092,7 +5092,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_kbkt/index.html"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-07",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-28",
@@ -5366,7 +5366,7 @@
    "https://chiikawa-info.jp/p26/pus_tbun/index.html",
    "https://www.tobu-u-dept.jp/event.html"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-07",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-31",
@@ -5780,7 +5780,7 @@
   "srcs": [
    "https://www.uha-shop.jp/shop/products/07183"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-07",
   "how": [
    "11/9(月)から全国で発売（UHA味覚糖公式の告知）",
    "UHA味覚糖公式オンラインストアでは1袋227円・6袋セット1,362円・18袋セット3,677円"
@@ -5811,7 +5811,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/11/04/190328.html"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-07",
   "how": [
    "ゲームセンターやオンラインクレーンゲームの景品（プライズ）。2026年11月中旬から順次登場",
    "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
@@ -5841,7 +5841,7 @@
   "srcs": [
    "https://www.chiikawamogumogu.jp/stores/otaru/"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-07",
   "dl": [
    {
     "k": "抽選",
@@ -5906,7 +5906,7 @@
   "qNone": "雑誌の付録のため、楽天で同じ号と言い切れる商品ページが見つからない",
   "src": "https://prtimes.jp/main/html/rd/p/000009556.000002535.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-07",
   "how": [
    "11/4から書店・ネット書店で予約受付中",
    "付録は2027年のスケジュール帳と、ちいかわたちのシャカシャカシール"
@@ -6156,5 +6156,83 @@
   "autoAdded": true,
   "addedAt": "2026-11-06",
   "updatedAt": "2026-11-06"
+ },
+ {
+  "id": "20261120-pus-hamamatsu-ichino",
+  "region": "jp",
+  "t": "ちいかわPOP UP STORE＠イオンモール浜松市野",
+  "cat": "event",
+  "s": "2026-11-20",
+  "sp": "day",
+  "e": "2026-12-07",
+  "time": "",
+  "eNote": "",
+  "place": "イオンモール浜松市野 1F シンフォニーコート（静岡県浜松市）",
+  "area": "浜松",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawa-info.jp/p26/pus_ahmi/index.html"
+  ],
+  "verifiedAt": "2026-11-07",
+  "note": "",
+  "autoAdded": true,
+  "addedAt": "2026-11-07",
+  "updatedAt": "2026-11-07",
+  "xpostNote": "2026-11-07 公式ポストを検索したが、見つかったのは過去の同会場の回のみ（不一致）"
+ },
+ {
+  "id": "20261120-pus-ota",
+  "region": "jp",
+  "t": "ちいかわPOP UP STORE＠イオンモール太田",
+  "cat": "event",
+  "s": "2026-11-20",
+  "sp": "day",
+  "e": "2026-12-07",
+  "time": "",
+  "eNote": "",
+  "place": "イオンモール太田 ウエストモール1F 無印良品前（群馬県太田市）",
+  "area": "太田",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawa-info.jp/p26/pus_amot/index.html"
+  ],
+  "verifiedAt": "2026-11-07",
+  "note": "",
+  "autoAdded": true,
+  "addedAt": "2026-11-07",
+  "updatedAt": "2026-11-07",
+  "xpostNote": "2026-11-07 公式ポストを検索したが、見つかったのは過去の同会場の回のみ（不一致）"
+ },
+ {
+  "id": "20261121-pus-asahikawa-ekimae",
+  "region": "jp",
+  "t": "ちいかわPOP UP STORE＠イオンモール旭川駅前",
+  "cat": "event",
+  "s": "2026-11-21",
+  "sp": "day",
+  "e": "2026-12-06",
+  "time": "",
+  "eNote": "",
+  "place": "イオンモール旭川駅前 4F イオンホール（北海道旭川市）",
+  "area": "旭川",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawa-info.jp/p26/pus_aake/index.html"
+  ],
+  "verifiedAt": "2026-11-07",
+  "note": "",
+  "autoAdded": true,
+  "addedAt": "2026-11-07",
+  "updatedAt": "2026-11-07",
+  "xpostNote": "2026-11-07 公式ポストを検索したが、見つかったのは過去の同会場の回のみ（不一致）"
  }
 ]
