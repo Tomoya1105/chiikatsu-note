@@ -435,7 +435,7 @@ function renderListInner(){
   }
   dlNear.sort((a,b)=>PT(a.until)-PT(b.until));
   const rsvLink = (ro||rb) ? `<button type="button" class="dlmore" data-gorsv>予約・受注 ${ro?`受付中${ro}件`:""}${ro&&rb?"・":""}${rb?`開始予定${rb}件`:""} →</button>` : "";
-  const dlStrip = dlNear.length && state.st==="next" && !state.focus ? `<div class="dlstrip"><div class="dlsh"><b title="72時間以内に締切のもの">⏰ 締切が近いもの</b>${rsvLink}</div>${dlNear.slice(0,2).map(d=>{ const L = leftText(d.until); return `<a class="dlrow${L.hot?" hot":""}" href="/items/${encodeURIComponent(d.it.id)}/"><span class="dlk">${esc(d.k)}</span><span class="dlt">${esc(d.it.t.replace(/（予約）$/,""))}</span><span class="dll num">${esc(L.txt)}</span></a>`; }).join("")}${dlNear.length>2?`<button type="button" class="dlmore dlrest" data-jump="ending">ほか${dlNear.length-2}件の締切を見る →</button>`:""}</div>` : "";
+  const dlStrip = dlNear.length && state.st==="next" && !state.focus ? `<div class="dlstrip"><div class="dlsh"><b title="72時間以内に締切のもの"><svg class="dlclk" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 8.5V13l3 2M5 4.5L3 6.5M19 4.5l2 2"/></svg> 締切が近いもの</b>${rsvLink}</div>${dlNear.slice(0,2).map(d=>{ const L = leftText(d.until); return `<a class="dlrow${L.hot?" hot":""}" href="/items/${encodeURIComponent(d.it.id)}/"><span class="dlk">${esc(d.k)}</span><span class="dlt">${esc(d.it.t.replace(/（予約）$/,""))}</span><span class="dll num">${esc(L.txt)}</span></a>`; }).join("")}${dlNear.length>2?`<button type="button" class="dlmore dlrest" data-jump="ending">ほか${dlNear.length-2}件の締切を見る →</button>`:""}</div>` : "";
   const strip = dlStrip ? dlStrip : (ro||rb) && state.st==="next" && !state.focus ? `<button type="button" class="rsvstrip" data-gorsv><span class="rs-ic" aria-hidden="true">🛒</span><span class="rs-tx"><b>${ro?`いま予約受付中 ${ro}件`:""}${ro&&rb?"・":""}${rb?`予約開始予定 ${rb}件`:""}</b>${sub?`<small>${sub}</small>`:""}</span><span class="rs-go">見る →</span></button>` : "";
   el.innerHTML = strip + h + backAll();
   setTimeout(()=>{ fillPop(); fillCamp(); }, 0);   // 下で定義する部品が読み込まれてから
@@ -458,38 +458,7 @@ function renderMine(){
   // 商品カードの部品はこのファイルの後ろの方で定義しているので、読み込みが終わってから描く
   if (FAV.length) setTimeout(()=>{ safe(()=>{ const g=document.getElementById("favGrid"); if (g) g.innerHTML = favCards(); refreshFav(); }, "fav"); }, 0);
 }
-/* 今週のピックアップ：7日以内に始まるもの→締切・終了が近いものの順に、最大6件 */
-const PICKX = {};
-function closePick(){ const pn = document.getElementById("pkPanel"); if (pn) { pn.hidden = true; pn.innerHTML = ""; } document.querySelectorAll(".pkx[aria-expanded=true]").forEach(b=>{ b.setAttribute("aria-expanded","false"); b.lastChild.textContent = "公式の画像を見る"; }); }
-document.addEventListener("click", e=>{
-  if (e.target.closest("[data-pkclose]")){ closePick(); return; }
-  const b = e.target.closest("[data-pkx]"); if (!b) return;
-  const id = b.dataset.pkx, x = PICKX[id], pn = document.getElementById("pkPanel"); if (!x || !pn) return;
-  const wasOpen = b.getAttribute("aria-expanded")==="true"; closePick(); if (wasOpen) return;
-  const it = ITEMS.find(i=>i.id===id);
-  pn.innerHTML = `<div class="pkph"><b>${esc(it?it.t:"")}</b><button type="button" class="pkclose" data-pkclose>閉じる ×</button></div>${xbox(x)}`;
-  pn.hidden = false; b.setAttribute("aria-expanded","true"); b.lastChild.textContent = "画像をとじる";
-  const xb = pn.querySelector(".xbtn"); if (xb) xb.click();
-  pn.scrollIntoView({behavior:"smooth", block:"nearest"});
-});
-function renderPick(){
-  const box = document.getElementById("pick"), row = document.getElementById("pickRow"); if (!box || !row) return;
-  const vis = VIS(), key = it=>keyOf(it).d.getTime();
-  const soon = vis.filter(it=>status(it).k==="soon").sort((a,b)=>key(a)-key(b));
-  const ending = vis.filter(it=>status(it).k==="ending").sort((a,b)=>key(a)-key(b));
-  const picks = soon.concat(ending).slice(0,6);
-  box.hidden = !picks.length;
-  row.innerHTML = picks.map(it=>{
-    const st = status(it), v = isRsv(it) ? "予約受付" : isEvent(it)?"開始":"発売";
-    const a = fmtStart(it), z = it.ed ? fmtEnd(it) : "";
-    const when = `${v} ${esc(a)}` + (z && z!==a ? `〜${esc(z)}` : "");
-    const x = xpostOf(it);   // 公式Xの投稿があるものは「公式の画像を見る」。押すと、カードの下の1つの枠に表示する（横に並んだカードの幅を崩さないため）
-    if (x) PICKX[it.id] = x;
-    return `<div class="pkc"><a class="pk" href="/items/${encodeURIComponent(it.id)}/"><span class="pkm"><span class="pill st-${st.k}">${st.label}</span><span class="cat">${CAT[it.cat]||""}</span></span><span class="pkt">${esc(it.t)}</span><span class="pkw num">${when}</span>${it.place?`<span class="pkp">${esc(it.place)}</span>`:""}</a>${x?`<button type="button" class="pkx" data-pkx="${esc(it.id)}" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><rect x="3" y="4" width="18" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="M4 18l5-4.5 3.2 2.6 3.3-3.6L20 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>公式の画像を見る</button>`:""}</div>`;
-  }).join("");
-}
 function renderSummary(){
-  renderPick();
   const c = k=>VIS().filter(it=>status(it).k===k).length;
   document.getElementById("nSoon").innerHTML = c("soon")+"<small>件</small>";
   document.getElementById("nEnding").innerHTML = c("ending")+"<small>件</small>";
