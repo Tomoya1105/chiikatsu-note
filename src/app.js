@@ -417,6 +417,7 @@ function renderListInner(){
     }
     h += card(it);
     if (i===4 || i===14) h += AD;
+    if (i===2 && R.region==="jp" && arr.length>=5) h += `<div class="popstrip recent" data-recent></div>`;
     if (i===5 && R.region==="jp") h += `<div class="popstrip" data-pop></div>`;
     if (i===8) h += `<div class="insband" data-insband hidden></div>`;   // ホーム画面に追加のお願い：9件目のあとに1回だけ（出すかどうかは install.js が決める）   // 楽天の人気グッズは6件目のあと
     if (i===2 && groups<2 && arr.length<=6) campHere();
@@ -438,7 +439,7 @@ function renderListInner(){
   const dlStrip = dlNear.length && state.st==="next" && !state.focus ? `<div class="dlstrip"><div class="dlsh"><b title="72時間以内に締切のもの"><svg class="dlclk" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 8.5V13l3 2M5 4.5L3 6.5M19 4.5l2 2"/></svg> 締切が近いもの</b>${rsvLink}</div>${dlNear.slice(0,2).map(d=>{ const L = leftText(d.until); return `<a class="dlrow${L.hot?" hot":""}" href="/items/${encodeURIComponent(d.it.id)}/"><span class="dlk">${esc(d.k)}</span><span class="dlt">${esc(d.it.t.replace(/（予約）$/,""))}</span><span class="dll num">${esc(L.txt)}</span></a>`; }).join("")}${dlNear.length>2?`<button type="button" class="dlmore dlrest" data-jump="ending">ほか${dlNear.length-2}件の締切を見る →</button>`:""}</div>` : "";
   const strip = dlStrip ? dlStrip : (ro||rb) && state.st==="next" && !state.focus ? `<button type="button" class="rsvstrip" data-gorsv><span class="rs-ic" aria-hidden="true">🛒</span><span class="rs-tx"><b>${ro?`いま予約受付中 ${ro}件`:""}${ro&&rb?"・":""}${rb?`予約開始予定 ${rb}件`:""}</b>${sub?`<small>${sub}</small>`:""}</span><span class="rs-go">見る →</span></button>` : "";
   el.innerHTML = strip + h + backAll();
-  setTimeout(()=>{ fillPop(); fillCamp(); }, 0);   // 下で定義する部品が読み込まれてから
+  setTimeout(()=>{ fillPop(); fillCamp(); fillRecent(); }, 0);   // 下で定義する部品が読み込まれてから
 }
 function renderMine(){
   const el = document.getElementById("mineList");
@@ -860,7 +861,7 @@ function prodCard(x, opt){
   const on = x.code && favHas(x.code);
   return `<div class="prodw${opt&&opt.gone?" gone":""}"><a class="prod" href="${esc(RKM.fixAff(x.url))}" target="_blank" rel="noopener sponsored">
     <div class="ph"><img src="${esc(x.img)}" alt="" loading="lazy"></div>
-    <div class="pb"><span class="pn">${esc(x.name)}</span>${stars}<span class="pp num">${opt&&opt.gone?"売り切れか、販売が終わったかもしれません":yen(x.price)}</span>${opt&&opt.was&&x.price<opt.was?`<span class="pdrop">値下がり ${yen(opt.was)} → ${yen(x.price)}</span>`:""}<span class="ps">${esc(x.shop)}</span><span class="tag">PR・楽天市場</span></div>
+    <div class="pb">${opt&&opt.badge?`<span class="rdate">${esc(opt.badge)}</span>`:""}<span class="pn">${esc(x.name)}</span>${stars}<span class="pp num">${opt&&opt.gone?"売り切れか、販売が終わったかもしれません":yen(x.price)}</span>${opt&&opt.was&&x.price<opt.was?`<span class="pdrop">値下がり ${yen(opt.was)} → ${yen(x.price)}</span>`:""}<span class="ps">${esc(x.shop)}</span><span class="tag">PR・楽天市場</span></div>
   </a>${x.code?`<button type="button" class="fav" data-fav="${esc(x.code)}" aria-pressed="${on}" aria-label="${on?"気になる商品から外す":"気になる商品に保存"}">${on?"♥":"♡"}</button>`:""}</div>`;
 }
 document.addEventListener("click", e=>{
@@ -916,7 +917,7 @@ function drawShop(){
   m.disabled = SH.busy; m.textContent = SH.busy ? "読み込み中…" : "もっと見る";
 }
 let shopStarted = false;
-function renderShop(){ if (!shopStarted){ shopStarted = true; shopChips(); loadShop(true); } }
+function renderShop(){ renderRecShop(); if (!shopStarted){ shopStarted = true; shopChips(); loadShop(true); } }
 document.getElementById("shopCats").onclick = e=>{ const b=e.target.closest("[data-sc]"); if(!b) return; SH.cat=b.dataset.sc; SH.kw=""; document.getElementById("shopQ").value=""; shopChips(); loadShop(true); };
 document.getElementById("shopSearch").onsubmit = e=>{
   e.preventDefault();
@@ -960,6 +961,71 @@ document.addEventListener("click", e=>{
   SH.sort = "-reviewCount"; const sel = document.getElementById("shopSort"); if (sel) sel.value = "-reviewCount";
   shopStarted = true; shopChips(); setView("shop"); loadShop(true);
   document.getElementById("view-shop").scrollIntoView({behavior:"smooth", block:"start"});
+});
+
+/* ===== 最近発売されたグッズ（一覧の途中・グッズタブ） =====
+   掲載中の情報のうち、発売日が近いものを新しい順に。楽天で「同じ商品」と確かめられたものだけ出す（RKM の判定）。 */
+const RC = { found: [], seen: new Set(), busy: false, ran: null };
+const RC_TYPES = ["goods","food","book"];
+function recentItems(days){
+  const to = TODAY.getTime(), from = to - days*864e5;
+  return VIS().filter(it=>RC_TYPES.includes(it.cat) && it.q && it.sp==="day" && it.sd && +it.sd>=from && +it.sd<=to).sort((x,y)=>+y.sd-+x.sd);
+}
+const rdate = it => `${it.sd.getMonth()+1}/${it.sd.getDate()}発売`;
+/* 候補を新しい順に1件ずつ楽天で探し、見つかるたびに onHit を呼ぶ（楽天への問い合わせは1秒に1回の順番待ちなので、少しずつ増える） */
+async function scanRecent(days, limit, onHit, cap){
+  const list = recentItems(days).slice(0, cap||24); let n = 0;
+  for (const it of list){
+    if (n >= limit) break;
+    const hit = await findOnRakuten(it);
+    if (hit && hit.img){ n++; onHit(it, hit); }
+  }
+}
+function fillRecent(){
+  const els = document.querySelectorAll("[data-recent]"); if (!els.length) return;
+  const draw = ()=>{
+    if (!RC.found.length){ els.forEach(e=>{ e.innerHTML = ""; }); return; }
+    const html = `<div class="pophead"><h3><span class="prtag">PR・楽天市場</span>最近発売されたグッズ</h3><button type="button" class="peekmore" data-gorecent>もっと見る →</button></div>
+      <div class="poprow">${RC.found.map(({it,hit})=>`<a class="popc" href="${esc(RKM.fixAff(hit.url))}" target="_blank" rel="noopener sponsored"><img src="${esc(hit.img)}" alt="" loading="lazy"><span class="rd">${rdate(it)}</span><span class="pn">${esc(hit.name)}</span><span class="pp num">${yen(hit.price)}</span></a>`).join("")}</div>
+      <p class="tag" style="margin:4px 0 0">発売日が新しい順</p>`;
+    els.forEach(e=>{ e.innerHTML = html; });
+  };
+  if (RC.ran){ draw(); return; }
+  const start = ()=>{
+    if (RC.busy || RC.ran) return; RC.busy = true;
+    scanRecent(30, 10, (it,hit)=>{ if (RC.seen.has(it.id)) return; RC.seen.add(it.id); RC.found.push({it,hit}); draw(); }, 14).catch(()=>{}).then(()=>{ RC.busy = false; RC.ran = true; draw(); });
+  };
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver(es=>{ if (es.some(e=>e.isIntersecting)){ io.disconnect(); start(); } }, {rootMargin:"600px 0px"});
+    els.forEach(e=>io.observe(e));
+  } else start();
+}
+document.addEventListener("click", e=>{
+  if (!e.target.closest("[data-gorecent]")) return;
+  shopStarted = true; shopChips(); setView("shop"); renderRecShop();
+  const t = document.getElementById("recShop"); if (t) t.scrollIntoView({behavior:"smooth", block:"start"});
+});
+/* グッズタブの「最近発売」：期間（2週間／1か月／3か月）を切り替えられる */
+const RS = { days: 30, token: 0, started: false };
+const RS_OPTS = [[14,"2週間"],[30,"1か月"],[90,"3か月"]];
+function renderRecShop(){
+  const box = document.getElementById("recShop"); if (!box || R.region!=="jp") return;
+  box.hidden = false;
+  document.getElementById("recChips").innerHTML = RS_OPTS.map(([d,l])=>`<button class="chip" data-rs="${d}" aria-pressed="${RS.days===d}">${l}</button>`).join("");
+  if (RS.started && RS.loaded===RS.days) return;
+  RS.started = true; RS.loaded = RS.days;
+  const tk = ++RS.token, grid = document.getElementById("recGrid"), cnt = document.getElementById("recCount"); const got = [];
+  grid.innerHTML = `<div class="empty" style="grid-column:1/-1">楽天で探しています…</div>`; cnt.textContent = "";
+  scanRecent(RS.days, 12, (it,hit)=>{
+    if (tk !== RS.token) return;
+    got.push({it,hit}); grid.innerHTML = got.map(({it,hit})=>prodCard(hit, {badge: rdate(it)})).join(""); cnt.textContent = got.length+"件";
+  }, RS.days>30 ? 40 : 24).catch(()=>{}).then(()=>{
+    if (tk !== RS.token) return;
+    if (!got.length) grid.innerHTML = `<div class="empty" style="grid-column:1/-1">この期間に発売された、楽天で買えるグッズは見つかりませんでした。期間を広げてみてください。</div>`;
+  });
+}
+document.getElementById("recChips") && (document.getElementById("recChips").onclick = e=>{
+  const b = e.target.closest("[data-rs]"); if (!b) return; RS.days = +b.dataset.rs; renderRecShop();
 });
 
 /* ===== 季節のおすすめ（カレンダー・ニュースのタブだけ。一覧には出さない） ===== */

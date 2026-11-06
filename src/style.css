@@ -918,3 +918,13 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .hdiv.b svg{flex:none}
 .hdiv.b{margin:4px auto 3px;color:color-mix(in srgb,var(--acc) 60%,var(--bg))}
 .hdiv.b{margin:10px auto 9px;color:color-mix(in srgb,var(--acc) 70%,var(--bg))}
+
+/* 最近発売されたグッズ（一覧の帯・グッズタブ） */
+.popc .rd,.rdate{align-self:flex-start;font-size:10.5px;font-weight:700;line-height:1.5;padding:0 7px;border-radius:99px;background:var(--acc-soft);color:color-mix(in srgb,var(--acc) 50%,var(--ink))}
+.recshop{margin:4px 0 14px}
+.rshead{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.rshead h2{margin:0;font-family:var(--display);font-size:17px}
+.rshead .num{margin-left:auto;font-size:12.5px;color:var(--ink-2)}
+.recshop .chips{margin-bottom:10px}
+.recshop .tag{margin:8px 0 0}
+.popstrip.recent:empty{display:block;height:1px;padding:0;margin:0;box-shadow:none;background:none}

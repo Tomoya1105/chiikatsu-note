@@ -105,6 +105,12 @@
     <div class="shophead">
       <p class="shopnote">楽天市場で買える、ちいかわの公式グッズを集めました。中古品や、定価より高い転売品は表示しないようにしています。</p>
       <div data-camp hidden></div>
+      <section class="recshop" id="recShop" hidden aria-label="最近発売されたグッズ">
+        <div class="rshead"><h2>最近発売</h2><span class="prtag">PR・楽天市場</span><span id="recCount" class="num"></span></div>
+        <div class="chips" id="recChips" aria-label="期間"></div>
+        <div class="pgrid" id="recGrid"></div>
+        <p class="tag">発売日が新しい順です。公式の発売情報と同じ商品だけを、楽天で探して載せています。</p>
+      </section>
       <form class="search" id="shopSearch" role="search"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.7" fill="none"/><path d="M11 11l3.2 3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><input id="shopQ" type="search" enterkeyhint="search" placeholder="グッズをさがす（例：ハチワレ ポーチ）" aria-label="楽天のちいかわグッズをキーワードで検索"><button type="submit" class="sbtn">検索</button></form>
       <div class="chips" id="shopCats" aria-label="種類で絞り込み"></div>
       <div class="row"><span id="shopCount" class="num"></span>
