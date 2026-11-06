@@ -818,15 +818,21 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .card h3 a::after{content:" ›";color:var(--acc);font-weight:700;white-space:nowrap}
 
 /* ===== トップ画面の整理（最初の画面を「見てもらう」ことに絞る） ===== */
-.herobox{position:relative;margin:14px 0 8px}
-.herotx{min-width:0}
-.herok{margin:0 0 4px;font-size:12px;line-height:1.4;color:var(--ink-2);letter-spacing:.02em}
-.hero{margin:0;font-family:var(--display);font-weight:700;color:var(--ink)}
-.hero span{display:block}
-.hero .h1a{font-size:14.5px;line-height:1.4;font-weight:500;color:var(--ink-2)}
-.hero .h1b{font-size:clamp(23px,6.9vw,27px);line-height:1.3;letter-spacing:.01em}
-.hero em{font-style:normal;background:linear-gradient(transparent 62%,var(--acc-soft) 62% 92%,transparent 92%);padding:0 2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.heroic{position:absolute;right:2px;top:2px;color:var(--acc)}
+.hb{position:relative;margin:12px 0 2px;padding:0 0 2px}
+.hbpill{position:relative;display:inline-block;margin:0 0 10px;padding:5px 14px;border-radius:99px;background:var(--acc-soft);font-size:12.5px;font-weight:700;letter-spacing:.02em;color:color-mix(in srgb,var(--acc) 50%,var(--ink))}
+.hbpill::after{content:"";position:absolute;left:14px;bottom:-5px;width:12px;height:9px;background:var(--acc-soft);clip-path:polygon(0 0,100% 0,0 100%)}
+.hbtk{position:absolute}
+.hbtk.t1{left:calc(min(100%,358px) * .62 + 26px);top:-6px}
+.hbtk.t2{right:4px;top:44px}
+.hero{position:relative;z-index:1;margin:0;font-family:var(--display);font-weight:700;line-height:1.3;color:var(--ink)}
+.hero span{display:block;white-space:nowrap}
+.hero .h1a{font-size:clamp(19px,6.1vw,24px);letter-spacing:.01em}
+.hero .h1b{margin-top:3px;font-size:clamp(19px,6.1vw,24px);letter-spacing:.01em}
+.hero em{font-style:normal;padding:2px 6px;margin-left:-6px;border-radius:14px 18px 16px 12px;background:var(--acc-soft);color:color-mix(in srgb,var(--acc) 72%,var(--ink));transform:rotate(-2deg);display:inline-block}
+.hero u{position:relative;text-decoration:none;display:inline-block}
+.hero u::after{content:"";position:absolute;left:4%;right:4%;bottom:-6px;height:7px;border-bottom:2.5px solid color-mix(in srgb,var(--acc) 55%,transparent);border-radius:0 0 60% 60%/0 0 100% 100%}
+.hbcal{position:absolute;z-index:0;right:0;top:30px;width:82px;height:78px}
+@media (max-width:340px){.herosub{font-size:12px;text-wrap:balance}.hbtk{display:none}.hbcal{width:62px;height:60px;top:34px}.hbpill{font-size:12px;padding:5px 11px}}
 .intro,.ins-top{display:none!important}                                   /* 「はじめての方へ」とホーム画面追加の帯は、トップの上には出さない（下の案内カードと使い方リンクは残す） */
 .sum.two{grid-template-columns:repeat(2,1fr)}
 .sum.two button.s3{display:none}
@@ -868,7 +874,8 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 /* 締切が近いもの：赤い太枠をやめて、やわらかい帯に */
 .dlstrip{border:1px solid #F0CBD3;background:#FBF0F3;border-radius:16px}
 .dlsh b{color:#A33A57;font-size:14.5px}
-.herosub{margin:0 0 14px;font-size:14px;line-height:1.5;color:var(--ink-2)}
+.herosub{margin:14px 0 12px;font-size:13px;line-height:1.5;color:var(--ink-2);text-align:center}
+.herosub b{color:var(--acc);font-weight:400}
 .pkpanel .xbtn{display:none}.pkpanel .xbox{margin:8px 0 6px}
 
 /* 一覧の途中の「ホーム画面に追加」のお願い：楽天の赤い帯と見分けがつくよう、サイトの色でやわらかく */
@@ -883,7 +890,6 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 @media (max-width:380px){.insband span{display:none}}
 /* スマホの縦の余白：全体で+25px前後（つまり過ぎていたところだけ、少しゆるめる） */
 @media (max-width:520px){
-  .herobox{margin:10px 0 6px}
   .region{margin-bottom:8px}
   .sum{margin-bottom:6px}
   .tabs{margin-bottom:5px}
