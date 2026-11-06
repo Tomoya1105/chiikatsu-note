@@ -915,3 +915,4 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .hdiv.b{height:auto;background:none;display:flex;align-items:center;gap:10px;margin:4px auto 3px;color:color-mix(in srgb,var(--acc) 55%,var(--bg))}
 .hdiv.b i{flex:1;height:1px;background:color-mix(in srgb,var(--acc) 30%,var(--bg))}
 .hdiv.b svg{flex:none}
+.hdiv.b{margin:4px auto 3px;color:color-mix(in srgb,var(--acc) 60%,var(--bg))}
