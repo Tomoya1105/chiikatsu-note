@@ -3372,7 +3372,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3404,7 +3404,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-25",
@@ -3847,7 +3847,7 @@
   "sp": "day",
   "e": null,
   "time": "A-style・ちいかわマーケットは10:00〜",
-  "eNote": "購入制限あり（A-style販売分は陶器マグ以外完売）",
+  "eNote": "購入制限あり（多くの店舗で完売）",
   "place": "ANA FESTA（羽田B1フロアギフト店など空港の売店）・ANAショッピング A-style（通販）・ちいかわマーケット・ちいかわらんど（全店）・ANA機内販売ほか",
   "area": "",
   "price": "マスコット各2,310円（全8種）、ぬいぐるみ各3,080円（全3種）、トレーディングアクリルキーホルダー1BOX 6,160円、トレーディング缶バッジ1BOX 2,640円、ステッカーセット2,200円、クリアファイルセット1,320円、タオルハンカチ880円、機内紙コップデザインのマグセット5,500円",
@@ -3862,9 +3862,10 @@
    "https://chiikawamarket.jp/collections/ana",
    "https://inside-games.jp/article/2026/10/21/189588.html",
    "https://prtimes.jp/main/html/rd/p/000000019.000035055.html",
-   "https://www.fukuishimbun.co.jp/articles/-/2730264"
+   "https://www.fukuishimbun.co.jp/articles/-/2730264",
+   "https://news.yahoo.co.jp/articles/893660712515b78fcd9f64540b716f6d2dbccce3"
   ],
-  "verifiedAt": "2026-10-30",
+  "verifiedAt": "2026-11-06",
   "how": [
    "ANAショッピング A-styleは10/23(金)10:00から（アクセス集中時は待合室あり）",
    "ちいかわマーケットは10/23(金)10時販売開始予定。1会計につき各1個まで",
@@ -3873,11 +3874,15 @@
    "ちいかわらんどの一部店舗は10/23(金)の入店がLINEでの抽選／先着予約制（ソラマチ・名古屋パルコ・大阪梅田・札幌パルコ・仙台パルコは店全体を入場制限）",
    "地方空港のANA FESTAは11/4(水)から。機内販売は一部商品のみ"
   ],
-  "note": "ちいかわジェット就航記念。パイロットや整備士などANAの制服姿のちいかわたちのグッズ。マグセットの通販の発売日は未定。一部の店舗で完売し、ANAは再入荷・追加生産を検討中で、決まりしだい知らせるとしている（10/24発表）。",
+  "note": "ちいかわジェット就航記念。パイロットや整備士などANAの制服姿のちいかわたちのグッズ。マグセットの通販の発売日は未定。11/5には函館・長崎・鹿児島など一部の空港の店舗で全商品が完売。ANAは再販売・追加生産を検討中で、決まりしだい知らせるとしている。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
-  "updatedAt": "2026-10-30",
+  "updatedAt": "2026-11-06",
   "log": [
+   {
+    "d": "2026-11-06",
+    "t": "函館・長崎・鹿児島空港など一部の店舗で全商品が完売（11/5時点）"
+   },
    {
     "d": "2026-10-30",
     "t": "A-styleの販売分が陶器マグ以外完売になりました"
@@ -4049,7 +4054,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-11-04",
@@ -4082,7 +4087,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-11-04",
@@ -4697,7 +4702,7 @@
   "sp": "day",
   "e": null,
   "time": "11:00〜",
-  "eNote": "数量制限（1会計につき各1個まで）・ツリーなうさぎぬいぐるみは抽選販売",
+  "eNote": "数量制限（1会計につき各1個まで）・ツリーなうさぎぬいぐるみは抽選販売・ちいかわマーケットでは発売日に多くが完売",
   "place": "ちいかわマーケット（公式通販）",
   "area": "",
   "price": "660円〜6,820円",
@@ -4709,7 +4714,7 @@
    "https://chiikawamarket.jp/products/4571609413028",
    "https://www.inside-games.jp/article/2026/10/27/189904.html"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "dl": [
    {
     "k": "抽選",
@@ -4726,9 +4731,15 @@
   "note": "Kiramekko Teddy Bear Christmas（ちいかわ・ハチワレ・うさぎ 各2,420円）、クリスマスリースなぬいぐるみ（6,820円）、ツリーなうさぎマスコット（1,650円）、クリスマスの精マスコット（各1,870円）、ライティングペンダント（星・1,870円）、まじかるちいかわ 強くなったハチワレ／うさぎマスコット（各2,090円）、ちいかわラーメン豚 店員さんなマスコット（全5種・各1,870円）など全21商品。",
   "autoAdded": true,
   "addedAt": "2026-10-27",
-  "updatedAt": "2026-10-27",
+  "updatedAt": "2026-11-06",
   "xpost": "https://x.com/chiikawa_kouhou/status/2114990985826775384",
-  "xpostNote": "投稿日2026-10-27（IDから計算）。本文に「ツリーなうさぎマスコット」「11月6日(金)より ちいかわらんど、ちいかわマーケット ほかにて順次発売」（2026-10-28確認）"
+  "xpostNote": "投稿日2026-10-27（IDから計算）。本文に「ツリーなうさぎマスコット」「11月6日(金)より ちいかわらんど、ちいかわマーケット ほかにて順次発売」（2026-10-28確認）",
+  "log": [
+   {
+    "d": "2026-11-06",
+    "t": "ちいかわマーケットでは発売日（11/6）のうちに多くの商品が完売しました"
+   }
+  ]
  },
  {
   "id": "20261106-pus-suzaka",
@@ -4746,7 +4757,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-27",
@@ -4991,7 +5002,7 @@
   "qNone": "催事での店頭販売",
   "src": "https://prtimes.jp/main/html/rd/p/000002181.000025606.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "how": [
    "「大丸松坂屋百貨店監修 Sweets Selection in PARCO CITY」の会場で販売",
    "トートバッグ・エコバッグはお菓子とのセットのみ（単品販売なし）"
@@ -5046,7 +5057,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000004138.000003639.html"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "org": {
    "name": "株式会社パルコ",
    "url": "https://cafe.parco.jp/",
@@ -5294,7 +5305,7 @@
   "sp": "day",
   "e": null,
   "time": "",
-  "eNote": "",
+  "eNote": "数量限定（ちいかわマーケットでは発売日に多くが完売）",
   "place": "ちいかわらんど、ちいかわマーケット、トーキング、キデイランド（ちいかわ取扱店）ほか",
   "area": "",
   "price": "3,300円〜8,250円",
@@ -5302,7 +5313,7 @@
   "qNone": "公式の新商品で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2115730609649987811",
   "srcType": "official",
-  "verifiedAt": "2026-11-05",
+  "verifiedAt": "2026-11-06",
   "xpost": "https://x.com/chiikawa_kouhou/status/2115730609649987811",
   "xpostNote": "投稿日2026-10-29（IDから計算）。本文に「ボアブルゾン 毛量(トリオ)」「11月6日(金)より ちいかわらんど、ちいかわマーケット、トーキング ほかにて順次発売」（2026-10-30確認）",
   "how": [
@@ -5313,13 +5324,18 @@
   "note": "ボアブルゾン 毛量（トリオ・8,250円）、ニット 毛量（ちいかわ＆ハチワレ／うさぎ・各7,150円）、ファーハット（Fluffy Time／HAIRSTYLE CHANGE・各4,180円）、ファーバッグ Fluffy Time（各5,500円）、ファーマフラー Fluffy Time（各3,300円）、長袖Tシャツ2種など。同じ11/6からスウェットシャツ（ONIGIRI UMA!!・SMILE）、スウェットパンツ（ONIGIRI UMA!!・snap snap snap）、ぬくぬくソックス（全7種）も順次発売。",
   "autoAdded": true,
   "addedAt": "2026-10-30",
-  "updatedAt": "2026-11-05",
+  "updatedAt": "2026-11-06",
   "srcs": [
    "https://nijimen.kusuguru.co.jp/topics/647458",
    "https://animeanime.jp/article/2026/11/01/104391.html",
-   "https://animeanime.jp/article/2026/11/04/104487.html"
+   "https://animeanime.jp/article/2026/11/04/104487.html",
+   "https://chiikawamarket.jp/collections/20261106"
   ],
   "log": [
+   {
+    "d": "2026-11-06",
+    "t": "ちいかわマーケットではボアブルゾン・ニットなど多くが発売日に完売"
+   },
    {
     "d": "2026-11-05",
     "t": "同じ日に出るスウェット上下・ぬくぬくソックスを追加しました"
@@ -6106,6 +6122,37 @@
    "ちいかわマーケット（公式通販）で11/6(金)11時から販売。商品は1会計につき各1個まで"
   ],
   "note": "アニメ『ちいかわ』文具（鉛筆2B 4本セット352円、色鉛筆12色1,650円、コンパクトふでいれヨコピタ ホログラム2,310円、文具セット4,598円、名前シール・自由帳・下敷きなど全14種）、メモポン4（全6種・各2,200円）、スリーパー（ちいかわ／ハチワレ／うさぎいっぱいパターン・各1,650円）、ミニタオル（味見ッ・880円）、208ピースジグソーパズル（みんなで流れ星・1,540円）。",
+  "autoAdded": true,
+  "addedAt": "2026-11-06",
+  "updatedAt": "2026-11-06"
+ },
+ {
+  "id": "20261105-movie-kinchaku-resale",
+  "region": "jp",
+  "t": "カプセルトイ 映画ちいかわ 人魚の島のひみつ 巾着ポーチ（再販）",
+  "cat": "goods",
+  "s": "2026-11-05",
+  "sp": "early",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "カプセルトイ売場（取扱店は未発表）",
+  "area": "",
+  "price": "500円",
+  "q": "",
+  "qNone": "カプセルトイ（店頭のガチャ）",
+  "src": "https://www.parade-inc.net/products/c260702",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/11/06/190467.html",
+   "https://www.inside-games.jp/article/2026/10/29/190051.html"
+  ],
+  "verifiedAt": "2026-11-06",
+  "how": [
+   "カプセルトイとして11月上旬から順次発売（1回500円）",
+   "映画の場面を描いた全6種"
+  ],
+  "note": "パレードのカプセルトイ。7月に出た巾着ポーチの再販。",
   "autoAdded": true,
   "addedAt": "2026-11-06",
   "updatedAt": "2026-11-06"

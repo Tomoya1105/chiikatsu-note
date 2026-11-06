@@ -12,6 +12,28 @@
   "addedAt": "2026-11-06"
  },
  {
+  "id": "20261106-ana-goods-soldout",
+  "date": "2026-11-06",
+  "tag": "goods",
+  "title": "ちいかわ×ANAグッズ、地方空港の店でも完売続く",
+  "sum": "ANAの制服姿のコラボグッズは、函館・長崎・鹿児島空港などの売店で全商品が売り切れに。ANA側は再販売や追加生産を検討中で、詳しくは決まりしだい知らせるとしています。",
+  "source": "オタク総研（Yahoo!ニュース）",
+  "src": "https://news.yahoo.co.jp/articles/893660712515b78fcd9f64540b716f6d2dbccce3",
+  "itemId": "20261023-ana-goods1",
+  "addedAt": "2026-11-06"
+ },
+ {
+  "id": "20261106-movie-prize-resale",
+  "date": "2026-11-06",
+  "tag": "goods",
+  "title": "映画ちいかわのプライズ6種、12月から順に再登場へ",
+  "sum": "パレードの映画ちいかわのプライズが再び登場予定。12月ごろのゆらゆらソーラーを皮切りに、ショルダーバッグや討伐マスコット、BIGぬいぐるみなどが来年5月ごろにかけて順に出ます。",
+  "source": "コラボカフェ",
+  "src": "https://collabo-cafe.com/events/collabo/chiikawa-movie-prize-resale-2026-pre-info/",
+  "itemId": "",
+  "addedAt": "2026-11-06"
+ },
+ {
   "id": "20261105-sheepwa-flat-mascot",
   "date": "2026-11-05",
   "tag": "goods",
@@ -427,7 +449,7 @@
   "sum": "映画の場面を描いたパレードのカプセルトイ「巾着ポーチ」（全6種・1回500円）の再販が決まった。500mlのペットボトルが入る大きさで、再販日は後日発表。",
   "source": "インサイド",
   "src": "https://www.inside-games.jp/article/2026/10/29/190051.html",
-  "itemId": "",
+  "itemId": "20261105-movie-kinchaku-resale",
   "addedAt": "2026-10-30"
  },
  {
