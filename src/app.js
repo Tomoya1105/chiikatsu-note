@@ -731,9 +731,24 @@ const yen = n => "¥"+Number(n).toLocaleString("ja-JP");
 const firstPrice = p => { const m = String(p||"").replace(/,/g,"").match(/(\d{2,6})\s*円/); return m ? +m[1] : 0; };
 // ほかのキャラクターもたくさん選べる商品（水筒・飾り付けなど）は、ちいかわファン向けではないので出さない
 const OTHER_IP = /ディズニー|ミッキー|ミニー|プリンセス|アナと雪|アナ雪|トイ・?ストーリー|サンリオ|キティ|マイメロ|クロミ|シナモ|ポムポム|すみっコ|リラックマ|ポケモン|ピカチュウ|カービィ|マリオ|アンパンマン|ドラえもん|しんちゃん|クレヨンしんちゃん|鬼滅|呪術|スヌーピー|ムーミン|ミッフィー|トミカ|プラレール|戦隊|仮面ライダー|プリキュア|スパイダーマン|マーベル|ちいかわ以外/g;
+/* 商品名の前半に「ちいかわ」関連の言葉があるものだけ通す（楽天では、関係ない商品の名前の後ろにキーワードを足したものがあるため）。
+   先頭の「【ポイント5倍】」などの宣伝文句は数えず、そのあとから30文字を見る */
+const PROMO = /^\s*(?:【[^】]*(?:ポイント|倍|クーポン|OFF|オフ|送料|セール|SALE|マラソン|MVP|ランキング|受賞|限定|予約|発売|特典|最大|P\d)[^】]*】|★[^★]*★|☆[^☆]*☆|\[[^\]]*(?:ポイント|倍|クーポン|OFF|送料|セール)[^\]]*\])\s*/;
+function frontName(name){
+  let s = norm(name), t;
+  for (let i=0; i<4 && (t = s.replace(PROMO,"")) !== s; i++) s = t;
+  return s.slice(0,30);
+}
+/* 同じ検索結果の値段の中央値の2.5倍を超えるものは出さない（定価より明らかに高い出品を避ける） */
+function tidyPrices(items){
+  const ps = items.map(x=>x.price).filter(p=>p>0).sort((a,b)=>a-b);
+  if (ps.length < 5) return items;
+  const med = ps[Math.floor(ps.length/2)];
+  return items.filter(x=>!(x.price > med*2.5));
+}
 function okItem(x, refPrice){
   const n = x.name;
-  if (!CHARS.test(n)) return false;
+  if (!CHARS.test(frontName(n))) return false;
   if (new Set(n.match(OTHER_IP)||[]).size >= 2) return false;
   if (NG.some(w=>n.includes(w))) return false;
   if (BULK.test(n)) return false;
@@ -885,7 +900,7 @@ async function loadShop(reset){
   try{
     const v = await rkSearch(p);
     const seen = new Set(SH.items.map(x=>x.url));
-    v.items.filter(x=>okItem(x) && x.img && !seen.has(x.url)).forEach(x=>SH.items.push(x));
+    tidyPrices(v.items.filter(x=>okItem(x) && x.img)).filter(x=>!seen.has(x.url)).forEach(x=>SH.items.push(x));
     SH.pageCount = Math.min(v.pageCount||1, 10);
   }catch(e){ SH.err = true; }
   SH.busy = false; drawShop();
@@ -925,7 +940,7 @@ var POP = null, popBusy = false, popTry = 0;
 function loadPop(){
   popBusy = true; popTry++;
   rkSearch({keyword:"ちいかわ", hits:"30", sort:"-reviewCount", maxPrice:"30000"}).then(v=>{
-    POP = v.items.filter(x=>okItem(x) && x.img).slice(0,10); popBusy = false; fillPop();
+    POP = tidyPrices(v.items.filter(x=>okItem(x) && x.img)).slice(0,10); popBusy = false; fillPop();
   }).catch(()=>{ popBusy = false; if (popTry < 3) setTimeout(()=>{ if (!POP) loadPop(); }, 4000 * popTry); else { POP = []; fillPop(); } });
 }
 function fillPop(){
@@ -958,7 +973,7 @@ function fillSeason(){
   const [title, kw] = seasonTheme();
   if (!SEASON){
     if (!seasonBusy){ seasonBusy = true;
-      rkSearch({keyword:kw, hits:"30", maxPrice:"30000"}).then(v=>{ SEASON = v.items.filter(x=>okItem(x) && x.img).slice(0,10); seasonBusy=false; fillSeason(); })
+      rkSearch({keyword:kw, hits:"30", maxPrice:"30000"}).then(v=>{ SEASON = tidyPrices(v.items.filter(x=>okItem(x) && x.img)).slice(0,10); seasonBusy=false; fillSeason(); })
         .catch(()=>{ seasonBusy=false; SEASON = []; fillSeason(); });
     }
     return;
