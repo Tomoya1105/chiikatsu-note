@@ -1386,24 +1386,33 @@
   "place": "グルマンディーズ公式通販、ちいかわらんど、ちいかわマーケット",
   "price": "5,478円",
   "q": "ちいかわ 充電式カイロ",
-  "s": "2026-11-15",
-  "sp": "mid",
+  "s": "2026-11-06",
+  "sp": "day",
   "src": "https://www.gourmandise.jp/view/item/000000010978",
   "t": "ちいかわ 充電式カイロ",
   "time": "",
-  "updatedAt": "2026-10-26",
+  "updatedAt": "2026-11-06",
   "srcs": [
-   "https://www.inside-games.jp/article/2026/09/08/187400.html"
+   "https://www.inside-games.jp/article/2026/09/08/187400.html",
+   "https://chiikawamarket.jp/products/4550213585857"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "srcType": "partner",
   "log": [
+   {
+    "d": "2026-11-06",
+    "t": "ちいかわマーケットでの発売（11/6 11時）を追加しました"
+   },
    {
     "d": "2026-10-26",
     "t": "メーカー公式通販でうさぎが売り切れになりました"
    }
   ],
-  "xpostNote": "2026-11-05 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず（chiikawa_kouhou グルマンディーズ 充電式カイロ）"
+  "xpostNote": "2026-11-05 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず（chiikawa_kouhou グルマンディーズ 充電式カイロ）",
+  "how": [
+   "ちいかわマーケット（公式通販）では11/6(金)11時から発売（1会計につき各1個まで）",
+   "メーカー（グルマンディーズ）公式通販は「11月中旬発売予定」の予約商品"
+  ]
  },
  {
   "id": "20261120-36",
@@ -1763,7 +1772,7 @@
   "place": "ちいかわらんど、ちいかわPOP UP STORE、スーパー、ドラッグストアなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "xpost": "https://x.com/chiikawa_kouhou/status/2113072853088358705",
   "xpostNote": "投稿日2026-10-22 10:00（IDから計算）。本文に「アニメちいかわ きのこのポタージュ・ほうれんそうのポタージュ」「10月22日（木）より」「オリジナルシール1枚入り」（2026-10-24 検索結果で確認）",
   "srcs": [
@@ -2511,7 +2520,7 @@
   "qNone": "くじ（店頭販売）",
   "src": "https://1kuji.com/products/chiikawa5",
   "srcType": "partner",
-  "verifiedAt": "2026-11-03",
+  "verifiedAt": "2026-11-06",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2768,7 +2777,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2791,7 +2800,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -3333,7 +3342,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3676,7 +3685,7 @@
   "qNone": "取扱店・商品の詳細が未発表で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "srcType": "official",
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-06",
   "xpost": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「ちいかわ1分丈腹巻パンツ」「全国の量販店にて」「11月下旬」",
   "note": "同じ告知の「ちいかわ腹巻」は10月上旬から発売。",
@@ -4195,7 +4204,7 @@
   "srcs": [
    "https://www.oricon.co.jp/news/2487242/full/"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "how": [
    "幕張新都心店：モモンガ（さつまいも）8/31〜、くりまんじゅう（渋皮マロン）9/7〜、ラッコ（パンプキン）9/14〜、いずれも11/26まで",
    "横浜ワールドポーターズ店・名古屋パルコ店：週がわりで販売（くりまんじゅう 10/19〜10/25、ラッコ 10/26〜11/1）",
@@ -4865,7 +4874,7 @@
   "srcs": [
    "https://m.21jingji.com/article/20261021/herald/f2cca8bea1c320cba86603cfbb4c4172.html"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "note": "北京で初めてのちいかわ公式の展示・ポップアップ。ちいかわ公式微博の発表を伝える報道で確認。原文：吉伊卡哇 北京快闪店（朝阳合生汇）。",
   "how": [
    "9/27からは予約なしで入場できる（公式微博の案内を伝える報道より）"
@@ -6046,6 +6055,60 @@
    "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
   ],
   "note": "約100cm×150cmの大きなブランケット（全2種）。2025年11月に出たものの再登場。",
+  "autoAdded": true,
+  "addedAt": "2026-11-06",
+  "updatedAt": "2026-11-06"
+ },
+ {
+  "id": "20261109-hawaii-abc-keyring",
+  "region": "us",
+  "t": "ハワイ限定 CHIIKAWA MASCOT KEYRING（ABCストア）",
+  "cat": "goods",
+  "s": "2026-11-09",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "ハワイ限定",
+  "place": "ハワイ・一部のABCストア",
+  "area": "ハワイ",
+  "price": "",
+  "q": "",
+  "qNone": "ハワイ限定（現地のABCストアの店頭販売）",
+  "src": "https://x.com/chiikawa_kouhou/status/2118508673865551977",
+  "srcType": "official",
+  "verifiedAt": "2026-11-06",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2118508673865551977",
+  "xpostNote": "投稿日2026-11-06（IDから計算）。本文に「ハワイ限定」「CHIIKAWA MASCOT KEYRING」「11月9日より一部のABCストアで販売開始」（運営者から届いた本文で2026-11-06確認）",
+  "how": [
+   "11/9から、ハワイの一部のABCストアで販売（取扱店は一部のみ）"
+  ],
+  "note": "ちいかわ・ハチワレ・うさぎの6種類のデザインのマスコットキーリング。日付は現地（ハワイ）の日付。原文：CHIIKAWA MASCOT KEYRING",
+  "autoAdded": true,
+  "addedAt": "2026-11-06",
+  "updatedAt": "2026-11-06"
+ },
+ {
+  "id": "20261106-market-bungu",
+  "region": "jp",
+  "t": "アニメ『ちいかわ』文具（鉛筆・色鉛筆・ふでいれなど）・メモポン4・スリーパーなど（ちいかわマーケット 11/6発売）",
+  "cat": "goods",
+  "s": "2026-11-06",
+  "sp": "day",
+  "e": null,
+  "time": "11:00〜",
+  "eNote": "数量制限（1会計につき各1個まで）",
+  "place": "ちいかわマーケット（公式通販）",
+  "area": "",
+  "price": "198円〜4,598円",
+  "q": "",
+  "qNone": "公式通販の新商品をまとめた件で、楽天で同じ商品と言い切れない",
+  "src": "https://chiikawamarket.jp/collections/20261106",
+  "srcType": "official",
+  "verifiedAt": "2026-11-06",
+  "how": [
+   "ちいかわマーケット（公式通販）で11/6(金)11時から販売。商品は1会計につき各1個まで"
+  ],
+  "note": "アニメ『ちいかわ』文具（鉛筆2B 4本セット352円、色鉛筆12色1,650円、コンパクトふでいれヨコピタ ホログラム2,310円、文具セット4,598円、名前シール・自由帳・下敷きなど全14種）、メモポン4（全6種・各2,200円）、スリーパー（ちいかわ／ハチワレ／うさぎいっぱいパターン・各1,650円）、ミニタオル（味見ッ・880円）、208ピースジグソーパズル（みんなで流れ星・1,540円）。",
   "autoAdded": true,
   "addedAt": "2026-11-06",
   "updatedAt": "2026-11-06"
