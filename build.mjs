@@ -240,8 +240,8 @@ const ONB_GATE = String.raw`<script>(function(){function L(){var e=document.crea
 homeBody = homeBody.replace("{{ONB_GATE}}", ONB_GATE).replace("{{AD_NOTE}}", YAHOO_AD ? "※「PR」のリンクは広告（楽天・もしもアフィリエイト）です" : "※「PR」のリンクは広告（楽天アフィリエイト）です");
 const homeLd = { "@context": "https://schema.org", "@type": "WebSite", name: "ちい活ノート", url: SITE + "/", inLanguage: "ja" };
 write("index.html", page({
-  title: "ちい活ノート｜ちいかわグッズの発売日・イベント日程カレンダー",
-  desc: "ちいかわの新商品の発売日、POP UP STOREやコラボカフェの開催期間、海外のちいかわイベントをまとめた非公式スケジュール帳。まもなく終わるものや今週発売のグッズがひと目でわかります。",
+  title: "ちい活ノート｜ちいかわのグッズ発売日・イベント情報まとめカレンダー",
+  desc: "ちいかわファンのための情報まとめ。グッズの発売日、イベント情報、POP UP STOREやコラボカフェの開催期間、海外のちいかわイベントをまとめた非公式スケジュール帳。まもなく終わるものや今週発売のグッズがひと目でわかります。",
   url: "/",
   head: `<script type="application/ld+json">${JSON.stringify(homeLd)}</script>`,
   body: homeBody,
