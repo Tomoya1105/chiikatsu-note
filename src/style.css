@@ -908,3 +908,7 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 /* 色の薄いテーマ（黄・茶・ラッコ）は枠と見出しを少し濃く */
 :root[data-oshi="usagi"] .dlstrip{border-color:var(--acc);--dlc:color-mix(in srgb,var(--acc) 42%,var(--ink))}
 :root[data-oshi="kuri"] .dlstrip,:root[data-oshi="rakko"] .dlstrip{border-color:var(--acc)}
+
+/* サイト紹介と検索エリアのあいだの区切り線 */
+.herosub{margin-bottom:0}
+.hdiv{width:86%;height:1px;margin:9px auto 9px;background:color-mix(in srgb,var(--acc) 30%,var(--bg))}
