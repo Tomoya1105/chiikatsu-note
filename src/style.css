@@ -888,13 +888,23 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .insband .ins-open-btn{flex:none;white-space:nowrap;min-height:40px;padding:0 11px;font-size:12.5px}
 .insband .ins-x{flex:none;width:40px;height:40px}
 @media (max-width:380px){.insband span{display:none}}
-/* スマホの縦の余白：全体で+25px前後（つまり過ぎていたところだけ、少しゆるめる） */
+/* スマホの縦の余白：必要なところだけ少しゆるめる */
 @media (max-width:520px){
-  .region{margin-bottom:8px}
-  .sum{margin-bottom:6px}
-  .tabs{margin-bottom:5px}
-  .filters{gap:6px;margin:0 0 12px}
-  .dlstrip{padding:8px 10px;gap:5px}
-  .dlrow .dlt{line-height:1.4}
+  .sum{margin-bottom:4px}
+  .tabs{margin-bottom:4px}
+  .filters{gap:6px;margin:0 0 10px}
 }
 @media (max-width:340px){.brand h1{font-size:19px;white-space:nowrap}}
+
+/* 締切カード：推しカラーになじませつつ、周りのカードより一段目立たせる */
+.dlstrip{--dlc:color-mix(in srgb,var(--acc) 52%,var(--ink));background:var(--acc-soft);border:2px solid color-mix(in srgb,var(--acc) 82%,var(--acc-soft));box-shadow:0 8px 18px -12px var(--acc)}
+:root .dlstrip .dlsh b{color:var(--dlc);display:inline-flex;align-items:center;gap:5px}
+.dlclk{flex:none}
+.dlstrip .dlsh span{color:var(--ink-2)}
+.dlstrip .dlrow{background:var(--surface);border:1px solid color-mix(in srgb,var(--acc) 22%,var(--surface))}
+.dlstrip .dlrow .dlk{background:var(--acc-soft);color:var(--ink)}
+:root .dlstrip .dlrow.hot .dll,:root .dlstrip .dlrow .dll{color:var(--ink)}
+.dlstrip .dlmore{color:var(--dlc)}
+/* 色の薄いテーマ（黄・茶・ラッコ）は枠と見出しを少し濃く */
+:root[data-oshi="usagi"] .dlstrip{border-color:var(--acc);--dlc:color-mix(in srgb,var(--acc) 42%,var(--ink))}
+:root[data-oshi="kuri"] .dlstrip,:root[data-oshi="rakko"] .dlstrip{border-color:var(--acc)}
