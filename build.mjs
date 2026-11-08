@@ -151,8 +151,8 @@ function page({ title, desc, url, body, head = "", scripts = "", ogType = "websi
 <meta name="robots" content="max-image-preview:large">
 <meta name="theme-color" content="#FBF6F8">
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="icon" href="/icons/icon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/icons/icon-180.png">
+<link rel="icon" href="/icons/icon-32.png?v=2" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/icons/icon-180.png?v=2">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="ちい活ノート">
