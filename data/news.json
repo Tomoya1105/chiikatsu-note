@@ -1,5 +1,16 @@
 [
  {
+  "id": "20261108-shimamura-penpouch",
+  "date": "2026-11-08",
+  "tag": "goods",
+  "title": "しまむらパークにちいかわのペンポーチ、11/9正午から",
+  "sum": "シャンブルのちいかわペンポーチが3つの形・2色の全6種で登場。マスコット入りの入浴剤もあわせて、しまむらのオンラインストアで11/9(月)12時から販売されます。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/08/190552.html",
+  "itemId": "20261109-shimamura-penpouch",
+  "addedAt": "2026-11-09"
+ },
+ {
   "id": "20261108-chara-ranking",
   "date": "2026-11-08",
   "tag": "topic",
@@ -11,15 +22,15 @@
   "addedAt": "2026-11-08"
  },
  {
-  "id": "20261106-yellow-hachiware",
-  "date": "2026-11-06",
-  "tag": "topic",
-  "title": "最新話に黄色いハチワレ、正体にファンの考察続く",
-  "sum": "11/5公開の『ちいかわ』最新話の最後に、頭の色が黄色いハチワレのようなキャラが登場。新キャラか、以前グッズになった「招福ハチワレ」か、とファンの間で話題に。",
-  "source": "電撃オンライン",
-  "src": "https://dengekionline.com/article/202611/93303",
-  "itemId": "",
-  "addedAt": "2026-11-08"
+  "id": "20261107-chocosap2",
+  "date": "2026-11-07",
+  "tag": "goods",
+  "title": "チョコサプ ちいかわ2は全14種、11/23発売",
+  "sum": "台座とふきだし付きのフィギュアが入ったバンダイのお菓子の第2弾。ウクレレを弾くうさぎなど全14種（シークレット1種）で、11/23(月・祝)に385円で発売されます。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/07/190518.html",
+  "itemId": "20261101-37",
+  "addedAt": "2026-11-09"
  },
  {
   "id": "20261107-fluffy-reorder",
@@ -31,6 +42,17 @@
   "src": "https://www.inside-games.jp/article/2026/11/07/190502.html",
   "itemId": "20261113-talking-fluffy-reorder",
   "addedAt": "2026-11-07"
+ },
+ {
+  "id": "20261106-yellow-hachiware",
+  "date": "2026-11-06",
+  "tag": "topic",
+  "title": "最新話に黄色いハチワレ、正体にファンの考察続く",
+  "sum": "11/5公開の『ちいかわ』最新話の最後に、頭の色が黄色いハチワレのようなキャラが登場。新キャラか、以前グッズになった「招福ハチワレ」か、とファンの間で話題に。",
+  "source": "電撃オンライン",
+  "src": "https://dengekionline.com/article/202611/93303",
+  "itemId": "",
+  "addedAt": "2026-11-08"
  },
  {
   "id": "20261106-hawaii-abc-keyring",
