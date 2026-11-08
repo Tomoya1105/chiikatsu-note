@@ -1772,7 +1772,7 @@
   "place": "ちいかわらんど、ちいかわPOP UP STORE、スーパー、ドラッグストアなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-08",
   "xpost": "https://x.com/chiikawa_kouhou/status/2113072853088358705",
   "xpostNote": "投稿日2026-10-22 10:00（IDから計算）。本文に「アニメちいかわ きのこのポタージュ・ほうれんそうのポタージュ」「10月22日（木）より」「オリジナルシール1枚入り」（2026-10-24 検索結果で確認）",
   "srcs": [
@@ -2784,7 +2784,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-08",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2807,7 +2807,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-08",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -3348,7 +3348,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-08",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3380,7 +3380,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-08",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -4062,7 +4062,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-08",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-11-04",
@@ -4095,7 +4095,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-08",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-11-04",
@@ -5016,7 +5016,7 @@
   "qNone": "催事での店頭販売",
   "src": "https://prtimes.jp/main/html/rd/p/000002181.000025606.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-08",
   "how": [
    "「大丸松坂屋百貨店監修 Sweets Selection in PARCO CITY」の会場で販売",
    "トートバッグ・エコバッグはお菓子とのセットのみ（単品販売なし）"
@@ -6322,5 +6322,31 @@
   "autoAdded": true,
   "addedAt": "2026-11-07",
   "updatedAt": "2026-11-07"
+ },
+ {
+  "id": "20261109-shimamura-penpouch",
+  "region": "jp",
+  "t": "しまむらパーク ちいかわ ペンポーチ全6種・びっくらたまご（シャンブル）",
+  "cat": "goods",
+  "s": "2026-11-09",
+  "sp": "day",
+  "e": null,
+  "time": "12:00〜",
+  "eNote": "",
+  "place": "しまむらパーク（しまむらのオンラインストア）",
+  "area": "",
+  "price": "ペンポーチ シンプル各1,980円・ロールボストン各2,310円・リュック型各2,420円、びっくらたまご リボンなみんな550円",
+  "q": "",
+  "qNone": "しまむらのオンラインストアでの販売で、楽天で同じ商品と言い切れない",
+  "src": "https://www.inside-games.jp/article/2026/11/08/190552.html",
+  "srcType": "news",
+  "verifiedAt": "2026-11-08",
+  "how": [
+   "しまむらのオンラインストア「しまむらパーク」で11/9(月)12:00から販売（シャンブルの商品）"
+  ],
+  "note": "しまむらの公式通販が読めなかったため記事で確認。ペンポーチは3つの形×青・茶の2色で全6種。",
+  "autoAdded": true,
+  "addedAt": "2026-11-08",
+  "updatedAt": "2026-11-08"
  }
 ]
