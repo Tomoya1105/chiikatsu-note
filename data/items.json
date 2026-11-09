@@ -278,7 +278,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-09",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -339,7 +339,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-09",
   "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
@@ -429,7 +429,7 @@
   "time": "",
   "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-09",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ",
   "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
@@ -1512,7 +1512,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "srcs": [
    "https://animeanime.jp/article/2026/09/26/103251.html"
   ]
@@ -2527,7 +2527,7 @@
   "qNone": "くじ（店頭販売）",
   "src": "https://1kuji.com/products/chiikawa5",
   "srcType": "partner",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -3691,7 +3691,7 @@
   "qNone": "取扱店・商品の詳細が未発表で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "srcType": "official",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "xpost": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「ちいかわ1分丈腹巻パンツ」「全国の量販店にて」「11月下旬」",
   "note": "同じ告知の「ちいかわ腹巻」は10月上旬から発売。",
@@ -4578,8 +4578,8 @@
   "region": "jp",
   "t": "ポンデクルール ちいかわ マルチカラーパウダー（ガシャポン）",
   "cat": "goods",
-  "s": "2026-11-01",
-  "sp": "month",
+  "s": "2026-11-15",
+  "sp": "mid",
   "e": null,
   "time": "",
   "eNote": "",
@@ -4592,10 +4592,11 @@
   "srcType": "partner",
   "srcs": [
    "https://www.bandai.co.jp/catalog/item.php?jan_cd=4582770137750000",
-   "https://bandai-lifestyle.jp/products/details.php?detail=4582769924866000"
+   "https://bandai-lifestyle.jp/products/details.php?detail=4582769924866000",
+   "https://www.inside-games.jp/article/2026/11/09/190604.html"
   ],
-  "verifiedAt": "2026-11-02",
-  "note": "アイシャドウやフェイスカラーに使えるサプライズコスメのガシャポン。ちいかわ・ハチワレ・うさぎ・モモンガ・3人・ちいかわとハチワレの全6種。対象年齢15才以上。公式の発売時期は「2026年11月」。 一般の売り場向けの箱入り版（全6種・550円）は11/23発売予定（バンダイ公式）。",
+  "verifiedAt": "2026-11-09",
+  "note": "アイシャドウやフェイスカラーに使えるサプライズコスメのガシャポン。ちいかわ・ハチワレ・うさぎ・モモンガ・3人・ちいかわとハチワレの全6種。対象年齢15才以上。公式の発売時期は「2026年11月第3週」。 一般の売り場向けの箱入り版（全6種・550円）は11/23発売予定（バンダイ公式）。",
   "how": [
    "ガシャポン（1回500円）。中身は開けるまでわからない全6種",
    "発売日は地域・店舗によって異なる場合あり",
@@ -4603,8 +4604,14 @@
   ],
   "autoAdded": true,
   "addedAt": "2026-10-26",
-  "updatedAt": "2026-11-02",
-  "xpostNote": "2026-10-26 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
+  "updatedAt": "2026-11-09",
+  "xpostNote": "2026-10-26 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず",
+  "log": [
+   {
+    "d": "2026-11-09",
+    "t": "発売時期が11月第3週と公式に出たので、中旬に直しました"
+   }
+  ]
  },
  {
   "id": "20261101-bonbon-magical",
@@ -5172,7 +5179,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/10/29/190011.html"
   ],
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "note": "キラキラの鍵型チャーム全13種（開けるまでわからない）とオレンジ味のグミ（バンダイ キャンディ）。公式の発売時期は「2027年2月」。プレミアムバンダイでは12個入りBOX（4,752円）の予約も10/29から受付。",
   "autoAdded": true,
   "addedAt": "2026-10-29",
@@ -6103,7 +6110,7 @@
   "qNone": "ハワイ限定（現地のABCストアの店頭販売）",
   "src": "https://x.com/chiikawa_kouhou/status/2118508673865551977",
   "srcType": "official",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "xpost": "https://x.com/chiikawa_kouhou/status/2118508673865551977",
   "xpostNote": "投稿日2026-11-06（IDから計算）。本文に「ハワイ限定」「CHIIKAWA MASCOT KEYRING」「11月9日より一部のABCストアで販売開始」（運営者から届いた本文で2026-11-06確認）",
   "how": [
@@ -6385,5 +6392,196 @@
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
   "xpostNote": "2026-11-09 公式ポストを検索したが、今回のフェアの投稿は見つからず"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "time": "",
+  "area": "",
+  "price": "",
+  "q": "",
+  "place": "『映画ちいかわ 人魚の島のひみつ』上映館",
+  "src": "https://chiikawa.toho-movie.jp/specialitem.html",
+  "srcType": "official",
+  "srcs": [
+   "https://animeanime.jp/article/2026/11/09/104614.html"
+  ],
+  "verifiedAt": "2026-11-09",
+  "autoAdded": true,
+  "addedAt": "2026-11-09",
+  "updatedAt": "2026-11-09",
+  "id": "20261114-tokuten8",
+  "t": "映画ちいかわ 入場者特典 第8弾「エアーびんよよ」",
+  "s": "2026-11-14",
+  "e": null,
+  "eNote": "なくなり次第終了",
+  "how": [
+   "鑑賞1回につき1人1つ、入場時に配布（入場前・退場後の配布はなし）",
+   "劇場ごとに数量限定で、なくなり次第終了"
+  ],
+  "note": "島の武器「びんよよ」をバルーン仕様にした特典。11/28からは第9弾の配布が始まります。",
+  "xpost": "https://x.com/chiikawa_movie/status/2119656228808991045",
+  "xpostNote": "投稿日2026-11-09（IDから計算）。本文に「入場者特典第8弾は 11月14日(土)より配布開始」「エアーびんよよ」"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "time": "",
+  "area": "",
+  "price": "",
+  "q": "",
+  "place": "『映画ちいかわ 人魚の島のひみつ』上映館",
+  "src": "https://chiikawa.toho-movie.jp/specialitem.html",
+  "srcType": "official",
+  "srcs": [
+   "https://animeanime.jp/article/2026/11/09/104614.html"
+  ],
+  "verifiedAt": "2026-11-09",
+  "autoAdded": true,
+  "addedAt": "2026-11-09",
+  "updatedAt": "2026-11-09",
+  "id": "20261128-tokuten9",
+  "t": "映画ちいかわ 入場者特典 第9弾「チャームミニフィギュア」（第4弾のリバイバル）",
+  "s": "2026-11-28",
+  "e": "2026-12-04",
+  "eNote": "なくなり次第終了",
+  "how": [
+   "劇場に入るときに1人1つ（チケット購入時ではなく入場時に配布）",
+   "ランダム配布で種類は選べません",
+   "劇場ごとに数量限定で、なくなり次第終了"
+  ],
+  "note": "島二郎・セイレーン・ヒトハ・フタバの全4種。早く終わった第4弾のリバイバル配布。"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "time": "",
+  "area": "",
+  "price": "",
+  "q": "",
+  "place": "『映画ちいかわ 人魚の島のひみつ』上映館",
+  "src": "https://chiikawa.toho-movie.jp/specialitem.html",
+  "srcType": "official",
+  "srcs": [
+   "https://animeanime.jp/article/2026/11/09/104614.html"
+  ],
+  "verifiedAt": "2026-11-09",
+  "autoAdded": true,
+  "addedAt": "2026-11-09",
+  "updatedAt": "2026-11-09",
+  "id": "20261205-tokuten10",
+  "t": "映画ちいかわ 入場者特典 第10弾「ごきげんセイレーン♪」（第3弾のリバイバル）",
+  "s": "2026-12-05",
+  "e": "2026-12-11",
+  "eNote": "なくなり次第終了",
+  "how": [
+   "劇場に入るときに1人1つ（チケット購入時ではなく入場時に配布）",
+   "ランダム配布で種類は選べません",
+   "劇場ごとに数量限定で、なくなり次第終了"
+  ],
+  "note": "ちいかわ・ハチワレ・うさぎの全3種。早く終わった第3弾のリバイバル配布。"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "time": "",
+  "area": "",
+  "price": "",
+  "q": "",
+  "place": "『映画ちいかわ 人魚の島のひみつ』上映館",
+  "src": "https://chiikawa.toho-movie.jp/specialitem.html",
+  "srcType": "official",
+  "srcs": [
+   "https://animeanime.jp/article/2026/11/09/104614.html"
+  ],
+  "verifiedAt": "2026-11-09",
+  "autoAdded": true,
+  "addedAt": "2026-11-09",
+  "updatedAt": "2026-11-09",
+  "id": "20261212-tokuten11",
+  "t": "映画ちいかわ 入場者特典 第11弾「チャームミニフィギュア」（第6弾のリバイバル）",
+  "s": "2026-12-12",
+  "e": "2026-12-18",
+  "eNote": "なくなり次第終了",
+  "how": [
+   "劇場に入るときに1人1つ（チケット購入時ではなく入場時に配布）",
+   "ランダム配布で種類は選べません",
+   "劇場ごとに数量限定で、なくなり次第終了"
+  ],
+  "note": "ちいかわ＆ハチワレ、うさぎ＆モモンガの全2種。早く終わった第6弾のリバイバル配布。"
+ },
+ {
+  "region": "jp",
+  "cat": "event",
+  "sp": "day",
+  "time": "",
+  "area": "",
+  "price": "",
+  "q": "",
+  "place": "『映画ちいかわ 人魚の島のひみつ』上映館",
+  "src": "https://chiikawa.toho-movie.jp/specialitem.html",
+  "srcType": "official",
+  "srcs": [
+   "https://animeanime.jp/article/2026/11/09/104614.html"
+  ],
+  "verifiedAt": "2026-11-09",
+  "autoAdded": true,
+  "addedAt": "2026-11-09",
+  "updatedAt": "2026-11-09",
+  "id": "20261219-tokuten12",
+  "t": "映画ちいかわ 入場者特典 第12弾「ヒミツにしようなんて許さライト」",
+  "s": "2026-12-19",
+  "e": null,
+  "eNote": "なくなり次第終了",
+  "how": [
+   "鑑賞1回につき1人1つ、入場時に配布（入場前・退場後の配布はなし）",
+   "劇場ごとに数量限定で、配布数がなくなった時点で終了"
+  ],
+  "note": "単三電池の形のミニライト。点灯するとイラストが映し出されます。",
+  "xpost": "https://x.com/chiikawa_movie/status/2119656228808991045",
+  "xpostNote": "投稿日2026-11-09（IDから計算）。本文に「第12弾は 「ヒミツにしようなんて許さライト」」（第8〜12弾の一挙解禁の告知）"
+ },
+ {
+  "id": "20261113-nenga-hagaki",
+  "region": "jp",
+  "t": "ちいかわ 年賀はがき3枚セット おまけシールつき（郵便局）",
+  "cat": "goods",
+  "s": "2026-11-13",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国約200局の郵便局・郵便局のネットショップ（受注販売）",
+  "area": "",
+  "price": "880円",
+  "q": "",
+  "qNone": "郵便局の店頭と郵便局のネットショップでの販売",
+  "src": "https://prtimes.jp/main/html/rd/p/000000119.000012840.html",
+  "srcType": "press",
+  "srcs": [
+   "https://www.shop.post.japanpost.jp/shop/pages/chiikawa-nenga.aspx",
+   "https://www.inside-games.jp/article/2026/11/09/190616.html"
+  ],
+  "verifiedAt": "2026-11-09",
+  "dl": [
+   {
+    "k": "受注",
+    "n": "郵便局のネットショップの受注締切",
+    "until": "2026-11-17T23:59",
+    "u": "https://www.shop.post.japanpost.jp/shop/pages/chiikawa-nenga.aspx"
+   }
+  ],
+  "how": [
+   "11/13から全国約200局の郵便局の店頭で販売",
+   "郵便局のネットショップでは11/13 15:00〜11/17 23:59の受注販売（送料360円・12/19から順次発送）"
+  ],
+  "note": "同じ柄の年賀はがき3枚とおまけシール1シートのセット（エンスカイ）。",
+  "autoAdded": true,
+  "addedAt": "2026-11-09",
+  "updatedAt": "2026-11-09"
  }
 ]
