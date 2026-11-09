@@ -2835,7 +2835,7 @@
   "q": "",
   "src": "https://www.westjr.co.jp/press/article/2026/09/30/items/260930_00_press_lucuasouth.pdf",
   "srcType": "press",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "note": "池袋のちいかわパークの公式ショップが全国初出店。入店は無料。ミニマスコットキーリング（全10種・各1,430円）やポップコーンバケツ（各4,180円）などを販売し、一部の商品は購入数の制限あり。同じ11Fにナガノマーケット UMEDA も同日オープン。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -3598,7 +3598,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000144.000074811.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "how": [
    "入場は公式サイトのチケットが必要。当日入場できない場合があるので事前に確認。",
    "限定グッズ（スウェット・ファーハット・マフラー）は11/24(火)発売。",
@@ -3969,7 +3969,7 @@
    "https://www.gourmandise.jp/view/item/000000010928",
    "https://www.gourmandise.jp/view/item/000000010925"
   ],
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "how": [
    "グルマンディーズ公式通販で「11月下旬発売予定」として掲載中"
   ],
@@ -5071,7 +5071,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000004138.000003639.html"
   ],
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "org": {
    "name": "株式会社パルコ",
    "url": "https://cafe.parco.jp/",
@@ -5194,7 +5194,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000004.000187317.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "how": [
    "入店は事前予約制（予約方法は店舗の公式SNSで案内）。予約は入店の枠で、商品の確保ではありません",
    "大判焼きは1人2個まで、ドリンクは1人2杯まで。グッズは1人各1点まで（制限は変わることがあります）",
@@ -6076,7 +6076,7 @@
   "qNone": "プライズ（ゲームセンターの景品）",
   "src": "https://www.parade-inc.net/products/p251104",
   "srcType": "partner",
-  "verifiedAt": "2026-11-06",
+  "verifiedAt": "2026-11-09",
   "how": [
    "ゲームセンターやオンラインクレーンゲームの景品（プライズ）。2026年11月下旬から順次登場",
    "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
@@ -6349,5 +6349,41 @@
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
   "xpostNote": "2026-11-09 しまむら公式（一覧にないアカウント）の今年の告知は見つからず、ちいかわ公式のリポストも確かめられないため入れない"
+ },
+ {
+  "id": "20261110-drill-fair",
+  "region": "jp",
+  "t": "ちいかわドリル 進級準備フェア（特製A4下じきプレゼント）",
+  "cat": "book",
+  "s": "2026-11-10",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "なくなり次第終了（特典）",
+  "place": "フェア実施書店（全国）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "書店のフェア特典（対象のドリル全25冊）で、商品を1つに決められない",
+  "src": "https://prtimes.jp/main/html/rd/p/000009014.000001719.html",
+  "srcType": "press",
+  "srcs": [
+   "https://cocreco.kodansha.co.jp/cocreco/general/study/mmGE7"
+  ],
+  "verifiedAt": "2026-11-09",
+  "org": {
+   "name": "株式会社講談社",
+   "url": "https://cocreco.kodansha.co.jp/cocreco/general/study/mmGE7",
+   "src": "https://prtimes.jp/main/html/rd/p/000009014.000001719.html"
+  },
+  "how": [
+   "フェア実施書店で、対象の「ちいかわ小学学参」ドリル（全25冊）を1冊買うごとに特製A4下じきを1枚もらえる",
+   "実施書店は講談社のフェアページで確認。特典はなくなり次第終了"
+  ],
+  "note": "シリーズ累計100万部突破を記念したフェア。11/10ごろから順次。下じきは表がちいかわのマンガ、裏がみんなの集合イラスト（両面印刷）。",
+  "autoAdded": true,
+  "addedAt": "2026-11-09",
+  "updatedAt": "2026-11-09",
+  "xpostNote": "2026-11-09 公式ポストを検索したが、今回のフェアの投稿は見つからず"
  }
 ]

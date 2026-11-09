@@ -1,5 +1,38 @@
 [
  {
+  "id": "20261109-drill-1m-fair",
+  "date": "2026-11-09",
+  "tag": "book",
+  "title": "ちいかわドリルが100万部、書店で下じきフェア",
+  "sum": "講談社の「ちいかわ小学学参」シリーズが累計100万部に。11/10ごろから対象ドリルを買うと特製A4下じきがもらえるフェアが書店で始まります（なくなり次第終了）。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000009014.000001719.html",
+  "itemId": "20261110-drill-fair",
+  "addedAt": "2026-11-09"
+ },
+ {
+  "id": "20261109-charapaki-amaou",
+  "date": "2026-11-09",
+  "tag": "goods",
+  "title": "あまおう苺味のちいかわキャラパキ、きょう発売",
+  "sum": "バンダイのキャラパキに、あまおう苺味のちいかわ版が登場。チョコの型はお顔や全身など全20種で、1袋5枚入りの個包装です。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/09/190582.html",
+  "itemId": "20261109-charapaki-amaou",
+  "addedAt": "2026-11-09"
+ },
+ {
+  "id": "20261108-kr-movie-272",
+  "date": "2026-11-08",
+  "tag": "overseas",
+  "title": "韓国の映画ちいかわ、観客272万人を突破",
+  "sum": "韓国の映画振興委員会の集計で、映画ちいかわの累計観客が272万人を超えました。1日の動員と前売りでも1位を保っています。",
+  "source": "WOW!Korea",
+  "src": "https://korepo.com/archives/1729151",
+  "itemId": "20260930-kr-movie",
+  "addedAt": "2026-11-09"
+ },
+ {
   "id": "20261108-shimamura-penpouch",
   "date": "2026-11-08",
   "tag": "goods",
