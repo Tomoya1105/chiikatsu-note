@@ -130,6 +130,7 @@
   // 購入先の見分け：公式通販（公式通販の商品ページだと分かるものだけ）／公式の予約ページ／楽天／Yahoo!／Amazon。それ以外の公式リンクは「公式情報」
   var OFFSHOP = /^https:\/\/(www\.)?chiikawamarket\.jp\/products\//;
   function destOf(a, h){
+    if (a.hasAttribute("data-own")) return "";   // ちい活ノート内の導線（M2・M3で足すボタン）は、「公式」の文言があっても公式情報・購入先に数えない
     if (/hb\.afl\.rakuten/.test(h)) return a.classList.contains("trip") ? "o:travel" : "rk";
     if (/af\.moshimo\.com/.test(h)) return /p_id=1225/.test(h) ? "yh" : "am";
     if (/^https:\/\/shopping\.yahoo\.co\.jp\//.test(h)) return "yh";   // もしも経由でない通常リンクも、Yahoo!として数える
@@ -141,6 +142,20 @@
     if (/calendar\.google/.test(h)) return "o:gcal";
     if (a.classList.contains("off") || /公式/.test(a.textContent)) return "o:info";
     return "";
+  }
+  // 詳細ページへの遷移（M0で足した計測。既存の項目は一切変えない）。回数（lc:/nw:/rel:）はタップのたびに数え、重複防止はかけない。
+  // セッション数（ls:）は、その訪問で1回以上あったときだけ1回（once＝既存と同じ仕組み）。回数÷セッション数＝1訪問あたりの遷移数。
+  function m0Go(a){
+    try {
+      var path0 = a.pathname || "", same = a.origin === location.origin, toItem = same && path0.indexOf("/items/") === 0;
+      if (a.closest("[data-rel]")) { if (toItem) { ct("rel:go"); once("lr", "ls:rel"); } return; }
+      if (a.closest(".ncard")) {
+        if (toItem) { ct("nw:item"); once("ln", "ls:nw"); }
+        else if (a.classList.contains("nsrc") || (a.parentNode && a.parentNode.tagName === "H3")) ct("nw:src");
+        return;
+      }
+      if (isHomeP && toItem && a.closest(".card")) { ct("lc:list"); once("ll", "ls:list"); }
+    } catch (err) {}
   }
   function placeOf(a){
     if (isItemP) return "item";
@@ -159,6 +174,7 @@
     }
     var a = e.target.closest("a[href]"); if (!a) return;
     var h = a.href;
+    m0Go(a);
     if (/^https:\/\/line\.me\/R\/share/.test(h)) ct("share:line");
     else if (/^https:\/\/(x|twitter)\.com\/intent\//.test(h) && !sb) ct("share:x");
     var d = destOf(a, h); if (!d) return;
