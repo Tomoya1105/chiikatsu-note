@@ -165,7 +165,8 @@
   document.addEventListener("click", function(e){
     touch();
     // サイト内の別ページへ移る直前に、ここまでの分を送っておく（移動中に送信が落ちて、訪問や「トップを見た」印が欠けないように。件数は変わらない）
-    var ia = e.target.closest && e.target.closest("a[href]"); if (ia && ia.origin === location.origin && !ia.hasAttribute("download") && !ia.target) flush();
+    var ia = e.target.closest && e.target.closest("a[href]"); if (ia) m0Go(ia);   // M0の計測は、この直後の送信に相乗りさせる（離脱時の送信を増やさない）
+    if (ia && ia.origin === location.origin && !ia.hasAttribute("download") && !ia.target) flush();
     var sb = e.target.closest("[data-share]"); if (sb) ct("share:" + sb.getAttribute("data-share"));
     if (e.target.closest("[data-mark='want'],[data-nmark]")) {
       once("w", "f:w"); if (VS && VS.x) once("xw", "f:xw");
@@ -174,7 +175,6 @@
     }
     var a = e.target.closest("a[href]"); if (!a) return;
     var h = a.href;
-    m0Go(a);
     if (/^https:\/\/line\.me\/R\/share/.test(h)) ct("share:line");
     else if (/^https:\/\/(x|twitter)\.com\/intent\//.test(h) && !sb) ct("share:x");
     var d = destOf(a, h); if (!d) return;
