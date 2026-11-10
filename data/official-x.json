@@ -60,6 +60,12 @@
    "kind": "公式アプリ（運営：株式会社アプリボット）",
    "evidence": "https://prtimes.jp/main/html/rd/p/000000046.000156996.html （運営会社アプリボットのプレスリリースの「URL一覧」に「公式X（＠chiikawa_pt_jp）」として x.com/chiikawa_pt_jp へのリンク）",
    "checkedAt": "2026-10-24"
+  },
+  "furyu_prize": {
+   "name": "フリュープライズ公式",
+   "kind": "メーカー公式（プライズ）",
+   "evidence": "https://furyuprize.com/item/22488 （フリュープライズ公式の商品ページに「フリュープライズ公式X」のリンク → x.com/FURYU_prize）",
+   "checkedAt": "2026-11-10"
   }
  },
  "candidates": {
