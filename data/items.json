@@ -1464,7 +1464,7 @@
   "time": "",
   "updatedAt": "2026-11-04",
   "srcType": "official",
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "srcs": [
    "https://www.inside-games.jp/article/2026/11/04/190359.html"
   ],
@@ -1492,7 +1492,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "qNone": "くじ（オンラインくじ）"
  },
  {
@@ -3840,7 +3840,7 @@
   "q": "ちいかわ ウエハース エールカードコレクション",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117930188000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "note": "メタリックに輝くキラキラカード全25種（うちシークレット1種）入りのウエハース。2026年12月発売予定（日付は未発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
@@ -4214,7 +4214,7 @@
   "srcs": [
    "https://www.oricon.co.jp/news/2487242/full/"
   ],
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-10",
   "how": [
    "幕張新都心店：モモンガ（さつまいも）8/31〜、くりまんじゅう（渋皮マロン）9/7〜、ラッコ（パンプキン）9/14〜、いずれも11/26まで",
    "横浜ワールドポーターズ店・名古屋パルコ店：週がわりで販売（モモンガ 11/2〜11/8、くりまんじゅう 11/9〜11/15、ラッコ 11/16〜11/26）",
@@ -6223,7 +6223,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_amot/index.html"
   ],
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
@@ -6249,7 +6249,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_aake/index.html"
   ],
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
@@ -6320,7 +6320,7 @@
   "srcs": [
    "https://news.denfaminicogamer.jp/news/2609173c"
   ],
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "how": [
    "全6種、1箱に1つ（中身は選べない）。発売日は地域・店舗で異なる場合あり",
    "ガシャポン版も別に展開（価格がちがう場合あり）"
@@ -6673,5 +6673,36 @@
   "autoAdded": true,
   "addedAt": "2026-11-10",
   "updatedAt": "2026-11-10"
+ },
+ {
+  "id": "20261115-charm3",
+  "region": "jp",
+  "t": "ちいかわ なんか小さくてかわいいチャーム 第3弾（全8種・マリモクラフト）",
+  "cat": "goods",
+  "s": "2026-11-15",
+  "sp": "mid",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわマーケット（公式通販）・ちいかわらんど（12月下旬から一部のファンシーショップ）",
+  "area": "",
+  "price": "各605円",
+  "q": "",
+  "qNone": "11月中旬はちいかわマーケット・ちいかわらんどで先行して販売（楽天への出品は未確認）",
+  "src": "https://www.inside-games.jp/article/2026/11/10/190676.html",
+  "srcType": "news",
+  "srcs": [
+   "https://x.com/marimo_craft/status/2119973321357820042"
+  ],
+  "verifiedAt": "2026-11-10",
+  "how": [
+   "11月中旬から、ちいかわマーケットとちいかわらんどで順次発売",
+   "12月下旬からは、全国の一部のファンシーショップでも順次発売"
+  ],
+  "note": "ちいかわ・モモンガ・くりまんじゅう・ラッコなど全8種の、カニカンつきメタルチャーム（約18〜21mm）。メーカーはマリモクラフト（2026/11/10の告知）。",
+  "autoAdded": true,
+  "addedAt": "2026-11-10",
+  "updatedAt": "2026-11-10",
+  "xpostNote": "2026-11-10 マリモクラフト（@marimo_craft）の告知ポストはあるが、公式アカウントの一覧になく、ちいかわ公式のリポストも確かめられないため入れない"
  }
 ]
