@@ -2900,7 +2900,7 @@
   "q": "ちいかわ キャラマグネッツ5",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929335000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "note": "アクリル製マグネット全21種（レアはオーロラ・キラキララメ・フレームの3種）＋ガム1個。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -3476,7 +3476,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -4343,18 +4343,27 @@
   "srcType": "partner",
   "srcs": [
    "https://www.parade-inc.net/products/c260904",
-   "https://www.inside-games.jp/article/2026/10/20/189544.html"
+   "https://www.inside-games.jp/article/2026/10/20/189544.html",
+   "https://www.inside-games.jp/article/2026/11/10/190692.html",
+   "https://x.com/parade_capsule/status/2120079031295250868"
   ],
-  "verifiedAt": "2026-10-25",
+  "verifiedAt": "2026-11-11",
   "how": [
    "カプセルトイ売場で10月下旬から順次発売",
-   "①はちいかわ・ハチワレ・くりまんじゅう・セイレーン、②はうさぎ・シーサー・モモンガ・島二郎（各全4種）"
+   "①はちいかわ・ハチワレ・くりまんじゅう・セイレーン、②はうさぎ・シーサー・モモンガ・島二郎（各全4種）",
+   "好評につき再販が決定（時期は後日発表）"
   ],
   "note": "パレードのカプセルトイ。島の衣装のキャラの頭がふりふり揺れるフィギュア（高さ約45〜62mm）。",
   "autoAdded": true,
   "addedAt": "2026-10-20",
-  "updatedAt": "2026-10-20",
-  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
+  "updatedAt": "2026-11-11",
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず",
+  "log": [
+   {
+    "d": "2026-11-11",
+    "t": "好評につき再販が決まりました（時期は後日発表）"
+   }
+  ]
  },
  {
   "id": "20261022-sushi-yokohama",
@@ -4903,7 +4912,7 @@
   "srcs": [
    "https://m.21jingji.com/article/20261021/herald/f2cca8bea1c320cba86603cfbb4c4172.html"
   ],
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "note": "北京で初めてのちいかわ公式の展示・ポップアップ。ちいかわ公式微博の発表を伝える報道で確認。原文：吉伊卡哇 北京快闪店（朝阳合生汇）。",
   "how": [
    "9/27からは予約なしで入場できる（公式微博の案内を伝える報道より）"
@@ -5297,7 +5306,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000138.000035374.html"
   ],
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "dl": [
    {
     "k": "抽選",
@@ -5573,7 +5582,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000335.000086964.html"
   ],
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "how": [
    "サンタ姿のちいかわ・ハチワレ・うさぎパンは11/13(金)〜12/27(日)、表参道とOSAKAの両店で販売",
    "3個買うと限定デザインのBOXに入れてもらえる（キャラクターは自由に選べる）",
@@ -5663,7 +5672,7 @@
    "https://www.sina.cn/media/7963282024",
    "https://www.ctdsb.net/c1738_202610/2875402.html"
   ],
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "how": [
    "予約なしで入場できる（中国ちいかわ公式の告知より）"
   ],
@@ -6054,7 +6063,7 @@
    "https://www.chiikawamogumogu.jp/2026/11/05/post-2726",
    "https://www.inside-games.jp/article/2026/11/05/190395.html"
   ],
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "how": [
    "11/13(金)から各店舗で発売。オンラインストアは11/13 9:30から",
    "京都伏見店では11/13から税込3,000円以上でアクリルコネクタチャーム、8,000円以上でダイカットハンドタオル（なくなり次第終了・オンラインは対象外）",
@@ -6712,5 +6721,68 @@
   "addedAt": "2026-11-10",
   "updatedAt": "2026-11-10",
   "xpostNote": "2026-11-10 マリモクラフト（@marimo_craft）の告知ポストはあるが、公式アカウントの一覧になく、ちいかわ公式のリポストも確かめられないため入れない"
+ },
+ {
+  "id": "20261124-pus-ikebukuro-jr",
+  "region": "jp",
+  "t": "ちいかわPOP UP STORE＠JR池袋駅",
+  "cat": "event",
+  "s": "2026-11-24",
+  "sp": "day",
+  "e": "2026-12-07",
+  "time": "",
+  "eNote": "",
+  "place": "JR池袋駅（東京都豊島区）",
+  "area": "池袋",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawa-info.jp/p26/pus_ikek/index.html"
+  ],
+  "verifiedAt": "2026-11-11",
+  "note": "",
+  "autoAdded": true,
+  "addedAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "xpostNote": "2026-11-11 公式ポストを検索したが、見つかったのは過去の同会場の回のみ（不一致）"
+ },
+ {
+  "id": "20261124-nagano-market-umeda",
+  "region": "jp",
+  "t": "ナガノマーケット UMEDA（大阪・LUCUA SOUTH）オープン",
+  "cat": "cafe",
+  "s": "2026-11-24",
+  "sp": "day",
+  "e": null,
+  "time": "10:00〜20:00",
+  "eNote": "常設店",
+  "place": "LUCUA SOUTH 11F（大阪府大阪市北区梅田）",
+  "area": "大阪・梅田",
+  "price": "",
+  "q": "",
+  "src": "https://nagano-info.jp/tenpo_nm/umeda/",
+  "srcType": "official",
+  "srcs": [
+   "https://report.iko-yo.net/articles/35571"
+  ],
+  "verifiedAt": "2026-11-11",
+  "how": [
+   "ナガノマーケット UMEDAへの入店は無料",
+   "開業から当面の間、LUCUA SOUTH 10F〜13Fへの入場は事前抽選または先着の入場整理券制（詳細はLUCUA SOUTHの特設サイトとナガノマーケットSHOP公式Xで発表）",
+   "ナガノキャラクターズのグッズを税込2,200円以上でロングステッカー、6,600円以上でマチ付きトートバッグ（1会計1つ・なくなり次第終了・ガチャは対象外）",
+   "多くの商品に1会計あたりの購入数の制限あり"
+  ],
+  "note": "ちいかわなどナガノキャラクターズのグッズを扱う公式ショップ。同じ11Fにちいかわパークストアも同日オープン。オープン日からKiramekkoくまやホリデーくまのグッズを販売。",
+  "autoAdded": true,
+  "addedAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "log": [
+   {
+    "d": "2026-11-11",
+    "t": "オープン日の販売グッズとノベルティが発表されました"
+   }
+  ]
  }
 ]

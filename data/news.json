@@ -1,5 +1,27 @@
 [
  {
+  "id": "20261110-nagano-market-umeda",
+  "date": "2026-11-10",
+  "tag": "goods",
+  "title": "ナガノマーケット梅田店、11/24にルクアで開店",
+  "sum": "LUCUA SOUTH 11Fに常設店がオープン。くまのホリデーグッズなどを販売し、税込2,200円以上で特典も。開業当初は10〜13Fへの入場に抽選か整理券が必要です。",
+  "source": "いこーよニュース",
+  "src": "https://report.iko-yo.net/articles/35571",
+  "itemId": "20261124-nagano-market-umeda",
+  "addedAt": "2026-11-11"
+ },
+ {
+  "id": "20261110-furifuri-resale",
+  "date": "2026-11-10",
+  "tag": "goods",
+  "title": "映画ちいかわのふりふりヘッド、好評で再販決定",
+  "sum": "10月下旬に出た頭がゆれるカプセルトイ（全8種・各500円）が再販へ。発売時期はパレードがあとで発表します。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/10/190692.html",
+  "itemId": "20261025-furifuri-head",
+  "addedAt": "2026-11-11"
+ },
+ {
   "id": "20261110-charm3",
   "date": "2026-11-10",
   "tag": "goods",
