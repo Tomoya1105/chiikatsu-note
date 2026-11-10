@@ -1,3 +1,4 @@
 dist/
 node_modules/
 functions/api/_ids.js
+.xadopt/
