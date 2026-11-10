@@ -1833,7 +1833,7 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "qNone": "GUの店舗・公式通販のみ",
   "srcs": [
    "https://www.famitsu.com/article/202609/88383",
@@ -3247,7 +3247,7 @@
   "q": "ちいかわ セーフティポーチ",
   "src": "https://www.gourmandise.jp/view/item/000000010968",
   "srcType": "partner",
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "how": [
    "グルマンディーズ公式通販で予約受付中（発売後、順次発送）"
   ],
@@ -4933,7 +4933,7 @@
    "https://chiikawamogumogu.jp/2026/10/28/post-2535",
    "https://www.chiikawamogumogu.jp/2026/11/04/post-2710"
   ],
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "dl": [
    {
     "k": "抽選",
@@ -5832,7 +5832,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/11/04/190328.html"
   ],
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "how": [
    "ゲームセンターやオンラインクレーンゲームの景品（プライズ）。2026年11月中旬から順次登場",
    "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
@@ -5862,7 +5862,7 @@
   "srcs": [
    "https://www.chiikawamogumogu.jp/stores/otaru/"
   ],
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "dl": [
    {
     "k": "抽選",
@@ -6197,7 +6197,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_ahmi/index.html"
   ],
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
@@ -6285,7 +6285,7 @@
   "srcs": [
    "https://x.com/talkingheads_0/status/2118672553938244009"
   ],
-  "verifiedAt": "2026-11-07",
+  "verifiedAt": "2026-11-10",
   "how": [
    "11/13(金)18時から追加生産分の販売を予定（詳しくはトーキング公式Xで案内）"
   ],
@@ -6583,5 +6583,95 @@
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09"
+ },
+ {
+  "id": "20261115-sheepwa-flat-mascot",
+  "region": "jp",
+  "t": "ちいかわ しーぷわフラットマスコット（プライズ）",
+  "cat": "goods",
+  "s": "2026-11-15",
+  "sp": "mid",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のアミューズメント施設（パレードのプライズ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（ゲームセンターの景品）",
+  "src": "https://www.parade-inc.net/products/p261102",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/11/10/190642.html"
+  ],
+  "verifiedAt": "2026-11-10",
+  "how": [
+   "ゲームセンターなどの景品（プライズ）。2026年11月中旬から順次登場"
+  ],
+  "note": "ふわふわの羊毛のような質感の、平たいマスコット。ちいかわ・くりまんじゅう・シーサーなど全10種。",
+  "autoAdded": true,
+  "addedAt": "2026-11-10",
+  "updatedAt": "2026-11-10"
+ },
+ {
+  "id": "20261115-osuwari2-resale",
+  "region": "jp",
+  "t": "カプセルトイ ちいかわ おすわりぬいぐるみ②（再販）",
+  "cat": "goods",
+  "s": "2026-11-15",
+  "sp": "mid",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のカプセルトイ売り場",
+  "area": "",
+  "price": "1回500円",
+  "q": "",
+  "qNone": "カプセルトイ（店頭販売）",
+  "src": "https://www.parade-inc.net/products/c260601",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/11/10/190653.html"
+  ],
+  "verifiedAt": "2026-11-10",
+  "how": [
+   "カプセルトイ（1回500円）。2026年11月中旬から順次登場"
+  ],
+  "note": "手のひらサイズ（約70mm）のおすわりぬいぐるみ第2弾、全4種（うさぎ・モモンガ・古本屋・ラッコ）。2026年6月に出たものの再販。",
+  "autoAdded": true,
+  "addedAt": "2026-11-10",
+  "updatedAt": "2026-11-10"
+ },
+ {
+  "id": "20261125-school-goods",
+  "region": "jp",
+  "t": "アニメちいかわ 新入学グッズ（2wayトートバッグ・シューズケース・ナップサック・巾着S3枚セット）",
+  "cat": "goods",
+  "s": "2026-11-25",
+  "sp": "late",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわマーケット、全国の雑貨店・量販店など",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "発売前で楽天に同じ商品の出品なし（11/10確認）",
+  "src": "https://x.com/chiikawa_kouhou/status/2119595834300060128",
+  "srcType": "official",
+  "srcs": [
+   "https://x.com/chiikawa_kouhou/status/2119595827966759013",
+   "https://animeanime.jp/article/2026/11/10/104646.html",
+   "https://nijimen.kusuguru.co.jp/topics/652801"
+  ],
+  "verifiedAt": "2026-11-10",
+  "how": [
+   "2026年11月下旬から、ちいかわマーケットや全国の雑貨店・量販店などで順次発売",
+   "巾着S3枚セットは、店舗によって発売日が違ったり、取り扱いがなかったりする"
+  ],
+  "note": "入学・進級向けの4アイテム。巾着S3枚セットはパープル・ピンク・ブルーの3枚組。",
+  "autoAdded": true,
+  "addedAt": "2026-11-10",
+  "updatedAt": "2026-11-10"
  }
 ]
