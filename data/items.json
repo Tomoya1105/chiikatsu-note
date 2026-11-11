@@ -3383,7 +3383,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-12",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3415,7 +3415,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-12",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-25",
@@ -4066,7 +4066,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-12",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-11-04",
@@ -4099,7 +4099,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-12",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-11-04",
@@ -4791,7 +4791,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-12",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-27",
@@ -5091,7 +5091,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000004138.000003639.html"
   ],
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-12",
   "org": {
    "name": "株式会社パルコ",
    "url": "https://cafe.parco.jp/",
@@ -6160,7 +6160,8 @@
   "note": "アニメ『ちいかわ』文具（鉛筆2B 4本セット352円、色鉛筆12色1,650円、コンパクトふでいれヨコピタ ホログラム2,310円、文具セット4,598円、名前シール・自由帳・下敷きなど全14種）、メモポン4（全6種・各2,200円）、スリーパー（ちいかわ／ハチワレ／うさぎいっぱいパターン・各1,650円）、ミニタオル（味見ッ・880円）、208ピースジグソーパズル（みんなで流れ星・1,540円）。",
   "autoAdded": true,
   "addedAt": "2026-11-06",
-  "updatedAt": "2026-11-06"
+  "updatedAt": "2026-11-06",
+  "xpostNote": "2026-11-12 公式ポストを検索。見つかったのはちいかわマーケット公式の11/6発売の「新商品一覧」（全体の案内で、この件の商品だけと言い切れない）のみ"
  },
  {
   "id": "20261105-movie-kinchaku-resale",
@@ -6422,7 +6423,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-12",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6587,7 +6588,7 @@
    "https://www.shop.post.japanpost.jp/shop/pages/chiikawa-nenga.aspx",
    "https://www.inside-games.jp/article/2026/11/09/190616.html"
   ],
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-12",
   "dl": [
    {
     "k": "受注",
@@ -6633,7 +6634,8 @@
   "note": "ふわふわの羊毛のような質感の、平たいマスコット。ちいかわ・くりまんじゅう・シーサーなど全10種。",
   "autoAdded": true,
   "addedAt": "2026-11-10",
-  "updatedAt": "2026-11-10"
+  "updatedAt": "2026-11-10",
+  "xpostNote": "2026-11-12 公式ポストを検索。パレード プライズ公式（@parade_prize、一覧にないアカウント）の11/4の予告のみ（ちいかわ公式のリポストは確かめられず）"
  },
  {
   "id": "20261115-osuwari2-resale",
@@ -6789,7 +6791,8 @@
     "d": "2026-11-11",
     "t": "オープン日の販売グッズとノベルティが発表されました"
    }
-  ]
+  ],
+  "xpostNote": "2026-11-12 公式ポストを検索。ナガノグッズ公式（@ngngoods_kouhou、一覧にないアカウント）の告知のみで、使えるものは見つからず"
  },
  {
   "id": "20261111-talking-momonga",
@@ -6846,7 +6849,8 @@
   "note": "11/13〜11/15の抽選による予約制に続く期間。",
   "autoAdded": true,
   "addedAt": "2026-11-11",
-  "updatedAt": "2026-11-11"
+  "updatedAt": "2026-11-11",
+  "xpostNote": "2026-11-12 chiikawamgmg の投稿を検索したが、11/16〜20の回の本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261123-babycastella-otaru-lottery2",
