@@ -928,3 +928,11 @@ html[data-season="newyear"] #today::after{content:" 🎍"}
 .recshop .chips{margin-bottom:10px}
 .recshop .tag{margin:8px 0 0}
 .popstrip.recent:empty{display:block;height:1px;padding:0;margin:0;box-shadow:none;background:none}
+
+/* 国内航空券（グッド・エアーズ）：ホテルのPRと同じ見た目。✈️は飾り（リンクの文言ではない）。計測用の1px画像は見えない位置に */
+.airwrap{position:relative}
+.airwrap img{position:absolute;left:0;bottom:0;width:1px;height:1px}
+.trip.air .trip-t{white-space:normal}
+.trip.air{border-radius:18px}
+.trip.air .trip-t::before{content:"✈️ "}
+.detail .trip.air,.detail .airwrap{margin-top:6px}

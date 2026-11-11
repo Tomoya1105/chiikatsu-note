@@ -3,6 +3,7 @@
 // ・/area/tokyo/ など … 都道府県（海外は国・地域）ごとの POP UP・イベント・カフェ
 // データ（items.json）から毎回自動で作り直すので、自動更新で情報が増えるとページも育っていく。
 
+import { airOk, airLink, AIR } from "./air.mjs";
 const PREFS = [
   ["hokkaido", "北海道", "北海道・東北"], ["aomori", "青森", "北海道・東北"], ["iwate", "岩手", "北海道・東北"], ["miyagi", "宮城", "北海道・東北"], ["akita", "秋田", "北海道・東北"], ["yamagata", "山形", "北海道・東北"], ["fukushima", "福島", "北海道・東北"],
   ["ibaraki", "茨城", "関東"], ["tochigi", "栃木", "関東"], ["gunma", "群馬", "関東"], ["saitama", "埼玉", "関東"], ["chiba", "千葉", "関東"], ["tokyo", "東京", "関東"], ["kanagawa", "神奈川", "関東"],
@@ -131,7 +132,7 @@ ${Object.entries(byYear).reverse().map(([y, ms]) => `<h2>${y}年</h2><ul class="
 ${now.length ? `<h2>開催中・発売中（${now.length}件）</h2>${list(now)}` : ""}
 ${soon.length ? `<h2>これから（${soon.length}件）</h2>${list(soon)}` : ""}
 ${!now.length && !soon.length ? `<p>いま${esc(nm)}で予定されているものはありません。決まり次第追加します。</p>` : ""}
-${hotel && (now.length || soon.length) ? `<a class="trip" href="${esc(hotel.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(hotel.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""}
+${hotel && (now.length || soon.length) ? `<a class="trip" href="${esc(hotel.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(hotel.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""}${isJp && AIR.prefs.includes(nm) && [...now, ...soon].some(it => airOk(it, areasOf(it).map(x => x.name), TODAY, isEvent)) ? airLink() : ""}
 ${TIPBOX(esc(nm))}
 ${ended.length ? `<h2>最近終わったもの</h2>${list(ended)}` : ""}
 <p style="margin-top:18px"><a class="btn" href="/area/">ほかの地域を見る</a> <a class="btn" href="/month/${thisMonth}/">今月の新商品まとめ</a></p>`);

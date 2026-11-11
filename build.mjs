@@ -5,6 +5,7 @@ import { loadArticles, renderMd, KINDS } from "./src/notes.mjs";
 import path from "node:path";
 import { makeOg, ogAvailable } from "./src/og.mjs";
 import { buildSeo, areasOf, monthOf } from "./src/seo.mjs";
+import { airOk, airLink } from "./src/air.mjs";
 
 const SITE = "https://chiikatsunote.com";
 const AFF = "582a6f7f.e1ade2b2.582a6f84.d5f85faa";
@@ -61,8 +62,8 @@ const YAHOO_AD = YAHOO_MODE === "affiliate";   // PR・sponsored を付けるの
 const MOSHIMO_YAHOO = "a_id=5838536&p_id=1225&pc_id=1925&pl_id=18502";   // もしもアフィリエイト（Yahoo!ショッピング）。2026-10-09 アカウント作り直しで a_id を 5838536 に変更。2026-11 登録削除中のため通常は使わない（再審査後に affiliate へ戻す）
 const yahooSearch = q => { const u = "https://shopping.yahoo.co.jp/search?p=" + encodeURIComponent(/ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q); return YAHOO_AD ? `https://af.moshimo.com/af/c/click?${MOSHIMO_YAHOO}&url=${encodeURIComponent(u)}` : u; };
 const yahooBtn = q => YAHOO_MODE === "off" || !q ? "" : `<a class="btn" href="${esc(yahooSearch(q))}" target="_blank" rel="${YAHOO_AD ? "noopener sponsored" : "noopener"}" data-yh>Yahoo!ショッピングで探す${YAHOO_AD ? ' <span class="tag">PR</span>' : ""}</a>`;
-const AD_PARTNERS = YAHOO_AD ? "楽天アフィリエイトと、もしもアフィリエイト（Yahoo!ショッピングなど）" : "楽天アフィリエイト";
-const AD_PARTNERS_LONG = YAHOO_AD ? "楽天グループ株式会社の「楽天アフィリエイト」と、株式会社もしもの「もしもアフィリエイト」（Yahoo!ショッピングなど）" : "楽天グループ株式会社の「楽天アフィリエイト」";
+const AD_PARTNERS = YAHOO_AD ? "楽天アフィリエイトと、もしもアフィリエイト（Yahoo!ショッピング・国内航空券など）" : "楽天アフィリエイトと、もしもアフィリエイト（国内航空券）";
+const AD_PARTNERS_LONG = YAHOO_AD ? "楽天グループ株式会社の「楽天アフィリエイト」と、株式会社もしもの「もしもアフィリエイト」（Yahoo!ショッピング・国内航空券など）" : "楽天グループ株式会社の「楽天アフィリエイト」と、株式会社もしもの「もしもアフィリエイト」（国内航空券）";
 const YAHOO_PLAIN_NOTE = YAHOO_MODE === "plain" ? "Yahoo!ショッピングへのリンクは広告ではなく、紹介料は発生しません。" : "";
 const aff = u => `https://hb.afl.rakuten.co.jp/hgc/${AFF}/?pc=${encodeURIComponent(u)}`;
 const rakutenSearch = q => aff("https://search.rakuten.co.jp/search/mall/" + encodeURIComponent(/ちいかわ|chiikawa/i.test(q) ? q : "ちいかわ " + q) + "/");
@@ -353,7 +354,7 @@ addEventListener("pageshow",ui);addEventListener("storage",ui);ui();})();</scrip
 function f(){var sh=document.querySelector(".share");if(!sh)return;var h=document.querySelector("[data-dhero]"),long=(h&&/(^| )on( |$)/.test(h.className))||(sh.getBoundingClientRect().top-tb.getBoundingClientRect().bottom>innerHeight*.6);bb.hidden=!long;}
 document.addEventListener("DOMContentLoaded",f);addEventListener("load",f);addEventListener("resize",f);if(window.ResizeObserver){var m=document.querySelector("main");if(m)new ResizeObserver(f).observe(m);}
 var hh=document.querySelector("[data-dhero]");if(hh&&window.MutationObserver)new MutationObserver(f).observe(hh,{attributes:true,attributeFilter:["class"]});})();</script>` : ""}
-    ${(() => { const tr = it.area ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}
+    ${(() => { const tr = it.area ? travel(it) : null; return tr ? `<a class="trip" href="${esc(tr.url)}" target="_blank" rel="noopener sponsored"><span class="trip-k">遠征するなら</span><span class="trip-t">${esc(tr.label)}（楽天トラベル）</span><span class="tag">PR</span></a>` : ""; })()}${airOk(it, areasOf(it).map(a => a.name), TODAY, isEvent) ? airLink() : ""}
     ${(() => { const R = relatedOf(it, items); return R.length ? `<section class="relbox"><h2 class="relh">あわせてチェック</h2><ul class="rel">${R.map(r => `<li><a href="/items/${encodeURIComponent(r.x.id)}/"><span class="relk">${esc(r.why)}</span><span class="relt">${esc(r.x.t)}</span><span class="reld">${(md => md(r.x.s) + (r.x.e ? "〜" + md(r.x.e) : ""))(v => Number(v.slice(5, 7)) + "/" + Number(v.slice(8, 10)))}</span></a></li>`).join("")}</ul></section>` : ""; })()}
     <div class="share"><span class="k">友だちに教える</span>
       <a class="btn" href="https://line.me/R/share?text=${encodeURIComponent(it.t + "\n" + SITE + url)}" target="_blank" rel="noopener">LINEで送る</a>
@@ -433,7 +434,7 @@ write("privacy/index.html", page({
   title: "プライバシーポリシー｜ちい活ノート", desc: "ちい活ノートのプライバシーポリシー。", url: "/privacy/",
   body: doc("プライバシーポリシー", `<h2>集める情報</h2><p>当サイトは会員登録の仕組みを持たず、氏名やメールアドレスなどの個人情報を集めていません。マイリストと推しカラーの設定は、閲覧している端末のブラウザ（ローカルストレージ）にだけ保存され、運営者には送られません。</p><h2>通知について</h2><p>「通知を受け取る」を選んだ方の、通知を届けるための宛先（ブラウザが発行する文字列）と「ほしい」に入れた予定のIDだけを保存し、発売前日・当日のお知らせにのみ使います。マイリストの「通知をやめる」でいつでも削除できます。</p><h2>アクセスの集計</h2><p>サイトをよりよくするため、ページの表示回数や、タブ・リンクが押された回数を日ごとの合計として集計しています。Cookieは使わず、IPアドレスなど個人を特定できる情報は保存していません。同じ訪問の中で「詳細を見た」「購入先を押した」などの流れを数えるため、ブラウザの中（タブを閉じると消える領域）に一時的な印を置きますが、送るのは日ごとの合計に足す回数だけです。運営者や確認に協力いただく方の端末は「テストモード」にでき、その印はその端末のブラウザの中にだけ保存されます。また、Cloudflare社の「Cloudflare Web Analytics」で、訪問数や表示の速さを集計しています。こちらもCookieを使わず、個人を特定する情報は集めません。</p>
 <h2>Xの投稿の表示について</h2><p>「公式の画像を見る」を押したときだけ、X（旧Twitter）の埋め込み機能で公式アカウントの投稿を表示します。そのとき、閲覧情報がX社に送られることがあります（X社のプライバシーポリシーが適用されます）。押さなければXには何も送られません。トラッキングを控える設定（DNT）で読み込んでいます。</p><h2>お問い合わせについて</h2><p>お問い合わせ先：<a href="mailto:contact@chiikatsunote.com">contact@chiikatsunote.com</a>（またはお問い合わせフォーム）。お問い合わせフォームから送られた内容（種類・お名前・メールアドレス・本文）は、お返事とサイトの改善のためだけに使い、第三者に渡すことはありません。180日たつと自動で消えます。送りすぎを防ぐため、IPアドレスから作った一時的な値を1日だけ使いますが、IPアドレスそのものは保存しません。</p><h2>まちがい報告・情報の提供</h2><p>「情報のまちがいを報告する」と「情報を教える」から送られた内容（選んだ項目、入力した文章とURL）は、掲載情報を直したり、新しい情報を確かめて載せたりするためだけに使い、90日たつと自動で消えます。送られた情報は、公式の発表で確かめられたものだけを掲載します。個人を特定できる情報は書き込まないでください。</p>
-<h2>アフィリエイトについて</h2><p>当サイトは${AD_PARTNERS_LONG}に参加しています。${YAHOO_PLAIN_NOTE}リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。</p>
+<h2>アフィリエイトについて</h2><p>当サイトは${AD_PARTNERS_LONG}に参加しています。${YAHOO_PLAIN_NOTE}リンク先の楽天のサービスでは、楽天のプライバシーポリシーに基づいてCookieなどが使われることがあります。国内航空券の広告（もしもアフィリエイト）を載せたページでは、広告の表示や成果の計測のために、株式会社もしものサービスでCookieなどが使われることがあります。</p>
 <h2>アクセス解析・広告配信について</h2><p>今後、アクセス解析ツールや第三者配信の広告（Google AdSense など）を導入する場合は、Cookieを使って閲覧情報を集めることがあります。導入する際はこのページでお知らせします。</p>
 <h2>免責事項</h2><p>掲載情報は正確になるよう努めていますが、発売日や会期は変更されることがあります。掲載内容によって生じた損害について、運営者は責任を負いません。最新の情報は必ず公式の発表をご確認ください。</p>
 <p class="credit">制定日：2026年10月3日</p>`),

@@ -46,14 +46,48 @@ const YMODE = JSON.parse(read("src/affiliate.json")).yahoo;
 if (!app.includes(`const YAHOO_MODE = "${YMODE}"`)) errs.push("app.js の YAHOO_MODE が src/affiliate.json と合っていません");
 for (const d of pagesToCheck) {
   const h = read(`dist/${d}/index.html`);
-  const mo = [...h.matchAll(/href="(https:\/\/af\.moshimo\.com[^"]*)"/g)].map(m => m[1]), yh = [...h.matchAll(/href="(https:\/\/shopping\.yahoo\.co\.jp[^"]*)"/g)];
+  const mo = [...h.matchAll(/href="(https:\/\/af\.moshimo\.com[^"]*)"/g)].map(m => m[1]).filter(u => !/p_id=7702&amp;/.test(u)), yh = [...h.matchAll(/href="(https:\/\/shopping\.yahoo\.co\.jp[^"]*)"/g)];
   if (YMODE === "affiliate") { for (const u of mo) if (!/a_id=5838536&/.test(u.replace(/&amp;/g, "&"))) errs.push(`${d}: もしものIDがちがうリンク ${u.slice(0, 80)}`); }
   else if (mo.length) errs.push(`${d}: yahoo=${YMODE} なのに、もしものリンクが残っています`);
   if (YMODE === "off" && (yh.length || /data-yh/.test(h))) errs.push(`${d}: yahoo=off なのに、Yahoo!のリンクが残っています`);
   if (YMODE === "plain") { for (const m of h.matchAll(/<a [^>]*data-yh[^>]*>/g)) if (/sponsored/.test(m[0]) || !/href="https:\/\/shopping\.yahoo\.co\.jp\//.test(m[0])) errs.push(`${d}: plainのYahoo!リンクにsponsoredが付いているか、直接のURLではありません`); }
 }
 if (YMODE === "affiliate" && !app.includes('a_id: "5838536"')) errs.push("app.js から もしも（Yahoo!）のIDが消えています");
-if (YMODE !== "affiliate") for (const f of ["index.html", "privacy/index.html", "about/index.html"]) if (fs.existsSync(`dist/${f}`) && /もしもアフィリエイト/.test(read(`dist/${f}`))) errs.push(`${f}: yahoo=${YMODE} なのに、もしもアフィリエイトの記載が残っています`);
+if (YMODE !== "affiliate") for (const f of ["index.html"]) if (fs.existsSync(`dist/${f}`) && /もしもアフィリエイト/.test(read(`dist/${f}`))) errs.push(`${f}: yahoo=${YMODE} なのに、もしもアフィリエイトの記載が残っています`);
+// 国内航空券（グッド・エアーズ／もしも）：素材のとおりのリンクが、承認した条件のページにだけ出ていること
+{
+  const { airOk, AIR_Q, AIR_TEXT } = await import("../src/air.mjs");
+  const { areasOf } = await import("../src/seo.mjs");
+  const TODAY = new Date().toISOString().slice(0, 10), isEv = x => x.cat === "event" || x.cat === "cafe";
+  const all = JSON.parse(read("data/items.json")), list = (Array.isArray(all) ? all : all.items).filter(x => !x.hidden);
+  const wantItems = new Set(list.filter(x => airOk(x, areasOf(x).map(a => a.name), TODAY, isEv)).map(x => x.id));
+  const q = AIR_Q.replace(/&/g, "&amp;");
+  const gotPages = [];
+  const walk = d => { for (const n of fs.readdirSync(d, { withFileTypes: true })) { const f = `${d}/${n.name}`; if (n.isDirectory()) walk(f); else if (n.name.endsWith(".html")) { const h = fs.readFileSync(f, "utf8"); if (/af\.moshimo\.com\/af\/c\/click\?a_id=5849049|data-air/.test(h)) gotPages.push([f, h]); } } };
+  walk("dist");
+  const gotItems = new Set();
+  for (const [f, h] of gotPages) {
+    const m = f.match(/^dist\/(items|area)\/([^/]+)\/index\.html$/);
+    if (!m) { errs.push(`${f}: 国内航空券のリンクが、詳細ページ・地域ページ以外にあります`); continue; }
+    const tags = [...h.matchAll(/<a [^>]*data-air[^>]*>[\s\S]*?<\/a>/g)];
+    if (tags.length !== 1) { errs.push(`${f}: 国内航空券のリンクが${tags.length}個あります（1個のはず）`); continue; }
+    const t = tags[0][0];
+    if (!t.includes(`href="https://af.moshimo.com/af/c/click?${q}"`)) errs.push(`${f}: 国内航空券のリンクが、承認した広告コードとちがいます`);
+    if (!/rel="[^"]*sponsored[^"]*"/.test(t) || !/rel="[^"]*nofollow[^"]*"/.test(t) || !/rel="[^"]*noopener[^"]*"/.test(t)) errs.push(`${f}: 国内航空券のリンクの rel（sponsored / nofollow / noopener）が足りません`);
+    if (!/referrerpolicy="no-referrer-when-downgrade"/.test(t) || !/ attributionsrc[ >]/.test(t)) errs.push(`${f}: 国内航空券のリンクから referrerpolicy / attributionsrc が消えています`);
+    if (!t.includes(`<span class="trip-t">${AIR_TEXT}</span>`)) errs.push(`${f}: 国内航空券の広告文が素材とちがいます（改変しない）`);
+    if (!/<span class="tag">PR<\/span>/.test(t)) errs.push(`${f}: 国内航空券のリンクに PR 表記がありません`);
+    if (!h.includes(`<img src="https://i.moshimo.com/af/i/impression?${q}" width="1" height="1"`)) errs.push(`${f}: 国内航空券の計測用の画像（impression）がありません`);
+    if ((h.match(/i\.moshimo\.com\/af\/i\/impression/g) || []).length !== 1) errs.push(`${f}: 計測用の画像が1個ではありません`);
+    if (m[1] === "items") { gotItems.add(decodeURIComponent(m[2])); if (!wantItems.has(decodeURIComponent(m[2]))) errs.push(`${f}: 条件に合わないイベントに国内航空券が出ています`); }
+  }
+  const wantAreas = new Set(list.filter(x => wantItems.has(x.id)).flatMap(x => areasOf(x).map(a => a.slug)));
+  const gotAreas = new Set(gotPages.map(([f]) => f.match(/^dist\/area\/([^/]+)\//)).filter(Boolean).map(m => m[1]));
+  for (const a of wantAreas) if (!gotAreas.has(a)) errs.push(`area/${a}: 条件に合うのに国内航空券が出ていません`);
+  for (const a of gotAreas) if (!wantAreas.has(a)) errs.push(`area/${a}: 条件に合う掲載がないのに国内航空券が出ています`);
+  console.log(`国内航空券：詳細ページ${gotItems.size}件・地域ページ${gotAreas.size}件（${[...gotAreas].join("・")}）`);
+  for (const id of wantItems) if (!gotItems.has(id)) errs.push(`items/${id}: 条件に合うのに国内航空券が出ていません`);
+}
 // 運営者のコラム（/note/）：承認済みの記事が出ていること、AI利用の注記・非公式の注記があること、サイトマップに載っていること
 {
   const lock = JSON.parse(read("data/articles.lock.json"));
