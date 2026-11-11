@@ -1,5 +1,38 @@
 [
  {
+  "id": "20261111-talking-momonga",
+  "date": "2026-11-11",
+  "tag": "goods",
+  "title": "モモンガだらけの秋冬アパレル、トーキングで受注開始",
+  "sum": "モモンガがたくさん並ぶデザインのパーカーやブランケットなど全9デザインを、Talking ODMで11/11昼から受注生産で販売。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/11/190715.html",
+  "itemId": "20261111-talking-momonga",
+  "addedAt": "2026-11-11"
+ },
+ {
+  "id": "20261111-otaru-castella-lottery2",
+  "date": "2026-11-11",
+  "tag": "goods",
+  "title": "ベビーカステラ小樽店、11/23〜29も抽選の予約制",
+  "sum": "小樽店は11/23〜29も入店予約制。LINEでの抽選の申し込みは11/14(土)18時まで、結果は11/16に発表。",
+  "source": "ちいかわもぐもぐ本舗",
+  "src": "https://www.chiikawamogumogu.jp/2026/11/11/post-2528",
+  "itemId": "20261123-babycastella-otaru-lottery2",
+  "addedAt": "2026-11-11"
+ },
+ {
+  "id": "20261111-fushimi-reserve",
+  "date": "2026-11-11",
+  "tag": "goods",
+  "title": "もぐもぐ本舗 京都伏見店、11/16〜20は先着の入店予約",
+  "sum": "京都伏見店は11/16〜20も入店予約制。LINEで各日の前日20時から先着順に受け付け、予定枚数で終了。",
+  "source": "ちいかわもぐもぐ本舗",
+  "src": "https://www.chiikawamogumogu.jp/2026/11/11/post-2807",
+  "itemId": "20261116-mogumogu-fushimi-reserve",
+  "addedAt": "2026-11-11"
+ },
+ {
   "id": "20261110-nagano-market-umeda",
   "date": "2026-11-10",
   "tag": "goods",

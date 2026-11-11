@@ -1364,7 +1364,7 @@
   "time": "",
   "updatedAt": "2026-11-02",
   "srcType": "partner",
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "srcs": [
    "https://www.bandai.co.jp/candy/chocosurp/chiikawa2/"
   ],
@@ -1431,7 +1431,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "rb": [
    {
     "n": "通常版",
@@ -2149,7 +2149,7 @@
   "addedAt": "2026-10-04",
   "updatedAt": "2026-11-02",
   "srcType": "official",
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "qNone": "ちいかわベーカリーの店頭販売のみ",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000335.000086964.html"
@@ -2556,7 +2556,7 @@
    "https://prtimes.jp/main/html/rd/p/000004179.000064643.html",
    "https://times.abema.tv/articles/-/10286120"
   ],
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "dl": [
    {
     "k": "抽選",
@@ -5428,7 +5428,7 @@
    "https://www.inside-games.jp/article/2026/10/28/189968.html",
    "https://www.inside-games.jp/article/2026/11/02/190268.html"
   ],
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "note": "合格ラーメンを食べるちいかわとハチワレの全2種（約7cm）。2つ並べるとマンガの場面を再現できる。フリュープライズ公式の登場時期は「2026年11月4週」。",
   "how": [
    "ゲームセンターなどのクレーンゲームの景品（プライズ）。11月4週から順次展開予定"
@@ -5547,7 +5547,7 @@
   "autoAdded": true,
   "addedAt": "2026-11-02",
   "updatedAt": "2026-11-02",
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "id": "20261122-photoparty-misumi",
   "t": "ちいかわ むちゃフォトパーティ!!＠オプシア ミスミ",
   "s": "2026-11-22",
@@ -6784,5 +6784,98 @@
     "t": "オープン日の販売グッズとノベルティが発表されました"
    }
   ]
+ },
+ {
+  "id": "20261111-talking-momonga",
+  "region": "jp",
+  "t": "ちいかわ モモンガだらけデザイン 秋冬コレクション（Talking ODM 受注生産）",
+  "cat": "goods",
+  "s": "2026-11-11",
+  "sp": "day",
+  "e": null,
+  "time": "12:00〜",
+  "eNote": "受注生産",
+  "place": "Talking ODM（オンラインショップ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "Talking ODMのオンラインショップのみの受注生産",
+  "src": "https://odm-shop.talking.design/blogs/news/ck-momonga-2026fw-lp",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/11/11/190715.html"
+  ],
+  "verifiedAt": "2026-11-11",
+  "how": [
+   "Talking ODMのオンラインショップで注文する完全受注生産。支払いの翌日から5〜10営業日ほどで発送"
+  ],
+  "note": "モモンガだらけデザインの秋冬アイテム。ブランケット・プルオーバーパーカー・スウェット・長袖Tシャツ・ジップパーカーなどで、新しい「ォーーーッ」を含む全9デザイン。報道では11/11(水)12時から販売。",
+  "autoAdded": true,
+  "addedAt": "2026-11-11",
+  "updatedAt": "2026-11-11",
+  "xpostNote": "2026-11-11 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず（talkingheads_0 モモンガだらけ）"
+ },
+ {
+  "id": "20261116-mogumogu-fushimi-reserve",
+  "region": "jp",
+  "t": "ちいかわもぐもぐ本舗 京都伏見店 入店予約制（11/16〜11/20・先着）",
+  "cat": "cafe",
+  "s": "2026-11-16",
+  "sp": "day",
+  "e": "2026-11-20",
+  "time": "",
+  "eNote": "入店は予約（LINEで先着順）",
+  "place": "ちいかわもぐもぐ本舗 京都伏見店（京都府京都市伏見区深草稲荷中之町46-1）",
+  "area": "京都市",
+  "price": "",
+  "q": "",
+  "src": "https://www.chiikawamogumogu.jp/2026/11/11/post-2807",
+  "srcType": "official",
+  "verifiedAt": "2026-11-11",
+  "how": [
+   "11/16(月)〜11/20(金)は入店予約が必要。ちいかわもぐもぐ本舗のLINE公式アカウントで受付",
+   "各日とも前日の20時から先着順で受付し、予定枚数に達し次第終了",
+   "デジタルチケットは1人1枚必要"
+  ],
+  "note": "11/13〜11/15の抽選による予約制に続く期間。",
+  "autoAdded": true,
+  "addedAt": "2026-11-11",
+  "updatedAt": "2026-11-11"
+ },
+ {
+  "id": "20261123-babycastella-otaru-lottery2",
+  "region": "jp",
+  "t": "ちいかわベビーカステラ 小樽店 入店予約制（11/23〜11/29・抽選）",
+  "cat": "cafe",
+  "s": "2026-11-23",
+  "sp": "day",
+  "e": "2026-11-29",
+  "time": "",
+  "eNote": "期間中は入店予約制（LINEで抽選）",
+  "place": "ちいかわベビーカステラ 小樽店（北海道小樽市堺町6-1）",
+  "area": "小樽",
+  "price": "",
+  "q": "",
+  "src": "https://www.chiikawamogumogu.jp/2026/11/11/post-2528",
+  "srcType": "official",
+  "verifiedAt": "2026-11-11",
+  "dl": [
+   {
+    "k": "抽選",
+    "n": "ちいかわベビーカステラ 小樽店 11/23〜11/29の入店予約（LINEで抽選）",
+    "until": "2026-11-14T18:00",
+    "u": "https://www.chiikawamogumogu.jp/2026/11/11/post-2528"
+   }
+  ],
+  "how": [
+   "11/23(月・祝)〜11/29(日)は入店予約が必要。ちいかわもぐもぐ本舗のLINE公式アカウントで抽選に申し込む",
+   "申し込みは11/11(水)18:00〜11/14(土)18:00、結果発表は11/16(月)。1日1枠で複数日に申し込めるが、当選は1アカウント1回まで",
+   "空き枠は来店前日20時からLINEで先着順に案内（位置情報が必要で、お店から約30km以内）",
+   "予約は入店の保証で、商品の購入を保証するものではない"
+  ],
+  "note": "11/18〜11/22の予約制に続く期間。",
+  "autoAdded": true,
+  "addedAt": "2026-11-11",
+  "updatedAt": "2026-11-11"
  }
 ]
