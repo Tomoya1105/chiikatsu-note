@@ -278,7 +278,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-11",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -339,7 +339,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-11",
   "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
  {
@@ -429,7 +429,7 @@
   "time": "",
   "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-11",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ",
   "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
@@ -1772,7 +1772,7 @@
   "place": "ちいかわらんど、ちいかわPOP UP STORE、スーパー、ドラッグストアなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-11",
   "xpost": "https://x.com/chiikawa_kouhou/status/2113072853088358705",
   "xpostNote": "投稿日2026-10-22 10:00（IDから計算）。本文に「アニメちいかわ きのこのポタージュ・ほうれんそうのポタージュ」「10月22日（木）より」「オリジナルシール1枚入り」（2026-10-24 検索結果で確認）",
   "srcs": [
@@ -2159,7 +2159,9 @@
     "d": "2026-11-02",
     "t": "店頭販売の開始日が11/24に決まりました"
    }
-  ]
+  ],
+  "xpost": "https://x.com/chiikawabakery/status/2117179910368145723",
+  "xpostNote": "投稿日2026-11-02（IDから計算・ちいかわベーカリー公式）。本文に「アドベントカレンダー」「11/24(火)より店頭販売スタート」（2026-11-11確認）。"
  },
  {
   "id": "20261005-puku-churu",
@@ -2784,7 +2786,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-11",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -2854,7 +2856,8 @@
     "d": "2026-10-23",
     "t": "販売グッズとオープン記念ノベルティが発表されました"
    }
-  ]
+  ],
+  "xpostNote": "2026-11-11 公式ポストを検索。見つかったのはちいかわパーク公式の2026-08-05の「11月オープン予定」の告知のみ（開業日の記載がなく、開始の60日より前なので見送り）"
  },
  {
   "id": "20261016-park-pouch",
@@ -3310,7 +3313,7 @@
    "https://www.nownews.com/news/6888575",
    "https://faq-tw.gu-global.com/pkb_Home_GU_TW?id=kA0Ie000000TOev&l=zh_TW&fs=RelatedArticle"
   ],
-  "verifiedAt": "2026-11-08",
+  "verifiedAt": "2026-11-11",
   "how": [
    "第1弾は11/20(金)、第2弾は11/27(金)に発売",
    "GU台湾オンラインストアで先行予約：台湾時間11/2(月)9:00〜11/5(木)23:59（日本時間11/6 0:59まで）",
@@ -3348,7 +3351,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-09",
+  "verifiedAt": "2026-11-11",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3976,7 +3979,8 @@
   "note": "iPhone 18 Pro／17 Pro・18 Pro Max／17 Pro Max対応の新作。キャラクターが乗ったぷっくりフレームの「IIIIfit プランプフレーム」（MagSafe対応あり）、MagSafeリングに座る「Camera Frame」、カメラカバーなど。",
   "autoAdded": true,
   "addedAt": "2026-10-16",
-  "updatedAt": "2026-10-16"
+  "updatedAt": "2026-10-16",
+  "xpostNote": "2026-11-11 公式ポストを検索したが、見つかったのはiPhone17対応の回のみ（不一致）"
  },
  {
   "id": "20261015-book-keyholder2",
@@ -6599,7 +6603,8 @@
   "note": "同じ柄の年賀はがき3枚とおまけシール1シートのセット（エンスカイ）。",
   "autoAdded": true,
   "addedAt": "2026-11-09",
-  "updatedAt": "2026-11-09"
+  "updatedAt": "2026-11-09",
+  "xpostNote": "2026-11-11 公式ポストを検索したが、見つかったのは2024・2025年の回のみ（不一致）"
  },
  {
   "id": "20261115-sheepwa-flat-mascot",
@@ -6689,7 +6694,8 @@
   "note": "入学・進級向けの4アイテム。巾着S3枚セットはパープル・ピンク・ブルーの3枚組。",
   "autoAdded": true,
   "addedAt": "2026-11-10",
-  "updatedAt": "2026-11-10"
+  "updatedAt": "2026-11-10",
+  "xpostNote": "2026-11-11 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261115-charm3",
