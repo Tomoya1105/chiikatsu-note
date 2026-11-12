@@ -1,5 +1,16 @@
 [
  {
+  "id": "20261112-mayer-blanket-again",
+  "date": "2026-11-12",
+  "tag": "goods",
+  "title": "大きなマイヤーブランケットがプライズで再登場",
+  "sum": "約100×150cmのふわふわブランケット（全2種）が、パレードのプライズとしてまた登場。ゲームセンターなどで順次展開。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/12/190833.html",
+  "itemId": "20261125-parade-mayer-blanket",
+  "addedAt": "2026-11-12"
+ },
+ {
   "id": "20261112-chiikawa-clinic",
   "date": "2026-11-12",
   "tag": "event",
@@ -18,7 +29,7 @@
   "sum": "週刊誌「モーニング」51号（11/19発売）で、ナガノさん描き下ろしのちいかわが表紙に。センターカラーで、この号でしか読めない新作エピソードも載る。",
   "source": "MANTANWEB",
   "src": "https://mantan-web.jp/article/20261112dog00m200023000a.html",
-  "itemId": "",
+  "itemId": "20261119-morning51",
   "addedAt": "2026-11-12"
  },
  {
