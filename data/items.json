@@ -429,7 +429,7 @@
   "time": "",
   "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ",
   "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
@@ -1772,7 +1772,7 @@
   "place": "ちいかわらんど、ちいかわPOP UP STORE、スーパー、ドラッグストアなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "xpost": "https://x.com/chiikawa_kouhou/status/2113072853088358705",
   "xpostNote": "投稿日2026-10-22 10:00（IDから計算）。本文に「アニメちいかわ きのこのポタージュ・ほうれんそうのポタージュ」「10月22日（木）より」「オリジナルシール1枚入り」（2026-10-24 検索結果で確認）",
   "srcs": [
@@ -2786,7 +2786,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -3361,7 +3361,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3489,7 +3489,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -5599,7 +5599,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000335.000086964.html"
   ],
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "how": [
    "サンタ姿のちいかわ・ハチワレ・うさぎパンは11/13(金)〜12/27(日)、表参道とOSAKAの両店で販売",
    "3個買うと限定デザインのBOXに入れてもらえる（キャラクターは自由に選べる）",
@@ -5689,7 +5689,7 @@
    "https://www.sina.cn/media/7963282024",
    "https://www.ctdsb.net/c1738_202610/2875402.html"
   ],
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "how": [
    "予約なしで入場できる（中国ちいかわ公式の告知より）"
   ],
@@ -6294,7 +6294,7 @@
   "sp": "day",
   "e": null,
   "time": "18:00〜",
-  "eNote": "追加生産分・予約（ファーバッグ3種・ファーマフラー（ちいかわ・ハチワレ）は完売）",
+  "eNote": "追加生産分・予約（ボアブルゾン 毛量・長袖Tシャツ HAIR UP. CHOW DOWN. は完売）",
   "place": "トーキング公式オンラインストア",
   "area": "",
   "price": "3,300円〜8,250円",
@@ -6315,7 +6315,7 @@
    "https://x.com/talkingheads_0/status/2118672553938244009",
    "https://www.inside-games.jp/article/2026/11/13/190863.html"
   ],
-  "verifiedAt": "2026-11-13",
+  "verifiedAt": "2026-11-14",
   "how": [
    "トーキング公式オンラインストアで追加生産分を予約販売（11/13(金)18時〜）",
    "入荷予定は商品ごとに12月下旬・1月中旬・1月下旬（商品ページに記載）"
@@ -6323,8 +6323,12 @@
   "note": "11/6発売で即完売した「毛量」「Fluffy Time」シリーズ10種の追加生産。ボアブルゾン 毛量（トリオ・8,250円）、長袖Tシャツ HAIR UP. CHOW DOWN.（4,950円）、ファーハット2種（各4,180円）、ファーマフラー Fluffy Time 3種（各3,300円）、ファーバッグ Fluffy Time 3種（各5,500円）。",
   "autoAdded": true,
   "addedAt": "2026-11-07",
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-14",
   "log": [
+   {
+    "d": "2026-11-14",
+    "t": "ファーバッグ・ファーマフラーが再び予約可能に。ボアブルゾンと長袖Tは完売"
+   },
    {
     "d": "2026-11-13",
     "t": "予約販売が始まり、ファーバッグ3種などが完売しました"
@@ -6933,9 +6937,10 @@
   "srcType": "press",
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000083.000168561.html",
-   "https://x.com/kiddyevent/status/2120714543215304734"
+   "https://x.com/kiddyevent/status/2120714543215304734",
+   "https://x.com/chiikawa_market/status/2121128477948813591"
   ],
-  "verifiedAt": "2026-11-13",
+  "verifiedAt": "2026-11-14",
   "org": {
    "name": "株式会社キデイランド",
    "url": "https://www.kiddyland.co.jp/",
@@ -6949,11 +6954,15 @@
    "1会計 税込3,300円以上でプラスチックカード、5,500円以上でボールペン、8,800円以上でおかおバッジ（なくなり次第終了）",
    "催事8会場はLINEで入店予約。11/27〜11/30分は抽選（11/13 10:00〜11/15 23:59、当選発表11/16）、12/1〜12/10分は前日18:00から先着"
   ],
-  "note": "ナースやお医者さんの姿になったちいかわたちがテーマの期間限定ショップ。グッズ第2弾は12/11(金)発売予定。営業時間は会場ごとに異なる。",
+  "note": "ナースやお医者さんの姿になったちいかわたちがテーマの期間限定ショップ。グッズ第2弾は12/11(金)発売予定。営業時間は会場ごとに異なる。オンラインくじ「ちいかわくじ」で11/27に予定していた一部の商品は販売見合わせ（販売するときは改めて案内）。",
   "autoAdded": true,
   "addedAt": "2026-11-12",
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-14",
   "log": [
+   {
+    "d": "2026-11-14",
+    "t": "ちいかわくじの一部商品が販売見合わせになりました"
+   },
    {
     "d": "2026-11-13",
     "t": "催事8会場の入店抽選（11/15 23:59締切）を追加しました"
@@ -7203,5 +7212,57 @@
   "autoAdded": true,
   "addedAt": "2026-11-13",
   "updatedAt": "2026-11-13"
+ },
+ {
+  "id": "20261127-pus-aeon-narita",
+  "region": "jp",
+  "t": "ちいかわPOP UP STORE＠イオンモール成田",
+  "cat": "event",
+  "s": "2026-11-27",
+  "sp": "day",
+  "e": "2026-12-14",
+  "time": "",
+  "eNote": "",
+  "place": "イオンモール成田 専門店街1F 和み広場（千葉県成田市）",
+  "area": "成田",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawa-info.jp/p26/pus_anrt/index.html"
+  ],
+  "verifiedAt": "2026-11-14",
+  "note": "",
+  "autoAdded": true,
+  "addedAt": "2026-11-14",
+  "updatedAt": "2026-11-14",
+  "xpostNote": "2026-11-14 公式ポストを検索（chiikawa_popup イオンモール成田）。見つかったのは同じ会場の過去のイベントのみ（不一致）"
+ },
+ {
+  "id": "20261128-pus-aeon-hanyu",
+  "region": "jp",
+  "t": "ちいかわPOP UP STORE＠イオンモール羽生",
+  "cat": "event",
+  "s": "2026-11-28",
+  "sp": "day",
+  "e": "2026-12-13",
+  "time": "",
+  "eNote": "",
+  "place": "イオンモール羽生 1F 東コート（埼玉県羽生市）",
+  "area": "羽生",
+  "price": "",
+  "q": "",
+  "src": "https://chiikawa-info.jp/pus.html",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawa-info.jp/p26/pus_ahny/index.html"
+  ],
+  "verifiedAt": "2026-11-14",
+  "note": "",
+  "autoAdded": true,
+  "addedAt": "2026-11-14",
+  "updatedAt": "2026-11-14",
+  "xpostNote": "2026-11-14 公式ポストを検索（chiikawa_popup イオンモール羽生）。見つかったのは同じ会場の過去のイベントのみ（不一致）"
  }
 ]
