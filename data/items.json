@@ -1364,7 +1364,7 @@
   "time": "",
   "updatedAt": "2026-11-02",
   "srcType": "partner",
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "srcs": [
    "https://www.bandai.co.jp/candy/chocosurp/chiikawa2/"
   ],
@@ -1431,7 +1431,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "official",
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "rb": [
    {
     "n": "通常版",
@@ -2903,7 +2903,7 @@
   "q": "ちいかわ キャラマグネッツ5",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117929335000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "note": "アクリル製マグネット全21種（レアはオーロラ・キラキララメ・フレームの3種）＋ガム1個。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -4926,7 +4926,7 @@
   "srcs": [
    "https://m.21jingji.com/article/20261021/herald/f2cca8bea1c320cba86603cfbb4c4172.html"
   ],
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "note": "北京で初めてのちいかわ公式の展示・ポップアップ。ちいかわ公式微博の発表を伝える報道で確認。原文：吉伊卡哇 北京快闪店（朝阳合生汇）。",
   "how": [
    "9/27からは予約なしで入場できる（公式微博の案内を伝える報道より）"
@@ -5322,7 +5322,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000138.000035374.html"
   ],
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "dl": [
    {
     "k": "抽選",
@@ -5563,7 +5563,7 @@
   "autoAdded": true,
   "addedAt": "2026-11-02",
   "updatedAt": "2026-11-02",
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "id": "20261122-photoparty-misumi",
   "t": "ちいかわ むちゃフォトパーティ!!＠オプシア ミスミ",
   "s": "2026-11-22",
@@ -5972,31 +5972,38 @@
   "cat": "goods",
   "s": "2026-11-04",
   "sp": "day",
-  "e": null,
+  "e": "2027-02-28",
   "time": "",
   "eNote": "",
   "place": "ESCAPE.ID（郵送販売）、ローソンメトロス11店舗（11/9から）",
   "area": "",
-  "price": "",
+  "price": "2,530円（送料別）",
   "q": "",
   "qNone": "謎解きキット（ESCAPE.IDとローソンメトロスで販売）",
   "src": "https://prtimes.jp/main/html/rd/p/000000192.000148619.html",
   "srcType": "press",
   "srcs": [
-   "https://escape.id/chiikawa/"
+   "https://escape.id/chiikawa/",
+   "https://escape.id/chiikawa-org/p-chiikawa-kit/"
   ],
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-14",
   "how": [
    "ESCAPE.IDで11/4から郵送販売、11/9(月)から順次発送",
    "ローソンメトロス11店舗（赤坂見附・池袋南西口・渋谷・新宿東口など）で11/9から店頭販売",
    "プレイできるのは11/9〜2027/2/28",
-   "この版だけのオリジナルポストカード付き"
+   "この版だけのオリジナルポストカードと、イベントのクリア特典だった「ぷくぷくシール」付き"
   ],
   "note": "11/3までに通常版キットを買った人は、追加で買わなくても11/9から遊べる。",
   "autoAdded": true,
   "addedAt": "2026-11-04",
-  "updatedAt": "2026-11-04",
-  "xpostNote": "2026-11-06 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
+  "updatedAt": "2026-11-14",
+  "xpostNote": "2026-11-06 公式ポストを検索したが、本文とURLが確かめられるものは見つからず",
+  "log": [
+   {
+    "d": "2026-11-14",
+    "t": "価格（2,530円・送料別）と遊べる期限（2/28）を追記しました"
+   }
+  ]
  },
  {
   "id": "20261106-talking-happy-holidays",
@@ -6294,7 +6301,7 @@
   "sp": "day",
   "e": null,
   "time": "18:00〜",
-  "eNote": "追加生産分・予約（ボアブルゾン 毛量・長袖Tシャツ HAIR UP. CHOW DOWN. は完売）",
+  "eNote": "追加生産分・予約（ボアブルゾン 毛量・長袖Tシャツ HAIR UP. CHOW DOWN.・ファーハット Fluffy Time は完売）",
   "place": "トーキング公式オンラインストア",
   "area": "",
   "price": "3,300円〜8,250円",
@@ -6687,7 +6694,8 @@
   "note": "手のひらサイズ（約70mm）のおすわりぬいぐるみ第2弾、全4種（うさぎ・モモンガ・古本屋・ラッコ）。2026年6月に出たものの再販。",
   "autoAdded": true,
   "addedAt": "2026-11-10",
-  "updatedAt": "2026-11-10"
+  "updatedAt": "2026-11-10",
+  "xpostNote": "2026-11-14 公式ポストを検索。見つかったのはちいかわマーケットの単品販売（11/13）の告知で、カプセルトイ再販とは別の売り方のため入れない"
  },
  {
   "id": "20261125-school-goods",
@@ -6871,7 +6879,7 @@
   "q": "",
   "src": "https://www.chiikawamogumogu.jp/2026/11/11/post-2807",
   "srcType": "official",
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-14",
   "how": [
    "11/16(月)〜11/20(金)は入店予約が必要。ちいかわもぐもぐ本舗のLINE公式アカウントで受付",
    "各日とも前日の20時から先着順で受付し、予定枚数に達し次第終了",
@@ -7072,7 +7080,8 @@
   "note": "水とオイルが入ったインテリアのフィギュア（本体 約高さ62×幅50×奥行50mm）。全3種。",
   "autoAdded": true,
   "addedAt": "2026-11-12",
-  "updatedAt": "2026-11-12"
+  "updatedAt": "2026-11-12",
+  "xpostNote": "2026-11-14 公式ポストを検索（chiikawa_market ぷからいず）。見つからず"
  },
  {
   "id": "20261119-morning51",
@@ -7211,7 +7220,9 @@
   "note": "ギターなどに挟んで使うクリップ式のチューナー。メーカーはキョーリツコーポレーション（型番 CKCC-CH／CKCC-HW／CKCC-US）。",
   "autoAdded": true,
   "addedAt": "2026-11-13",
-  "updatedAt": "2026-11-13"
+  "updatedAt": "2026-11-14",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2121073061671657496",
+  "xpostNote": "投稿日2026-11-13 20:50（日本時間・IDから計算）。本文に「『ちいかわ クリップチューナー』」「11月20日(金)より 全国の楽器店、WEB販売店などで発売」（2026-11-14 検索結果で確認）"
  },
  {
   "id": "20261127-pus-aeon-narita",
