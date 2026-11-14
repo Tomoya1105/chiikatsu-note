@@ -2908,7 +2908,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-11-02",
-  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず／2026-11-12 再検索したが、一覧にある公式アカウントの投稿は見つからず（ファンの投稿のみ）",
+  "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず／2026-11-12 再検索したが、一覧にある公式アカウントの投稿は見つからず（ファンの投稿のみ）／2026-11-15 前回から3日未満のため再検索は見送り",
   "log": [
    {
     "d": "2026-11-02",
@@ -3323,7 +3323,7 @@
    "https://www.nownews.com/news/6888575",
    "https://faq-tw.gu-global.com/pkb_Home_GU_TW?id=kA0Ie000000TOev&l=zh_TW&fs=RelatedArticle"
   ],
-  "verifiedAt": "2026-11-11",
+  "verifiedAt": "2026-11-15",
   "how": [
    "第1弾は11/20(金)、第2弾は11/27(金)に発売",
    "GU台湾オンラインストアで先行予約：台湾時間11/2(月)9:00〜11/5(木)23:59（日本時間11/6 0:59まで）",
@@ -3393,7 +3393,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -3425,7 +3425,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-25",
@@ -3990,7 +3990,7 @@
   "autoAdded": true,
   "addedAt": "2026-10-16",
   "updatedAt": "2026-10-16",
-  "xpostNote": "2026-11-11 公式ポストを検索したが、見つかったのはiPhone17対応の回のみ（不一致）"
+  "xpostNote": "2026-11-11 公式ポストを検索したが、見つかったのはiPhone17対応の回のみ（不一致）／2026-11-15 再検索（chiikawa_kouhou iPhone 18 ケース）したが、iPhone18対応の回の公式投稿は見つからず"
  },
  {
   "id": "20261015-book-keyholder2",
@@ -4076,7 +4076,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-11-04",
@@ -4109,7 +4109,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "autoAdded": true,
   "addedAt": "2026-10-17",
   "updatedAt": "2026-11-04",
@@ -4618,7 +4618,7 @@
    "https://bandai-lifestyle.jp/products/details.php?detail=4582769924866000",
    "https://www.inside-games.jp/article/2026/11/09/190604.html"
   ],
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "note": "アイシャドウやフェイスカラーに使えるサプライズコスメのガシャポン。ちいかわ・ハチワレ・うさぎ・モモンガ・3人・ちいかわとハチワレの全6種。対象年齢15才以上。公式の発売時期は「2026年11月第3週」。 一般の売り場向けの箱入り版（全6種・550円）は11/23発売予定（バンダイ公式）。",
   "how": [
    "ガシャポン（1回500円）。中身は開けるまでわからない全6種",
@@ -4801,7 +4801,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-27",
@@ -5101,7 +5101,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000004138.000003639.html"
   ],
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "org": {
    "name": "株式会社パルコ",
    "url": "https://cafe.parco.jp/",
@@ -5963,7 +5963,8 @@
   "note": "学研の小学生向け雑誌。品切れになる店もあるとして予約がすすめられている。",
   "autoAdded": true,
   "addedAt": "2026-11-04",
-  "updatedAt": "2026-11-04"
+  "updatedAt": "2026-11-04",
+  "xpostNote": "2026-11-15 検索。見つかったのは2025年のキラピチ12月号の公式投稿のみ（年がちがうので不一致）"
  },
  {
   "id": "20261104-metro-escape-home",
@@ -6126,7 +6127,8 @@
   "note": "約100cm×150cmの大きなブランケット（全2種）。2025年11月に出たものの再登場。",
   "autoAdded": true,
   "addedAt": "2026-11-06",
-  "updatedAt": "2026-11-06"
+  "updatedAt": "2026-11-06",
+  "xpostNote": "2026-11-15 検索。パレード プライズ公式（@parade_prize、一覧にないアカウント）の告知のみで、ちいかわ公式のリポストは確かめられず"
  },
  {
   "id": "20261109-hawaii-abc-keyring",
@@ -6348,7 +6350,8 @@
     "d": "2026-11-07",
     "t": "追加生産分が11/13(金)18時から販売予定と発表されました"
    }
-  ]
+  ],
+  "xpostNote": "2026-11-15 検索。トーキング公式（@talkingheads_0、一覧にないアカウント）の告知のみで、ちいかわ公式のリポストは確かめられず"
  },
  {
   "id": "20261123-pondecouleur-box",
@@ -6378,7 +6381,8 @@
   "note": "ちいかわ・ハチワレ・うさぎ・モモンガなどのデザインのアイシャドウ・フェイスカラー用パウダー（バンダイ）。",
   "autoAdded": true,
   "addedAt": "2026-11-07",
-  "updatedAt": "2026-11-07"
+  "updatedAt": "2026-11-07",
+  "xpostNote": "2026-11-15 検索したが、ちいかわ版の公式投稿は見つからず（アイカツ！版のみ）"
  },
  {
   "id": "20261109-shimamura-penpouch",
@@ -6639,7 +6643,8 @@
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
-  "xpostNote": "2026-11-11 公式ポストを検索したが、見つかったのは2024・2025年の回のみ（不一致）"
+  "xpostNote": "2026-11-11 公式ポストを検索したが、見つかったのは2024・2025年の回のみ（不一致）／2026-11-15 採用：投稿日2026-11-09 13:00（日本時間・IDから計算）。本文に「『ちいかわ 年賀はがき3枚セット おまけシールつき』2026年11月13日(金)15:00より受注販売開始」「一部店頭でもお取り扱い」（検索結果で確認）",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2119641129515954324"
  },
  {
   "id": "20261115-sheepwa-flat-mascot",
@@ -6732,7 +6737,7 @@
   "autoAdded": true,
   "addedAt": "2026-11-10",
   "updatedAt": "2026-11-10",
-  "xpostNote": "2026-11-11 公式ポストを検索したが、本文とURLが確かめられるものは見つからず"
+  "xpostNote": "2026-11-11 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-15 再検索（chiikawa_kouhou 新入学 トートバッグ ナップサック）したが、今回の商品の公式投稿は見つからず"
  },
  {
   "id": "20261115-charm3",
@@ -6797,7 +6802,7 @@
   "autoAdded": true,
   "addedAt": "2026-11-11",
   "updatedAt": "2026-11-11",
-  "xpostNote": "2026-11-11 公式ポストを検索したが、見つかったのは過去の同会場の回のみ（不一致）"
+  "xpostNote": "2026-11-11 公式ポストを検索したが、見つかったのは過去の同会場の回のみ（不一致）／2026-11-15 再検索（chiikawa_popup JR池袋駅 11月24日）したが、今回の会期の公式投稿は見つからず"
  },
  {
   "id": "20261124-nagano-market-umeda",
@@ -6929,7 +6934,8 @@
   "note": "11/18〜11/22の予約制に続く期間。",
   "autoAdded": true,
   "addedAt": "2026-11-11",
-  "updatedAt": "2026-11-11"
+  "updatedAt": "2026-11-11",
+  "xpostNote": "2026-11-15 検索（chiikawamgmg ベビーカステラ 小樽 11月23日 抽選）したが、この回の本文とURLが確かめられるものは見つからず"
  },
  {
   "id": "20261127-chiikawa-clinic",
@@ -7111,7 +7117,8 @@
   "note": "ナガノさん描き下ろしのちいかわが表紙。センターカラーで、この号でしか読めない描き下ろし漫画も載る（12月3日号）。",
   "autoAdded": true,
   "addedAt": "2026-11-12",
-  "updatedAt": "2026-11-12"
+  "updatedAt": "2026-11-12",
+  "xpostNote": "2026-11-15 検索。ちいかわコミック公式（@chiikawa_comic、一覧にないアカウント）の11/12の告知はあるが、一覧の公式アカウントの投稿は見つからず"
  },
  {
   "id": "20261126-pus-kyoto-ekimaru",

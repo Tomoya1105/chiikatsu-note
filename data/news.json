@@ -12,6 +12,28 @@
   "addedAt": "2026-11-14"
  },
  {
+  "id": "20261113-fluffy-reorder-news",
+  "date": "2026-11-13",
+  "tag": "goods",
+  "title": "即完売の毛量シリーズ、トーキングが追加生産",
+  "sum": "11/6発売で売り切れたFluffy Time・毛量の10アイテムを追加生産。追加分の予約販売は11/13(金)18時から始まった。",
+  "source": "インサイド",
+  "src": "https://inside-games.jp/article/2026/11/13/190863.html",
+  "itemId": "20261113-talking-fluffy-reorder",
+  "addedAt": "2026-11-15"
+ },
+ {
+  "id": "20261113-charamagnets5-news",
+  "date": "2026-11-13",
+  "tag": "goods",
+  "title": "漫画のコマがマグネットに、キャラマグネッツ5",
+  "sum": "バンダイ キャンディの食玩で11/16発売、297円。全21種のアクリルマグネットに、オーロラ・グリッターなどレア3種も入る。",
+  "source": "インサイド",
+  "src": "https://inside-games.jp/article/2026/11/13/190888.html",
+  "itemId": "20261101-charamagnets5",
+  "addedAt": "2026-11-15"
+ },
+ {
   "id": "20261113-clinic-kuji-hold",
   "date": "2026-11-13",
   "tag": "goods",
