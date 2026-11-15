@@ -1512,7 +1512,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "srcs": [
    "https://animeanime.jp/article/2026/09/26/103251.html"
   ]
@@ -2529,7 +2529,7 @@
   "qNone": "くじ（店頭販売）",
   "src": "https://1kuji.com/products/chiikawa5",
   "srcType": "partner",
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -5202,7 +5202,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/10/29/190011.html"
   ],
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "note": "キラキラの鍵型チャーム全13種（開けるまでわからない）とオレンジ味のグミ（バンダイ キャンディ）。公式の発売時期は「2027年2月」。プレミアムバンダイでは12個入りBOX（4,752円）の予約も10/29から受付。",
   "autoAdded": true,
   "addedAt": "2026-10-29",
@@ -6492,7 +6492,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6524,7 +6524,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6556,7 +6556,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6588,7 +6588,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -7082,7 +7082,7 @@
    "https://chiikawamarket.jp/products/4571609409311",
    "https://chiikawamarket.jp/collections/20261127"
   ],
-  "verifiedAt": "2026-11-12",
+  "verifiedAt": "2026-11-15",
   "how": [
    "ちいかわマーケットで11/27(金)11:00から販売",
    "1会計につき各1個まで。海外への発送はできません"
@@ -7312,5 +7312,36 @@
   "autoAdded": true,
   "addedAt": "2026-11-15",
   "updatedAt": "2026-11-15"
+ },
+ {
+  "id": "20261118-shimamura-shimitori",
+  "region": "jp",
+  "t": "しまむら ちいかわ シミとりペン（全3種）",
+  "cat": "goods",
+  "s": "2026-11-18",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のしまむら・しまむらパーク（しまむらのオンラインストア）",
+  "area": "",
+  "price": "各495円",
+  "q": "",
+  "qNone": "しまむらの店舗・オンラインストアの販売で、楽天では同じ商品と言い切れないため",
+  "src": "https://www.inside-games.jp/article/2026/11/15/190992.html",
+  "srcType": "news",
+  "srcs": [
+   "https://x.com/shimamura_gr/status/2121845659254886724"
+  ],
+  "verifiedAt": "2026-11-15",
+  "how": [
+   "11/18(水)から全国のしまむら店舗で販売",
+   "しまむらパーク（オンラインストア）は11/18 15:00から販売"
+  ],
+  "note": "衣類のシミとりペン。無香料・お花畑の香り・シュガードロップの香りの3種で、ちいかわ・ハチワレ・うさぎの集合デザイン。",
+  "autoAdded": true,
+  "addedAt": "2026-11-15",
+  "updatedAt": "2026-11-15",
+  "xpostNote": "2026-11-15 しまむら公式（一覧にないアカウント）の投稿のみで、ちいかわ公式のリポストは確かめられないため入れない"
  }
 ]

@@ -1,5 +1,27 @@
 [
  {
+  "id": "20261115-clinic-face-photo",
+  "date": "2026-11-15",
+  "tag": "event",
+  "title": "ちいかわクリニックの入店予約、顔写真と名前の登録が必要に",
+  "sum": "11/27から始まるちいかわクリニックの催事8会場では、入店予約に顔写真と名前の登録が必要になると報じられた。ちいかわらんど11店の入店方法は後日案内の予定。",
+  "source": "ORICON NEWS",
+  "src": "https://www.oricon.co.jp/news/2492960/full/",
+  "itemId": "20261127-chiikawa-clinic",
+  "addedAt": "2026-11-15"
+ },
+ {
+  "id": "20261115-shimamura-shimitori",
+  "date": "2026-11-15",
+  "tag": "goods",
+  "title": "しまむらにちいかわのシミとりペン、11/18発売",
+  "sum": "衣類のシミとりペンにちいかわたちの集合デザインが登場。香りちがいの3種で各495円、11/18から全国のしまむらとしまむらパーク（15時〜）で販売。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/15/190992.html",
+  "itemId": "20261118-shimamura-shimitori",
+  "addedAt": "2026-11-15"
+ },
+ {
   "id": "20261115-kr-movie-top-again",
   "date": "2026-11-15",
   "tag": "overseas",
