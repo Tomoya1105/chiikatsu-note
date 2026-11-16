@@ -6241,7 +6241,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_ahmi/index.html"
   ],
-  "verifiedAt": "2026-11-13",
+  "verifiedAt": "2026-11-16",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
@@ -6267,7 +6267,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_amot/index.html"
   ],
-  "verifiedAt": "2026-11-13",
+  "verifiedAt": "2026-11-16",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
@@ -6293,12 +6293,12 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_aake/index.html"
   ],
-  "verifiedAt": "2026-11-13",
+  "verifiedAt": "2026-11-16",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
   "updatedAt": "2026-11-07",
-  "xpostNote": "2026-11-07 公式ポストを検索したが、見つかったのは過去の同会場の回のみ（不一致）／2026-11-12 再検索したが、見つかったのは2024年5月の回のみ（不一致）／2026-11-14 検索（chiikawa_popup 会場名）で今回の会期の公式投稿は見つからず／2026-11-16 再検索（chiikawa_popup 会場名 11月）したが、今回の会期の公式投稿は見つからず"
+  "xpostNote": "2026-11-07 公式ポストを検索したが、見つかったのは過去の同会場の回のみ（不一致）／2026-11-12 再検索したが、見つかったのは2024年5月の回のみ（不一致）／2026-11-14 検索（chiikawa_popup 会場名）で今回の会期の公式投稿は見つからず／2026-11-16 再検索（chiikawa_popup 会場名 11月）したが、今回の会期の公式投稿は見つからず／2026-11-16 検索（chiikawa_popup イオンモール旭川駅前）したが、2024年の回の投稿のみで今回の回は見つからず"
  },
  {
   "id": "20261113-talking-fluffy-reorder",
@@ -6379,7 +6379,7 @@
   "srcs": [
    "https://news.denfaminicogamer.jp/news/2609173c"
   ],
-  "verifiedAt": "2026-11-13",
+  "verifiedAt": "2026-11-16",
   "how": [
    "全6種、1箱に1つ（中身は選べない）。発売日は地域・店舗で異なる場合あり",
    "ガシャポン版も別に展開（価格がちがう場合あり）"
@@ -6734,7 +6734,7 @@
    "https://animeanime.jp/article/2026/11/10/104646.html",
    "https://nijimen.kusuguru.co.jp/topics/652801"
   ],
-  "verifiedAt": "2026-11-13",
+  "verifiedAt": "2026-11-16",
   "how": [
    "2026年11月下旬から、ちいかわマーケットや全国の雑貨店・量販店などで順次発売",
    "巾着S3枚セットは、店舗によって発売日が違ったり、取り扱いがなかったりする"
@@ -6743,7 +6743,7 @@
   "autoAdded": true,
   "addedAt": "2026-11-10",
   "updatedAt": "2026-11-10",
-  "xpostNote": "2026-11-11 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-15 再検索（chiikawa_kouhou 新入学 トートバッグ ナップサック）したが、今回の商品の公式投稿は見つからず"
+  "xpostNote": "2026-11-11 公式ポストを検索したが、本文とURLが確かめられるものは見つからず／2026-11-15 再検索（chiikawa_kouhou 新入学 トートバッグ ナップサック）したが、今回の商品の公式投稿は見つからず／2026-11-16 再検索（chiikawa_kouhou 新入学 2wayトートバッグ シューズケース）したが、今回の商品の公式投稿は見つからず"
  },
  {
   "id": "20261115-charm3",
@@ -7145,7 +7145,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_ekky/index.html"
   ],
-  "verifiedAt": "2026-11-13",
+  "verifiedAt": "2026-11-16",
   "note": "JR京都駅の西口改札前の特設会場で開かれるちいかわPOP UP STORE。",
   "autoAdded": true,
   "addedAt": "2026-11-13",
@@ -7172,7 +7172,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/11/12/190841.html"
   ],
-  "verifiedAt": "2026-11-13",
+  "verifiedAt": "2026-11-16",
   "how": [
    "カプセルトイ（1回500円）。11/27(金)からのちいかわクリニックPOP UP各会場と、全国のカプセルトイ自販機で11月下旬から順次発売"
   ],
@@ -7230,7 +7230,7 @@
   "qNone": "発売前で、楽天への出品は未確認（11/13確認）",
   "src": "https://prtimes.jp/main/html/rd/p/000000004.000135390.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-13",
+  "verifiedAt": "2026-11-16",
   "how": [
    "11/20(金)から、全国の楽器店・楽器のネットショップで販売"
   ],
@@ -7387,5 +7387,36 @@
     "t": "11/16から4都市で掲出と発表されました"
    }
   ]
+ },
+ {
+  "id": "20261115-parade-xmas-tree2",
+  "region": "jp",
+  "t": "ちいかわ クリスマスツリー②（パレードのプライズ）",
+  "cat": "goods",
+  "s": "2026-11-15",
+  "sp": "mid",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のアミューズメント施設・オンラインクレーンゲーム（パレードのプライズ）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "プライズ（ゲームセンターの景品）",
+  "src": "https://www.parade-inc.net/products/p261107",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.inside-games.jp/article/2026/11/16/191025.html"
+  ],
+  "verifiedAt": "2026-11-16",
+  "how": [
+   "ゲームセンターやオンラインクレーンゲームの景品（プライズ）。2026年11月中旬から順次登場",
+   "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
+  ],
+  "note": "帽子をかぶったちいかわたちが飾られた、高さ約22cmのクリスマスツリー。グリーンとホワイトの全2種。",
+  "autoAdded": true,
+  "addedAt": "2026-11-16",
+  "updatedAt": "2026-11-16",
+  "xpostNote": "2026-11-16 パレード プライズ公式（@parade_prize、一覧にないアカウント）の告知（投稿日2026-11-16 12:00 日本時間）のみで、ちいかわ公式のリポストは確かめられず"
  }
 ]
