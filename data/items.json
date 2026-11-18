@@ -3496,7 +3496,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-19",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-25",
@@ -5189,7 +5189,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_kbkt/index.html"
   ],
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-19",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-28",
@@ -5465,7 +5465,7 @@
    "https://chiikawa-info.jp/p26/pus_tbun/index.html",
    "https://www.tobu-u-dept.jp/event.html"
   ],
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-19",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-31",
@@ -5943,7 +5943,7 @@
   "srcs": [
    "https://www.chiikawamogumogu.jp/stores/otaru/"
   ],
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-19",
   "dl": [
    {
     "k": "抽選",
@@ -6288,7 +6288,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_ahmi/index.html"
   ],
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-19",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
@@ -6314,7 +6314,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_amot/index.html"
   ],
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-19",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
@@ -7424,7 +7424,7 @@
   "srcs": [
    "https://x.com/morningmanga/status/2121981563495682076"
   ],
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-19",
   "how": [
    "11/16(月)〜11/22(日)の1週間、札幌・名古屋・大阪・博多の駅に掲出",
    "フラッシュをONにして撮影すると、肉眼では見えないイラストが写る（都市ごとに絵柄が違う）",
@@ -7495,7 +7495,7 @@
    "https://www.loft.co.jp/store/r/rlo000011/",
    "https://x.com/LOFT_NETSTORE/status/2122163084265742595"
   ],
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-19",
   "dl": [
    {
     "k": "抽選",
@@ -7782,5 +7782,39 @@
   "addedAt": "2026-11-18",
   "updatedAt": "2026-11-18",
   "xpostNote": "2026-11-18 ドン・キホーテ公式（@donki_donki、一覧にないアカウント）の告知（投稿日2026-11-18 16:00 日本時間）のみで、ちいかわ公式のリポストは確かめられないため入れない"
+ },
+ {
+  "id": "20261121-avail-winter",
+  "region": "jp",
+  "t": "アベイル ちいかわ 冬の準備アイテム",
+  "cat": "goods",
+  "s": "2026-11-21",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国のアベイル（西新発田店・荒尾店を除く）・アベイルオンラインストア",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "アベイルの店舗・公式通販での販売で、商品の一覧と価格が未発表",
+  "src": "https://nijimen.kusuguru.co.jp/topics/661846",
+  "srcType": "news",
+  "verifiedAt": "2026-11-19",
+  "how": [
+   "11/21(土)から全国のアベイルで販売（西新発田店・荒尾店は対象外）",
+   "アベイルオンラインストアは11/21(土)12:00から販売"
+  ],
+  "note": "冬の準備をテーマにした、しまむらグループのアベイルのちいかわアイテム。商品の一覧と価格は、報道の時点では書かれていない。",
+  "autoAdded": true,
+  "addedAt": "2026-11-19",
+  "updatedAt": "2026-11-19",
+  "log": [
+   {
+    "d": "2026-11-19",
+    "t": "11/21からアベイルで発売と報じられました"
+   }
+  ],
+  "xpostNote": "2026-11-19 アベイル公式（@gravail、一覧にないアカウント）の今回の告知は検索で見つからず（アベイル ちいかわ 11/21）"
  }
 ]
