@@ -278,7 +278,7 @@
   "time": "",
   "updatedAt": "2026-10-03",
   "srcType": "official",
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-18",
   "xpost": "https://x.com/chiikawa_popup/status/2084569969304760322",
   "xpostNote": "投稿日2026-08-04。本文に「0%NAHA」「2026年8月13日(木)～」（終了日はその後延長）"
  },
@@ -429,7 +429,7 @@
   "time": "",
   "updatedAt": "2026-10-17",
   "srcType": "partner",
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-18",
   "qNone": "セブン‐イレブンの店頭・ネット予約のみ",
   "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず"
  },
@@ -1789,7 +1789,7 @@
   "place": "ちいかわらんど、ちいかわPOP UP STORE、スーパー、ドラッグストアなど",
   "src": "https://prtimes.jp/main/html/rd/p/000001092.000010538.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-18",
   "xpost": "https://x.com/chiikawa_kouhou/status/2113072853088358705",
   "xpostNote": "投稿日2026-10-22 10:00（IDから計算）。本文に「アニメちいかわ きのこのポタージュ・ほうれんそうのポタージュ」「10月22日（木）より」「オリジナルシール1枚入り」（2026-10-24 検索結果で確認）",
   "srcs": [
@@ -1842,7 +1842,7 @@
   "note": "11/20に第1弾（ニット・スウェットなど）、11/27に第2弾（ルームウェアなど）を発売。",
   "autoAdded": true,
   "addedAt": "2026-10-04",
-  "updatedAt": "2026-11-17",
+  "updatedAt": "2026-11-18",
   "id": "20261120-gu",
   "t": "ちいかわ×GU コラボ（おでかけ着・ルームウェア）",
   "cat": "goods",
@@ -1850,7 +1850,7 @@
   "place": "GU店舗・GUオンラインストア",
   "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
   "srcType": "partner",
-  "verifiedAt": "2026-11-17",
+  "verifiedAt": "2026-11-18",
   "qNone": "GUの店舗・公式通販のみ",
   "srcs": [
    "https://www.famitsu.com/article/202609/88383",
@@ -1863,6 +1863,12 @@
     "n": "GUオンラインストアの先行予約（11/19までにお届け）",
     "until": "2026-11-08T23:59",
     "u": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa"
+   },
+   {
+    "k": "予約",
+    "n": "GUオンラインストアの追加予約（通常販売で品切れの商品のみ・上限に達したら終了）",
+    "until": "2026-11-29T23:59",
+    "u": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa"
    }
   ],
   "how": [
@@ -1874,6 +1880,10 @@
    "第1弾・第2弾の販売当日は全店舗で入場整理券を配布（配布場所・時間は店頭の案内で確認）"
   ],
   "log": [
+   {
+    "d": "2026-11-18",
+    "t": "追加予約の締切（11/29 23:59）を締切の一覧に入れました"
+   },
    {
     "d": "2026-11-17",
     "t": "販売当日は全店舗で入場整理券を配布すると発表されました"
@@ -2558,7 +2568,7 @@
   "qNone": "くじ（店頭販売）",
   "src": "https://1kuji.com/products/chiikawa5",
   "srcType": "partner",
-  "verifiedAt": "2026-11-15",
+  "verifiedAt": "2026-11-18",
   "note": "賞品のラインナップは後日発表。店舗によって発売時期が異なる場合あり。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
@@ -2815,7 +2825,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-18",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -4257,7 +4267,7 @@
   "srcs": [
    "https://www.oricon.co.jp/news/2487242/full/"
   ],
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-18",
   "how": [
    "幕張新都心店：モモンガ（さつまいも）8/31〜、くりまんじゅう（渋皮マロン）9/7〜、ラッコ（パンプキン）9/14〜、いずれも11/26まで",
    "横浜ワールドポーターズ店・名古屋パルコ店：週がわりで販売（モモンガ 11/2〜11/8、くりまんじゅう 11/9〜11/15、ラッコ 11/16〜11/26）",
@@ -4969,7 +4979,7 @@
   "srcs": [
    "https://m.21jingji.com/article/20261021/herald/f2cca8bea1c320cba86603cfbb4c4172.html"
   ],
-  "verifiedAt": "2026-11-16",
+  "verifiedAt": "2026-11-18",
   "note": "北京で初めてのちいかわ公式の展示・ポップアップ。ちいかわ公式微博の発表を伝える報道で確認。原文：吉伊卡哇 北京快闪店（朝阳合生汇）。",
   "how": [
    "9/27からは予約なしで入場できる（公式微博の案内を伝える報道より）"
@@ -5245,7 +5255,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/10/29/190011.html"
   ],
-  "verifiedAt": "2026-11-15",
+  "verifiedAt": "2026-11-18",
   "note": "キラキラの鍵型チャーム全13種（開けるまでわからない）とオレンジ味のグミ（バンダイ キャンディ）。公式の発売時期は「2027年2月」。プレミアムバンダイでは12個入りBOX（4,752円）の予約も10/29から受付。",
   "autoAdded": true,
   "addedAt": "2026-10-29",
@@ -7739,5 +7749,38 @@
   "addedAt": "2026-11-18",
   "updatedAt": "2026-11-18",
   "xpostNote": "2026-11-18 公式ポストを検索（東京ばな奈 ちいかわ グランスタ東京 POP UP）したが、今回の回の投稿は見つからず"
+ },
+ {
+  "id": "20261121-donki-apparel",
+  "region": "jp",
+  "t": "ドン・キホーテ・アピタ ちいかわ 大人アパレル（ZIPトレーナー・トレーナー 全12アイテム）",
+  "cat": "goods",
+  "s": "2026-11-21",
+  "sp": "day",
+  "e": null,
+  "time": "9:00〜（順次発売）",
+  "eNote": "",
+  "place": "全国のドン・キホーテ・アピタ（取扱店舗のみ）",
+  "area": "",
+  "price": "ZIPトレーナー 3,481円、トレーナー 2,981円",
+  "q": "",
+  "qNone": "ドン・キホーテ・アピタの店頭販売のみ",
+  "src": "https://www.donki.com/products/chiikawa_sl7/",
+  "srcType": "partner",
+  "srcs": [
+   "https://x.com/donki_donki/status/2122947977371427052",
+   "https://www.inside-games.jp/article/2026/11/18/191182.html"
+  ],
+  "verifiedAt": "2026-11-18",
+  "how": [
+   "11/21(土)9:00から全国のドン・キホーテ・アピタで順次発売。店舗により入荷時期が異なります",
+   "取扱店舗の一覧はドン・キホーテの公式ページに掲載",
+   "店舗により整理券や点数制限など販売方法が異なる場合あり。サイズは店舗によって取り扱いがないことも"
+  ],
+  "note": "ちいかわ・ハチワレ・うさぎのZIPトレーナー3種と、モモンガ・古本屋・くりまんじゅうなどのトレーナー9種。サイズはM・L・LL。",
+  "autoAdded": true,
+  "addedAt": "2026-11-18",
+  "updatedAt": "2026-11-18",
+  "xpostNote": "2026-11-18 ドン・キホーテ公式（@donki_donki、一覧にないアカウント）の告知（投稿日2026-11-18 16:00 日本時間）のみで、ちいかわ公式のリポストは確かめられないため入れない"
  }
 ]
