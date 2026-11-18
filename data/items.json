@@ -1429,9 +1429,9 @@
   "src": "https://x.com/chiikawa_comic/status/2095868102743613939",
   "t": "コミック『ちいかわ』9巻（通常版・特装版）",
   "time": "",
-  "updatedAt": "2026-11-17",
+  "updatedAt": "2026-11-18",
   "srcType": "official",
-  "verifiedAt": "2026-11-17",
+  "verifiedAt": "2026-11-18",
   "rb": [
    {
     "n": "通常版",
@@ -1445,13 +1445,19 @@
   "srcs": [
    "https://animeanime.jp/article/2026/09/04/102659.html",
    "https://dengekionline.com/article/202610/89719",
-   "https://prtimes.jp/main/html/rd/p/000009183.000001719.html"
+   "https://prtimes.jp/main/html/rd/p/000009183.000001719.html",
+   "https://prtimes.jp/main/html/rd/p/000009231.000016756.html"
   ],
   "how": [
    "通常版は紙と電子、特装版は紙の本のみ（漫画の中身は通常版と同じ）",
-   "11/20(金)ごろから全国の書店・通販で発売（講談社のプレスリリース）"
+   "11/20(金)ごろから全国の書店・通販で発売（講談社のプレスリリース）",
+   "アニメイト全店・アニメイト通販で11/18〜12/27に発売記念フェア。1〜9巻（特装版含む）を1冊買うごとに「たぬきだもん」のしおり（全1種）を1枚"
   ],
   "log": [
+   {
+    "d": "2026-11-18",
+    "t": "アニメイトの9巻発売記念フェア（しおり特典・12/27まで）を追加しました"
+   },
    {
     "d": "2026-11-17",
     "t": "特装版の付録（ポストカード24枚・おまけシール）の詳細を追加しました"
@@ -1523,7 +1529,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-11-15",
+  "verifiedAt": "2026-11-18",
   "srcs": [
    "https://animeanime.jp/article/2026/09/26/103251.html"
   ]
@@ -3346,7 +3352,7 @@
    "https://www.nownews.com/news/6888575",
    "https://faq-tw.gu-global.com/pkb_Home_GU_TW?id=kA0Ie000000TOev&l=zh_TW&fs=RelatedArticle"
   ],
-  "verifiedAt": "2026-11-15",
+  "verifiedAt": "2026-11-18",
   "how": [
    "第1弾は11/20(金)、第2弾は11/27(金)に発売",
    "GU台湾オンラインストアで先行予約：台湾時間11/2(月)9:00〜11/5(木)23:59（日本時間11/6 0:59まで）",
@@ -3727,7 +3733,7 @@
   "qNone": "取扱店・商品の詳細が未発表で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "srcType": "official",
-  "verifiedAt": "2026-11-15",
+  "verifiedAt": "2026-11-18",
   "xpost": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「ちいかわ1分丈腹巻パンツ」「全国の量販店にて」「11月下旬」",
   "note": "同じ告知の「ちいかわ腹巻」は10月上旬から発売。",
@@ -6533,7 +6539,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-15",
+  "verifiedAt": "2026-11-18",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6565,7 +6571,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-15",
+  "verifiedAt": "2026-11-18",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6597,7 +6603,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-15",
+  "verifiedAt": "2026-11-18",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6629,7 +6635,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-15",
+  "verifiedAt": "2026-11-18",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -7348,7 +7354,7 @@
   "qNone": "発売前の予約商品で、楽天で同じ商品と言い切れない",
   "src": "https://www.gourmandise.jp/view/item/000000011112",
   "srcType": "partner",
-  "verifiedAt": "2026-11-15",
+  "verifiedAt": "2026-11-18",
   "how": [
    "グルマンディーズ公式通販で予約受付中（2027年1月中旬発売予定・発売後に順次発送）"
   ],
@@ -7699,5 +7705,39 @@
   "autoAdded": true,
   "addedAt": "2026-11-18",
   "updatedAt": "2026-11-18"
+ },
+ {
+  "id": "20261124-tokyobanana-gransta",
+  "region": "jp",
+  "t": "ちいかわ×東京ばな奈 POP UP STORE＠グランスタ東京",
+  "cat": "food",
+  "s": "2026-11-24",
+  "sp": "day",
+  "e": "2026-12-13",
+  "time": "月〜土 8:00〜22:00、日・祝 8:00〜21:00（最終日は20:00まで）",
+  "eNote": "人気商品は早めに売り切れる場合あり",
+  "place": "グランスタ東京 POP UP GRANSTA GREEN（JR東京駅 改札内1階・東京都千代田区）",
+  "area": "東京",
+  "price": "853円〜2,700円",
+  "q": "",
+  "qNone": "期間限定ショップでの販売",
+  "src": "https://prtimes.jp/main/html/rd/p/000002201.000025606.html",
+  "srcType": "press",
+  "verifiedAt": "2026-11-18",
+  "org": {
+   "name": "株式会社グレープストーン",
+   "url": "https://www.tokyobanana.jp/",
+   "src": "https://prtimes.jp/main/html/rd/p/000002201.000025606.html"
+  },
+  "how": [
+   "JR東京駅の改札内1階、グランスタ東京「POP UP GRANSTA GREEN」で11/24(火)〜12/13(日)に販売",
+   "バナナプリンケーキ8個入・クッキーサンド18枚入には、ランダムでステッカーが1枚つく",
+   "バナナプリンケーキとエコバッグのセット、エコバッグ単品、トートバッグもあり"
+  ],
+  "note": "ちいかわバナナプリンケーキ（4個入853円・8個入1,706円）やちいかわクッキーサンド バナナミルク味（12枚入1,850円・18枚入2,700円）、エコバッグ（1,200円）・トートバッグ（1,350円）を販売。改札内のため入場券などが必要。",
+  "autoAdded": true,
+  "addedAt": "2026-11-18",
+  "updatedAt": "2026-11-18",
+  "xpostNote": "2026-11-18 公式ポストを検索（東京ばな奈 ちいかわ グランスタ東京 POP UP）したが、今回の回の投稿は見つからず"
  }
 ]

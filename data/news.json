@@ -1,5 +1,27 @@
 [
  {
+  "id": "20261118-tokyobanana-gransta",
+  "date": "2026-11-18",
+  "tag": "goods",
+  "title": "東京駅改札内に東京ばな奈とちいかわの店、11/24から",
+  "sum": "グランスタ東京で11/24〜12/13、ちいかわのバナナプリンケーキやクッキーサンド、エコバッグなどを販売。一部の商品にはステッカーがつく。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000002201.000025606.html",
+  "itemId": "20261124-tokyobanana-gransta",
+  "addedAt": "2026-11-18"
+ },
+ {
+  "id": "20261118-animate-vol9-fair",
+  "date": "2026-11-18",
+  "tag": "book",
+  "title": "アニメイトで9巻記念フェア、1冊ごとにしおり",
+  "sum": "全国のアニメイトと通販で11/18〜12/27、ちいかわ1〜9巻を1冊買うごとに「たぬきだもん」のしおりを1枚もらえる。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000009231.000016756.html",
+  "itemId": "20261120-36",
+  "addedAt": "2026-11-18"
+ },
+ {
   "id": "20261117-lucua-characters-world",
   "date": "2026-11-17",
   "tag": "event",
