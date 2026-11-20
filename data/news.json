@@ -1,5 +1,16 @@
 [
  {
+  "id": "20261120-chiikawayaki-winter",
+  "date": "2026-11-20",
+  "tag": "goods",
+  "title": "ちいかわ焼きに冬の味、幕張店1周年で11/27から",
+  "sum": "モモンガのメープルバターあんなど冬の限定味3種が11/27から順に登場。冷凍のちいかわ焼きや新しいマスコットも同じ日に発売されます。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000026.000157539.html",
+  "itemId": "20261127-chiikawayaki-winter",
+  "addedAt": "2026-11-21"
+ },
+ {
   "id": "20261120-talking-boxer-news",
   "date": "2026-11-20",
   "tag": "goods",
@@ -55,6 +66,17 @@
   "addedAt": "2026-11-20"
  },
  {
+  "id": "20261119-xmas-market-food",
+  "date": "2026-11-19",
+  "tag": "event",
+  "title": "クリスマスマーケットのフード14品が公開",
+  "sum": "11/24から始まるちいかわクリスマスマーケットで出る食べもの・飲みもの14品が公式Xで発表され、880円から3,700円のボックスまで並びます。",
+  "source": "ORICON NEWS",
+  "src": "https://www.oricon.co.jp/news/2494090/full/",
+  "itemId": "20261124-xmas-market",
+  "addedAt": "2026-11-21"
+ },
+ {
   "id": "20261119-kura-plate-lottery",
   "date": "2026-11-19",
   "tag": "goods",
@@ -86,6 +108,17 @@
   "src": "https://nijimen.kusuguru.co.jp/topics/661846",
   "itemId": "20261121-avail-winter",
   "addedAt": "2026-11-19"
+ },
+ {
+  "id": "20261118-kr-clinic-seoul",
+  "date": "2026-11-18",
+  "tag": "overseas",
+  "title": "ソウルにもちいかわクリニック、11/27から予約制",
+  "sum": "ザ・ヒョンデ・ソウルで11/27〜1/10に開催。完全事前予約制で、1次予約は11/23午後2時から受け付けます。",
+  "source": "トップスターニュース",
+  "src": "https://www.topstarnews.net/news/articleView.html?idxno=16280064",
+  "itemId": "20261127-kr-clinic-seoul",
+  "addedAt": "2026-11-21"
  },
  {
   "id": "20261118-donki-apparel",
