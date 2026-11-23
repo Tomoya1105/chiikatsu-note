@@ -2853,7 +2853,7 @@
   "q": "",
   "src": "https://chiikawa-info.jp/pus.html",
   "srcType": "official",
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-24",
   "autoAdded": true,
   "addedAt": "2026-10-10",
   "updatedAt": "2026-10-10",
@@ -3775,7 +3775,7 @@
   "qNone": "取扱店・商品の詳細が未発表で、楽天で同じ商品と言い切れない",
   "src": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "srcType": "official",
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-24",
   "xpost": "https://x.com/chiikawa_kouhou/status/2105900586285896060",
   "xpostNote": "投稿日2026-10-02（IDから計算）。本文に「ちいかわ1分丈腹巻パンツ」「全国の量販店にて」「11月下旬」",
   "note": "同じ告知の「ちいかわ腹巻」は10月上旬から発売。",
@@ -6594,7 +6594,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-24",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6626,7 +6626,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-24",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6658,7 +6658,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-24",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -7193,7 +7193,7 @@
    "https://chiikawamarket.jp/products/4571609409311",
    "https://chiikawamarket.jp/collections/20261127"
   ],
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-24",
   "how": [
    "ちいかわマーケットで11/27(金)11:00から販売",
    "1会計につき各1個まで。海外への発送はできません"
@@ -8161,7 +8161,7 @@
   "qNone": "店頭限定の食べもの",
   "src": "https://prtimes.jp/main/html/rd/p/000000026.000157539.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-24",
   "how": [
    "幕張新都心店：モモンガ 11/27〜、くりまんじゅう 12/7〜、ラッコ 12/14〜、いずれも1/11まで",
    "横浜・名古屋：週がわり（モモンガ 11/27〜12/6・12/21〜27、くりまんじゅう 12/7〜13・12/28〜1/3、ラッコ 12/14〜20・1/4〜11）",
@@ -8175,7 +8175,7 @@
     "t": "冬の限定味と販売日程が発表されました"
    }
   ],
-  "xpostNote": "2026-11-22 検索（ちいかわ焼き 幕張 1周年 冬 限定）。今回の冬の味の公式ポストは見つからず／2026-11-21 公式ポストは未検索（次回探す）",
+  "xpostNote": "2026-11-24 再検索（ちいかわ焼き 冬 限定 メープルバターあん 幕張 1周年）。一覧にある公式アカウントの今回の投稿は見つからず／2026-11-22 検索（ちいかわ焼き 幕張 1周年 冬 限定）。今回の冬の味の公式ポストは見つからず／2026-11-21 公式ポストは未検索（次回探す）",
   "autoAdded": true,
   "addedAt": "2026-11-21",
   "updatedAt": "2026-11-21"
@@ -8196,7 +8196,7 @@
   "q": "",
   "src": "https://www.topstarnews.net/news/articleView.html?idxno=16280064",
   "srcType": "news",
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-24",
   "how": [
    "100%事前予約制（ポップコーンDプレイ）。1次予約は11/23 14:00から（入場 11/27〜12/10）、2次予約は12/7 14:00から（入場 12/11〜1/10）",
    "予約には会員登録と韓国の携帯電話番号での本人確認が必要（報道）",
@@ -8305,5 +8305,38 @@
   "autoAdded": true,
   "addedAt": "2026-11-23",
   "updatedAt": "2026-11-23"
+ },
+ {
+  "id": "20261120-tsutsumeru-hoso-handkerchief",
+  "region": "jp",
+  "t": "ちいかわ つつめる保冷ハンカチ（全3種）",
+  "cat": "goods",
+  "s": "2026-11-20",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわらんど、ちいかわマーケット、全国の百貨店・専門店のハンカチ売場、川辺オンラインショップなど",
+  "area": "",
+  "price": "各1,650円",
+  "q": "ちいかわ つつめる保冷ハンカチ",
+  "src": "https://x.com/chiikawa_kouhou/status/2122917721893388385",
+  "srcType": "official",
+  "srcs": [
+   "https://chiikawamarket.jp/products/4548976932346",
+   "https://chiikawamarket.jp/products/4548976932339",
+   "https://chiikawamarket.jp/products/4548976932322"
+  ],
+  "verifiedAt": "2026-11-24",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2122917721893388385",
+  "xpostNote": "投稿日2026-11-18 14:00（日本時間・IDから計算）。本文に「ちいかわのつつめる保冷ハンカチが新登場」「11月20日(金)より順次」「ちいかわらんど、ちいかわマーケット、全国の百貨店、専門店のハンカチ売場、川辺オンラインショップなど」（2026-11-24 確認）",
+  "how": [
+   "11/20(金)から順次、ちいかわらんど・ちいかわマーケット・全国の百貨店や専門店のハンカチ売場・川辺オンラインショップなどで発売（一部取り扱いのない店舗あり）",
+   "ちいかわマーケットでは「みんな」「お菓子作り！」「5級です」の3種（各1,650円）"
+  ],
+  "note": "結ばずに包める保冷ハンカチ。",
+  "autoAdded": true,
+  "addedAt": "2026-11-24",
+  "updatedAt": "2026-11-24"
  }
 ]
