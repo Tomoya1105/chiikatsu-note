@@ -2904,7 +2904,7 @@
   "q": "",
   "src": "https://www.westjr.co.jp/press/article/2026/09/30/items/260930_00_press_lucuasouth.pdf",
   "srcType": "press",
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-23",
   "note": "池袋のちいかわパークの公式ショップが全国初出店。入店は無料。ミニマスコットキーリング（全10種・各1,430円）やポップコーンバケツ（各4,180円）などを販売し、一部の商品は購入数の制限あり。同じ11Fにナガノマーケット UMEDA も同日オープン。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
@@ -4059,7 +4059,7 @@
    "https://www.gourmandise.jp/view/item/000000010928",
    "https://www.gourmandise.jp/view/item/000000010925"
   ],
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-23",
   "how": [
    "グルマンディーズ公式通販で「11月下旬発売予定」として掲載中"
   ],
@@ -6213,7 +6213,7 @@
   "qNone": "プライズ（ゲームセンターの景品）",
   "src": "https://www.parade-inc.net/products/p251104",
   "srcType": "partner",
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-23",
   "how": [
    "ゲームセンターやオンラインクレーンゲームの景品（プライズ）。2026年11月下旬から順次登場",
    "取り扱い店舗とオンラインクレーンは、パレードの商品ページに一覧あり"
@@ -7796,7 +7796,7 @@
   "qNone": "期間限定ショップでの販売",
   "src": "https://prtimes.jp/main/html/rd/p/000002201.000025606.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-21",
+  "verifiedAt": "2026-11-23",
   "org": {
    "name": "株式会社グレープストーン",
    "url": "https://www.tokyobanana.jp/",
@@ -8274,6 +8274,34 @@
   ],
   "note": "白いもこもこ衣装を着た約10cmのマスコット。ちいかわ・ハチワレ・うさぎの全3種（パレード）。",
   "xpostNote": "2026-11-23 検索。パレード プライズ公式（@parade_prize、一覧にないアカウント）の告知のみで、ちいかわ公式のリポストは確かめられず",
+  "autoAdded": true,
+  "addedAt": "2026-11-23",
+  "updatedAt": "2026-11-23"
+ },
+ {
+  "id": "20261118-bakery-chiiman",
+  "region": "jp",
+  "t": "ちいかわベーカリー 新商品「なんか小さくてかわいいまんじゅう（ちいまん）」",
+  "cat": "food",
+  "s": "2026-11-18",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわベーカリー（東急プラザ表参道「オモカド」）・ちいかわベーカリー OSAKA（KITTE大阪）",
+  "area": "表参道・大阪",
+  "price": "3個セット550円、追加1個170円",
+  "q": "",
+  "qNone": "ちいかわベーカリーの店頭販売",
+  "src": "https://chiikawabakery.jp/topics/20261117",
+  "srcType": "official",
+  "verifiedAt": "2026-11-23",
+  "how": [
+   "ちいかわ（カスタード）・ハチワレ（チョコレート）・うさぎ（キャラメル）の3個セット",
+   "セットに加えて、好きなまんじゅうを合計3個まで追加で買える",
+   "表参道の店舗裏のテラスがフリースペースとして開放（雨天などは中止・席の予約不可）"
+  ],
+  "note": "東京・大阪のちいかわベーカリーで11/18(水)から販売。",
   "autoAdded": true,
   "addedAt": "2026-11-23",
   "updatedAt": "2026-11-23"
