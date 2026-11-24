@@ -1,5 +1,38 @@
 [
  {
+  "id": "20261124-xmas-market-goods-preorder",
+  "date": "2026-11-24",
+  "tag": "event",
+  "title": "クリスマスマーケットのグッズ、12/4からネット予約へ",
+  "sum": "初日に会場の当日分グッズが午後に売り切れたため、ちいかわぽけっとグッズストアで12/4〜12/25に予約販売を行うと公式が案内。対象商品は後日発表。",
+  "source": "J-CASTニュース",
+  "src": "https://news.yahoo.co.jp/articles/5c70123b84eb14800e3dbd78e6c8c955a908dc9d",
+  "itemId": "20261124-xmas-market",
+  "addedAt": "2026-11-25"
+ },
+ {
+  "id": "20261124-seven-futatsuki-mug",
+  "date": "2026-11-24",
+  "tag": "goods",
+  "title": "セブンで帽子がふたになるちいかわマグを予約受付",
+  "sum": "ちいかわ・ハチワレ・うさぎの3種、各5,000個限定のふたつきマグカップを12/3〜12/18に店頭で予約受付。税込3,300円で、お届けは来年5月ごろの予定。",
+  "source": "セブン‐イレブン・ジャパン",
+  "src": "https://www.sej.co.jp/company/news_release/news/2026/20261124.html",
+  "itemId": "20261203-seven-futatsuki-mug",
+  "addedAt": "2026-11-25"
+ },
+ {
+  "id": "20261124-oekaki-parfait",
+  "date": "2026-11-24",
+  "tag": "book",
+  "title": "おえかきぱふぇ最新号、香りつきマスコットペンが付録に",
+  "sum": "KADOKAWAのおえかきムックにちいかわ号が登場。フルーツの香りの玉が入ったマスコットペン3本とホログラムシールつきで、2027年4月26日発売予定。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000020582.000007006.html",
+  "itemId": "20270426-oekaki-parfait-kaoridama",
+  "addedAt": "2026-11-25"
+ },
+ {
   "id": "20261124-piano-book",
   "date": "2026-11-24",
   "tag": "book",

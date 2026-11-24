@@ -2647,15 +2647,21 @@
    "https://contents-abema.com/chiikawa-christmas-market/goods/",
    "https://contents-abema.com/chiikawa-christmas-market/food/",
    "https://prtimes.jp/main/html/rd/p/000004179.000064643.html",
-   "https://times.abema.tv/articles/-/10286120"
+   "https://times.abema.tv/articles/-/10286120",
+   "https://news.yahoo.co.jp/articles/5c70123b84eb14800e3dbd78e6c8c955a908dc9d"
   ],
-  "verifiedAt": "2026-11-23",
+  "verifiedAt": "2026-11-25",
   "dl": [
    {
     "k": "抽選",
     "n": "入場チケット 先行抽選（アソビュー！）の申込締切",
     "until": "2026-10-25T23:59",
     "u": "https://www.asoview.com/base/165182/"
+   },
+   {
+    "k": "予約",
+    "n": "会場限定グッズの予約販売（ちいかわぽけっとグッズストア・上限に達したら終了）",
+    "until": "2026-12-25T23:59"
    }
   ],
   "org": {
@@ -2666,15 +2672,20 @@
   "note": "約6,000㎡の会場に高さ約6mのツリーや限定フード・限定グッズ。チケット購入者には「飛び出す！クリスマスカード」と巨大ガチャガチャ1回無料（オーナメント全16種からランダム）。限定グッズはブッシュドノエルなスノードーム（4,620円）、クリスマスマーケットなぬいぐるみ（各3,190円）など。",
   "autoAdded": true,
   "addedAt": "2026-10-09",
-  "updatedAt": "2026-11-05",
+  "updatedAt": "2026-11-25",
   "how": [
    "入場は日時指定チケット制。先行抽選（アソビュー！）の申込は10/25(日)23:59で終了",
    "先着販売は10/31(土)12:00から。公式サイトで「チケットは完売いたしました」と案内（全日程完売）",
    "会場限定グッズは全86点。一部は11/24(火)11:00から「ちいかわぽけっとグッズストア」でも販売",
    "会場で税込3,300円以上で刺繍缶バッジ（全8種）、6,600円以上で巾着（全3種）も（ランダム・会場限定・合算不可）",
-   "フードは入場後にスマホで注文（キャッシュレスのみ・1会計で同じ商品は1つまで）。スマホのない子ども券では注文不可"
+   "フードは入場後にスマホで注文（キャッシュレスのみ・1会計で同じ商品は1つまで）。スマホのない子ども券では注文不可",
+   "会場グッズは12/4(金)11:00〜12/25(金)23:59にちいかわぽけっとグッズストアで予約販売（対象は後日発表・上限で終了）"
   ],
   "log": [
+   {
+    "d": "2026-11-25",
+    "t": "会場グッズの予約販売（12/4〜12/25・オンライン）が発表されました"
+   },
    {
     "d": "2026-11-05",
     "t": "入場チケットが全日程完売になりました"
@@ -2987,7 +2998,7 @@
   "sp": "day",
   "e": null,
   "time": "",
-  "eNote": "",
+  "eNote": "数量制限（ちいかわマーケットは1会計2個まで）",
   "place": "全国量販店の菓子売場など",
   "area": "",
   "price": "297円",
@@ -2998,7 +3009,7 @@
   "note": "アクリル製マグネット全21種（レアはオーロラ・キラキララメ・フレームの3種）＋ガム1個。 ちいかわマーケット（公式通販）では11/20(金)11時発売。",
   "autoAdded": true,
   "addedAt": "2026-10-10",
-  "updatedAt": "2026-11-19",
+  "updatedAt": "2026-11-25",
   "xpostNote": "2026-10-25 公式ポストを検索したが、一覧にある公式アカウントで本文とURLが確かめられるものは見つからず／2026-11-12 再検索したが、一覧にある公式アカウントの投稿は見つからず（ファンの投稿のみ）／2026-11-15 前回から3日未満のため再検索は見送り／2026-11-17 再検索（chiikawa_kouhou キャラマグネッツ5）したが、今回の回・商品の一覧にある公式アカウントの投稿は見つからず／2026-11-19 ちいかわマーケット公式の投稿（IDから2026-11-16 18:01 日本時間）を検索結果の本文で確認。「キャラマグネッツ5（全21種）※ランダム 単品297円」で、商品名・種類数・価格が一致。ちいかわマーケットでは11/20(金)11時発売",
   "log": [
    {
@@ -3008,7 +3019,8 @@
   ],
   "xpost": "https://x.com/chiikawa_market/status/2122253822814998788",
   "srcs": [
-   "https://x.com/chiikawa_market/status/2122253822814998788"
+   "https://x.com/chiikawa_market/status/2122253822814998788",
+   "https://chiikawamarket.jp/products/4570117929335"
   ]
  },
  {
@@ -3948,7 +3960,7 @@
   "q": "ちいかわ ウエハース エールカードコレクション",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117930188000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-25",
   "note": "メタリックに輝くキラキラカード全25種（うちシークレット1種）入りのウエハース。2026年12月発売予定（日付は未発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
@@ -4071,7 +4083,7 @@
   "sp": "late",
   "e": null,
   "time": "",
-  "eNote": "",
+  "eNote": "数量制限（ちいかわマーケットは1会計2個まで）",
   "place": "グルマンディーズ公式通販 ほか",
   "area": "",
   "price": "IIIIfit プランプフレーム 2,728円〜4,048円、Camera Frame 3,278円・4,048円、カメラカバー 2,728円",
@@ -4081,7 +4093,8 @@
   "srcType": "partner",
   "srcs": [
    "https://www.gourmandise.jp/view/item/000000010928",
-   "https://www.gourmandise.jp/view/item/000000010925"
+   "https://www.gourmandise.jp/view/item/000000010925",
+   "https://chiikawamarket.jp/products/4550213594859"
   ],
   "verifiedAt": "2026-11-23",
   "how": [
@@ -4090,7 +4103,7 @@
   "note": "iPhone 18 Pro／17 Pro・18 Pro Max／17 Pro Max対応の新作。キャラクターが乗ったぷっくりフレームの「IIIIfit プランプフレーム」（MagSafe対応あり）、MagSafeリングに座る「Camera Frame」、カメラカバーなど。",
   "autoAdded": true,
   "addedAt": "2026-10-16",
-  "updatedAt": "2026-10-16",
+  "updatedAt": "2026-11-25",
   "xpostNote": "2026-11-11 公式ポストを検索したが、見つかったのはiPhone17対応の回のみ（不一致）／2026-11-15 再検索（chiikawa_kouhou iPhone 18 ケース）したが、iPhone18対応の回の公式投稿は見つからず"
  },
  {
@@ -6405,7 +6418,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_aake/index.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-25",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
@@ -6854,7 +6867,7 @@
    "https://animeanime.jp/article/2026/11/10/104646.html",
    "https://nijimen.kusuguru.co.jp/topics/652801"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-25",
   "how": [
    "2026年11月下旬から、ちいかわマーケットや全国の雑貨店・量販店などで順次発売",
    "巾着S3枚セットは、店舗によって発売日が違ったり、取り扱いがなかったりする"
@@ -7176,7 +7189,7 @@
    "https://chiikawamarket.jp/collections/20261127",
    "https://prtimes.jp/main/html/rd/p/000000083.000168561.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-25",
   "how": [
    "ちいかわマーケットで11/27(金)11時から販売。予約商品は12月中旬以降の順次発送で、通常商品と同時に買えない",
    "11/27 11時以降、マーケットで税込1,100円ごとにホログラムステッカーを1枚（なくなり次第終了）",
@@ -7274,7 +7287,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_ekky/index.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-25",
   "note": "JR京都駅の西口改札前の特設会場で開かれるちいかわPOP UP STORE。",
   "autoAdded": true,
   "addedAt": "2026-11-13",
@@ -7301,7 +7314,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/11/12/190841.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-25",
   "how": [
    "ちいかわクリニックのPOP UP会場と全国のカプセルトイ売り場で、11/27(金)から順次（1回500円）"
   ],
@@ -7361,8 +7374,7 @@
   "place": "全国の楽器店・楽器のネットショップ",
   "area": "",
   "price": "各4,200円（税別）",
-  "q": "",
-  "qNone": "発売前で、楽天への出品は未確認（11/13確認）",
+  "q": "ちいかわ クリップチューナー CKCC",
   "src": "https://prtimes.jp/main/html/rd/p/000000004.000135390.html",
   "srcType": "press",
   "verifiedAt": "2026-11-19",
@@ -7372,7 +7384,7 @@
   "note": "ギターなどに挟んで使うクリップ式のチューナー。メーカーはキョーリツコーポレーション（型番 CKCC-CH／CKCC-HW／CKCC-US）。",
   "autoAdded": true,
   "addedAt": "2026-11-13",
-  "updatedAt": "2026-11-14",
+  "updatedAt": "2026-11-25",
   "xpost": "https://x.com/chiikawa_kouhou/status/2121073061671657496",
   "xpostNote": "投稿日2026-11-13 20:50（日本時間・IDから計算）。本文に「『ちいかわ クリップチューナー』」「11月20日(金)より 全国の楽器店、WEB販売店などで発売」（2026-11-14 検索結果で確認）"
  },
@@ -7928,7 +7940,7 @@
    "https://gourmet.watch.impress.co.jp/docs/news/2157822.html",
    "https://animeanime.jp/article/2026/11/19/104922.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-25",
   "dl": [
    {
     "k": "抽選",
@@ -7972,7 +7984,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000047.000156996.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-25",
   "how": [
    "ちいかわクリスマスマーケットの入場チケットがなくても立ち寄れる",
    "アプリ『ちいかわぽけっと』のホーム画面を見せると「ちいぽけクリスマスリースカード」（全1種）を1人1枚（なくなり次第終了）"
@@ -7993,20 +8005,23 @@
   "sp": "mid",
   "e": null,
   "time": "",
-  "eNote": "",
+  "eNote": "数量制限（ちいかわマーケットは1会計2個まで）",
   "place": "ちいかわらんど・ちいかわマーケット・全国の雑貨店など",
   "area": "",
   "price": "",
   "q": "",
-  "qNone": "発売直後で楽天の同じ商品を確かめられていない（11/19確認）",
+  "qNone": "発売直後で楽天の同じ商品を確かめられていない（11/25確認）",
   "src": "https://x.com/ensky_ZAKKA/status/2122162759336919336",
   "srcType": "partner",
   "verifiedAt": "2026-11-19",
   "note": "アニメちいかわの絵柄の、もちもちした感触のシール。11月中旬から順次発売。",
   "autoAdded": true,
   "addedAt": "2026-11-19",
-  "updatedAt": "2026-11-19",
-  "xpostNote": "2026-11-22 検索（chiikawa_kouhou マシュマロ風シール）。見つかったのは2025年12月の別商品（ちいかわマーケットのマシュマロ風シール）のみ（不一致）"
+  "updatedAt": "2026-11-25",
+  "xpostNote": "2026-11-22 検索（chiikawa_kouhou マシュマロ風シール）。見つかったのは2025年12月の別商品（ちいかわマーケットのマシュマロ風シール）のみ（不一致）",
+  "srcs": [
+   "https://chiikawamarket.jp/products/4970381812515"
+  ]
  },
  {
   "id": "20261120-market-1120",
@@ -8339,7 +8354,7 @@
   "sp": "day",
   "e": null,
   "time": "",
-  "eNote": "",
+  "eNote": "数量制限（ちいかわマーケットは1会計2個まで）",
   "place": "ちいかわらんど、ちいかわマーケット、全国の百貨店・専門店のハンカチ売場、川辺オンラインショップなど",
   "area": "",
   "price": "各1,650円",
@@ -8361,7 +8376,7 @@
   "note": "結ばずに包める保冷ハンカチ。",
   "autoAdded": true,
   "addedAt": "2026-11-24",
-  "updatedAt": "2026-11-24"
+  "updatedAt": "2026-11-25"
  },
  {
   "id": "20261130-seven-chiikawa-fair",
@@ -8521,5 +8536,80 @@
   ],
   "xpost": "https://x.com/chiikawa_kouhou/status/2125137344567374118",
   "xpostNote": "投稿日2026-11-24 17:00（日本時間・IDから計算）。本文に「アニメ『ちいかわ』ピアノBOOK」「12月11日(金)より ちいかわマーケットほか、全国の楽器店・書店・各種ECサイト等にて発売」（2026-11-24 検索結果で確認）"
+ },
+ {
+  "id": "20261203-seven-futatsuki-mug",
+  "region": "jp",
+  "t": "セブン‐イレブン ちいかわ ふたつきマグカップ（予約）",
+  "cat": "goods",
+  "s": "2026-12-03",
+  "sp": "day",
+  "e": "2026-12-18",
+  "time": "10:01〜",
+  "eNote": "数量限定（各5,000個・予定数に達し次第終了）",
+  "place": "全国のセブン‐イレブン（店頭で予約）",
+  "area": "",
+  "price": "3,300円",
+  "q": "",
+  "qNone": "セブン‐イレブン店頭の予約限定",
+  "rs": "2026-12-03T10:01",
+  "re": null,
+  "rsv": [
+   {
+    "n": "",
+    "u": "https://www.sej.co.jp/cmp/ck2612/",
+    "so": false
+   }
+  ],
+  "src": "https://www.sej.co.jp/company/news_release/news/2026/20261124.html",
+  "srcType": "partner",
+  "srcs": [
+   "https://www.sej.co.jp/cmp/ck2612/"
+  ],
+  "verifiedAt": "2026-11-25",
+  "how": [
+   "セブン‐イレブンの店頭で予約（申込期間 12/3(木)10:01〜12/18(金)）。詳しくは店頭のチラシで",
+   "ちいかわ・ハチワレ・うさぎの3種から選べる。各5,000個限定で、予定数に達したら終了",
+   "お届けは2027年5月中旬〜下旬ごろの予定"
+  ],
+  "note": "帽子の部分がふたになるマグカップ。セブン‐イレブンの冬のちいかわコラボフェアに合わせた予約商品。",
+  "autoAdded": true,
+  "addedAt": "2026-11-25",
+  "updatedAt": "2026-11-25"
+ },
+ {
+  "id": "20270426-oekaki-parfait-kaoridama",
+  "region": "jp",
+  "t": "おえかきぱふぇ ちいかわかおりだまマスコットペン＆シールいっぱい号",
+  "cat": "book",
+  "s": "2027-04-26",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "全国の書店・ネット書店・カドスト",
+  "area": "",
+  "price": "1,650円",
+  "q": "",
+  "qNone": "楽天ブックスの商品ページを確認できない（11/25確認）",
+  "src": "https://prtimes.jp/main/html/rd/p/000020582.000007006.html",
+  "srcType": "press",
+  "srcs": [
+   "https://www.kadokawa.co.jp/product/322609000541/"
+  ],
+  "verifiedAt": "2026-11-25",
+  "org": {
+   "name": "株式会社KADOKAWA",
+   "url": "https://www.kadokawa.co.jp/product/322609000541/",
+   "src": "https://prtimes.jp/main/html/rd/p/000020582.000007006.html"
+  },
+  "how": [
+   "全国の書店・ネット書店・KADOKAWAの通販「カドスト」で予約受付中",
+   "付録のデザインは監修中のため、変わることがある"
+  ],
+  "note": "KADOKAWAのおえかきムック。付録はフルーツの香りの玉が入ったちいかわ・ハチワレ・うさぎのマスコットペン3本と、ホログラムシール2枚（AB判・38ページ）。",
+  "autoAdded": true,
+  "addedAt": "2026-11-25",
+  "updatedAt": "2026-11-25"
  }
 ]
