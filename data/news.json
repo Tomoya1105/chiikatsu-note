@@ -1,5 +1,28 @@
 [
  {
+  "id": "20261124-piano-book",
+  "date": "2026-11-24",
+  "tag": "book",
+  "title": "アニメちいかわのピアノ曲集、12/11に発売",
+  "sum": "「ひとりごつ」など全15曲を収めた公式ピアノソロ曲集がシンコーミュージックから登場。初級・中級の2つのアレンジで、税込1,980円。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000044.000157078.html",
+  "itemId": "20261211-piano-book",
+  "addedAt": "2026-11-24",
+  "x": "https://x.com/chiikawa_kouhou/status/2125137344567374118"
+ },
+ {
+  "id": "20261124-movie-1907oku",
+  "date": "2026-11-24",
+  "tag": "anime",
+  "title": "映画ちいかわ、興収190億円・観客1300万人を突破",
+  "sum": "公開123日目で興行収入約190.7億円、観客動員約1306万人に。11/28からは入場者特典第9弾のチャームミニフィギュアが配られる。",
+  "source": "福井新聞（ORICON NEWS）",
+  "src": "https://fukuishimbun.co.jp/articles/-/2754827",
+  "itemId": "20261128-tokuten9",
+  "addedAt": "2026-11-24"
+ },
+ {
   "id": "20261124-seven-fair-winter",
   "date": "2026-11-24",
   "tag": "goods",

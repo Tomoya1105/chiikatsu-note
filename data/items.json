@@ -3584,7 +3584,7 @@
   "srcs": [
    "https://chiikawa-info.jp/ck_pocket.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-24",
   "autoAdded": true,
   "addedAt": "2026-10-13",
   "updatedAt": "2026-10-13",
@@ -5216,7 +5216,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000004138.000003639.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-24",
   "org": {
    "name": "株式会社パルコ",
    "url": "https://cafe.parco.jp/",
@@ -5251,7 +5251,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_kbkt/index.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-24",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-28",
@@ -5530,7 +5530,7 @@
    "https://chiikawa-info.jp/p26/pus_tbun/index.html",
    "https://www.tobu-u-dept.jp/event.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-24",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-10-31",
@@ -5717,7 +5717,7 @@
   "srcs": [
    "https://prtimes.jp/main/html/rd/p/000000335.000086964.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-24",
   "how": [
    "サンタ姿のちいかわ・ハチワレ・うさぎパンは11/13(金)〜12/27(日)、表参道とOSAKAの両店で販売",
    "3個買うと限定デザインのBOXに入れてもらえる（キャラクターは自由に選べる）",
@@ -6105,7 +6105,7 @@
    "https://escape.id/chiikawa/",
    "https://escape.id/chiikawa-org/p-chiikawa-kit/"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-24",
   "how": [
    "ESCAPE.IDで11/4から郵送販売、11/9(月)から順次発送",
    "ローソンメトロス11店舗（赤坂見附・池袋南西口・渋谷・新宿東口など）で11/9から店頭販売",
@@ -6353,7 +6353,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_ahmi/index.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-24",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
@@ -6379,7 +6379,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_amot/index.html"
   ],
-  "verifiedAt": "2026-11-22",
+  "verifiedAt": "2026-11-24",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-07",
@@ -8488,5 +8488,38 @@
   "autoAdded": true,
   "addedAt": "2026-11-24",
   "updatedAt": "2026-11-24"
+ },
+ {
+  "id": "20261211-piano-book",
+  "region": "jp",
+  "t": "アニメ『ちいかわ』ピアノBOOK",
+  "cat": "book",
+  "s": "2026-12-11",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわマーケット・全国の楽器店・書店・ECサイトなど",
+  "area": "",
+  "price": "1,980円",
+  "q": "",
+  "qNone": "発売前で楽天ブックスの商品ページを確認できない（発売前後に見直す）",
+  "src": "https://prtimes.jp/main/html/rd/p/000000044.000157078.html",
+  "srcType": "press",
+  "verifiedAt": "2026-11-24",
+  "how": [
+   "シンコーミュージック・エンタテイメントから発売（菊倍判・42ページ）",
+   "初級（カナ付き）8曲・中級6曲のピアノソロと、「ひとりごつ」のギター弾き語り譜を収録",
+   "12/11(金)からちいかわマーケットほか、全国の楽器店・書店・各種ECサイトなどで発売"
+  ],
+  "note": "アニメの楽曲を集めた公式ピアノソロ曲集。エンディング「ひとりごつ」など全15曲、カラーの場面写真ページつき。ISBN 978-4-401-04504-4。",
+  "autoAdded": true,
+  "addedAt": "2026-11-24",
+  "updatedAt": "2026-11-24",
+  "srcs": [
+   "https://x.com/chiikawa_kouhou/status/2125137344567374118"
+  ],
+  "xpost": "https://x.com/chiikawa_kouhou/status/2125137344567374118",
+  "xpostNote": "投稿日2026-11-24 17:00（日本時間・IDから計算）。本文に「アニメ『ちいかわ』ピアノBOOK」「12月11日(金)より ちいかわマーケットほか、全国の楽器店・書店・各種ECサイト等にて発売」（2026-11-24 検索結果で確認）"
  }
 ]
