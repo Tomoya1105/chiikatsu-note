@@ -1,5 +1,49 @@
 [
  {
+  "id": "20261124-seven-fair-winter",
+  "date": "2026-11-24",
+  "tag": "goods",
+  "title": "セブンで冬のちいかわフェア、12/3から景品も",
+  "sum": "作中の食べ物をイメージしたオムライスや背徳ラーメンなど12品が11/30から順次登場。対象商品のセット購入で限定チャームなどがもらえる。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000001373.000155396.html",
+  "itemId": "20261130-seven-chiikawa-fair",
+  "addedAt": "2026-11-24"
+ },
+ {
+  "id": "20261124-anymykuji-1212",
+  "date": "2026-11-24",
+  "tag": "goods",
+  "title": "エニマイくじのちいかわ、12/12にセブンなどで",
+  "sum": "冬のおうち時間がテーマのくじが12/12から全国のセブン‐イレブンとイトーヨーカドーに。ジオラマフィギュアや加湿器、ラスト賞は振り子時計。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000075.000138299.html",
+  "itemId": "20261215-anymykuji",
+  "addedAt": "2026-11-24"
+ },
+ {
+  "id": "20261124-bakery-nagoya-popup",
+  "date": "2026-11-24",
+  "tag": "event",
+  "title": "ちいかわベーカリーが名古屋PARCOに初出店",
+  "sum": "12/11から1/11まで西館8FでPOP UP SHOP。名古屋限定の小豆入り「ちいかわ食パン」を販売し、当面はデジタル整理券で案内。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000000339.000086964.html",
+  "itemId": "20261211-bakery-nagoya-popup",
+  "addedAt": "2026-11-24"
+ },
+ {
+  "id": "20261124-parade-ochoko3",
+  "date": "2026-11-24",
+  "tag": "goods",
+  "title": "ちいかわのおちょこ第3弾がカプセルトイに",
+  "sum": "60mlのおちょこが全6種で11月下旬から順次登場。「乾杯」や「お茶とどら焼き」など、1回500円。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/24/191466.html",
+  "itemId": "20261125-parade-ochoko3",
+  "addedAt": "2026-11-24"
+ },
+ {
   "id": "20261124-xmas-market-open",
   "date": "2026-11-24",
   "tag": "event",
