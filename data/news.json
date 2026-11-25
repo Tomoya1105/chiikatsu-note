@@ -1,5 +1,27 @@
 [
  {
+  "id": "20261125-talking-xmas",
+  "date": "2026-11-25",
+  "tag": "goods",
+  "title": "クリスマス限定デザインがTalking ODMに登場",
+  "sum": "光るうさぎや回転するアクリルスタンドなど、クリスマス柄のちいかわアイテム14品目が受注生産で登場。報道では2027年1月4日までの期間限定販売。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/25/191524.html",
+  "itemId": "20261124-talking-xmas",
+  "addedAt": "2026-11-25"
+ },
+ {
+  "id": "20261125-puku-churu2",
+  "date": "2026-11-25",
+  "tag": "goods",
+  "title": "ぷっくりシール「PUKU CHURU」第2弾がガチャに",
+  "sum": "パレードのカプセルトイで、ちいかわたちのラメ入り立体シール第2弾が11月下旬から順次発売。1回400円で全5種、1回にシール3シート入り。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/25/191525.html",
+  "itemId": "20261125-puku-churu2",
+  "addedAt": "2026-11-25"
+ },
+ {
   "id": "20261124-xmas-market-goods-preorder",
   "date": "2026-11-24",
   "tag": "event",
