@@ -1542,7 +1542,7 @@
   "time": "",
   "updatedAt": "2026-11-24",
   "srcType": "partner",
-  "verifiedAt": "2026-11-24",
+  "verifiedAt": "2026-11-26",
   "qNone": "くじ（店頭くじ）",
   "area": "",
   "region": "jp",
@@ -1587,7 +1587,7 @@
   "time": "",
   "updatedAt": "2026-09-27",
   "srcType": "partner",
-  "verifiedAt": "2026-11-24",
+  "verifiedAt": "2026-11-26",
   "srcs": [
    "https://animeanime.jp/article/2026/09/26/103251.html"
   ]
@@ -6677,7 +6677,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-24",
+  "verifiedAt": "2026-11-26",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6709,7 +6709,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-24",
+  "verifiedAt": "2026-11-26",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -6741,7 +6741,7 @@
   "srcs": [
    "https://animeanime.jp/article/2026/11/09/104614.html"
   ],
-  "verifiedAt": "2026-11-24",
+  "verifiedAt": "2026-11-26",
   "autoAdded": true,
   "addedAt": "2026-11-09",
   "updatedAt": "2026-11-09",
@@ -7819,7 +7819,7 @@
   "srcs": [
    "https://supertaste.tvbs.com.tw/travel/362420"
   ],
-  "verifiedAt": "2026-11-24",
+  "verifiedAt": "2026-11-26",
   "how": [
    "1会計NT$800以上で限定ステッカー（全8種）をランダムで1枚（1会計1枚まで・なくなり次第終了）",
    "入場方法・商品・購入ルールは主催者の最新の案内に従う（報道）"
@@ -8444,7 +8444,7 @@
   "q": "",
   "src": "https://prtimes.jp/main/html/rd/p/000000339.000086964.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-24",
+  "verifiedAt": "2026-11-26",
   "org": {
    "name": "株式会社エルティーアール（ちいかわベーカリー運営）",
    "url": "https://chiikawabakery.jp/",
@@ -8533,7 +8533,7 @@
   "qNone": "発売前で楽天ブックスの商品ページを確認できない（発売前後に見直す）",
   "src": "https://prtimes.jp/main/html/rd/p/000000044.000157078.html",
   "srcType": "press",
-  "verifiedAt": "2026-11-24",
+  "verifiedAt": "2026-11-26",
   "how": [
    "シンコーミュージック・エンタテイメントから発売（菊倍判・42ページ）",
    "初級（カナ付き）8曲・中級6曲のピアノソロと、「ひとりごつ」のギター弾き語り譜を収録",
@@ -8838,6 +8838,98 @@
    "トートバッグのセットは12/1〜12/11、エコバッグとそのセットは12/12〜12/21"
   ],
   "note": "ちいかわバナナプリンケーキ（4個入853円・8個入1,706円）、ちいかわクッキーサンド バナナミルク味（12枚入1,850円・18枚入2,700円）、トートバッグセット（4,500円）など。",
+  "autoAdded": true,
+  "addedAt": "2026-11-26",
+  "updatedAt": "2026-11-26"
+ },
+ {
+  "id": "20261127-chakkaman-mini",
+  "region": "jp",
+  "t": "ちいかわ チャッカマンmini（東海）",
+  "cat": "goods",
+  "s": "2026-11-27",
+  "sp": "day",
+  "e": null,
+  "time": "",
+  "eNote": "",
+  "place": "ちいかわマーケット（公式通販）・全国の量販店（12/1から順次）",
+  "area": "",
+  "price": "",
+  "q": "",
+  "qNone": "発売前で楽天の出品を確かめられないため（12/1から量販店で発売）",
+  "src": "https://x.com/chiikawa_kouhou/status/2125771525643186349",
+  "srcType": "official",
+  "srcs": [
+   "https://x.com/chakkaman_jp/status/2125782752478069181",
+   "https://dengekionline.com/article/202611/95151"
+  ],
+  "verifiedAt": "2026-11-26",
+  "xpost": "https://x.com/chiikawa_kouhou/status/2125771525643186349",
+  "xpostNote": "2026-11-26 確認：ちいかわグッズ公式の投稿（IDから2026-11-26 11:00 JST）。本文に『ちいかわ チャッカマンmini』、11月27日(金)ちいかわマーケット・12月1日(火)全国の量販店と書かれ、この件と一致",
+  "how": [
+   "11/27(金)からちいかわマーケット（公式通販）で発売",
+   "12/1(火)から全国の量販店で順次発売"
+  ],
+  "log": [
+   {
+    "d": "2026-11-26",
+    "t": "ちいかわグッズ公式の発表をもとに掲載しました"
+   }
+  ],
+  "note": "株式会社東海の点火棒「チャッカマン」のちいかわデザイン。",
+  "autoAdded": true,
+  "addedAt": "2026-11-26",
+  "updatedAt": "2026-11-26"
+ },
+ {
+  "id": "20261127-gu-pouch-resale",
+  "region": "jp",
+  "t": "ちいかわ×GU ポーチ CHIIKAWA 再販予約（全4種）（予約）",
+  "cat": "goods",
+  "s": "2026-11-27",
+  "sp": "day",
+  "e": "2026-11-29",
+  "time": "7:15〜",
+  "eNote": "受注締切 11/29(日) 23:59・予約上限に達し次第終了",
+  "place": "GUオンラインストア",
+  "area": "",
+  "price": "各1,990円",
+  "q": "",
+  "qNone": "GUオンラインストアの再販予約のみ",
+  "rs": "2026-11-27T07:15",
+  "re": "2026-11-29T23:59",
+  "rsv": [
+   {
+    "n": "",
+    "u": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
+    "so": false
+   }
+  ],
+  "src": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa",
+  "srcType": "partner",
+  "srcs": [
+   "https://nijimen.kusuguru.co.jp/topics/668040"
+  ],
+  "verifiedAt": "2026-11-26",
+  "dl": [
+   {
+    "k": "予約",
+    "n": "GU ポーチ CHIIKAWA 再販予約の締切",
+    "until": "2026-11-29T23:59",
+    "u": "https://www.gu-global.com/jp/ja/feature/contents/collaboration/chiikawa"
+   }
+  ],
+  "how": [
+   "GUオンラインストアで11/27(金)7:15〜11/29(日)23:59に再販予約",
+   "対象は01 OFF WHITE・04 GRAY・32 BEIGE・62 BLUEの4色"
+  ],
+  "log": [
+   {
+    "d": "2026-11-26",
+    "t": "GU公式ページで再販予約の期間を確かめて掲載しました"
+   }
+  ],
+  "note": "先行予約で上限に達したカマクラ型ポーチの再販予約。",
   "autoAdded": true,
   "addedAt": "2026-11-26",
   "updatedAt": "2026-11-26"
