@@ -1,5 +1,49 @@
 [
  {
+  "id": "20261126-tokyobanana-ueno",
+  "date": "2026-11-26",
+  "tag": "goods",
+  "title": "上野駅にも東京ばな奈×ちいかわの店、12/1から",
+  "sum": "JR上野駅の改札外で12/1〜12/21に期間限定ショップ。バナナプリンケーキやクッキーサンドのほか、前半はトート、後半はエコバッグのセットを販売。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000002212.000025606.html",
+  "itemId": "20261201-tokyobanana-ueno",
+  "addedAt": "2026-11-26"
+ },
+ {
+  "id": "20261126-seven-manmaruyaki",
+  "date": "2026-11-26",
+  "tag": "goods",
+  "title": "顔の焼印つきのまんまる焼き、チョコ味がセブンに",
+  "sum": "ちいかわたちの顔が焼印された今川焼風のお菓子にチョコレートクリーム味。12/1から全国のセブン‐イレブンで250円、ステッカー9種のうち1枚入り。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/26/191575.html",
+  "itemId": "20261201-seven-manmaruyaki-choco",
+  "addedAt": "2026-11-26"
+ },
+ {
+  "id": "20261126-clinic-2nd-market",
+  "date": "2026-11-26",
+  "tag": "goods",
+  "title": "ちいかわクリニック第2弾、マーケットに商品ページ",
+  "sum": "12/11(金)11時からちいかわマーケットで販売する第2弾82商品のページが公開。光る3Dマグネットなど一部は予約・数量限定で、2027年4月中旬以降の発送。",
+  "source": "ちいかわマーケット",
+  "src": "https://chiikawamarket.jp/collections/20261211",
+  "itemId": "20261211-clinic-market-2",
+  "addedAt": "2026-11-26"
+ },
+ {
+  "id": "20261126-bakery-midosuji",
+  "date": "2026-11-26",
+  "tag": "topic",
+  "title": "御堂筋線の電車に、ちいかわベーカリーのちいかわたち",
+  "sum": "大阪メトロ御堂筋線の車両の一部にちいかわたちが登場したと、ちいかわベーカリー OSAKAが公式SNSで紹介。運行期間は記事には書かれていない。",
+  "source": "オリコン",
+  "src": "https://www.oricon.co.jp/news/2495321/",
+  "itemId": "",
+  "addedAt": "2026-11-26"
+ },
+ {
   "id": "20261125-kura-plate-lottery-end",
   "date": "2026-11-25",
   "tag": "goods",
