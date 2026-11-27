@@ -1512,7 +1512,7 @@
   "time": "",
   "updatedAt": "2026-11-04",
   "srcType": "official",
-  "verifiedAt": "2026-11-25",
+  "verifiedAt": "2026-11-27",
   "srcs": [
    "https://www.inside-games.jp/article/2026/11/04/190359.html"
   ],
@@ -3976,7 +3976,7 @@
   "q": "ちいかわ ウエハース エールカードコレクション",
   "src": "https://www.bandai.co.jp/candy/products/2026/4570117930188000.html",
   "srcType": "partner",
-  "verifiedAt": "2026-11-25",
+  "verifiedAt": "2026-11-27",
   "note": "メタリックに輝くキラキラカード全25種（うちシークレット1種）入りのウエハース。2026年12月発売予定（日付は未発表）。",
   "autoAdded": true,
   "addedAt": "2026-10-15",
@@ -7342,7 +7342,7 @@
   "srcs": [
    "https://www.inside-games.jp/article/2026/11/12/190841.html"
   ],
-  "verifiedAt": "2026-11-25",
+  "verifiedAt": "2026-11-27",
   "how": [
    "ちいかわクリニックのPOP UP会場と全国のカプセルトイ売り場で、11/27(金)から順次（1回500円）"
   ],
@@ -7435,7 +7435,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_anrt/index.html"
   ],
-  "verifiedAt": "2026-11-25",
+  "verifiedAt": "2026-11-27",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-14",
@@ -7461,7 +7461,7 @@
   "srcs": [
    "https://chiikawa-info.jp/p26/pus_ahny/index.html"
   ],
-  "verifiedAt": "2026-11-25",
+  "verifiedAt": "2026-11-27",
   "note": "",
   "autoAdded": true,
   "addedAt": "2026-11-14",
@@ -7657,7 +7657,7 @@
   "q": "",
   "src": "https://www.chiikawamogumogu.jp/2026/11/17/post-2782/",
   "srcType": "official",
-  "verifiedAt": "2026-11-25",
+  "verifiedAt": "2026-11-27",
   "how": [
    "11/30(月)からは毎日、入店にデジタルチケットの事前取得が必要",
    "入店予約（先着）はちいかわもぐもぐ本舗のLINE公式アカウントで、来店前日の夜20時から受付",
@@ -8592,7 +8592,7 @@
   "srcs": [
    "https://www.sej.co.jp/cmp/ck2612/"
   ],
-  "verifiedAt": "2026-11-25",
+  "verifiedAt": "2026-11-27",
   "how": [
    "セブン‐イレブンの店頭で予約（申込期間 12/3(木)10:01〜12/18(金)）。詳しくは店頭のチラシで",
    "ちいかわ・ハチワレ・うさぎの3種から選べる。各5,000個限定で、予定数に達したら終了",
@@ -8655,7 +8655,7 @@
   "q": "",
   "src": "https://www.tokyoeki-1bangai.co.jp/feature/detail/?cd=000048",
   "srcType": "partner",
-  "verifiedAt": "2026-11-25",
+  "verifiedAt": "2026-11-27",
   "how": [
    "スマホで参加するデジタルスタンプラリー。キャンペーンページで初回だけアンケートに答えて「はじめる」をタップ",
    "館内3か所のスタンプスポットで二次元コードを読み取る",
@@ -9058,5 +9058,44 @@
    }
   ],
   "xpostNote": "2026-11-27 検索（chiikawamgmg 小樽店 デジタル整理券）。今回の告知のポストは見つからず"
+ },
+ {
+  "id": "20261127-market-anime-stationery",
+  "region": "jp",
+  "t": "アニメ『ちいかわ』ラーニングタイマー・パタパタメモ・グリッター文房具など（ちいかわマーケット 11/27発売）",
+  "cat": "goods",
+  "s": "2026-11-27",
+  "sp": "day",
+  "e": null,
+  "time": "11:00〜",
+  "eNote": "数量制限（1会計につき各2個まで）・ラーニングタイマーなど一部完売",
+  "place": "ちいかわマーケット（公式通販）",
+  "area": "",
+  "price": "187円〜2,970円",
+  "q": "",
+  "qNone": "公式通販の新商品をまとめた件で、楽天で同じ商品と言い切れない",
+  "src": "https://chiikawamarket.jp/collections/20261127",
+  "srcType": "official",
+  "srcs": [
+   "https://x.com/chiikawa_market/status/2125922929858969681",
+   "https://www.inside-games.jp/article/2026/11/27/191625.html"
+  ],
+  "verifiedAt": "2026-11-27",
+  "how": [
+   "ちいかわマーケット（公式通販）で11/27(金)11時から販売。1会計につき各2個まで",
+   "マイプロフカード・まめっこ箱・カスタムフレームシールはランダムでBOX（袋）販売のみ"
+  ],
+  "log": [
+   {
+    "d": "2026-11-27",
+    "t": "ラーニングタイマー・パタパタメモ・グリッターペンポーチなどは完売（11/27 18時台に確認）"
+   }
+  ],
+  "note": "ラーニングタイマー（全3種・各2,970円）、パタパタメモ（全2種・各715円）、マイプロフカード（1BOX 2,200円）、まめっこ箱・カスタムフレームシール（各1袋2,640円）、グリッターペンポーチ・ボールペン・バインダーメモ、ラメ入り消しゴム・定規、たてられるハンドミラーなど。",
+  "xpost": "https://x.com/chiikawa_market/status/2125922929858969681",
+  "xpostNote": "投稿日2026-11-26 21:01（日本時間・IDから計算）。ちいかわマーケット公式の本文に「アニメ『ちいかわ』ラーニングタイマー（全3種）各2,970円」「11/27(金)11時発売」（2026-11-27 検索結果で確認）",
+  "autoAdded": true,
+  "addedAt": "2026-11-27",
+  "updatedAt": "2026-11-27"
  }
 ]

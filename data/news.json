@@ -1,5 +1,28 @@
 [
  {
+  "id": "20261127-gu-second-wave",
+  "date": "2026-11-27",
+  "tag": "goods",
+  "title": "GU×ちいかわ第2弾、もこもこルームウェアが発売",
+  "sum": "雪の日がテーマのGUコラボ第2弾が11/27に登場。大人用とキッズのラウンジセットやヘアバンドなど。売り切れた商品は11/29まで追加予約を受け付けます。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/27/191618.html",
+  "itemId": "20261120-gu",
+  "addedAt": "2026-11-27"
+ },
+ {
+  "id": "20261127-market-learning-timer",
+  "date": "2026-11-27",
+  "tag": "goods",
+  "title": "アニメちいかわの勉強タイマーや文房具がマーケットに",
+  "sum": "ちいかわマーケットで11/27、アラーム音を選べるラーニングタイマー（各2,970円）やパタパタメモ、キラキラ文房具などが発売。タイマーなど一部は当日中に完売しました。",
+  "source": "インサイド",
+  "src": "https://www.inside-games.jp/article/2026/11/27/191625.html",
+  "itemId": "20261127-market-anime-stationery",
+  "x": "https://x.com/chiikawa_market/status/2125922929858969681",
+  "addedAt": "2026-11-27"
+ },
+ {
   "id": "20261127-bakery-mini-daimaru",
   "date": "2026-11-27",
   "tag": "event",
