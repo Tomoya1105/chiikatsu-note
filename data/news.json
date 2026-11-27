@@ -1,5 +1,49 @@
 [
  {
+  "id": "20261127-bakery-mini-daimaru",
+  "date": "2026-11-27",
+  "tag": "event",
+  "title": "ちいかわベーカリー mini、12/18に大丸東京で開店",
+  "sum": "東京駅直結の大丸東京の地下1階に、ちいかわベーカリーの4店舗目が12月18日オープン。顔のパン3個入りの限定セットが並び、当初はデジタル整理券制です。",
+  "source": "ちいかわベーカリー公式",
+  "src": "https://chiikawabakery.jp/topics/20261127",
+  "itemId": "20261218-bakery-mini-daimaru-tokyo",
+  "addedAt": "2026-11-27"
+ },
+ {
+  "id": "20261127-tokyobanana-kyoto",
+  "date": "2026-11-27",
+  "tag": "goods",
+  "title": "東京ばな奈×ちいかわの店が大丸京都店に、12/2から",
+  "sum": "ちいかわバナナプリンケーキやバナナミルク味のクッキーサンドを、大丸京都店の地階で12月2日から8日まで販売。大きい箱にはステッカーが1枚付きます。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000002214.000025606.html",
+  "itemId": "20261202-tokyobanana-daimaru-kyoto",
+  "addedAt": "2026-11-27"
+ },
+ {
+  "id": "20261127-mogumogu-otaru-ticket",
+  "date": "2026-11-27",
+  "tag": "topic",
+  "title": "もぐもぐ本舗小樽店、12/5から週末は整理券制に",
+  "sum": "ちいかわもぐもぐ本舗 小樽店は、12月5日から土日祝の入店にデジタル整理券が必要に。LINE公式アカウントで前日20時から先着で受け付けます。",
+  "source": "ちいかわもぐもぐ本舗",
+  "src": "https://www.chiikawamogumogu.jp/2026/11/27/post-2850",
+  "itemId": "20261205-mogumogu-otaru-weekend-ticket",
+  "addedAt": "2026-11-27"
+ },
+ {
+  "id": "20261127-otomodachi-book-reprint",
+  "date": "2026-11-27",
+  "tag": "book",
+  "title": "ちいかわの『お友だちとのつき合いかた』が11万部超え",
+  "sum": "KADOKAWAの児童書『ちいかわ お友だちとのつき合いかた』が重版を重ね、累計11万6千部に。ナガノさんのイラスト、加藤裕美子さん監修の一冊です。",
+  "source": "PR TIMES",
+  "src": "https://prtimes.jp/main/html/rd/p/000020701.000007006.html",
+  "itemId": "",
+  "addedAt": "2026-11-27"
+ },
+ {
   "id": "20261127-xmas-market-order-refund",
   "date": "2026-11-26",
   "tag": "event",
